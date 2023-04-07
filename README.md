@@ -17,3 +17,54 @@ Siempre sentí curiosidad por el mundo de la programación y es por esto que me 
 
 🫡Mi nombre es Julián Ramírez, tengo 28 años y soy de Colombia . He trabajado en automatización de procesos a través de programación, principalmente en el área contable y administrativa. Tengo experiencia en VBA y Python. Me inscribí al curso por que quiero ampliar mis conocimientos desarrollando aplicaciones web.
 
+//**Punto 3
+
+**Sitios de referencia:**
+
+www.linio.com
+
+Plataforma de comercio electrónico.
+
+Características para elegirla de referencia:
+
+Permite multiples proveedores de productos
+Permite diferentes categorias de productos
+Permite registro de usuarios
+Permite carro de compras
+
+www.farmatodo.com
+
+Plataforma de comercio electrónico para cadena de droguerías de autoservicio especializada en productos para la salud.
+
+
+Características para elegirla de referencia:
+
+Permite un único proveedor de productos
+Permite diferentes categorias de productos
+Permite registro de usuarios
+Permite carro de compras
+
+
+
+www.cruzverde.com
+
+Plataforma de comercio electrónico para cadena de droguería.
+
+Características para elegirla de referencia:
+
+Permite un único proveedor de productos
+Permite diferentes categorias de productos
+Permite registro de usuarios
+Permite carro de compras
+
+
+
+www.lamigueria.com.co
+
+Plataforma de comercio electrónico para panadería y repostería.
+
+Características para elegirla de referencia:
+
+Permite un único proveedor de productos
+Permite diferentes categorias de productos
+Permite carro de compras
