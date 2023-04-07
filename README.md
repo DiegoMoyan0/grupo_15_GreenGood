@@ -21,7 +21,7 @@ Siempre sentí curiosidad por el mundo de la programación y es por esto que me 
 
 **Sitios de referencia:**
 
-www.linio.com
+1. www.linio.com
 
 Plataforma de comercio electrónico.
 
@@ -29,14 +29,14 @@ Características para elegirla de referencia:
 
 *Permite multiples proveedores de productos
 
-*Permite diferentes categorias de productos
+*Permite diferentes categorías de productos
 
 *Permite registro de usuarios
 
 *Permite carro de compras
 
 
-www.farmatodo.com
+2. www.farmatodo.com
 
 Plataforma de comercio electrónico para cadena de droguerías de autoservicio especializada en productos para la salud.
 
@@ -45,7 +45,7 @@ Características para elegirla de referencia:
 
 *Permite un único proveedor de productos
 
-*Permite diferentes categorias de productos
+*Permite diferentes categorías de productos
 
 *Permite registro de usuarios
 
@@ -53,7 +53,7 @@ Características para elegirla de referencia:
 
 
 
-www.cruzverde.com
+3. www.cruzverde.com
 
 Plataforma de comercio electrónico para cadena de droguería.
 
@@ -61,7 +61,7 @@ Características para elegirla de referencia:
 
 *Permite un único proveedor de productos
 
-*Permite diferentes categorias de productos
+*Permite diferentes categorías de productos
 
 *Permite registro de usuarios
 
@@ -69,7 +69,7 @@ Características para elegirla de referencia:
 
 
 
-www.lamigueria.com.co
+4. www.lamigueria.com.co
 
 Plataforma de comercio electrónico para panadería y repostería.
 
@@ -77,6 +77,33 @@ Características para elegirla de referencia:
 
 *Permite un único proveedor de productos
 
-*Permite diferentes categorias de productos
+*Permite diferentes categorías de productos
 
 *Permite carro de compras
+
+
+
+5. www.bellavitacultivos.com
+
+Página web de venta mayorista de productos para el cultivo de cannabis.
+
+Características para elegirla de referencia:
+
+*Forma de navegación móvil
+
+*Forma de describir características de sus productos.
+
+*Sección novedades.
+
+
+
+6. www.farmacity.com.ar
+
+Página web de venta productos farmacéuticos.
+
+Características para elegirla de referencia:
+
+*Publicidad
+
+*Manejo y exhibición de promociones
+
