@@ -28,9 +28,13 @@ Plataforma de comercio electrónico.
 Características para elegirla de referencia:
 
 *Permite multiples proveedores de productos
+
 *Permite diferentes categorias de productos
+
 *Permite registro de usuarios
+
 *Permite carro de compras
+
 
 www.farmatodo.com
 
@@ -40,8 +44,11 @@ Plataforma de comercio electrónico para cadena de droguerías de autoservicio e
 Características para elegirla de referencia:
 
 *Permite un único proveedor de productos
+
 *Permite diferentes categorias de productos
+
 *Permite registro de usuarios
+
 *Permite carro de compras
 
 
@@ -53,8 +60,11 @@ Plataforma de comercio electrónico para cadena de droguería.
 Características para elegirla de referencia:
 
 *Permite un único proveedor de productos
+
 *Permite diferentes categorias de productos
+
 *Permite registro de usuarios
+
 *Permite carro de compras
 
 
@@ -66,5 +76,7 @@ Plataforma de comercio electrónico para panadería y repostería.
 Características para elegirla de referencia:
 
 *Permite un único proveedor de productos
+
 *Permite diferentes categorias de productos
+
 *Permite carro de compras
