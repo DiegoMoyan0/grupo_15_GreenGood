@@ -99,7 +99,7 @@ Características para elegirla de referencia:
 
 6. www.farmacity.com.ar
 
-Página web de venta productos farmacéuticos.
+Página web de venta de productos farmacéuticos.
 
 Características para elegirla de referencia:
 
