@@ -17,6 +17,8 @@ Siempre sentí curiosidad por el mundo de la programación y es por esto que me 
 
 🫡Mi nombre es Julián Ramírez, tengo 28 años y soy de Colombia . He trabajado en automatización de procesos a través de programación, principalmente en el área contable y administrativa. Tengo experiencia en VBA y Python. Me inscribí al curso por que quiero ampliar mis conocimientos desarrollando aplicaciones web.
 
+🙂Hola, soy Renzo Verges, tengo 31 años,soy de Rio Cuarto sur de la provincia de Cordoba Arg. Hincha de Boca. Empece el curso por recomendacion de un amigo, no tengo conocimiento previo en nada de programacion, pero me le animo a todo, mi meta poder ampliar conocimientos para potenciar mi Cv. Estudio Administracion en BYU-Idaho. 
+
 //**Punto 3
 
 **Sitios de referencia:**
