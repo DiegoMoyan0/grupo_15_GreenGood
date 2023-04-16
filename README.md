@@ -15,7 +15,7 @@ Les dejamos a continuación un link con info para saber mas acerca de  la Indust
 
 🙂Hola, Soy Mati Liendo!! Tengo 31 años, cordobés, Bioquímico y sin experiencia previa en programación. Apenas un par de cursos en youtube de bases y C# me inspiraron en profundizar y meterme en este mundo. Me inscribí al curso full stack de DH porque me apasiona lo digital y quiero aprender, para finalmente dedicarme a esto. Ahora a darlo todo en este lindo proyecto en equipo.
  
-😉Soy Diego Moyano, tengo 21 años, tengo algo de experiencia en la programación, como Python y assembler, y otros lenguajes que aportarían mas a este proyecto, como HTML y CSS, cuento también con conocimientos básicos de librerias externas, me inscribi al curso para poder profundizar, asi que espero aportar lo que se para hacer un buen proyecto.
+😉¡Hola! Soy Diego Moyano, tengo 21 años y poseo experiencia en programación, incluyendo lenguajes como Python y assembler, así como conocimientos en HTML y CSS que podrían ser valiosos para este proyecto. También tengo conocimientos básicos sobre el uso de librerías externas. Me inscribí en este curso con el objetivo de profundizar mis habilidades y contribuir con lo que sé para llevar a cabo un proyecto exitoso. 
 
 😎Hola mi nombre es Martin Casco tengo 22 años. Vivo en Buenos Aires, Argentina. Soy técnico en Administración de Empresas.
 Siempre sentí curiosidad por el mundo de la programación y es por esto que me anote en este curso, para poder ampliar mis conocimientos y así poder desarrollarme en esta área.
@@ -115,4 +115,19 @@ Características para elegirla de referencia:
 *Publicidad
 
 *Manejo y exhibición de promociones
+
+
+**DISEÑO DE LA PÁGINA**
+
+//**WIREFRAMES:
+
+Acceso al link de figma con todos los wireframes iniciales del proyecto: https://www.figma.com/file/M01J1t0fBPxEENtYxKJMqF/Green-Good?node-id=0%3A1&t=FRT0CaBDWPwuztyL-1
+
+Ademas, subimos al repositorio los archivos en formato .png !! 
+
+//**DISEÑO GRAFICO DEL SITIO:
+
+Logo, paleta de colores y QR de nuestro sitio web subidos al repositorio.
+
+
 
