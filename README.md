@@ -1,14 +1,19 @@
 # grupo_15_GreenGood
 
-----------------------------------**SPRINT 1**--------------------------------
+                                      ----------------------------------**SPRINT 1**--------------------------------
 
 //**Punto 2
 
--🧺 Los productos que ofrecemos son productos medicinales y de cultivo cannabicos. Apuntamos a un publico variado el cual depende si buscan productos medicinales o para el cultivo. En el primer caso serían personas con necesidades de salud y tratamientos especificos, mientras que en el segundo, serían aquellas que se animen o que ya tengan cultivos cannabicos. Nos ajustamos a nuestros clientes mediante la actualización continua en regulaciones vigentes del pais, a la implementación de nuevos tratamientos y a las nuevas técnicas de cultivo. 
+Hola!!, les presentamos **GreenGood**, nuestro proyecto de plataforma e-commerce para la venta minorista de diferentes artículos relacionados a los cannabinoides, derivados de la plata Cannabis sativa. 
 
-*Integrantes:
+Les dejamos a continuación un link con info para saber mas acerca de  la Industria del Cannabis y el cannabidiol o CBD: https://thecannabisweb.org/. 
 
-🙂Hola, Soy Mati Liendo!! Tengo 31 años, cordobés, Bioquímico y sin experiencia previa en programación. Apenas un par de cursos en youtube de bases y C# me inspiraron en profundizar y meterme en este mundo. Me inscribí al curso porque me apasiona lo digital y quiero aprender, para finalmente dedicarme a esto.
+-🧺 Los productos que ofrecemos son del tipo medicinal y cosméticos, por ejemplo acietes y cremas elaborados con CBD de alta calidad, y también sumamos articulos relacionados al cultivo cannabico. Apuntamos a un publico variado el cual depende si buscan productos medicinales o para el cultivo. En el primer caso serían personas con necesidades de salud, tratamientos especificos y de bienestar en general, mientras que en el segundo, serían aquellas que se animen o que ya tengan cultivos cannabicos. Nos ajustamos a nuestros clientes mediante la actualización continua en regulaciones vigentes del pais, a la implementación de nuevos tratamientos y a las nuevas técnicas de cultivo. 📦Buscamos además mediante esta plataforma, que GreenGood llegue a cada punto del país para que todas las personas a lo largo del territorio puedan gozar de los beneficios que estos productos ofrecen.
+
+
+*Nuestro equiopo de trabajo:
+
+🙂Hola, Soy Mati Liendo!! Tengo 31 años, cordobés, Bioquímico y sin experiencia previa en programación. Apenas un par de cursos en youtube de bases y C# me inspiraron en profundizar y meterme en este mundo. Me inscribí al curso full stack de DH porque me apasiona lo digital y quiero aprender, para finalmente dedicarme a esto. Ahora a darlo todo en este lindo proyecto en equipo.
  
 😉Soy Diego Moyano, tengo 21 años, tengo algo de experiencia en la programación, como Python y assembler, y otros lenguajes que aportarían mas a este proyecto, como HTML y CSS, cuento también con conocimientos básicos de librerias externas, me inscribi al curso para poder profundizar, asi que espero aportar lo que se para hacer un buen proyecto.
 
@@ -17,11 +22,13 @@ Siempre sentí curiosidad por el mundo de la programación y es por esto que me 
 
 🫡Mi nombre es Julián Ramírez, tengo 28 años y soy de Colombia . He trabajado en automatización de procesos a través de programación, principalmente en el área contable y administrativa. Tengo experiencia en VBA y Python. Me inscribí al curso por que quiero ampliar mis conocimientos desarrollando aplicaciones web.
 
-🙂Hola, soy Renzo Verges, tengo 31 años,soy de Rio Cuarto sur de la provincia de Cordoba Arg. Hincha de Boca. Empece el curso por recomendacion de un amigo, no tengo conocimiento previo en nada de programacion, pero me le animo a todo, mi meta poder ampliar conocimientos para potenciar mi Cv. Estudio Administracion en BYU-Idaho. 
+🤓Hola, soy Renzo Verges, tengo 31 años,soy de Rio Cuarto sur de la provincia de Cordoba Arg. Hincha de Boca. Empece el curso por recomendacion de un amigo, no tengo conocimiento previo en nada de programacion, pero me le animo a todo, mi meta poder ampliar conocimientos para potenciar mi Cv. Estudio Administracion en BYU-Idaho. 
+
+
 
 //**Punto 3
 
-**Sitios de referencia:**
+**Algunos sitios de referencia:**
 
 1. www.linio.com
 
