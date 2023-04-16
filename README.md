@@ -123,7 +123,7 @@ Características para elegirla de referencia:
 
 Acceso al link de figma con todos los wireframes iniciales del proyecto: https://www.figma.com/file/M01J1t0fBPxEENtYxKJMqF/Green-Good?node-id=0%3A1&t=FRT0CaBDWPwuztyL-1
 
-Ademas, subimos al repositorio los archivos en formato .png !! 
+Ademas, subimos al repositorio los archivos en formato .jpeg !! 
 
 //**DISEÑO GRAFICO DEL SITIO:
 
