@@ -127,7 +127,7 @@ Ademas, subimos al repositorio los archivos en formato .jpeg !!
 
 //**DISEÑO GRAFICO DEL SITIO:
 
-Logo, paleta de colores y QR de nuestro sitio web subidos al repositorio.
+Logo, fuentes tipográficas, paleta de colores y QR de nuestro sitio web subidos al repositorio.
 
 
 
