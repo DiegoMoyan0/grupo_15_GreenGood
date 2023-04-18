@@ -6,9 +6,9 @@
 
 Hola!!, les presentamos **GreenGood**, nuestro proyecto de plataforma e-commerce para la venta minorista de diferentes artículos relacionados a los cannabinoides, derivados de la plata Cannabis sativa. 
 
-Les dejamos a continuación un link con info para saber mas acerca de  la Industria del Cannabis y el cannabidiol o CBD: https://thecannabisweb.org/. 
+Les dejamos a continuación un link con info para saber mas acerca de la Industria del Cannabis y el cannabidiol o CBD: https://thecannabisweb.org/. 
 
--🧺 Los productos que ofrecemos son del tipo medicinal y cosméticos, por ejemplo acietes y cremas elaborados con CBD de alta calidad, y también sumamos articulos relacionados al cultivo cannabico. Apuntamos a un publico variado el cual depende si buscan productos medicinales o para el cultivo. En el primer caso serían personas con necesidades de salud, tratamientos especificos y de bienestar en general, mientras que en el segundo, serían aquellas que se animen o que ya tengan cultivos cannabicos. Nos ajustamos a nuestros clientes mediante la actualización continua en regulaciones vigentes del pais, a la implementación de nuevos tratamientos y a las nuevas técnicas de cultivo. 📦Buscamos además mediante esta plataforma, que GreenGood llegue a cada punto del país para que todas las personas a lo largo del territorio puedan gozar de los beneficios que estos productos ofrecen.
+-🧺 Los productos que ofrecemos son del tipo medicinal y cosméticos, por ejemplo acietes y cremas elaborados con CBD de alta calidad, y también sumamos articulos relacionados al cultivo cannábico. Apuntamos a un público variado el cual depende si buscan productos medicinales o para el cultivo. En el primer caso serían personas con necesidades de salud, tratamientos especificos y de bienestar en general, mientras que en el segundo, serían aquellas que se animen o que ya tengan cultivos cannabicos. Nos ajustamos a nuestros clientes mediante la actualización continua en regulaciones vigentes del pais, a la implementación de nuevos tratamientos y a las nuevas técnicas de cultivo. 📦Buscamos además mediante esta plataforma, que GreenGood llegue a cada punto del país para que todas las personas a lo largo del territorio puedan gozar de los beneficios que estos productos ofrecen.
 
 
 *Nuestro equiopo de trabajo:
