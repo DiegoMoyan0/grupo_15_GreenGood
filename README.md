@@ -20,25 +20,32 @@ Mi nombre es Julián Ramírez, tengo 28 años y soy de Colombia. Trabajó en aut
 *Sitios de referencia:
 
 ·www.linio.com
+
 Linio.com es una plataforma de comercio electrónico con una amplia variedad de productos en categorías como electrónica, moda, hogar, deportes, belleza y más, lo cual la convierte en una excelente opción para crear una página web de venta en línea con una diversa selección de productos para ofrecer a los clientes. Además, crear su interfaz de usuario intuitiva y diseño atractivo facilitan la navegación para los visitantes, lo que permite a los propietarios de páginas web una experiencia de usuario agradable. Linio.com también permite múltiples proveedores de productos, registro de usuarios y carro de compras, brindando una funcionalidad completa y conveniente para una página web de comercio electrónico exitosa.
 
 ·www.bellavitacultivos.com
+
 La página web cuenta con una navegación móvil amigable y un diseño responsivo que se adapta a diferentes tamaños de pantalla, como smartphones y tabletas, para garantizar una experiencia de usuario satisfactoria desde dispositivos móviles.
 En la descripción detallada de productos, se brinda información clara y completa sobre las características de los productos para el cultivo de cannabis, incluidas las variedades, el tamaño, los usos, las características técnicas y otros detalles relevantes, para ayudar a los clientes a tomar decisiones informadas.
 Además, la página cuenta con una sección de novedades que muestra los productos más recientes y actualizaciones relevantes en el ámbito del cultivo de cannabis, lo cual mantiene a los visitantes actualizados y genera un sentido de frescura e innovación en la página web
 
 ·www.farmacity.com.ar
+
 Farmacity es un sitio web destacado de venta de productos farmacéuticos que puede servir como una fuente inspiradora para crear la página web. Con su enfoque efectivo en publicidad y manejo de promociones, Farmacity se destaca como un referente en el mercado. Su enfoque publicitario y estrategias de promociones son puntos valiosos para diseñar el sitio web.
 
-·pollenlondon.com
+·www.pollenlondon.com
+
 Pollenlondon es un sitio web destacado en cuanto a su uso de elementos de diseño para crear una experiencia agradable para los usuarios. Su cuidada disposición de la página, la elección de tipografía, colores e imágenes son fuente de inspiración para el diseño de la página web. encontramos ideas frescas y creativas para hacerlo más atractivo y agradable visualmente.
 Además, en términos de funcionalidad, pollenlondon.com cuenta con características y funcionalidades interesantes. Su enfoque en elementos interactivos, formularios, efectos de desplazamiento y otras funcionalidades, te brinda inspiración para mejorar la experiencia de usuarios y hacer que el sitio web sea más dinámico e interactivo.
 
 ·www.ojitosrojos.com
+
 Nos brinda información útil proporcionada o complementaria sobre cultivo y productos de cannabis, al igual que  información adicional y recursos que pueden enriquecer la experiencia de los usuarios y brindarles más conocimientos sobre el tema.
 
 ·www.mercadolibre.com.ar
+
 Mercado Libre es una excelente referencia para nuestro eCommerce debido a su gran base de usuarios, su sólida reputación en el mercado, las herramientas de venta que ofrece,  la diversidad de categorías de productos que abarca y la valiosa información de mercado que proporcional. Usar a Mercado Libre como referencia nos permite aumentar la visibilidad  de nuestro eCommerce, transmitir confianza a los clientes potenciales, facilitar la gestión del negocio, llegar a un amplio mercado regional, adaptarnos a diferentes categorías de productos y tomar decisiones estratégicas informadas.
 
 *Acceso al link de figma con todos los wireframes iniciales del proyecto: 
+
 https://www.figma.com/file/M01J1t0fBPxEENtYxKJMqF/Green-Good?node-id=0%3A1&t=FRT0CaBDWPwuztyL-1
