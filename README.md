@@ -14,7 +14,7 @@ Nos comprometemos a adaptar nuestra oferta a las necesidades de nuestros cliente
 
 😎Hola mi nombre es Martín Casco tengo 22 años. Vivo en Buenos Aires, Argentina. Soy técnico en Administración de Empresas. Siempre sentí curiosidad por el mundo de la programación y es por esto que me anote en este curso, para poder ampliar mis conocimientos y así poder desarrollarme en esta área.
 
-Mi nombre es Julián Ramírez, tengo 28 años y soy de Colombia. Trabajó en automatización de procesos a través de programación, principalmente en el área contable y administrativa. Tengo experiencia en VBA y Python. Me inscribí al curso por que quiero ampliar mis conocimientos desarrollados aplicaciones web.
+🧐Mi nombre es Julián Ramírez, tengo 28 años y soy de Colombia. He trabajado en automatización de procesos a través de programación, principalmente en el área contable y administrativa. Tengo experiencia en VBA y Python. Me inscribí al curso por que quiero ampliar mis conocimientos desarrollados aplicaciones web.
 
 🙂Hola, soy Renzo Verges, tengo 31 años,soy de Rio Cuarto sur de la provincia de Cordoba Arg. Hincha de Boca. Empece el curso por recomendacion de un amigo, no tengo conocimiento previo en nada de programacion, pero me animo a todo, mi meta poder ampliar conocimientos para potenciar mi Cv. Estudio Administración en BYU-Idaho.
 
