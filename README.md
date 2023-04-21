@@ -1,5 +1,5 @@
 # grupo_15_GreenGood
-#https://trello.com/b/kSvyIebL/green-good
+[Trello](https://trello.com/b/kSvyIebL/green-good)
 vegan products
 
 Hola!!, les presentamos GreenGood, nuestro proyecto de plataforma e-commerce para la venta minorista de diferentes artículos relacionados al Cannabis.
@@ -7,7 +7,7 @@ Hola!!, les presentamos GreenGood, nuestro proyecto de plataforma e-commerce par
 -🧺Nuestra oferta abarca una amplia gama de productos, incluidas opciones medicinales y para el cultivo de cannabis. Nos dirigimos a una audiencia diversa que busca productos medicinales o para el cultivo, según sus necesidades y preferencias. Para aquellos que buscan productos medicinales, nos enfocamos en personas con necesidades de salud y tratamientos específicos. En cuanto a los productos para el cultivo, nos dirigimos a aquellos que ya tienen experiencia o están interesados ​​en comenzar su propio cultivo de cannabis.
 Nos comprometemos a adaptar nuestra oferta a las necesidades de nuestros clientes, manteniéndonos actualizados con las normas vigentes en el país, implementando nuevos tratamientos y utilizando las últimas técnicas de cultivo. Nuestro objetivo es satisfacer a nuestra audiencia objetivo, ofreciendo productos y servicios de alta calidad y relevancia.
 
-*Integrantes:
+Integrantes:
 
 🙂Hola Soy Mati Liendo!! Tengo 31 años, cordobés, Bioquímico y sin experiencia previa en programación. Apenas un par de cursos en youtube de bases y C# me inspiraron en profundizar y meterme en este mundo. Me inscribí al curso porque me apasiona lo digital y quiero aprender, para finalmente dedicarme a esto.
 
@@ -19,7 +19,7 @@ Nos comprometemos a adaptar nuestra oferta a las necesidades de nuestros cliente
 
 🙂Hola, soy Renzo Verges, tengo 31 años,soy de Rio Cuarto sur de la provincia de Cordoba Arg. Hincha de Boca. Empece el curso por recomendacion de un amigo, no tengo conocimiento previo en nada de programacion, pero me animo a todo, mi meta poder ampliar conocimientos para potenciar mi Cv. Estudio Administración en BYU-Idaho.
 
-*Sitios de referencia:
+Sitios de referencia:
 
 ·www.linio.com
 
