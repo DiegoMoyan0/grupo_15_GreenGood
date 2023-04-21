@@ -1,4 +1,5 @@
 # grupo_15_GreenGood
+#https://trello.com/b/kSvyIebL/green-good
 vegan products
 
 Hola!!, les presentamos GreenGood, nuestro proyecto de plataforma e-commerce para la venta minorista de diferentes artículos relacionados al Cannabis.
