@@ -1,6 +1,7 @@
 # grupo_15_GreenGood
 
 [Trello](https://trello.com/b/kSvyIebL/green-good)
+
 vegan products
 
 Hola!!, les presentamos GreenGood, nuestro proyecto de plataforma e-commerce para la venta minorista de diferentes artículos relacionados al Cannabis.
@@ -49,7 +50,5 @@ Nos brinda información útil proporcionada o complementaria sobre cultivo y pro
 
 Mercado Libre es una excelente referencia para nuestro eCommerce debido a su gran base de usuarios, su sólida reputación en el mercado, las herramientas de venta que ofrece,  la diversidad de categorías de productos que abarca y la valiosa información de mercado que proporcional. Usar a Mercado Libre como referencia nos permite aumentar la visibilidad  de nuestro eCommerce, transmitir confianza a los clientes potenciales, facilitar la gestión del negocio, llegar a un amplio mercado regional, adaptarnos a diferentes categorías de productos y tomar decisiones estratégicas informadas.
 
-*Acceso al link de figma con todos los wireframes iniciales del proyecto: 
-
-https://www.figma.com/file/M01J1t0fBPxEENtYxKJMqF/Green-Good?node-id=0%3A1&t=FRT0CaBDWPwuztyL-1
+[Figma](https://www.figma.com/file/M01J1t0fBPxEENtYxKJMqF/Green-Good?node-id=0%3A1&t=FRT0CaBDWPwuztyL-1)
 
