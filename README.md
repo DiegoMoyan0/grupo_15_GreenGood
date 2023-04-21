@@ -2,8 +2,6 @@
 
 [Trello](https://trello.com/b/kSvyIebL/green-good)
 
-vegan products
-
 Hola!!, les presentamos GreenGood, nuestro proyecto de plataforma e-commerce para la venta minorista de diferentes artículos relacionados al Cannabis.
 
 -🧺Nuestra oferta abarca una amplia gama de productos, incluidas opciones medicinales y para el cultivo de cannabis. Nos dirigimos a una audiencia diversa que busca productos medicinales o para el cultivo, según sus necesidades y preferencias. Para aquellos que buscan productos medicinales, nos enfocamos en personas con necesidades de salud y tratamientos específicos. En cuanto a los productos para el cultivo, nos dirigimos a aquellos que ya tienen experiencia o están interesados ​​en comenzar su propio cultivo de cannabis.
