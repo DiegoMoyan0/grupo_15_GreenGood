@@ -1,0 +1,287 @@
+/* NAVBAR */
+body {
+    width: 100vw;
+}
+
+.logo {
+    width: 20%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-right,
+.nav-center {
+    display: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.burger-menu {
+    font-size: 5vw;
+    background-color: #03264C;
+    color: white;
+    padding: 8px 3px;
+    border-radius: 4px;
+    max-height: 50px;
+}
+
+/* HERO */
+#hero {
+    position: relative;
+    width: 100%;
+}
+
+.img-fondo {
+    width: 100%;
+    height: auto;
+}
+
+.titulo {
+    position: absolute;
+    top: 2%;
+    left: 1%;
+    font-size: 5vw;
+}
+
+.subtitulo {
+    position: absolute;
+    top: 8%; 
+    left: 2%; 
+    font-size: 3vw;
+}
+
+.p-hero {
+    position: absolute;
+    top: 14%;
+    left: 5%; 
+    font-size: 2vw;
+}
+
+.button-hero {
+    position: absolute;
+    bottom: 2%;
+    right: 35%;
+}
+
+/* ARTICULOS */
+main {
+    width: 90vw;
+    margin: 0 auto;
+}
+.ofertas{
+    display: flex;
+    flex-direction: column;
+}
+article {
+    margin: 10px;
+    box-shadow: 0px 0px 10px rgb(100, 100, 100);
+}
+
+article img {
+    width: 100%;
+    border-bottom: solid 1px #ebebeb;
+}
+
+.content-art {
+    display: none;
+    text-align: left;
+    padding: 15px;
+}
+
+p {
+    font-size: 12px;
+}
+
+.titulares {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+h4 {
+    color: #39b54a;
+    font-size: 16px;
+
+}
+
+strong {
+    font-size: 16px;
+}
+
+/* COMENTARIOS */
+#comments {
+    color: black;
+}
+
+#comments .circle {
+    margin: 0px;
+    background: black;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+/* CONTACTO */
+
+#contacto {
+    background-color: #f8f8f8;
+    padding: 50px;
+    text-align: center;
+}
+
+#title-contact {
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+#container-contact {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.contact-titles {
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.form-control::placeholder {
+    color: #aaa;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/*:::FOOTER:::*/
+.pie-pagina {
+    background-color: #222;
+    color: #fff;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.grupo-1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.box {
+    max-width: 200px;
+    margin-bottom: 20px;
+}
+
+.figure-logo {
+    margin-bottom: 15px;
+}
+
+.figure-logo-img {
+    max-width: 100%;
+}
+
+.grupo-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+small {
+    margin-bottom: 10px;
+}
+
+/* NAVBAR */
+
+@media (min-width: 768px) {
+    /* ocultar el burger-menu */
+    .burger-menu {
+        display: none;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+    }
+
+    /*le da un maximo tamaño al logo*/
+    .logo {
+        max-width: 100px;
+        margin-right: 10px;
+    }
+
+    /*quita puntos*/
+    .nav-center,
+    .nav-right {
+        display: flex;
+        list-style: none;
+    }
+
+    .nav-center li,
+    .nav-right li {
+        margin-right: 10px;
+    }
+
+    /*quita subrayado*/
+    .nav-center a,
+    .nav-right a {
+        color: #333;
+        text-decoration: none;
+    }
+
+    /*cambie el color del enlace al pasar sobre el*/
+    .nav-center a:hover,
+    .nav-right a:hover {
+        color: #666;
+    }
+    /*deja los articulos en linea horizontal*/
+    .ofertas{
+        flex-direction: row;
+        align-items: center;
+        
+    }
+    /*muestra la descripcion de los articulos*/
+    .content-art{
+        display: block;
+    }
+}
