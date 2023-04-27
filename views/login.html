@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="images/logo-sinfondo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/login.css">
+    
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <img class="logo" src="images/logo-sinfondo.png" alt="">
+            <div class="search">
+                <input type="text">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+
+            <div class="burger-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <div class="login-register">
+                <a href="/register"> <i class="fa-solid fa-arrow-right-to-bracket"></i> </a>
+            </div>
+            <div class="shop-cart">
+                <i class="fa-solid fa-basket-shopping"></i>
+            </div>
+
+            <ul class="nav-center">
+                <li><a href="/">Inicio</a></li>
+                <li><a href="#ofertas">Ofertas</a></li>
+                <li><a href="#comments">Comentarios</a></li>
+                <li><a href="">Ayuda</a></li><br>
+            </ul>
+            <ul class="nav-right">
+                <li><a href="">Login</a></li>
+                <li><a href="/register"></i> Register</a></li>
+                <li><a href=""> Mi carrito</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="login">
+            <div id="container-login">
+                <form class="form-login">
+                    <h3 class="login-titles">Login</h3>
+                    <div class="child-form">
+                        <label for="InputName" class="form-label">Correo electrónico</label>
+                        <input type="text" class="form-control" id="InputName" placeholder="Escriba aquí su correo electrónico"
+                            required />
+                    </div>
+                    <div class="child-form">
+                        <label for="exampleInputEmail1" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="exampleInputEmail1"
+                            placeholder="Escriba aquí su contraseña" required />
+                    </div>
+                    
+                    <label for="">Mantener Sesión iniciada</label>
+                    <input type="checkbox">
+
+                    <button type="submit" class="btn">
+                        Ingresar
+                    </button>
+                    <button type="submit" class="btn">
+                        Registrarte
+                    </button>
+                    <button type="submit" class="btn">
+                        Cancelar
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="group-1">
+            <div class="box">
+                <figure class="figure-logo">
+                    <a href="#">
+                        <img class="figure-logo-img" src="images/logo-sinfondo.png" alt="logo" />
+                    </a>
+                </figure>
+            </div>
+            <div class="box">
+                <h3>Aclaración</h3>
+                <p>
+                    Esta es una página para una empresa ficticia,
+                    realizada para un proyecto integrador de
+                    “DIGITAL HOUSE”.
+                </p>
+            </div>
+        </div>
+        <div class="group-2">
+            <small>
+                &copy; 2023 Green Good - Todos los Derechos
+                Reservados.
+            </small>
+            <!-- iconos con enlace a su sitio -->
+            <div>
+                <a href="https://www.facebook.com/green.good.co.verde" class="icon-rd"><i
+                        class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.instagram.com/green.good_/" class="icon-rd"><i
+                        class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="icon-rd"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
