@@ -1,15 +1,30 @@
-/* NAVBAR */
-body {
-    width: 100vw;
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&family=Lato&family=Montserrat&family=Open+Sans&family=Poppins&family=Roboto&family=Roboto+Serif&family=Rubik&display=swap');
+
+/* ------------------------------- NAVBAR ------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* cambios generales  */
 }
 
+body {
+    width: 100vw;
+    background-color: whitesmoke;
+    /*  fondo de la pagina entera */
+}
 .logo {
     width: 20%;
+    /* define el tamaño que ocupa en el navbar  */
 }
 
 nav {
     display: flex;
     justify-content: space-between;
+    background-color: #7D387D;
+    align-items: center;
+    border-bottom: solid 1px #0A1504;
+    /* modifica posicion de sus hijos y aspecto del navbar  */
 }
 
 .nav-right,
@@ -17,193 +32,245 @@ nav {
     display: none;
     margin: 0px;
     padding: 0px;
+    /*  quita palabras */
 }
+
+nav a {
+    color: white;
+    /*  colore enlaces */
+}
+
+.nav-center a:hover,
+.nav-right a:hover {
+    color: #76949F;
+    /*cambie el color del enlace al pasar sobre el*/
+}
+
 
 .burger-menu {
     font-size: 5vw;
-    background-color: #03264C;
+    background-color: #0A1504;
     color: white;
-    padding: 8px 3px;
+    padding: 2px;
     border-radius: 4px;
     max-height: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    /*  modifica icono menu */
+}
+.shop-cart{
+    font-size: 5vw;
+    background-color: #0A1504;
+    color: white;
+    padding: 2px;
+    border-radius: 4px;
+    max-height: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    /*  modifica icono carrito */
+}
+.login-register{
+    font-size: 5vw;
+    background-color: #0A1504;
+    color: white;
+    padding: 2px;
+    border-radius: 4px;
+    max-height: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    /*  modifica icono registro/login */
 }
 
-/* HERO */
+/* ------------------------------- HERO ------------------------------- */
 #hero {
     position: relative;
     width: 100%;
+    /*  contenedor padre */
 }
 
 .img-fondo {
     width: 100%;
     height: auto;
+    /* modifica imagen  */
 }
 
-.titulo {
+.title {
+    color: white;
+    font-family: 'Roboto Serif', serif;
     position: absolute;
     top: 2%;
     left: 1%;
     font-size: 5vw;
+    /* caracteristicas del titulo  */
 }
 
-.subtitulo {
+.subtitle {
+    color: white;
+    font-family: 'Roboto Serif', serif;
     position: absolute;
-    top: 8%; 
-    left: 2%; 
+    top: 8%;
+    left: 2%;
     font-size: 3vw;
+    /* caracteristicas del subtitulo  */
 }
 
+.titles {
+    display: flex;
+    color: white;
+    font-family: 'Roboto Serif', serif;
+    font-size: 17px;
+    background-color: #7D387D;
+    width: 100vw;
+    /* caracteristicas de los titulares  */
+}
 .p-hero {
+    color: white;
+    font-family: 'Roboto Serif', serif;
     position: absolute;
     top: 14%;
-    left: 5%; 
+    left: 5%;
     font-size: 2vw;
+    /* caracteristicas del parrafo  */
 }
+
 
 .button-hero {
     position: absolute;
     bottom: 2%;
-    right: 35%;
+    right: 55%;
+    /* posicion del boton  */
 }
 
-/* ARTICULOS */
-main {
-    width: 90vw;
-    margin: 0 auto;
+.button-hero a {
+    font-family: 'Roboto Serif', serif;
+    font-size: 8px;
+    color: white;
+    list-style: none;
+    text-decoration: none;
+    /* caracteristicas del enlace  */
 }
-.ofertas{
-    display: flex;
-    flex-direction: column;
-}
-article {
-    margin: 10px;
+
+.btn-hero {
     box-shadow: 0px 0px 10px rgb(100, 100, 100);
+    border: solid 1px #0A1504;
+    background-color: #0A1504;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer; /* cambia raton por manito  */
+    /* carecteristicas del boton  */
 }
 
-article img {
+
+
+/* ------------------------------- CARRUSEL OFERTAS ------------------------------- */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
     width: 100%;
-    border-bottom: solid 1px #ebebeb;
 }
 
-.content-art {
-    display: none;
-    text-align: left;
-    padding: 15px;
-}
-
-p {
-    font-size: 12px;
-}
-
-.titulares {
-    font-size: 24px;
-}
-
-h3 {
-    font-size: 18px;
-}
-
-h4 {
-    color: #39b54a;
-    font-size: 16px;
-
-}
-
-strong {
-    font-size: 16px;
-}
-
-/* COMENTARIOS */
-#comments {
-    color: black;
-}
-
-#comments .circle {
-    margin: 0px;
-    background: black;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-}
-
-/* CONTACTO */
-
-#contacto {
-    background-color: #f8f8f8;
-    padding: 50px;
+.card {
+    box-shadow: 0px 0px 10px rgb(100, 100, 100);
+    flex: 1;
+    margin: 10px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
     text-align: center;
 }
 
-#title-contact {
-    font-size: 32px;
-    margin-bottom: 30px;
+.card:hover {
+    background-color: #d0d0d0;
+    /* cambia color al pasar por arriba el mouse  */
 }
 
-#container-contact {
-    max-width: 400px;
-    margin: 0 auto;
+.card img {
+    max-width: 100%;
+    height: auto;
 }
 
-.contact-titles {
-    font-size: 18px;
-    margin-bottom: 20px;
-    text-align: left;
+.card p {
+    display: none;
 }
 
-.form-label {
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    text-align: left;
-}
-
-.form-control {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-.form-control:focus {
-    outline: none;
-    border-color: #007bff;
-}
-
-.form-control::placeholder {
-    color: #aaa;
-}
-
-.btn {
+.card:hover p {
     display: block;
-    width: 100%;
-    padding: 12px;
+}
+
+/* ------------------------------- INICIO ------------------------------- */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+.container img {
+    width: 50%;
+    max-width: 300px;
+    margin-right: 20px;
+}
+
+.container .content {
+    width: 50%;
+}
+
+.container h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.container p {
     font-size: 16px;
-    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.container button {
     color: #fff;
-    background-color: #007bff;
+    padding: 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
-.btn:hover {
-    background-color: #0056b3;
+/* ------------------------------- COMENTARIOS ------------------------------- */
+#comments {
+    color: #0A1504;
 }
 
-/*:::FOOTER:::*/
-.pie-pagina {
-    background-color: #222;
+#title-comments{
+    color: #0A1504;
+}
+
+#comments .circle {
+    margin: 0px;
+    background: #0A1504;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    /* crea circulos  */
+}
+
+/* ------------------------------- FOOTER -------------------------------*/
+.footer {
+    background-color: #7D387D;
     color: #fff;
     padding: 40px 0;
     text-align: center;
 }
 
-.grupo-1 {
+.group-1 {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 40px;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .box {
@@ -219,9 +286,10 @@ strong {
     max-width: 100%;
 }
 
-.grupo-2 {
+.group-2 {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
 }
 
@@ -229,59 +297,80 @@ small {
     margin-bottom: 10px;
 }
 
-/* NAVBAR */
+.icon-rd {
+    text-decoration: none;
+    color: #f2ede3;
+    text-align: center;
+}
+
+.icon-rd:hover {
+    color: #a47e1b;
+}
+
+.fa-star {
+    color: #a47e1b;
+}
+
+
+/* ------------------------------- BREAK TABLET ------------------------------- */
 
 @media (min-width: 768px) {
-    /* ocultar el burger-menu */
-    .burger-menu {
+    
+    .burger-menu, .shop-cart, .login-register {
         display: none;
+        /* oculta los iconos */
     }
-
+    
     nav {
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 10px;
     }
-
-    /*le da un maximo tamaño al logo*/
+    
     .logo {
         max-width: 100px;
         margin-right: 10px;
+        /*le da un maximo tamaño al logo*/
     }
-
-    /*quita puntos*/
+    
     .nav-center,
     .nav-right {
         display: flex;
         list-style: none;
+        /*quita puntos*/
     }
-
+    
     .nav-center li,
     .nav-right li {
         margin-right: 10px;
     }
-
-    /*quita subrayado*/
+    
     .nav-center a,
     .nav-right a {
-        color: #333;
         text-decoration: none;
+        /*quita subrayado*/
     }
-
-    /*cambie el color del enlace al pasar sobre el*/
-    .nav-center a:hover,
-    .nav-right a:hover {
-        color: #666;
-    }
-    /*deja los articulos en linea horizontal*/
-    .ofertas{
+    
+    .card-container {
         flex-direction: row;
-        align-items: center;
-        
     }
-    /*muestra la descripcion de los articulos*/
-    .content-art{
-        display: block;
+    
+    .container {
+        flex-direction: column;
+        align-items: flex-start;
     }
+    
+    .container img {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    
+    .container .content {
+        width: 100%;
+    }
+}
+/* ------------------------------- BREAK DESKTOP -------------------------------*/
+@media (min-width: 1200px) {
 }

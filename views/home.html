@@ -8,84 +8,124 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- <link rel="icon" href="images/logo.svg" type="image/x-icon" /> -->
+    <link rel="icon" href="images/logo-sinfondo.png" type="image/x-icon" />
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/contact.css">
     <title>Green Good</title>
 </head>
 
 <body>
     <header>
         <nav>
-            <img class="logo" src="images/logo.png" alt="">
+            <img class="logo" src="images/logo-sinfondo.png" alt="">
+            <div class="search">
+                <input type="text">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+
             <div class="burger-menu">
                 <i class="fa-solid fa-bars"></i>
             </div>
+            <div class="login-register">
+                <a href="/register"> <i class="fa-solid fa-arrow-right-to-bracket"></i> </a>
+            </div>
+            <div class="shop-cart">
+                <i class="fa-solid fa-basket-shopping"></i>
+            </div>
 
             <ul class="nav-center">
-                <li><a href="">Inicio</a></li>
-                <li><a href="">Ofertas</a></li>
-                <li><a href="">Calificaciones</a></li>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="#ofertas">Ofertas</a></li>
+                <li><a href="#comments">Comentarios</a></li>
                 <li><a href="">Ayuda</a></li><br>
             </ul>
             <ul class="nav-right">
                 <li><a href="">Login</a></li>
-                <li><a href=""><i class="fa-solid fa-arrow-right-to-bracket"></i> Register</a></li>
-                <li><a href=""><i class="fa-solid fa-basket-shopping"></i> Mi carrito</a></li>
+                <li><a href="/register"></i> Register</a></li>
+                <li><a href=""> Mi carrito</a></li>
             </ul>
         </nav>
     </header>
     <section id="hero">
-        <img class="img-fondo" src="/images/fondo.jpeg" alt="">
-        <h1 class="titulo">Green Good</h1>
-        <h3 class="subtitulo">Vegan Products</h3>
-        <p class="p-hero"> la mejor calidad y precio.</p>
+        <img class="img-fondo" src="/images/fondo-2.jpeg" alt="">
+        <h1 class="title">Green Good</h1>
+        <h3 class="subtitle">Vegan Products</h3>
+        <p class="p-hero">¡Descubre el secreto del bienestar con nosotros y cultiva una vida más plena!</p>
         <div class="button-hero">
-            <button><a href="#">Contactanos</a> </button>
-            <button> <a href="#"> Ver Productos</a> </button>
+            <button class="btn-hero"><a href="#contact">Contactanos</a> </button>
+            <button class="btn-hero"> <a href="/product"> Ver Productos</a> </button>
         </div>
     </section>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates facere a, ipsum in quod velit cum maiores.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, iste voluptate iure sequi eum minima corporis aperiam modi. Adipisci laborum consectetur excepturi praesentium quis obcaecati itaque sed quas tempora architecto.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque ullam ab dolorum officia. Eaque optio expedita
-        non possimus animi vero repellat laudantium fugit, sapiente ut qui sit exercitationem eos natus?
-        eius tenetur ducimus tempore iste amet earum natus voluptatibus quia non distinctio suscipit!</p>
-
     <main>
-        <h2 class="titulares"> Sección de Ofertas </h2>
-        <section class="ofertas">
-            <article>
-                <img src="/images/gotero.jpg" alt="">
-                <div class="content-art">
-                    <h3> $6.770 </h3>
-                    <h4> 40% OFF</h4>
-                    <strong>LUZ LED</strong>
-                </div>
-            </article>
-            <article>
-                <img src="/images/gotero.jpg" alt="">
-                <div class="content-art">
-                    <h3> $230.000 </h3>
-                    <h4> 20% off </h4>
-                    <strong>ACEITE CBD</strong>
-                </div>
-            </article>
-            <article>
-                <img src="/images/gotero.jpg" alt="">
-                <div class="content-art">
-                    <h3> $70.500 </h3>
-                    <h4> 10% off </h4>
-                    <strong>UNGUENTO</strong>
-                </div>
-            </article>
-            <article>
-                <img src="/images/gotero.jpg" alt="">
-                <div class="content-art">
-                    <h3> $23.200 </h3>
-                    <h4> 5% off </h4>
-                    <strong>SHAMPOO</strong>
-                </div>
-            </article>
-        </section>
+        <h2 id="ofertas" class="titles"> Ofertas</h2>
+        <div class="card-container">
+            <div class="card">
+                <img src="/images/logo-sinfondo.png" alt="Imagen 1">
+                <h3>Card 1</h3>
+                <p>En Green Good, encontrarás todo lo que necesitas para cultivar tu propia planta de cannabis, desde
+                    semillas de alta calidad hasta nutrientes y herramientas especializadas. También ofrecemos una
+                    selección de productos medicinales a base de cannabis, como aceites, unguentos y otros derivados,
+                    que pueden ayudarte en el manejo de diversas condiciones de salud.</p>
+            </div>
+            <div class="card">
+                <img src="/images/logo-sinfondo.png" alt="Imagen 2">
+                <h3>Card 2</h3>
+                <p>Creemos que el cultivo y el cuidado del cannabis van más allá de una simple actividad, son una forma
+                    de vida. Por eso, nos enfocamos en brindarte no solo productos de calidad, sino también información
+                    y recursos para que puedas cultivar de manera responsable y consciente. Nuestro equipo de expertos
+                    en cannabis está siempre disponible para brindarte asesoramiento y guía en tu viaje de cultivo.</p>
+            </div>
+            <div class="card">
+                <img src="/images/logo-sinfondo.png" alt="Imagen 3">
+                <h3>Card 3</h3>
+                <p>En Green Good, la satisfacción del cliente es nuestra prioridad. Te garantizamos productos de alta
+                    calidad, un servicio al cliente excepcional y un proceso de compra seguro y conveniente. Además, nos
+                    apasiona la sostenibilidad y la protección del medio ambiente, por lo que nos esforzamos en promover
+                    prácticas eco-amigables en nuestra empresa..</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <img src="/images/cultivo.jpg" alt="Imagen">
+            <div class="content">
+                <h2>Productos de cultivo</h2>
+                <p>Aquí encontrarás todo lo necesario para cultivar tu propia planta de cannabis, desde semillas y
+                    nutrientes hasta herramientas especializadas. También ofrecemos una variedad de productos para el
+                    cuidado de tus plantas, como sustratos, fertilizantes y pesticidas orgánicos.</p>
+                <button class="btn-hero"> <a href="/product"> Ver Productos</a> </button>
+            </div>
+        </div>
+        <div class="container">
+            <div class="content">
+                <h2>Informacion</h2>
+                <p>Encuentra toda la información que necesitas sobre el cultivo y cuidado del cannabis en nuestra
+                    sección de recursos. Aprende de expertos en el campo y descubre consejos útiles para cultivar de
+                    manera responsable y consciente.</p>
+                <button class="btn-hero"> <a href=""> Ver Novedades</a> </button>
+            </div>
+            <img src="/images/gotero.jpg" alt="Imagen">
+        </div>
+        <div class="container">
+            <img src="/images/faqs.jpg" alt="Imagen">
+            <div class="content">
+                <h2>Preguntas Frecuentes</h2>
+                <p>Aquí responderemos las preguntas más comunes sobre nuestros productos, cultivo de cannabis, efectos y
+                    más. Si no encuentras la respuesta que buscas, no dudes en contactarnos y estaremos encantados de
+                    ayudarte..</p>
+                <button class="btn-hero"> <a href="">Preguntas</a> </button>
+            </div>
+        </div>
+        <div class="container">
+            <div class="content">
+                <h2>Productos Medicinales</h2>
+                <p>En esta sección, ofrecemos una selección de productos a base de cannabis que pueden ayudarte en el
+                    manejo de diversas condiciones de salud. Desde aceites y cremas hasta tinturas y cápsulas, nuestra
+                    gama de productos medicinales es cuidadosamente seleccionada para ofrecerte la mejor calidad y
+                    efectividad.</p>
+                <button class="btn-hero"> <a href="/product"> Ver Productos</a> </button>
+            </div>
+            <img src="/images/nuevo.jpeg" alt="Imagen">
+        </div>
     </main>
     <!-- SECTION COMENTARIOS -->
     <section id="comments">
@@ -102,12 +142,12 @@
             <div>
                 <div>
                     <h3>4,7</h3>
-                    <div class="comments-stars">
-                        <i class=""></i>
-                        <i class=""></i>
-                        <i class=""></i>
-                        <i class=""></i>
-                        <i class=""></i>
+                    <div class="comments-stars"> <!--estrellas -->
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
                     </div>
                     <p>28 reseñas</p>
                 </div>
@@ -116,21 +156,21 @@
                     <div class="usr-info">
                         <div class="circle"></div>
                         <div class="info-comment">
-                            <h6>lorem</h6>
-                            <div class="info-comment__stars">
-                                <i class=""></i>
-                                <i class=""></i>
-                                <i class=""></i>
-                                <i class=""></i>
-                                <i class=""></i>
+                            <h6>Laura Sánchez</h6>
+                            <div class="info-comment__stars"> <!--estrellas -->
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
                             </div>
                             <p>Hace 2 semanas</p>
                         </div>
                     </div>
                     <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus quae animi error omnis!
-                        Natus maiores earum fugit quo placeat? Nesciunt doloribus adipisci enim sed quasi! Omnis
-                        vitae in fugiat totam.
+                        Quería compartir mi experiencia con los productos de Green Good. Compré semillas y nutrientes
+                        para mi cultivo personal y quedé impresionada con la calidad y el rendimiento de las plantas.
+                        ¡Definitivamente recomiendo Green Good
                     </p>
                 </div>
                 <hr />
@@ -138,21 +178,20 @@
                     <div class="usr-info">
                         <div class="circle"></div>
                         <div class="info-comment">
-                            <h6>lorem</h6>
-                            <div class="info-comment__stars">
-                                <i class=""></i>
-                                <i class=""></i>
-                                <i class=""></i>
-                                <i class=""></i>
-                                <i class=""></i>
+                            <h6>Marcos Hernández:</h6>
+                            <div class="info-comment__stars"> <!--estrellas -->
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
                             </div>
                             <p>Hace 3 semanas</p>
                         </div>
                     </div>
                     <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae, beatae perferendis! Rem
-                        quo minima labore quasi repellendus esse iste dolorum dolore delectus neque vero, tenetur
-                        eius doloribus quaerat blanditiis nemo?
+                        He estado usando los productos medicinales a base de cannabis de Green Good para tratar mi
+                        artritis y los resultados han sido notables. Gracias a su selección de aceites y cremas, puedo
+                        manejar el dolor y la inflamación de manera efectiva. ¡Excelente trabajo, Green Good!
                     </p>
                 </div>
                 <hr />
@@ -160,7 +199,7 @@
         </div>
     </section>
     <!-- SECCION CONTACTO  -->
-    <section id="contacto">
+    <section id="contact">
         <h2 id="title-contact">
             ¿Tiene alguna <br />
             pregunta que hacernos?
@@ -178,7 +217,7 @@
                     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="correo@ejemplo.com"
                         required />
                 </div>
-                <div class="mb-3">
+                <div>
                     <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Escriba aquí..."
                         required></textarea>
@@ -190,8 +229,8 @@
         </div>
     </section>
     <!-- SECTION FOOTER -->
-    <footer class="pie-pagina">
-        <div class="grupo-1">
+    <footer class="footer">
+        <div class="group-1">
             <div class="box">
                 <figure class="figure-logo">
                     <a href="#">
@@ -199,7 +238,6 @@
                     </a>
                 </figure>
             </div>
-            <hr />
             <div class="box">
                 <h3>Aclaración</h3>
                 <p>
@@ -209,15 +247,18 @@
                 </p>
             </div>
         </div>
-        <div class="grupo-2">
+        <div class="group-2">
             <small>
                 &copy; 2023 Green Good - Todos los Derechos
                 Reservados.
             </small>
+            <!-- iconos con enlace a su sitio -->
             <div>
-                <a href="#" class="icon-rd"><i class="facebook"></i></a>
-                <a href="#" class="icon-rd"><i class="instagram"></i></a>
-                <a href="#" class="icon-rd"><i class="twitter"></i></a>
+                <a href="https://www.facebook.com/green.good.co.verde" class="icon-rd"><i
+                        class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.instagram.com/green.good_/" class="icon-rd"><i
+                        class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="icon-rd"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
         </div>
     </footer>

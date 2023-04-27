@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="images/logo-sinfondo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/register.css">
+    <title>Green Good</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <img class="logo" src="images/logo-sinfondo.png" alt="">
+            <div class="search">
+                <input type="text">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+
+            <div class="burger-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <div class="login-register">
+                <i class="fa-solid fa-arrow-right-to-bracket"></i>
+            </div>
+            <div class="shop-cart">
+                <i class="fa-solid fa-basket-shopping"></i>
+            </div>
+
+            <ul class="nav-center">
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/#ofertas">Ofertas</a></li>
+                <li><a href="/#comments">Comentarios</a></li>
+                <li><a href="">Ayuda</a></li><br>
+            </ul>
+            <ul class="nav-right">
+                <li><a href="">Login</a></li>
+                <li><a href="/register"></i> Register</a></li>
+                <li><a href=""> Mi carrito</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<section id="register">
+    <div id="container-register">
+        <form>
+            <h3 class="register-titles">Register</h3>
+            <div>
+                <label for="InputName" class="form-label">Nombre y apellido</label>
+                <input type="text" class="form-control" id="InputName" placeholder="Escriba su nombre..."
+                    required />
+            </div>
+            <div>
+                <label for="InputUser" class="form-label">Nombre de Usuario</label>
+                <input type="text" class="form-control" id="InputUser" placeholder="Escriba su usuario..."
+                    required />
+            </div>
+            <div>
+                <label for="InputDate" class="form-label">Fecha de nacimiento</label>
+                <input type="date" class="form-control" id="InputDate" required />
+            </div>
+            <div>
+                <label for="InputDom" class="form-label">Domicilio</label>
+                <input type="text" class="form-control" id="InputDom" placeholder="Escriba su domicilio..."
+                    required />
+            </div>
+            <div>
+                <label for="InputLog">Tipo de Perfil</label>
+                <input type="radio" class="form-control" name="Perfil" value="Vendedor"  />
+                <input type="radio" class="form-control" name="Perfil" value="Comprador" />
+            </div>
+            <div>
+                <label for="exampleInputEmail1" class="form-label">Correo electrónico</label>
+                <input type="email" class="form-control" id="exampleInputEmail1"
+                    placeholder="correo@ejemplo.com" required />
+            </div>
+            <button type="submit" class="btn">
+                Enviar
+            </button>
+        </form>
+    </div>
+</section>
+
+<!-- SECTION FOOTER -->
+<footer class="footer">
+    <div class="group-1">
+        <div class="box">
+            <figure class="figure-logo">
+                <a href="#">
+                    <img class="figure-logo-img" src="images/logo-sinfondo.png" alt="logo" />
+                </a>
+            </figure>
+        </div>
+        <div class="box">
+            <h3>Aclaración</h3>
+            <p>
+                Esta es una página para una empresa ficticia,
+                realizada para un proyecto integrador de
+                “DIGITAL HOUSE”.
+            </p>
+        </div>
+    </div>
+    <div class="group-2">
+        <small>
+            &copy; 2023 Green Good - Todos los Derechos
+            Reservados.
+        </small>
+        <!-- iconos con enlace a su sitio -->
+        <div>
+            <a href="https://www.facebook.com/green.good.co.verde" class="icon-rd"><i
+                    class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.instagram.com/green.good_/" class="icon-rd"><i
+                    class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="icon-rd"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+    </div>
+</footer>
+</body>
+
+</html>

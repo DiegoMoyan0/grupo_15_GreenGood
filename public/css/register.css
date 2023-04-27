@@ -1,0 +1,65 @@
+#register {
+    background-color: #f8f8f8;
+    padding: 50px;
+    text-align: center;
+}
+
+#title-register {
+    font-family: 'Roboto Serif', serif;
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+#container-register {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.register-titles {
+    font-family: 'Roboto Serif', serif;
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #0A1504;
+}
+
+.form-control::placeholder {
+    color: #aaa;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #0A1504;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0A1504;
+}
+
