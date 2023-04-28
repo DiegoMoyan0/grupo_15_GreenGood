@@ -1,0 +1,16 @@
+.faqs {
+    text-align: center;
+    background-color: #E8E8E8;
+
+}
+
+.form-faqs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #E8E8E8;
+}
+
+.content-faqs {
+}

@@ -10,7 +10,6 @@
 
 body {
     width: 100vw;
-    background-color: whitesmoke;
     /*  fondo de la pagina entera */
 }
 
@@ -131,7 +130,7 @@ nav a {
     /*  contenedor padre */
 }
 
-.slider{
+.slider {
     aspect-ratio: auto;
     width: 100%;
     display: flex;
@@ -140,7 +139,8 @@ nav a {
 
     /* modifica el contenedor donde estarian las img*/
 }
-.slider img{
+
+.slider img {
     width: 100%;
     left: 0;
     position: sticky;
@@ -234,8 +234,6 @@ nav a {
     background-color: #0A1504;
 }
 
-
-
 /* ------------------------------- CARRUSEL OFERTAS ------------------------------- */
 .card-container {
     display: flex;
@@ -266,12 +264,14 @@ nav a {
 .card p {
     text-align: end;
 }
-.price-card{
+
+.price-card {
     margin: 10px;
 }
 
 /* ------------------------------- INICIO ------------------------------- */
-.container-left, .container {
+.container-left,
+.container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -280,22 +280,27 @@ nav a {
     padding: 20px;
     background-color: #fff;
     margin-bottom: 20px;
+    /* FALTA alinear boton al centro */
 }
 
-.container img, .container-left img {
+.container img,
+.container-left img {
     width: 100%;
     max-width: 300px;
     margin-right: 20px;
     margin-bottom: 20px;
+    box-shadow: 0px 0px 10px rgb(100, 100, 100);
 
 }
 
-.container .content, .container-left .content {
+.container .content,
+.container-left .content {
     text-align: center;
     width: 100%;
 }
 
-.container h2, .container-left h2 {
+.container h2,
+.container-left h2 {
     font-size: 24px;
     margin-bottom: 10px;
 }
@@ -305,17 +310,20 @@ nav a {
     /*oculta parrafo*/
 }
 
-.container p, .container-left p {
+.container p,
+.container-left p {
     font-size: 16px;
     margin-bottom: 20px;
 }
 
-.container:hover p, .container-left:hover p {
+.container:hover p,
+.container-left:hover p {
     display: block;
     /*muestra parrafo al hacer click*/
 }
 
-.container button, .container-left button {
+.container button,
+.container-left button {
     padding: 10px;
     cursor: pointer;
 }
@@ -325,6 +333,35 @@ nav a {
     color: white;
     /*modifica enlace del boton*/
 }
+
+/* ------------------------------- ASESOR -------------------------------*/
+.container-asesor {
+    background-color: #0A1504;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.content-asesor {}
+
+.content-asesor i {
+    font-size: 34px;
+    color: #93D746;
+    margin: 10px;
+}
+
+.title-asesor {
+    color: white;
+    margin: 10px;
+}
+
+.p-asesor {
+    color: white;
+    margin: 10px;
+}
+
+
 
 /* ------------------------------- FOOTER -------------------------------*/
 .footer {
@@ -336,8 +373,8 @@ nav a {
 
 .group-1 {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
-    justify-content: space-between;
     align-items: center;
 }
 
@@ -380,7 +417,7 @@ small {
 }
 
 
-/* ------------------------------- BREAK TABLET ------------------------------- */
+/* ------------------------------- BREAK  ------------------------------- */
 
 @media (min-width: 768px) {
 
@@ -426,49 +463,64 @@ small {
         text-decoration: none;
         /*quita subrayado*/
     }
-    
+
     .card-container {
         flex-direction: row;
     }
-    
-    .container img, .container-left img {
+
+    .container img,
+    .container-left img {
         width: 100%;
         margin-right: 0;
         margin-bottom: 20px;
     }
-    
-    .container .content, .container-left .content {
+
+    .container .content,
+    .container-left .content {
         width: 100%;
     }
-    
+
     .container {
         display: flex;
         justify-content: space-between;
         flex-direction: row;
         /*deja imagen a la izquierda y texto a la derecha*/
     }
+
     .container-left {
         display: flex;
         justify-content: space-between;
         flex-direction: row-reverse;
         /*deja imagen a la derecha y texto a la izquierda*/
     }
-    
-    .container .content, .container-left .content {
+
+    .container .content,
+    .container-left .content {
         width: 50%;
     }
-    
-    .container h2 i, .container-left h2 i {
+
+    .container h2 i,
+    .container-left h2 i {
         display: none;
     }
-    
+
     .p-ocult {
         display: block;
         font-size: 16px;
         margin-bottom: 20px;
         /*muestra parrafo*/
     }
+
+    .container-asesor {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .group-1 {
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }
 
-/* ------------------------------- BREAK DESKTOP -------------------------------*/
-@media (min-width: 1200px) {}
+/* ------------------------------- BREAK -------------------------------*/

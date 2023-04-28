@@ -23,3 +23,6 @@ app.get('/register', (req, res) => {
 app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, '/views/login.html'));
 });
+app.get('/faqs', (req, res) => {
+    res.sendFile(path.join(__dirname, '/views/faqs.html'));
+});
