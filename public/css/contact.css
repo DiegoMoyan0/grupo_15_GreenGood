@@ -1,6 +1,6 @@
 /* CONTACTO */
 
-#contacto {
+#contact {
     background-color: #f8f8f8;
     padding: 50px;
     text-align: center;
@@ -48,19 +48,21 @@
     color: #aaa;
 }
 
-.btn {
+.btn-contact {
     display: block;
     width: 100%;
     padding: 12px;
     font-size: 16px;
     font-weight: bold;
-    color: #fff;
+    color: white;
     background-color: #0A1504;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    /* cambia raton por manito  */
+    /* carecteristicas del boton  */
 }
 
-.btn:hover {
-    background-color: #0A1504;
+.btn-contact:hover {
+    background-color: #aaa;
 }

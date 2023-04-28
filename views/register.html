@@ -18,16 +18,19 @@
     <header>
         <nav>
             <img class="logo" src="images/logo-sinfondo.png" alt="">
-            <div class="search">
-                <input type="text">
-                <i class="fa-solid fa-magnifying-glass"></i>
+            <div class="search-container">
+                <form class="search" action="/search">
+                    <div class="input-container">
+                        <input type="text" placeholder="Buscar...">
+                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                </form>
             </div>
-
             <div class="burger-menu">
                 <i class="fa-solid fa-bars"></i>
             </div>
             <div class="login-register">
-                <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                <a href="/register"> <i class="fa-solid fa-arrow-right-to-bracket"></i> </a>
             </div>
             <div class="shop-cart">
                 <i class="fa-solid fa-basket-shopping"></i>

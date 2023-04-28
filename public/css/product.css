@@ -41,6 +41,26 @@ p {
     font-size: 16px;
 }
 
+/* ------------------------------- COMENTARIOS ------------------------------- */
+#comments {
+    color: #0A1504;
+    margin-top: 50px;
+}
+
+#title-comments {
+    color: #0A1504;
+}
+
+#comments .circle {
+    margin: 0px;
+    background: #0A1504;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    /* crea circulos  */
+}
+
+
 
 /*BREAK TABLET*/
 

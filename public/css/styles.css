@@ -13,6 +13,12 @@ body {
     background-color: whitesmoke;
     /*  fondo de la pagina entera */
 }
+
+header {
+    position: sticky;
+    top: 0;
+}
+
 .logo {
     width: 20%;
     /* define el tamaño que ocupa en el navbar  */
@@ -49,60 +55,107 @@ nav a {
 
 .burger-menu {
     font-size: 5vw;
-    background-color: #0A1504;
     color: white;
     padding: 2px;
     border-radius: 4px;
     max-height: 50px;
-    margin-left: 10px;
     margin-right: 10px;
     text-align: center;
     /*  modifica icono menu */
 }
-.shop-cart{
+
+.shop-cart {
     font-size: 5vw;
-    background-color: #0A1504;
     color: white;
     padding: 2px;
     border-radius: 4px;
     max-height: 50px;
-    margin-left: 10px;
     margin-right: 10px;
     text-align: center;
     /*  modifica icono carrito */
 }
-.login-register{
+
+.login-register {
     font-size: 5vw;
-    background-color: #0A1504;
     color: white;
     padding: 2px;
     border-radius: 4px;
     max-height: 50px;
-    margin-left: 10px;
     margin-right: 10px;
     text-align: center;
     /*  modifica icono registro/login */
 }
 
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: 2px solid #ccc;
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.search-container input {
+    padding: 0.25rem 0.5rem;
+    border: none;
+    font-size: 1.2rem;
+    width: 90%;
+}
+
+.search-container button {
+    background-color: white;
+    color: grey;
+    border: none;
+    border-radius: 0.25rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+
 /* ------------------------------- HERO ------------------------------- */
 #hero {
     position: relative;
-    width: 100%;
     /*  contenedor padre */
 }
 
-.img-fondo {
+.slider{
+    aspect-ratio: auto;
     width: 100%;
-    height: auto;
-    /* modifica imagen  */
+    display: flex;
+    overflow: scroll;
+    scroll-snap-type: x mandatory;
+
+    /* modifica el contenedor donde estarian las img*/
+}
+.slider img{
+    width: 100%;
+    left: 0;
+    position: sticky;
+    object-fit: cover;
+    scroll-snap-align: center;
+    /*hace que con scroll muestre la siguiente imagen*/
+
 }
 
 .title {
     color: white;
     font-family: 'Roboto Serif', serif;
     position: absolute;
-    top: 2%;
-    left: 1%;
+    top: 4%;
+    left: 4%;
     font-size: 5vw;
     /* caracteristicas del titulo  */
 }
@@ -111,8 +164,8 @@ nav a {
     color: white;
     font-family: 'Roboto Serif', serif;
     position: absolute;
-    top: 8%;
-    left: 2%;
+    top: 10%;
+    left: 5%;
     font-size: 3vw;
     /* caracteristicas del subtitulo  */
 }
@@ -126,11 +179,12 @@ nav a {
     width: 100vw;
     /* caracteristicas de los titulares  */
 }
+
 .p-hero {
     color: white;
     font-family: 'Roboto Serif', serif;
     position: absolute;
-    top: 14%;
+    top: 15%;
     left: 5%;
     font-size: 2vw;
     /* caracteristicas del parrafo  */
@@ -139,8 +193,8 @@ nav a {
 
 .button-hero {
     position: absolute;
-    bottom: 2%;
-    right: 55%;
+    bottom: 5%;
+    left: 6%;
     /* posicion del boton  */
 }
 
@@ -154,13 +208,30 @@ nav a {
 }
 
 .btn-hero {
-    box-shadow: 0px 0px 10px rgb(100, 100, 100);
     border: solid 1px #0A1504;
     background-color: #0A1504;
     color: white;
-    border-radius: 4px;
-    cursor: pointer; /* cambia raton por manito  */
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #93D746;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    /* cambia raton por manito  */
     /* carecteristicas del boton  */
+}
+
+.btn:hover {
+    background-color: #0A1504;
 }
 
 
@@ -184,8 +255,7 @@ nav a {
 }
 
 .card:hover {
-    background-color: #d0d0d0;
-    /* cambia color al pasar por arriba el mouse  */
+    /* cambia al pasar por arriba el mouse  */
 }
 
 .card img {
@@ -194,68 +264,66 @@ nav a {
 }
 
 .card p {
-    display: none;
+    text-align: end;
 }
-
-.card:hover p {
-    display: block;
+.price-card{
+    margin: 10px;
 }
 
 /* ------------------------------- INICIO ------------------------------- */
-.container {
+.container-left, .container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
+    flex-direction: column;
     align-items: center;
     padding: 20px;
     background-color: #fff;
     margin-bottom: 20px;
 }
 
-.container img {
-    width: 50%;
+.container img, .container-left img {
+    width: 100%;
     max-width: 300px;
     margin-right: 20px;
+    margin-bottom: 20px;
+
 }
 
-.container .content {
-    width: 50%;
+.container .content, .container-left .content {
+    text-align: center;
+    width: 100%;
 }
 
-.container h2 {
+.container h2, .container-left h2 {
     font-size: 24px;
     margin-bottom: 10px;
 }
 
-.container p {
+.p-ocult {
+    display: none;
+    /*oculta parrafo*/
+}
+
+.container p, .container-left p {
     font-size: 16px;
     margin-bottom: 20px;
 }
 
-.container button {
-    color: #fff;
+.container:hover p, .container-left:hover p {
+    display: block;
+    /*muestra parrafo al hacer click*/
+}
+
+.container button, .container-left button {
     padding: 10px;
-    border: none;
-    border-radius: 5px;
     cursor: pointer;
 }
 
-/* ------------------------------- COMENTARIOS ------------------------------- */
-#comments {
-    color: #0A1504;
-}
-
-#title-comments{
-    color: #0A1504;
-}
-
-#comments .circle {
-    margin: 0px;
-    background: #0A1504;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    /* crea circulos  */
+.btn a {
+    text-decoration: none;
+    color: white;
+    /*modifica enlace del boton*/
 }
 
 /* ------------------------------- FOOTER -------------------------------*/
@@ -315,37 +383,44 @@ small {
 /* ------------------------------- BREAK TABLET ------------------------------- */
 
 @media (min-width: 768px) {
-    
-    .burger-menu, .shop-cart, .login-register {
+
+    .burger-menu,
+    .shop-cart,
+    .login-register {
         display: none;
         /* oculta los iconos */
     }
-    
+
+    .search-container {
+        width: 20%;
+        /* le da un ancho al buscador */
+    }
+
     nav {
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 10px;
     }
-    
+
     .logo {
         max-width: 100px;
         margin-right: 10px;
         /*le da un maximo tamaño al logo*/
     }
-    
+
     .nav-center,
     .nav-right {
         display: flex;
         list-style: none;
         /*quita puntos*/
     }
-    
+
     .nav-center li,
     .nav-right li {
         margin-right: 10px;
     }
-    
+
     .nav-center a,
     .nav-right a {
         text-decoration: none;
@@ -356,21 +431,44 @@ small {
         flex-direction: row;
     }
     
-    .container {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .container img {
+    .container img, .container-left img {
         width: 100%;
         margin-right: 0;
         margin-bottom: 20px;
     }
     
-    .container .content {
+    .container .content, .container-left .content {
         width: 100%;
     }
+    
+    .container {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        /*deja imagen a la izquierda y texto a la derecha*/
+    }
+    .container-left {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+        /*deja imagen a la derecha y texto a la izquierda*/
+    }
+    
+    .container .content, .container-left .content {
+        width: 50%;
+    }
+    
+    .container h2 i, .container-left h2 i {
+        display: none;
+    }
+    
+    .p-ocult {
+        display: block;
+        font-size: 16px;
+        margin-bottom: 20px;
+        /*muestra parrafo*/
+    }
 }
+
 /* ------------------------------- BREAK DESKTOP -------------------------------*/
-@media (min-width: 1200px) {
-}
+@media (min-width: 1200px) {}
