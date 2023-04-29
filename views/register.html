@@ -17,7 +17,7 @@
 <body>
     <header>
         <nav>
-            <img class="logo" src="images/logo-sinfondo.png" alt="">
+            <a href="/"> <img class="logo" src="images/logo-sinfondo.png" alt=""> </a>
             <div class="search-container">
                 <form class="search" action="/search">
                     <div class="input-container">
@@ -40,55 +40,74 @@
                 <li><a href="/">Inicio</a></li>
                 <li><a href="/#ofertas">Ofertas</a></li>
                 <li><a href="/product">Productos</a></li>
-                <li><a href="">Ayuda</a></li><br>
+                <li><a href="/faqs">Ayuda</a></li><br>
             </ul>
             <ul class="nav-right">
-                <li><a href="">Login</a></li>
+                <li><a href="/login">Login</a></li>
                 <li><a href="/register"></i> Register</a></li>
                 <li><a href=""> Mi carrito</a></li>
             </ul>
         </nav>
     </header>
 
-<section id="register">
-    <div id="container-register">
-        <form>
-            <h3 class="register-titles">Register</h3>
-            <div>
-                <label for="InputName" class="form-label">Nombre y apellido</label>
-                <input type="text" class="form-control" id="InputName" placeholder="Escriba su nombre..."
-                    required />
+    <main>
+        <section id="register">
+            <div id="container-register">
+                <form>
+                    <h3 class="register-titles">Register</h3>
+                    <div>
+                        <label for="InputName" class="form-label">Nombre y apellido</label>
+                        <input type="text" class="form-control" id="InputName" placeholder="Escriba su nombre..."
+                            required />
+                    </div>
+                    <div>
+                        <label for="InputUser" class="form-label">Nombre de Usuario</label>
+                        <input type="text" class="form-control" id="InputUser" placeholder="Escriba su usuario..."
+                            required />
+                    </div>
+                    <div>
+                        <label for="InputDate" class="form-label">Fecha de nacimiento</label>
+                        <input type="date" class="form-control" id="InputDate" required />
+                    </div>
+                    <div>
+                        <label for="InputDom" class="form-label">Domicilio</label>
+                        <input type="text" class="form-control" id="InputDom" placeholder="Escriba su domicilio..."
+                            required />
+                    </div>
+                    <div>
+                        <label class="form-label">Tipo de Perfil</label><br><br>
+                        <label for="Vendedor">Vendedor</label>
+                        <input type="radio" id="Vendedor" name="tipo-perfil" value="Vendedor">
+                        <label for="Comprador">Comprador</label>
+                        <input type="radio" id="Comprador" name="tipo-perfil" value="Comprador">
+                    </div><br>
+
+                    <div>
+                        <label class="form-label" for="foto">Foto de usuario:</label>
+                        <input class="form-control" type="file" id="foto" name="foto" accept="image/*">
+                    </div>
+
+                    <div>
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="password" placeholder="Escriba su contraseña..."
+                            required />
+                    </div>
+                    <div>
+                        <label for="password-confirm" class="form-label">Confirmar contraseña</label>
+                        <input type="password" class="form-control" id="password-confirm"
+                            placeholder="Repita su contraseña..." required />
+                    </div>
+
+                    <button type="submit" class="btn">
+                        Enviar
+                    </button><br>
+                    <button type="reset" class="btn">
+                        Borrar
+                    </button>
+                </form>
             </div>
-            <div>
-                <label for="InputUser" class="form-label">Nombre de Usuario</label>
-                <input type="text" class="form-control" id="InputUser" placeholder="Escriba su usuario..."
-                    required />
-            </div>
-            <div>
-                <label for="InputDate" class="form-label">Fecha de nacimiento</label>
-                <input type="date" class="form-control" id="InputDate" required />
-            </div>
-            <div>
-                <label for="InputDom" class="form-label">Domicilio</label>
-                <input type="text" class="form-control" id="InputDom" placeholder="Escriba su domicilio..."
-                    required />
-            </div>
-            <div>
-                <label for="InputLog">Tipo de Perfil</label>
-                <input type="radio" class="form-control" name="Perfil" value="Vendedor"  />
-                <input type="radio" class="form-control" name="Perfil" value="Comprador" />
-            </div>
-            <div>
-                <label for="exampleInputEmail1" class="form-label">Correo electrónico</label>
-                <input type="email" class="form-control" id="exampleInputEmail1"
-                    placeholder="correo@ejemplo.com" required />
-            </div>
-            <button type="submit" class="btn">
-                Enviar
-            </button>
-        </form>
-    </div>
-</section>
+        </section>
+    </main>
 
 <!-- SECTION FOOTER -->
 <footer class="footer">

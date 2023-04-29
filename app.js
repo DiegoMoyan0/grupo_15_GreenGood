@@ -26,3 +26,6 @@ app.get('/login', (req, res) => {
 app.get('/faqs', (req, res) => {
     res.sendFile(path.join(__dirname, '/views/faqs.html'));
 });
+app.get('/productDetail', (req, res) => {
+    res.sendFile(path.join(__dirname, '/views/productDetail.html'));
+});
