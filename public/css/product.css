@@ -12,6 +12,10 @@ main {
 article {
     margin: 10px;
     box-shadow: 0px 0px 10px rgb(100, 100, 100);
+    border-radius: 8px;
+}
+
+.article:hover {
 }
 
 article img {
@@ -47,9 +51,16 @@ p {
     margin-top: 50px;
 }
 
+.container-section {
+    margin: 0 5px;
+}
+
+
 #title-comments {
     color: #0A1504;
+    margin-bottom: 15px;
 }
+
 
 #comments .circle {
     margin: 0px;
@@ -60,21 +71,33 @@ p {
     /* crea circulos  */
 }
 
+.p-comments {
+    margin: 10px 0;
+}
 
+.content-star {
+    margin: 10px 0;
+}
+
+.fa-star {
+    color: #a47e1b;
+}
 
 /*BREAK TABLET*/
 
 @media (min-width: 768px) {
+
     /*deja los articulos en linea horizontal*/
     .cultivo {
         flex-direction: row;
         align-items: center;
-        
+
     }
-    
+
     /*muestra la descripcion de los articulos*/
     .content-art {
         display: block;
     }
 }
+
 /*BREAK DESKTOP*/

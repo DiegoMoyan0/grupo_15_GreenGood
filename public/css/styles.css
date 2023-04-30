@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&family=Lato&family=Montserrat&family=Open+Sans&family=Poppins&family=Roboto&family=Roboto+Serif&family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto+Serif&display=swap');
 
 /* ------------------------------- NAVBAR ------------------------------- */
 * {
@@ -16,6 +16,7 @@ body {
 header {
     position: sticky;
     top: 0;
+    z-index: 10;
 }
 
 .logo {
@@ -155,7 +156,10 @@ nav a {
     position: absolute;
     top: 4%;
     left: 4%;
-    font-size: 5vw;
+    font-size: 2.5rem;
+    font-weight: 700;
+    opacity: 1.0;
+
     /* caracteristicas del titulo  */
 }
 
@@ -165,7 +169,11 @@ nav a {
     position: absolute;
     top: 10%;
     left: 5%;
-    font-size: 3vw;
+    font-size: 1.2rem;
+    font-weight: 600;
+    opacity: 1.0;
+    padding-top: 1rem;
+    
     /* caracteristicas del subtitulo  */
 }
 
@@ -173,10 +181,20 @@ nav a {
     display: flex;
     color: white;
     font-family: 'Roboto Serif', serif;
-    font-size: 17px;
     background-color: #7D387D;
     width: 100vw;
+    font-size: 2.5rem;
+    font-weight: 700;
+    opacity: 1.0;
+    margin: 1rem 0;
+    padding: 10px 5px;
     /* caracteristicas de los titulares  */
+}
+
+p {
+    font-size: 1.2rem;
+    font-weight: 400;
+    opacity: 1.0;
 }
 
 .p-hero {
@@ -185,7 +203,10 @@ nav a {
     position: absolute;
     top: 15%;
     left: 5%;
-    font-size: 2vw;
+    font-size: 1.1em;
+    font-weight: 400;
+    opacity: 1.0;
+    padding-top: 1rem;
     /* caracteristicas del parrafo  */
 }
 
@@ -207,30 +228,40 @@ nav a {
 }
 
 .btn-hero {
-    border: solid 1px #0A1504;
-    background-color: #0A1504;
+    font-size: 0.5rem;
+    font-weight: bold;
+    opacity: 1.0;
+    padding: 0.8rem 1.2rem;
     color: white;
+    border: 1px solid #0A1504;
+    background-color: #0A1504;
     border-radius: 5px;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 
 .btn {
     display: block;
     width: 100%;
-    padding: 12px;
-    font-size: 16px;
+    font-size: 1.2rem;
     font-weight: bold;
+    opacity: 0.9;
+    padding: 0.8rem 1.2rem;
     color: white;
-    background-color: #93D746;
-    border: none;
+    border: 1px solid #8FD8A0;
+    background-color: #8FD8A0;
     border-radius: 5px;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
     /* cambia raton por manito  */
     /* carecteristicas del boton  */
 }
 
 .btn:hover {
-    background-color: #0A1504;
+    opacity: 1;
+    background-color: #f0f0f0;
+    color: #8FD8A0;
 }
 
 /* ------------------------------- CARRUSEL OFERTAS ------------------------------- */
@@ -242,16 +273,17 @@ nav a {
 }
 
 .card {
-    box-shadow: 0px 0px 10px rgb(100, 100, 100);
     flex: 1;
     margin: 10px;
     padding: 20px;
     background-color: #f0f0f0;
     border-radius: 5px;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 .card:hover {
+    box-shadow: 0px 0px 10px rgb(100, 100, 100);
     /* cambia al pasar por arriba el mouse  */
 }
 
@@ -266,6 +298,9 @@ nav a {
 
 .price-card {
     margin: 10px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    opacity: 1.0;
 }
 
 /* ------------------------------- INICIO ------------------------------- */
@@ -277,8 +312,8 @@ nav a {
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    background-color: #fff;
-    margin-bottom: 20px;
+    background-color: #f0f0f0;
+    border-top: solid 1px grey;
     /* FALTA alinear boton al centro */
 }
 
@@ -300,7 +335,9 @@ nav a {
 
 .container h2,
 .container-left h2 {
-    font-size: 24px;
+    font-size: 2rem;
+    font-weight: 600;
+    opacity: 1.0;
     margin-bottom: 10px;
 }
 
@@ -311,7 +348,9 @@ nav a {
 
 .container p,
 .container-left p {
-    font-size: 16px;
+    font-size: 1.3rem;
+    font-weight: 400;
+    opacity: 0.8;
     margin-bottom: 20px;
 }
 
@@ -329,7 +368,7 @@ nav a {
 
 .btn a {
     text-decoration: none;
-    color: white;
+    color: #f0f0f0;
     /*modifica enlace del boton*/
 }
 
@@ -345,19 +384,25 @@ nav a {
 .content-asesor {}
 
 .content-asesor i {
-    font-size: 34px;
+    font-size: 3rem;
     color: #93D746;
-    margin: 10px;
+    margin: 1rem;
 }
 
 .title-asesor {
+    font-size: 2rem;
+    font-weight: 600;
+    opacity: 1.0;
     color: white;
-    margin: 10px;
+    margin: 1rem;
 }
 
 .p-asesor {
+    font-size: 1rem;
+    font-weight: 400;
+    opacity: 0.8;
     color: white;
-    margin: 10px;
+    margin: 1rem;
 }
 
 
@@ -366,8 +411,8 @@ nav a {
 .footer {
     background-color: #7D387D;
     color: #fff;
-    padding: 40px 0;
     text-align: center;
+    padding: 0 10px;
 }
 
 .group-1 {
@@ -379,12 +424,9 @@ nav a {
 
 .box {
     max-width: 200px;
-    margin-bottom: 20px;
 }
 
-.figure-logo {
-    margin-bottom: 15px;
-}
+.figure-logo {}
 
 .figure-logo-img {
     max-width: 100%;
@@ -398,21 +440,22 @@ nav a {
 }
 
 small {
-    margin-bottom: 10px;
+    font-size: 1rem;
+    font-weight: 400;
+    opacity: 0.7;
+    margin: 20px 0;
 }
 
 .icon-rd {
+    font-size: 1.5rem;
     text-decoration: none;
     color: #f2ede3;
     text-align: center;
+    padding: 0 5px;
 }
 
 .icon-rd:hover {
-    color: #a47e1b;
-}
-
-.fa-star {
-    color: #a47e1b;
+    color: black;
 }
 
 
@@ -505,8 +548,6 @@ small {
 
     .p-ocult {
         display: block;
-        font-size: 16px;
-        margin-bottom: 20px;
         /*muestra parrafo*/
     }
 
@@ -514,6 +555,7 @@ small {
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
+        text-align: center;
     }
 
     .group-1 {
