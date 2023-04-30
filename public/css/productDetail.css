@@ -5,46 +5,55 @@
     text-align: center;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 1.5rem;
     background-color: #fff;
-    margin: 20px 0;
+    margin: 1.5rem 0;
 }
 
 .img-detail {
     width: 100%;
-    max-width: 500px;
+    max-width: 31rem;
 }
 
 .container-price {
     width: 100%;
-    padding-bottom: 50px;
+    padding-bottom: 3rem;
     text-align: center;
-    border-bottom: 2px solid lightgray;
 }
 
 .content-description {
-    margin-bottom: 20px;
-    padding: 10px;
+    margin-bottom: 1.5rem;
+    padding: 0.8rem;
     border-bottom: 2px solid lightgray;
 }
 
 .title-detail {
-    margin-bottom: 20px;
+    font-family: 'Roboto Serif', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    opacity: 1.0;
+    margin-bottom: 1.5rem;
 }
 
 .price-detail {
-    margin-bottom: 20px;
+    font-family: 'Roboto Serif', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    opacity: 1.0;
+    margin-bottom: 1.5rem;
 
 }
 
 .btn {
-    margin-bottom: 20px;
+    font-family: 'Roboto Serif', serif;
+    margin-bottom: 1.5rem;
 }
 
 .form-control {
+    font-family: 'Roboto Serif', serif;
     width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
     border-radius: 5px;
     border: 1px solid #ccc;
 }
@@ -59,12 +68,20 @@
 }
 
 .cat-detail {
-    margin-bottom: 20px;
+    font-family: 'Roboto Serif', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    opacity: 1.0;
+    margin-bottom: 1.5rem;
 
 }
 
 .share-detail {
-    margin-bottom: 20px;
+    font-family: 'Roboto Serif', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    opacity: 1.0;
+    margin-bottom: 1.5rem;
 
 }
 

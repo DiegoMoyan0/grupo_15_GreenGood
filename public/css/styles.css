@@ -36,8 +36,6 @@ nav {
 .nav-right,
 .nav-center {
     display: none;
-    margin: 0px;
-    padding: 0px;
     /*  quita palabras */
 }
 
@@ -54,36 +52,13 @@ nav a {
 
 
 .burger-menu {
-    font-size: 5vw;
+    font-size: 2.5rem;
     color: white;
-    padding: 2px;
     border-radius: 4px;
-    max-height: 50px;
-    margin-right: 10px;
-    text-align: center;
+    max-height: 3rem;
+    margin-right: 1rem;
+    padding-left: 10px;
     /*  modifica icono menu */
-}
-
-.shop-cart {
-    font-size: 5vw;
-    color: white;
-    padding: 2px;
-    border-radius: 4px;
-    max-height: 50px;
-    margin-right: 10px;
-    text-align: center;
-    /*  modifica icono carrito */
-}
-
-.login-register {
-    font-size: 5vw;
-    color: white;
-    padding: 2px;
-    border-radius: 4px;
-    max-height: 50px;
-    margin-right: 10px;
-    text-align: center;
-    /*  modifica icono registro/login */
 }
 
 
@@ -109,6 +84,7 @@ nav a {
 }
 
 .search-container input {
+    font-family: 'Roboto Serif', serif;
     padding: 0.25rem 0.5rem;
     border: none;
     font-size: 1.2rem;
@@ -187,7 +163,7 @@ nav a {
     font-weight: 700;
     opacity: 1.0;
     margin: 1rem 0;
-    padding: 10px 5px;
+    padding: 0.8rem 0.5rem;
     /* caracteristicas de los titulares  */
 }
 
@@ -220,7 +196,7 @@ p {
 
 .button-hero a {
     font-family: 'Roboto Serif', serif;
-    font-size: 8px;
+    font-size: 0.5rem;
     color: white;
     list-style: none;
     text-decoration: none;
@@ -274,12 +250,12 @@ p {
 
 .card {
     flex: 1;
-    margin: 10px;
-    padding: 20px;
+    margin: 0.7rem;
+    padding: 1.5rem;
     background-color: #f0f0f0;
     border-radius: 5px;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 1.5rem;
 }
 
 .card:hover {
@@ -297,7 +273,7 @@ p {
 }
 
 .price-card {
-    margin: 10px;
+    margin: 0.8rem;
     font-size: 1.5rem;
     font-weight: 600;
     opacity: 1.0;
@@ -308,21 +284,18 @@ p {
 .container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 1.5rem;
     background-color: #f0f0f0;
     border-top: solid 1px grey;
-    /* FALTA alinear boton al centro */
 }
 
 .container img,
 .container-left img {
     width: 100%;
-    max-width: 300px;
-    margin-right: 20px;
-    margin-bottom: 20px;
+    max-width: 19rem;
+    margin-bottom: 1.5rem;
     box-shadow: 0px 0px 10px rgb(100, 100, 100);
 
 }
@@ -338,7 +311,7 @@ p {
     font-size: 2rem;
     font-weight: 600;
     opacity: 1.0;
-    margin-bottom: 10px;
+    margin-bottom: 0.8rem;
 }
 
 .p-ocult {
@@ -351,7 +324,7 @@ p {
     font-size: 1.3rem;
     font-weight: 400;
     opacity: 0.8;
-    margin-bottom: 20px;
+    margin-bottom: 1.5rem;
 }
 
 .container:hover p,
@@ -362,7 +335,7 @@ p {
 
 .container button,
 .container-left button {
-    padding: 10px;
+    padding: 0.8rem;
     cursor: pointer;
 }
 
@@ -380,8 +353,6 @@ p {
     text-align: center;
     align-items: center;
 }
-
-.content-asesor {}
 
 .content-asesor i {
     font-size: 3rem;
@@ -405,14 +376,12 @@ p {
     margin: 1rem;
 }
 
-
-
 /* ------------------------------- FOOTER -------------------------------*/
 .footer {
     background-color: #7D387D;
     color: #fff;
     text-align: center;
-    padding: 0 10px;
+    padding: 0 0.7rem;
 }
 
 .group-1 {
@@ -423,7 +392,7 @@ p {
 }
 
 .box {
-    max-width: 200px;
+    max-width: 12.5rem;
 }
 
 .figure-logo {}
@@ -443,7 +412,7 @@ small {
     font-size: 1rem;
     font-weight: 400;
     opacity: 0.7;
-    margin: 20px 0;
+    margin: 1.5rem 0;
 }
 
 .icon-rd {
@@ -479,12 +448,12 @@ small {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 10px;
+        padding: 0.8rem;
     }
 
     .logo {
         max-width: 100px;
-        margin-right: 10px;
+        margin-right: 0.8rem;
         /*le da un maximo tamaño al logo*/
     }
 
@@ -497,7 +466,7 @@ small {
 
     .nav-center li,
     .nav-right li {
-        margin-right: 10px;
+        margin-right: 0.8rem;
     }
 
     .nav-center a,
@@ -514,7 +483,7 @@ small {
     .container-left img {
         width: 100%;
         margin-right: 0;
-        margin-bottom: 20px;
+        margin-bottom: 1.5rem;
     }
 
     .container .content,

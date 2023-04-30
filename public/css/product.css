@@ -9,74 +9,86 @@ main {
     flex-direction: column;
 }
 
-article {
-    margin: 10px;
+.product {
+    margin: 0.8rem;
     box-shadow: 0px 0px 10px rgb(100, 100, 100);
-    border-radius: 8px;
+    border-radius: 0.5rem;
 }
 
-.article:hover {
-}
-
-article img {
+.product img {
     width: 100%;
     border-bottom: solid 1px #ebebeb;
 }
 
 .content-art {
-    display: none;
     text-align: left;
-    padding: 15px;
+    padding: 1rem;
+    position: relative;
 }
 
-p {
-    font-size: 12px;
+.send {
     font-family: 'Roboto Serif', serif;
-
+    font-size: 0.7rem;
+    padding: 5px;
+    color: #39b54a;
+    border: 1px solid #39b54a;
+    border-radius: 5px;
+    position: absolute;
+    right: 5px;
+    top: -10px;
 }
 
 .price {
     font-family: 'Roboto Serif', serif;
-    font-size: 18px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    opacity: 1.0;
 }
 
 .description {
     font-family: 'Roboto Serif', serif;
-    font-size: 16px;
+    font-size: 1.2rem;
+    font-weight: 400;
+    opacity: 0.8;
+    text-align: center;
+    margin: 5px 0;
 }
 
 /* ------------------------------- COMENTARIOS ------------------------------- */
-#comments {
+#section-comments {
+    font-family: 'Roboto Serif', serif;
     color: #0A1504;
-    margin-top: 50px;
+    margin-top: 3rem;
 }
 
-.container-section {
+.container-comments {
     margin: 0 5px;
 }
 
 
 #title-comments {
+    font-family: 'Roboto Serif', serif;
     color: #0A1504;
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
 }
 
 
-#comments .circle {
+.circle {
     margin: 0px;
     background: #0A1504;
-    width: 50px;
-    height: 50px;
+    width: 3rem;
+    height: 3rem;
     border-radius: 50%;
     /* crea circulos  */
 }
 
 .p-comments {
-    margin: 10px 0;
+    font-family: 'Roboto Serif', serif;
+    margin: 0.8rem 0;
 }
 
 .content-star {
-    margin: 10px 0;
+    margin: 0.8rem 0;
 }
 
 .fa-star {
@@ -92,11 +104,6 @@ p {
         flex-direction: row;
         align-items: center;
 
-    }
-
-    /*muestra la descripcion de los articulos*/
-    .content-art {
-        display: block;
     }
 }
 

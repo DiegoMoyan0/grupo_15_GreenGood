@@ -29,13 +29,6 @@
             <div class="burger-menu">
                 <i class="fa-solid fa-bars"></i>
             </div>
-            <div class="login-register">
-                <a href="/register"> <i class="fa-solid fa-arrow-right-to-bracket"></i> </a>
-            </div>
-            <div class="shop-cart">
-                <i class="fa-solid fa-basket-shopping"></i>
-            </div>
-
             <ul class="nav-center">
                 <li><a href="/">Inicio</a></li>
                 <li><a href="/#ofertas">Ofertas</a></li>
@@ -51,31 +44,31 @@
     </header>
 
     <main>
-        <section id="register">
+        <section id="section-register">
             <div id="container-register">
                 <form>
-                    <h3 class="register-titles">Register</h3>
+                    <h3 class="register-title">Register</h3>
                     <div>
-                        <label for="InputName" class="form-label">Nombre y apellido</label>
-                        <input type="text" class="form-control" id="InputName" placeholder="Escriba su nombre..."
+                        <label for="InputName" class="label-register">Nombre y apellido</label>
+                        <input type="text" class="input-register" id="InputName" placeholder="Escriba su nombre..."
                             required />
                     </div>
                     <div>
-                        <label for="InputUser" class="form-label">Nombre de Usuario</label>
-                        <input type="text" class="form-control" id="InputUser" placeholder="Escriba su usuario..."
+                        <label for="InputUser" class="label-register">Nombre de Usuario</label>
+                        <input type="text" class="input-register" id="InputUser" placeholder="Escriba su usuario..."
                             required />
                     </div>
                     <div>
-                        <label for="InputDate" class="form-label">Fecha de nacimiento</label>
-                        <input type="date" class="form-control" id="InputDate" required />
+                        <label for="InputDate" class="label-register">Fecha de nacimiento</label>
+                        <input type="date" class="input-register" id="InputDate" required />
                     </div>
                     <div>
-                        <label for="InputDom" class="form-label">Domicilio</label>
-                        <input type="text" class="form-control" id="InputDom" placeholder="Escriba su domicilio..."
+                        <label for="InputDom" class="label-register">Domicilio</label>
+                        <input type="text" class="input-register" id="InputDom" placeholder="Escriba su domicilio..."
                             required />
                     </div>
                     <div>
-                        <label class="form-label">Tipo de Perfil</label><br><br>
+                        <label class="label-register">Tipo de Perfil</label><br><br>
                         <label for="Vendedor">Vendedor</label>
                         <input type="radio" id="Vendedor" name="tipo-perfil" value="Vendedor">
                         <label for="Comprador">Comprador</label>
@@ -83,27 +76,29 @@
                     </div><br>
 
                     <div>
-                        <label class="form-label" for="foto">Foto de usuario:</label>
-                        <input class="form-control" type="file" id="foto" name="foto" accept="image/*">
+                        <label class="label-register" for="foto">Foto de usuario:</label>
+                        <input class="input-register" type="file" id="foto" name="foto" accept="image/*">
                     </div>
 
                     <div>
-                        <label for="password" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="password" placeholder="Escriba su contraseña..."
+                        <label for="password" class="label-register">Contraseña</label>
+                        <input type="password" class="input-register" id="password" placeholder="Escriba su contraseña..."
                             required />
                     </div>
                     <div>
-                        <label for="password-confirm" class="form-label">Confirmar contraseña</label>
-                        <input type="password" class="form-control" id="password-confirm"
+                        <label for="password-confirm" class="label-register">Confirmar contraseña</label>
+                        <input type="password" class="input-register" id="password-confirm"
                             placeholder="Repita su contraseña..." required />
                     </div>
 
-                    <button type="submit" class="btn">
+                    <button type="submit" class="btn-register">
                         Enviar
                     </button><br>
-                    <button type="reset" class="btn">
+                    <button type="reset" class="btn-register">
                         Borrar
                     </button>
+                    <!-- Como cliente quiero poder recuperar la contraseña para poder ingresar si me la
+olvido -->
                 </form>
             </div>
         </section>
@@ -114,9 +109,7 @@
     <div class="group-1">
         <div class="box">
             <figure class="figure-logo">
-                <a href="#">
                     <img class="figure-logo-img" src="images/logo-sinfondo.png" alt="logo" />
-                </a>
             </figure>
         </div>
         <div class="box">

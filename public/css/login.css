@@ -1,18 +1,21 @@
-#login{
+#section-login{
     background-color: #f8f8f8;
-    padding: 50px;
+    padding: 3rem;
     text-align: center;
    
 }
 
 #container-login{
-    max-width: 300px;
+    max-width: 19rem;
     margin: 0 auto;
 }
 
-.login-titles{
-   font-size: 18px;
-   margin-bottom: 20px;
+.login-title{
+    font-family: 'Roboto Serif', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    opacity: 1;
+   margin-bottom: 1.5rem;
    text-align: left;
 }
 
@@ -20,10 +23,11 @@
     display: block;
     width: 90%;
 }
-.form-label{
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 5px;
+.label-login{
+    font-family: 'Roboto Serif', serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    opacity: 1;
     text-align: left;
 }
 
@@ -31,25 +35,29 @@ div{
     display: block;
 }
 
-.form-control{
+.input-login{
+    font-family: 'Roboto Serif', serif;
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
     border-radius: 5px;
     border: 1px solid #ccc;
     max-width: 100%;
 }
 
-.btn{
+.btn-login{
+    font-family: 'Roboto Serif', serif;
     display: block;
     width: 100%;
-    padding: 12px;
-    font-style: 16px;
+    font-size: 0.5rem;
     font-weight: bold;
-    color: #fff;
+    opacity: 1.0;
+    padding: 0.8rem 1.2rem;
+    color: white;
+    border: 1px solid #0A1504;
     background-color: #0A1504;
-    border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: all 0.3s ease-in-out; 
     margin-top: 10px;
 }
