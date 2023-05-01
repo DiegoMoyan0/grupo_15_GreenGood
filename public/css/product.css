@@ -54,6 +54,27 @@ main {
     margin: 5px 0;
 }
 
+.btn-product {
+    width: 50%;
+    font-size: 1.2rem;
+    font-weight: bold;
+    opacity: 0.9;
+    padding: 0.8rem 1.2rem;
+    color: white;
+    border: 1px solid #8FD8A0;
+    background-color: #8FD8A0;
+    border-radius: 5px;
+    margin-left: 25%;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-product:hover {
+    opacity: 1;
+    background-color: #f0f0f0;
+    color: #8FD8A0;
+}
+
 /* ------------------------------- COMENTARIOS ------------------------------- */
 #section-comments {
     font-family: 'Roboto Serif', serif;
