@@ -39,7 +39,7 @@
             <ul class="nav-right">
                 <li><a href="/login">Login</a></li>
                 <li><a href="/register"></i> Register</a></li>
-                <li><a href=""> Mi carrito</a></li>
+                <li><a href="/productCart"> Mi carrito</a></li>
             </ul>
         </nav>
 
@@ -47,15 +47,104 @@
 
     <!--------------------------------- MAN PRODUCT CART --------------------------------->
     <main>
+        <div class="safe-site">
+            <i class="fa-solid fa-shield-halved fa-lg"></i>
+            <p>SITIO SEGURO <br>
+            Protegemos tus datos</p>
+        </div>
 
+        <div class="login">
+            <h4>Si aún no te logeaste, ingresa aquí:</h4>
+            <a href="/login">INGRESAR</a>
+            <a href="/register"></i>Registarse</a>
+        </div>
 
-    
+    <!------ TU PEDIDO ------>
 
+        <section class="order">
 
+            <!-- Productos agregados -->
+
+            <article class="cart-articles">
+
+                <div class="product-img"><img src="/images/gotero.jpg" alt=""></div>
+
+                <div class="product-info">
+                    <div class="sale">XX% OFF en Segunda Unidad</div>
+                    <p class="product-name"><strong>Aceite a base de CBD</strong></p>
+                    <p class="prodcut-datail">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                    <button>Eliminar</button>
+                    <button>Guardar</button>
+                </div>
+
+                <p class="prodcut-price"><strong>$899.99</strong><p>
+                <input type="number" class="amount" id="amount" min="1" max="50" placeholder="Cantidad:" required/>
+
+            </article>
+
+            <article class="cart-articles">
+
+                <div class="product-img"><img src="/images/gotero.jpg" alt=""></div>
+
+                <div class="product-info">
+                    <div class="sale">XX% OFF en Segunda Unidad</div>
+                    <p class="product-name"><strong>Aceite a base de CBD</strong></p>
+                    <p class="prodcut-datail">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                    <button>Eliminar</button>
+                    <button>Guardar</button>
+                </div>
+
+                <p class="prodcut-price"><strong>$899.99</strong><p>
+                <input type="number" class="amount" id="amount" min="1" max="50" placeholder="Cantidad:" required/>
+
+            </article>
+
+        </section>
+
+    <!-- Detalle de compra -->
+
+        <section class="order-datail">
+
+            <h2 class="order-detail-title">Resúmen de mi orden</h2>
+            
+            <div class="payment-table">
+                <ul class="payment-list">
+                    <li>
+                        <div class="payment-items">Subtotal</div>
+                        <div class="payment-amounts">$899.99</div>
+                    </li>
+                    <li>
+                        <div class="payment-items">Envío</div>
+                        <div class="payment-amounts">$899.99</div>
+                    </li>
+                    <li>
+                        <div class="payment-items">Descuentos</div>
+                        <div class="payment-amounts">$899.99</div>
+                    </li>
+                    <li class="payment-total">
+                        <div class="payment-items">TOTAL</div>
+                        <div class="payment-amounts">$899.99</div>
+                    </li>                 
+                </ul>
+                <div class="container-progress-bar">
+                    <div class="progress-bar">  </div>
+                    <div>$500<br>Compra minima</div>
+                    <div>$5000<br>Envío gratis</div>
+                </div>
+            </div>
+
+            <a href=""><h3 class="payment-mehods-title">VER MEDIOS DE PAGOS Y CUOTAS</h3></a>
+
+            <button class="end-shop">Finalizar Compra</button>
+            <button class="shop-cont">Seguir Comprando</button>
+            <button class="reset-cart">Vaciar Carrito</button>
+            
+        </section>
 
     </main>
 
     <!---------------------------- ASESORAMIENTO--------------------------------->
+
     <div class="container-asesor">
         <div class="content-asesor">
             <i class="fa-brands fa-whatsapp"></i>
