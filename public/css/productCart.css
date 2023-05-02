@@ -1,0 +1,67 @@
+/*--------- TU PEDIDO------------ */
+
+main{
+    background-color: whitesmoke;
+    font-size: 12px;
+}
+
+.safe-site{
+    width: 100vw;
+    text-align: right;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background: rgba(148, 147, 147, 0.2)
+}
+
+.safe-site p{
+    width: 30%;
+    min-width: 100px;
+    max-width: 300px;
+    display: inline;
+    font-size: 0.8rem;
+    font-weight: 550;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.safe-site i{
+    font-size: 20px;
+    color: rgba(81, 241, 81, 0.9);
+    width: 30px;
+}
+
+.login-cart-container{
+    width: 50%;
+    max-width: 400px;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: solid 2px rgba(148, 147, 147, 0.2);
+    border-radius: 20px;
+    text-align: center;
+    padding: 15px;
+    background-color: rgba(0, 255, 255, 0.591);
+}
+
+
+/* -------Productos Agregados--------- */
+
+article{
+    max-width: 500px;
+}
+
+table{
+    width: 80%;
+}
+
+.product-img{
+    width: 30%;
+}
+
+td img {
+    width: 90%;
+}
+
+
