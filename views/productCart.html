@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,7 +10,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" href="images/logo-sinfondo.png" type="image/x-icon" />
     <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/prodcutCart.css">
+    <link rel="stylesheet" href="/css/productCart.css">
     <title>Green Good</title>
 </head>
 
@@ -53,49 +53,133 @@
             Protegemos tus datos</p>
         </div>
 
-        <div class="login">
-            <h4>Si aún no te logeaste, ingresa aquí:</h4>
-            <a href="/login">INGRESAR</a>
-            <a href="/register"></i>Registarse</a>
+        <div class="login-cart-container">
+            <h4 class="login-cart-title">Si aún no te logeaste, ingresa aquí:</h4>
+            <a class="link-login" href="/login">INGRESAR</a>
+            <a class="link-register" href="/register"></i>Registarse</a>
         </div>
 
     <!------ TU PEDIDO ------>
+
+        <div class="order-head">
+
+            <div class="order-title">
+                <i class="fa-solid fa-cart-arrow-down"></i>
+                <h2>Mi carrito</h2>
+            </div>
+            <div class="empty-cart-container"><a href="/" class="empty-cart"><span>Vaciar Carrito</span></a></div>
+
+        </div>
 
         <section class="order">
 
             <!-- Productos agregados -->
 
-            <article class="cart-articles">
+            <article class="empty-cart-content" data-bind="fadeVisible: !hasItems() &amp;&amp; !loading()" style="display: none;">  
 
-                <div class="product-img"><img src="/images/gotero.jpg" alt=""></div>
-
-                <div class="product-info">
-                    <div class="sale">XX% OFF en Segunda Unidad</div>
-                    <p class="product-name"><strong>Aceite a base de CBD</strong></p>
-                    <p class="prodcut-datail">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-                    <button>Eliminar</button>
-                    <button>Guardar</button>
-                </div>
-
-                <p class="prodcut-price"><strong>$899.99</strong><p>
-                <input type="number" class="amount" id="amount" min="1" max="50" placeholder="Cantidad:" required/>
+                 <h2 class="empty-cart-title" data-i18n="cart.emptyTitle">Su carrito está vacio</h2>
+                 <div class="empty-cart-message">Para seguir comprando, navegar por las categorías en el sitio, o busque su producto.</div> 
+                 <div class="clearfix empty-cart-links"><a href="/" id="cart-choose-products">Elegir productos</a></div>
 
             </article>
 
             <article class="cart-articles">
 
-                <div class="product-img"><img src="/images/gotero.jpg" alt=""></div>
+                <table>
 
-                <div class="product-info">
-                    <div class="sale">XX% OFF en Segunda Unidad</div>
-                    <p class="product-name"><strong>Aceite a base de CBD</strong></p>
-                    <p class="prodcut-datail">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-                    <button>Eliminar</button>
-                    <button>Guardar</button>
-                </div>
+                    <tr class="trow-product">
 
-                <p class="prodcut-price"><strong>$899.99</strong><p>
-                <input type="number" class="amount" id="amount" min="1" max="50" placeholder="Cantidad:" required/>
+                        <td class="product-img"><img src="/images/medicinales-cosmetica/Aceite cannabico 25ML.png" alt="imagen gotero">
+                        </td>
+
+                        <td class="tdata-product-info">
+                            <div class="highlight">
+                                <div class="promo">-25%</div>
+                                <div class="promo-text"> Exclusivo unline</div>
+                            </div>
+                            <p class="product-name"><strong>Aceite a base de CBD</strong></p>
+                            <p class="prodcut-datail">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                        </td>
+                    </tr>
+
+                    <tr class="trow-buttons">
+                        <td class="tdata-eliminate">
+                            <a href="#" class="eliminate"><span>Eliminar</span></a>
+                        </td>
+                        <td class="tdata-save">
+                            <a href="" class="save"><button>Guardar</button></a>
+                        </td>
+                    </tr>
+
+                    <tr class="trow-price">
+                        <td class="tdata-aumount">
+                            <div class="select-amount-container">
+                                <a href="#" class="decrease-amount">
+                                    <i class="fa-solid fa-minus"></i>
+                                </a>
+                                <input type="tel" class="amount" id="amount" min="1" max="50" placeholder="Cantidad:" required/>
+                                <a href="#" class="increase-amount">
+                                    <i class="fa-solid fa-plus"></i>
+                                </a>
+                            </div>
+                        </td>
+
+                        <td class="tdata-price">
+                            <p class="prodcut-price"><strong>$899.99</strong><p>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </article>
+
+            <article class="cart-articles">
+                
+                <table>
+
+                    <tr class="trow-product">
+
+                        <td class="product-img"><img src="/images/medicinales-cosmetica/Aceite cannabico 25ML.png" alt="imagen gotero">
+                        </td>
+
+                        <td class="tdata-product-info">
+                            <div class="highlight">
+                                <div class="promo">-25%</div>
+                                <div class="promo-text"> Exclusivo unline</div>
+                            </div>
+                            <p class="product-name"><strong>Aceite a base de CBD</strong></p>
+                            <p class="prodcut-datail">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                        </td>
+                    </tr>
+
+                    <tr class="trow-buttons">
+                        <td class="tdata-eliminate">
+                            <a href="#" class="eliminate"><span>Eliminar</span></a>
+                        </td>
+                        <td class="tdata-save">
+                            <a href="" class="save"><button>Guardar</button></a>
+                        </td>
+                    </tr>
+
+                    <tr class="trow-price">
+                        <td class="tdata-aumount">
+                            <div class="select-amount-container">
+                                <a href="#" class="decrease-amount">
+                                    <i class="fa-solid fa-minus"></i>
+                                </a>
+                                <input type="tel" class="amount" id="amount" min="1" max="50" placeholder="Cantidad:" required/>
+                                <a href="#" class="increase-amount">
+                                    <i class="fa-solid fa-plus"></i>
+                                </a>
+                            </div>
+                        </td>
+
+                        <td class="tdata-price">
+                            <p class="prodcut-price"><strong>$899.99</strong><p>
+                        </td>
+                    </tr>
+
+                </table>
 
             </article>
 
@@ -103,10 +187,15 @@
 
     <!-- Detalle de compra -->
 
-        <section class="order-datail">
+        <div class="order-detail-head">
 
-            <h2 class="order-detail-title">Resúmen de mi orden</h2>
+            <h2 class="order-detail-title"></h2>Resúmen de mi orden</h2>
+            <div class="voucher-container"><a href="/" class="voucher"><span>Agrega tú cupon aquí</span></a></div>
             
+        </div>
+
+        <section class="order-datail">
+           
             <div class="payment-table">
                 <ul class="payment-list">
                     <li>
