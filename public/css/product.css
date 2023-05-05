@@ -4,13 +4,27 @@ main {
     margin: 0 auto;
 }
 
-.cultivo {
+.section-sub-category {
     display: flex;
     flex-direction: column;
 }
 
+.sub-category {
+    display: flex;
+    color: white;
+    font-family: 'Roboto Serif', serif;
+    background-color: #7D387D;
+    width: 100%;
+    font-size: 2rem;
+    font-weight: 700;
+    opacity: 0.9;
+    margin: 0 2rem;
+    padding: 0.8rem 0.5rem;
+    /* caracteristicas de los titulares  */
+}
+
 .product {
-    margin: 0.8rem;
+    margin: 1rem 2rem;
     box-shadow: 0px 0px 10px rgb(100, 100, 100);
     border-radius: 0.5rem;
 }
@@ -121,11 +135,10 @@ main {
 @media (min-width: 768px) {
 
     /*deja los articulos en linea horizontal*/
-    .cultivo {
+    .section-sub-category {
         flex-direction: row;
-        align-items: center;
-
     }
+
 }
 
 /*BREAK DESKTOP*/
