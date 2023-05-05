@@ -1,8 +1,8 @@
 /*--------- TU PEDIDO------------ */
 
 main{
-    background-color: whitesmoke;
     font-size: 12px;
+    font-family: 'Roboto Serif', serif;
 }
 
 .safe-site{
@@ -12,16 +12,14 @@ main{
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background: rgba(148, 147, 147, 0.2)
+   
 }
 
 .safe-site p{
-    width: 30%;
-    min-width: 100px;
-    max-width: 300px;
+    width: 134px;
     display: inline;
-    font-size: 0.8rem;
-    font-weight: 550;
+    font-size: 0.7rem;
+    font-weight: 600;
     text-align: center;
     color: rgba(0, 0, 0, 0.7);
 }
@@ -33,35 +31,565 @@ main{
 }
 
 .login-cart-container{
-    width: 50%;
-    max-width: 400px;
+    width: 230px; 
     margin: auto;
-    margin-top: 15px;
     margin-bottom: 15px;
-    border: solid 2px rgba(148, 147, 147, 0.2);
-    border-radius: 20px;
+    border-radius: 10px;
     text-align: center;
-    padding: 15px;
-    background-color: rgba(0, 255, 255, 0.591);
+    padding: 10px 30px;
+    box-shadow: 0px 0px 5px rgb(100, 100, 100);
+}
+.login-cart-container h4{
+    font-weight: 600;
 }
 
+.link-login{
+    margin-top: 4px;
+    text-decoration: none;
+    font-weight: 100;
+    font-size: 0.9rem;
+    display: block;
+    cursor: pointer;
+    padding: 4px;
+    width: 90px;
+    margin: auto;
+    margin-top: 4px;
+    border-radius: 5px;
+    background-color: #28e50f;
+    color: white;
+}
+
+.link-register-container{
+    width: 100%;
+    padding: 0px;
+    margin-top: 5px;
+    text-align: center;
+    font-size: 10px;
+}
+
+.link-register{
+   margin-left: 10px;
+}
 
 /* -------Productos Agregados--------- */
 
-article{
-    max-width: 500px;
+.cart-containter{
+    background-color: rgba(0, 0, 0, 0.05)
+}
+
+.order{
+    background: rgba(0, 0, 0, 0.05);
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.order-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom:0px;
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 10px 15px;
+    padding-top: 15px;
+}
+
+.order-title h2{
+    display: inline;
+    font-size: 1.5rem;
+    color: rgba(0, 0, 0, 0.7);
+    
+}
+
+.order-title i{
+    font-size: 20px;
+    margin-right: 10px;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.empty-cart{
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: 600;
+    color: rgb(202, 47, 202);
+}
+
+/* -------Articulos------ */
+
+.cart-articles{
+    margin: 10px 0px;
+    width: 99%;
+    border: solid 1px rgba(54, 242, 29, 0.4);
+    background-color: white;
+    padding: 5px 5px;
 }
 
 table{
-    width: 80%;
+    width: 100%;
+    margin: auto;
+    display: block;
+    border-collapse: collapse;
 }
 
 .product-img{
-    width: 30%;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 td img {
     width: 90%;
+    border: double 5px rgba(234, 22, 103, 0.5);
+    border-radius: 10px;
 }
+
+.highlight{
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    background-color: rgba(234, 22, 103, 0.911);
+    width: fit-content;
+    padding: 5px;
+    color: white;
+    font-weight: 600;
+    box-shadow: 1px 1px 3px rgba(234, 22, 103, 0.5);
+    align-items: center;
+}
+
+.promo{
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.promo-text{
+    margin-left: 5px;
+}
+
+.tdata-eliminate{
+    text-align: right;
+    padding-right: 5px;
+    border-right: solid 2px rgba(0, 0, 0, 0.7);
+    display: inline; 
+}
+
+.eliminate span{
+    font-size: 10px;
+}
+
+.tdata-save{
+    text-align: left;
+    display: inline;
+}
+
+.tdata-save button{
+    border: none;
+    background-color: white;
+    font-size: 10px;
+    text-decoration: underline;
+    margin-left: 5px;
+    color: rgb(202, 47, 202);
+}
+
+
+.prodcut-datail{
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+    width: 100%;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.trow-buttons{
+    height: 30px;
+}
+
+.trow-buttons-tdr{
+    width: 100%;
+}
+
+.trow-price{
+    background-color: rgba(0, 0, 0, 0.08);
+    height: 40px;
+}
+
+.tdata-aumount{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+}
+
+.select-amount-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: solid 1px rgba(54, 242, 29, 0.8);
+    padding: 1px 5px;
+    border-radius: 5px;
+    width: 80px;
+}
+
+.select-amount-container input{
+    border: none;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.8);
+    background-color: transparent
+}
+
+#amount:focus{
+    outline: none;
+}
+
+.decrease-amount i{
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+.increase-amount i{
+    font-size: 18px;
+    color: rgba(54, 242, 29, 0.8);;
+    cursor: pointer;
+}
+
+.tdata-price{
+    text-align: right;
+    width: 100%;
+}
+
+.product-price{
+    text-decoration: wavy;
+    margin-right: 20px;
+}
+
+#text-product-price{
+    display: none;
+}
+
+/* -----Detalle de compra------- */
+
+.order-detail-container{
+    background-color: rgba(0, 0, 0, 0.18);
+    padding: 10px;
+    position: relative;
+}
+
+.order-detail-head h2{
+    display: block;
+    font-size: 1.5rem;
+    color: rgba(0, 0, 0, 0.7);
+    text-align: center;
+    width: 100%;
+}
+
+.voucher-container{
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    width: 90%;
+    height: 40px;
+    border: solid 1.5px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    background-color:whitesmoke;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#gift-card{
+    display: inline;
+    width: 20px;
+    height: 20px;
+    color: #060806;
+    font-weight: 600;
+}
+.voucher{
+    text-decoration: none;
+    color: rgb(46, 211, 24);
+    font-size: 14px;
+}
+
+.payment-list{
+    list-style: none;
+    display: table;
+    width: 80%;
+    margin: auto;
+    margin-top: 15px;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.payment-items{
+    float: left;
+    width: 45%;
+    padding: 2px;
+}
+
+.payment-amounts{
+    float: right;
+    width: 45%;
+    padding: 2px;
+    text-align: right;
+}
+
+#off{
+    font-weight: 600;
+}
+
+#off .payment-amounts{
+    color: rgba(54, 242, 29, 1)
+}
+
+#division{
+    width: 82%;
+    background: rgba(0, 0, 0, 0.5);
+    height: 1.2px;
+    position: absolute;
+    top: 166px;
+    left: 40px;
+}
+
+.payment-total{
+    float: left;
+    width: 100%;
+    padding-top: 10px;
+}
+
+.container-progress-bar{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 15px 0px;
+    flex-wrap: wrap;
+}
+
+#amount-progress{
+    display: block;
+    width: 90%;
+    height: 10px;
+    border: solid 1px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    -webkit-appearance: none;
+}
+
+::-webkit-progress-bar {
+    background-color: whitesmoke;
+    border-radius: 10px;
+ }
+
+::-webkit-progress-value {
+    background-color: #28e50f;
+    border-radius: 10px;
+}
+
+.container-progress-bar div{
+    margin-top: 10px;
+    text-align: center;
+}
+
+.icons-payment-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 95%;
+    padding: 20px;
+    margin: auto;
+}
+
+.payment-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+}
+.payment-container i {
+    width: 65px;
+    height: 65px;
+    font-size: 1.8rem;
+    display: block;
+    margin: auto;
+    background-color: white;
+    border-radius: 50%;
+    text-align: center;
+    padding-top: 19px;
+    margin-bottom: 5px;
+}
+.payment-container i:hover{
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+}
+
+.payment-container a{
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+
+#card-icon{
+    color: rgb(101, 101, 223)
+}
+
+#location-icon{
+    color: rgb(199, 73, 132);
+}
+
+#support-icon{
+    color: #5dd44d;
+}
+
+.buttons-payment{
+    display: block;
+    width: 95%;
+    margin: auto;
+    height: 55px;
+    margin-bottom: 10px;
+}
+
+#finish-shopping{
+    background-color: #44fa2c;
+    color: white;
+    font-weight: 600;
+    border: none;
+    box-shadow: 0px 0px 7px #44fa2c;
+    transition: all 200ms;
+}
+
+#finish-shopping:hover{
+    transform: scale(1.02);
+    background-color: #31f417;
+    border-radius: 5px;
+}
+
+#shopping-back{
+    border: none;
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.2);
+    color: white;
+    font-weight: 600;
+    transition: all 200ms;
+}
+
+#shopping-back a{
+    color: white;
+    text-decoration: none;
+}
+
+#shopping-back:hover{
+    transform: scale(1.01);
+    background-color:rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+#reset-cart{
+    border: none;
+    background-color: transparent;
+    text-decoration: underline;
+    color: rgb(44, 39, 41);
+    font-weight: 600;
+}
+
+
+
+@media (min-width: 768px){
+
+    .login-cart-container{
+        width: 50%;
+    }
+
+    .login-cart-container h4{
+        font-size: 19px;
+    }
+
+    .order{
+        width: calc(100% - 380px);
+        display: inline-block;
+        min-height: 620px;
+    }
+
+    .order-detail-container{
+        width: 380px;
+        display: inline-block;
+    }
+
+    .cart-containter{
+        display: table;
+        width: 100%;
+    }
+
+    .order-head{
+        width: 100%;
+        float: left;
+    }
+
+    .order-detail-container{
+        width: 380px;
+        float: right;
+        background-color: rgba(0, 0, 0, 0.05);
+        height: fit-content;
+    }
+
+    @media (min-width: 1200px){
+
+
+        .tdata-aumount {
+            position: absolute;
+            top: 15px;
+            right: 200px;
+        }
+
+        .cart-articles{
+            position: relative;
+        }
+
+        .tdata-price {
+            font-size: 1.5rem;
+            position: absolute;
+            top: 74px;
+            right: 20px;
+        }
+
+        .trow-price {
+            background-color: transparent;
+            height: 1px;
+        }
+
+        .eliminate span {
+            font-size: 14px;
+        }
+
+        .tdata-save button {
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .prodcut-datail {
+            font-size: 1rem;
+        }
+
+        #text-product-price{
+            display: inline-block;
+            font-size: 10px;
+            width: 25%;
+            margin-right: 3px;
+            font-weight: 900;
+        }
+    
+    }
+
+
+
+
+    
+} 
+
 
 
