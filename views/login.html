@@ -17,7 +17,7 @@
 <body>
     <header>
         <nav>
-             <img class="logo" src="images/logo.png" alt="">
+            <img class="logo" src="images/logo.png" alt="">
             <div class="search-container">
                 <form class="search" action="/search">
                     <div class="input-container">
@@ -38,18 +38,18 @@
             <ul class="nav-right">
                 <li><a href="/login">Login</a></li>
                 <li><a href="/register"></i> Register</a></li>
-                <li><a href=""> Mi carrito</a></li>
+                <li><a href="/productCart"> Mi carrito</a></li>
             </ul>
         </nav>
     </header>
     <main>
         <section id="section-login">
             <div id="container-login">
-                <form class="form-login">
+                <form class="form-login" action="/">
                     <h3 class="login-title">Login</h3>
                     <div>
                         <label for="InputName" class="label-login">Correo electrónico</label>
-                        <input type="text" class="input-login" id="InputName"
+                        <input type="email" class="input-login" id="InputName"
                             placeholder="Escriba aquí su correo electrónico" required />
                     </div>
                     <div>
@@ -66,6 +66,7 @@
                     <button type="submit" class="btn-login">
                         Cancelar
                     </button>
+                    <a href=""> Recuperar Contraseña</a>
                 </form>
             </div>
         </section>
@@ -74,7 +75,7 @@
         <div class="group-1">
             <div class="box">
                 <figure class="figure-logo">
-                        <img class="figure-logo-img" src="images/logo.png" alt="logo" />
+                    <img class="figure-logo-img" src="images/logo.png" alt="logo" />
                 </figure>
             </div>
             <div class="box">
