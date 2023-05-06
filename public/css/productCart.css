@@ -543,7 +543,7 @@ td img {
     .login-cart-container h4{
         font-size: 19px;
     }
-    
+
     .shop-cart-containter{
         display: table;
         width: 100%;
@@ -576,6 +576,7 @@ td img {
         background-color: rgb(0 0 0 / 16%);
     }
 
+
     @media (min-width: 1200px){
         
         .tdata-aumount {
@@ -584,7 +585,7 @@ td img {
             right: 200px;
         }
 
-        .cart-articles{
+        .cart-products{
             position: relative;
         }
 
