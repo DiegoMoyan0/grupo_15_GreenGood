@@ -538,13 +538,13 @@ td img {
     }
 
     @media (min-width: 1200px){
+        
+                .tdata-aumount {
+                    position: absolute;
+                    top: 15px;
+                    right: 200px;
+                }
 
-
-        .tdata-aumount {
-            position: absolute;
-            top: 15px;
-            right: 200px;
-        }
 
         .cart-articles{
             position: relative;

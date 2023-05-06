@@ -48,15 +48,29 @@ main {
     border: 1px solid #39b54a;
     border-radius: 5px;
     position: absolute;
-    right: 5px;
+    left: 5px;
     top: -10px;
-}
+    animation: border-highlight 1s linear infinite;
+  }
+  
+  @keyframes border-highlight {
+    0% {
+      box-shadow: 0 0 0 0 rgba(57, 181, 74, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 0 2px rgba(57, 181, 74, 0.5);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(57, 181, 74, 0.5);
+    }
+  }
 
 .price {
     font-family: 'Roboto Serif', serif;
     font-size: 1.5rem;
     font-weight: 600;
     opacity: 1.0;
+    text-align: end;
 }
 
 .description {
@@ -66,27 +80,6 @@ main {
     opacity: 0.8;
     text-align: center;
     margin: 5px 0;
-}
-
-.btn-product {
-    width: 50%;
-    font-size: 1.2rem;
-    font-weight: bold;
-    opacity: 0.9;
-    padding: 0.8rem 1.2rem;
-    color: white;
-    border: 1px solid #8FD8A0;
-    background-color: #8FD8A0;
-    border-radius: 5px;
-    margin-left: 25%;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-}
-
-.btn-product:hover {
-    opacity: 1;
-    background-color: #f0f0f0;
-    color: #8FD8A0;
 }
 
 /* ------------------------------- COMENTARIOS ------------------------------- */
@@ -137,6 +130,7 @@ main {
     /*deja los articulos en linea horizontal*/
     .section-sub-category {
         flex-direction: row;
+        flex-wrap: wrap;
     }
 
 }

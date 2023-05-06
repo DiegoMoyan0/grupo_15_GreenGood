@@ -100,6 +100,22 @@ nav a {
     cursor: pointer;
 }
 
+.deslizable {
+    font-size: 2.5rem;
+    position: fixed;
+    right: 30px;
+    bottom: 20px;
+    z-index: 20;
+    background-color: #93D746;
+    border-radius: 5px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 /* ------------------------------- HERO ------------------------------- */
 #hero {
@@ -240,7 +256,25 @@ p {
     background-color: #f0f0f0;
     color: #8FD8A0;
 }
+.btn-product {
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: bold;
+    opacity: 0.9;
+    padding: 0.8rem 1.2rem;
+    color: white;
+    border: 1px solid #8FD8A0;
+    background-color: #8FD8A0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
 
+.btn-product:hover {
+    opacity: 1;
+    background-color: #f0f0f0;
+    color: #8FD8A0;
+}
 /* ------------------------------- CARRUSEL OFERTAS ------------------------------- */
 .card-container {
     display: flex;
@@ -253,7 +287,7 @@ p {
     flex: 1;
     margin: 0.7rem;
     padding: 1.5rem;
-    background-color: #f0f0f0;
+    background-color: whitesmoke;
     border-radius: 5px;
     text-align: center;
     margin-bottom: 1.5rem;
@@ -267,6 +301,7 @@ p {
 .card img {
     max-width: 100%;
     height: auto;
+    border-radius: 7px;
 }
 
 .card p {
@@ -438,7 +473,7 @@ small {
     }
 
     .search-container {
-        width: 30%;
+        width: 20%;
         /* le da un ancho al buscador */
     }
 
