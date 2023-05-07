@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto+Serif&display=swap');
+
+
+
+main{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.container-info{
+    margin: 3em;
+}
+
+.container-info article > p{
+    margin-top: 2em;
+    margin-bottom: 1.5em;
+    font-family: 'Roboto Serif', serif;
+
+}
+
+.container-instagram{
+    width: 80vw;
+}
+
+
+.container-rrss1 , 
+.container-rrss2 {
+    width: 90%;
+    margin-left: 1.2em;
+   
+}
+
+.container-rrss1 p, 
+.container-rrss2 p{
+    margin: 1em;
+}
+
+.container-rrss2  > iframe{
+    max-width: 95%;
+    margin-left: 0.5em;
+}
+
+
+
+.container-info h2{
+    margin-bottom: 1em;
+    text-align: center;
+    font-family: 'Roboto Serif', serif;
+}
+
+.container-instagram {
+    margin-left: 3.2em;
+}
+
+.container-instagram video{
+
+    text-align: center;
+    width: 80vw;
+    height: 29vh;
+    border: 5px solid black;
+ 
+}
+
+.container-instagram figcaption{
+    margin-left: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    font-size: 0.8rem;
+}
+
+.card-container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    background-image: url('/images/green-bcknd.jpg');
+    background-size: contain;
+    border-radius: 5px;
+    max-width: 80vw;
+    margin-bottom: 2.5em;
+    margin-left: auto;
+    margin-right: auto;
+
+   }
+
+  .card1{
+    margin: 1em;
+    background-image: url('/images/info-1.jpeg');
+    background-size:contain;
+    background-repeat: no-repeat;
+    height: 43vh;
+    width: 70vw;
+
+   }
+
+   
+   .card2{
+    margin: 1em;
+    background-image: url('/images/info-2.jpeg');
+    background-size:contain;
+    background-repeat: no-repeat;
+    height: 43vh;
+    width: 70vw;
+
+
+
+   }
+
+   
+   .card3{
+    margin: 1em;
+    background-image: url('/images/info-3.jpeg');
+    background-size:contain;
+    background-repeat: no-repeat;
+    height: 43vh;
+    width: 70vw;
+
+
+   }
+
+
+
+
+/* ------------------------------- BREAK TABLET  ------------------------------- */
+
+@media (min-width: 768px) {
+
+    main{
+        display: flex;
+        flex-direction: row;
+        max-height: 105vh;
+    }
+
+    .container-info{
+       max-width: 50%;
+       margin-bottom: 1em;
+    }
+
+    .container-info article:nth-child(2){
+        display: flex;
+        flex-direction: row;
+     }
+
+    .container-info .container-instaCar {
+
+        margin-left: 5em;
+        margin-right: 5em;
+    }
+
+    .container-instagram{
+        margin-top: 7em;
+        max-width: 25vw;
+        max-height: 35vh;
+        margin-right: 10em;
+    
+
+    }
+    .container-instagram video {
+        max-width: 25vw;
+        max-height: 50vh;
+    }
+
+    .container-rrss1, .container-rrss2{
+
+        display: flex;
+        flex-direction:column;
+        width: 50%;
+        margin-top: 2em;
+        margin-bottom: 2em;
+        text-align:justify;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .container-rrss2 iframe{
+        max-width: 100%;
+        height: 60vh;
+    }
+
+    .container-rrss2 {
+        height: 63.6vh;
+        max-width: 100%;
+    }
+
+    .container-rrss1{
+        height: 63.6vh;
+        max-width: 100%;
+    }
+
+    .container-rrss1 p, 
+    .container-rrss2 p{
+        margin: .05em;
+        margin-bottom: 1em;
+    }
+
+    .container-rrss1 , 
+    .container-rrss2 {
+        max-height: 10%;
+        margin: 1em;
+    }
+
+    .card-container{
+        display: flex;
+        flex-direction: row;
+        background-image: url('/images/green-bcknd.jpg');
+        background-size: contain;
+        max-height: 75vh;
+        max-width: 95vw;
+        margin-bottom: 2.5em;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        align-items: center;
+        border-radius: 5px;
+       }
+
+      .card1{
+        
+        background-image: url('/images/info-1.jpeg');
+        background-size:contain;
+        background-repeat: no-repeat;
+        height: 47vh;
+        width: 23vw;
+        margin-left: 8em;
+        margin-right: 3em;
+        margin-top: 12em;
+        margin-bottom: 3em;
+        border-radius: 10px;
+       }
+
+       
+       .card2{
+
+        background-image: url('/images/info-2.jpeg');
+        background-size:contain;
+        background-repeat: no-repeat;
+        height: 47vh;
+        width: 23vw;
+        margin-left: 3em;
+        margin-right: 3em;
+        margin-bottom: 8em;
+        border-radius: 10px; 
+
+       }
+
+       
+       .card3{
+        
+
+        background-image: url('/images/info-3.jpeg');
+        background-size:contain;
+        background-repeat: no-repeat;
+        height: 47vh;
+        width: 23vw;
+        margin-left: 3em;
+        margin-right: 3em;
+        margin-top: 12em;
+        margin-bottom: 3em;
+        border-radius: 10px;
+
+       }
+
+}
