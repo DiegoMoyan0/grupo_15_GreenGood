@@ -268,6 +268,7 @@ td img {
 .tdata-price{
     text-align: right;
     width: 100%;
+    padding-right: 20px;
 }
 
 .product-price{
@@ -311,17 +312,39 @@ td img {
     justify-content: center;
 }
 
+.voucher{
+    text-decoration: none;
+    color:rgb(100, 100, 100);
+    font-size: 14px;
+    text-align: center;
+}
+
+.voucher-container input[type="tel" i] {
+    width: 5.7rem;
+    font-size: 0.5rem;
+    margin-left: 5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: none;
+    height: 16px;
+}
+
+.voucher-container input[type="tel" i]:focus{
+    outline-color: #44fa2cde;
+}
+
+.voucher-container input[type="tel" i]::placeholder{
+    font-size: 0.4rem;
+    text-transform: capitalize;
+    text-align: center;
+}
+
 #gift-card{
     display: inline;
     width: 20px;
     height: 20px;
     color: #060806;
     font-weight: 600;
-}
-.voucher{
-    text-decoration: none;
-    color:rgb(100, 100, 100);
-    font-size: 14px;
 }
 
 .payment-list{
@@ -330,7 +353,7 @@ td img {
     width: 80%;
     margin: auto;
     margin-top: 15px;
-    font-size: 15px;
+    font-size: 1rem;
     color: rgba(0, 0, 0, 0.7);
 }
 
@@ -503,7 +526,7 @@ td img {
     font-weight: 600;
 }
 
-@media (min-width: 768px){
+@media (min-width: 810px){
 
     .login-cart-container{
         width: 50%;
@@ -557,7 +580,7 @@ td img {
         .tdata-price {
             font-size: 1.5rem;
             position: absolute;
-            top: 74px;
+            top: 130px;
             right: 20px;
         }
 
