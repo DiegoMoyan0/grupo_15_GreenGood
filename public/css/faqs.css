@@ -22,13 +22,21 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto+Serif&display=swap');
 
-main{
-  margin-bottom: 20px;
+.main-FAQ{
+  margin-top: 4rem;
+  margin-bottom: 4rem;
 }
 
-main, h2, .container-faq, #contact {
-    margin-top: 20px;
-    margin-bottom: 20px;
+.header-FAQ{
+  margin-bottom: 2.5rem;
+  text-align: center;
+  font-family: 'Roboto Serif', serif;
+
+}
+
+.container-faq, #contact {
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
     text-align: center;
     font-family: 'Roboto Serif', serif;
 }
