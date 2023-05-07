@@ -24,9 +24,8 @@ nav {
     display: flex;
     height: 4rem;
     justify-content: flex-end;
-    background-color: rgba(125, 56, 125, 0.9);
+    background: linear-gradient(90deg, #ede4edbf, #a62ca6e0, #7d387df0);
     align-items: center;
-    border-bottom: solid 1px #0A1504;
     padding: 0px 8px;
     position: relative;
     /* modifica posicion de sus hijos y aspecto del navbar  */
@@ -36,8 +35,19 @@ nav {
     width: 6rem;
     margin: 0px;
     position: relative;
-    left: 1%;
+    animation: logo-animation 2s ease-in-out 1 alternate; 
+}
     /* define el tamaño que ocupa en el navbar  */
+
+
+@keyframes logo-animation {
+    0%{
+        transform: scale(0.5);
+    }
+    100%{
+        transform: scale(1);
+    }
+
 }
 
 .nav-right,
@@ -48,25 +58,53 @@ nav {
 
 nav a {
     color: white;
+    display: inline;
     /*  colore enlaces */
 }
 
-.nav-center a:hover,
 .nav-right a:hover {
     color: #76949F;
     /*cambie el color del enlace al pasar sobre el*/
 }
-
 
 .icons-navbar {
     width: 2rem;
     color: white;
     border-radius: 4px;
     max-height: 3rem;
-    padding-left: 10px;
-    margin: 0px 4px;
+    padding: 5px;
     cursor: pointer;
     /*  modifica iconos menu */
+}
+
+nav .cart-icon{
+    position: relative;
+}
+
+nav #added-product{
+    position: absolute;
+    top: 2px;
+    z-index: 10;
+    right: 47px;
+}
+
+nav #added-product input{
+    border-radius: 50%;
+    width: 0.98rem;
+    background-color: #93D746;
+    color: white;
+    text-align: center;
+    font-size: 0.7rem;
+    border: solid 0.3px #fff;
+    font-weight: 600;
+}
+
+nav svg{
+    transition: all 300ms;
+}
+
+nav svg:hover{
+    transform: scale(1.2);
 }
 
 
@@ -137,7 +175,7 @@ nav a {
     right: 30px;
     bottom: 20px;
     z-index: 20;
-    background-color: #93D746;
+    background: linear-gradient(50deg, #80ef03, #2c5a404d);
     border-radius: 5px;
     border-radius: 50%;
     width: 50px;
@@ -145,8 +183,26 @@ nav a {
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 2px 5px 5px rgba(12, 12, 12, 0.8);
 }
 
+.deslizable i{
+    color: #7D387D;
+    font-size: 2.5rem;
+}
+
+.deslizable i:hover{
+   animation: deslizable-animation 300ms linear  4 alternate;
+}
+
+@keyframes deslizable-animation {
+    0%{
+        transform: translateY(0px)
+    }
+    100%{
+        transform: translateY(-3px)
+    }
+}
 
 /* ------------------------------- HERO ------------------------------- */
 #hero {
@@ -444,8 +500,8 @@ p {
 
 /* ------------------------------- FOOTER -------------------------------*/
 .footer{
-    background-color: #eee;
-    color: rgba(0, 0, 0, 0.8);
+    background: linear-gradient(180deg, #ede4ed, #9e3e9e, #7d387d);
+    color: whitesmoke;
     text-align: center;
     padding: 0 0.7rem;
 }
@@ -508,8 +564,8 @@ small {
     .search-container {
         display: flex;
     }
-
-    .icons-navbar,
+    
+    .icons-navbar, #added-product,
     .shop-cart {
         display: none;
         /* oculta los iconos */
@@ -525,7 +581,9 @@ small {
         justify-content: space-between;
         align-items: center;
         padding: 0.8rem;
+        flex-wrap: nowrap;
     }
+    
 
     .logo {
         max-width: 100px;
@@ -533,11 +591,30 @@ small {
         /*le da un maximo tamaño al logo*/
     }
 
-    .nav-center,
-    .nav-right {
+    .nav-center {
         display: flex;
         list-style: none;
         /*quita puntos*/
+    }
+
+    
+    .nav-right {
+        display: flex;
+        list-style: none;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-right li{
+        margin: 0px;
+        font-size: 0.8rem;
+    }
+      
+    
+    .nav-right a i{
+        display: inline;
+        margin-left: 3px;
     }
 
     .nav-center li,
@@ -549,6 +626,38 @@ small {
     .nav-right a {
         text-decoration: none;
         /*quita subrayado*/
+    }
+    .nav-center{
+        position: relative;
+    }
+
+    .nav-center a{
+        text-transform: uppercase;
+    }
+
+    .active{
+        position: absolute;
+        top: 21px;
+        right: 87.5%;
+        z-index: 200;
+        height: 2.5px;
+        width: 2rem;
+        background-color: #64ff00;
+        box-shadow: 0px 0px 4px rgb(241 245 242);
+        border-radius: 70px;
+        transition: transform 0.25s;
+    }
+
+    .nav-center li:nth-child(2):hover ~ .active{
+        transform: translateX(4.4rem);
+    }
+
+    .nav-center li:nth-child(3):hover ~ .active{
+        transform: translateX(10.6rem);
+    }
+
+    .nav-center li:nth-child(4):hover ~ .active{
+        transform: translateX(15.8rem);
     }
 
     .card-container {
@@ -601,6 +710,10 @@ small {
         justify-content: space-around;
         align-items: center;
         text-align: center;
+    }
+
+    .footer{
+        background: linear-gradient(90deg, #ede4ed, #9e3e9e, #7d387d);
     }
 
     .group-1 {
