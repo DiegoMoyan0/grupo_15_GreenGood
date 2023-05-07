@@ -503,37 +503,6 @@ td img {
     font-weight: 600;
 }
 
-/* *******---------ASESORAMIENTO TUNNING---------- */
-
-.container-asesor {
-    background-color: rgb(1 4 34 / 78%);
-}
-
-.content-asesor i {
-    font-size: 3rem;
-    color: rgba(81, 241, 81, 0.9);
-    margin: 1rem;
-}
-
-/* *******---------FOOTER TUNNING---------- */
-
-.box p{
-    font-style: italic;
-}
-
-.footer{
-    background-color: #eee;
-    color: rgba(0, 0, 0, 0.8);
-    text-align: center;
-    padding: 0 0.7rem;
-}
-
-.group-2{
-    height: fit-content;
-}
-
-
-
 @media (min-width: 768px){
 
     .login-cart-container{
@@ -550,14 +519,9 @@ td img {
     }
 
     .order{
-        width: calc(100% - 380px);
+        width: calc(100% - 450px);
         display: inline-block;
         min-height: 620px;
-    }
-
-    .order-detail-container{
-        width: 380px;
-        display: inline-block;
     }
 
 
@@ -566,11 +530,12 @@ td img {
     }
 
     .order-detail-container{
-        width: 380px;
-        float: right;
-        height: fit-content;
+        width: 440px;
+       float: right;
         background-color: transparent;
+        margin: auto;
     }
+    
 
     .payment-container i{
         background-color: rgb(0 0 0 / 16%);
