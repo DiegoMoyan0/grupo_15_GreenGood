@@ -62,8 +62,6 @@ nav a {
     /*  colore enlaces */
 }
 
-
-.nav-center a:hover,
 .nav-right a:hover {
     color: #76949F;
     /*cambie el color del enlace al pasar sobre el*/
@@ -629,6 +627,38 @@ small {
     .nav-right a {
         text-decoration: none;
         /*quita subrayado*/
+    }
+    .nav-center{
+        position: relative;
+    }
+
+    .nav-center a{
+        text-transform: uppercase;
+    }
+
+    .active{
+        position: absolute;
+        top: 21px;
+        right: 87.5%;
+        z-index: 200;
+        height: 2.5px;
+        width: 2rem;
+        background-color: #64ff00;
+        box-shadow: 0px 0px 4px rgb(241 245 242);
+        border-radius: 70px;
+        transition: transform 0.25s;
+    }
+
+    .nav-center li:nth-child(2):hover ~ .active{
+        transform: translateX(4.4rem);
+    }
+
+    .nav-center li:nth-child(3):hover ~ .active{
+        transform: translateX(10.6rem);
+    }
+
+    .nav-center li:nth-child(4):hover ~ .active{
+        transform: translateX(15.8rem);
     }
 
     .card-container {

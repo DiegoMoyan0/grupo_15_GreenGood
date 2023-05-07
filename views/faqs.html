@@ -20,31 +20,57 @@
     <header>
         <nav>
             <img class="logo" src="images/logo.png" alt="logo">
-           <div class="search-container">
-               <form class="search" action="/search">
-                   <div class="input-container">
-                       <input type="text" placeholder="Buscar...">
-                       <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                   </div>
-               </form>
-           </div>
-           <div class="burger-menu">
-               <i class="fa-solid fa-bars"></i>
-           </div>
-           <ul class="nav-center">
-               <li><a href="/">Inicio</a></li>
-               <li><a href="#ofertas">Ofertas</a></li>
-               <li><a href="/product">Productos</a></li>
-               <li><a href="/faqs">Ayuda</a></li><br>
-           </ul>
-           <ul class="nav-right">
-               <li><a href="/login">Login</a></li>
-               <li><a href="/register"></i> Register</a></li>
-               <li><a href="/productCart"> Mi carrito</a></li>
-           </ul>
-       </nav>
+            <div class="search-container">
+                <form class="search" action="/search">
+                    <div class="input-container">
+                        <input type="text" placeholder="Buscar...">
+                        <button type="submit"><svg id="search-icon-navbar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+                            <path fillRule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clipRule="evenodd" />
+                          </svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+                  
+
+            <a href="/login">
+                <span><svg class="icons-navbar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+                    <path d="M10 8a3 3 0 100-6 3 3 0 000 6zM3.465 14.493a1.23 1.23 0 00.41 1.412A9.957 9.957 0 0010 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 00-13.074.003z" />
+                    </svg>
+                </span>
+            </a>
+              
+
+            <a href="/productCart" id="cart-icon">
+                <span><svg class="icons-navbar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+                    <path d="M1 1.75A.75.75 0 011.75 1h1.628a1.75 1.75 0 011.734 1.51L5.18 3a65.25 65.25 0 0113.36 1.412.75.75 0 01.58.875 48.645 48.645 0 01-1.618 6.2.75.75 0 01-.712.513H6a2.503 2.503 0 00-2.292 1.5H17.25a.75.75 0 010 1.5H2.76a.75.75 0 01-.748-.807 4.002 4.002 0 012.716-3.486L3.626 2.716a.25.25 0 00-.248-.216H1.75A.75.75 0 011 1.75zM6 17.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15.5 19a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
+                    </svg>
+                </span>
+                <span id="added-product"><input type="tel" value="0"></span>
+            </a>
+            
+            <a href="#" >
+                <span><svg class="icons-navbar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+                            <path  fillRule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z" clipRule="evenodd" />
+                    </svg>
+                </span> 
+            </a>
+
+            <ul class="nav-center">
+                <li><a href="/">Inicio</a></li>
+                <li><a href="#ofertas">Ofertas</a></li>
+                <li><a href="/product">Productos</a></li>
+                <li><a href="/faqs">Ayuda</a></li><br>
+                <div class="active"></div>
+            </ul>
+            <ul class="nav-right">
+                <li><a href="/register">Creá tu cuenta<i class="fa-regular fa-address-card"></i></a></li>
+                <li><a href="/login">Ingresá <i class="fa-solid fa-arrow-right-to-bracket"></i></a></li>
+                <li><a href="/productCart">Mis compras <i class="fa-solid fa-basket-shopping"></i></a></li>
+            </ul>
+        </nav>
     </header>
-    
     <!-- /* ------------------------------- PREGUNTAS ------------------------------- */ -->
     <!--
     <main>
