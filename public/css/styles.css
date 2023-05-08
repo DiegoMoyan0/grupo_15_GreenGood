@@ -5,6 +5,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Roboto Serif', serif;
     /* cambios generales  */
 }
 
@@ -35,16 +36,18 @@ nav {
     width: 6rem;
     margin: 0px;
     position: relative;
-    animation: logo-animation 2s ease-in-out 1 alternate; 
+    animation: logo-animation 2s ease-in-out 1 alternate;
 }
-    /* define el tamaño que ocupa en el navbar  */
+
+/* define el tamaño que ocupa en el navbar  */
 
 
 @keyframes logo-animation {
-    0%{
+    0% {
         transform: scale(0.5);
     }
-    100%{
+
+    100% {
         transform: scale(1);
     }
 
@@ -77,18 +80,18 @@ nav a {
     /*  modifica iconos menu */
 }
 
-nav .cart-icon{
+nav .cart-icon {
     position: relative;
 }
 
-nav #added-product{
+nav #added-product {
     position: absolute;
     top: 2px;
     z-index: 10;
     right: 47px;
 }
 
-nav #added-product input{
+nav #added-product input {
     border-radius: 50%;
     width: 0.98rem;
     background-color: #93D746;
@@ -99,11 +102,11 @@ nav #added-product input{
     font-weight: 600;
 }
 
-nav svg{
+nav svg {
     transition: all 300ms;
 }
 
-nav svg:hover{
+nav svg:hover {
     transform: scale(1.2);
 }
 
@@ -116,7 +119,7 @@ nav svg:hover{
     width: 80%;
 }
 
-.search-container input::placeholder{
+.search-container input::placeholder {
     font-size: 0.8rem;
 }
 
@@ -148,7 +151,7 @@ nav svg:hover{
     height: 1.5rem;
 }
 
-.search-container input:focus{
+.search-container input:focus {
     outline: none;
 }
 
@@ -161,7 +164,7 @@ nav svg:hover{
     cursor: pointer;
 }
 
-#search-icon-navbar{
+#search-icon-navbar {
     color: #76949F;
     padding: auto;
     margin: auto;
@@ -186,20 +189,21 @@ nav svg:hover{
     box-shadow: 2px 5px 5px rgba(12, 12, 12, 0.8);
 }
 
-.deslizable i{
+.deslizable i {
     color: #7D387D;
     font-size: 2.5rem;
 }
 
-.deslizable i:hover{
-   animation: deslizable-animation 300ms linear  4 alternate;
+.deslizable i:hover {
+    animation: deslizable-animation 300ms linear 4 alternate;
 }
 
 @keyframes deslizable-animation {
-    0%{
+    0% {
         transform: translateY(0px)
     }
-    100%{
+
+    100% {
         transform: translateY(-3px)
     }
 }
@@ -342,6 +346,7 @@ p {
     background-color: #f0f0f0;
     color: #8FD8A0;
 }
+
 .btn-product {
     width: 100%;
     font-size: 1.2rem;
@@ -361,6 +366,7 @@ p {
     background-color: #f0f0f0;
     color: #8FD8A0;
 }
+
 /* ------------------------------- CARRUSEL OFERTAS ------------------------------- */
 .card-container {
     display: flex;
@@ -499,7 +505,7 @@ p {
 }
 
 /* ------------------------------- FOOTER -------------------------------*/
-.footer{
+.footer {
     background: linear-gradient(180deg, #ede4ed, #9e3e9e, #7d387d);
     color: whitesmoke;
     text-align: center;
@@ -517,7 +523,7 @@ p {
     max-width: 12.5rem;
 }
 
-.box p{
+.box p {
     font-style: italic;
 }
 
@@ -540,16 +546,82 @@ small {
     margin: 1.5rem 0;
 }
 
-.icon-rd {
-    font-size: 1.5rem;
-    text-decoration: none;
-    color: #f2ede3;
-    text-align: center;
-    padding: 0 5px;
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.icon-rd:hover {
-    color: black;
+.icon-fb {
+    color: blue;
+}
+
+.icon-ig {
+    color: violet;
+
+}
+
+.icon-wpp {
+    color: green;
+}
+
+.icon-fb,
+.icon-ig,
+.icon-wpp {
+    position: relative;
+    width: 100%;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    padding: 0.8rem;
+    border-radius: 50%;
+    background-color: white;
+    transition: background-color 0.2s ease-in-out;
+    margin: 1rem;
+}
+
+.icon-text {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    display: none;
+}
+
+.icon-fb .icon-text{
+    background-color: blue;
+}
+
+.icon-ig .icon-text{
+    background-color: #ab32bb;
+
+}
+
+.icon-wpp .icon-text{
+    background-color: green;
+}
+
+.icon-fb:hover {
+    background-color: blue;
+    color: white;
+  }
+  .icon-ig:hover {
+    background-color: #ab32bb;
+    color: white;
+  }
+  .icon-wpp:hover {
+    background-color: green;
+    color: white;
+  }
+
+.icon-fb:hover .icon-text,
+.icon-ig:hover .icon-text,
+.icon-wpp:hover .icon-text {
+    display: block;
 }
 
 
@@ -557,15 +629,16 @@ small {
 
 @media (min-width: 768px) {
 
-    .logo{
+    .logo {
         position: relative;
     }
 
     .search-container {
         display: flex;
     }
-    
-    .icons-navbar, #added-product,
+
+    .icons-navbar,
+    #added-product,
     .shop-cart {
         display: none;
         /* oculta los iconos */
@@ -583,7 +656,7 @@ small {
         padding: 0.8rem;
         flex-wrap: nowrap;
     }
-    
+
 
     .logo {
         max-width: 100px;
@@ -597,7 +670,7 @@ small {
         /*quita puntos*/
     }
 
-    
+
     .nav-right {
         display: flex;
         list-style: none;
@@ -606,13 +679,13 @@ small {
         justify-content: center;
     }
 
-    .nav-right li{
+    .nav-right li {
         margin: 0px;
         font-size: 0.8rem;
     }
-      
-    
-    .nav-right a i{
+
+
+    .nav-right a i {
         display: inline;
         margin-left: 3px;
     }
@@ -627,15 +700,16 @@ small {
         text-decoration: none;
         /*quita subrayado*/
     }
-    .nav-center{
+
+    .nav-center {
         position: relative;
     }
 
-    .nav-center a{
+    .nav-center a {
         text-transform: uppercase;
     }
 
-    .active{
+    .active {
         position: absolute;
         top: 21px;
         right: 87.5%;
@@ -648,15 +722,15 @@ small {
         transition: transform 0.25s;
     }
 
-    .nav-center li:nth-child(2):hover ~ .active{
+    .nav-center li:nth-child(2):hover~.active {
         transform: translateX(4.4rem);
     }
 
-    .nav-center li:nth-child(3):hover ~ .active{
+    .nav-center li:nth-child(3):hover~.active {
         transform: translateX(10.6rem);
     }
 
-    .nav-center li:nth-child(4):hover ~ .active{
+    .nav-center li:nth-child(4):hover~.active {
         transform: translateX(15.8rem);
     }
 
@@ -712,7 +786,7 @@ small {
         text-align: center;
     }
 
-    .footer{
+    .footer {
         background: linear-gradient(90deg, #ede4ed, #9e3e9e, #7d387d);
     }
 
