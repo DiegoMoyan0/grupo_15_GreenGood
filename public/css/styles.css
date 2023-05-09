@@ -25,7 +25,7 @@ nav {
     display: flex;
     height: 4rem;
     justify-content: flex-end;
-    background: linear-gradient(90deg, #ede4edbf, #a62ca6e0, #7d387df0);
+    background: linear-gradient(90deg, #ede4edbf, #008e82, #004054);
     align-items: center;
     padding: 0px 8px;
     position: relative;
@@ -83,7 +83,7 @@ nav #added-product {
     position: absolute;
     top: 2px;
     z-index: 10;
-    right: 47px;
+    right: 59px;
 }
 
 nav #added-product input {
@@ -188,6 +188,8 @@ nav svg:hover {
     justify-content: center;
     align-items: center;
     box-shadow: 2px 5px 5px rgba(12, 12, 12, 0.8);
+    animation: deslizable-animation 700ms linear 3s infinite alternate;
+    animation: name duration timing-function delay iteration-count direction fill-mode;
 }
 
 .deslizable i {
@@ -196,7 +198,7 @@ nav svg:hover {
 }
 
 .deslizable i:hover {
-    animation: deslizable-animation 300ms linear 4 alternate;
+    opacity: 0.9;
 }
 
 @keyframes deslizable-animation {
@@ -291,13 +293,14 @@ nav svg:hover {
 
 .hero-image p {
     font-size: 2vw;
-    font-weight: 400;
+    font-weight: 600;
     position: absolute;
     text-align: center;
-    color: black;
+    font-style: oblique;
+    color: #bdc61b;
     left: 0;
     right: 0;
-    bottom: 1rem;
+    bottom: 1.5%;
     z-index: 1;
     opacity: 0;
     animation-name: fadeInText;
@@ -317,13 +320,14 @@ nav svg:hover {
 }
 
 /* ------------------------------------------------------------------- */
+
 .titles {
     display: flex;
     color: white;
     font-family: 'Roboto Serif', serif;
-    background-color: #004054;
+    background: linear-gradient(177deg, #008e82,#008e82, #ffffff, #fff);
     width: 100vw;
-    font-size: 2.5rem;
+    font-size: 1.7rem;
     font-weight: 700;
     opacity: 1.0;
     padding: 0.8rem 0.5rem;
@@ -388,17 +392,27 @@ p {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
     width: 100%;
+    background-color: #f3f2f3;
 }
 
 .card {
     flex: 1;
     margin: 0.7rem;
     padding: 1.5rem;
-    background-color: whitesmoke;
     border-radius: 5px;
     text-align: center;
     margin-bottom: 1.5rem;
+    text-align: center;
+    max-width: 315px;
+    height: fit-content;
+    background-color: white;
+    margin: 1rem 10px;
+    box-shadow: 0px 0px 10px rgba( 100 , 100 , 100);
+    cursor: pointer;
+    transition: transform .3s;
 }
 
 .card:hover {
@@ -527,7 +541,7 @@ p {
 
 /* ------------------------------- FOOTER -------------------------------*/
 .footer {
-    background: linear-gradient(180deg, #ede4ed, #ede4ed, #9e3e9e, #7d387d);
+    background: linear-gradient(178deg, #ede4edbf,#ede4edbf, #008e82, #004054);
     color: whitesmoke;
     text-align: center;
     padding: 0 0.7rem;
@@ -697,6 +711,11 @@ small {
         /*quita subrayado*/
     }
 
+    nav #added-product {
+        
+        right: 63px;
+    }
+
     .active {
         position: absolute;
         top: 21px;
@@ -798,7 +817,7 @@ small {
     }
 
     .footer {
-        background: linear-gradient(90deg, #ede4ed, #9e3e9e, #7d387d);
+        background: linear-gradient(90deg, #ede4edbf, #008e82, #004054);
     }
 
     .group-1 {
