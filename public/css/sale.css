@@ -1,0 +1,105 @@
+#section-sale {
+    background-color: #f8f8f8;
+    padding: 3rem;
+    text-align: center;
+    margin: auto;
+}
+
+#container-sale {
+    max-width: 19rem;
+    margin: 0 auto;
+}
+
+
+.label-sale {
+    font-family: 'Roboto Serif', serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    opacity: 1;
+    text-align: left;
+}
+
+.input-sale {
+    font-family: 'Roboto Serif', serif;
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.input-sale:focus {
+    outline: none;
+    border-color: #0A1504;
+}
+
+.input-sale::placeholder {
+    color: #aaa;
+}
+
+.btn-sale {
+    font-family: 'Roboto Serif', serif;
+    display: block;
+    width: 100%;
+    font-size: 0.5rem;
+    font-weight: bold;
+    opacity: 1.0;
+    padding: 0.8rem 1.2rem;
+    color: white;
+    border: 1px solid #0A1504;
+    background-color: #0A1504;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; 
+    margin: auto;
+    
+}
+
+.btn-sale:hover {
+    background-color: #0A1504;
+}
+
+.title-sale {
+    margin-bottom: 30px;
+    font-family: 'Roboto Serif', serif;
+    text-align: center;
+} 
+/* mi codigo */
+
+
+/* #section-sales {
+    background-color: #f8f8f8;
+    padding: 3rem;
+    text-align: center;
+    margin: auto;
+}
+
+#container-sale{
+    max-width: 30rem;
+    margin: 0 auto;
+}
+
+.title-sale {
+    
+    margin-bottom: 30px;
+    font-family: 'Roboto Serif', serif;
+}
+.boxtitle-sale {
+    
+    margin-bottom: 30px;
+    font-family: 'Roboto Serif', serif;
+    color: black;
+}
+
+.flex-container1 {
+    border: 1px solid #ccc;
+    background-color: #f5f2f2;
+    padding: 20px;
+    display: flex;
+    flex-flow: column wrap;
+    width: 100%;
+}
+
+#cometario {
+    opacity: 0.1;
+} */

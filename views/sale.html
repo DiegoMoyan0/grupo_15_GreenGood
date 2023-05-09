@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="images/logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/sale.css">
+    <title>Green Good</title>
+</head>
+
+<body>
+  
+    <header>
+        <nav>
+             <img class="logo" src="images/logo.png" alt="logo">
+            <div class="search-container">
+                <form class="search" action="/search">
+                    <div class="input-container">
+                        <input type="text" placeholder="Buscar...">
+                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                </form>
+            </div>
+            <div class="burger-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <ul class="nav-center">
+                <li><a href="/">Inicio</a></li>
+                <li><a href="#ofertas">Ofertas</a></li>
+                <li><a href="/product">Productos</a></li>
+                <li><a href="/faqs">Ayuda</a></li><br>
+            </ul>
+            <ul class="nav-right">
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register"></i> Register</a></li>
+                <li><a href="/productCart"> Mi carrito</a></li>
+            </ul>
+        </nav>
+    </header>
+ 
+    <main>
+        <section id="section-sale">
+        
+            <div class="title-sale"><h2>¡Hola! Contanos que vas a publicar. Empezá describiendo el producto</h2>
+            </div>   
+            <div class="title-sale">
+                <h3>¿Que tipo de producto queres vender?</h3>
+            </div>
+
+            <div id="container-sale">
+                <form>           
+                        <div>
+                            <label for="InpuTypeOfProduct" class="label-sale">Tipo de producto</label>
+                            <input type="text" class="input-sale" id="InputName" placeholder="Ej, cultivo, medicinal, cosmetico, otro.. "
+                            required />
+                        </div>
+                        <div>
+                            <label for="InputDescription" class="label-sale">Descripcion</label>
+                            <input type="text" class="input-sale" id="InputUser" placeholder="Ej, maceta plastica, aceite, crema facial.."
+                            required />
+                        </div>
+                
+                        <div>
+                            <label for="InputQuantity" class="label-sale">Cantidad</label>
+                            <input type="text" class="input-sale" id="InputDom" placeholder="Indique cantidad disponible.."
+                            required />
+                        </div>
+                        <br>
+
+                        <div>
+                            <label class="label-sale" for="foto">Foto de Producto:</label>
+                            <input class="input-sale" type="file" id="foto" name="foto" accept="image/*">
+                        </div>
+
+                        <button type="submit" class="btn-sale">
+                        Enviar
+                        </button><br>
+                        <button type="reset" class="btn-sale">
+                        Borrar
+                        </button>
+                </form>
+            </div>
+        </section> 
+    </main>
+
+    
+    <!-- SECTION FOOTER -->
+<footer class="footer">
+    <div class="group-1">
+        <div class="box">
+            <figure class="figure-logo">
+                    <img class="figure-logo-img" src="images/logo.png" alt="logo" />
+            </figure>
+        </div>
+        <div class="box">
+            <h3>Aclaración</h3>
+            <p>
+                Esta es una página para una empresa ficticia,
+                realizada para un proyecto integrador de
+                “DIGITAL HOUSE”.
+            </p>
+        </div>
+    </div>
+    <div class="group-2">
+        <small>
+            &copy; 2023 Green Good - Todos los Derechos
+            Reservados.
+        </small>
+        <!-- iconos con enlace a su sitio -->
+        <div>
+            <a href="https://www.facebook.com/green.good.co.verde" class="icon-rd"><i
+                    class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.instagram.com/green.good_/" class="icon-rd"><i
+                    class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="icon-rd"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+    </div>
+</footer>
+</body>
+
+</html>
