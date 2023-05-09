@@ -32,6 +32,7 @@ nav {
     /* modifica posicion de sus hijos y aspecto del navbar  */
 }
 
+
 .logo {
     width: 6rem;
     margin: 0px;
@@ -46,14 +47,13 @@ nav {
     0% {
         transform: scale(0.5);
     }
-
+    
     100% {
         transform: scale(1);
     }
 
 }
 
-.nav-right,
 .nav-center {
     display: none;
     /*  quita palabras */
@@ -63,11 +63,6 @@ nav a {
     color: white;
     display: inline;
     /*  colore enlaces */
-}
-
-.nav-right a:hover {
-    color: #76949F;
-    /*cambie el color del enlace al pasar sobre el*/
 }
 
 .icons-navbar {
@@ -172,6 +167,11 @@ nav svg:hover {
     height: 1.2rem;
 }
 
+.content-icons {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem;
+}
 .deslizable {
     font-size: 2.5rem;
     position: fixed;
@@ -506,7 +506,7 @@ p {
 
 /* ------------------------------- FOOTER -------------------------------*/
 .footer {
-    background: linear-gradient(180deg, #ede4ed, #9e3e9e, #7d387d);
+    background: linear-gradient(180deg, #ede4ed, #ede4ed, #9e3e9e, #7d387d);
     color: whitesmoke;
     text-align: center;
     padding: 0 0.7rem;
@@ -592,31 +592,33 @@ small {
     display: none;
 }
 
-.icon-fb .icon-text{
+.icon-fb .icon-text {
     background-color: blue;
 }
 
-.icon-ig .icon-text{
+.icon-ig .icon-text {
     background-color: #ab32bb;
 
 }
 
-.icon-wpp .icon-text{
+.icon-wpp .icon-text {
     background-color: green;
 }
 
 .icon-fb:hover {
     background-color: blue;
     color: white;
-  }
-  .icon-ig:hover {
+}
+
+.icon-ig:hover {
     background-color: #ab32bb;
     color: white;
-  }
-  .icon-wpp:hover {
+}
+
+.icon-wpp:hover {
     background-color: green;
     color: white;
-  }
+}
 
 .icon-fb:hover .icon-text,
 .icon-ig:hover .icon-text,
@@ -637,13 +639,6 @@ small {
         display: flex;
     }
 
-    .icons-navbar,
-    #added-product,
-    .shop-cart {
-        display: none;
-        /* oculta los iconos */
-    }
-
     .search-container {
         width: 20%;
         /* le da un ancho al buscador */
@@ -657,7 +652,6 @@ small {
         flex-wrap: nowrap;
     }
 
-
     .logo {
         max-width: 100px;
         margin-right: 0.8rem;
@@ -667,46 +661,19 @@ small {
     .nav-center {
         display: flex;
         list-style: none;
+        margin: auto 1rem;
+        position: relative;
         /*quita puntos*/
     }
 
-
-    .nav-right {
-        display: flex;
-        list-style: none;
-        align-items: center;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .nav-right li {
-        margin: 0px;
-        font-size: 0.8rem;
-    }
-
-
-    .nav-right a i {
-        display: inline;
-        margin-left: 3px;
-    }
-
-    .nav-center li,
-    .nav-right li {
+    .nav-center li {
         margin-right: 0.8rem;
     }
 
-    .nav-center a,
-    .nav-right a {
-        text-decoration: none;
-        /*quita subrayado*/
-    }
-
-    .nav-center {
-        position: relative;
-    }
-
     .nav-center a {
+        text-decoration: none;
         text-transform: uppercase;
+        /*quita subrayado*/
     }
 
     .active {
