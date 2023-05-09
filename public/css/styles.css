@@ -47,7 +47,7 @@ nav {
     0% {
         transform: scale(0.5);
     }
-    
+
     100% {
         transform: scale(1);
     }
@@ -172,6 +172,7 @@ nav svg:hover {
     align-items: center;
     padding: 0.8rem;
 }
+
 .deslizable {
     font-size: 2.5rem;
     position: fixed;
@@ -209,67 +210,122 @@ nav svg:hover {
 }
 
 /* ------------------------------- HERO ------------------------------- */
-#hero {
-    position: relative;
-    /*  contenedor padre */
-}
 
-.slider {
-    aspect-ratio: 10/10;
+#hero {
     width: 100vw;
     display: flex;
-    overflow: scroll;
-    scroll-snap-type: x mandatory;
-    /* modifica el contenedor donde estarian las img*/
+    justify-content: center;
+    align-items: center;
+    background-color: #F3F2F3;
 }
 
-.slider img {
+.container-video {
+    position: relative;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video {
+    width: 50%;
+    height: 100%;
+    z-index: 0;
+}
+
+.video1 {
+    margin-right: 0;
+}
+
+.video2 {
+    margin-left: 0;
+}
+
+.hero-image {
+    background-color: #F3F2F3;
+    position: absolute;
+    top: 0;
     left: 0;
-    position: sticky;
-    object-fit: cover;
-    scroll-snap-align: center;
-    /*hace que con scroll muestre la siguiente imagen*/
-
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 66vw;
+    z-index: 1;
+    overflow: hidden;
 }
 
-.title {
-    color: white;
-    font-family: 'Roboto Serif', serif;
+.hero-image img {
     position: absolute;
-    top: 3%;
-    left: 4%;
-    font-size: 2rem;
-    font-weight: 700;
-    opacity: 1.0;
-
-    /* caracteristicas del titulo  */
+    top: 2rem;
+    left: 0;
+    right: 0;
+    margin: auto;
+    max-width: 60%;
+    max-height: 60%;
+    object-fit: contain;
+    animation-name: dropImage;
+    animation-duration: 1.5s;
+    animation-timing-function: cubic-bezier(0.5, 0.05, 0.1, 0.3);
+    animation-fill-mode: forwards;
 }
 
-.subtitle {
-    color: white;
-    font-family: 'Roboto Serif', serif;
+@keyframes dropImage {
+    0% {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(50%);
+    }
+    70% {
+      transform: translateY(-10%);
+    }
+    90% {
+      transform: translateY(0%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
+
+.hero-image p {
+    font-size: 2vw;
+    font-weight: 400;
     position: absolute;
-    top: 10%;
-    left: 5%;
-    font-size: 1rem;
-    font-weight: 600;
-    opacity: 1.0;
-    padding-top: 1rem;
-
-    /* caracteristicas del subtitulo  */
+    text-align: center;
+    color: black;
+    left: 0;
+    right: 0;
+    bottom: 1rem;
+    z-index: 1;
+    opacity: 0;
+    animation-name: fadeInText;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
 }
 
+@keyframes fadeInText {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ------------------------------------------------------------------- */
 .titles {
     display: flex;
     color: white;
     font-family: 'Roboto Serif', serif;
-    background-color: #7D387D;
+    background-color: #004054;
     width: 100vw;
     font-size: 2.5rem;
     font-weight: 700;
     opacity: 1.0;
-    margin: 1rem 0;
     padding: 0.8rem 0.5rem;
     /* caracteristicas de los titulares  */
 }
@@ -280,59 +336,19 @@ p {
     opacity: 1.0;
 }
 
-.p-hero {
-    color: white;
-    font-family: 'Roboto Serif', serif;
-    position: absolute;
-    top: 17%;
-    left: 5%;
-    font-size: 0.4rem;
-    font-weight: 400;
-    opacity: 1.0;
-    padding-top: 1rem;
-    /* caracteristicas del parrafo  */
-}
-
-
-.button-hero {
-    position: absolute;
-    bottom: 5%;
-    left: 6%;
-    /* posicion del boton  */
-}
-
-.button-hero a {
-    font-family: 'Roboto Serif', serif;
-    font-size: 0.5rem;
-    color: white;
-    list-style: none;
-    text-decoration: none;
-    /* caracteristicas del enlace  */
-}
-
-.btn-hero {
-    font-size: 0.5rem;
-    font-weight: bold;
-    opacity: 1.0;
-    padding: 0.8rem 1.2rem;
-    color: white;
-    border: 1px solid #0A1504;
-    background-color: #0A1504;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
+.container a, .container-left a{
+    width: 100%;
 }
 
 .btn {
-    display: block;
     width: 100%;
     font-size: 1.2rem;
     font-weight: bold;
     opacity: 0.9;
     padding: 0.8rem 1.2rem;
     color: white;
-    border: 1px solid #8FD8A0;
-    background-color: #8FD8A0;
+    border: 1px solid #008E82;
+    background-color: #008E82;
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
@@ -344,7 +360,7 @@ p {
 .btn:hover {
     opacity: 1;
     background-color: #f0f0f0;
-    color: #8FD8A0;
+    color: #008E82;
 }
 
 .btn-product {
@@ -354,8 +370,8 @@ p {
     opacity: 0.9;
     padding: 0.8rem 1.2rem;
     color: white;
-    border: 1px solid #8FD8A0;
-    background-color: #8FD8A0;
+    border: 1px solid #008E82;
+    background-color: #008E82;
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
@@ -364,7 +380,7 @@ p {
 .btn-product:hover {
     opacity: 1;
     background-color: #f0f0f0;
-    color: #8FD8A0;
+    color: #008E82;
 }
 
 /* ------------------------------- CARRUSEL OFERTAS ------------------------------- */
@@ -461,6 +477,11 @@ p {
     /*muestra parrafo al hacer click*/
 }
 
+.fa-chevron-down:hover {
+    transition: 1s;
+    transform: rotate(-180deg);
+}
+
 .container button,
 .container-left button {
     padding: 0.8rem;
@@ -475,7 +496,7 @@ p {
 
 /* ------------------------------- ASESOR -------------------------------*/
 .container-asesor {
-    background-color: rgb(1 4 34 / 78%);
+    background-color: #004054;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -703,6 +724,29 @@ small {
 
     .card-container {
         flex-direction: row;
+    }
+
+
+    .title {
+        font-size: 3rem;
+        font-weight: 700;
+
+        /* caracteristicas del titulo  */
+    }
+
+    .subtitle {
+        font-size: 2rem;
+        font-weight: 600;
+        padding-top: 1rem;
+
+        /* caracteristicas del subtitulo  */
+    }
+
+    .p-hero {
+        font-size: 1rem;
+        font-weight: 400;
+        padding-top: 1rem;
+        /* caracteristicas del parrafo  */
     }
 
     .container img,

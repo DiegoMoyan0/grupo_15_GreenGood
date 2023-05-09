@@ -73,24 +73,25 @@
         <a href="/"> <i class="fa-solid fa-arrow-up"></i></a>
     </div>
     <!-- ------------------------------- HERO --------------------------------->
-
     <section id="hero">
-
-        <div class="slider">
-            <img class="img-fondo" src="/images/fondo.png" alt="">
-            <img class="img-fondo" src="/images/fondo-2.png" alt="">
-        </div>
-        <h1 class="title">Green Good</h1>
-        <h3 class="subtitle">Vegan Products</h3>
-        <p class="p-hero">¡Descubre el secreto del bienestar con nosotros y cultiva una vida más plena!</p>
-        <div class="button-hero">
-            <button class="btn-hero"><a href="/faqs#contact">Contactanos</a> </button>
-            <button class="btn-hero"> <a href="/product"> Ver Productos</a> </button>
+        <div class="container-video">
+            <div class="hero-image">
+                <img id="img-hero" src="/images/gg.png" alt="Hero Image">
+                <p>Aumentá tu bienestar</p>
+            </div>
+            <video autoplay muted plays-inline class="video video1">
+                <source src="/videos/inicio-2.mp4" type="video/mp4">
+            </video>
+            <video autoplay muted plays-inline class="video video2">
+                <source src="/videos/inicio.mp4" type="video/mp4">
+            </video>
         </div>
     </section>
+
+
     <!--------------------------- CARRUSEL OFERTAS--------------------------------->
     <main>
-        <h2 id="ofertas" class="titles"> Ofertas</h2>
+        <h2 id="ofertas" class="titles"> OFERTAS</h2>
         <div class="card-container">
             <div class="card">
                 <a href="/productDetail"> <img src="/images/macetas/rootshouse-10L.png" alt="Imagen 1"></a>
@@ -120,7 +121,7 @@
                     cuidado de tus plantas, como sustratos, fertilizantes y pesticidas orgánicos.</p>
             </div>
             <img src="/images/cultivo.jpg" alt="Imagen">
-            <button class="btn"> <a href="/product"> Ver Productos</a> </button>
+            <a href="/product"><button class="btn"> Ver Productos</button></a>
         </div>
         <div class="container">
             <div class="content">
@@ -131,7 +132,7 @@
                     manera responsable y consciente.</p>
             </div>
             <img src="/images/informacion.jpg" alt="Imagen">
-            <button class="btn"> <a href="/info"> Ver Novedades</a> </button>
+            <a href="/info"><button class="btn"> Ver Novedades</button></a>
         </div>
         <div class="container-left">
             <div class="content">
@@ -142,7 +143,7 @@
                     ayudarte..</p>
             </div>
             <img src="/images/faqs.jpg" alt="Imagen">
-            <button class="btn"> <a href="/faqs">Preguntas</a> </button>
+            <a href="/faqs"><button class="btn">Preguntas</button></a>
         </div>
         <div class="container">
             <div class="content">
@@ -154,7 +155,7 @@
                     efectividad.</p>
             </div>
             <img src="/images/medicina.jpg" alt="Imagen">
-            <button type="submit" class="btn"> <a href="/product"> Ver Productos</a></button>
+            <a href="/product"><button class="btn">Ver Productos</button></a>
         </div>
     </main>
     <!---------------------------- ASESORAMIENTO--------------------------------->
