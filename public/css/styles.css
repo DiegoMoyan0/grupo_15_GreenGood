@@ -140,7 +140,6 @@ nav svg:hover {
 
 .search-container input {
     border-radius: 5rem;
-    font-family: 'Roboto Serif', serif;
     padding: 0.25rem 0.5rem;
     border: none;
     font-size: 0.7rem;
@@ -328,19 +327,6 @@ nav svg:hover {
 
 /* ------------------------------------------------------------------- */
 
-.titles {
-    display: flex;
-    color: white;
-    font-family: 'Roboto Serif', serif;
-    background-color: #10142F;
-    width: 100vw;
-    font-size: 1.7rem;
-    font-weight: 700;
-    opacity: 1.0;
-    padding: 0.8rem 0.5rem;
-    /* caracteristicas de los titulares  */
-}
-
 p {
     font-size: 1.2rem;
     font-weight: 400;
@@ -454,7 +440,6 @@ p {
     width: 12rem;
     display: flex;
     justify-content: center;
-    font-family: 'Roboto Serif', serif;
     font-size: 0.9rem;
     padding: 5px;
     color: white;
