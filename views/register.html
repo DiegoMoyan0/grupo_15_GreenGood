@@ -74,6 +74,8 @@
     </div>
 
     <main>
+        <section class="section-register">
+        <!--
         <section id="section-register">
             <div id="container-register">
                 <form action="/">
@@ -132,11 +134,66 @@
                     <button type="reset" class="btn-register">
                         Borrar
                     </button>
-                    <!-- Como cliente quiero poder recuperar la contraseña para poder ingresar si me la
-olvido -->
+                    Como cliente quiero poder recuperar la contraseña para poder ingresar si me la olvido 
                 </form>
             </div>
-        </section>
+        </section> -->
+        <div class="container">
+			<span class="span-title-register">Register</span>
+			<form class="form-login">
+				<div class="container-input">
+                    <label for="InputName" class="label-register">Nombre y apellido</label>
+					<input type="text" class="input-register" placeholder="Escriba su nombre" required class="form-input" />
+				</div>
+				<div class="container-input">
+                    <label for="InputName" class="label-register">Email</label>
+					<input type="text" class="input-register" placeholder="Escriba su Email" required class="form-input" />
+									</div>
+                <div class="container-input">
+                    <label for="InputName" class="label-register">Nombre de usuario</label>
+					<input type="text" class="input-register" placeholder="Escriba su nombre de usuario" required class="form-input" />
+									</div>
+                <div class="container-input">
+                    <label for="InputDate" class="label-register">Fecha de nacimiento</label>
+                    <input type="date" class="input-register" id="InputDate" required />
+									</div>
+                <div class="container-input">
+                    <label class="label-register">Tipo de Perfil</label><br><br>
+                    <label class="label-register" for="Vendedor">Vendedor</label>
+                    <input type="radio" id="Vendedor" name="tipo-perfil" value="Vendedor">
+                    <label class="label-register" for="Comprador">Comprador</label>
+                    <input type="radio" id="Comprador" name="tipo-perfil" value="Comprador">
+									</div>
+                <div class="container-input">
+                    <label class="label-register" for="foto">Foto de usuario:</label>
+                    <input class="input-register" type="file" id="foto" name="foto" accept="image/*">
+					<span class="span-bar"></span>
+				</div>
+                <div class="container-input">
+                    <label for="password" class="label-register">Contraseña</label>
+                    <input type="password" class="input-register" id="password" placeholder="Escriba su contraseña..."
+                        required />
+									</div>
+                <div class="container-input">
+                    <input type="password" class="input-register" id="password-confirm"
+                    placeholder="Repita su contraseña..." required />
+									</div>
+
+                <button type="submit" class="btn-login">
+                    Enviar
+                </button>
+                <button type="submit" class="btn-login">
+                    Borrar
+                </button>
+                <a href="/login">Ya tengo una cuenta</a>
+			</form>
+		</div>
+
+
+
+
+
+    </section>
     </main>
 
 <!-- SECTION FOOTER -->
