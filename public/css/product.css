@@ -264,14 +264,16 @@ main {
 
 
 .circle {
-    margin: 0px;
+    margin: 10px 0px 10px 10px;
     background-color: white;
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
     /* crea circulos  */
 }
-
+.info-comment h6{
+    font-size: 1rem;
+}
 .p-comments {
     margin: 0.8rem 0;
 }
@@ -282,6 +284,7 @@ main {
 
 .fa-star {
     color: #a47e1b;
+    padding: 5px;
 }
 
 /*BREAK TABLET*/
