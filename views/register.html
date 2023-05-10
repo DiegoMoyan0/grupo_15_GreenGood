@@ -143,19 +143,19 @@
 			<form class="form-login">
 				<div class="container-input">
                     <label for="InputName" class="label-register">Nombre y apellido</label>
-					<input type="text" class="input-register" placeholder="Escriba su nombre" required class="form-input" />
+					<input type="text" class="input-register" placeholder="Escriba su nombre" required minlength="6" class="form-input" />
 				</div>
 				<div class="container-input">
                     <label for="InputName" class="label-register">Email</label>
-					<input type="text" class="input-register" placeholder="Escriba su Email" required class="form-input" />
+					<input type="email" class="input-register" placeholder="Escriba su Email" required minlength="6" class="form-input" />
 									</div>
                 <div class="container-input">
                     <label for="InputName" class="label-register">Nombre de usuario</label>
-					<input type="text" class="input-register" placeholder="Escriba su nombre de usuario" required class="form-input" />
+					<input type="text" class="input-register" placeholder="Escriba su nombre de usuario" required minlength="6" class="form-input" />
 									</div>
                 <div class="container-input">
                     <label for="InputDate" class="label-register">Fecha de nacimiento</label>
-                    <input type="date" class="input-register" id="InputDate" required />
+                    <input type="date" min="1900-01-01" min="2023-01-01" class="input-register" id="InputDate" required />
 									</div>
                 <div class="container-input">
                     <label class="label-register">Tipo de Perfil</label><br><br>
@@ -171,8 +171,7 @@
 				</div>
                 <div class="container-input">
                     <label for="password" class="label-register">Contraseña</label>
-                    <input type="password" class="input-register" id="password" placeholder="Escriba su contraseña..."
-                        required />
+                    <input type="password" class="input-register" id="password" minlength="8" placeholder="Escriba su contraseña..." required />
 									</div>
                 <div class="container-input">
                     <input type="password" class="input-register" id="password-confirm"

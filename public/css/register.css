@@ -235,7 +235,7 @@ to {
 	box-shadow: 0 2px 5px gray;
 	border-radius: 10px;
 	background-color: inherit;
-	max-width: 80%;
+	max-width: 90%;
     height: 50rem;
 	transform: translateX(1.5rem);
 	animation-duration: 1.5s;
@@ -286,6 +286,7 @@ to {
 	}
 /* Animación del formulario para el nuevo tamaño de pantalla*/
 	.form-login {
+        max-width: 80%;
 		transform: translateX(5rem);
 		animation-duration: 1.5s;
 		animation-name: Form-appear;	
