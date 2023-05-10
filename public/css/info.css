@@ -53,6 +53,7 @@
   opacity: 0;
   transition: opacity 30s;
   padding: 5px;
+  border-radius: 15px;
 }
 
 .slider-info img:first-child {
