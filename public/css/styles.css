@@ -196,7 +196,7 @@ nav svg:hover {
 }
 
 .deslizable i {
-    color: #7D387D;
+    color: #10142f;
     font-size: 2.5rem;
 }
 
@@ -747,7 +747,7 @@ small {
     .active {
         position: absolute;
         top: 21px;
-        right: 88%;
+        right: 88.3%;
         z-index: 200;
         height: 2.5px;
         width: 2.2rem;
@@ -758,21 +758,24 @@ small {
     }
 
     .nav-center li:nth-child(2):hover~.active {
-        transform: translateX(5.1rem);
+        transform: translateX(3.4rem);
     }
 
     .nav-center li:nth-child(3):hover~.active {
-        transform: translateX(11.1rem);
+        transform: translateX(8.5rem);
     }
 
     .nav-center li:nth-child(4):hover~.active {
-        transform: translateX(15.5rem);
+        transform: translateX(14.6rem);
+    }
+
+    .nav-center li:nth-child(5):hover~.active {
+        transform: translateX(18.9rem);
     }
 
     .card-container {
         flex-direction: row;
     }
-
 
     .title {
         font-size: 3rem;
