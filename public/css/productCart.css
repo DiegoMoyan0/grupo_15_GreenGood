@@ -3,6 +3,9 @@
 main{
     font-size: 12px;
     font-family: 'Roboto Serif', serif;
+    background-color: whitesmoke;
+    border-bottom: solid 1px whitesmoke;
+    box-shadow: 0px 0px 25px white;
 }
 
 .safe-site{
@@ -12,7 +15,6 @@ main{
     display: flex;
     justify-content: flex-end;
     align-items: center;
-   
 }
 
 .safe-site p{
@@ -40,6 +42,7 @@ main{
     padding: 10px 30px;
     box-shadow: 0px 0px 5px rgb(100, 100, 100);
 }
+
 .login-cart-container h4{
     font-weight: 600;
 }
@@ -80,7 +83,8 @@ main{
 /* -------Productos Agregados--------- */
 
 .shop-cart-containter{
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: #10142f;
+    border: none;
     box-shadow: 0px 5px 0px rgba(0, 0, 0, 0.1);  
 }
 
@@ -90,6 +94,7 @@ main{
     align-items: center;
     flex-direction: column;
     flex-wrap: wrap;
+    margin: 0px 5px;
 }
 
 .order-head{
@@ -104,15 +109,14 @@ main{
 
 .order-title h2{
     display: inline;
-    font-size: 1.5rem;
-    color: rgba(0, 0, 0, 0.7);
-    
+    font-size: 1.7rem;
+    color: whitesmoke;   
 }
 
 .order-title i{
-    font-size: 20px;
-    margin-right: 10px;
-    color: rgba(0, 0, 0, 0.7);
+    font-size: 25px;
+    margin: 0px 10px;
+    color: whitesmoke;
 }
 
 .empty-cart{
@@ -120,6 +124,7 @@ main{
     cursor: pointer;
     font-weight: 600;
     color: rgb(202, 47, 202);
+    margin-right: 10px;
 }
 
 /* -------Articulos------ */
@@ -283,7 +288,8 @@ td img {
 /* -----Detalle de compra------- */
 
 .order-detail-container{
-    background-color: rgba(0, 0, 0, 0.18);
+    background-color: #10142f;
+    color: whitesmoke;
     padding: 10px;
     position: relative;
 }
@@ -291,7 +297,7 @@ td img {
 .order-detail-head h2{
     display: block;
     font-size: 1.5rem;
-    color: rgba(0, 0, 0, 0.7);
+    color: whitesmoke;
     text-align: center;
     width: 100%;
 }
@@ -320,8 +326,8 @@ td img {
 }
 
 .voucher-container input[type="tel" i] {
-    width: 5.7rem;
-    font-size: 0.5rem;
+    width: 10rem;
+    font-size: 0.7rem;
     margin-left: 5px;
     font-weight: 600;
     text-transform: uppercase;
@@ -334,7 +340,7 @@ td img {
 }
 
 .voucher-container input[type="tel" i]::placeholder{
-    font-size: 0.4rem;
+    font-size: 0.7rem;
     text-transform: capitalize;
     text-align: center;
 }
@@ -354,7 +360,7 @@ td img {
     margin: auto;
     margin-top: 15px;
     font-size: 1rem;
-    color: rgba(0, 0, 0, 0.7);
+    color: whitesmoke;
 }
 
 .payment-items{
@@ -380,7 +386,7 @@ td img {
 
 #division{
     width: 82%;
-    background: rgba(0, 0, 0, 0.5);
+    background: white;
     height: 1.2px;
     position: absolute;
     top: 28%;
@@ -405,7 +411,7 @@ td img {
     display: block;
     width: 90%;
     height: 10px;
-    border: solid 1px rgba(0, 0, 0, 0.2);
+    border: solid 1px whitesmoke;
     border-radius: 20px;
     -webkit-appearance: none;
 }
@@ -447,19 +453,19 @@ td img {
     font-size: 1.8rem;
     display: block;
     margin: auto;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: whitesmoke;
     border-radius: 50%;
     text-align: center;
     padding-top: 19px;
     margin-bottom: 5px;
 }
 .payment-container i:hover{
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 0px 10px white;
 }
 
 .payment-container a{
     text-decoration: none;
-    color: rgba(0, 0, 0, 0.8);
+    color: whitesmoke;
 }
 
 
@@ -501,9 +507,10 @@ td img {
 #shopping-back{
     border: none;
     background-color: rgba(0, 0, 0, 0.2);
-    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 7px white;
     color: white;
     font-weight: 600;
+    margin-top: 10px;
     transition: all 200ms;
 }
 
@@ -518,13 +525,28 @@ td img {
     border-radius: 5px;
 }
 
-#reset-cart{
+#fqs-cart{
     border: none;
     background-color: transparent;
-    text-decoration: underline;
-    color: rgb(44, 39, 41);
-    font-weight: 600;
 }
+
+#fqs-cart a{
+    text-decoration: none;
+    color: whitesmoke;
+    font-weight: 900;
+    text-decoration: underline;
+    text-decoration-color: white;
+}
+
+/* ----------------FOOOTER------------ */
+
+footer{
+    border-top: 1px solid;
+    box-shadow: 0px 0px 25px white;
+}
+
+
+/* ----------------MEDIA QUERIES------------ */
 
 @media (min-width: 810px){
 
@@ -545,6 +567,7 @@ td img {
         width: calc(100% - 450px);
         display: inline-block;
         min-height: 620px;
+        max-width: 800px;
     }
 
 
@@ -554,16 +577,11 @@ td img {
 
     .order-detail-container{
         width: 440px;
-       float: right;
+        float: right;
         background-color: transparent;
         margin: auto;
     }
     
-
-    .payment-container i{
-        background-color: rgb(0 0 0 / 16%);
-    }
-
 
     @media (min-width: 1200px){
         
@@ -610,6 +628,12 @@ td img {
             font-weight: 900;
         }
     
+    }
+}
+
+@media (min-width: 1200px){
+    .order-detail-container{
+        margin-right: 8vw;
     }
 
 
