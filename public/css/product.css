@@ -306,6 +306,39 @@ main {
   padding: 5px;
 }
 
+@media (max-width: 700px){
+
+  .section-sub-category {
+    flex-direction: row;
+  }
+
+  .content-art{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .product{
+    width: 150px;
+    height: 300px;
+    max-width: 150px
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+
+  .btn-product {
+    width: 140px;
+    font-weight: bolder;
+    font-size: 0.7rem;
+    opacity: 0.9;
+    padding: 0.8rem 0.1rem;
+  }
+
+}
+
 /*BREAK TABLET*/
 
 @media (min-width: 768px) {
