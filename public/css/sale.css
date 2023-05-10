@@ -1,8 +1,10 @@
 #section-sale {
+    width: 80%;
     background-color: #f8f8f8;
     padding: 3rem;
     text-align: center;
-    margin: auto;
+    margin: 1rem auto;
+    border-radius: 10px;
 }
 
 #container-sale {
@@ -38,7 +40,6 @@
 }
 
 .btn-sale {
-    font-family: 'Roboto Serif', serif;
     display: block;
     width: 100%;
     font-size: 0.5rem;
@@ -58,48 +59,3 @@
 .btn-sale:hover {
     background-color: #0A1504;
 }
-
-.title-sale {
-    margin-bottom: 30px;
-    font-family: 'Roboto Serif', serif;
-    text-align: center;
-} 
-/* mi codigo */
-
-
-/* #section-sales {
-    background-color: #f8f8f8;
-    padding: 3rem;
-    text-align: center;
-    margin: auto;
-}
-
-#container-sale{
-    max-width: 30rem;
-    margin: 0 auto;
-}
-
-.title-sale {
-    
-    margin-bottom: 30px;
-    font-family: 'Roboto Serif', serif;
-}
-.boxtitle-sale {
-    
-    margin-bottom: 30px;
-    font-family: 'Roboto Serif', serif;
-    color: black;
-}
-
-.flex-container1 {
-    border: 1px solid #ccc;
-    background-color: #f5f2f2;
-    padding: 20px;
-    display: flex;
-    flex-flow: column wrap;
-    width: 100%;
-}
-
-#cometario {
-    opacity: 0.1;
-} */
