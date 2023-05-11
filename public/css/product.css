@@ -10,14 +10,14 @@ main {
   margin-top: 10px;
   margin-left: 0.2rem;
   padding: 10px 20px;
-  z-index: 999;
+  z-index: 1;
   width: 100%;
   background-color: #ab32bb;
   box-shadow: 0px 0px 10px #d900f6;
   border-radius: 18% 7% / 100% 11%;
   text-align: center;
   opacity: 1;
-  animation: show 3s linear;
+  animation: show 0.5s linear;
 }
 
 @keyframes show {
@@ -28,7 +28,7 @@ main {
 
   }
 
-  70% {
+  30% {
     opacity: 0.01;
     transform: translateX(30px);
 
@@ -162,7 +162,7 @@ main {
 .product {
   flex: 1;
   margin: 0.7rem;
-  padding: 1.5rem;
+  padding: 1.2rem;
   border-radius: 5px;
   text-align: center;
   margin-bottom: 1.5rem;
@@ -179,6 +179,7 @@ main {
 .product img {
   width: 100%;
   border-bottom: solid 1px #ebebeb;
+  border-radius: 10px;
   transition: transform 0.7s;
 }
 
@@ -198,7 +199,7 @@ main {
 
 .content-art {
   text-align: left;
-  padding: 1rem;
+  padding: 0.9rem 0.3rem;
   position: relative;
 }
 
@@ -221,6 +222,7 @@ main {
   top: -10px;
   animation: border-highlight 1s linear infinite;
 }
+
 
 @keyframes border-highlight {
   0% {
@@ -306,7 +308,7 @@ main {
   padding: 5px;
 }
 
-@media (max-width: 700px){
+@media (max-width: 767px){
 
   .section-sub-category {
     flex-direction: row;
@@ -317,12 +319,15 @@ main {
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
+    margin: 0px;
+    padding: 0px;
+    padding-top: 18px;
   }
 
   .product{
     width: 150px;
-    height: 300px;
-    max-width: 150px
+    max-width: 150px;
+    padding: 1.2rem;
   }
 
   .description {
@@ -330,11 +335,9 @@ main {
   }
 
   .btn-product {
-    width: 140px;
-    font-weight: bolder;
     font-size: 0.7rem;
-    opacity: 0.9;
-    padding: 0.8rem 0.1rem;
+    padding: 0.8rem;
+    margin-top: 10px;
   }
 
 }
