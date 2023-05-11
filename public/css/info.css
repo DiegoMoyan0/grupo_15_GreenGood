@@ -68,14 +68,14 @@
   /* Establece una duración de visualización de 10 segundos para la segunda imagen */
   animation: slide 30s infinite;
   animation-delay: 10s;
-  z-index: 2;
+  z-index: 1;
 }
 
 .slider-info img:nth-child(3) {
   /* Establece una duración de visualización de 10 segundos para la tercera imagen */
   animation: slide 30s infinite;
   animation-delay: 20s;
-  z-index: 3;
+  z-index: 1;
 }
 
 @keyframes slide {
