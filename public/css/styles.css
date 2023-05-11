@@ -704,6 +704,10 @@ small {
 
 @media (min-width: 768px) {
 
+    #icon-home-navbar{
+        display: none;
+    }
+
     .logo {
         position: relative;
     }
