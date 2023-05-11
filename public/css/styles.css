@@ -692,14 +692,13 @@ small {
 
 /* ------------------------------- BREAK TABLET  ------------------------------- */
 
-@media (max-width: 700px){
+@media (max-width: 767px){
     .content-art{
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
         align-items: center;
     }
-
 }
 
 @media (min-width: 768px) {
