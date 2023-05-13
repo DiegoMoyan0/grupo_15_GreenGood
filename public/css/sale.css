@@ -1,61 +1,81 @@
-#section-sale {
-    width: 80%;
-    background-color: #f8f8f8;
-    padding: 3rem;
-    text-align: center;
-    margin: 1rem auto;
-    border-radius: 10px;
-}
-
-#container-sale {
-    max-width: 19rem;
-    margin: 0 auto;
-}
-
-
-.label-sale {
-    font-family: 'Roboto Serif', serif;
-    font-size: 0.8rem;
-    font-weight: 400;
-    opacity: 1;
-    text-align: left;
-}
-
-.input-sale {
-    font-family: 'Roboto Serif', serif;
-    width: 100%;
-    padding: 0.8rem;
-    margin-bottom: 1rem;
+.publication {
+    color: #fff;
+    padding: 20px;
+  }
+  
+  .btn-publication {
+    background-color: #16a085;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
     border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-.input-sale:focus {
-    outline: none;
-    border-color: #0A1504;
-}
-
-.input-sale::placeholder {
-    color: #aaa;
-}
-
-.btn-sale {
-    display: block;
+    margin-bottom: 20px;
+  }
+  
+  .array-publication {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .item-publication {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #8e44ad;
+    padding-bottom: 20px;
+  }
+  
+  .img-publication {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    margin-right: 20px;
+  }
+  
+  .img-publication img {
     width: 100%;
-    font-size: 0.5rem;
-    font-weight: bold;
-    opacity: 1.0;
-    padding: 0.8rem 1.2rem;
-    color: white;
-    border: 1px solid #0A1504;
-    background-color: #0A1504;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .info-publication {
+    flex: 1;
+  }
+  
+  .title-publication {
+    color: #2980b9;
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  
+  .desc-publication {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .btns-publication {
+    display: flex;
+    align-items: center;
+  }
+  
+  .btn-edit {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    font-size: 16px;
     border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out; 
-    margin: auto;
-    
-}
-
-.btn-sale:hover {
-    background-color: #0A1504;
-}
+    margin-right: 10px;
+  }
+  
+  .btn-delete {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+  
