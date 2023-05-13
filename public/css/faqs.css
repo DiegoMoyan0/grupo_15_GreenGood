@@ -1,45 +1,35 @@
-/*
 
-.faqs {
-    text-align: center;
-    background-color: #E8E8E8;
-
-}
-
-.form-faqs {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    background-color: #E8E8E8;
-}
-
-.content-faqs {
-}
-*/
-
-/* Estilos - PREGUNTASv2 */
+/* Estilos - PREGUNTAS */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto+Serif&display=swap');
 
-main{
-  margin-bottom: 20px;
+.main-FAQ{
+  margin-top: 4rem;
+  margin-bottom: 4rem;
 }
 
-main, h2, .container-faq, #contact {
-    margin-top: 20px;
-    margin-bottom: 20px;
+.header-FAQ{
+  font-size: 3rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  color: white;
+}
+
+.container-faq, #contact {
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
     text-align: center;
-    font-family: 'Roboto Serif', serif;
 }
 
 .container-faq {
     position: relative;
-    margin-bottom: 1.2rem 0;
+    margin-bottom: 1.2rem;
     margin-left: auto;
     margin-right: auto;
     width: auto;
     max-width: 70%;
+    box-shadow: 5px 5px darkgray;
+    border-radius: 8px;
   }
 
   /* Oculta el checkbox para que no se muestre al lado del label*/
@@ -82,6 +72,7 @@ main, h2, .container-faq, #contact {
     margin-left: 5px;
     content: '+';
     font-weight: bold;
+    transition: all 0.5s;
 }
 
    /*Estiliza la transición del contenedor dropdown que se colapsa/despliega al hacer click en el label y el input checkbox oculto */
@@ -106,6 +97,15 @@ main, h2, .container-faq, #contact {
     max-height: 80vh;
   }
 
+  /* efecto de rotac ión al pseudo elemento del label */
+
+  .checkbox1:checked + .label-question1::after,
+  .checkbox2:checked + .label-question2::after,
+  .checkbox3:checked + .label-question3::after,
+  .checkbox4:checked + .label-question4::after,
+  .checkbox5:checked + .label-question5:after{
+    transform: rotate(90deg)
+  }
 
   .container-dropdown1 .container-answer1,
   .container-dropdown2 .container-answer2,
@@ -120,3 +120,26 @@ main, h2, .container-faq, #contact {
     background: whitesmoke;
   }
 
+  @media (min-width: 768px) {
+
+    .label-question1,
+    .label-question2,
+    .label-question3,
+    .label-question4,
+    .label-question5 { 
+      min-height: 10vh;
+    }
+
+  }
+
+  @media (min-width: 1279px) {
+
+    .label-question1,
+    .label-question2,
+    .label-question3,
+    .label-question4,
+    .label-question5 { 
+      min-height: 8vh;
+    }
+
+  }

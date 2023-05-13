@@ -8,13 +8,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="icon" href="images/logo-sinfondo.png" type="image/x-icon" />
+    <link rel="icon" href="images/logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/sale.css">
     <title>Green Good</title>
 </head>
 
 <body>
+
     <header>
         <nav>
             <a href="/"><img class="logo" src="images/home/logo.png" alt="logo"></a>
@@ -76,78 +77,72 @@
             </div>
         </nav>
     </header>
-    <div class="deslizable">
-        <a href="/"> <i class="fa-solid fa-arrow-up"></i></a>
-    </div>
+
     <main>
-        <section class="section-login">
+        <section id="section-sale">
 
-        <!--
-            <div id="container-login">
-                <form class="form-login" action="/">
-                    <h3 class="login-title">Login</h3>
+            <div class="title-sale">
+                <h2>¡Hola! Contanos que vas a publicar.<br><br> Empezá describiendo el producto</h2>
+            <br></div>
+
+            <div id="container-sale">
+                <form action="/" method="POST">
                     <div>
-                        <label for="InputName" class="label-login">Correo electrónico</label>
-                        <input type="email" class="input-login" id="InputName"
-                            placeholder="Escriba aquí su correo electrónico" required />
+                        <label class="label-sale" for="foto">Foto de Producto:</label>
+                        <input class="input-sale" type="file" id="foto" name="foto" accept="image/*">
                     </div>
                     <div>
-                        <label for="exampleInputEmail1" class="label-login">Contraseña</label>
-                        <input type="password" class="input-login" id="exampleInputEmail1"
-                            placeholder="Escriba aquí su contraseña" required />
+                        <label for="InputName" class="label-sale">Nombre del producto</label>
+                        <input type="text" class="input-sale" id="InputName" placeholder="Ingrese Nombre..."
+                            minlength="4" maxlength="10" required />
                     </div>
-                    <label for="">Mantener Sesión iniciada</label>
-                    <input type="checkbox">
-
-                    <button type="submit" class="btn-login">
-                        Ingresar
+                    <div>
+                        <label for="InputPrice" class="label-sale">Precio</label>
+                        <input type="number" class="input-sale" id="InputPrice" placeholder="Ingrese Precio..."
+                            required />
+                    </div>
+                    <div>
+                        <label class="label-sale">Categoría:</label>
+                        <select name="categoria" id="" class="input-sale">
+                            <option value="Sustrato">Sustrato</option>
+                            <option value="Macetas">Macetas</option>
+                            <option value="Bandeja">Bandeja</option>
+                            <option value="Cosmetica">Cosmetica</option>
+                            <option value="Aceites">Aceites</option>
+                            <option value="Cremas">Cremas</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="InputDescription" class="label-sale">Descripcion</label>
+                        <input type="text" class="input-sale" id="InputDescription"
+                             required />
+                    </div>
+                    <div>
+                        <label for="InputCarac" class="label-sale">Caracteristicas</label>
+                        <input type="text" class="input-sale" id="InputCarac"
+                            required />
+                    </div>
+                    <div>
+                        <label class="label-sale">Envio Gratis</label><br><br>
+                        <label for="si">Si</label>
+                        <input type="radio" id="si" name="envio" value="si">
+                        <label for="no">No</label>
+                        <input type="radio" id="Comprador" name="envio" value="no">
+                    </div><br>
+                    <br>
+                    <button type="submit" class="btn-sale">
+                        Enviar
+                    </button><br>
+                    <button type="reset" class="btn-sale">
+                        Borrar
                     </button>
-                    <button type="submit" class="btn-login">
-                        Cancelar
-                    </button>
-                    <a href=""> Recuperar Contraseña</a>
                 </form>
             </div>
         </section>
-        -->
-
-<!--   Logint test  -->
-
-		<div class="container">
-			<span class="span-title">Login</span>
-			<form class="form-login">
-				<div class="container-input">
-					<input type="text" placeholder="Email" required class="form-input" />
-					<span class="span-bar"></span>
-				</div>
-				<div class="container-input">
-					<input
-						type="password"
-						placeholder="Contraseña"
-						required
-						class="form-input"
-					/>
-					<span class="span-bar"></span>
-				</div>
-                <div class="container-sesion">
-                    <label  for="sesion">Mantener Sesión iniciada</label>
-                    <input name="sesion" type="checkbox">
-                 </div>
-                <button type="submit" class="btn-login">
-                    Ingresar
-                </button>
-                <button type="submit" class="btn-login">
-                    Cancelar
-                </button>
-                <a class="enlace" href=""> Recuperar Contraseña</a>
-                <a class="enlace" href="/register"> Registrarse </a>
-			</form>
-		</div>
-
-    </section>
-
-
     </main>
+
+
+    <!---------------------------------  FOOTER ---------------------------- -->
     <footer class="footer">
         <div class="group-1">
             <div class="box">
