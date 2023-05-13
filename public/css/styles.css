@@ -763,6 +763,11 @@ small {
 
     .nav-center li {
         margin-right: 0.8rem;
+        border-bottom: solid 3px transparent;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        height: 1.5rem;
+        transition: border-bottom 0.6s;
     }
 
     .nav-center a {
@@ -776,34 +781,37 @@ small {
         right: 63px;
     }
 
-    .active {
-        position: absolute;
-        top: 21px;
-        right: 88.3%;
-        z-index: 200;
-        height: 2.5px;
-        width: 2.2rem;
-        background-color: #64ff00;
-        box-shadow: 0px 0px 4px rgb(241 245 242);
-        border-radius: 70px;
-        transition: transform 0.25s;
+    
+    .nav-center li:nth-child(1):hover{
+       border-bottom-left-radius: 5px;
+       border-bottom-right-radius: 5px;
+       border-bottom: solid 3px #64ff00; 
+    }
+        
+    .nav-center li:nth-child(2):hover{
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-bottom: solid 3px #64ff00;
     }
 
-    .nav-center li:nth-child(2):hover~.active {
-        transform: translateX(3.4rem);
+    .nav-center li:nth-child(3):hover{
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-bottom: solid 3px #64ff00;   
     }
 
-    .nav-center li:nth-child(3):hover~.active {
-        transform: translateX(8.5rem);
+    .nav-center li:nth-child(4):hover{
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-bottom: solid 3px #64ff00;   
     }
 
-    .nav-center li:nth-child(4):hover~.active {
-        transform: translateX(14.6rem);
+    .nav-center li:nth-child(5):hover{
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-bottom: solid 3px #64ff00;  
     }
 
-    .nav-center li:nth-child(5):hover~.active {
-        transform: translateX(18.9rem);
-    }
 
     .card-container {
         flex-direction: row;
