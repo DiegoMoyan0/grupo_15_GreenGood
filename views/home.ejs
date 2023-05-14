@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <%- include('./partials/head')%>
+
+<body>
+    <!--------------------------------- NAVBAR --------------------------------->
+
+    <%- include('./partials/header')%>
+
+    <!-- ------------------------------- HERO --------------------------------->
+    
+    <section id="hero">
+        <div class="container-video">
+            <div class="hero-image">
+                <img id="img-hero" src="/images/home/gg.png" alt="Hero Image">
+                <p>Aumentá tu bienestar</p>
+            </div>
+            <video autoplay muted plays-inline class="video video1">
+                <source src="/videos/inicio-2.mp4" type="video/mp4">
+            </video>
+            <video autoplay muted plays-inline class="video video2">
+                <source src="/videos/inicio.mp4" type="video/mp4">
+            </video>
+        </div>
+    </section>
+
+
+    <!--------------------------- CARRUSEL OFERTAS--------------------------------->
+    <main>
+        <!-- <h2 id="ofertas" class="titles"> OFERTAS</h2> -->
+        <div class="card-container">
+            <div class="card">
+                <a href="/productDetail"> <img src="/images/product/macetas/rootshouse-10L.png" alt="Imagen 1"></a>
+                <p class="send-card">OFERTA</p>
+                <p class="desc-card"> Maceta Mad Rocket</p>
+                <p class="price-card"> $3500</p>
+                <a href="/productCart"> <button type="submit" class="btn-product"> Agregar al carrito</button></a>
+            </div>
+            <div class="card">
+                <a href="/productDetail"> <img src="/images/product/medicinales-cosmetica/detox-facial-30ml.png"
+                        alt="Imagen 1"></a>
+                <p class="send-card">OFERTA</p>
+                <p class="desc-card"> Detox Facial</p>
+                <p class="price-card"> $3500</p>
+                <a href="/productCart"> <button type="submit" class="btn-product"> Agregar al carrito</button></a>
+            </div>
+            <div class="card">
+                <a href="/productDetail"> <img src="/images/product/medicinales-cosmetica/crema-hidratante-Xml.png"
+                        alt="Imagen 1"></a>
+                <p class="send-card">OFERTA</p>
+                <p class="desc-card"> Unguento</p>
+                <p class="price-card"> $3500</p>
+                <a href="/productCart"> <button type="submit" class="btn-product"> Agregar al carrito</button></a>
+            </div>
+            <div class="card">
+                <a href="/productDetail"> <img src="/images/product/medicinales-cosmetica/crema-hidratante-Xml.png"
+                        alt="Imagen 1"></a>
+                <p class="send-card">OFERTA</p>
+                <p class="desc-card"> Unguento</p>
+                <p class="price-card"> $3500</p>
+                <a href="/productCart"> <button type="submit" class="btn-product"> Agregar al carrito</button></a>
+            </div>
+        </div>
+        <!-------------------------------- INICIO -------------------------------->
+        <div class="div-begin">
+            <div class="container-left" id="div-1">
+                <div class="content">
+                    <h2>Productos de cultivo <i class="fa-solid fa-chevron-down"></i></h2>
+                    <p class="p-ocult">Aquí encontrarás todo lo necesario para cultivar tu propia planta de cannabis, desde
+                        semillas y
+                        nutrientes hasta herramientas especializadas. También ofrecemos una variedad de productos para el
+                        cuidado de tus plantas, como sustratos, fertilizantes y pesticidas orgánicos.</p>
+                </div>
+                <img src="/images/home/cultivo.jpg" alt="Imagen">
+                <a href="/product"><button class="btn"> Ver Productos</button></a>
+            </div>
+            <hr class="div-home" id="div-1">
+            <div class="container" id="div-2">
+                <div class="content">
+                    <h2>Informacion <i class="fa-solid fa-chevron-down"></i> </h2>
+                    <p class="p-ocult">Encuentra toda la información que necesitas sobre el cultivo y cuidado del cannabis
+                        en nuestra
+                        sección de recursos. Aprende de expertos en el campo y descubre consejos útiles para cultivar de
+                        manera responsable y consciente.</p>
+                </div>
+                <img src="/images/home/informacion.jpg" alt="Imagen">
+                <a href="/info"><button class="btn"> Ver Novedades</button></a>
+            </div>
+            <hr class="div-home" id="div-2">
+            <div class="container-left" id="div-3">
+                <div class="content">
+                    <h2>Preguntas Frecuentes <i class="fa-solid fa-chevron-down"></i></h2>
+                    <p class="p-ocult">Aquí responderemos las preguntas más comunes sobre nuestros productos, cultivo de
+                        cannabis, efectos y
+                        más. Si no encuentras la respuesta que buscas, no dudes en contactarnos y estaremos encantados de
+                        ayudarte..</p>
+                </div>
+                <img src="/images/home/faqs.jpg" alt="Imagen">
+                <a href="/faqs"><button class="btn">Preguntas</button></a>
+            </div>
+            <hr class="div-home" id="div-3">
+            <div class="container" id="div-4">
+                <div class="content">
+                    <h2>Productos Medicinales <i class="fa-solid fa-chevron-down"></i> </h2>
+                    <p class="p-ocult">En esta sección, ofrecemos una selección de productos a base de cannabis que pueden
+                        ayudarte en el
+                        manejo de diversas condiciones de salud. Desde aceites y cremas hasta tinturas y cápsulas, nuestra
+                        gama de productos medicinales es cuidadosamente seleccionada para ofrecerte la mejor calidad y
+                        efectividad.</p>
+                </div>
+                <img src="/images/home/medicina.jpg" alt="Imagen">
+                <a href="/product"><button class="btn">Ver Productos</button></a>
+            </div>
+            <hr class="div-home" id="div-4">
+        </div>
+    </main>
+    <!---------------------------- ASESORAMIENTO--------------------------------->
+
+    <%- include('./partials/counseling')%>
+
+    <!---------------------------------  FOOTER ---------------------------- -->
+
+    <%- include('./partials/footer')%>
+
+</body>
+
+</html>

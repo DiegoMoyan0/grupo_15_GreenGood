@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head')%>
+    <link rel="stylesheet" href="/css/productDetail.css">
+
+<body>
+    <!--------------------------------- NAVBAR --------------------------------->
+
+    <%- include('./partials/header')%>
+
+    <div class="deslizable">
+        <a href="/"> <i class="fa-solid fa-arrow-up"></i></a>
+    </div>
+    <main>
+        <article class="container-detail">
+            <img class="img-detail" src="/images/product/medicinales-cosmetica/crema-hidratante-Xml.png">
+            <div class="vertical-line"></div>
+            <div class="container-price">
+                <h2 class="title-detail"> Producto </h2>
+                <p class="price-detail"><strong>$5000</strong></p>
+                <input type="number" class="form-control" id="InputName" placeholder="Cantidad:" required /> <button
+                    class="btn-product" type="submit" href="#">Añadir al carrito</button>
+                <p class="cat-detail">Categoría: <strong>Cultivo</strong></p>
+                <p class="cat-detail">Stock: <strong>Disponible</strong></p>
+                <p class="cat-detail">Envio: <strong>Gratis</strong></p>
+                <p class="shre-detail"> Compartir:</p>
+                <div class="detail-container">
+                    <a href="https://www.facebook.com" class="detail-fb"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com" class="detail-ig"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="detail-wpp"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </article>
+        <div class="content-description">
+            <h2 class="title-description">Descripción</h2>
+            <p class="p-description">
+                El producto X de nuestra tienda es una variedad de cannabis de alta calidad, cultivada y seleccionada
+                cuidadosamente para asegurar la mejor experiencia para el consumidor. Esta variedad es conocida por sus
+                efectos relajantes y su sabor suave y terroso. Cada paquete contiene una cantidad generosa de cogollos
+                densos y resinosos, con un alto contenido de THC y otros cannabinoides beneficiosos para la salud.
+                Además, ofrecemos información detallada sobre el origen y la genética de esta variedad, para que puedas
+                conocer más sobre lo que estás consumiendo. Ya sea para fines recreativos o medicinales, el producto X
+                es una excelente elección para aquellos que buscan una experiencia de cannabis de alta calidad. </p>
+        </div>
+        <div class="content-description">
+            <h2 class="title-description">Caracteristicas</h2>
+            <p class="p-description">
+                ·Lorem ipsum dolor <br>
+                ·molestias dignissimos <br>
+                ·aperiam et nam qui <br>
+                ·incidunt! Voluptate <br>
+        </div>
+        <h2 class="title-card-detail"> Quienes vieron este producto tambien vieron</h2>
+        <div class="card-container">
+            <div class="card">
+                <a href="/productDetail"> <img src="/images/product/medicinales-cosmetica/crema-facial-30ml.png"
+                        alt="Imagen 1"> </a>
+                <p class="price-card"> $3500</p>
+                <button type="submit" class="btn-product"> Agregar al carrito</button>
+            </div>
+            <div class="card">
+                <a href="/productDetail"> <img src="/images/product/medicinales-cosmetica/lipbalm-5gr.png"
+                        alt="Imagen 1"> </a>
+                <p class="price-card"> $3500</p>
+                <button type="submit" class="btn-product"> Agregar al carrito</button>
+            </div>
+            <div class="card">
+                <a href="/productDetail"> <img src="images/product/medicinales-cosmetica/endotica-90gr.png"
+                        alt="Imagen 1"> </a>
+                <p class="price-card"> $3500</p>
+                <button type="submit" class="btn-product"> Agregar al carrito</button>
+            </div>
+        </div>
+    </main>
+
+    <!---------------------------- ASESORAMIENTO--------------------------------->
+
+    <%- include('./partials/counseling')%>
+
+    <!---------------------------------  FOOTER ---------------------------- -->
+
+    <%- include('./partials/footer')%>
+
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head')%>
+    <link rel="stylesheet" href="/css/post.css">
+
+<body>
+
+    <%- include('./partials/header')%>
+
+    <main>
+        <section id="section-sale">
+
+            <div class="title-sale">
+                <h2>¡Hola! Contanos que vas a publicar.<br><br> Empezá describiendo el producto</h2>
+            <br></div>
+
+            <div id="container-sale">
+                <form action="/" method="POST">
+                    <div>
+                        <label class="label-sale" for="foto">Foto de Producto:</label>
+                        <input class="input-sale" type="file" id="foto" name="foto" accept="image/*">
+                    </div>
+                    <div>
+                        <label for="InputName" class="label-sale">Nombre del producto</label>
+                        <input type="text" class="input-sale" id="InputName" placeholder="Ingrese Nombre..."
+                            minlength="4" maxlength="10" required />
+                    </div>
+                    <div>
+                        <label for="InputPrice" class="label-sale">Precio</label>
+                        <input type="number" class="input-sale" id="InputPrice" placeholder="Ingrese Precio..."
+                            required />
+                    </div>
+                    <div>
+                        <label class="label-sale">Categoría:</label>
+                        <select name="categoria" id="" class="input-sale">
+                            <option value="Sustrato">Sustrato</option>
+                            <option value="Macetas">Macetas</option>
+                            <option value="Bandeja">Bandeja</option>
+                            <option value="Cosmetica">Cosmetica</option>
+                            <option value="Aceites">Aceites</option>
+                            <option value="Cremas">Cremas</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="InputDescription" class="label-sale">Descripcion</label>
+                        <input type="text" class="input-sale" id="InputDescription"
+                             required />
+                    </div>
+                    <div>
+                        <label for="InputCarac" class="label-sale">Caracteristicas</label>
+                        <input type="text" class="input-sale" id="InputCarac"
+                            required />
+                    </div>
+                    <div>
+                        <label class="label-sale">Envio Gratis</label><br><br>
+                        <label for="si">Si</label>
+                        <input type="radio" id="si" name="envio" value="si">
+                        <label for="no">No</label>
+                        <input type="radio" id="Comprador" name="envio" value="no">
+                    </div><br>
+                    <br>
+                    <button type="submit" class="btn-sale">
+                        Enviar
+                    </button><br>
+                    <button type="reset" class="btn-sale">
+                        Borrar
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!---------------------------- ASESORAMIENTO--------------------------------->
+
+    <%- include('./partials/counseling')%>
+
+    <!---------------------------------  FOOTER ---------------------------- -->
+
+    <%- include('./partials/footer')%>
+
+</body>
+
+</html>

@@ -4,8 +4,8 @@
   "description": "[Trello](https://trello.com/b/kSvyIebL/green-good)",
   "main": "app.js",
   "scripts": {
-    "start" : "node app",
-    "dev" : "npx nodemon app"
+    "start": "node app",
+    "dev": "npx nodemon app"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/DiegoMoyan0/grupo_15_GreenGood#readme",
   "dependencies": {
+    "ejs": "^3.1.9",
     "espress": "^0.0.0",
     "express": "^4.18.2"
   },

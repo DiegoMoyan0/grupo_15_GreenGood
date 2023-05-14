@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head')%>
+    <link rel="stylesheet" href="/css/login.css">
+
+<body>
+
+    <%- include('./partials/header')%>
+
+    <div class="deslizable">
+        <a href="/"> <i class="fa-solid fa-arrow-up"></i></a>
+    </div>
+    
+    <main>
+        <section class="section-login">
+
+        <!--
+            <div id="container-login">
+                <form class="form-login" action="/">
+                    <h3 class="login-title">Login</h3>
+                    <div>
+                        <label for="InputName" class="label-login">Correo electrónico</label>
+                        <input type="email" class="input-login" id="InputName"
+                            placeholder="Escriba aquí su correo electrónico" required />
+                    </div>
+                    <div>
+                        <label for="exampleInputEmail1" class="label-login">Contraseña</label>
+                        <input type="password" class="input-login" id="exampleInputEmail1"
+                            placeholder="Escriba aquí su contraseña" required />
+                    </div>
+                    <label for="">Mantener Sesión iniciada</label>
+                    <input type="checkbox">
+
+                    <button type="submit" class="btn-login">
+                        Ingresar
+                    </button>
+                    <button type="submit" class="btn-login">
+                        Cancelar
+                    </button>
+                    <a href=""> Recuperar Contraseña</a>
+                </form>
+            </div>
+        </section>
+        -->
+
+<!--   Logint test  -->
+
+		<div class="container">
+			<span class="span-title">Login</span>
+			<form class="form-login">
+				<div class="container-input">
+					<input type="text" placeholder="Email" required class="form-input" />
+					<span class="span-bar"></span>
+				</div>
+				<div class="container-input">
+					<input
+						type="password"
+						placeholder="Contraseña"
+						required
+						class="form-input"
+					/>
+					<span class="span-bar"></span>
+				</div>
+                <div class="container-sesion">
+                    <label  for="sesion">Mantener Sesión iniciada</label>
+                    <input name="sesion" type="checkbox">
+                 </div>
+                <button type="submit" class="btn-login">
+                    Ingresar
+                </button>
+                <button type="submit" class="btn-login">
+                    Cancelar
+                </button>
+                <a class="enlace" href=""> Recuperar Contraseña</a>
+                <a class="enlace" href="/register"> Registrarse </a>
+			</form>
+		</div>
+
+    </section>
+
+
+    </main>
+
+   <!---------------------------------  FOOTER ---------------------------- -->
+
+   <%- include('./partials/footer')%>
+
+</body>
+
+</html>
