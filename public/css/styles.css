@@ -888,7 +888,7 @@ small {
         display: none;
     }
 
-    .container:hover p, .container-left:hover p {
+    .container p, .container-left p {
         translate: -15px;
     }
 
