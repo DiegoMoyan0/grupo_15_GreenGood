@@ -519,7 +519,9 @@ p {
 }
 
 .p-ocult {
-    display: none;
+    max-height: 0px;
+    overflow: hidden;
+    transition: all 3s 
     /*oculta parrafo*/
 }
 
@@ -529,11 +531,12 @@ p {
     font-weight: 400;
     opacity: 0.8;
     margin-bottom: 2.5rem;
+    transition: all 3s;
 }
 
 .container:hover p,
 .container-left:hover p {
-    display: block;
+    max-height: 250px;
     /*muestra parrafo al hacer click*/
 }
 
@@ -885,7 +888,17 @@ small {
         display: none;
     }
 
+    .container:hover p, .container-left:hover p {
+        translate: -15px;
+    }
+
+    .container:hover p, .container-left:hover p {
+        max-height: fit-content;
+        translate: 15px;
+    }
+
     .p-ocult {
+        max-height: fit-content;
         display: block;
         /*muestra parrafo*/
     }
