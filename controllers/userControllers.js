@@ -3,13 +3,13 @@
 
 const userController = {
     getLogin: (req,res) => {
-        return res.render('login');
+        return res.render('UserViews/login');
     },
     getPost:(req,res) => {
         return res.render('post');
     },
     getRegister:(req,res) => {
-        return res.render('register');
+        return res.render('UserViews/register');
     },
     getSale:(req,res) => {
         return res.render('sale');
