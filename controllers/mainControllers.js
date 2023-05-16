@@ -4,13 +4,13 @@
 
 const mainController = {
     getHome: (req,res) => {
-        return res.render('home');
+        return res.render('mainViews/home');
     },
     getFaqs:(req,res) => {
-        return res.render('faqs');
+        return res.render('mainViews/faqs');
     },
     getInfo:(req,res) => {
-        return res.render('info');
+        return res.render('mainViews/info');
     },
 } 
 
