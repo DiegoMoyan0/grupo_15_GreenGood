@@ -34,7 +34,7 @@ app.use(express.static('public'));
 //Implemento o uso las rutas con express//
 
 app.use(mainRoutes);
-app.use(userRoutes);
+app.use('/user',userRoutes);
 app.use('/product',productsRoutes);
 
 

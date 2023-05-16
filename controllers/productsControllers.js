@@ -10,6 +10,12 @@ const productController = {
     },
     getProductDetail:(req,res) => {
         return res.render('productsViews/productDetail');
+    },
+    getProductPost:(req,res) => {
+        return res.render('productsViews/post');
+    },
+    getProductSale:(req,res) => {
+        return res.render('productsViews/sale');
     }
 }
 

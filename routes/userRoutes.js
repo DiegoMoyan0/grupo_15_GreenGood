@@ -7,13 +7,7 @@ const userController = require('../controllers/userControllers');
 
 userRoutes.get('/login', userController.getLogin);
 
-userRoutes.get('/post', userController.getPost);
-
 userRoutes.get('/register', userController.getRegister);
-
-userRoutes.get('/sale', userController.getSale);
-
-userRoutes.get('/post', userController.getPost);
 
 //------------------------------//
 
