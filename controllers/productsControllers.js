@@ -2,13 +2,13 @@
 
 
 const productController = {
-    product: (req,res) => {
+    getProduct: (req,res) => {
         return res.render('product');
     },
-    productCart:(req,res) => {
+    getProductCart:(req,res) => {
         return res.render('productCart');
     },
-    productDetail:(req,res) => {
+    getProductDetail:(req,res) => {
         return res.render('productDetail');
     }
 }

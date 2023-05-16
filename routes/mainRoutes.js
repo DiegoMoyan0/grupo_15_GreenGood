@@ -5,11 +5,11 @@ const mainRoutes = express.Router();
 
 const mainController = require('../controllers/mainControllers');
 
-mainRoutes.get('/', mainController.home);
+mainRoutes.get('/', mainController.getHome);
 
-mainRoutes.get('/faqs', mainController.faqs);
+mainRoutes.get('/faqs', mainController.getFaqs);
 
-mainRoutes.get('/info', mainController.info); 
+mainRoutes.get('/info', mainController.getInfo); 
 
 
 //------------------------------//

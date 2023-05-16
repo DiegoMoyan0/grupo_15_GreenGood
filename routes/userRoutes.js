@@ -5,15 +5,15 @@ const userRoutes = express.Router();
 
 const userController = require('../controllers/userControllers');
 
-userRoutes.get('/login', userController.login);
+userRoutes.get('/login', userController.getLogin);
 
-userRoutes.get('/post', userController.post);
+userRoutes.get('/post', userController.getPost);
 
-userRoutes.get('/register', userController.register);
+userRoutes.get('/register', userController.getRegister);
 
-userRoutes.get('/sale', userController.sale);
+userRoutes.get('/sale', userController.getSale);
 
-userRoutes.get('/post', userController.post);
+userRoutes.get('/post', userController.getPost);
 
 //------------------------------//
 

@@ -3,13 +3,13 @@
 
 
 const mainController = {
-    home: (req,res) => {
+    getHome: (req,res) => {
         return res.render('home');
     },
-    faqs:(req,res) => {
+    getFaqs:(req,res) => {
         return res.render('faqs');
     },
-    info:(req,res) => {
+    getInfo:(req,res) => {
         return res.render('info');
     },
 } 

@@ -2,19 +2,19 @@
 
 
 const userController = {
-    login: (req,res) => {
+    getLogin: (req,res) => {
         return res.render('login');
     },
-    post:(req,res) => {
+    getPost:(req,res) => {
         return res.render('post');
     },
-    register:(req,res) => {
+    getRegister:(req,res) => {
         return res.render('register');
     },
-    post:(req,res) => {
+    getPost:(req,res) => {
         return res.render('post');
     },
-    sale:(req,res) => {
+    getSale:(req,res) => {
         return res.render('sale');
     }
 }
