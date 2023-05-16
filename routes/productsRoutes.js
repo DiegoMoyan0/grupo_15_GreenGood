@@ -5,11 +5,11 @@ const productRoutes = express.Router();
 
 const productsController = require('../controllers/productsControllers');
 
-productRoutes.get('/product', productsController.getProduct);
+productRoutes.get('/', productsController.getProduct);
 
-productRoutes.get('/productCart', productsController.getProductCart);
+productRoutes.get('/cart', productsController.getProductCart);
 
-productRoutes.get('/productDetail', productsController.getProductDetail);
+productRoutes.get('/detail', productsController.getProductDetail);
 
 //------------------------------//
 

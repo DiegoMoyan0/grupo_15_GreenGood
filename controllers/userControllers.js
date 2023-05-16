@@ -11,9 +11,6 @@ const userController = {
     getRegister:(req,res) => {
         return res.render('register');
     },
-    getPost:(req,res) => {
-        return res.render('post');
-    },
     getSale:(req,res) => {
         return res.render('sale');
     }
