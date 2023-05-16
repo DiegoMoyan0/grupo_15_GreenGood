@@ -1,16 +1,16 @@
-/* const express = require('express');
-const productRouter = express.Router();
+const express = require('express');
+const productRoutes = express.Router();
 
 // Rutas raiz de las vistas de product, productCart y productDetail//
 
 const productsController = require('../controllers/productsControllers');
 
-productRouter.get('/product', productsController.product);
+productRoutes.get('/product', productsController.product);
 
-productRouter.get('/productCart', productsController.productCart);
+productRoutes.get('/productCart', productsController.productCart);
 
-productRouter.get('/productDetail', productsController.productDetail);
+productRoutes.get('/productDetail', productsController.productDetail);
 
 //------------------------------//
 
-module.exports = productRouter; */
+module.exports = productRoutes;

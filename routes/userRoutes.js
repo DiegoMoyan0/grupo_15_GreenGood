@@ -1,16 +1,20 @@
-/* const express = require('express');
-const userRouter = express.Router();
+const express = require('express');
+const userRoutes = express.Router();
 
 // Rutas raiz de las vistas del login, post e register//
 
 const userController = require('../controllers/userControllers');
 
-userRouter.get('/login', userController.login);
+userRoutes.get('/login', userController.login);
 
-userRouter.get('/post', userController.post);
+userRoutes.get('/post', userController.post);
 
-userRouter.get('/register', userController.register);
+userRoutes.get('/register', userController.register);
+
+userRoutes.get('/sale', userController.sale);
+
+userRoutes.get('/post', userController.post);
 
 //------------------------------//
 
-module.exports = userRouter; */
+module.exports = userRoutes;

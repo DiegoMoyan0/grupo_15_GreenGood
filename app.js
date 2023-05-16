@@ -1,9 +1,18 @@
 const express = require('express');
 const path = require('path');
 
+// Requiero las rutas de las vistas//
+
+const mainRoutes = require('./routes/mainRoutes');
+const productsRoutes = require('./routes/productsRoutes');
+const userRoutes = require('./routes/userRoutes');
+
+//---------------//
+
 const app = express();
 
 const publicPath = path.resolve(__dirname, './public');
+
 app.use(express.static(publicPath));
 
 
@@ -21,25 +30,16 @@ app.use(express.static('public'));
 //----------//
 
 
-// Requiero las rutas de las vistas//
-
-const mainRoutes = require('./routes/mainRoutes');
-
-
 
 //Implemento o uso las rutas con express//
 
-app.use('/', mainRoutes);
-app.use('/faqs', mainRoutes);
-app.use('/info', mainRoutes);
-app.use('/login', mainRoutes);
-app.use('/post', mainRoutes);
-app.use('/register', mainRoutes);
-app.use('/product', mainRoutes);
-app.use('/productCart', mainRoutes);
-app.use('/productDetail', mainRoutes);
-app.use('/sale', mainRoutes);
-app.use('/post', mainRoutes);
+app.use(mainRoutes);
+
+
+app.use(userRoutes);
+
+
+app.use(productsRoutes);
 
 
 //-------//
