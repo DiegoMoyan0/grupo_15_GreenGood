@@ -303,40 +303,6 @@ main {
   padding: 5px;
 }
 
-/* @media (max-width: 767px){
-
-  .section-sub-category {
-    flex-direction: row;
-  }
-
-  .content-art{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: center;
-    margin: 0px;
-    padding: 0px;
-    padding-top: 18px;
-  }
-
-  .product{
-    width: 150px;
-    max-width: 150px;
-    padding: 1.2rem;
-  }
-
-  .description {
-    font-size: 0.9rem;
-  }
-
-  .btn-product {
-    font-size: 0.7rem;
-    padding: 0.8rem;
-    margin-top: 10px;
-  }
-
-} */
-
 /*BREAK TABLET*/
 
 @media (min-width: 768px) {
