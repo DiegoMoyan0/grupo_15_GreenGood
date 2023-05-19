@@ -1,3 +1,4 @@
+/*----------------------------------------- DETAIL --------------------------------------------------*/
 .container-detail {
     width: 90vw;
     display: flex;
@@ -12,13 +13,11 @@
     border-radius: 10px;
 }
 
-
 .vertical-line {
     display: none;
     border-left: 2px solid;
     height: 400px;
 }
-
 
 .img-detail {
     width: 100%;
@@ -38,7 +37,7 @@
     border-bottom: 2px solid lightgray;
 }
 
-.title-description{
+.title-description {
     font-size: 2rem;
     font-weight: 600;
     opacity: 1.0;
@@ -46,7 +45,7 @@
     color: #9ED66F;
 }
 
-.p-description{
+.p-description {
     font-size: 1.3rem;
     font-weight: 400;
     opacity: 0.8;
@@ -142,6 +141,7 @@
     color: white;
 }
 
+/*----------------------------------------- BREAK --------------------------------------------------*/
 @media (min-width: 768px) {
     .container-detail {
         display: flex;
@@ -154,9 +154,9 @@
     }
 }
 
+/*----------------------------------------- BREAK --------------------------------------------------*/
 @media (min-width: 1000px) {
     .vertical-line {
         display: block;
     }
-
 }
