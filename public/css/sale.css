@@ -224,7 +224,7 @@ input[type=number],
 select {
   width: 100%;
   padding: 12px 20px;
-  margin: 10px 1px;
+  margin: 10px 2px;
   box-sizing: border-box;
 }
 
@@ -434,7 +434,7 @@ select {
 	transition: 0.2s ease;
 }
 
-.modal-wrapper .success-wrap{
+.modal-wrapper .success-wrap.active{
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -447,10 +447,10 @@ select {
 	transition: 0.5s ease;
 }
 
-.modal-wrapper .success-wrap {
+.modal-wrapper .success-wrap.active {
 	margin-right: 20px;
-	width: 150px;
-	height: 150px;
+	width: 200px;
+	height: 200px;
 	background: white;
 	color: black;
 	border-radius: 50%;
@@ -459,6 +459,13 @@ select {
 	justify-content: center;
 	font-size: 32px;
 	font-weight: 700;
+  border: 15px solid #402C68;
+}
+
+.fa-solid.fa-circle-check{
+  color:#402C68;
+  margin-left: 0.2rem;
+  margin-right: 0.8rem;
 }
 
 .modal-wrapper.active{
@@ -469,7 +476,7 @@ select {
 	opacity: 1;
 }
 
-.modal-wrapper.active .success-wrap{
+.modal-wrapper.active .success-wrap.active{
 	transform: translate(-50%,-50%);
 }
 
