@@ -1,77 +1,71 @@
-
-.section-register{
-    padding: 1rem;
-    text-align: center;
-   
+/*----------------------------------------- REGISTER --------------------------------------------------*/
+.section-register {
+	padding: 1rem;
+	text-align: center;
 }
 
-
-.label-login{
-    font-family: 'Roboto Serif', serif;
-    font-size: 0.8rem;
-    font-weight: 400;
-    opacity: 1;
-    text-align: left;
+.label-login {
+	font-family: 'Roboto Serif', serif;
+	font-size: 0.8rem;
+	font-weight: 400;
+	opacity: 1;
+	text-align: left;
 }
 
 .label-register {
-    font-family: 'Roboto Serif', serif;
-    font-size: 0.8rem;
-    font-weight: 400;
-    text-align: left;
-    color: gray;
+	font-family: 'Roboto Serif', serif;
+	font-size: 0.8rem;
+	font-weight: 400;
+	text-align: left;
+	color: gray;
 }
 
 .input-register {
-    font-family: 'Roboto Serif', serif;
-    width: 100%;
-    padding: 0.8rem;
-    margin-bottom: 1rem;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-
-
-.input-login{
-    font-family: 'Roboto Serif', serif;
-    width: 100%;
-    padding: 0.8rem;
-    margin-bottom: 1rem;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    max-width: 100%;
-}
-
-.btn-login{
-
-    display: block;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 0.8rem 1.2rem;
-    width: 100%;
-    font-size: 1rem;
-    font-weight: bold;
 	font-family: 'Roboto Serif', serif;
-    border: 1px solid #0A1504;
-    border-radius: 5px;
-    color: white;
-    background-color: #402c68;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out; 
+	width: 100%;
+	padding: 0.8rem;
+	margin-bottom: 1rem;
+	border-radius: 5px;
+	border: 1px solid #ccc;
 }
 
-.btn-login:hover{
-    opacity: 0.6;
+.input-login {
+	font-family: 'Roboto Serif', serif;
+	width: 100%;
+	padding: 0.8rem;
+	margin-bottom: 1rem;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	max-width: 100%;
+}
+
+.btn-login {
+	display: block;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 0.8rem 1.2rem;
+	width: 100%;
+	font-size: 1rem;
+	font-weight: bold;
+	font-family: 'Roboto Serif', serif;
+	border: 1px solid #0A1504;
+	border-radius: 5px;
+	color: white;
+	background-color: #402c68;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+}
+
+.btn-login:hover {
+	opacity: 0.6;
 
 }
 
-.container-sesion{
+.container-sesion {
 	margin-top: 1rem;
 	margin-bottom: 1rem;
 	color: gray;
 }
-
 
 button,
 input {
@@ -79,7 +73,6 @@ input {
 	border: none;
 	outline: none;
 }
-
 
 .container {
 	position: relative;
@@ -94,8 +87,7 @@ input {
 	color: #fff;
 	background-color: #fff;
 	border-radius: 1rem;
-	box-shadow: 0 1px 1rem 
-		rgba(0, 0, 0, 0.1);
+	box-shadow: 0 1px 1rem rgba(0, 0, 0, 0.1);
 }
 
 .container::before {
@@ -109,6 +101,7 @@ input {
 	background-color: #402c68;
 	border-radius: 1rem 1rem 100% 100%;
 }
+
 .span-title-register {
 	position: absolute;
 	top: 3.5rem;
@@ -118,27 +111,24 @@ input {
 }
 
 /* Animación del título del formulario*/
-
 .span-title-register {
-animation-duration: 1.5s;
-animation-name: register-appear;
+	animation-duration: 1.5s;
+	animation-name: register-appear;
 }
 
 @keyframes register-appear {
-from {
-  margin-left: 100%;
-  width: 300%;
-}
+	from {
+		margin-left: 100%;
+		width: 300%;
+	}
 
-to {
-  margin-left: 0%;
-  width: 100%;
+	to {
+		margin-left: 0%;
+		width: 100%;
+	}
 }
-}
-
 
 /* Animación del formulario*/
-
 .form-login {
 	margin-top: 5rem;
 	padding: 1.5rem;
@@ -149,22 +139,21 @@ to {
 	border-radius: 10px;
 	background-color: inherit;
 	max-width: 90%;
-    height: 50rem;
+	height: 50rem;
 	transform: translateX(1.5rem);
 	animation-duration: 1.5s;
-	animation-name: Form-appear;	
-	}
-
-	@keyframes Form-appear {
-		from {
-		  transform: translateX(-1.5rem);
-		}
-		
-		to {
-			transform: translateX(1.5rem);
-		}
+	animation-name: Form-appear;
 }
 
+@keyframes Form-appear {
+	from {
+		transform: translateX(-1.5rem);
+	}
+
+	to {
+		transform: translateX(1.5rem);
+	}
+}
 
 .container-input {
 	position: relative;
@@ -173,7 +162,6 @@ to {
 	margin-inline: auto;
 }
 
-
 .form-input {
 	position: relative;
 	width: 100%;
@@ -181,27 +169,27 @@ to {
 	padding-block: 1rem;
 }
 
-
+/*----------------------------------------- BREAK --------------------------------------------------*/
 @media screen and (min-width:768px) {
-	.container{
-		width:30rem
+	.container {
+		width: 30rem
 	}
-/* Animación del formulario para el nuevo tamaño de pantalla*/
+
+	/* Animación del formulario para el nuevo tamaño de pantalla*/
 	.form-login {
-        max-width: 80%;
+		max-width: 80%;
 		transform: translateX(5rem);
 		animation-duration: 1.5s;
-		animation-name: Form-appear;	
+		animation-name: Form-appear;
+	}
+
+	@keyframes Form-appear {
+		from {
+			transform: translateX(0rem);
 		}
 
-		@keyframes Form-appear {
-			from {
-			  transform: translateX(0rem);
-			}
-			
-			to {
-				transform: translateX(5rem);
-			}
-			}
-
+		to {
+			transform: translateX(5rem);
+		}
+	}
 }

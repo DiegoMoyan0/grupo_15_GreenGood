@@ -24,7 +24,6 @@ header {
     box-shadow: 0px 2px 5px #402c68;
 }
 
-
 nav {
     display: flex;
     height: 4rem;
@@ -45,8 +44,6 @@ nav {
 }
 
 /* define el tamaño que ocupa en el navbar  */
-
-
 @keyframes logo-animation {
     0% {
         transform: scale(0.5);
@@ -55,7 +52,6 @@ nav {
     100% {
         transform: scale(1);
     }
-
 }
 
 .nav-center {
@@ -175,6 +171,26 @@ nav svg:hover {
     align-items: center;
     padding: 0.8rem;
 }
+
+#menuOptions {
+    background-color:rgba(16, 20, 47, 0.8);
+    display: none;
+}
+
+#menuOptions.show {
+    display: block;
+    text-align: end;
+    padding: 0 1rem;
+}
+#menuOptions ul {
+list-style: none;
+}
+
+#menuOptions a {
+    color: white;
+text-decoration: none;
+}
+
 
 .deslizable {
     font-size: 2.5rem;
@@ -325,8 +341,6 @@ nav svg:hover {
         opacity: 1;
     }
 }
-
-/* ------------------------------------------------------------------- */
 
 p {
     font-size: 1.2rem;
@@ -500,7 +514,6 @@ p {
     margin-bottom: 1.5rem;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgb(100, 100, 100);
-
 }
 
 .container .content,
@@ -588,9 +601,8 @@ p {
     color: white;
     margin: 1rem;
 }
-
-/* ------------------------------- FOOTER -------------------------------*/
-.footer {
+/*----------------------------------------- FOOTER --------------------------------------------------*/
+  .footer {
     background: linear-gradient(178deg, #ede4edbf, #ede4edbf, #18004B, #10142F);
     color: whitesmoke;
     text-align: center;
@@ -630,7 +642,7 @@ small {
     opacity: 0.7;
     margin: 1.5rem 0;
 }
-
+/*----------------------------------------- ICONOS --------------------------------------------------*/
 .icon-container {
     display: flex;
     justify-content: center;
@@ -710,10 +722,7 @@ small {
 .icon-wpp:hover .icon-text {
     display: block;
 }
-
-
-/* ------------------------------- BREAK TABLET  ------------------------------- */
-
+/*----------------------------------------- BREAK --------------------------------------------------*/
 @media (max-width: 767px){
     .content-art{
         display: flex;
@@ -722,7 +731,7 @@ small {
         align-items: center;
     }
 }
-
+/*----------------------------------------- BREAK --------------------------------------------------*/
 @media (min-width: 768px) {
 
     #icon-home-navbar{
@@ -784,7 +793,6 @@ small {
         right: 63px;
     }
 
-    
     .nav-center li:nth-child(1):hover{
        border-bottom-left-radius: 5px;
        border-bottom-right-radius: 5px;
@@ -814,7 +822,6 @@ small {
         border-bottom-right-radius: 5px;
         border-bottom: solid 3px #64ff00;  
     }
-
 
     .card-container {
         flex-direction: row;
@@ -919,5 +926,3 @@ small {
         justify-content: space-between;
     }
 }
-
-/* ------------------------------- BREAK DESKTOP-------------------------------*/
