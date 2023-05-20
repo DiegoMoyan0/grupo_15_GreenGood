@@ -200,7 +200,15 @@
                                 </div>
                         </form>
                     </div>
+
                 </div>
+            </div>
+
+            <div class="success-wrap">
+                
+                <i class="fa-solid fa-circle-check"></i>
+                <p>Publicación creada con éxito</p>
+
             </div>
         </div>
 
@@ -226,10 +234,12 @@
 let form_1 = document.querySelector(".container-form-1");
 let form_2 = document.querySelector(".container-form-2");
 let form_3 = document.querySelector(".container-form-3");
+let wrapper = document.querySelector(".wrapper")
 
 let form_1_btns = document.querySelector(".form-1-btns");
 let form_2_btns = document.querySelector(".form-2-btns");
 let form_3_btns = document.querySelector(".form-3-btns");
+let sucess_wrap = document.querySelector(".success-wrap");
 
 let form_1_next_btn = document.querySelector(".form-1-btns .btn-next");
 let form_2_back_btn = document.querySelector(".form-2-btns .btn-back");
@@ -239,9 +249,12 @@ let form_3_back_btn = document.querySelector(".form-3-btns .btn-back");
 let form_2_step= document.querySelector(".form-2-step");
 let form_3_step = document.querySelector(".form-3-step");
 
-let btn_done = document.querySelector(".btn-publication");
+let btn_pub = document.querySelector(".btn-publication");
+let btn_done = document.querySelector(".btn-done");
 let modal_wrapper = document.querySelector(".modal-wrapper");
 let shadow = document.querySelector(".back-shadow");
+
+
 
 //Función para actualizar vista de botones y estilo en el "paso" del formulario, una vez se obtenga el evento click sobre el botón
 
@@ -296,16 +309,38 @@ form_3_back_btn.addEventListener("click", () =>{
     form_3_step.classList.remove("active");
 });
 
-//Funciones para operar el contenedor tipo modal que aparece al finalizar el formulario, una vez se obtenga el evento click
+//Función para operar el contenedor tipo modal que aparece al iniciar el formulario, una vez se obtenga el evento click
   
+btn_pub.addEventListener("click", () =>{
+    modal_wrapper.classList.add("active");
+    sucess_wrap.style.display = "none";
+    wrapper.style.display = "block"; 
+
+   form_1.style.display = "flex";
+   form_2.style.display = "none";
+   form_3.style.display = "none";
+
+   form_1_btns.style.display = "flex";
+   form_2_btns.style.display = "none";
+   form_3_btns.style.display = "none";
+
+
+   form_2_step.classList.remove("active");
+   form_3_step.classList.remove("active");
+})
+
+//Función para operar el contenedor tipo modal que aparece al finalizar el formulario, una vez se obtenga el evento click
+
 btn_done.addEventListener("click", () =>{
-        modal_wrapper.classList.add("active");
+    sucess_wrap.style.display = "flex";
+    sucess_wrap.classList.add("active");
+    wrapper.style.display = "none"; 
 })
 
-shadow.addEventListener("click", () =>{
+
+shadow.addEventListener("click", () => {
         modal_wrapper.classList.remove("active");
-})
-
+    })
 
 // El script y formulario de arriba son una versión adaptada del código que se encuentra aquí: https://github.com/codingmarket07/Multi-Step-Progressive-Form 
 

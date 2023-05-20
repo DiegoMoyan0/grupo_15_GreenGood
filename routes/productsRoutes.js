@@ -13,7 +13,6 @@ productRoutes.get('/detail', productsController.getProductDetail);
 
 productRoutes.get('/sale', productsController.getProductSale);
 
-productRoutes.get('/post', productsController.getProductPost);
 
 //------------------------------//
 
