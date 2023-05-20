@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%- include('../partials/head')%>
-    <link rel="stylesheet" href="/css/post.css">
+<head>
+    <%- include('../partials/head')%>
+        <link rel="stylesheet" href="/css/post.css">
+</head>
 
 <body>
 
     <%- include('../partials/header')%>
 
-    <!--
+        <!--
     <main>
         <section id="section-sale">
 
@@ -73,11 +75,11 @@
     </main>
 
     -->
-    <!-- Draft Post Form-->
+        <!-- Draft Post Form-->
 
-    <main>
+        <main>
 
-    <!--
+            <!--
         <section id="section-sale">
 
             <div class="title-sale">
@@ -139,130 +141,129 @@
             </div>
         </section>
 -->
-        
-      <!--  <script type="module" src="/MultiForm.js"></script> -->
-<div class="wrapper">
-	<div class="header">
-		<ul>
-			<li class="active form-1-step">
-				<div>
-					<p>1</p>
-				</div>
-			</li>
-			<li class="form-2-step">
-				<div>
-					<p>2</p>
-				</div>
-			</li>
-			<li class="form-3-step">
-				<div>
-					<p>3</p>
-				</div>
-			</li>
-		</ul>
-	</div>
-	<div class="form-wrap">
-		<div class="container-form-1">
-			<form>
-				<div class="form-container">
-                    <div class="title-sale">
-                        <h2>¡Hola! Contanos que vas a publicar. <br><br> Empecemos con los datos básicos</h2>
-                    <br></div>
-        
 
+            <!--  <script type="module" src="/MultiForm.js"></script> -->
+            <div class="wrapper">
+                <div class="header">
+                    <ul>
+                        <li class="active form-1-step">
                             <div>
-                                <label class="label-sale" for="foto">Foto de Producto:</label>
-                                <input class="input-sale" type="file" id="foto" name="foto" accept="image/*">
+                                <p>1</p>
                             </div>
+                        </li>
+                        <li class="form-2-step">
                             <div>
-                                <label for="InputName" class="label-sale">Nombre del producto</label>
-                                <input type="text" class="input-sale" id="InputName" placeholder="Ingrese Nombre..."
-                                    minlength="4" maxlength="10" required />
+                                <p>2</p>
                             </div>
+                        </li>
+                        <li class="form-3-step">
                             <div>
-                                <label for="InputPrice" class="label-sale">Precio</label>
-                                <input type="number"  class="input-sale" min="1" id="InputPrice" placeholder="Ingrese Precio..."
-                                    required />
+                                <p>3</p>
                             </div>
-                            
-                    <div class="form-1-btns">
-                        <button type="button" class="btn-next">Siguiente</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="form-wrap">
+                    <div class="container-form-1">
+                        <form>
+                            <div class="form-container">
+                                <div class="title-sale">
+                                    <h2>¡Hola! Contanos que vas a publicar. <br><br> Empecemos con los datos básicos
+                                    </h2>
+                                    <br>
+                                </div>
+
+
+                                <div>
+                                    <label class="label-sale" for="foto">Foto de Producto:</label>
+                                    <input class="input-sale" type="file" id="foto" name="foto" accept="image/*">
+                                </div>
+                                <div>
+                                    <label for="InputName" class="label-sale">Nombre del producto</label>
+                                    <input type="text" class="input-sale" id="InputName" placeholder="Ingrese Nombre..."
+                                        minlength="4" maxlength="10" required />
+                                </div>
+                                <div>
+                                    <label for="InputPrice" class="label-sale">Precio</label>
+                                    <input type="number" class="input-sale" min="1" id="InputPrice"
+                                        placeholder="Ingrese Precio..." required />
+                                </div>
+
+                                <div class="form-1-btns">
+                                    <button type="button" class="btn-next">Siguiente</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-				</div>
-			</form>
-		</div>
-		<div class="container-form-2" style="display: none;">
-			<h2>Ahora, categoría y descripción</h2>
-			<form>
-				<div class="form-container">
-                    <div>
-                        <label class="label-sale">Categoría:</label>
-                        <select name="categoria" id="" class="input-sale">
-                            <option value="Sustrato">Sustrato</option>
-                            <option value="Macetas">Macetas</option>
-                            <option value="Bandeja">Bandeja</option>
-                            <option value="Cosmetica">Cosmetica</option>
-                            <option value="Aceites">Aceites</option>
-                            <option value="Cremas">Cremas</option>
-                        </select>
+                    <div class="container-form-2" style="display: none;">
+                        <h2>Ahora, categoría y descripción</h2>
+                        <form>
+                            <div class="form-container">
+                                <div>
+                                    <label class="label-sale">Categoría:</label>
+                                    <select name="categoria" id="" class="input-sale">
+                                        <option value="Sustrato">Sustrato</option>
+                                        <option value="Macetas">Macetas</option>
+                                        <option value="Bandeja">Bandeja</option>
+                                        <option value="Cosmetica">Cosmetica</option>
+                                        <option value="Aceites">Aceites</option>
+                                        <option value="Cremas">Cremas</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="InputDescription" class="label-sale">Descripción</label>
+                                    <input type="text" class="input-sale" minlength="6" id="InputDescription"
+                                        required />
+                                </div>
+                                <div class="form-2-btns" style="display: none;">
+                                    <button type="button" class="btn-back">Atrás</button>
+                                    <button type="button" class="btn-next">Siguiente</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div>
-                        <label for="InputDescription" class="label-sale">Descripción</label>
-                        <input type="text" class="input-sale" minlength="6" id="InputDescription"
-                             required />
+                    <div class="container-form-3" style="display: none;">
+                        <h2>Para Finalizar, decinos la categoría del producto y el tipo de envío</h2>
+                        <form>
+                            <div class="form-container">
+                                <div>
+                                    <label for="InputCarac" class="label-sale">Características</label>
+                                    <input type="text" class="input-sale" minlength="6" id="InputCarac" required />
+                                </div>
+                                <div>
+                                    <label class="label-sale">Envío Gratis</label><br><br>
+                                    <label for="si">Si</label>
+                                    <input type="radio" id="si" name="envio" value="si">
+                                    <label for="no">No</label>
+                                    <input type="radio" id="Comprador" name="envio" value="no">
+                                </div><br>
+                                <div class="form-3-btns" style="display: none;">
+                                    <button type="button" class="btn-back">Atrás</button>
+                                    <button type="button" class="btn-done">Finalizar</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div class="form-2-btns" style="display: none;">
-                        <button type="button" class="btn-back">Atrás</button>
-                        <button type="button" class="btn-next">Siguiente</button>
-                    </div>
-				</div>
-			</form>
-		</div>
-		<div class="container-form-3" style="display: none;">
-			<h2>Para Finalizar, decinos la categoría del producto y el tipo de envío</h2>
-			<form>
-				<div class="form-container">
-                    <div>
-                        <label for="InputCarac" class="label-sale">Características</label>
-                        <input type="text" class="input-sale"  minlength="6" id="InputCarac"
-                            required />
-                    </div>
-                    <div>
-                        <label class="label-sale">Envío Gratis</label><br><br>
-                        <label for="si">Si</label>
-                        <input type="radio" id="si" name="envio" value="si">
-                        <label for="no">No</label>
-                        <input type="radio" id="Comprador" name="envio" value="no">
-                    </div><br>
-                    <div class="form-3-btns" style="display: none;">
-                        <button type="button" class="btn-back">Atrás</button>
-                        <button type="button" class="btn-done">Finalizar</button>
-                    </div>
-				</div>
-			</form>
-		</div>
-	</div>
+                </div>
 
 <!--
 
-<div class="modal-wrapper">
-	<div class="back-shadow"></div>
-	<div class="success-wrap">
-		<p>Publicación creada con éxito</p>
-	</div>
-</div>
+                <div class="modal-wrapper">
+                    <div class="back-shadow"></div>
+                    <div class="success-wrap">
+                        <p>Publicación creada con éxito</p>
+                    </div>
+                </div>
 
--->
+        </main>
 
-    </main>
+        <!---------------------------- ASESORAMIENTO--------------------------------->
 
-    <!---------------------------- ASESORAMIENTO--------------------------------->
+        <%- include('../partials/counseling')%>
 
-    <%- include('../partials/counseling')%>
+            <!---------------------------------  FOOTER ---------------------------- -->
 
-    <!---------------------------------  FOOTER ---------------------------- -->
-
-    <%- include('../partials/footer')%>
+            <%- include('../partials/footer')%>
 
 </body>
 
@@ -273,88 +274,88 @@
     let form_1 = document.querySelector(".container-form-1");
     let form_2 = document.querySelector(".container-form-2");
     let form_3 = document.querySelector(".container-form-3");
-  
+
     let form_1_btns = document.querySelector(".form-1-btns");
     let form_2_btns = document.querySelector(".form-2-btns");
     let form_3_btns = document.querySelector(".form-3-btns");
-   
+
     let form_1_next_btn = document.querySelector(".form-1-btns .btn-next");
     let form_2_back_btn = document.querySelector(".form-2-btns .btn-back");
     let form_2_next_btn = document.querySelector(".form-2-btns .btn-next");
     let form_3_back_btn = document.querySelector(".form-3-btns .btn-back");
-   
-    let form_2_step= document.querySelector(".form-2-step");
+
+    let form_2_step = document.querySelector(".form-2-step");
     let form_3_step = document.querySelector(".form-3-step");
-   
+
     let btn_done = document.querySelector(".btn-done");
     let modal_wrapper = document.querySelector(".modal-wrapper");
     let shadow = document.querySelector(".back-shadow");
 
     //Función para actualizar vista de botones y estilo en el "paso" del formulario, una vez se obtenga el evento click sobre el botón
-   
+
     form_1_next_btn.addEventListener("click", () => {
-       form_1.style.display = "none";
-       form_2.style.display = "block";
-   
-       form_1_btns.style.display = "none";
-       form_2_btns.style.display = "flex";
-       form_2_btns.style.justifyContent = "space-between"
-   
-       form_2_step.classList.add("active");
-   });
+        form_1.style.display = "none";
+        form_2.style.display = "block";
 
-   //Función para actualizar vista de botones y estilo en el "paso" del formulario, una vez se obtenga el evento click sobre el botón
-   
-   form_2_back_btn.addEventListener("click", () =>{
-       form_1.style.display = "block";
-       form_2.style.display = "none";
-   
-       form_1_btns.style.display = "flex";
-       form_2_btns.style.display = "none";
-   
-       form_2_step.classList.remove("active");
-   });
+        form_1_btns.style.display = "none";
+        form_2_btns.style.display = "flex";
+        form_2_btns.style.justifyContent = "space-between"
 
-   //Función para actualizar vista de botones y estilo en el "paso" del formulario, una vez se obtenga el evento click sobre el botón
-   
-   
-   form_2_next_btn.addEventListener("click",  () =>{
-       form_2.style.display = "none";
-       form_3.style.display = "block";
-   
-       form_3_btns.style.display = "flex";
-       form_3_btns.style.justifyContent = "space-between"
-       form_2_btns.style.display = "none";
-   
-       form_3_step.classList.add("active");
-   });
+        form_2_step.classList.add("active");
+    });
 
-   //Función para actualizar vista de botones y estilo en el "paso" del formulario, una vez se obtenga el evento click sobre el botón
-   
-   
-    form_3_back_btn.addEventListener("click", () =>{
+    //Función para actualizar vista de botones y estilo en el "paso" del formulario, una vez se obtenga el evento click sobre el botón
+
+    form_2_back_btn.addEventListener("click", () => {
+        form_1.style.display = "block";
+        form_2.style.display = "none";
+
+        form_1_btns.style.display = "flex";
+        form_2_btns.style.display = "none";
+
+        form_2_step.classList.remove("active");
+    });
+
+    //Función para actualizar vista de botones y estilo en el "paso" del formulario, una vez se obtenga el evento click sobre el botón
+
+
+    form_2_next_btn.addEventListener("click", () => {
+        form_2.style.display = "none";
+        form_3.style.display = "block";
+
+        form_3_btns.style.display = "flex";
+        form_3_btns.style.justifyContent = "space-between"
+        form_2_btns.style.display = "none";
+
+        form_3_step.classList.add("active");
+    });
+
+    //Función para actualizar vista de botones y estilo en el "paso" del formulario, una vez se obtenga el evento click sobre el botón
+
+
+    form_3_back_btn.addEventListener("click", () => {
         form_2.style.display = "block";
         form_3.style.display = "none";
-   
+
         form_3_btns.style.display = "none";
         form_2_btns.style.display = "flex";
-            
-   
+
+
         form_3_step.classList.remove("active");
     });
 
     //Funciones para operar el contenedor tipo modal que aparece al finalizar el formulario, una vez se obtenga el evento click
-      
-    btn_done.addEventListener("click", () =>{
-            modal_wrapper.classList.add("active");
+
+    btn_done.addEventListener("click", () => {
+        modal_wrapper.classList.add("active");
     })
-   
-    shadow.addEventListener("click", () =>{
-            modal_wrapper.classList.remove("active");
+
+    shadow.addEventListener("click", () => {
+        modal_wrapper.classList.remove("active");
     })
 
     // El script y formulario de arriba son una versión adaptada del código que se encuentra aquí: https://github.com/codingmarket07/Multi-Step-Progressive-Form 
-   
-   </script>
+
+</script>
 
 </html>

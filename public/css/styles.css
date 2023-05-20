@@ -24,7 +24,6 @@ header {
     box-shadow: 0px 2px 5px #402c68;
 }
 
-
 nav {
     display: flex;
     height: 4rem;
@@ -45,8 +44,6 @@ nav {
 }
 
 /* define el tamaño que ocupa en el navbar  */
-
-
 @keyframes logo-animation {
     0% {
         transform: scale(0.5);
@@ -55,7 +52,6 @@ nav {
     100% {
         transform: scale(1);
     }
-
 }
 
 .nav-center {
@@ -326,8 +322,6 @@ nav svg:hover {
     }
 }
 
-/* ------------------------------------------------------------------- */
-
 p {
     font-size: 1.2rem;
     font-weight: 400;
@@ -500,7 +494,6 @@ p {
     margin-bottom: 1.5rem;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgb(100, 100, 100);
-
 }
 
 .container .content,
@@ -588,9 +581,8 @@ p {
     color: white;
     margin: 1rem;
 }
-
-/* ------------------------------- FOOTER -------------------------------*/
-.footer {
+/*----------------------------------------- FOOTER --------------------------------------------------*/
+  .footer {
     background: linear-gradient(178deg, #ede4edbf, #ede4edbf, #18004B, #10142F);
     color: whitesmoke;
     text-align: center;
@@ -630,7 +622,7 @@ small {
     opacity: 0.7;
     margin: 1.5rem 0;
 }
-
+/*----------------------------------------- ICONOS --------------------------------------------------*/
 .icon-container {
     display: flex;
     justify-content: center;
@@ -710,10 +702,7 @@ small {
 .icon-wpp:hover .icon-text {
     display: block;
 }
-
-
-/* ------------------------------- BREAK TABLET  ------------------------------- */
-
+/*----------------------------------------- BREAK --------------------------------------------------*/
 @media (max-width: 767px){
     .content-art{
         display: flex;
@@ -722,7 +711,7 @@ small {
         align-items: center;
     }
 }
-
+/*----------------------------------------- BREAK --------------------------------------------------*/
 @media (min-width: 768px) {
 
     #icon-home-navbar{
@@ -784,7 +773,6 @@ small {
         right: 63px;
     }
 
-    
     .nav-center li:nth-child(1):hover{
        border-bottom-left-radius: 5px;
        border-bottom-right-radius: 5px;
@@ -814,7 +802,6 @@ small {
         border-bottom-right-radius: 5px;
         border-bottom: solid 3px #64ff00;  
     }
-
 
     .card-container {
         flex-direction: row;
@@ -919,5 +906,3 @@ small {
         justify-content: space-between;
     }
 }
-
-/* ------------------------------- BREAK DESKTOP-------------------------------*/

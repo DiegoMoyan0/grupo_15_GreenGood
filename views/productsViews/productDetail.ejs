@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<head>
 <%- include('../partials/head')%>
     <link rel="stylesheet" href="/css/productDetail.css">
-
+</head>
 <body>
     <!--------------------------------- NAVBAR --------------------------------->
 
@@ -66,7 +67,7 @@
                 <button type="submit" class="btn-product"> Agregar al carrito</button>
             </div>
             <div class="card">
-                <a href="/product/detail"> <img src="images/product/medicinales-cosmetica/endotica-90gr.png"
+                <a href="/product/detail"> <img src="/images/product/medicinales-cosmetica/endotica-90gr.png"
                         alt="Imagen 1"> </a>
                 <p class="price-card"> $3500</p>
                 <button type="submit" class="btn-product"> Agregar al carrito</button>
@@ -80,7 +81,9 @@
 
     <!---------------------------------  FOOTER ---------------------------- -->
 
-    <%- include('../partials/footer')%>
+    <footer>
+        <%- include('../partials/footer')%>
+    </footer>
 
 </body>
 
