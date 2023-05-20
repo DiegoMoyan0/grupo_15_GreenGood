@@ -172,6 +172,26 @@ nav svg:hover {
     padding: 0.8rem;
 }
 
+#menuOptions {
+    background-color:rgba(16, 20, 47, 0.8);
+    display: none;
+}
+
+#menuOptions.show {
+    display: block;
+    text-align: end;
+    padding: 0 1rem;
+}
+#menuOptions ul {
+list-style: none;
+}
+
+#menuOptions a {
+    color: white;
+text-decoration: none;
+}
+
+
 .deslizable {
     font-size: 2.5rem;
     position: fixed;

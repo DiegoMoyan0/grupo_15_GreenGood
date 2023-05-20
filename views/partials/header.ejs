@@ -48,7 +48,7 @@
                 </span>
                 <span id="added-product"><input type="tel" value="0"></span>
             </a>
-            <a href="#">
+            <a id="menuIcon">
                 <span><svg class="icons-navbar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                         fill="currentColor" className="w-5 h-5">
                         <path fillRule="evenodd"
@@ -59,6 +59,26 @@
             </a>
         </div>
     </nav>
+    <div id="menuOptions">
+        <ul>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/info">Info</a></li>
+            <li><a href="/product">Productos</a></li>
+            <li><a href="/product/sale">Vender</a></li>
+            <li><a href="/faqs">Ayuda</a></li><br>
+        </ul>
+    </div>
+    <script>
+        // Obtenemos las referencias a los elementos del DOM
+        const menuIcon = document.getElementById('menuIcon');
+        const menuOptions = document.getElementById('menuOptions');
+
+        // Agregamos un evento al hacer clic en el icono del menú
+        menuIcon.addEventListener('click', function () {
+            // Alternamos la clase 'show' en el contenedor de las opciones del menú
+            menuOptions.classList.toggle('show');
+        });
+    </script>
 </header>
 <div class="deslizable">
     <a href="/"> <i class="fa-solid fa-arrow-up"></i></a>
