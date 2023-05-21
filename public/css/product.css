@@ -160,9 +160,9 @@
   
   .categories-items h3{
     position: absolute;
-    top: 8rem;
+    top: 3rem;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 600;
     color: white;
     text-shadow: 2px 2px 2px #10142f;
@@ -175,6 +175,7 @@
   
   .prodcuts-conteiner{
     display: flex;
+    flex-wrap: wrap;
   }
   
   .category-medicine{
@@ -371,8 +372,13 @@
 
     .categories-items{
       position: relative;
-      width: 200px;
-      height: 200px;
+      width: 230px;
+      height: 230px;
+    }
+
+    .categories-items h3{
+      top: 8rem;
+      font-size: 1.5rem;
     }
     
     .sale-access-container {
