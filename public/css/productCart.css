@@ -86,6 +86,8 @@ main {
     box-shadow: 0px 5px 0px rgba(0, 0, 0, 0.1);
 }
 
+/* Pongo flex en columna para ver los productos agregados uno abajo del otro */
+
 .order {
     padding: 15px;
     display: flex;
@@ -126,6 +128,8 @@ main {
 }
 
 /*----------------------------------------- ARTICULOS --------------------------------------------------*/
+
+
 .cart-products {
     margin: 10px 0px;
     width: 99%;
@@ -175,6 +179,8 @@ td img {
 .promo-text {
     margin-left: 5px;
 }
+
+/* Llamo "tdata" a todo lo que esta dentro de una celda de la tabla */
 
 .tdata-eliminate {
     text-align: right;
@@ -359,6 +365,9 @@ td img {
     color: whitesmoke;
 }
 
+/* Acomodo con float y display table los items y precios asociados de la lista o detalle de pago  */
+
+
 .payment-items {
     float: left;
     width: 45%;
@@ -411,6 +420,8 @@ td img {
     border-radius: 20px;
     -webkit-appearance: none;
 }
+
+/* Configuro los colores y la forma de la barrita de progreso o de carga  */
 
 ::-webkit-progress-bar {
     background-color: whitesmoke;

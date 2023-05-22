@@ -49,15 +49,16 @@
 
             <!-- Productos agregados -->
 
+                
+
                 <article class="empty-cart-content" data-bind="fadeVisible: !hasItems() &amp;&amp; !loading()" style="display: none;">  
 
                     <h2 class="empty-cart-title" data-i18n="cart.emptyTitle">Su carrito está vacio</h2>
                     <div class="empty-cart-message">Para seguir comprando, navegar por las categorías en el sitio, o busque su producto.</div> 
                     <div class="clearfix empty-cart-links"><a href="/" id="cart-choose-products">Elegir productos</a></div>
+                </article> <!-- Este bloque debería verse solo cuando no haya productos agregados al carrito -->
 
-                </article>
-
-                <article class="cart-products">
+                <article class="cart-products"> <!-- Uso etiquetas de tabla para armar los contenedores de los productos agregados, usando subetiquetas tr (flias), td (dato dentro de la celda) -->
 
                     <table>
 
