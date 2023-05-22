@@ -78,11 +78,11 @@ nav .cart-icon {
     position: relative;
 }
 
-nav #added-product {
+#added-product {
     position: absolute;
     top: 2px;
     z-index: 10;
-    right: 59px;
+    right: 3.5rem;
 }
 
 nav #added-product input {
@@ -168,27 +168,43 @@ nav svg:hover {
 .content-icons {
     display: flex;
     align-items: center;
-    padding: 0.8rem;
 }
 
-#menuOptions {
-    background-color:rgba(16, 20, 47, 0.8);
+.content-icons ul {
+    background-color: rgba(16, 20, 47, 0.8);
     display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    text-align: center;
+    top: 100%;
+    right: 0;
+    width: 35%;
+    z-index: 15;
 }
 
-#menuOptions.show {
+.content-icons ul.show {
     display: block;
-    text-align: end;
-    padding: 0 1rem;
-}
-#menuOptions ul {
-list-style: none;
+    height: 100vh;
 }
 
-#menuOptions a {
+
+.content-icons ul a {
     color: white;
-text-decoration: none;
+    text-decoration: none;
 }
+
+.content-icons ul li {
+    padding: 1.5rem;
+}
+
+.content-icons ul a {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
 
 
 .deslizable {
@@ -424,7 +440,7 @@ p {
 
 .card:hover {
     box-shadow: 0px 0px 10px white
-    /* cambia al pasar por arriba el mouse  */
+        /* cambia al pasar por arriba el mouse  */
 }
 
 .card img {
@@ -445,6 +461,7 @@ p {
     opacity: 1.0;
     text-shadow: 0px 2px 5px #64ff00;
 }
+
 .desc-card {
     margin: 0.8rem;
     font-weight: 400;
@@ -478,22 +495,25 @@ p {
     color: white;
 }
 
-.div-begin{
+.div-begin {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#div-1{
+#div-1 {
     order: 2;
 }
-#div-2{
+
+#div-2 {
     order: 3;
 }
-#div-3{
+
+#div-3 {
     order: 4;
 }
-#div-1{
+
+#div-1 {
     order: 1;
 }
 
@@ -533,8 +553,8 @@ p {
 .p-ocult {
     max-height: 0px;
     overflow: hidden;
-    transition: all 3s 
-    /*oculta parrafo*/
+    transition: all 3s
+        /*oculta parrafo*/
 }
 
 .container p,
@@ -600,8 +620,9 @@ p {
     color: white;
     margin: 1rem;
 }
+
 /*----------------------------------------- FOOTER --------------------------------------------------*/
-  .footer {
+.footer {
     background: linear-gradient(178deg, #ede4edbf, #ede4edbf, #18004B, #10142F);
     color: whitesmoke;
     text-align: center;
@@ -641,6 +662,7 @@ small {
     opacity: 0.7;
     margin: 1.5rem 0;
 }
+
 /*----------------------------------------- ICONOS --------------------------------------------------*/
 .icon-container {
     display: flex;
@@ -721,19 +743,23 @@ small {
 .icon-wpp:hover .icon-text {
     display: block;
 }
+
 /*----------------------------------------- BREAK --------------------------------------------------*/
-@media (max-width: 767px){
-    .content-art{
+@media (max-width: 767px) {
+    .content-art {
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
         align-items: center;
     }
 }
+
 /*----------------------------------------- BREAK --------------------------------------------------*/
 @media (min-width: 768px) {
 
-    #icon-home-navbar{
+    #icon-home-navbar,
+    #menuIcon,
+    #menuOptions {
         display: none;
     }
 
@@ -789,37 +815,37 @@ small {
 
     nav #added-product {
 
-        right: 63px;
+        right: 2rem;
     }
 
-    .nav-center li:nth-child(1):hover{
-       border-bottom-left-radius: 5px;
-       border-bottom-right-radius: 5px;
-       border-bottom: solid 3px #64ff00; 
-    }
-        
-    .nav-center li:nth-child(2):hover{
+    .nav-center li:nth-child(1):hover {
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
         border-bottom: solid 3px #64ff00;
     }
 
-    .nav-center li:nth-child(3):hover{
+    .nav-center li:nth-child(2):hover {
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
-        border-bottom: solid 3px #64ff00;   
+        border-bottom: solid 3px #64ff00;
     }
 
-    .nav-center li:nth-child(4):hover{
+    .nav-center li:nth-child(3):hover {
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
-        border-bottom: solid 3px #64ff00;   
+        border-bottom: solid 3px #64ff00;
     }
 
-    .nav-center li:nth-child(5):hover{
+    .nav-center li:nth-child(4):hover {
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
-        border-bottom: solid 3px #64ff00;  
+        border-bottom: solid 3px #64ff00;
+    }
+
+    .nav-center li:nth-child(5):hover {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-bottom: solid 3px #64ff00;
     }
 
     .card-container {
@@ -894,11 +920,13 @@ small {
         display: none;
     }
 
-    .container p, .container-left p {
+    .container p,
+    .container-left p {
         translate: -15px;
     }
 
-    .container:hover p, .container-left:hover p {
+    .container:hover p,
+    .container-left:hover p {
         max-height: fit-content;
         translate: 15px;
     }
