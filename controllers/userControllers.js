@@ -3,10 +3,10 @@
 
 const userController = {
     getLogin: (req,res) => {
-        return res.render('UserViews/login');
+        return res.render('UserViews/login', {title: "Login"});
     },
     getRegister:(req,res) => {
-        return res.render('UserViews/register');
+        return res.render('UserViews/register', {title: "Registro"});
     },
     
 }

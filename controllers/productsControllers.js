@@ -3,16 +3,16 @@
 
 const productController = {
     getProduct: (req,res) => {
-        return res.render('productsViews/product');
+        return res.render('productsViews/product', {title: "Productos"});
     },
     getProductCart:(req,res) => {
-        return res.render('productsViews/productCart');
+        return res.render('productsViews/productCart', {title: "Carrito de Compras"});
     },
     getProductDetail:(req,res) => {
-        return res.render('productsViews/productDetail');
+        return res.render('productsViews/productDetail', {title: "Detalle de Producto"});
     },
     getProductSale:(req,res) => {
-        return res.render('productsViews/sale');
+        return res.render('productsViews/sale', {title: "Vender"});
     }
 }
 
