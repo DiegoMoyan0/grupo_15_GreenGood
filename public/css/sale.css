@@ -245,14 +245,24 @@ select {
   width: 20%
 }
 
+.span-close-form{
+  position: absolute;
+  cursor: pointer;
+  height: 10px;
+  width: 10px;
+  color: gray;
+  right: 1%;
+  top: -0.1%
+}
+
 
 /* Los estilos a continuación son una versión adaptada del código que se encuentra aquí: https://github.com/codingmarket07/Multi-Step-Progressive-Form  */
-
 
 .wrapper{
   position: absolute;
 	width: 90%;
   height: 65%;
+  min-height: 600px;
 	background: #fff;
   top: 15%;
   left:2.5%;
@@ -264,13 +274,19 @@ select {
 
 
 .wrapper .header{
-	margin-bottom: 35px;
+  margin-top: 25px;
+	margin-bottom: 25px;
 	display: flex;
 	justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .wrapper .header ul{
 	display: flex;
+  margin-left: 24%;
+  margin-right: 20%;
+
 }
 
 .wrapper .header ul li{

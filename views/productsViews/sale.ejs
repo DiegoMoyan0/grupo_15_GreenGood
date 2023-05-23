@@ -98,6 +98,7 @@
                             </div>
                         </li>
                     </ul>
+                    <span class="span-close-form">x</span>
                 </div>
                 <div class="form-wrap">
                     <div class="container-form-1">
@@ -133,8 +134,8 @@
                                     </select>
     
                                     <label for="InputDescription" class="label-sale">Descripción</label>
-                                    <input type="text" class="input-sale" minlength="6" id="InputDescription"
-                                         required />
+                                         <textarea class="text-area-description" rows="4" cols="50" required minlength="6">
+                                         </textarea>
 
                                 <div class="form-2-btns" style="display: none;">
                                     <button type="button" class="btn-back">Atrás</button>
@@ -221,6 +222,7 @@ let shadow = document.querySelector(".back-shadow");
 let text_pub_creation = document.querySelector(".p-create");
 let text_pub_edit = document.querySelector(".p-edit");
 
+let text_asesor = document.querySelectorAll(".p-asesor");
 
 
 //Función para actualizar vista de botones y estilo en el "paso" del formulario, una vez se obtenga el evento click sobre el botón
@@ -231,7 +233,7 @@ form_1_next_btn.addEventListener("click", () => {
 
    form_1_btns.style.display = "none";
    form_2_btns.style.display = "flex";
-   form_2_btns.style.justifyContent = "space-between"
+   form_2_btns.style.justifyContent = "space-between";
 
    form_2_step.classList.add("active");
 });
@@ -276,7 +278,7 @@ form_3_back_btn.addEventListener("click", () =>{
     form_3_step.classList.remove("active");
 });
 
-//Función para operar el contenedor tipo modal que aparece al iniciar el formulario, una vez se obtenga el evento click
+//Función para operar el contenedor tipo modal que aparece al iniciar el formulario y cambiar estilos de fondo, una vez se obtenga el evento click
   
 btn_pub.addEventListener("click", () =>{
     modal_wrapper.classList.add("active");
@@ -294,6 +296,11 @@ btn_pub.addEventListener("click", () =>{
 
    form_2_step.classList.remove("active");
    form_3_step.classList.remove("active");
+
+    text_asesor.forEach((p) => {
+        p.style.opacity = "1"
+    });
+
 })
 
 //Función para operar el contenedor tipo modal que aparece al finalizar el formulario, una vez se obtenga el evento click
@@ -309,10 +316,24 @@ btn_done.addEventListener("click", () =>{
 
 shadow.addEventListener("click", () => {
         modal_wrapper.classList.remove("active");
+        text_asesor.forEach((p) => {
+            p.style.opacity = "0.8"
+        });
     })
 
 // El script y formulario de arriba son una versión adaptada del código que se encuentra aquí: https://github.com/codingmarket07/Multi-Step-Progressive-Form 
 
+
+/* Botón salida del formulario de publicación de producto y re-asignación de opacidad a elementos de fondo */
+
+let close_form = document.querySelector(".span-close-form");
+
+close_form.addEventListener("click", () =>{
+    modal_wrapper.classList.remove("active");
+    text_asesor.forEach((p) => {
+        p.style.opacity = "0.8"
+    });
+});
 
 
 let collapse_card = document.querySelector(".container-dropdown1");
