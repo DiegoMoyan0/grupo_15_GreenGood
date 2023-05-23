@@ -16,7 +16,6 @@ const publicPath = path.resolve(__dirname, './public');
 app.use(express.static(publicPath));
 
 
-
 // --------- Establecemos el motor ejs para la propiedad motor de vistas mediante set del entry point ------//
 
 app.set('view engine', 'ejs');
