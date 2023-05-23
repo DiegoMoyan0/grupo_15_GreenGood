@@ -96,6 +96,11 @@ body{
     padding: 5px 10px;
     font-size: 16px;
     border-radius: 5px;
+    margin-top: 5px;
+  }
+
+  .btn-delete {
+    margin-left: 5px;
   }
   
 
@@ -486,7 +491,19 @@ select {
 
 /* Breakpoints */
 
+@media (min-width: 300px) {
+
+  .img-publication img{
+    display: none;
+  }
+
+}
+
 @media (min-width: 500px) {
+
+  .img-publication img{
+    display: block;
+  }
 
 
 	.wrapper{
