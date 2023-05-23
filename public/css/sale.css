@@ -89,7 +89,7 @@ body{
     margin-right: 10px;
   }
   
-  .btn-delete {
+  .btn-cancel, .btn-delete {
     background-color: #e74c3c;
     color: #fff;
     border: none;
@@ -110,18 +110,10 @@ body{
     display: none;
   }
 
- .container-dropdown1 {
-    max-height: 0px;
-    overflow: hidden;
-    transition: 0.6s ease-in-out;
-  }
 
- .checkbox1:checked + .btn-edit + .btn-delete +.container-dropdown1 {
-    max-height: 90vh;
-   /* max-width: ;*/
-  }
 
-  .btn-guardar{
+
+  .btn-save{
     background-color: #16a085;
     color: #fff;
     border: none;
@@ -129,6 +121,7 @@ body{
     font-size: 16px;
     border-radius: 5px;
     margin-right: 10px;
+    margin-top: 5px;
   }
 
   .img-detail{
@@ -136,18 +129,19 @@ body{
     max-height: 200px;
   }
 
-  .btn-edit:focus + .btn-edit-cancel{
-    display: flex;
-  } 
+
 
   .container-dropdown1 .container-answer1{
   
     border-bottom: 2px solid gray;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
     padding: .5rem 1rem;
-    background: gray;
+    background: #53476d;
+    border-radius: 8px;
+    max-width: 300px;
+    margin-top: 15px;
+    padding: 20px;
   }
+
 
 
   .form-container,
@@ -233,6 +227,14 @@ select {
   flex-direction: row;
   text-align: center;
 }
+
+.container-shipping-edit{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  margin: 6px
+}
+
 
 .label-radio , .label-radio + input[type=radio]{
   width: 20%

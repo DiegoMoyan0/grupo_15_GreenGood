@@ -10,30 +10,6 @@
 
     <%- include('../partials/header')%>
 
-   <!-- <main>
-
-        <section class="publication">
-            <h2>Mis Publicaciones</h2>
-            <a href="/post"> <button class="btn-publication">Crear Publicación</button> </a>
-            <ul class="array-publication">
-                <li class="item-publication">
-                    <div class="img-publication">
-                        <img src="ruta-de-la-imagen.jpg" alt="img publicación">
-                    </div>
-                    <div class="info-publication">
-                        <h3 class="title-publication">Título de la publicación</h3>
-                        <p class="desc-publication">Descripción de la publicación</p>
-                        <div class="btns-publicacion">
-                            <button class="btn-edit">Editar</button>
-                            <button class="btn-delete">Eliminar</button>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </section>
-
-    </main>-->
-
     <!-- Sale and product edition draft -->
     <main> 
         <section class="publication">
@@ -42,28 +18,54 @@
             <ul class="array-publication">
                 <li class="item-publication">
                     <div class="img-publication">
-                        <img src="ruta-de-la-imagen.jpg" alt="img publicación">
+                        <img src="/images/product/medicinales-cosmetica/crema-hidratante-Xml.png" alt="img publicación">
                     </div>
                     <div class="info-publication">
                         <h3 class="title-publication">Título de la publicación</h3>
                         <p class="desc-publication">Descripción de la publicación</p>
                         <div class="btns-publicacion">
                             <input id="input1" class="checkbox1" type="checkbox" >
-                            <label for="input1" class="btn-edit">Editar</label>
-                            <button class="btn-delete">Eliminar</button>
-                            
+                            <button for="input1" class="btn-edit">Editar</button>
+                            <button class="btn-delete" onclick="alertaElimina()" >Eliminar</button>
+
                             <div class="container-dropdown1">
                                 <div class="container-answer1">
                                     <article class="container-detail">
                                         <img class="img-detail" src="/images/product/medicinales-cosmetica/crema-hidratante-Xml.png">
                                         <div class="vertical-line"></div>
                                         <div class="container-price">
-                                            <h2 class="title-detail"> Producto </h2>
-                                            <p class="price-detail"><strong>$5000</strong></p>
-                                            <p class="cat-detail">Categoría: <strong>Cultivo</strong></p>
-                                            <p class="cat-detail">Stock: <strong>Disponible</strong></p>
-                                            <p class="cat-detail">Envio: <strong>Gratis</strong></p>
-                                            <button class="btn-guardar">Guardar Cambios</button>
+                                            <label class="label-sale-edit" for="foto">Foto de Producto:</label>
+                                            <input class="input-sale-edit" type="file" id="foto" name="foto" accept="image/*" required>
+                                            <label for="InputName" class="label-sale">Nombre del producto</label>
+                                            <input type="text" class="input-sale" id="InputName" placeholder="Ingrese Nombre..."
+                                                minlength="4" maxlength="10" required />
+                                            <label for="InputPrice" class="label-sale-edit">Precio</label>
+                                            <input type="number"  class="input-sale-edit" min="1" id="InputPrice-edit" placeholder="Ingrese Precio..."
+                                                required />
+                                            <label class="label-sale-edit">Categoría:</label>
+                                            <select name="categoria" id="" class="input-sale-edit">
+                                                <option value="Sustrato">Sustrato</option>
+                                                <option value="Macetas">Macetas</option>
+                                                <option value="Bandeja">Bandeja</option>
+                                                <option value="Cosmetica">Cosmetica</option>
+                                                <option value="Aceites">Aceites</option>
+                                                <option value="Cremas">Cremas</option>
+                                            </select>
+                                            <label class="label-sale-edit">Stock:</label>
+                                            <select name="categoria" id="" class="input-sale-edit">
+                                                <option value="Sustrato">Disponible</option>
+                                                <option value="Macetas">Agotado</option>
+                                            </select>
+                                            <label class="label-sale-edit">Envío Gratis</label><br>
+            
+                                            <div class="container-shipping-edit">
+                                                <label class="label-radio-edit" for="si">Si</label>
+                                                <input type="radio" id="si" name="envio" value="si">
+                                                <label class="label-radio-edit" for="no">No</label>
+                                                <input type="radio" id="Comprador" name="envio" value="no">
+                                            </div>
+                                            <button class="btn-save">Guardar Cambios</button>
+                                            <button class="btn-cancel">Cancelar</button>
                                         </div>
                                     </article>
                                 </div>
@@ -71,46 +73,7 @@
                         </div>
                         </div>
 
-                </li>
-                <li class="item-publication">
-                    <div class="img-publication">
-                        <img src="ruta-de-la-imagen.jpg" alt="img publicación">
-                    </div>
-                    <div class="info-publication">
-                        <h3 class="title-publication">Título de la publicación</h3>
-                        <p class="desc-publication">Descripción de la publicación</p>
-                        <div class="btns-publicacion">
-                            <button class="btn-edit">Editar</button>
-                            <button class="btn-delete">Eliminar</button>
-                        </div>
-                    </div>
-                </li>
-                <li class="item-publication">
-                    <div class="img-publication">
-                        <img src="ruta-de-la-imagen.jpg" alt="img publicación">
-                    </div>
-                    <div class="info-publication">
-                        <h3 class="title-publication">Título de la publicación</h3>
-                        <p class="desc-publication">Descripción de la publicación</p>
-                        <div class="btns-publicacion">
-                            <button class="btn-edit">Editar</button>
-                            <button class="btn-delete">Eliminar</button>
-                        </div>
-                    </div>
-                </li>
-                <li class="item-publication">
-                    <div class="img-publication">
-                        <img src="ruta-de-la-imagen.jpg" alt="img publicación">
-                    </div>
-                    <div class="info-publication">
-                        <h3 class="title-publication">Título de la publicación</h3>
-                        <p class="desc-publication">Descripción de la publicación</p>
-                        <div class="btns-publicacion">
-                            <button class="btn-edit">Editar</button>
-                            <button class="btn-delete">Eliminar</button>
-                        </div>
-                    </div>
-                </li>
+             </li>
             </ul>
         </section>
 
@@ -207,7 +170,8 @@
             <div class="success-wrap">
                 
                 <i class="fa-solid fa-circle-check"></i>
-                <p>Publicación creada con éxito</p>
+                <p class="p-create">Publicación creada con éxito</p>
+                <p class="p-edit">Publicación editada con éxito</p>
 
             </div>
         </div>
@@ -239,7 +203,7 @@ let wrapper = document.querySelector(".wrapper")
 let form_1_btns = document.querySelector(".form-1-btns");
 let form_2_btns = document.querySelector(".form-2-btns");
 let form_3_btns = document.querySelector(".form-3-btns");
-let sucess_wrap = document.querySelector(".success-wrap");
+let success_wrap = document.querySelector(".success-wrap");
 
 let form_1_next_btn = document.querySelector(".form-1-btns .btn-next");
 let form_2_back_btn = document.querySelector(".form-2-btns .btn-back");
@@ -253,6 +217,9 @@ let btn_pub = document.querySelector(".btn-publication");
 let btn_done = document.querySelector(".btn-done");
 let modal_wrapper = document.querySelector(".modal-wrapper");
 let shadow = document.querySelector(".back-shadow");
+
+let text_pub_creation = document.querySelector(".p-create");
+let text_pub_edit = document.querySelector(".p-edit");
 
 
 
@@ -313,7 +280,7 @@ form_3_back_btn.addEventListener("click", () =>{
   
 btn_pub.addEventListener("click", () =>{
     modal_wrapper.classList.add("active");
-    sucess_wrap.style.display = "none";
+    success_wrap.style.display = "none";
     wrapper.style.display = "block"; 
 
    form_1.style.display = "flex";
@@ -332,9 +299,11 @@ btn_pub.addEventListener("click", () =>{
 //Función para operar el contenedor tipo modal que aparece al finalizar el formulario, una vez se obtenga el evento click
 
 btn_done.addEventListener("click", () =>{
-    sucess_wrap.style.display = "flex";
-    sucess_wrap.classList.add("active");
+    success_wrap.style.display = "flex";
+    success_wrap.classList.add("active");
     wrapper.style.display = "none"; 
+    text_pub_creation.style.display = "inherit";
+    text_pub_edit.style.display = "none";
 })
 
 
@@ -344,6 +313,54 @@ shadow.addEventListener("click", () => {
 
 // El script y formulario de arriba son una versión adaptada del código que se encuentra aquí: https://github.com/codingmarket07/Multi-Step-Progressive-Form 
 
+
+
+let collapse_card = document.querySelector(".container-dropdown1");
+let collapse_button = document.querySelector(".btn-edit");
+let btn_saveEdit = document.querySelector(".btn-save");
+let btn_cancel = document.querySelector(".btn-cancel");
+
+    collapse_button.addEventListener("click", () =>{
+        if(collapse_card.style.display == "block") {
+            collapse_card.style.display = "none";
+        }
+        else {
+            collapse_card.style.display = "block";
+        }
+
+})
+
+
+    btn_saveEdit.addEventListener("click", () =>{
+
+        modal_wrapper.classList.add("active");
+        wrapper.style.display = "none"; 
+        success_wrap.style.display = "flex";
+        success_wrap.classList.add("active");
+        text_pub_edit.style.display = "inherit";
+        text_pub_creation.style.display = "none";
+        collapse_card.style.display = "none";
+})
+
+
+btn_cancel.addEventListener("click", () =>{
+    collapse_card.style.display = "none";
+
+});
+
+
+
+/* Alerta para confirmar eliminación de publicación*/
+
+let alertaElimina = () => {
+        if (confirm("Esta seguro que desea eliminar la publicación?\nPor favor confirme")) {
+           //Mensaje o evento de confirmación;
+        } else {
+           //Mensaje o evento de cancelación;
+        }
+    }
+
 </script>
+
 
 </html>
