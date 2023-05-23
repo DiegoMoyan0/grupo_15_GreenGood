@@ -1,19 +1,17 @@
 const express = require('express');
-const productRoutes = express.Router();
+const routes = express.Router();
 
-// Rutas raiz de las vistas de product, productCart y productDetail//
-
+// Se importa el controlador de productos//
 const productsController = require('../controllers/productsControllers');
 
-productRoutes.get('/', productsController.getProduct);
+// routes hace un pedido, en el primer parametro deja en que vista lo quiere y con el segundo parametro utiliza el controlador que ya renderiza la vista// 
+routes.get('/', productsController.getProduct);
 
-productRoutes.get('/cart', productsController.getProductCart);
+routes.get('/cart', productsController.getProductCart);
 
-productRoutes.get('/detail', productsController.getProductDetail);
+routes.get('/detail', productsController.getProductDetail);
 
-productRoutes.get('/sale', productsController.getProductSale);
+routes.get('/sale', productsController.getProductSale);
 
-
-//------------------------------//
-
-module.exports = productRoutes;
+//exportamos routes//
+module.exports = routes;

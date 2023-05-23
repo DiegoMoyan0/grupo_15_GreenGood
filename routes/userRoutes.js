@@ -1,14 +1,13 @@
 const express = require('express');
-const userRoutes = express.Router();
+const routes = express.Router();
 
-// Rutas raiz de las vistas del login, post e register//
-
+// Se importa el controlador de usuarios//
 const userController = require('../controllers/userControllers');
 
-userRoutes.get('/login', userController.getLogin);
+// routes hace un pedido, en el primer parametro deja en que vista lo quiere y con el segundo parametro utiliza el controlador que ya renderiza la vista// 
+routes.get('/login', userController.getLogin);
 
-userRoutes.get('/register', userController.getRegister);
+routes.get('/register', userController.getRegister);
 
-//------------------------------//
-
-module.exports = userRoutes;
+//exportamos routes//
+module.exports = routes;
