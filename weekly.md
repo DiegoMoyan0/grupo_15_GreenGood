@@ -1,5 +1,7 @@
-Reporte de la Reunión Semanal - Semana 1
-Fecha: [11/05/2023]
+# Reporte de la Reunión Semanal - Semana 1
+## Fecha: [11/05/2023]
+
+
 Resumen:
 Durante la reunión semanal del equipo de desarrolladores, se discutió el progreso y las actividades realizadas durante la semana pasada. A continuación, se presentan los puntos destacados de la reunión:
 1. Qué se hizo esta semana?
@@ -17,8 +19,9 @@ El equipo acordó trabajar en la finalización de las actividades requeridas par
 • Completar las tareas pendientes del Sprint actual.
 • Preparar y revisar la documentación necesaria para el Sprint actual.
 
-Reporte de la Reunión Semanal - Semana 2
-Fecha: [18/05/2023]
+# Reporte de la Reunión Semanal - Semana 2
+## Fecha: [18/05/2023]
+
 Resumen:
 Durante la reunión semanal del equipo de desarrolladores, se revisaron los avances y las actividades realizadas durante la semana anterior. A continuación, se presentan los puntos destacados de la reunión:
 1. Qué se hizo esta semana?
