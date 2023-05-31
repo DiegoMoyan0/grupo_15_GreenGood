@@ -21,7 +21,23 @@ app.use(mainRoutes);
 app.use('/user',userRoutes);
 app.use('/product',productsRoutes);
 
-//---Levantamos el servidor en el puerto 3000----//
-app.listen(3001, () => {
-    console.log('Server on-line on port 3001');
+
+//*Normalize PORT*/
+const port = process.env.PORT || '3000';
+
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+app.listen(port, () => { 
+  console.log(`\\*-------------------------*\\`);
+  console.log(`Server running in ${port} port`);
+  console.log(`Now, you can open http://localhost:${port} in your favorite browser `);
+  
+  console.log(`\\*-------------------------*\\`);
 });
+
+
+// ************ exports app ************
+module.exports = app;

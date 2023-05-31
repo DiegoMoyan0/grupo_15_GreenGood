@@ -80,9 +80,9 @@ nav .cart-icon {
 
 #added-product {
     position: absolute;
-    top: 2px;
+    top: 0.2rem;
     z-index: 10;
-    right: 3.5rem;
+    right: 2.9rem;
 }
 
 nav #added-product input {
@@ -784,6 +784,10 @@ small {
         flex-wrap: nowrap;
     }
 
+    nav a{
+        margin-right: 8px;
+    }
+
     .logo {
         max-width: 100px;
         margin-right: 0.8rem;
@@ -814,8 +818,7 @@ small {
     }
 
     nav #added-product {
-
-        right: 2rem;
+        right: 1.72rem;
     }
 
     .nav-center li:nth-child(1):hover {
