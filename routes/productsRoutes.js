@@ -13,7 +13,7 @@ const productsController = require('../controllers/productsControllers');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb){
-        cb (null, './public/images/products');
+        cb (null, './public/images/product');
     },
 
     filename: function (req, file, cb){
@@ -29,7 +29,7 @@ const storage = multer.diskStorage({
 
 
 /*** GET ALL PRODUCTS ***/ 
-routes.get('/list', productsController.getProducts);
+routes.get('/list', productsController.getAllProducts);
 
 
 /*** GET ONE PRODUCT ***/ 

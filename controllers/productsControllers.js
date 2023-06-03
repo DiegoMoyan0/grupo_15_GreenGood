@@ -10,7 +10,7 @@ const controller = {
 
     // Show all products
 
-    getProducts: (req,res) => {
+    getAllProducts: (req,res) => {
         const products = productModel.findAll();
 
         return res.render('productsViews/products-list', {

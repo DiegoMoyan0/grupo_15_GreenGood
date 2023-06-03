@@ -28,42 +28,29 @@
     </section>
 
 
-    <!--------------------------- CARRUSEL OFERTAS--------------------------------->
     <main>
-        <!-- <h2 id="ofertas" class="titles"> OFERTAS</h2> -->
+
+        <!--------------------------- CARRUSEL OFERTAS--------------------------------->
+
+        <h2 id="ofertas" class="titles"> OFERTAS DESTACADAS</h2>
         <div class="card-container">
-            <div class="card">
-                <a href="/product/??/detail"> <img src="/images/product/macetas/rootshouse-10L.png" alt="Imagen 1"></a>
-                <p class="send-card">OFERTA</p>
-                <p class="desc-card"> Maceta Mad Rocket</p>
-                <p class="price-card"> $3500</p>
-                <a href="/product/cart"> <button type="submit" class="btn-product"> Agregar al carrito</button></a>
-            </div>
-            <div class="card">
-                <a href="/product/??/detail"> <img src="/images/product/medicinales-cosmetica/detox-facial-30ml.png"
-                        alt="Imagen 1"></a>
-                <p class="send-card">OFERTA</p>
-                <p class="desc-card"> Detox Facial</p>
-                <p class="price-card"> $3500</p>
-                <a href="/product/cart"> <button type="submit" class="btn-product"> Agregar al carrito</button></a>
-            </div>
-            <div class="card">
-                <a href="/product/??/detail"> <img src="/images/product/medicinales-cosmetica/crema-hidratante-Xml.png"
-                        alt="Imagen 1"></a>
-                <p class="send-card">OFERTA</p>
-                <p class="desc-card"> Unguento</p>
-                <p class="price-card"> $3500</p>
-                <a href="/product/cart"> <button type="submit" class="btn-product"> Agregar al carrito</button></a>
-            </div>
-            <div class="card">
-                <a href="/product/??/detail"> <img src="/images/product/medicinales-cosmetica/crema-hidratante-Xml.png"
-                        alt="Imagen 1"></a>
-                <p class="send-card">OFERTA</p>
-                <p class="desc-card"> Unguento</p>
-                <p class="price-card"> $3500</p>
-                <a href="/product/cart"> <button type="submit" class="btn-product"> Agregar al carrito</button></a>
-            </div>
+            <% products.forEach(product => { %>
+                <% if(product.discount > 15) { %>
+                    <div class="card">
+                        <a href="/product/<%= product.id %>/detail"> <img src=<%=product.image%> alt="Imagen 1"></a>
+                        <p class="send-card">OFERTA</p>
+                        <p class="desc-card"><strong><%= product.title %></strong></p>
+                        <p class="desc-card">$<%= product.price %> / Descuento:  <%= product.discount%>% OFF</p>
+                        <p class="price-card">
+                            Precio Final: $<%= Math.round(((product.price)* ((100 - product.discount)/100 )), -2) %>
+                        </p>
+                        <a href="/product/cart"> <button type="submit" class="btn-product"> Agregar al carrito</button></a>
+                    </div>
+                <% }; %>
+            <% }); %>
         </div>
+
+
         <!-------------------------------- INICIO -------------------------------->
         <div class="div-begin">
             <div class="container-left" id="div-1">
