@@ -26,7 +26,21 @@
                         <div class="btns-publicacion">
                             <input id="input1" class="checkbox1" type="checkbox" >
                             <button for="input1" class="btn-edit">Editar</button>
-                            <button class="btn-delete" onclick="alertaElimina()" >Eliminar</button>
+                            <!--SOFT DELETE-->
+                            <br>
+                            <br>
+                            <form method ="POST" action="/product/<%=productToEdit.id%>/edit-delete?_method=PATCH">
+                                <button type="submit" class="btn-delete">Eliminar(Soft = Editar valor del atributo)</button>
+                            </form>
+                            <br>
+                            <!---->
+                            <!--HARD DELETE-->
+                            <form method ="POST" action="/product/<%=productToEdit.id%>/edit-delete?_method=DELETE">
+                                <button type="submit"style="background: rgb(103, 9, 9); color:white; height: 45px" class="btn-delete-hard">Eliminar (Hard = Borrar permanente del JSON)</button>
+                            </form>
+                             <!---->
+
+                             <!--EDIT-->
 
                             <div class="container-dropdown1">
                                 <div class="container-answer1">
@@ -35,7 +49,7 @@
                                         <div class="vertical-line"></div>
                                         <div class="container-price">
                                             <label class="label-sale-edit" for="image">Foto de Producto:</label>
-                                            <input class="input-sale-edit" type="file" id="foto" name="image" accept=".png, .jpeg, .jpg" required>
+                                            <input class="input-sale-edit" type="file" id="foto" name="image" accept=".png, .jpeg, .jpg">
 
                                             <label for="title" class="label-sale">Nombre del producto</label>
                                             <input type="text" class="input-sale" name="title" id="InputName" value=<%=productToEdit.title%>                              minlength="4" maxlength="400" required />
@@ -85,7 +99,9 @@
                                 </div>
                             
                         </div>
-                        </div>
+
+                  <!--        </form> -->
+                    </div>
 
              </li>
             </ul>

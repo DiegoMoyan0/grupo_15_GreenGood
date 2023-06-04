@@ -39,7 +39,7 @@ const models = {
 
         products = products.filter(item => item.id !== id);
 
-        fs.writeFileSync(path.join(__dirname, this.route), JSON.stringify(products)); // modifico el JSON de base de datos
+        fs.writeFileSync(path.join(__dirname, this.route), JSON.stringify(products, null, " ")); // modifico el JSON de base de datos
 
         return products;
     },
@@ -67,7 +67,25 @@ const models = {
         fs.writeFileSync(path.join(__dirname, this.route), JSON.stringify(products));
         
     },
+/////////////////////////////////////////////
+    softDeleteById: function(id){
 
+        let products = this.findAll();
+
+        let searched = products.find(item => item.id === id);
+
+        (!searched)? searched = null: searched; // Para mostrar null en vez de undefined cuando no existe el ID
+        
+        if (searched != null && searched.deleted != true){
+            searched.deleted = true
+            fs.writeFileSync(path.join(__dirname, this.route), JSON.stringify(products, null, " "));
+            return "Eliminado";
+        }else{
+          return  "Error";
+        }
+                
+    },
+//////////////////////////////////////////////
     //Crear un producto x
 
     createOne: function (newProduct) {

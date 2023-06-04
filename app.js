@@ -2,6 +2,15 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
+
+/////////////////////////////////////////////////////
+
+// Requerimos method-override para poder trabajar con los metodos HTTP; PATCH, DELETE Y PUT//
+
+const methodOverride = require('method-override');
+app.use(methodOverride ("_method"))
+
+/////////////////////////////////////////////////////
 // Requerimos las rutas de las vistas//
 const mainRoutes = require('./routes/mainRoutes');
 const productsRoutes = require('./routes/productsRoutes');

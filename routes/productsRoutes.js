@@ -45,6 +45,15 @@ routes.get('/cart', productsController.getProductCart);
 
 routes.get('/publications', productsController.getProductPublications);
 
+///////////////////////////////////
+
+/*** DELETE ONE PRODUCT ***/ 
+
+routes.patch('/:id/edit-delete', productsController.softDeleteProduct);
+
+routes.delete('/:id/edit-delete', productsController.hardDeleteProduct);
+
+///////////////////////////////////
 
 //exportamos routes//
 module.exports = routes;
