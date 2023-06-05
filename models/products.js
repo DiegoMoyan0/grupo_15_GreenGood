@@ -32,17 +32,27 @@ const models = {
     },
 
     //Eliminar un producto x
-
     deleteById: function (id) {
-
         let products = this.findAll();
 
-        products = products.filter(item => item.id !== id);
+        products = products.filter(product => product.id !== id);
 
-        fs.writeFileSync(path.join(__dirname, this.route), JSON.stringify(products, null, " ")); // modifico el JSON de base de datos
+        const productsJSON = JSON.stringify(products);
+
+        fs.writeFileSync(path.join(__dirname, this.route), productsJSON);
 
         return products;
     },
+    // deleteById: function (id) {
+
+    //     let products = this.findAll();
+
+    //     products = products.filter(item => item.id !== id);
+
+    //     fs.writeFileSync(path.join(__dirname, this.route), JSON.stringify(products, null, " ")); // modifico el JSON de base de datos
+
+    //     return products;
+    // },
 
     //Editar un producto x
 

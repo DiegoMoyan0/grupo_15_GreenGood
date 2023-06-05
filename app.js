@@ -8,6 +8,8 @@ const path = require('path');
 // Requerimos method-override para poder trabajar con los metodos HTTP; PATCH, DELETE Y PUT//
 
 const methodOverride = require('method-override');
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(methodOverride ("_method"))
 
 /////////////////////////////////////////////////////

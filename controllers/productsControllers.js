@@ -10,108 +10,136 @@ const controller = {
 
     // Show all products
 
-    getAllProducts: (req,res) => {
+    getAllProducts: (req, res) => {
         const products = productModel.findAll();
 
-        return res.render('products-list', {
+        return res.render('productsViews/products-list', {
             title: "Todos los productos",
             products
         });
     },
 
-    getProductCart:(req,res) => {
-        return res.render('shopping-cart', {title: "Carrito de Compras"});
+    getProductCart: (req, res) => {
+        return res.render('productsViews/shopping-cart', { title: "Carrito de Compras" });
     },
 
     // Detail - Detail from one product
 
-    getProductDetail:(req,res) => {
+    getProductDetail: (req, res) => {
         let id = Number(req.params.id);
-		
-		let theProduct = productModel.findById(id);
 
-		if (!theProduct){
-			let message = 'El producto que buscas no se encuentra disponible en estos momentos o se ha eliminado';
-			return res.send(message);
-		};
+        let theProduct = productModel.findById(id);
+
+        if (!theProduct) {
+            let message = 'El producto que buscas no se encuentra disponible en estos momentos o se ha eliminado';
+            return res.send(message);
+        };
 
         return res.render('productsViews/detail', {
-            title: theProduct.title, 
+            title: theProduct.title,
             theProduct
         });
     },
 
-    getProductPublications:(req,res) => {
+    getProductPublications: (req, res) => {
         const productos = productModel.findAll();
 
-        return res.render('productsViews/products-publications', {title: "Productos publicados", productos});
+        return res.render('productsViews/products-publications', { title: "Productos publicados", productos });
     },
 
     // Form to edit @GET
 
-    getProductEdit:(req,res) => {
+    getProductEdit: (req, res) => {
         let id = Number(req.params.id);
 
-		let productToEdit = productModel.findById(id);
+        let productToEdit = productModel.findById(id);
 
-		if (!productToEdit) {
+        if (!productToEdit) {
             return res.send('error de id');
         }
 
         return res.render('productsViews/edit-create-forms', {
             title: productToEdit.title,
-			productToEdit
+            productToEdit
         });
-        
+
+    },
+    getUpdate: (req, res) => {
+        const id = Number(req.params.id);
+
+        const productoAModificar = productModel.findById(id)
+
+        if (!productoAModificar) {
+            // Con el return detenemos la ejecución del controller, y con el res.send enviamos un mensaje de error
+            // *queremos detener la ejecución para que no se ejecute el otro res.render (la otra respuesta)
+            return res.send('error de id');
+        }
+
+        res.render('productsViews/updateProduct', { product: productoAModificar });
+    },
+
+    updateProduct: (req, res) => {
+        const id = Number(req.params.id);
+        const nuevosDatos = req.body;
+
+        productModel.updateById(id, nuevosDatos);
+
+        res.redirect('/product/publications');
     },
     ///////////////////////////////////////////
 
-    softDeleteProduct:(req,res) => {
+    softDeleteProduct: (req, res) => {
 
         //Soft-delete a product
- 
+
         let id = Number(req.params.id);
         let productToSoftDelete = productModel.softDeleteById(id);
 
-        if(productToSoftDelete === "Eliminado") {
-           res.send("El producto con ID No. " + id +  " fue eliminado existosamente")
+        if (productToSoftDelete === "Eliminado") {
+            res.send("El producto con ID No. " + id + " fue eliminado existosamente")
 
-        }else{
-            res.send("Error, el producto con ID No. " + id +  " ya había sido eliminado o nunca existió")
-     
+        } else {
+            res.send("Error, el producto con ID No. " + id + " ya había sido eliminado o nunca existió")
+
         }
 
 
     },
 
 
-    hardDeleteProduct:(req,res) => {
+    hardDeleteProduct: (req, res) => {
 
         //hard-delete a product
- 
+
         let id = Number(req.params.id);
         let productToHardDelete = productModel.deleteById(id);
 
         productToHardDelete
 
-        res.send("El producto con ID No. " + id +  " fue eliminado de manera PERMANENTE existosamente")
+        res.send("El producto con ID No. " + id + " fue eliminado de manera PERMANENTE existosamente")
 
     },
-        // @GET /products/create
-        getCreate: (req, res) => {
-            res.render('productsViews/createProduct');
-        },
-    
-        // @POST /products
-        postProduct: (req, res) => {
-            let datos = req.body;
-        
-            datos.price = Number(datos.price);
+    deleteProduct: (req, res) => {
+        const id = Number(req.params.id);
 
-            productModel.createOne(datos);
-    
-            res.redirect('/product/publications');
-        }
+        productModel.deleteById(id);
+
+        res.redirect('/product/publications');
+    },
+    // @GET /products/create
+    getCreate: (req, res) => {
+        res.render('productsViews/createProduct');
+    },
+
+    // @POST /products
+    postProduct: (req, res) => {
+        let datos = req.body;
+        datos.price = Number(datos.price);
+
+        productModel.createOne(datos);
+
+        res.redirect('/product/publications');
+    }
 
     ///////////////////////////////////////////
 

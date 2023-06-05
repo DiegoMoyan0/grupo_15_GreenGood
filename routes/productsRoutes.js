@@ -44,9 +44,11 @@ routes.get('/create', productsController.getCreate);
 /*** EDIT ONE PRODUCT ***/ 
 routes.get('/:id/edit', productsController.getProductEdit);
 
+routes.get('/:id/update', productsController.getUpdate);
+
+routes.put('/:id/update', productsController.updateProduct);
 
 routes.get('/cart', productsController.getProductCart);
-
 
 routes.get('/publications', productsController.getProductPublications);
 
@@ -57,6 +59,8 @@ routes.get('/publications', productsController.getProductPublications);
 routes.patch('/:id/edit-delete', productsController.softDeleteProduct);
 
 routes.delete('/:id/edit-delete', productsController.hardDeleteProduct);
+
+routes.delete('/:id/delete', productsController.deleteProduct);
 
 ///////////////////////////////////
 

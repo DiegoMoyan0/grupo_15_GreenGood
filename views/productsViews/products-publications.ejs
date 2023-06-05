@@ -41,10 +41,10 @@
                                     <%=producto.stock%>
                                 </p>
                                 <br>
-                                <a href="/products/<%= producto.id %>/update">
+                                <a href="/product/<%= producto.id %>/update">
                                     <button class="btn-edit">Editar</button>
                                 </a>
-                                <form action="/products/<%= producto.id %>/delete?_method=delete" method="post">
+                                <form action="/product/<%= producto.id %>/delete?_method=delete" method="post">
                                     <input type="submit" class="btn-delete" value="Eliminar"></input>
                                 </form>
                                 <br>
