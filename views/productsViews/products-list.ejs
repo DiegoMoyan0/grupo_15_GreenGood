@@ -56,7 +56,8 @@
         </div>
         <div class="prodcuts-conteiner">
             <section class="category-cultive">
-                <h2 class="titles"> Sección de Cultivo <i class="fa-solid fa-chevron-down"></i></h2>
+
+                <h2 class="titles"> Productos para el Cultivo <i class="fa-solid fa-chevron-down"></i></h2>
                 
                 <h3 class="sub-category"> Sustratos <i class="fa-solid fa-chevron-down"></i></h3>
                 <section class="section-sub-category">
@@ -69,8 +70,14 @@
                                     <% if(product.price > 3000) { %>
                                         <p class="send"> Envio Gratis</p>
                                     <% }; %>
-                                    <p class="price">$<%= product.price %></p>
-                                    <p class="price"><%= product.discount %>% OFF</p>
+                                    <% if(product.discount > 0) { %>
+                                        <p class="price">$<%= product.price %> - <%= product.discount %>% OFF</p>
+                                        <p class="price"> 
+                                            Precio Final: $<%= Math.round(((product.price)* ((100 - product.discount)/100 )), -2) %></p>
+                                    <% } else { %>
+                                        <p class="price">$<%= product.price %></p>
+                                    <% };%>
+
                                     <p class="title"><%= product.title %></p>
                                 </div>
                                     <a href="/product/cart"> <button type="submit" class="btn-product"> Agregar al carrito</button></a>
@@ -90,8 +97,14 @@
                                     <% if(product.price > 3000) { %>
                                         <p class="send"> Envio Gratis</p>
                                     <% }; %>
-                                    <p class="price">$<%= product.price %></p>
-                                    <p class="price"><%= product.discount %>% OFF</p>
+                                    <% if(product.discount > 0) { %>
+                                        <p class="price">$<%= product.price %> - <%= product.discount %>% OFF</p>
+                                        <p class="price"> 
+                                            Precio Final: $<%= Math.round(((product.price)* ((100 - product.discount)/100 )), -2) %></p>
+                                    <% } else { %>
+                                        <p class="price">$<%= product.price %></p>
+                                    <% };%>
+
                                     <p class="title"><%= product.title %></p>
                                 </div>
                                     <a href="/product/cart"> <button type="submit" class="btn-product"> Agregar al carrito</button></a>
@@ -111,8 +124,13 @@
                                     <% if(product.price > 3000) { %>
                                         <p class="send"> Envio Gratis</p>
                                     <% }; %>
-                                    <p class="price">$<%= product.price %></p>
-                                    <p class="price"><%= product.discount %>% OFF</p>
+                                    <% if(product.discount > 0) { %>
+                                        <p class="price">$<%= product.price %> - <%= product.discount %>% OFF</p>
+                                        <p class="price"> 
+                                            Precio Final: $<%= Math.round(((product.price)* ((100 - product.discount)/100 )), -2) %></p>
+                                    <% } else { %>
+                                        <p class="price">$<%= product.price %></p>
+                                    <% };%>
                                     <p class="title"><%= product.title %></p>
                                 </div>
                                     <a href="/product/cart"> <button type="submit" class="btn-product"> Agregar al carrito</button></a>
@@ -121,10 +139,17 @@
                     <% }); %>
                 </section>
 
-                <h3 class="sub-category"> Aceites <i class="fa-solid fa-chevron-down"></i> </h3>
+            </section>
+
+            <section class="category-cultive">
+
+                <h2 class="titles"> Sección productos Medicinales<i class="fa-solid fa-chevron-down"></i></h2>               
+
+                <h3 class="sub-category"> Salud y Farmacia <i class="fa-solid fa-chevron-down"></i> </h3>
+
                 <section class="section-sub-category">
                     <% products.forEach(product => { %>
-                        <% if(product.type === "aceite") { %>
+                        <% if(product.subcategory === "salud") { %>
                             <article class="product">
                                 <a href="/product/<%= product.id %>/detail"> <img src=<%=product.image%> alt="img product">
                                 </a>
@@ -132,8 +157,13 @@
                                     <% if(product.price > 3000) { %>
                                         <p class="send"> Envio Gratis</p>
                                     <% }; %>
-                                    <p class="price">$<%= product.price %></p>
-                                    <p class="price"><%= product.discount %>% OFF</p>
+                                    <% if(product.discount > 0) { %>
+                                        <p class="price">$<%= product.price %> - <%= product.discount %>% OFF</p>
+                                        <p class="price"> 
+                                            Precio Final: $<%= Math.round(((product.price)* ((100 - product.discount)/100 )), -2) %></p>
+                                    <% } else { %>
+                                        <p class="price">$<%= product.price %></p>
+                                    <% };%>
                                     <p class="title"><%= product.title %></p>
                                 </div>
                                     <a href="/product/cart"> <button type="submit" class="btn-product"> Agregar al carrito</button></a>
@@ -142,10 +172,11 @@
                     <% }); %>
                 </section>
 
-                <h3 class="sub-category"> Cremas <i class="fa-solid fa-chevron-down"></i> </h3>
+
+                <h3 class="sub-category"> Dermocosmética y cuidado personal<i class="fa-solid fa-chevron-down"></i> </h3>
                 <section class="section-sub-category">
                     <% products.forEach(product => { %>
-                        <% if(product.type === "crema") { %>
+                        <% if(product.subcategory === "cosmetica") { %>
                             <article class="product">
                                 <a href="/product/<%= product.id %>/detail"> <img src=<%=product.image%> alt="img product">
                                 </a>
@@ -153,8 +184,14 @@
                                     <% if(product.price > 3000) { %>
                                         <p class="send"> Envio Gratis</p>
                                     <% }; %>
-                                    <p class="price">$<%= product.price %></p>
-                                    <p class="price"><%= product.discount %>% OFF</p>
+                                    <% if(product.discount > 0) { %>
+                                        <p class="price">$<%= product.price %> - <%= product.discount %>% OFF</p>
+                                        <p class="price"> 
+                                            Precio Final: $<%= Math.round(((product.price)* ((100 - product.discount)/100 )), -2) %></p>
+                                    <% } else { %>
+                                        <p class="price">$<%= product.price %></p>
+                                    <% };%>
+
                                     <p class="title"><%= product.title %></p>
                                 </div>
                                     <a href="/product/cart"> <button type="submit" class="btn-product"> Agregar al carrito</button></a>
@@ -162,6 +199,7 @@
                         <% }; %>
                     <% }); %>
                 </section>
+                
             </section>
         </div>
 

@@ -19,7 +19,17 @@
             <div class="vertical-line"></div>
             <div class="container-price">
                 <h2 class="title-detail"><%=theProduct.title%></h2>
-                <p class="price-detail"><strong>$<%=theProduct.price%></strong></p>
+                <p class="title-detail"><%=theProduct.description%></p>
+
+                <% if(theProduct.discount > 0) { %>
+                    <p class="price">$<%= theProduct.price %>/ - <%= theProduct.discount %>% OFF</p>
+                    <p class="price"><strong>
+                        Precio Final: $<%= Math.round(((theProduct.price)* ((100 - theProduct.discount)/100 )), -2) %>
+                    </strong></p>
+                <% } else { %>
+                    <p class="price-detail"><strong>$<%= theProduct.price %></strong></p>
+                <% };%>
+
                 <input type="number" class="form-control" id="InputName" placeholder="Cantidad:" required /> <button
                     class="btn-product" type="submit" href="#">Añadir al carrito</button>
                 <p class="cat-detail">Categoría: <strong><%=theProduct.category%> / <%=theProduct.subcategory%> </strong></p>
@@ -41,12 +51,12 @@
             </div>
         </article>
         <div class="content-description">
-            <h2 class="title-description">Descripción</h2>
+            <h2 class="title-description">Detalle del producto</h2>
             <p class="p-description">
-                <%=theProduct.description%>
+                <%=theProduct.info%>
             </p>
         </div>
-        <div class="content-description">
+        <!-- <div class="content-description">
             <h2 class="title-description">Caracteristicas</h2>
             <p class="p-description">
                 ·Lorem ipsum dolor <br>
@@ -54,8 +64,8 @@
                 ·aperiam et nam qui <br>
                 ·incidunt! Voluptate <br>
             </p>
-        </div>
-        <h2 class="title-card-detail"> Quienes vieron este producto tambien vieron</h2>
+        </div> -->
+        <h2 class="title-card-detail"> Quienes vieron este producto tambien vieron:</h2>
         <div class="card-container">
             <div class="card">
                 <a href="/product/detail"> <img src="/images/product/medicinales-cosmetica/crema-facial-30ml.png"
