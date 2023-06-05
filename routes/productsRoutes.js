@@ -35,6 +35,11 @@ routes.get('/list', productsController.getAllProducts);
 /*** GET ONE PRODUCT ***/ 
 routes.get('/:id/detail', productsController.getProductDetail);
 
+/*** CREATE ONE PRODUCT ***/ 
+routes.post('/', productsController.postProduct);
+
+routes.get('/create', productsController.getCreate);
+
 
 /*** EDIT ONE PRODUCT ***/ 
 routes.get('/:id/edit', productsController.getProductEdit);

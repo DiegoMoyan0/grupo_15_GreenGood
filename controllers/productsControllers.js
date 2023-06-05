@@ -13,14 +13,14 @@ const controller = {
     getAllProducts: (req,res) => {
         const products = productModel.findAll();
 
-        return res.render('productsViews/products-list', {
+        return res.render('products-list', {
             title: "Todos los productos",
             products
         });
     },
 
     getProductCart:(req,res) => {
-        return res.render('productsViews/shopping-cart', {title: "Carrito de Compras"});
+        return res.render('shopping-cart', {title: "Carrito de Compras"});
     },
 
     // Detail - Detail from one product
@@ -42,7 +42,9 @@ const controller = {
     },
 
     getProductPublications:(req,res) => {
-        return res.render('productsViews/products-publications', {title: "Productos publicados"});
+        const productos = productModel.findAll();
+
+        return res.render('productsViews/products-publications', {title: "Productos publicados", productos});
     },
 
     // Form to edit @GET
@@ -94,7 +96,22 @@ const controller = {
 
         res.send("El producto con ID No. " + id +  " fue eliminado de manera PERMANENTE existosamente")
 
-    }
+    },
+        // @GET /products/create
+        getCreate: (req, res) => {
+            res.render('productsViews/createProduct');
+        },
+    
+        // @POST /products
+        postProduct: (req, res) => {
+            let datos = req.body;
+        
+            datos.price = Number(datos.price);
+
+            productModel.createOne(datos);
+    
+            res.redirect('/product/publications');
+        }
 
     ///////////////////////////////////////////
 
