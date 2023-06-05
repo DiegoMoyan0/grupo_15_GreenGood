@@ -75,7 +75,7 @@ const controller = {
             return res.send('error de id');
         }
 
-        res.render('productsViews/updateProduct', { product: productoAModificar });
+        res.render('productsViews/updateProduct', { title: "Editar Producto", product: productoAModificar });
     },
 
     updateProduct: (req, res) => {
@@ -128,7 +128,7 @@ const controller = {
     },
     // @GET /products/create
     getCreate: (req, res) => {
-        res.render('productsViews/createProduct');
+        res.render('productsViews/createProduct', {title: "Crear Producto"});
     },
 
     // @POST /products

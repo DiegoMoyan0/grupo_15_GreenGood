@@ -3,58 +3,54 @@
 
 <head>
     <%- include('../partials/head') %>
-        <link rel="stylesheet" href="/css/sale.css">
+        <link rel="stylesheet" href="/css/publications.css">
 
 </head>
 
 <body>
-    <!-- Sale and product edition draft -->
-    <main>
-        <section class="publication">
-            <h2>Mis Publicaciones</h2>
-            <br>
-            <a href="/product/create" class="btn-publication">Crear un nuevo producto!</a>
+    <%- include('../partials/header')%>
 
-            <button type="button" class="btn-publication">Crear Publicación modal</button>
+        <div class="deslizable">
+            <a href="/product"> <i class="fa-solid fa-arrow-up"></i></a>
+        </div>
+        <!-- Sale and product edition draft -->
+        <main>
+            <section class="publication">
+                <h2>Mis Publicaciones</h2>
+                <br>
+                <a href="/product/create" class="btn-publication">Crear un nuevo producto!</a>
 
-            <ul class="array-publication">
-                <li class="item-publication">
-
-                    <div class="info-publication">
-                        <% productos.forEach(producto=> { %>
-                            <article>
-                                <br>
-                                <div class="img-publication">
-                                    <img src="" alt="imagen">
-                                </div>
-                                <br>
-                                <h1>
-                                    <%= producto.title %>
-                                </h1>
-                                <p> Precio =
-                                    <%= producto.price %>
-                                </p>
-                                <p> Descuento =
-                                    <%=producto.discount%>
-                                </p>
-                                <p> Stock =
-                                    <%=producto.stock%>
-                                </p>
-                                <br>
-                                <a href="/product/<%= producto.id %>/update">
-                                    <button class="btn-edit">Editar</button>
-                                </a>
+                    <% productos.forEach(producto=> { %>
+                        <article>
+                            <br>
+                            <div class="img-publication">
+                                <img src="/images/product/sustratos/abono-growers-5L.png" alt="imagen">
+                            </div>
+                            <br>
+                            <h1 class="title-publication">
+                                <%= producto.title %>
+                            </h1>
+                            <p class="price-publication"> Precio =
+                                <%= producto.price %>
+                            </p>
+                            <p class="desc-publication"> Descuento =
+                                <%=producto.discount%>
+                            </p>
+                            <p class="stock-publication"> Stock =
+                                <%=producto.stock%>
+                            </p>
+                            <br>
+                            <div class="btns-a">
+                                <a class="btn-edit" href="/product/<%= producto.id %>/update">Editar</a>
                                 <form action="/product/<%= producto.id %>/delete?_method=delete" method="post">
-                                    <input type="submit" class="btn-delete" value="Eliminar"></input>
+                                    <input type="submit" class="btn-delete" value="Eliminar">
                                 </form>
-                                <br>
-                            </article>
-                            <% }) %>
-                    </div>
-
-                </li>
-            </ul>
-        </section>
+                            </div>
+                            <br>
+                        </article>
+                        <% }) %>
+            </section>
+            <%- include('../partials/footer')%>
 
 </body>
 

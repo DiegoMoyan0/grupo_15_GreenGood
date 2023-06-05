@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto+Serif&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    outline: none;
+    font-family: "Open Sans", sans-serif;
+}
+
+body {
+    color: white;
+    background: #10142F;
+    font-size: 16px;
+    position: relative;
+}
+
+
+.publication {
+    color: #fff;
+    padding: 20px;
+}
+.publication article{
+    border-bottom:1px solid #402C68 ;
+}
+
+.btn-publication {
+    background-color: #16a085;
+    color: #fff;
+    border: none;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.img-publication {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
+
+.img-publication img {
+    width: 100%;
+    height: 100%;
+}
+
+
+.title-publication {
+    color: #2980b9;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.price-publication {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.desc-publication {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.stock-publication {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.btns-publication {
+    display: flex;
+    align-items: center;
+}
+
+.btns-a {
+    display: flex;
+}
+
+.btn-edit {
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-right: 1rem;
+}
+
+.btn-delete {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+
+/* Edición de productos */
+
+
+.btn-save {
+    background-color: #16a085;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+
+body{
+    font-family: 'Roboto Serif', serif;
+}
+#sale {
+    padding: 50px;
+    text-align: center;
+}
+
+#title-sale {
+    font-family: 'Roboto Serif', serif;
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+#container-sale {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.sale-titles {
+    font-family: 'Roboto Serif', serif;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.label-sale-edit {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.input-sale-edit {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #0A1504;
+}
+
+.form-control::placeholder {
+    color: #aaa;
+}
