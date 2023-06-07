@@ -23,7 +23,7 @@ const models = {
 
         const products = this.findAll();
 
-        const searched = products.find(item => item.id === id);
+        let searched = products.find(item => item.id === id);
 
         (!searched)? searched = null: searched; // Para mostrar null en vez de undefined cuando no existe el ID
 
@@ -60,17 +60,27 @@ const models = {
 
         let products = this.findAll();
 
-
         // Guardo el indice del array donde esta guardado el elemento buscado
         const index = products.findIndex(item => item.id === id);
 
-        const {title, price} = newData // con destructuring me ahorro poner todo dentro del nuevo objeto. Podria hacerlo directamente en el parametro newData
+        const {title, price, description, image, discount, stock, info, category, subcategory, type} = newData // con destructuring me ahorro poner todo dentro del nuevo objeto. Podria hacerlo directamente en el parametro newData
+
+        newData.price = Number(newData.price);
+        newData.discount = Number(newData.discount);
 
         //Actualizamos los nuevos datos
         products[index] = {
             id: products[index].id,
             title,
-            price
+            price,
+            description, 
+            image, 
+            discount, 
+            stock, 
+            info, 
+            category, 
+            subcategory, 
+            type
         }
 
         //Convertimos a JSON y Sobrescribimos
