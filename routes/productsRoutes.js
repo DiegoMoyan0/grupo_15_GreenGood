@@ -44,7 +44,7 @@ routes.get('/create', productsController.getCreate);
 
 routes.post('/', productsController.postProduct);
 
-routes.get('/:id/edit', productsController.getCreate);
+//routes.get('/:id/edit', productsController.getCreate);
 
 /////////////////////////////////////////////////////////
 
