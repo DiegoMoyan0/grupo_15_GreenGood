@@ -182,7 +182,7 @@ getProductPublications: (req, res) => {
         let newData = req.body;
 
         newData.price = Number(newData.price);
-        newData.price = Number(newData.discount);
+        newData.discount = Number(newData.discount);
         newData.image = req.file.filename;
 
 
