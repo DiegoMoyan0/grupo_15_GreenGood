@@ -110,7 +110,7 @@ const models = {
         products.push(newProduct);
 
         // Convertimos a JSON el array
-        const productsJSON = JSON.stringify(products);
+        const productsJSON = JSON.stringify(products, null, " ");
 
         // Sobreescribimos el JSON
         fs.writeFileSync(path.join(__dirname, this.route), productsJSON);

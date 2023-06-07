@@ -139,9 +139,34 @@ const controller = {
         productModel.createOne(datos);
 
         res.redirect('/product/publications');
-    }
+    },
 
     ///////////////////////////////////////////
+
+        // @GET /products/create
+        getCreate: (req, res) => {
+            let id = Number(req.params.id);
+
+            let productToEdit = productModel.findById(id);
+
+            res.render('productsViews/edit-create-forms', {
+                title: productToEdit.title,
+                productToEdit
+            });
+        },
+    
+        // @POST /products
+        postProduct: (req, res) => {
+
+            console.log(req.body);
+
+            let datos = req.body;
+            datos.price = Number(datos.price);
+    
+            productModel.createOne(datos);
+    
+            res.redirect('/product/publications');
+        }
 
 }
 // exportamos el controller //
