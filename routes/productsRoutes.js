@@ -56,6 +56,14 @@ routes.get('/:id/update', productsController.getUpdate);
 
 routes.put('/:id/update', productsController.updateProduct);
 
+
+///////////////////////////////////////////////////////////
+
+routes.get('/publications/:id/', productsController.getUpdate);
+
+routes.put('/publications/:id/', productsController.updateProduct);
+
+///////////////////////////////////////////////////////////
 routes.get('/cart', productsController.getProductCart);
 
 routes.get('/publications', productsController.getProductPublications);

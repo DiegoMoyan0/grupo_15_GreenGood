@@ -185,6 +185,10 @@
                                 <option value="Aceites">Aceites</option>
                                 <option value="Cremas">Cremas</option>
                             </select>
+
+                            <label for="manufacturer" name="info"  class="label-sale">Productor</label>
+                            <input type="text" class="input-sale" id="manufacturer-children" minlength="3" name="manufacturer"
+                                required />
    
                                 <div class="form-2-btns" style="display: none;">
                                     <button type="button" class="btn-back">Atrás</button>
@@ -195,7 +199,7 @@
                     </div>
                     <div class="container-form-3" style="display: none;">
                         <h2>Para Finalizar, decinos la categoría del producto y el tipo de envío</h2>
-                        <!--Formulario hijo 2-->
+                        <!--Formulario hijo 3-->
                         <form id="form-val-3">
                             <label class="label-sale-edit" for="type">Tipo de producto:</label>
                             <select name="type" id="type-children" class="input-sale-edit" required >
@@ -232,9 +236,9 @@
                     <input  type="text" name="info" id="info-parent" required />
                     <input type="text" name="category" id="categoria-parent" required />
                     <input  type="text" name="subcategory" id="subcategory-parent" required/>
+                    <input type="text" class="input-sale" id="manufacturer-parent" minlength="3" name="manufacturer"required />
                     <input  type="text" name="type" id="type-parent" required/>
                     <input  type="text" name="description" id="descripcion-parent" required/>
-                    <input  type="text" name="manufacturer" id="manufacturer-parent"required/>
                     <input  type="text" name="deleted" id="deleted-parent" required/>
                     <input type="radio" id="si" name="envio" value="si">
                     <input type="submit"/>
@@ -325,6 +329,8 @@ let productSubcategory = document.getElementById("subcategory-children");
 let formProductSubcategory = document.getElementById("subcategory-parent");
 
 let productDeletedStatus= document.getElementById("deleted-parent");
+
+let ProductManufacturer = document.getElementById("manufacturer-children");
 let formProductManufacturer = document.getElementById("manufacturer-parent");
 
 let productType = document.getElementById("type-children");
@@ -361,13 +367,12 @@ if(formVal_1.reportValidity()){
    form_2_step.classList.add("active");
 
    formProductTitle.value = productTitle.value;
-   formProductTitle.placeholder = productTitle.value;
+
 
    formProductPrice.value = productPrice.value;
-   formProductPrice.placeholder = productPrice.value;
    
    formProductDiscount.value = productDiscount.value;
-   formProductDiscount.placeholder = productDiscount.value;
+  
 }
 
 
@@ -404,14 +409,14 @@ form_2_next_btn.addEventListener("click",  () =>{
 
     form_3_step.classList.add("active");
 
-    formProductStock.value = productStock.value;
-    formProductStock.placeholder = productStock.value;  
+    formProductStock.value = productStock.value
 
     formProductCategory.value = productCategory.value;
-    formProductCategory.placeholder = productCategory.value;
 
     formProductSubcategory.value = productSubcategory.value;
-    formProductSubcategory.placeholder = productSubcategory.value;
+
+    formProductManufacturer.value = ProductManufacturer.value
+
     }
 
 
@@ -473,16 +478,13 @@ btn_done.addEventListener("click", () =>{
     text_pub_edit.style.display = "none";
 
     formProductType.value = productType.value;
-    formProductType.placeholder = productType.value;
 
     formProductInfo.value = productInfo.value;
-    formProductInfo.placeholder = productInfo.value;
 
     formProductDescription.value = productDescription.value;
-    formProductDescription.placeholder = productDescription.value;
 
     productDeletedStatus.value = false
-    formProductManufacturer.value = "Green Good"
+
     sbmt_form.submit();
     }
 

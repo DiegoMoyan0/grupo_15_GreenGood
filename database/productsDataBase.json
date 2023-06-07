@@ -1,17 +1,14 @@
 [
  {
   "id": 4,
-  "title": "Bandeja Cultivo Large",
-  "description": "Bandeja Cultivo 50 Alveolos Germinar Esquejes Semillas * GG",
-  "image": "/images/product/macetas/bandeja-semillera.png",
-  "info": "Capacidad 50 alveolos (plantines). Ideal para germinar gran cantidad de plantas, o para esquejes. // Perforaciones de buen tamaño que determina auto poda radicular aérea y buen drenaje. Fácilmente extraíble el plantin una vez enraizado. Medidas: 54.5 cm. x 28 cm. Diámetro del alveolo: 5cm. Profundidad 6 cm.",
-  "price": 2464.13,
-  "discount": 7,
-  "stock": 564,
-  "category": "cultivo",
-  "subcategory": "recipientes",
-  "type": "bandeja",
-  "manufacturer": "Green Good",
+  "title": "Bandeja",
+  "image": "",
+  "price": "66666",
+  "stock": "8888",
+  "discount": "6",
+  "subcategory": "Sustrato",
+  "type": "Sustrato",
+  "description": "6",
   "deleted": false
  },
  {
@@ -31,17 +28,14 @@
  },
  {
   "id": 6,
-  "title": "Inflada / Bolsa Cultivo",
-  "description": "Maceta de bolsa plástica - Capacidad: 10 litros * GG",
-  "image": "/images/product/macetas/bolsa-10L.png",
-  "info": "*PLÁSTICO DE PRIMERA LíNEA. *10 perforaciones para el drenaje *tratada para los rayos U. V. *degradables *de 160 micrones *fuelle de 24cm *indicadas para el cultivo intensivo económicas y rendidoras.",
-  "price": 457.17,
-  "discount": 6,
-  "stock": 960,
-  "category": "cultivo",
-  "subcategory": "recipientes",
-  "type": "macetas",
-  "manufacturer": "Green Good",
+  "title": "Inflada / Bolsa Cultivo Natural",
+  "image": "",
+  "price": "66666",
+  "stock": "960",
+  "discount": "10",
+  "subcategory": "Sustrato",
+  "type": "Sustrato",
+  "description": "10",
   "deleted": false
  },
  {
@@ -612,20 +606,5 @@
   "type": "locion",
   "manufacturer": "Green Good",
   "deleted": false
- },
- {
-  "image": "",
-  "title": "",
-  "discount": "",
-  "stock": "",
-  "price": 0,
-  "info": "",
-  "category": "Sustrato",
-  "subcategory": "Sustrato",
-  "type": "Sustrato",
-  "description": "",
-  "manufacturer": "Green Good",
-  "deleted": "false",
-  "id": 45
  }
 ]
