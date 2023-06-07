@@ -147,8 +147,6 @@ getProductPublications: (req, res) => {
             res.send("Error, el producto con ID No. " + id + " ya había sido eliminado o nunca existió")
 
         }
-
-
     },
 
 
@@ -171,24 +169,31 @@ getProductPublications: (req, res) => {
 
         res.redirect('/product/publications');
     },
+
+
     // @GET /products/create
     getCreate: (req, res) => {
         res.render('productsViews/createProduct', {title: "Crear Producto"});
     },
 
+
     // @POST /products
     postProduct: (req, res) => {
-        let datos = req.body;
-        datos.price = Number(datos.price);
+        let newData = req.body;
 
-        productModel.createOne(datos);
+        newData.price = Number(newData.price);
+        newData.price = Number(newData.discount);
+        newData.image = req.file.filename;
+
+
+        productModel.createOne(newData);
 
         res.redirect('/product/publications');
     },
 
 
-        // @GET /products/create
-        getCreate: (req, res) => {
+        // @GET /products/edit
+        getEdit: (req, res) => {
             let id = Number(req.params.id);
 
             let productToEdit = productModel.findById(id);

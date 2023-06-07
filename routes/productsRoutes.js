@@ -21,7 +21,7 @@ const storage = multer.diskStorage({
     },
 })
 
-//const uploadFile = multer({storage});
+const uploadFile = multer({storage});
 
 //---------------------------------------------------------//
 
@@ -36,7 +36,7 @@ routes.get('/list', productsController.getAllProducts);
 routes.get('/:id/detail', productsController.getProductDetail);
 
 /*** CREATE ONE PRODUCT ***/ 
-routes.post('/', productsController.postProduct);
+routes.post('/', uploadFile.single('image'), productsController.postProduct);
 
 routes.get('/create', productsController.getCreate);
 
@@ -54,7 +54,7 @@ routes.get('/:id/edit', productsController.getProductEdit);
 
 routes.get('/:id/update', productsController.getUpdate);
 
-routes.put('/:id/update', productsController.updateProduct);
+routes.put('/:id/update',uploadFile.single('image'), productsController.updateProduct);
 
 
 ///////////////////////////////////////////////////////////
