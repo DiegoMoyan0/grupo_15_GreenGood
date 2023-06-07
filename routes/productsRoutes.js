@@ -40,6 +40,14 @@ routes.post('/', productsController.postProduct);
 
 routes.get('/create', productsController.getCreate);
 
+//////////////////////////////////////////////////////////
+
+routes.post('/', productsController.postProduct);
+
+routes.get('/:id/edit', productsController.getCreate);
+
+/////////////////////////////////////////////////////////
+
 
 /*** EDIT ONE PRODUCT ***/ 
 routes.get('/:id/edit', productsController.getProductEdit);
