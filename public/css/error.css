@@ -1,32 +1,35 @@
     body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
-  margin: 0;
-  padding: 0;
-}
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
 
-.container {
-  text-align: center;
-  margin-top: 20%;
-}
+    .container {
+      text-align: center;
+      margin-top: 20%;
+    }
 
-h1 {
-  font-size: 36px;
-  color: #333;
-}
+    .img-404 {
+      width: 100vw;
+      object-fit: cover;
+    }
 
-p {
-  font-size: 24px;
-  color: #666;
-}
+    h1 {
+      font-size: 36px;
+      color: #333;
+    }
 
-a {
-  font-size: 20px;
-  color: green;
-  text-decoration: none;
-}
+    p {
+      font-size: 24px;
+      color: #666;
+    }
 
-a:hover {
-  text-decoration: underline;
-}
+    a {
+      font-size: 20px;
+      color: green;
+      text-decoration: none;
+    }
 
+    a:hover {
+      text-decoration: underline;
+    }

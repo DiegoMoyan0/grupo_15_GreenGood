@@ -36,6 +36,9 @@ app.use('/product',productsRoutes);
 //*Normalize PORT*/
 const port = process.env.PORT || '3000';
 
+app.use((req, res)=>{
+  res.render("mainViews/error")
+});
 
 /**
  * Listen on provided port, on all network interfaces.
