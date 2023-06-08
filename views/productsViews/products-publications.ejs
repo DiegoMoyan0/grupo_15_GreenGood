@@ -20,38 +20,129 @@
                 <br>
                 <a href="/product/create" class="btn-publication">Crear un nuevo producto!</a>
 
-                    <% productos.forEach(producto=> { %>
-                        <article>
+                <% productos.forEach(producto=> { %>
+                    <article>
+                        <br>
+                        <div class="img-publication">
+                            <img src="/images/product/sustratos/abono-growers-5L.png" alt="imagen">
+                        </div>
+                        <br>
+                        <h1 class="title-publication">
+                            <%= producto.title %>
+                        </h1>
+                        <p class="price-publication"> Precio =
+                            <%= producto.price %>
+                        </p>
+                        <p class="desc-publication"> Descuento =
+                            <%=producto.discount%>
+                        </p>
+                        <p class="stock-publication"> Stock =
+                            <%=producto.stock%>
+                        </p>
+                        <br>
+                        <div class="btns-a">
+                            <form method ="POST" action="/product/<%=producto.id%>/edit-delete?_method=PATCH">
+                                <button type="submit" class="btn-delete">Marcar como vendido</button>
+                            </form>
                             <br>
-                            <div class="img-publication">
-                                <img src="/images/product/sustratos/abono-growers-5L.png" alt="imagen">
-                            </div>
-                            <br>
-                            <h1 class="title-publication">
-                                <%= producto.title %>
-                            </h1>
-                            <p class="price-publication"> Precio =
-                                <%= producto.price %>
-                            </p>
-                            <p class="desc-publication"> Descuento =
-                                <%=producto.discount%>
-                            </p>
-                            <p class="stock-publication"> Stock =
-                                <%=producto.stock%>
-                            </p>
-                            <br>
-                            <div class="btns-a">
-                                <a class="btn-edit" href="/product/<%= producto.id %>/update">Editar</a>
-                                <form action="/product/<%= producto.id %>/delete?_method=delete" method="post">
-                                    <input type="submit" class="btn-delete" value="Eliminar">
-                                </form>
-                            </div>
-                            <br>
-                        </article>
-                        <% }) %>
+                            <form action="/product/<%= producto.id %>/delete?_method=delete" method="post">
+                                <input type="submit" class="btn-delete" value="Eliminar">
+                            </form>
+                        </div>
+                        <br>
+                    </article>
+                    <button for="input1" class="btn-edit">Editar</button>
+
+                    <div class="container-dropdown1">
+                        <div class="container-answer1">
+                            <article class="container-detail">
+                                <div class="container-price">
+                                    <form action="/product/<%=producto.id%>/update?_method=PUT" method="post">
+                                        <label class="label-sale-edit" for="image">Foto de Producto:</label>
+                                        <input class="input-sale-edit" type="file" id="foto" name="image"
+                                            accept=".png, .jpeg, .jpg">
+
+                                        <label for="title" class="label-sale">Nombre del producto</label>
+                                        <input type="text" class="input-sale" name="title" id="InputName"
+                                            value="<%=producto.title%>" minlength="4" maxlength="400" required />
+
+                                        <label for="price" class="label-sale-edit">Precio</label>
+                                        <input type="number" name="price" class="input-sale-edit" min="100" max="100000"
+                                            id="InputPrice-edit" value="<%=producto.price%>" required />
+
+                                        <label for="discount" class="label-sale-edit">Porcentaje de descuento</label>
+                                        <input type="number" name="discount" class="input-sale-edit" min="0" max="50"
+                                            id="InputPrice-edit" value="<%=producto.discount%>" required />
+
+                                        <label for="stock" class="label-sale-edit">Stock</label>
+                                        <input type="number" name="stock" class="input-sale-edit" min="1"
+                                            id="InputPrice-edit" value="<%=producto.stock%>" required />
+
+                                        <label class="label-sale-edit" for="category">Categoría:</label>
+                                        <select name="categoria" name="category" class="input-sale-edit">
+                                            <option value="Sustrato">Sustrato</option>
+                                            <option value="Macetas">Macetas</option>
+                                            <option value="Bandeja">Bandeja</option>
+                                            <option value="Cosmetica">Cosmetica</option>
+                                            <option value="Aceites">Aceites</option>
+                                            <option value="Cremas">Cremas</option>
+                                        </select>
+                                        <label class="label-sale-edit" for="subcategory">Subcategoría:</label>
+                                        <select name="subcategory" class="input-sale-edit">
+                                            <option value="Sustrato">Sustrato</option>
+                                            <option value="Macetas">Macetas</option>
+                                            <option value="Bandeja">Bandeja</option>
+                                            <option value="Cosmetica">Cosmetica</option>
+                                            <option value="Aceites">Aceites</option>
+                                            <option value="Cremas">Cremas</option>
+                                        </select>
+
+                                        <label class="label-sale-edit" for="type">Tipo de producto:</label>
+                                        <select name="type" class="input-sale-edit">
+                                            <option value="Sustrato">Sustrato</option>
+                                            <option value="Macetas">Macetas</option>
+                                            <option value="Bandeja">Bandeja</option>
+                                            <option value="Cosmetica">Cosmetica</option>
+                                            <option value="Aceites">Aceites</option>
+                                            <option value="Cremas">Cremas</option>
+                                        </select>
+
+                                        <input class="btn-save" type="submit" value="Guardar Cambios">
+                                        <button class="btn-save">Cancelar</button>
+                                    </form>
+                                </div>
+                            </article>
+                        </div>
+
+                    </div>
+                    <% }) %>
             </section>
             <%- include('../partials/footer')%>
 
 </body>
+<script>
+    // Obtener referencias a los elementos del DOM
+    var editarBtns = document.querySelectorAll('.btn-edit');
+    var containerDropdowns = document.querySelectorAll('.container-dropdown1');
+
+    // Agregar un evento click a cada botón "Editar"
+    editarBtns.forEach(function (btn, index) {
+        btn.addEventListener('click', function () {
+            // Obtener el contenedor asociado al botón actual
+            var containerDropdown = btn.nextElementSibling;
+
+            // Mostrar u ocultar el contenedor correspondiente según su estado actual
+            if (containerDropdown.style.display === 'none') {
+                containerDropdown.style.display = 'block';
+            } else {
+                containerDropdown.style.display = 'none';
+            }
+        });
+    });
+
+
+
+
+</script>
 
 </html>

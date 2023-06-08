@@ -99,6 +99,17 @@ body {
     border-radius: 5px;
 }
 
+/* Edición de productos */
+.container-dropdown1 .container-answer1{
+  
+    border-bottom: 2px solid gray;
+    padding: .5rem 1rem;
+    background: #53476d;
+    border-radius: 8px;
+    max-width: 300px;
+    margin-top: 15px;
+    padding: 20px;
+  }
 
 /* Edición de productos */
 
