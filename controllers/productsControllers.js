@@ -41,12 +41,23 @@ const controller = {
         });
     },
 
+
     getProductPublications: (req, res) => {
         const productos = productModel.findAll();
 
-        return res.render('productsViews/products-publications', { title: "Productos publicados", productos });
-    },
+        return res.render('productsViews/products-publications', { title: "Productos publicados", productos});
 
+
+/*
+getProductPublications: (req, res) => {
+    const productos = productModel.findAll();
+
+    return res.render('productsViews/products-publications', { title: "Productos publicados", productos
+
+});
+
+*/
+},
     // Form to edit @GET
 
     getProductEdit: (req, res) => {
@@ -64,6 +75,7 @@ const controller = {
         });
 
     },
+ 
     getUpdate: (req, res) => {
         const id = Number(req.params.id);
 
@@ -78,15 +90,48 @@ const controller = {
         res.render('productsViews/updateProduct', { title: "Editar Producto", product: productoAModificar });
     },
 
+/*
+    getUpdate: (req, res) => {
+        const id = Number(req.params.id);
+
+        const productoAModificar = productModel.findById(id)
+
+        if (!productoAModificar) {
+            // Con el return detenemos la ejecución del controller, y con el res.send enviamos un mensaje de error
+            // *queremos detener la ejecución para que no se ejecute el otro res.render (la otra respuesta)
+            return res.send('error de id');
+        }
+
+       // res.render('productsViews/updateProduct', { title: "Editar Producto", product: productoAModificar });
+        res.redirect('/product/publications');
+    },
+
+    */
+    /*
+
     updateProduct: (req, res) => {
         const id = Number(req.params.id);
         const nuevosDatos = req.body;
+
 
         productModel.updateById(id, nuevosDatos);
 
         res.redirect('/product/publications');
     },
-    ///////////////////////////////////////////
+
+    */
+    updateProduct: (req, res) => {
+        let id = Number(req.params.id);
+        let nuevosDatos = req.body;
+
+       // console.log(id);
+        //console.log(nuevosDatos);
+
+        productModel.updateById(id, nuevosDatos);
+
+        res.redirect('/product/publications');
+    },
+
 
     softDeleteProduct: (req, res) => {
 
@@ -102,8 +147,6 @@ const controller = {
             res.send("Error, el producto con ID No. " + id + " ya había sido eliminado o nunca existió")
 
         }
-
-
     },
 
 
@@ -126,22 +169,53 @@ const controller = {
 
         res.redirect('/product/publications');
     },
+
+
     // @GET /products/create
     getCreate: (req, res) => {
         res.render('productsViews/createProduct', {title: "Crear Producto"});
     },
 
+
     // @POST /products
     postProduct: (req, res) => {
-        let datos = req.body;
-        datos.price = Number(datos.price);
+        let newData = req.body;
 
-        productModel.createOne(datos);
+        newData.price = Number(newData.price);
+        newData.discount = Number(newData.discount);
+        newData.image = req.file.filename;
+
+
+        productModel.createOne(newData);
 
         res.redirect('/product/publications');
-    }
+    },
 
-    ///////////////////////////////////////////
+
+        // @GET /products/edit
+        getEdit: (req, res) => {
+            let id = Number(req.params.id);
+
+            let productToEdit = productModel.findById(id);
+
+            res.render('productsViews/edit-create-forms', {
+                title: productToEdit.title,
+                productToEdit
+            });
+        },
+    
+        // @POST /products
+        postProduct: (req, res) => {
+
+           console.log(req.body);
+
+            let datos = req.body;
+            datos.price = Number(datos.price);
+    
+            productModel.createOne(datos);
+    
+            res.redirect('/product/publications');
+        }
 
 }
 // exportamos el controller //

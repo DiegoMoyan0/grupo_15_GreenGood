@@ -7,6 +7,10 @@
 
 </head>
 
+<% function mayuscPrimeraLetra(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+} %> <!-- Creo una funcion para poner primer letra en mayuscula de un string -->
+
 <body>
     <%- include('../partials/header')%>
 
@@ -16,49 +20,58 @@
         <section id="sale">
             <div id="container-sale">
                 <form action="/product" method="post">
-                    <label class="label-sale-edit" for="image">Foto de Producto:</label>
-                    <input class="input-sale-edit" type="file" id="foto" name="image" accept=".png, .jpeg, .jpg">
-                    <label for="title" class="label-sale">Nombre del producto</label>
-                    <input type="text" class="input-sale-edit" name="title" id="InputName" minlength="4" maxlength="400"
+                    <div>
+                        <label class="label-sale-edit" for="image">Foto de Producto:</label>
+                        <input class="input-sale-edit" type="file" id="foto" name="image" accept=".png, .jpeg, .jpg">
+                    </div>
+                    
+                    <label for="title" class="label-sale">Título del producto</label>
+                    <input type="text" class="input-sale-edit" name="title" id="InputName" minlength="4" maxlength="400" placeholder="ej. Crema Corporal Premium"
                         required />
-                    <label for="price" class="label-sale-edit">Precio</label>
-                    <input type="number" name="price" class="input-sale-edit" id="InputPrice-edit" required />
+                    
+                    <label for="price" class="label-sale-edit">Precio (en $Arg)</label>
+                    <input type="number" name="price" class="input-sale-edit" id="InputPrice-edit" placeholder="ej. 3599.99" min="100" max="1000000" required />
+                    
                     <label for="discount" class="label-sale-edit">Porcentaje de
-                        descuento</label>
-                    <input type="number" name="discount" class="input-sale-edit" min="0" max="50" id="InputPrice-edit"
-                        required />
+                        descuento (%)</label>
+                    <input type="number" name="discount" class="input-sale-edit" min="0" max="50" id="InputPrice-edit" placeholder="ej. 5" required />
 
                     <label for="stock" class="label-sale-edit">Stock</label>
-                    <input type="number" name="stock" class="input-sale-edit" min="1" id="InputPrice-edit" required />
+                    <input type="number" name="stock" class="input-sale-edit" min="1" id="InputPrice-edit" value="0" required />
+
+                    <label for="description">Descripción resumida del producto</label>
+                    <textarea name="description" class="input-sale-edit" cols="30" rows="10" placeholder="ej. 'Maceta Moderna Air Pot - Cultivo in-door - Capacidad: 10 litros *GG'"></textarea>
 
                     <label class="label-sale-edit" for="category">Categoría:</label>
-                    <select name="categoria" name="category" class="input-sale-edit">
-                        <option value="Sustrato">Sustrato</option>
-                        <option value="Macetas">Macetas</option>
-                        <option value="Bandeja">Bandeja</option>
-                        <option value="Cosmetica">Cosmetica</option>
-                        <option value="Aceites">Aceites</option>
-                        <option value="Cremas">Cremas</option>
+                    <select name="category" class="input-sale-edit" required>
+                        <option value="cultivo">Productos para el cultivo</option>
+                        <option value="medicinal">Productos Medicinales</option>
+                    
                     </select>
                     <label class="label-sale-edit" for="subcategory">Subcategoría:</label>
-                    <select name="subcategory" class="input-sale-edit">
-                        <option value="Sustrato">Sustrato</option>
-                        <option value="Macetas">Macetas</option>
-                        <option value="Bandeja">Bandeja</option>
-                        <option value="Cosmetica">Cosmetica</option>
-                        <option value="Aceites">Aceites</option>
-                        <option value="Cremas">Cremas</option>
+                    <select name="subcategory" class="input-sale-edit" required>
+                        <option value="" selected>Elije una sub-categoria</option>
+                        <% let subCategories = ['recipientes', 'materialorganico', 'salud', 'cosmetica'] %>
+                        <% for( oneSubCategory of subCategories ) { %>
+                            <option 
+                            value="<%=oneSubCategory%>"
+                            > <%= mayuscPrimeraLetra(oneSubCategory) %> </option>
+                        <% } %>
                     </select>
 
                     <label class="label-sale-edit" for="type">Tipo de producto:</label>
-                    <select name="type" class="input-sale-edit">
-                        <option value="Sustrato">Sustrato</option>
-                        <option value="Macetas">Macetas</option>
-                        <option value="Bandeja">Bandeja</option>
-                        <option value="Cosmetica">Cosmetica</option>
-                        <option value="Aceites">Aceites</option>
-                        <option value="Cremas">Cremas</option>
+                    <select name="type" class="input-sale-edit" required>
+                        <option value="" selected>Elije el tipo de producto</option>
+                        <% let types = ['maceta', 'bandeja', 'sustrato', 'aceite', 'crema', 'locion', 'labial', 'spray'] %>
+                        <% for( oneType of types ) { %>
+                            <option 
+                            value="<%=oneType%>"
+                            > <%= mayuscPrimeraLetra(oneType) %> </option>
+                        <% } %>
                     </select>
+
+                    <label for="info">Detalle e informacion del producto</label>
+                    <textarea name="info" class="input-sale-edit" cols="30" rows="10" placeholder="ej. 'Capacidad 50 alveolos (plantines). Ideal para germinar gran cantidad de plantas, o para esquejes. // Perforaciones de buen tamaño que determina auto poda radicular aérea y buen drenaje. Fácilmente extraíble el plantin una vez enraizado. Medidas: 54.5 cm. x 28 cm. Diámetro del alveolo: 5cm. Profundidad 6 cm.'"></textarea>
 
                     <input class="btn-save" type="submit" value="Guardar Cambios">
                 </form>
