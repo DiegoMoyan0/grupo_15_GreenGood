@@ -64,13 +64,15 @@ const models = {
         // Guardo el indice del array donde esta guardado el elemento buscado
         const index = products.findIndex(item => item.id === id);
 
-        const {title, price} = newData // con destructuring me ahorro poner todo dentro del nuevo objeto. Podria hacerlo directamente en el parametro newData
+        const {title, price, discount, stock } = newData // con destructuring me ahorro poner todo dentro del nuevo objeto. Podria hacerlo directamente en el parametro newData
 
         //Actualizamos los nuevos datos
         products[index] = {
             id: products[index].id,
             title,
-            price
+            price,
+            discount,
+            stock
         }
 
         //Convertimos a JSON y Sobrescribimos
