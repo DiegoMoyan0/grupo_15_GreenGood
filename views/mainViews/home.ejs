@@ -37,7 +37,7 @@
             <% products.forEach(product => { %>
                 <% if(product.discount > 15) { %>
                     <div class="card">
-                        <a href="/product/<%= product.id %>/detail"> <img src=<%=product.image%> alt="Imagen 1"></a>
+                        <a href="/product/<%= product.id %>/detail"> <img src=/images/products/<%= product.image %> alt="Imagen 1"></a>
                         <p class="send-card">OFERTA</p>
                         <p class="desc-card"><strong><%= product.title %></strong></p>
                         <p class="desc-card">$<%= product.price %> / Descuento:  <%= product.discount%>% OFF</p>
