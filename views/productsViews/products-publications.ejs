@@ -24,7 +24,7 @@
                     <article>
                         <br>
                         <div class="img-publication">
-                            <img src="/images/product/sustratos/abono-growers-5L.png" alt="imagen">
+                            <img src="/images/products/<%= producto.image %>" alt="imagen">
                         </div>
                         <br>
                         <h1 class="title-publication">
@@ -42,11 +42,11 @@
                         <br>
                         <div class="btns-a">
                             <form method ="POST" action="/product/<%=producto.id%>/edit-delete?_method=PATCH">
-                                <button type="submit" class="btn-delete">Marcar como vendido</button>
+                                <button type="submit" class="btn-delete" style="color: crimson; background-color: aliceblue;">Remover producto a la venta</button>
                             </form>
-                            <br>
+
                             <form action="/product/<%= producto.id %>/delete?_method=delete" method="post">
-                                <input type="submit" class="btn-delete" value="Eliminar">
+                                <input type="submit" class="btn-delete" value="Eliminar definitivamente">
                             </form>
                         </div>
                         <br>
@@ -57,14 +57,17 @@
                         <div class="container-answer1">
                             <article class="container-detail">
                                 <div class="container-price">
-                                    <form action="/product/<%=producto.id%>/update?_method=PUT" method="post">
+                                    <form action="/product/<%=producto.id%>/update?_method=PUT" enctype="multipart/form-data" method="post">
                                         <label class="label-sale-edit" for="image">Foto de Producto:</label>
                                         <input class="input-sale-edit" type="file" id="foto" name="image"
                                             accept=".png, .jpeg, .jpg">
 
-                                        <label for="title" class="label-sale">Nombre del producto</label>
+                                        <label for="title" class="label-sale">Título del producto</label>
                                         <input type="text" class="input-sale" name="title" id="InputName"
                                             value="<%=producto.title%>" minlength="4" maxlength="400" required />
+
+                                        <label for="description" class="label-sale">Descripción resumida</label> 
+                                        <textarea name="description" class="input-sale-edit" cols="30" rows="3"><%= producto.description %></textarea>
 
                                         <label for="price" class="label-sale-edit">Precio</label>
                                         <input type="number" name="price" class="input-sale-edit" min="100" max="100000"
@@ -79,33 +82,44 @@
                                             id="InputPrice-edit" value="<%=producto.stock%>" required />
 
                                         <label class="label-sale-edit" for="category">Categoría:</label>
-                                        <select name="categoria" name="category" class="input-sale-edit">
-                                            <option value="Sustrato">Sustrato</option>
-                                            <option value="Macetas">Macetas</option>
-                                            <option value="Bandeja">Bandeja</option>
-                                            <option value="Cosmetica">Cosmetica</option>
-                                            <option value="Aceites">Aceites</option>
-                                            <option value="Cremas">Cremas</option>
+                                        <select name="categoty" class="input-sale-edit">
+                                            <option value="cultivo" 
+                                                <%=(producto.category === "cultivo") ? 'selected' : null %> 
+                                                >Productos para el cultivo
+                                            </option>
+                                            <option value="medicinal"
+                                                <%=(producto.category === "medicinal") ? 'selected' : null %>
+                                                >Productos Medicinales
+                                            </option>
                                         </select>
+
                                         <label class="label-sale-edit" for="subcategory">Subcategoría:</label>
                                         <select name="subcategory" class="input-sale-edit">
-                                            <option value="Sustrato">Sustrato</option>
-                                            <option value="Macetas">Macetas</option>
-                                            <option value="Bandeja">Bandeja</option>
-                                            <option value="Cosmetica">Cosmetica</option>
-                                            <option value="Aceites">Aceites</option>
-                                            <option value="Cremas">Cremas</option>
+                                            <option value="" selected>Sub-categoria</option>
+                                                <% let subCategories = ['recipientes', 'materialorganico', 'salud', 'cosmetica'] %>
+                                                <% for( oneSubCategory of subCategories ) { %>
+                                                    <option 
+                                                        value="<%=oneSubCategory%>"
+                                                        <%=(producto.subcategory === oneSubCategory) ? 'selected' : null %>
+                                                        > <%= mayuscPrimeraLetra(oneSubCategory) %> 
+                                                    </option>
+                                                <% } %>
                                         </select>
 
                                         <label class="label-sale-edit" for="type">Tipo de producto:</label>
                                         <select name="type" class="input-sale-edit">
-                                            <option value="Sustrato">Sustrato</option>
-                                            <option value="Macetas">Macetas</option>
-                                            <option value="Bandeja">Bandeja</option>
-                                            <option value="Cosmetica">Cosmetica</option>
-                                            <option value="Aceites">Aceites</option>
-                                            <option value="Cremas">Cremas</option>
+                                            <option value="" selected>Elije el tipo de producto</option>
+                                            <% let types = ['maceta', 'bandeja', 'sustrato', 'aceite', 'crema', 'locion', 'labial', 'spray'] %>
+                                            <% for( oneType of types ) { %>
+                                                <option 
+                                                value="<%=oneType%>"
+                                                <%=(producto.type === oneType) ? 'selected' : null %>
+                                                > <%= mayuscPrimeraLetra(oneType) %> </option>
+                                            <% } %>
                                         </select>
+
+                                        <label for="info" class="label-sale">Informacion / Detalle del producto:</label>
+                                        <textarea name="info" class="input-sale-edit" cols="30" rows="10"><%= producto.info %></textarea>
 
                                         <input class="btn-save" type="submit" value="Guardar Cambios">
                                         <button class="btn-save">Cancelar</button>
@@ -120,7 +134,7 @@
                         <article>
                             <br>
                             <div class="img-publication">
-                                <img src="/images/product/sustratos/abono-growers-5L.png" alt="imagen">
+                                <img src="/images/products/<%= producto.image %>" alt="imagen">
                             </div>
                             <br>
                             <h1 class="title-publication">
@@ -348,6 +362,11 @@
             <%- include('../partials/footer')%>
 
 </body>
+
+<% function mayuscPrimeraLetra(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+} %> <!-- Creo una funcion para poner primer letra en mayuscula de un string -->
+
 <script>
     // Obtener referencias a los elementos del DOM
     var editarBtns = document.querySelectorAll('.btn-edit');
@@ -355,7 +374,10 @@
 
     // Agregar un evento click a cada botón "Editar"
     editarBtns.forEach(function (btn, index) {
-        btn.addEventListener('click', function () {
+        btn.addEventListener('click', function (e) {
+
+            e.preventDefault(); // Para que no aparezca "#" en la URL
+
             // Obtener el contenedor asociado al botón actual
             var containerDropdown = btn.nextElementSibling;
 
@@ -367,9 +389,6 @@
             }
         });
     });
-
-
-
 
 </script>
 
@@ -654,7 +673,9 @@
     
     let close_form = document.querySelector(".span-close-form");
     
-    close_form.addEventListener("click", () =>{
+    close_form.addEventListener("click", (e) =>{
+        e.preventDefault(); // Para que no aparezca "#" en la URL
+
         modal_wrapper.classList.remove("active");
         text_asesor.forEach((p) => {
             p.style.opacity = "0.8"

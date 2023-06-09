@@ -11,30 +11,30 @@
     <%- include('../partials/header')%>
 
     <div class="deslizable">
-        <a href="/product"> <i class="fa-solid fa-arrow-up"></i></a>
+        <a href="/product/list"> <i class="fa-solid fa-arrow-up"></i></a>
     </div>
 
     <div class="slider-product">
-        <img src="/images/product/bannerProduct.jpg" alt="Imagen 1">
-        <img src="/images/product/banner-product.jpg" alt="Imagen 2">
-        <img src="/images/product/bannerProduct2.jpg" alt="Imagen 3">
+        <img src="/images/products/banners/bannerProduct.jpg" alt="Imagen 1">
+        <img src="/images/products/banners/banner-product.jpg" alt="Imagen 2">
+        <img src="/images/products/banners/bannerProduct2.jpg" alt="Imagen 3">
     </div> 
     <main>
         <div class="categories-container">
             <div class="categories-items">
-                <img src="/images/product/categories/Aceites.png" alt="" width="">
+                <img src="/images/products/categories/Aceites.png" alt="" width="">
                 <h3>Aceites medicinales</h3>
             </div>
             <div class="categories-items">
-                <img src="/images/product/categories/Lociones.png" alt="">
+                <img src="/images/products/categories/Lociones.png" alt="">
                 <h3>Lociones</h3>
             </div>
             <div class="categories-items">
-                <img src="/images/product/categories/Cremas.png" alt="">
+                <img src="/images/products/categories/Cremas.png" alt="">
                 <h3>Cremas</h3>
             </div>
             <div class="categories-items">
-                <img src="/images/product/categories/Cosmetica fem.png" alt="">
+                <img src="/images/products/categories/Cosmetica fem.png" alt="">
                 <h3>Dermocosmética</h3>
             </div>
             <div class="categories-items">
@@ -42,15 +42,15 @@
                 <h3>Nuestros combos</h3>
             </div>
             <div class="categories-items">
-                <img src="/images/product/categories/Macetas.png" alt="">
+                <img src="/images/products/categories/Macetas.png" alt="">
                 <h3>Macetas</h3>
             </div>
             <div class="categories-items">
-                <img src="/images/product/categories/Bandejas.png" alt="">
+                <img src="/images/products/categories/Bandejas.png" alt="">
                 <h3>Bandejas</h3>
             </div>
             <div class="categories-items">
-                <img src="/images/product/categories/Sustratos.png" alt="">
+                <img src="/images/products/categories/Sustratos.png" alt="">
                 <h3>Sustratos</h3>
             </div>
         </div>
@@ -64,7 +64,7 @@
                     <% products.forEach(product => { %>
                         <% if(product.type === "sustrato") { %>
                             <article class="product">
-                                <a href="/product/<%= product.id %>/detail"> <img src=<%=product.image%> alt="img product">
+                                <a href="/product/<%= product.id %>/detail"> <img src=/images/products/<%=product.image%> alt="img product">
                                 </a>
                                 <div class="content-art">
                                     <% if(product.price > 3000) { %>
@@ -91,7 +91,7 @@
                     <% products.forEach(product => { %>
                         <% if(product.type === "maceta") { %>
                             <article class="product">
-                                <a href="/product/<%= product.id %>/detail"> <img src=<%=product.image%> alt="img product">
+                                <a href="/product/<%= product.id %>/detail"> <img src=/images/products/<%=product.image%> alt="img product">
                                 </a>
                                 <div class="content-art">
                                     <% if(product.price > 3000) { %>
@@ -118,7 +118,7 @@
                     <% products.forEach(product => { %>
                         <% if(product.type === "bandeja") { %>
                             <article class="product">
-                                <a href="/product/<%= product.id %>/detail"> <img src=<%=product.image%> alt="img product">
+                                <a href="/product/<%= product.id %>/detail"> <img src=/images/products/<%=product.image%> alt="img product">
                                 </a>
                                 <div class="content-art">
                                     <% if(product.price > 3000) { %>
@@ -151,7 +151,7 @@
                     <% products.forEach(product => { %>
                         <% if(product.subcategory === "salud") { %>
                             <article class="product">
-                                <a href="/product/<%= product.id %>/detail"> <img src=<%=product.image%> alt="img product">
+                                <a href="/product/<%= product.id %>/detail"> <img src=/images/products/<%=product.image%> alt="img product">
                                 </a>
                                 <div class="content-art">
                                     <% if(product.price > 3000) { %>
@@ -178,7 +178,7 @@
                     <% products.forEach(product => { %>
                         <% if(product.subcategory === "cosmetica") { %>
                             <article class="product">
-                                <a href="/product/<%= product.id %>/detail"> <img src=<%=product.image%> alt="img product">
+                                <a href="/product/<%= product.id %>/detail"> <img src=/images/products/<%=product.image%> alt="img product">
                                 </a>
                                 <div class="content-art">
                                     <% if(product.price > 3000) { %>

@@ -103,9 +103,6 @@ const models = {
 
         const {title, price, description, image, discount, stock, info, category, subcategory, type} = newData // con destructuring me ahorro poner todo dentro del nuevo objeto. Podria hacerlo directamente en el parametro newData
 
-        newData.price = Number(newData.price);
-        newData.discount = Number(newData.discount);
-
         //Actualizamos los nuevos datos
         products[index] = {
             id: products[index].id,

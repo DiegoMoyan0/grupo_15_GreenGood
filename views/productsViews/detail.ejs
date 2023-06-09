@@ -15,7 +15,7 @@
     </div>
     <main>
         <article class="container-detail">
-            <img class="img-detail" src=<%=theProduct.image%> >
+            <img class="img-detail" src=/images/products/<%=theProduct.image%> >
             <div class="vertical-line"></div>
             <div class="container-price">
                 <h2 class="title-detail"><%=theProduct.title%></h2>
@@ -37,7 +37,7 @@
                     <% if(theProduct.stock > 1) {%>
                         <strong>Disponible</strong></p>
                     <% }else{ %>
-                        <strong>Agotado</strong></p>
+                        <strong style="color: rgb(102, 101, 101);">Agotado</strong>
                     <% }; %>
                 <% if(theProduct.price > 3000) {%>
                     <p class="cat-detail"><strong>Envío Gratis</strong></p>
@@ -68,19 +68,19 @@
         <h2 class="title-card-detail"> Quienes vieron este producto tambien vieron:</h2>
         <div class="card-container">
             <div class="card">
-                <a href="/product/detail"> <img src="/images/product/medicinales-cosmetica/crema-facial-30ml.png"
+                <a href="/product/detail"> <img src="/images/products/crema-facial-30ml.png"
                         alt="Imagen 1"> </a>
                 <p class="price-card"> $3500</p>
                 <button type="submit" class="btn-product"> Agregar al carrito</button>
             </div>
             <div class="card">
-                <a href="/product/detail"> <img src="/images/product/medicinales-cosmetica/lipbalm-5gr.png"
+                <a href="/product/detail"> <img src="/images/products/lipbalm-5gr.png"
                         alt="Imagen 1"> </a>
                 <p class="price-card"> $3500</p>
                 <button type="submit" class="btn-product"> Agregar al carrito</button>
             </div>
             <div class="card">
-                <a href="/product/detail"> <img src="/images/product/medicinales-cosmetica/endotica-90gr.png"
+                <a href="/product/detail"> <img src="/images/products/endotica-90gr.png"
                         alt="Imagen 1"> </a>
                 <p class="price-card"> $3500</p>
                 <button type="submit" class="btn-product"> Agregar al carrito</button>

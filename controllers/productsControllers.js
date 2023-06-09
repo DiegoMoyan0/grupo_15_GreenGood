@@ -122,12 +122,13 @@ getProductPublications: (req, res) => {
     */
     updateProduct: (req, res) => {
         let id = Number(req.params.id);
-        let nuevosDatos = req.body;
+        let newData = req.body;
 
-       // console.log(id);
-        //console.log(nuevosDatos);
+        newData.price = Number(newData.price);
+        newData.discount = Number(newData.discount);
+        newData.image = req.file.filename;
 
-        productModel.updateById(id, nuevosDatos);
+        productModel.updateById(id, newData);
 
         res.redirect('/product/publications');
     },

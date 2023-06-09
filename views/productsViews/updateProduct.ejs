@@ -27,7 +27,7 @@
 
                 <form action="/product/<%=product.id%>/update?_method=PUT" method="post">
                     <div>
-                        <img src="<%=product.image%>" alt="produtc-image">
+                        <img src="/images/products/<%= producto.image %>" alt="produtc-image">
                         <label class="label-sale-edit" for="image">Cambiar la imagen del producto:</label>
                         <input class="input-sale-edit" type="file" id="foto" name="image" accept=".png, .jpeg, .jpg">
                     </div>
@@ -81,7 +81,7 @@
                         <% } %>
                     </select>
 
-                    <label for="info">Descripción resumida del producto</label>
+                    <label for="info">Informacion / Detalle del producto:</label>
                     <textarea name="info" class="input-sale-edit" cols="30" rows="10"><%= product.info %></textarea>
 
 
