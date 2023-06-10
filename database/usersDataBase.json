@@ -11,9 +11,12 @@
         "email": "pdelea0@biglobe.ne.jp",
         "password": "iHqHwa7rnK1e",
         "address": "93464 Milwaukee Crossing",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "comprador",
-        "phone": "125-167-1737"
+        "phone": "125-167-1737",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "c8ab5880-a08c-4df8-bef6-47efcc0e3e5c",
@@ -27,9 +30,12 @@
         "email": "dzanni1@dedecms.com",
         "password": "go2Mz2R2",
         "address": "31 Crest Line Place",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "vendedor",
-        "phone": "562-141-4939"
+        "phone": "562-141-4939",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "cbe8aebe-1163-4b0f-bad8-a6843192df17",
@@ -43,9 +49,12 @@
         "email": "hcowwell2@ucla.edu",
         "password": "jbpENHueV0",
         "address": "63950 Vermont Pass",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "vendedor",
-        "phone": "576-924-2253"
+        "phone": "576-924-2253",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "7daaaba1-4027-4aeb-a84f-5a798e4c5d59",
@@ -59,9 +68,12 @@
         "email": "glazare3@last.fm",
         "password": "TERzJt46ytOW",
         "address": "33 Service Pass",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "comprador",
-        "phone": "248-260-1955"
+        "phone": "248-260-1955",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "438b48f3-c755-47f0-a83d-9c1e673bd4bd",
@@ -75,9 +87,12 @@
         "email": "aprew4@freewebs.com",
         "password": "adT2g55DhPPG",
         "address": "2 Browning Place",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "comprador",
-        "phone": "654-634-1361"
+        "phone": "654-634-1361",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "054e6ded-0fb5-4c3f-a7f5-18f0a3264dc9",
@@ -91,9 +106,12 @@
         "email": "kgerhartz5@rakuten.co.jp",
         "password": "20heRUW2rL",
         "address": "5 Bashford Road",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "comprador",
-        "phone": "473-691-3348"
+        "phone": "473-691-3348",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "a1fe9b5d-c86b-49e4-91a1-c169894e294e",
@@ -107,9 +125,12 @@
         "email": "bgregorowicz6@list-manage.com",
         "password": "00wyNY",
         "address": "2 Mesta Junction",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "vendedor",
-        "phone": "486-899-1500"
+        "phone": "486-899-1500",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "c28ce642-0be4-4a49-9e2a-3ab4436ff612",
@@ -123,9 +144,12 @@
         "email": "bizatson7@tumblr.com",
         "password": "ahh0B1SB",
         "address": "2237 Towne Lane",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "vendedor",
-        "phone": "513-307-1945"
+        "phone": "513-307-1945",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "85ec3408-3461-45a9-b13a-fd4724a99977",
@@ -139,9 +163,12 @@
         "email": "bordemann8@cdbaby.com",
         "password": "h5mZei4ya",
         "address": "5706 Carioca Parkway",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "comprador",
-        "phone": "708-623-8451"
+        "phone": "708-623-8451",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "70e9ffaf-7301-43e7-b17c-9d68f1470a69",
@@ -155,9 +182,12 @@
         "email": "tmcgrirl9@princeton.edu",
         "password": "svlm4Sj8",
         "address": "704 Monterey Hill",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "vendedor",
-        "phone": "282-390-5287"
+        "phone": "282-390-5287",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "7d025df5-c21e-4912-9cd4-54e8dade45db",
@@ -171,9 +201,12 @@
         "email": "mcarranea@constantcontact.com",
         "password": "Z2Ew1lZ",
         "address": "15373 Cascade Point",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "comprador",
-        "phone": "113-561-0913"
+        "phone": "113-561-0913",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "8a32754c-96f9-4b80-bb38-dd1e3542e7ac",
@@ -187,9 +220,12 @@
         "email": "screamenb@weibo.com",
         "password": "mCeVBn18",
         "address": "8 Old Gate Crossing",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "comprador",
-        "phone": "585-385-3929"
+        "phone": "585-385-3929",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "58f4480e-40c4-4223-a76a-8519fcf92abe",
@@ -203,9 +239,12 @@
         "email": "eobalc@ucoz.com",
         "password": "7qzFwegizlP",
         "address": "39944 Independence Pass",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "vendedor",
-        "phone": "979-429-7895"
+        "phone": "979-429-7895",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "f14243df-67e5-49f7-8075-cf8b3ff7adfb",
@@ -219,9 +258,12 @@
         "email": "cspohrd@meetup.com",
         "password": "IoDR2EZy",
         "address": "7586 Stang Way",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "vendedor",
-        "phone": "140-802-8400"
+        "phone": "140-802-8400",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "364c8664-354b-4cba-b413-20c289f3363d",
@@ -235,9 +277,12 @@
         "email": "valdrene@yolasite.com",
         "password": "iCML9R16",
         "address": "0064 Declaration Court",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "vendedor",
-        "phone": "634-248-0204"
+        "phone": "634-248-0204",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "8fddab72-8e68-4c29-b7c1-f19093d83bcb",
@@ -251,9 +296,12 @@
         "email": "anunneryf@sakura.ne.jp",
         "password": "7Sbwc9",
         "address": "541 Shoshone Park",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "vendedor",
-        "phone": "904-641-2261"
+        "phone": "904-641-2261",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "10029dd2-717f-40da-a5f3-05a42538ddb3",
@@ -267,9 +315,12 @@
         "email": "fdurnog@cornell.edu",
         "password": "y9uMI7VK",
         "address": "319 Transport Pass",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "comprador",
-        "phone": "696-697-7673"
+        "phone": "696-697-7673",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "a0e02b19-5121-4783-8312-0d389e77dbd0",
@@ -283,9 +334,12 @@
         "email": "kreekenh@scientificamerican.com",
         "password": "niq0pIYC",
         "address": "9053 Mesta Way",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "vendedor",
-        "phone": "597-976-9361"
+        "phone": "597-976-9361",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "cd4c0d5e-f878-446a-9858-89822371de1b",
@@ -299,9 +353,12 @@
         "email": "jpearmaini@google.es",
         "password": "E0yASMjALK2",
         "address": "596 1st Hill",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "comprador",
-        "phone": "769-420-4776"
+        "phone": "769-420-4776",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "54741cc8-e4a5-48c3-ab4c-ca53a26e6bf8",
@@ -315,9 +372,12 @@
         "email": "shonniebalj@ibm.com",
         "password": "aqISoE5H",
         "address": "8323 Chive Drive",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "comprador",
-        "phone": "341-837-2960"
+        "phone": "341-837-2960",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "84e7aff6-0c34-4e71-92e6-e33332120ff1",
@@ -331,9 +391,12 @@
         "email": "dalebrookek@over-blog.com",
         "password": "VpsF3gzl",
         "address": "335 Moland Point",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "vendedor",
-        "phone": "355-998-2063"
+        "phone": "355-998-2063",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "a995cafe-92dd-49a2-9755-e1d6a62b2b5c",
@@ -347,9 +410,12 @@
         "email": "gsaundercockl@imdb.com",
         "password": "PuoOWY7",
         "address": "3 Schurz Pass",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "comprador",
-        "phone": "370-339-8470"
+        "phone": "370-339-8470",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "372492c4-b01c-4bba-845f-0e215e5179e2",
@@ -363,9 +429,12 @@
         "email": "omartm@economist.com",
         "password": "xQCmu4hZLo",
         "address": "9 Commercial Plaza",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "vendedor",
-        "phone": "381-542-9138"
+        "phone": "381-542-9138",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "f98e8dfd-3b45-4e6d-a213-2a011ff442f0",
@@ -379,9 +448,12 @@
         "email": "lfloydn@cafepress.com",
         "password": "25rUjU9peEK",
         "address": "9588 Thompson Plaza",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "vendedor",
-        "phone": "345-593-2705"
+        "phone": "345-593-2705",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "044ae0a6-b274-4635-a489-53aba9ef2476",
@@ -395,9 +467,12 @@
         "email": "afattorinio@biglobe.ne.jp",
         "password": "B3g7258DdR8F",
         "address": "41420 Springs Avenue",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "comprador",
-        "phone": "468-592-9538"
+        "phone": "468-592-9538",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "56d39af4-bbdd-48a6-9d06-b69818a78c2d",
@@ -411,9 +486,12 @@
         "email": "cchestonp@bbb.org",
         "password": "foj1pfv2d",
         "address": "578 Arkansas Road",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "comprador",
-        "phone": "923-539-5208"
+        "phone": "923-539-5208",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "9f5a54fb-c074-40ff-a718-9bbedb6da564",
@@ -427,9 +505,12 @@
         "email": "rbericq@goo.gl",
         "password": "1gHEGNf0796l",
         "address": "39 Glacier Hill Pass",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "vendedor",
-        "phone": "429-835-0026"
+        "phone": "429-835-0026",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "a9089b0a-d6c7-432a-a763-08dd9c05d25f",
@@ -443,9 +524,12 @@
         "email": "dcayr@devhub.com",
         "password": "0sEJjX",
         "address": "71 Division Trail",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "comprador",
-        "phone": "217-392-0730"
+        "phone": "217-392-0730",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "9c27c7ff-1dc1-4ca8-b618-694cecfbb6c6",
@@ -459,9 +543,12 @@
         "email": "aoldmeadows@biglobe.ne.jp",
         "password": "eRiXn9dkKzZT",
         "address": "1 Karstens Plaza",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "comprador",
-        "phone": "374-418-1545"
+        "phone": "374-418-1545",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "d4ecf1fa-f993-4f3c-917a-08f30287ab4d",
@@ -475,9 +562,12 @@
         "email": "demlocht@accuweather.com",
         "password": "smshKe9k",
         "address": "490 Jackson Road",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "comprador",
-        "phone": "148-519-9775"
+        "phone": "148-519-9775",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "0b2624b7-07f9-4458-a770-1c05da618a90",
@@ -491,9 +581,12 @@
         "email": "ftryu@delicious.com",
         "password": "ee5FjETtCCh",
         "address": "80550 Doe Crossing Way",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "comprador",
-        "phone": "254-978-9240"
+        "phone": "254-978-9240",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "8c7e1156-18f7-4ea0-8b53-fded7803a182",
@@ -507,9 +600,12 @@
         "email": "crucklidgev@mozilla.com",
         "password": "jSFKi9C",
         "address": "9207 Mcguire Circle",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "vendedor",
-        "phone": "149-598-8051"
+        "phone": "149-598-8051",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "569a48ed-8aad-458e-88d8-a00771bc9dc2",
@@ -523,9 +619,12 @@
         "email": "doubridgew@reuters.com",
         "password": "tFO5Po0tux",
         "address": "92 Harper Center",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "comprador",
-        "phone": "780-713-9413"
+        "phone": "780-713-9413",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "cf59b3b6-5ead-4de9-b03b-833a04140852",
@@ -539,9 +638,12 @@
         "email": "dgrigolonx@pagesperso-orange.fr",
         "password": "BBZPdY0LDDpj",
         "address": "8810 Village Drive",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "comprador",
-        "phone": "555-703-4338"
+        "phone": "555-703-4338",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "c1d3add2-9a58-4ff2-aaed-3246fa633157",
@@ -555,9 +657,12 @@
         "email": "pvercruyssey@netscape.com",
         "password": "XtZp2nb",
         "address": "9136 Anzinger Point",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "vendedor",
-        "phone": "641-357-7826"
+        "phone": "641-357-7826",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "ce64f2a2-870c-4d2e-a41a-50243afc7685",
@@ -571,9 +676,12 @@
         "email": "msanthousez@php.net",
         "password": "JCC2U4EPd",
         "address": "2506 Merrick Lane",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "vendedor",
-        "phone": "504-535-7991"
+        "phone": "504-535-7991",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "fb21b6e5-eb0c-4b5a-b13e-f62f53279de9",
@@ -587,9 +695,12 @@
         "email": "vsimyson10@si.edu",
         "password": "sCsTanAWVM",
         "address": "548 Eastlawn Terrace",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "comprador",
-        "phone": "260-549-8790"
+        "phone": "260-549-8790",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "8cbc5384-4346-4851-8775-f7d95c41f4cc",
@@ -603,9 +714,12 @@
         "email": "gpillington11@soup.io",
         "password": "u261Mvf",
         "address": "37966 Comanche Lane",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "vendedor",
-        "phone": "617-899-8272"
+        "phone": "617-899-8272",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "70ff6f96-f8d2-4776-ab70-b92ec3b95e9f",
@@ -619,9 +733,12 @@
         "email": "atarry12@4shared.com",
         "password": "uV2pNIK",
         "address": "88 Farragut Place",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "comprador",
-        "phone": "558-492-7125"
+        "phone": "558-492-7125",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "6df271ff-b0d1-47c4-9178-a8724ed78f64",
@@ -635,9 +752,12 @@
         "email": "mstorrock13@xing.com",
         "password": "fdBItdTVW",
         "address": "52669 Dawn Park",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "vendedor",
-        "phone": "424-920-3750"
+        "phone": "424-920-3750",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "e98694a2-429c-436d-88fd-8c52cc769a7c",
@@ -651,9 +771,12 @@
         "email": "awalewicz14@jalbum.net",
         "password": "gFn3WLzaDZE",
         "address": "7 Fairfield Lane",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "vendedor",
-        "phone": "588-471-3210"
+        "phone": "588-471-3210",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "6b728d14-a98d-4a49-842b-eeb0c8046bb4",
@@ -667,9 +790,12 @@
         "email": "rconklin15@addtoany.com",
         "password": "UgPncN2",
         "address": "87975 Main Plaza",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "comprador",
-        "phone": "657-184-5025"
+        "phone": "657-184-5025",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "dd0a3943-e146-417b-8fb9-5ce0f62d9883",
@@ -683,9 +809,12 @@
         "email": "gezzell16@globo.com",
         "password": "XDuJ10zwN52",
         "address": "30050 Sunnyside Circle",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "vendedor",
-        "phone": "539-392-3098"
+        "phone": "539-392-3098",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "e3c59e16-984a-4182-89b9-2e349cac2646",
@@ -699,9 +828,12 @@
         "email": "jguillain17@google.pl",
         "password": "plbuIXNA",
         "address": "7552 Declaration Place",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "vendedor",
-        "phone": "736-863-1235"
+        "phone": "736-863-1235",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "717401ee-1efb-40b2-bcf8-8cffccfd664c",
@@ -715,9 +847,12 @@
         "email": "gmears18@ebay.com",
         "password": "bu7mfXmUj",
         "address": "44 Manufacturers Alley",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "comprador",
-        "phone": "354-474-3759"
+        "phone": "354-474-3759",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "20e2212d-d30e-4c47-909b-9b24f3af0a98",
@@ -731,9 +866,12 @@
         "email": "mjosephson19@freewebs.com",
         "password": "OyjK2xgn",
         "address": "55 Weeping Birch Terrace",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "vendedor",
-        "phone": "134-914-1271"
+        "phone": "134-914-1271",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "2b162543-3386-4764-a46a-5b7f5d9b6954",
@@ -747,9 +885,12 @@
         "email": "qhuggard1a@angelfire.com",
         "password": "97OELkeN3F",
         "address": "5309 Lyons Road",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "comprador",
-        "phone": "825-176-4859"
+        "phone": "825-176-4859",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "e5983fb8-4ae3-4413-8549-7dc334ba3610",
@@ -763,9 +904,12 @@
         "email": "mlough1b@nytimes.com",
         "password": "lRvPpik4D",
         "address": "21432 Buell Trail",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "comprador",
-        "phone": "437-718-4158"
+        "phone": "437-718-4158",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "2620a9b2-baab-4edb-aa9f-3c000dfeb90d",
@@ -779,9 +923,12 @@
         "email": "lrabier1c@storify.com",
         "password": "shlBOR",
         "address": "89 Kinsman Pass",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "vendedor",
-        "phone": "772-895-8050"
+        "phone": "772-895-8050",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     },
     {
         "id": "37820414-30ac-4c50-a595-d4ced68ecfdb",
@@ -795,8 +942,11 @@
         "email": "gcoskerry1d@is.gd",
         "password": "N6sIsFhRyePu",
         "address": "797 Northland Plaza",
-        "user_image": "/imgs/users/filename.jpg",
+        "user_image": "defaut-user-avatar.jpg",
         "user_type": "comprador",
-        "phone": "630-757-9255"
+        "phone": "630-757-9255",
+        "fav-products": [],
+        "cart-products": [],
+        "shopping-history": []
     }
 ]
