@@ -58,7 +58,7 @@ const controller = {
         newData.price = Number(newData.price);
         newData.discount = Number(newData.discount);
         newData.salesAmount = Number(newData.salesAmount);
-        newData.image = req.file.filename;
+        newData.image = req.file ? req.file.filename : "sin foto";
 
         productModel.createOne(newData);
 
