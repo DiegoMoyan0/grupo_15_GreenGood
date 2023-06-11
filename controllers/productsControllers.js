@@ -88,16 +88,9 @@ const controller = {
     
     
     softDeleteProduct: (req, res) => {
-        
+
         let id = Number(req.params.id);
-        let softDeletedProduct = productModel.softDeleteById(id);
-        
-        if (softDeletedProduct) {
-            res.send("El producto: " + softDeletedProduct.title + " fue removido existosamente");
-            
-        } else {
-            return res.send("Error, el producto: " + softDeletedProduct.title + " fue removido existosamente");
-        };
+        productModel.softDeleteById(id);
 
         return res.redirect('/product/publications');
     },
@@ -106,12 +99,10 @@ const controller = {
     hardDeleteProduct: (req, res) => {
         
         let id = Number(req.params.id);
-        let hardDeletedProduct = productModel.deleteById(id);
-        
-        res.send("El producto fue eliminado exitosamente de la base de datos");
-
-        return res.redirect('/product/publications');
-    },      
+        productModel.deleteById(id);
+        res.redirect('/product/publications');
+    },
+    
 };
 
 

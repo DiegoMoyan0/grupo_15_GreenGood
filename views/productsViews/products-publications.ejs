@@ -36,10 +36,18 @@
                     <p class="stock-publication"> Stock = <%=product.stock%> </p>
                     <div class="btns-a">
                         <form method ="POST" action="/product/<%=product.id%>/edit-delete?_method=PATCH">
-                            <button type="submit" class="btn-delete" style="color: crimson; background-color: aliceblue;">Marcar como vendido</button>
+                            <button type="submit" class="btn-mark-sold"
+                                <% if (product.deleted !== true){ %>
+                                    style="color: crimson; background-color: aliceblue;"
+                                    <%}else{ %>
+                                        style="color: white; background-color: rgb(17, 155, 17);"
+                                    <%}%>>
+                                <%=product.deleted == true? "Marcar como disponible":"Marcar como vendido"%>
+                            </button>
                         </form>
 
-                        <form action="/product/<%= product.id %>/delete?_method=DELETE" method="POST">
+
+                        <form action="/product/<%= product.id %>/delete?_method=DELETE" method="POST" onsubmit="return confirm('¿Está seguro que desea eliminar este producto de manera permanente?')">
                             <input type="submit" class="btn-delete" value="Eliminar">
                         </form>
                     </div>
