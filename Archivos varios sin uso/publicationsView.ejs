@@ -632,39 +632,34 @@
         
         btn_done.addEventListener("click", () =>{
         
-        
             if(formVal_3.reportValidity()){
             
-            sbmt_form.submit();
-    
-            wrapper.style.display = "none"; 
-            text_pub_creation.style.display = "inherit";
-            text_pub_edit.style.display = "none";
-    
-            formProductType.value = productType.value;
-            
-            formProductInfo.value = productInfo.value;
-    
-            formProductDescription.value = productDescription.value;
-    
-            productDeletedStatus.value = false
-    
-            success_wrap.style.display = "flex";
-            success_wrap.classList.add("active");
-    
-    
-            }
-    
-        })
+                sbmt_form.submit();
+        
+                wrapper.style.display = "none"; 
+                text_pub_creation.style.display = "inherit";
+                text_pub_edit.style.display = "none";
+        
+                formProductType.value = productType.value;
+                
+                formProductInfo.value = productInfo.value;
+        
+                formProductDescription.value = productDescription.value;
+        
+                productDeletedStatus.value = false
+        
+                success_wrap.style.display = "flex";
+                success_wrap.classList.add("active");
+            };
+        });
         
         
         shadow.addEventListener("click", () => {
-                modal_wrapper.classList.remove("active");
-                text_asesor.forEach((p) => {
-                    p.style.opacity = "0.8"
-                });           
-    
-            })
+            modal_wrapper.classList.remove("active");
+            text_asesor.forEach((p) => {
+                p.style.opacity = "0.8"
+            });           
+        });
         
         // Parte del script y formulario de arriba son una versión adaptada del código que se encuentra aquí: https://github.com/codingmarket07/Multi-Step-Progressive-Form 
         

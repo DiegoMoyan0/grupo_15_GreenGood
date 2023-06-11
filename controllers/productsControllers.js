@@ -52,6 +52,7 @@ const controller = {
        
     // -------Products managment controllers------- //
     
+
     createProduct: (req, res) => {
         let newData = req.body;
 
@@ -64,6 +65,7 @@ const controller = {
 
         res.redirect('/product/publications');
     },
+
 
     updateProduct: (req, res) => {
         let id = Number(req.params.id);
@@ -106,36 +108,13 @@ const controller = {
         let id = Number(req.params.id);
         let hardDeletedProduct = productModel.deleteById(id);
         
-        Window.alert("El producto fue eliminado exitosamente de la base de datos");
+        res.send("El producto fue eliminado exitosamente de la base de datos");
 
         return res.redirect('/product/publications');
+    },      
+};
 
-    },
-    
-    
-       
-    
-    /* getProductEdit: (req, res) => {
-        let id = Number(req.params.id);
 
-        let productToEdit = productModel.findById(id);
+///////////////////////////////////////
 
-        if (!editProduct) {
-            return res.send('Error de id');
-        };
-
-        return res.render('productsViews/edit-create-forms', {
-            title: editProduct.titledProduct,
-            productToEdit
-        });
-    },
- 
-    
- */
-    /* getCreate: (req, res) => {
-        res.render('productsViews/createProduct', {title: "Crear Producto"});
-    }, */         
-        
-}
-// exportamos el controller //
 module.exports = controller;

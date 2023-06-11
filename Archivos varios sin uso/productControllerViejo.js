@@ -219,5 +219,25 @@ getProductPublications: (req, res) => {
         }
 
 }
+/* getProductEdit: (req, res) => {
+        let id = Number(req.params.id);
+
+        let productToEdit = productModel.findById(id);
+
+        if (!editProduct) {
+            return res.send('Error de id');
+        };
+
+        return res.render('productsViews/edit-create-forms', {
+            title: editProduct.titledProduct,
+            productToEdit
+        });
+    },
+ 
+    
+ */
+    /* getCreate: (req, res) => {
+        res.render('productsViews/createProduct', {title: "Crear Producto"});
+    }, */         
 // exportamos el controller //
 module.exports = controller;

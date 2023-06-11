@@ -223,7 +223,6 @@ nav svg:hover {
     align-items: center;
     box-shadow: 2px 5px 5px rgba(12, 12, 12, 0.8);
     animation: deslizable-animation 700ms linear 3s infinite alternate;
-    animation: name duration timing-function delay iteration-count direction fill-mode;
 }
 
 .deslizable i {
@@ -390,6 +389,159 @@ p {
     color: #9ED66F;
 }
 
+
+
+/* ------------------------------- CARRUSEL OFERTAS ------------------------------- */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    max-height: 650px;
+    background-color: #10142F;
+    overflow: scroll;
+}
+
+.card {
+    width: 350px;
+    margin: 1.2 rem;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    background-color: #fff;
+    margin: 3% 2%;
+    box-shadow: 0px 0px 10px #64ff00;
+    cursor: pointer;
+    transition: transform 0.5s;
+    overflow: hidden;
+    position: relative;
+}
+
+.card:hover {
+    transform: scale(1.01);
+        /* cambia al pasar por arriba el mouse  */
+}
+
+#fav-icon{
+    color: #7D387D;
+    width: 40px;
+    padding: 1%;
+    position: absolute;
+    z-index: 10;
+    top: 10px;
+    right: 10px;
+    transition: transform 0.5s;
+}
+
+#share-icon{
+    color: #7D387D;
+    width: 40px;
+    padding: 1.5%;
+    position: absolute;
+    z-index: 10;
+    top: 50px;
+    right: 10px;
+    transition: transform 0.5s;
+}
+
+#share-icon:hover{
+    transform: scale(1.1);
+}
+
+#fav-icon:hover{
+    transform: scale(1.1);
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 7px;
+}
+
+.p-title{
+    text-align: center;
+    color:#76949f;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.p-description{
+    text-align: center;
+    color:#535454;
+    font-size: 1rem;
+    font-weight: 550;
+    text-anchor: middle;
+    margin-bottom: 15px;
+}
+
+.discount{
+    display: inline;
+    width: 45%;
+    color: #535454;
+    font-weight: 600;
+}
+
+.old-price{
+    text-decoration:line-through;
+}
+
+.off{
+    color:#80ef03;
+    font-weight: bolder;
+}
+
+.price{
+    display: inline;
+    width: 45%;
+    color: #18004b;
+    text-shadow: 2px 2px 8px #aad770;
+    font-size: 1.9rem;
+    font-weight: 700;
+    margin-left: 5px;
+}
+
+.send{
+    color: #64ff00;
+    font-size: 1.1rem;
+    border: 1px solid #64ff00;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #64ff00;
+    width: 130px;
+    background-color: transparent;
+    position: absolute;
+    top: 55%;
+    left: 20px;
+    animation: shadowZize 0.8s linear infinite alternate ;
+}
+
+@keyframes shadowZize {
+    from {
+        box-shadow: 0px 0px 0px;
+        opacity: 0.5;
+    }
+    to {
+        box-shadow: 0px 0px 11px #64ff00;
+        opacity: 1;
+    }
+}
+
+.off-card {
+    width: 12rem;
+    display: flex;
+    justify-content: center;
+    font-size: 0.9rem;
+    padding: 5px;
+    color: white;
+    background-color: #7D387D;
+    position: absolute;
+    left: -4.3rem;
+    top: 0.5rem;
+    transform: rotate(-45deg);
+}
+
 .btn-product {
     width: 100%;
     font-size: 1.2rem;
@@ -408,79 +560,6 @@ p {
     opacity: 1;
     background-color: #f0f0f0;
     color: #9ED66F;
-}
-
-/* ------------------------------- CARRUSEL OFERTAS ------------------------------- */
-.card-container {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
-    background-color: #10142F;
-}
-
-.card {
-    flex: 1;
-    padding: 1.5rem;
-    border-radius: 5px;
-    text-align: center;
-    text-align: center;
-    max-width: 315px;
-    height: fit-content;
-    background-color: #10142f;
-    box-shadow: 0px 0px 10px rgba(100, 100, 100);
-    cursor: pointer;
-    transition: transform .3s;
-    margin: 3rem 0.5rem;
-    position: relative;
-    overflow: hidden;
-}
-
-.card:hover {
-    box-shadow: 0px 0px 10px white
-        /* cambia al pasar por arriba el mouse  */
-}
-
-.card img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 7px;
-}
-
-.card p {
-    text-align: end;
-    color: white;
-}
-
-.price-card {
-    margin: 0.8rem;
-    font-size: 1.5rem;
-    font-weight: 600;
-    opacity: 1.0;
-    text-shadow: 0px 2px 5px #64ff00;
-}
-
-.desc-card {
-    margin: 0.8rem;
-    font-weight: 400;
-    display: flex;
-    justify-content: left;
-}
-
-.send-card {
-    width: 12rem;
-    display: flex;
-    justify-content: center;
-    font-size: 0.9rem;
-    padding: 5px;
-    color: white;
-    background-color: #7D387D;
-    position: absolute;
-    left: -4.3rem;
-    top: 0.5rem;
-    transform: rotate(-45deg);
 }
 
 /* ------------------------------- INICIO ------------------------------- */
@@ -784,7 +863,7 @@ small {
         flex-wrap: nowrap;
     }
 
-    nav a{
+    .content-icons{
         margin-right: 8px;
     }
 

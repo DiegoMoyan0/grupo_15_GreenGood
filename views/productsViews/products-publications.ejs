@@ -172,7 +172,7 @@
     
                                     <br></div>
                                             <label class="label-sale" for="image">Foto de Producto: (próximamente disponbile) </label>
-                                            <input class="input-sale" type="file" id="image-children" name="image" accept="image/*" >
+                                            <input class="input-sale" class="image-children-class" type="file" id="image-children" name="image" accept="image/*" >
                                                                                          
                                             <label for="title" class="label-sale">Título del producto</label>
                                             <input type="text" name="title" id="title-children" class="input-sale" id="InputName" placeholder="Ingrese el título..." minlength="10" maxlength="400" required />
@@ -385,7 +385,7 @@
        
     let productImage = document.getElementById("image-children");
     let formProductImage = document.getElementById("image-parent");
-    
+
     let productTitle = document.getElementById("title-children");
     let formProductTitle = document.getElementById("title-parent");
     
@@ -443,7 +443,7 @@
             formProductTitle.value = productTitle.value;
             formProductPrice.value = productPrice.value;
             formProductDiscount.value = productDiscount.value;
-            formProductImage.value = productImage.value;
+            formProductImage.files = productImage.files;
         };
     });
     
