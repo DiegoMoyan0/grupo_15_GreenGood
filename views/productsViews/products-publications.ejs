@@ -46,7 +46,6 @@
                             </button>
                         </form>
 
-
                         <form action="/product/<%= product.id %>/delete?_method=DELETE" method="POST" onsubmit="return confirm('¿Está seguro que desea eliminar este producto de manera permanente?')">
                             <input type="submit" class="btn-delete" value="Eliminar">
                         </form>
@@ -54,33 +53,30 @@
                 </article>
                 <button for="input1" class="btn-edit">Editar</button>
 
+                <!-- Edit form -->
+
                 <div class="container-dropdown1" style="display: none;">
                     <div class="container-answer1">
                         <article class="container-detail">
                             <div class="container-price">
                                 <form action="/product/<%=product.id%>/update?_method=PUT" enctype="multipart/form-data" method="post">
                                     <label class="label-sale-edit" for="image">Foto de Producto:</label>
-                                    <input class="input-sale-edit" type="file" id="foto" name="image"
-                                    accept="image/*">
+                                    <input class="input-sale-edit" type="file" id="foto" name="image" accept="image/*">
 
-                                    <label for="title" class="label-sale">Título del producto</label>
-                                    <input type="text" class="input-sale" name="title" id="InputName"
-                                        value="<%=product.title%>" minlength="4" maxlength="400" required />
+                                    <label for="title" class="label-sale-edit">Título del producto</label>
+                                    <input type="text" class="input-sale-edit" name="title" id="InputName"                                  value="<%=product.title%>" minlength="4" maxlength="400" required />
 
-                                    <label for="description" class="label-sale">Descripción resumida</label> 
+                                    <label for="description" class="label-sale-edit">Descripción resumida</label> 
                                     <textarea name="description" class="input-sale-edit" cols="30" rows="3"><%= product.description %></textarea>
 
                                     <label for="price" class="label-sale-edit">Precio</label>
-                                    <input type="number" name="price" class="input-sale-edit" min="100" max="100000"
-                                        id="InputPrice-edit" value="<%=product.price%>" required />
+                                    <input type="number" name="price" class="input-sale-edit" min="100" max="100000" id="InputPrice-edit" value="<%=product.price%>" required>
 
                                     <label for="discount" class="label-sale-edit">Porcentaje de descuento</label>
-                                    <input type="number" name="discount" class="input-sale-edit" min="0" max="50"
-                                        id="InputPrice-edit" value="<%=product.discount%>" required />
+                                    <input type="number" name="discount" class="input-sale-edit" min="0" max="50"                                  id="InputPrice-edit" value="<%=product.discount%>" required />
 
                                     <label for="stock" class="label-sale-edit">Stock</label>
-                                    <input type="number" name="stock" class="input-sale-edit" min="1"
-                                        id="InputPrice-edit" value="<%=product.stock%>" required />
+                                    <input type="number" name="stock" class="input-sale-edit" min="1" id="InputPrice-edit" value="<%=product.stock%>" required >
 
                                     <label class="label-sale-edit" for="category">Categoría:</label>
                                     <select name="categoty" class="input-sale-edit">
@@ -119,16 +115,16 @@
                                         <% } %>
                                     </select>
 
-                                    <label for="info" class="label-sale">Informacion / Detalle del producto:</label>
+                                    <label for="info" class="label-sale-edit">Informacion / Detalle del producto:</label>
                                     <textarea name="info" class="input-sale-edit" cols="30" rows="10"><%= product.info %></textarea>
 
                                     <!-- Not visibles inputs for unmutables properties -->
                                     
-                                    <input type="number" name="salesAmount" style="display: none;"                                       value="<%=product.salesAmount%>"/>
+                                    <input type="number" name="salesAmount" class="input-sale-edit" style="display: none;" value="<%=product.salesAmount%>"/>
 
-                                    <input type="text" name="deleted" style="display: none;"                                       value="<%=product.deleted%>"/>
+                                    <input type="text" name="deleted" class="input-sale-edit" style="display: none;" value="<%=product.deleted%>"/>
 
-                                    <!-- ----------------------------------- -->
+                                    <!-- -->
 
                                     <input class="btn-save" type="submit" value="Guardar Cambios">
                                     <button class="btn-save">Cancelar</button>
@@ -137,6 +133,7 @@
                         </article>
                     </div>
                 </div>
+                <!-- ---------------------- -->
             <% }) %>
         </section>
 
@@ -172,58 +169,62 @@
                         <div class="container-form-1">
                             <!--Form Child 1-->
                             <form id="form-val-1">
-                                    <div class="title-sale">
-                                        <h2 id="header-create">¡Hola!<br><br> Empecemos con los datos básicos</h2>
-    
-                                    <br></div>
-                                            <label class="label-sale" for="image">Foto de Producto: (próximamente disponbile) </label>
-                                            <input class="input-sale" class="image-children-class" type="file" id="image-children" name="image" accept="image/*" >
-                                                                                         
-                                            <label for="title" class="label-sale">Título del producto</label>
-                                            <input type="text" name="title" id="title-children" class="input-sale" id="InputName" placeholder="Ingrese el título..." minlength="10" maxlength="400" required />
+                                <div class="title-sale">
+                                    <h2 id="header-create">¡Hola!<br><br> Empecemos con los datos básicos</h2>
+                                <br></div>
 
-                                            <label for="InputDescription" class="label-sale">Descripción</label>
-                                            <textarea class="text-area-description" id ="descripcion-children" name="description" rows="3" cols="50" required minlength="6" placeholder="Escriba aquí breve descripción del producto..." required ></textarea>
-                                                
-                                            <label for="price" class="label-sale">Precio</label>
-                                            <input type="number"  step="any" name="price"  class="input-sale" min="100" max="100000"  id="price-children" id="InputPrice" placeholder="ej. 899.99" required />
-                                            
-                                            <label for="discount" class="label-sale">Descuento</label>
-                                            <input type="number" name="discount"  class="input-sale" min="0" max="100"  id="discount-children" placeholder="5" required >
+                                <label class="label-sale" for="image">Foto del producto: (próximamente disponbile) </label>
+                                <input class="input-sale" id="image-children" type="file" id="image-children" name="image" accept="image/*" >
+                                                                                
+                                <label for="title" class="label-sale">Título del producto</label>
+                                <input type="text" name="title" id="title-children" class="input-sale" id="InputName" placeholder="Ingrese el título..." minlength="10" maxlength="400" required />
+
+                                <label for="InputDescription" class="label-sale">Descripción</label>
+                                <textarea class="text-area-description" id ="description-children" name="description" rows="3" cols="50" required minlength="6" placeholder="Escriba aquí breve descripción del producto..." required ></textarea>
+
+                                <label class="label-sale">Categoría:</label>
+                                <select name="category" id="category-children" class="input-sale" required >
+                                    <option value="cultivo">Producto para el cultivo</option>
+                                    <option value="medicinal">Producto Medicinal</option>
+                                </select>     
                                                
-                                    <div class="form-1-btns">
-                                        <button type="button" class="btn-next">Siguiente</button>
-                                    </div>
+                                <div class="form-1-btns">
+                                    <button type="button" class="btn-next">Siguiente</button>
+                                </div>
                             </form>
                         </div>
                         <div class="container-form-2" style="display: none;">
-                            <h2>Ahora, categorías y descripción</h2>
+                            <h2>Ahora, categorías y precios</h2>
                             <!--Form Child 2-->
                             <form id="form-val-2">
-    
-                                <label for="stock" class="label-sale">Stock</label>
-                                <input type="number" name="stock"  class="input-sale" min="1" max="100000"  id="stock-children"  placeholder="min 1" required >
-                                        
-                                <label class="label-sale">Categoría:</label>
-                                <select name="category" id="categoria-children" class="input-sale" required >
-                                    <option value="Sustrato">Sustrato</option>
-                                    <option value="Macetas">Macetas</option>
-                                    <option value="Bandeja">Bandeja</option>
-                                    <option value="Cosmetica">Cosmetica</option>
-                                    <option value="Aceites">Aceites</option>
-                                    <option value="Cremas">Cremas</option>
+
+                                <label class="label-sale" for="subcategory">Subcategoría:</label>
+                                <select name="subcategory" id="subcategory-children" class="input-sale" required>
+                                    <option value="" selected>Elije una sub-categoria</option>
+                                    <% let subCategories = ['recipientes', 'materialorganico', 'salud', 'cosmetica']; %>
+                                    <% for( oneSubCategory of subCategories ) { %>
+                                        <option 
+                                        value="<%=oneSubCategory%>"
+                                        > <%= mayuscPrimeraLetra(oneSubCategory) %> </option>
+                                    <% }; %>
                                 </select>
-                                            
-                                <label class="label-sale-edit" for="subcategory">Subcategoría:</label>
-                                <select name="subcategory" id="subcategory-children" class="input-sale-edit" required>
-                                    <option value="Sustrato">Sustrato</option>
-                                    <option value="Macetas">Macetas</option>
-                                    <option value="Bandeja">Bandeja</option>
-                                    <option value="Cosmetica">Cosmetica</option>
-                                    <option value="Aceites">Aceites</option>
-                                    <option value="Cremas">Cremas</option>
+                                <label class="label-sale" for="type">Tipo:</label>
+                                <select name="type" id="type-children" class="input-sale" required>
+                                    <option value="" selected>Elije el tipo de producto</option>
+                                    <% let types = ['maceta', 'bandeja', 'sustrato', 'aceite', 'crema', 'locion', 'labial', 'spray']; %>
+                                    <% for( oneType of types ) { %>
+                                        <option 
+                                        value="<%=oneType%>"
+                                        > <%= mayuscPrimeraLetra(oneType) %> </option>
+                                    <% }; %>
                                 </select>
-       
+
+                                <label for="price" class="label-sale">Precio</label>
+                                <input type="number"  step="any" name="price"  class="input-sale" min="100" max="100000"  id="price-children" id="InputPrice" placeholder="ej. 899.99" required />
+                                
+                                <label for="discount" class="label-sale">Descuento</label>
+                                <input type="number" name="discount"  class="input-sale" min="0" max="100"  id="discount-children" placeholder="5" required >
+
                                 <div class="form-2-btns" style="display: none;">
                                     <button type="button" class="btn-back">Atrás</button>
                                     <button type="button" class="btn-next">Siguiente</button>
@@ -231,22 +232,15 @@
                             </form>
                         </div>
                         <div class="container-form-3" style="display: none;">
-                            <h2>Para Finalizar, decinos la categoría del producto y el tipo de envío</h2>
+                            <h2>Para Finalizar, decinos el stock y el detalle informativo del producto</h2>
                             <!--Form Child 3-->
                             <form id="form-val-3">
 
-                                <label class="label-sale-edit" for="type">Tipo de producto:</label>
-                                <select name="type" id="type-children" class="input-sale-edit" required >
-                                    <option value="Sustrato">Sustrato</option>
-                                    <option value="Macetas">Macetas</option>
-                                    <option value="Bandeja">Bandeja</option>
-                                    <option value="Cosmetica">Cosmetica</option>
-                                    <option value="Aceites">Aceites</option>
-                                    <option value="Cremas">Cremas</option>
-                                </select>   
-    
+                                <label for="stock" class="label-sale">Stock</label>
+                                <input type="number" name="stock" id ="stock-children" class="input-sale" min="1" max="100000"  id="stock-children"  placeholder="min 1" required >
+
                                 <label for="info" name="info"  class="label-sale">Información</label>
-                                <textarea lass="text-area-info" id ="info-children" name="info" rows="10" cols="50" placeholder="Escriba aquí el detalle e información útil del producto..."></textarea>
+                                <textarea class="input-sale" id ="info-children" name="info" rows="20" cols="50" placeholder="Escriba aquí el detalle e información útil del producto..."></textarea>
             
                                 <div class="form-3-btns" style="display: none;">
                                     <button type="button" class="btn-back">Atrás</button>
@@ -264,31 +258,21 @@
 
                         <input type="text" name="title"  id="title-parent" class="input-sale" required />
 
-                        <input  type="text" name="description" id="descripcion-parent" required/>
+                        <input  type="text" name="description" id="description-parent" required/>
 
-                        <input type="number"  step="any" name="price"  id="price-parent"  class="input-sale" min="100" max="100000"  placeholder="ej. 899.99" required/>
+                        <input type="number"  step="any" name="price"  id="price-parent"  class="input-sale" min="100" max="100000"  placeholder="ej. 899" required/>
 
                         <input type="number" name="discount"  class="input-sale" min="100" max="100000"  id="discount-parent"  required />
 
                         <input type="number" name="stock"  class="input-sale" min="1" max="100000"  id="stock-parent"  required />
 
-                        <input type="text" name="category" id="categoria-parent" required />
+                        <input type="text" name="category" id="category-parent" required />
                         
-                        <input  type="text" name="subcategory" id="subcategory-parent" required/>
+                        <input  type="text" name="subcategory" id="subcategory-parent" class="input-sale" required/>
 
-                        <input  type="text" name="type" id="type-parent" required/>
+                        <input  type="text" name="type" id="type-parent" class="input-sale" required/>
 
-                        <input  type="text" name="info" id="info-parent" required />
-
-                        <!-----------------Defaults properties---------------> 
-
-                        <input type="text" class="input-sale" id="manufacturer-parent" minlength="3" name="manufacturer" value="Green Good"/>
-
-                        <input  type="text" name="deleted" id="deleted-parent" value="false"/>
-
-                        <input type="number" name="salesAmount"  class="input-sale" value="0"/>
-
-                        <!-- ----------------- -->
+                        <input  type="text" name="info" id="info-parent" class="input-sale" required />
 
                         <input type="submit"/>
 
@@ -406,8 +390,8 @@
     let productInfo = document.getElementById("info-children");
     let formProductInfo = document.getElementById("info-parent");
 
-    let productCategory = document.getElementById("categoria-children");
-    let formProductCategory = document.getElementById("categoria-parent");
+    let productCategory = document.getElementById("category-children");
+    let formProductCategory = document.getElementById("category-parent");
     
     let productSubcategory = document.getElementById("subcategory-children");
     let formProductSubcategory = document.getElementById("subcategory-parent");
@@ -415,8 +399,8 @@
     let productType = document.getElementById("type-children");
     let formProductType = document.getElementById("type-parent");
     
-    let productDescription = document.getElementById("descripcion-children");
-    let formProductDescription = document.getElementById("descripcion-parent");
+    let productDescription = document.getElementById("description-children");
+    let formProductDescription = document.getElementById("description-parent");
     
     let formVal_1 = document.getElementById("form-val-1")
     let formVal_2 = document.getElementById("form-val-2")
@@ -444,11 +428,11 @@
             form_2_btns.style.justifyContent = "space-between";
         
             form_2_step.classList.add("active");
-        
-            formProductTitle.value = productTitle.value;
-            formProductPrice.value = productPrice.value;
-            formProductDiscount.value = productDiscount.value;
+
             formProductImage.files = productImage.files;
+            formProductTitle.value = productTitle.value;
+            formProductDescription.value = productDescription.value;
+            formProductCategory.value = productCategory.value;     
         };
     });
     
@@ -482,12 +466,11 @@
             form_2_btns.style.display = "none";
         
             form_3_step.classList.add("active");
-        
-            formProductStock.value = productStock.value
-            
-            formProductCategory.value = productCategory.value;
 
             formProductSubcategory.value = productSubcategory.value;
+            formProductType.value = productType.value;
+            formProductPrice.value = productPrice.value;
+            formProductDiscount.value = productDiscount.value;
         };
     });
     
@@ -545,11 +528,8 @@
             text_pub_creation.style.display = "inherit";
             text_pub_edit.style.display = "none";
 
-            formProductType.value = productType.value;
-            
+            formProductStock.value = productStock.value
             formProductInfo.value = productInfo.value;
-
-            formProductDescription.value = productDescription.value;
 
             success_wrap.style.display = "flex";
             success_wrap.classList.add("active");

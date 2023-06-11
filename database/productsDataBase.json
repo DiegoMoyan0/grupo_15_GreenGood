@@ -32,15 +32,14 @@
  {
   "id": 3,
   "title": "Bandeja Cuadrada In-Grow Small",
+  "price": 2530,
   "description": "Plato/Bandeja chica - Cultivo Indoor: Maceta Cuadrada, Dimensiones: 25x25 cm * GG",
-  "image": "bandeja-cuadrada.png",
-  "info": "Modelo: Plastico. Color: Negro. Altura x Ancho x Largo: 5 cm x 25 cm x 25 cm. Unidades por envase: 1.",
+  "image": "default-product-image.jpg",
   "discount": 1,
-  "stock": 657,
-  "category": "cultivo",
+  "stock": "657",
+  "info": "Modelo: Plastico. Color: Negro. Altura x Ancho x Largo: 5 cm x 25 cm x 25 cm. Unidades por envase: 1.",
   "subcategory": "recipientes",
   "type": "bandeja",
-  "manufacturer": "Green Good",
   "deleted": false,
   "salesAmount": 0
  },
@@ -698,5 +697,37 @@
   "manufacturer": "Green Good",
   "deleted": false,
   "salesAmount": 0
+ },
+ {
+  "title": "Cremas Green Good Deluxe",
+  "description": "Cremas corporales a base de CBD 28% de alta calidad, Cont. neto: 300gr, Dos unidades. *GG",
+  "price": 7590,
+  "discount": 0,
+  "stock": "",
+  "category": "medicinal",
+  "subcategory": "salud",
+  "type": "crema",
+  "info": "",
+  "manufacturer": "Green Good",
+  "deleted": false,
+  "salesAmount": 0,
+  "image": "img-undefined-1686506101439-cremas-greengood.png",
+  "id": 45
+ },
+ {
+  "title": "Cremas Green Good Deluxe",
+  "description": "Cremas corporales a base de CBD 28% de alta calidad, Cont. neto: 300gr, Dos unidades. *GG",
+  "price": 7590,
+  "discount": 2,
+  "stock": "",
+  "category": "medicinal",
+  "subcategory": "salud",
+  "type": "crema",
+  "info": "",
+  "salesAmount": 0,
+  "deleted": false,
+  "manufactured": "Green Good",
+  "image": "img-undefined-1686508971958-cremas-greengood.png",
+  "id": 46
  }
 ]
