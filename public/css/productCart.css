@@ -569,10 +569,10 @@ footer {
     }
 
     .order {
-        width: calc(100% - 450px);
+        width: calc(100vw - 480px);
         display: inline-block;
         min-height: 620px;
-        max-width: 800px;
+        max-width: 1000px;
     }
 
     .order-head {
@@ -587,7 +587,7 @@ footer {
     }
 
     /*----------------------------------------- BREAK --------------------------------------------------*/
-    @media (min-width: 1200px) {
+    @media (min-width: 1356px) {
         .tdata-aumount {
             position: absolute;
             top: 15px;
@@ -634,7 +634,7 @@ footer {
 }
 
 /*----------------------------------------- BREAK --------------------------------------------------*/
-@media (min-width: 1200px) {
+@media (min-width: 1630px) {
     .order-detail-container {
         margin-right: 8vw;
     }
