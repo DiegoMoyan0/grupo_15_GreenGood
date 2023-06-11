@@ -28,28 +28,25 @@
                     <div class="img-publication">
                         <img src="/images/products/<%= product.image %>" alt="imagen">
                     </div>
-                    <br>
                     <h1 class="title-publication">
                         <%= product.title %>
                     </h1>
                     <p class="price-publication"> Precio = <%= product.price %> </p>
                     <p class="desc-publication"> Descuento = <%=product.discount%> </p>
                     <p class="stock-publication"> Stock = <%=product.stock%> </p>
-                    <br>
                     <div class="btns-a">
                         <form method ="POST" action="/product/<%=product.id%>/edit-delete?_method=PATCH">
-                            <button type="submit" class="btn-delete" style="color: crimson; background-color: aliceblue;">Remover producto a la venta</button>
+                            <button type="submit" class="btn-delete" style="color: crimson; background-color: aliceblue;">Marcar como vendido</button>
                         </form>
 
                         <form action="/product/<%= product.id %>/delete?_method=DELETE" method="POST">
-                            <input type="submit" class="btn-delete" value="Eliminar definitivamente">
+                            <input type="submit" class="btn-delete" value="Eliminar">
                         </form>
                     </div>
-                    <br>
                 </article>
                 <button for="input1" class="btn-edit">Editar</button>
 
-                <div class="container-dropdown1">
+                <div class="container-dropdown1" style="display: none;">
                     <div class="container-answer1">
                         <article class="container-detail">
                             <div class="container-price">
@@ -181,7 +178,7 @@
                                             <textarea class="text-area-description" id ="descripcion-children" name="description" rows="3" cols="50" required minlength="6" placeholder="Escriba aquí breve descripción del producto..." required ></textarea>
                                                 
                                             <label for="price" class="label-sale">Precio</label>
-                                            <input type="number" name="price"  class="input-sale" min="100" max="100000"  id="price-children" id="InputPrice" placeholder="ej. 899.99" required />
+                                            <input type="number"  step="any" name="price"  class="input-sale" min="100" max="100000"  id="price-children" id="InputPrice" placeholder="ej. 899.99" required />
                                             
                                             <label for="discount" class="label-sale">Descuento</label>
                                             <input type="number" name="discount"  class="input-sale" min="0" max="100"  id="discount-children" placeholder="5" required >
@@ -261,7 +258,7 @@
 
                         <input  type="text" name="description" id="descripcion-parent" required/>
 
-                        <input type="number" name="price"  id="price-parent"  class="input-sale" min="100" max="100000"  placeholder="ej. 899.99" required/>
+                        <input type="number"  step="any" name="price"  id="price-parent"  class="input-sale" min="100" max="100000"  placeholder="ej. 899.99" required/>
 
                         <input type="number" name="discount"  class="input-sale" min="100" max="100000"  id="discount-parent"  required />
 
