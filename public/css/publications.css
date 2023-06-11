@@ -88,13 +88,22 @@ body {
 }
 
 .btn-delete {
-    background-color: #e74c3c;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    margin-left: 1rem;
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+.btn-mark-sold {
+cursor: pointer;
+padding: 5px 10px;
+font-size: 16px;
+border-radius: 5px;
+margin-left: 1rem;
 }
 
 /* Edición de productos */

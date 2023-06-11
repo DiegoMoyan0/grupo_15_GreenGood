@@ -80,7 +80,8 @@ const models = {
     },
 
 
-    // -------Remove one prodcut from sales------- //
+    // -------Mark product as sold------- //
+
 
     softDeleteById: function(id){
 
@@ -90,14 +91,22 @@ const models = {
 
         (!searched)? searched = null: searched; 
         
-        if (searched != null && searched.deleted != true){
-            searched.deleted = true
+        if (searched != null && searched.deleted !== true){
+            searched.deleted = true;
+           // searched.stock = 0;
             fs.writeFileSync(path.join(__dirname, this.route), JSON.stringify(products, null, " "));
-            console.log(`Softdeleted product id =${searched.id}`);
+           // console.log(`Product id =${searched.id} marked as sold`);
             return searched;
-        }else{
-            return false;
-        }           
+        }
+
+        if (searched != null && searched.deleted == true){
+            searched.deleted = false;
+           // searched.stock = 1;
+            fs.writeFileSync(path.join(__dirname, this.route), JSON.stringify(products, null, " "));
+           // console.log(`Product id =${searched.id} marked as available`)
+            return searched;
+        }
+   
     },
 
     // -------Eliminate one prodcut from the DDBB------- //
@@ -107,7 +116,7 @@ const models = {
 
         products = products.filter(product => product.id !== id);
 
-        const productsJSON = JSON.stringify(products);
+        const productsJSON = JSON.stringify(products, null, " ");
 
         fs.writeFileSync(path.join(__dirname, this.route), productsJSON);
 
