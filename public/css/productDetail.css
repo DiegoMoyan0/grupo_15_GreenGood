@@ -1,6 +1,7 @@
 /*----------------------------------------- DETAIL --------------------------------------------------*/
 .container-detail {
     width: 90vw;
+    max-width: 1000px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -70,7 +71,7 @@
     opacity: 0.8;
     margin-bottom: 2.5rem;
     text-align: justify;
-    color: #f9f6f6;
+    color: #fff;
 }
 
 .title-card-detail {
