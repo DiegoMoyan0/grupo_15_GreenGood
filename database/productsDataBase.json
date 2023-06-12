@@ -699,35 +699,17 @@
   "salesAmount": 0
  },
  {
+  "id": 47,
   "title": "Cremas Green Good Deluxe",
-  "description": "Cremas corporales a base de CBD 28% de alta calidad, Cont. neto: 300gr, Dos unidades. *GG",
   "price": 7590,
-  "discount": 0,
-  "stock": "",
-  "category": "medicinal",
+  "description": "Cremas corporales a base de CBD 28% de alta calidad, Cont. neto: 300gr, Dos unidades. *GG",
+  "image": "img-undefined-1686573776044-cremas-greengood.png",
+  "discount": 1,
+  "stock": "50",
+  "info": "Cremas corporales a base de CBD 28% de alta calidad, Cont. neto: 300gr, Dos unidades. *GG",
   "subcategory": "salud",
   "type": "crema",
-  "info": "",
-  "manufacturer": "Green Good",
   "deleted": false,
-  "salesAmount": 0,
-  "image": "img-undefined-1686506101439-cremas-greengood.png",
-  "id": 45
- },
- {
-  "title": "Cremas Green Good Deluxe",
-  "description": "Cremas corporales a base de CBD 28% de alta calidad, Cont. neto: 300gr, Dos unidades. *GG",
-  "price": 7590,
-  "discount": 2,
-  "stock": "",
-  "category": "medicinal",
-  "subcategory": "salud",
-  "type": "crema",
-  "info": "",
-  "salesAmount": 0,
-  "deleted": false,
-  "manufactured": "Green Good",
-  "image": "img-undefined-1686508971958-cremas-greengood.png",
-  "id": 46
+  "salesAmount": 0
  }
 ]
