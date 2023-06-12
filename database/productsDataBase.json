@@ -711,5 +711,21 @@
   "type": "crema",
   "deleted": false,
   "salesAmount": 0
+ },
+ {
+  "title": "nuevonuevo",
+  "description": "nuevonuevo",
+  "price": 333,
+  "discount": 3,
+  "stock": "3",
+  "category": "medicinal",
+  "subcategory": "salud",
+  "type": "aceite",
+  "info": "nuevonuevo",
+  "salesAmount": 0,
+  "deleted": false,
+  "manufactured": "Green Good",
+  "image": "img-undefined-1686593880314-yo.png",
+  "id": 48
  }
 ]

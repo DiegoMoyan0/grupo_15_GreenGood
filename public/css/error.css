@@ -24,12 +24,20 @@
       color: #666;
     }
 
-    a {
-      font-size: 20px;
-      color: green;
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #59E4A8;
+      color: white;
       text-decoration: none;
+      transition: background-color 0.3s, color 0.3s;
+      border-radius: 5px;
+      margin: 1rem auto;
     }
 
-    a:hover {
-      text-decoration: underline;
+    .button:hover {
+      background-color: transparent;
+      color: #59E4A8;
+      border: 1px solid #59E4A8;
+      border-radius: 5px;
     }
