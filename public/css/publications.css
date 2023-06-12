@@ -10,11 +10,19 @@
     font-family: "Open Sans", sans-serif;
 }
 
-body {
+.body-publications {
     color: white;
     background: #10142F;
     font-size: 16px;
     position: relative;
+}
+
+.body-publications.modal-active {
+  color: white;
+  background: #10142F;
+  font-size: 16px;
+  position: relative;
+  overflow-y: hidden;
 }
 
 
@@ -306,18 +314,19 @@ select {
 /* Los estilos a continuación son una versión adaptada del código que se encuentra aquí: https://github.com/codingmarket07/Multi-Step-Progressive-Form  */
 
 .wrapper{
-position: absolute;
+position: fixed;
 width: 90%;
-height:800px;
-min-height: 800px;
+height: 90%;
+max-height: 800px;
 background: #fff;
 color:black;
 top: 10%;
 left:2.5%;
 padding: 1px;
 border-radius: 8px;
- border: 15px solid #402C68;
+border: 15px solid #402C68;
 font-family: inherit;
+overflow-y: scroll;
 }
 
 
@@ -669,6 +678,8 @@ select {
 		width: 55%;
     max-width: 500px;
     left: 20%;
+    overflow-y: hidden;
+    height: 800px;
 	}
 
   }

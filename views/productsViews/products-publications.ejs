@@ -7,7 +7,7 @@
 
 </head>
 
-<body>
+<body class="body-publications">
     <%- include('../partials/header')%>
 
     <div class="deslizable">
@@ -45,7 +45,6 @@
                                 <%=product.deleted == true? "Marcar como disponible":"Marcar como vendido"%>
                             </button>
                         </form>
-
                         <form action="/product/<%= product.id %>/delete?_method=DELETE" method="POST" onsubmit="return confirm('¿Está seguro que desea eliminar este producto de manera permanente?')">
                             <input type="submit" class="btn-delete" value="Eliminar">
                         </form>
@@ -277,17 +276,15 @@
                         <input type="submit"/>
 
                     </form>
-                
+
+                </div>
+                <div class="success-wrap">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <p class="p-create">Publicación creada con éxito</p>
+                <!--    <p class="p-edit">Publicación editada con éxito</p>-->
                 </div>
             </div>
-    
-            <div class="success-wrap">
-                
-                <i class="fa-solid fa-circle-check"></i>
-                <p class="p-create">Publicación creada con éxito</p>
-                <p class="p-edit">Publicación editada con éxito</p>
 
-            </div>
         </section>
     </main>
     
@@ -339,6 +336,8 @@
 <script>
         
     //Definir variables de acuerdo a las clases de las etiquetas a operar
+
+    let body_publications = document.querySelector(".body-publications");
     
     //Definir variables de acuerdo a las clases de las etiquetas para los contenedores
     
@@ -491,6 +490,8 @@
       
     btn_pub.addEventListener("click", () =>{
 
+        body_publications.classList.add("modal-active");
+
         modal_wrapper.classList.add("active");
         success_wrap.style.display = "none";
         wrapper.style.display = "block"; 
@@ -521,23 +522,31 @@
     btn_done.addEventListener("click", () =>{
     
         if(formVal_3.reportValidity()){
+
+            body_publications.classList.remove("modal-active");
+
+            success_wrap.classList.add("active");
+            success_wrap.style.display = "flex";
         
             formProductStock.value = productStock.value
             formProductInfo.value = productInfo.value;
             
-            sbmt_form.submit();
-
+            setTimeout(submitForm, 3000);  //Ejecutar función submitForm() liego de 3000 milisegundos
+            
             wrapper.style.display = "none"; 
             text_pub_creation.style.display = "inherit";
             
-            success_wrap.style.display = "flex";
-            success_wrap.classList.add("active");
         };
     });
-    
+
+    //Función para enviar la información del formulario #parent-form ejecutando método HTTP
+    submitForm = () =>{
+        sbmt_form.submit();
+    }
     
     shadow.addEventListener("click", () => {
-            
+
+        body_publications.classList.remove("modal-active");    
         modal_wrapper.classList.remove("active");
         text_asesor.forEach((p) => {
             p.style.opacity = "0.8"
@@ -554,6 +563,8 @@
     close_form.addEventListener("click", (e) =>{
         e.preventDefault(); // Para que no aparezca "#" en la URL
 
+        body_publications.classList.remove("modal-active");
+
         modal_wrapper.classList.remove("active");
         text_asesor.forEach((p) => {
             p.style.opacity = "0.8"
@@ -566,16 +577,6 @@
     let btn_saveEdit = document.querySelector(".btn-save");
     let btn_cancel = document.querySelector(".btn-cancel");
  
-    /* Alerta para confirmar eliminación de publicación*/
-    
-    let alertaElimina = () => {
-        if (confirm("Esta seguro que desea eliminar la publicación?\nPor favor confirme")) {
-            //Mensaje o evento de confirmación;
-        } else {
-            //Mensaje o evento de cancelación;
-        };
-    };
-    
 </script>
 
 </html>
