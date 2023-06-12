@@ -72,11 +72,12 @@ const controller = {
     updateProduct: (req, res) => {
         let id = Number(req.params.id);
         let newData = req.body;
+        let productToEdit = productModel.findById(id)
 
         newData.price = Number(newData.price);
         newData.discount = Number(newData.discount);
         newData.salesAmount = Number(newData.salesAmount);
-        newData.image = req.file ? req.file.filename : "default-product-image.jpg";
+        newData.image = req.file ? req.file.filename : productToEdit.image;
         if(newData.deleted == "false"){
             newData.deleted = false;
         }else if(newData.deleted == "true"){
