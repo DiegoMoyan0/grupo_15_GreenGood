@@ -1,124 +1,135 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto+Serif&display=swap');
 
 
-*{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	list-style: none;
-	outline: none;
-  font-family: "Open Sans", sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    outline: none;
+    font-family: "Open Sans", sans-serif;
 }
 
-body{
-	background: #10142F;
-	font-size: 16px;
-	position: relative;
+.body-publications {
+    color: white;
+    background: #10142F;
+    font-size: 16px;
+    position: relative;
+}
+
+.body-publications.modal-active {
+  color: white;
+  background: #10142F;
+  font-size: 16px;
+  position: relative;
+  overflow-y: hidden;
 }
 
 
 .publication {
     color: #fff;
     padding: 20px;
-  }
-  
-  .btn-publication {
+}
+
+.btn-publication {
     background-color: #16a085;
     color: #fff;
     border: none;
+    text-decoration: none;
     padding: 10px 20px;
     font-size: 18px;
     border-radius: 5px;
     margin-bottom: 20px;
-  }
-  
-  .array-publication {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .item-publication {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #8e44ad;
-    padding-bottom: 20px;
-  }
-  
-  .img-publication {
+}
+
+.img-publication {
     width: 100px;
     height: 100px;
-    overflow: hidden;
     margin-right: 20px;
-  }
-  
-  .img-publication img {
+}
+
+.img-publication img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-  }
-  
-  .info-publication {
-    flex: 1;
-  }
-  
-  .title-publication {
+}
+
+
+.title-publication {
     color: #2980b9;
     font-size: 22px;
     margin-bottom: 10px;
-  }
-  
-  .desc-publication {
+}
+
+.price-publication {
     font-size: 16px;
     margin-bottom: 10px;
-  }
-  
-  .btns-publication {
+}
+
+.desc-publication {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.stock-publication {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.btns-publication {
     display: flex;
     align-items: center;
-  }
-  
-  .btn-edit {
+}
+
+.btns-a {
+    display: flex;
+}
+
+.btn-edit {
     background-color: #3498db;
     color: #fff;
+    text-decoration: none;
     border: none;
     padding: 5px 10px;
     font-size: 16px;
     border-radius: 5px;
-    margin-right: 10px;
-  }
+    margin: 1rem 1rem;
+}
+
+.btn-delete {
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+.btn-mark-sold {
+cursor: pointer;
+padding: 5px 10px;
+font-size: 16px;
+border-radius: 5px;
+margin-left: 1rem;
+}
+
+/* Edición de productos */
+.container-dropdown1 .container-answer1{
   
-  .btn-cancel, .btn-delete {
-    background-color: #e74c3c;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    margin-top: 5px;
+    border-bottom: 2px solid gray;
+    padding: .5rem 1rem;
+    background: #53476d;
+    border-radius: 8px;
+    max-width: 300px;
+    margin-top: 15px;
+    padding: 20px;
   }
 
-  .btn-delete {
-    margin-left: 5px;
-  }
-  
-
-  /* Edición de productos */
+/* Edición de productos */
 
 
-    input[type='checkbox'] {
-    display: none;
-  }
-
-  .btn-edit-cancel{
-    display: none;
-  }
-
-
-
-
-  .btn-save{
+.btn-save {
     background-color: #16a085;
     color: #fff;
     border: none;
@@ -127,16 +138,65 @@ body{
     border-radius: 5px;
     margin-right: 10px;
     margin-top: 5px;
-  }
-
-  .img-detail{
-    max-width: 200px;
-    max-height: 200px;
-  }
+}
 
 
+body{
+    font-family: 'Roboto Serif', serif;
+}
+#sale {
+    padding: 50px;
+    text-align: center;
+}
 
-  .container-dropdown1 .container-answer1{
+#title-sale {
+    font-family: 'Roboto Serif', serif;
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+#container-sale {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.sale-titles {
+    font-family: 'Roboto Serif', serif;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.label-sale-edit {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.input-sale-edit {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #0A1504;
+}
+
+.form-control::placeholder {
+    color: #aaa;
+}
+
+
+/* -------------------------------- */
+
+
+
+.container-dropdown1 .container-answer1{
   
     border-bottom: 2px solid gray;
     padding: .5rem 1rem;
@@ -159,10 +219,6 @@ body{
   .form-container > input{
     display: block;
     color: gray
-  }
-
-  input[type='file'] {
-    color: transparent;
   }
 
 .container-form-1,
@@ -258,17 +314,19 @@ select {
 /* Los estilos a continuación son una versión adaptada del código que se encuentra aquí: https://github.com/codingmarket07/Multi-Step-Progressive-Form  */
 
 .wrapper{
-  position: absolute;
-	width: 90%;
-  height:800px;
-  min-height: 800px;
-	background: #fff;
-  top: 10%;
-  left:2.5%;
-	padding: 1px;
-	border-radius: 8px;
-	border: 15px solid #402C68;
-  font-family: inherit;
+position: fixed;
+width: 90%;
+height: 90%;
+max-height: 800px;
+background: #fff;
+color:black;
+top: 10%;
+left:2.5%;
+padding: 1px;
+border-radius: 8px;
+border: 15px solid #402C68;
+font-family: inherit;
+overflow-y: scroll;
 }
 
 
@@ -508,9 +566,9 @@ select {
 
 @media (min-width: 300px) {
 
-  .img-publication img{
+  /* .img-publication img{
     display: none;
-  }
+  } */
 
 }
 
@@ -539,9 +597,6 @@ select {
     color: gray
   }
 
-  input[type='file'] {
-    color: transparent;
-  }
 
 .container-form-1,
 .container-form-2,
@@ -623,6 +678,8 @@ select {
 		width: 55%;
     max-width: 500px;
     left: 20%;
+    overflow-y: hidden;
+    height: 800px;
 	}
 
   }

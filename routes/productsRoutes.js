@@ -1,17 +1,65 @@
+//*** Require's ***/
+
 const express = require('express');
 const routes = express.Router();
+const multer = require('multer');
 
-// Se importa el controlador de productos//
+
+// ************ Controller Require ************/
 const productsController = require('../controllers/productsControllers');
 
-// routes hace un pedido, en el primer parametro deja en que vista lo quiere y con el segundo parametro utiliza el controlador que ya renderiza la vista// 
-routes.get('/', productsController.getProduct);
+// --- Config Disk Storage with Multer module ---/
 
+const storage = multer.diskStorage({
+    destination: function (req, file, cb){
+        cb (null, './public/images/products');
+    },
+
+    filename: function (req, file, cb){
+        cb (null, `img-${req.body.type}-${Date.now()}-${file.originalname}`);
+    },
+})
+
+const uploadFile = multer({storage});
+
+
+
+//---------------------------------------------------------//
+
+
+
+/*** @GET ALL PRODUCTS VIEW ***/ 
+routes.get('/list', productsController.getAllProducts);
+
+
+/*** @GET ONE PRODUCT DETAIL VIEW ***/ 
+routes.get('/:id/detail', productsController.getProductDetail);
+
+
+/*** @GET PRODUCTS PUBLICATIONS VIEW ***/ 
+routes.get('/publications', productsController.getProductPublications);
+
+
+/*** @GET PRODUCTS CART SHOPPING VIEW ***/ 
 routes.get('/cart', productsController.getProductCart);
 
-routes.get('/detail', productsController.getProductDetail);
 
-routes.get('/sale', productsController.getProductSale);
+/*** @POST / CREATE ONE PRODUCT ***/ 
+routes.post('/create', uploadFile.single('image'), productsController.createProduct);
 
-//exportamos routes//
+
+/*** @EDIT ONE PRODUCT ***/ 
+routes.put('/:id/update',uploadFile.single('image'), productsController.updateProduct);
+
+
+/*** @DELETE AND @PATCH ONE PRODUCT ***/ 
+
+routes.patch('/:id/edit-delete', productsController.softDeleteProduct);
+
+routes.delete('/:id/delete', productsController.hardDeleteProduct);
+
+
+///////////////////////////////////
+
+
 module.exports = routes;

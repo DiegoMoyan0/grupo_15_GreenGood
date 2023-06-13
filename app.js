@@ -2,6 +2,17 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
+
+/////////////////////////////////////////////////////
+
+// Requerimos method-override para poder trabajar con los metodos HTTP; PATCH, DELETE Y PUT//
+
+const methodOverride = require('method-override');
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(methodOverride ("_method"))
+
+/////////////////////////////////////////////////////
 // Requerimos las rutas de las vistas//
 const mainRoutes = require('./routes/mainRoutes');
 const productsRoutes = require('./routes/productsRoutes');
@@ -21,7 +32,26 @@ app.use(mainRoutes);
 app.use('/user',userRoutes);
 app.use('/product',productsRoutes);
 
-//---Levantamos el servidor en el puerto 3000----//
-app.listen(3001, () => {
-    console.log('Server on-line on port 3001');
+
+//*Normalize PORT*/
+const port = process.env.PORT || '3000';
+
+app.use((req, res)=>{
+  res.render("mainViews/error")
 });
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+app.listen(port, () => { 
+  console.log(`\\*-------------------------*\\`);
+  console.log(`Server running in ${port} port`);
+  console.log(`Now, you can open http://localhost:${port} in your favorite browser `);
+  
+  console.log(`\\*-------------------------*\\`);
+});
+
+
+// ************ exports app ************
+module.exports = app;
