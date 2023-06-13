@@ -674,14 +674,6 @@ select {
 		margin-right: 50px;
 	}
 
-	.wrapper{
-		width: 55%;
-    max-width: 500px;
-    left: 20%;
-    overflow-y: hidden;
-    height: 800px;
-	}
-
   }
 
   @media (min-width: 1000px) {
