@@ -19,41 +19,49 @@
         <section class="section-register">
         <div class="container">
 			<span class="span-title-register">Register</span>
-			<form class="form-login">
+			<form class="form-login" action="/user/register" enctype="multipart/form-data" method="POST">
 				<div class="container-input">
-                    <label for="InputName" class="label-register">Nombre y apellido</label>
-					<input type="text" class="input-register" placeholder="Escriba su nombre" required minlength="6" class="form-input" />
+                    <label for="name_data" class="label-register">Nombre y apellido</label>
+					<input type="text" name="name_data" class="input-register" placeholder="Escriba su nombre" required minlength="6" class="form-input" />
 				</div>
 				<div class="container-input">
-                    <label for="InputName" class="label-register">Email</label>
-					<input type="email" class="input-register" placeholder="Escriba su Email" required minlength="6" class="form-input" />
+                    <label for="email" class="label-register">Email</label>
+					<input type="email" name="email" class="input-register" placeholder="Escriba su Email" required minlength="6" class="form-input" />
 									</div>
                 <div class="container-input">
-                    <label for="InputName" class="label-register">Nombre de usuario</label>
-					<input type="text" class="input-register" placeholder="Escriba su nombre de usuario" required minlength="6" class="form-input" />
+                    <label for="user_name" class="label-register">Nombre de usuario</label>
+					<input type="text" name="user_name" class="input-register" placeholder="Escriba su nombre de usuario" required minlength="6" class="form-input" />
 									</div>
                 <div class="container-input">
-                    <label for="InputDate" class="label-register">Fecha de nacimiento</label>
-                    <input type="date" min="1900-01-01" max="2023-01-01" class="input-register" id="InputDate" required />
+                    <label for="address" class="label-register">Dirección</label>
+					<input type="text" name="address" class="input-register" placeholder="Escriba su dirección" required minlength="6" class="form-input" />
+									</div>
+                <div class="container-input">
+                    <label for="birth_date" class="label-register">Fecha de nacimiento</label>
+                    <input type="date" name="birth_date" min="1900-01-01" max="2023-01-01" class="input-register" id="InputDate" required />
+									</div>
+                <div class="container-input">
+                    <label for="phone" class="label-register">Teléfono</label>
+					<input type="tel" name="phone" class="input-register" placeholder="ej (351) 2 341032" required minlength="6" class="form-input" />
 									</div>
                 <div class="container-input">
                     <label class="label-register">Tipo de Perfil</label><br><br>
-                    <label class="label-register" for="Vendedor">Vendedor</label>
-                    <input type="radio" id="Vendedor" name="tipo-perfil" value="Vendedor">
-                    <label class="label-register" for="Comprador">Comprador</label>
-                    <input type="radio" id="Comprador" name="tipo-perfil" value="Comprador">
+                    <label class="label-register" for="user_type">Vendedor</label>
+                    <input type="radio" id="Vendedor" name="user_type" value="Vendedor">
+                    <label class="label-register" for="user_type">Comprador</label>
+                    <input type="radio" id="Comprador" name="user_type" value="Comprador">
 									</div>
                 <div class="container-input">
-                    <label class="label-register" for="foto">Foto de usuario:</label>
-                    <input class="input-register" type="file" id="foto" name="foto" accept="image/*">
+                    <label class="label-register" for="user_image">Foto de usuario:</label>
+                    <input class="input-register" type="file" id="foto" name="user_image" accept="image/*">
 					<span class="span-bar"></span>
 				</div>
                 <div class="container-input">
-                    <label for="password" class="label-register">Contraseña</label>
-                    <input type="password" class="input-register" id="password" minlength="8" placeholder="Escriba su contraseña..." required />
-									</div>
+                    <label for="password"  class="label-register">Contraseña</label>
+                    <input type="password" name="password" class="input-register" id="password" minlength="8" placeholder="Escriba su contraseña..." required />
+									</div>                    
                 <div class="container-input">
-                    <input type="password" class="input-register" id="password-confirm"
+                    <input type="password" name="password_confirm" class="input-register" id="password-confirm"
                     placeholder="Repita su contraseña..." required />
 									</div>
 
