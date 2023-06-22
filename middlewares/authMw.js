@@ -1,4 +1,4 @@
-//Para impedir el acceso a profile cuando el usuario NO inicio session
+//To avoid entring to user profile if not logged
 
 function authMw(req, res, next) {
     if(!req.session.userLogged){
