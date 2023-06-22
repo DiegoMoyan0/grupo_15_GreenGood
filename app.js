@@ -1,33 +1,51 @@
+// ************ Require's ************//
+
 const express = require('express');
 const app = express();
 const path = require('path');
+const methodOverride = require('method-override');
+const logger = require('morgan');// A tool that logs HTTP requests in the terminal
+
+//------ Login Mw -------//
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const userLoggedMw = require('./middlewares/userLoggedMw');
 
 
 /////////////////////////////////////////////////////
 
-// Requerimos method-override para poder trabajar con los metodos HTTP; PATCH, DELETE Y PUT//
+// To use new HTTP methods: PATCH, DELETE Y PUT//
 
-const methodOverride = require('method-override');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride ("_method"))
 
+//------- Loggin -----//
+app.use(logger('dev')); 
+app.use(session ({
+  secret: "Green Good Project TOP SECRET xxx",
+  resave: false,
+  saveUninitialized: false
+}))
+app.use(cookieParser());
+app.use(userLoggedMw); /*App Mw for logged user with cookie*/
+
+
 /////////////////////////////////////////////////////
-// Requerimos las rutas de las vistas//
+
+
 const mainRoutes = require('./routes/mainRoutes');
 const productsRoutes = require('./routes/productsRoutes');
 const userRoutes = require('./routes/userRoutes');
 
-//resuelve y devuelve la ruta absoluta del directorio "public" en relación con el directorio actual (__dirname).//
+// **Statics resources** //
 const publicPath = path.resolve(__dirname, './public');
-
-//------Accedo a recursos estaticos (que no se renderizan: img, css, etc) -----//
 app.use(express.static(publicPath));
 
-// --------- Establecemos el motor ejs para la propiedad motor de vistas mediante set del entry point ------//
+// --------- View engine setup --------//
 app.set('view engine', 'ejs');
 
-//Implemento o uso las rutas con express//
+//**Use routes with express**//
 app.use(mainRoutes);
 app.use('/user',userRoutes);
 app.use('/product',productsRoutes);

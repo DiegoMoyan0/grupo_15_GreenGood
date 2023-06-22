@@ -1,13 +1,48 @@
+// ************ Require's ************
 const express = require('express');
-const routes = express.Router();
+const router = express.Router();
+const multer = require('multer');
+const path = require('path');
 
-// Se importa el controlador de usuarios//
+
+// ************ Controller Require ************
 const userController = require('../controllers/userControllers');
+const validationsRegisterMw = require('../middlewares/validateRegisterMw');
+const validationsLoginMw = require('../middlewares/validateLoginMw');
+const validationsUpdateMw = require('../middlewares/validateUpdateMw');
+const guestMw = require('../middlewares/guestMw');
+const authMw = require('../middlewares/authMw');
 
-// routes hace un pedido, en el primer parametro deja en que vista lo quiere y con el segundo parametro utiliza el controlador que ya renderiza la vista// 
-routes.get('/login', userController.getLogin);
 
-routes.get('/register', userController.getRegister);
+// **** Config Disk Storage with Multer module ****/
 
-//exportamos routes//
-module.exports = routes;
+const storage = multer.diskStorage({
+    destination: function (req, file, cb){
+        cb (null, './public/images/users');
+    },
+
+    filename: function (req, file, cb){
+        cb (null, `img-user-${Date.now()}-${file.originalname}`);
+    },
+})
+
+const uploadPhoto = multer({storage});
+
+//---------------------------------------------------------//
+
+/*** GET FORMS ***/ 
+router.get('/login', guestMw, userController.getLogin); 
+router.get('/register', guestMw, userController.getRegister);
+router.get('/profile', authMw, userController.getProfile);  
+
+
+/*** POST FORMS ***/ 
+router.post('/entry',validationsLoginMw, userController.loginUser); 
+router.post('/register', uploadPhoto.single('user_image'), validationsRegisterMw, userController.registerUser);
+router.put('/register', uploadPhoto.single('user_image'), validationsUpdateMw, userController.registerUser);
+
+
+router.get('/logout', authMw, userController.getLogout);  
+ 
+
+module.exports = router;

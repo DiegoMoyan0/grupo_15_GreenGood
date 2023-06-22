@@ -711,5 +711,21 @@
   "type": "crema",
   "deleted": false,
   "salesAmount": 0
+ },
+ {
+  "title": "Crema GG CBD",
+  "description": "Crema a base de CBD alta calidad 300 gramos",
+  "price": 7850,
+  "discount": 10,
+  "stock": "100",
+  "category": "medicinal",
+  "subcategory": "salud",
+  "type": "crema",
+  "info": "dhf;vszdlkjvnkzdjfxbgv;dufkjxbhvd;zfiukxjbvhd;zou fxkjcghbv;dizfkjx,ncb dxfchbdxfg",
+  "salesAmount": 0,
+  "deleted": false,
+  "manufactured": "Green Good",
+  "image": "img-undefined-1687390273640-cremas-greengood.png",
+  "id": 48
  }
 ]

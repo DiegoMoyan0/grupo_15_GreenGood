@@ -23,113 +23,115 @@
             <a href="#" class="btn-publication">Crear un nuevo producto!</a>
 
             <% products.forEach(product => { %>
-                <article>
-                    <br>
-                    <div class="img-publication">
-                        <img src="/images/products/<%= product.image %>" alt="imagen">
-                    </div>
-                    <h1 class="title-publication">
-                        <%= product.title %>
-                    </h1>
-                    <p class="price-publication"> Precio = <%= product.price %> </p>
-                    <p class="desc-publication"> Descuento = <%=product.discount%> </p>
-                    <p class="stock-publication"> Stock = <%=product.stock%> </p>
-                    <div class="btns-a">
-                        <form method ="POST" action="/product/<%=product.id%>/edit-delete?_method=PATCH">
-                            <button type="submit" class="btn-mark-sold"
-                                <% if (product.deleted !== true){ %>
-                                    style="color: crimson; background-color: aliceblue;"
-                                    <%}else{ %>
-                                        style="color: white; background-color: rgb(17, 155, 17);"
-                                    <%}%>>
-                                <%=product.deleted == true? "Marcar como disponible":"Marcar como vendido"%>
-                            </button>
-                        </form>
-                        <form action="/product/<%= product.id %>/delete?_method=DELETE" method="POST" onsubmit="return confirm('¿Está seguro que desea eliminar este producto de manera permanente?')">
-                            <input type="submit" class="btn-delete" value="Eliminar">
-                        </form>
-                    </div>
-                </article>
-                <button for="input1" class="btn-edit">Editar</button>
+                <div class="publication-container">
+                    <article>
+                        <br>
+                        <div class="img-publication">
+                            <img src="/images/products/<%= product.image %>" alt="imagen">
+                        </div>
+                        <h1 class="title-publication">
+                            <%= product.title %>
+                        </h1>
+                        <p class="price-publication"> Precio = <%= product.price %> </p>
+                        <p class="desc-publication"> Descuento = <%=product.discount%> </p>
+                        <p class="stock-publication"> Stock = <%=product.stock%> </p>
+                        <div class="btns-a">
+                            <form method ="POST" action="/product/<%=product.id%>/edit-delete?_method=PATCH">
+                                <button type="submit" class="btn-mark-sold"
+                                    <% if (product.deleted !== true){ %>
+                                        style="color: crimson; background-color: aliceblue;"
+                                        <%}else{ %>
+                                            style="color: white; background-color: rgb(17, 155, 17);"
+                                        <%}%>>
+                                    <%=product.deleted == true? "Marcar como disponible":"Marcar como vendido"%>
+                                </button>
+                            </form>
+                            <form action="/product/<%= product.id %>/delete?_method=DELETE" method="POST" onsubmit="return confirm('¿Está seguro que desea eliminar este producto de manera permanente?')">
+                                <input type="submit" class="btn-delete" value="Eliminar">
+                            </form>
+                        </div>
+                    </article>
+                    <button for="input1" class="btn-edit">Editar</button>
 
-                <!-- Edit form -->
+                    <!-- Edit form -->
 
-                <div class="container-dropdown1" style="display: none;">
-                    <div class="container-answer1">
-                        <article class="container-detail">
-                            <div class="container-price">
-                                <form action="/product/<%=product.id%>/update?_method=PUT" enctype="multipart/form-data" method="post">
-                                    <label class="label-sale-edit" for="image">Foto de Producto:</label>
-                                    <input class="input-sale-edit" type="file" id="foto" name="image" accept="image/*" >
+                    <div class="container-dropdown1" style="display: none;">
+                        <div class="container-answer1">
+                            <article class="container-detail">
+                                <div class="container-price">
+                                    <form action="/product/<%=product.id%>/update?_method=PUT" enctype="multipart/form-data" method="post">
+                                        <label class="label-sale-edit" for="image">Foto de Producto:</label>
+                                        <input class="input-sale-edit" type="file" id="foto" name="image" accept="image/*" >
 
-                                    <label for="title" class="label-sale-edit">Título del producto</label>
-                                    <input type="text" class="input-sale-edit" name="title" id="InputName"                                  value="<%=product.title%>" minlength="4" maxlength="400" required />
+                                        <label for="title" class="label-sale-edit">Título del producto</label>
+                                        <input type="text" class="input-sale-edit" name="title" id="InputName"                                  value="<%=product.title%>" minlength="4" maxlength="400" required />
 
-                                    <label for="description" class="label-sale-edit">Descripción resumida</label> 
-                                    <textarea name="description" class="input-sale-edit" cols="30" rows="3"><%= product.description %></textarea>
+                                        <label for="description" class="label-sale-edit">Descripción resumida</label> 
+                                        <textarea name="description" class="input-sale-edit" cols="30" rows="3"><%= product.description %></textarea>
 
-                                    <label for="price" class="label-sale-edit">Precio</label>
-                                    <input type="number" name="price" class="input-sale-edit" min="100" max="100000" id="InputPrice-edit" value="<%=product.price%>" required>
+                                        <label for="price" class="label-sale-edit">Precio</label>
+                                        <input type="number" name="price" class="input-sale-edit" min="100" max="100000" id="InputPrice-edit" value="<%=product.price%>" required>
 
-                                    <label for="discount" class="label-sale-edit">Porcentaje de descuento</label>
-                                    <input type="number" name="discount" class="input-sale-edit" min="0" max="50"                                  id="InputPrice-edit" value="<%=product.discount%>" required />
+                                        <label for="discount" class="label-sale-edit">Porcentaje de descuento</label>
+                                        <input type="number" name="discount" class="input-sale-edit" min="0" max="50"                                  id="InputPrice-edit" value="<%=product.discount%>" required />
 
-                                    <label for="stock" class="label-sale-edit">Stock</label>
-                                    <input type="number" name="stock" class="input-sale-edit" min="1" id="InputPrice-edit" value="<%=product.stock%>" required >
+                                        <label for="stock" class="label-sale-edit">Stock</label>
+                                        <input type="number" name="stock" class="input-sale-edit" min="1" id="InputPrice-edit" value="<%=product.stock%>" required >
 
-                                    <label class="label-sale-edit" for="category">Categoría:</label>
-                                    <select name="categoty" class="input-sale-edit">
-                                        <option value="cultivo" 
-                                            <%=(product.category === "cultivo") ? 'selected' : null %> 
-                                            >Productos para el cultivo
-                                        </option>
-                                        <option value="medicinal"
-                                            <%=(product.category === "medicinal") ? 'selected' : null %>
-                                            >Productos Medicinales
-                                        </option>
-                                    </select>
+                                        <label class="label-sale-edit" for="category">Categoría:</label>
+                                        <select name="categoty" class="input-sale-edit">
+                                            <option value="cultivo" 
+                                                <%=(product.category === "cultivo") ? 'selected' : null %> 
+                                                >Productos para el cultivo
+                                            </option>
+                                            <option value="medicinal"
+                                                <%=(product.category === "medicinal") ? 'selected' : null %>
+                                                >Productos Medicinales
+                                            </option>
+                                        </select>
 
-                                    <label class="label-sale-edit" for="subcategory">Subcategoría:</label>
-                                    <select name="subcategory" class="input-sale-edit">
-                                        <option value="" selected>Sub-categoría</option>
-                                            <% let subCategories = ['recipientes', 'materialorganico', 'salud', 'cosmetica'] %>
-                                            <% for( oneSubCategory of subCategories ) { %>
+                                        <label class="label-sale-edit" for="subcategory">Subcategoría:</label>
+                                        <select name="subcategory" class="input-sale-edit">
+                                            <option value="" selected>Sub-categoría</option>
+                                                <% let subCategories = ['recipientes', 'materialorganico', 'salud', 'cosmetica'] %>
+                                                <% for( oneSubCategory of subCategories ) { %>
+                                                    <option 
+                                                        value="<%=oneSubCategory%>"
+                                                        <%=(product.subcategory === oneSubCategory) ? 'selected' : null %>
+                                                        > <%= mayuscPrimeraLetra(oneSubCategory) %> 
+                                                    </option>
+                                                <% } %>
+                                        </select>
+
+                                        <label class="label-sale-edit" for="type">Tipo de producto:</label>
+                                        <select name="type" class="input-sale-edit">
+                                            <option value="" selected>Elije el tipo de producto</option>
+                                            <% let types = ['maceta', 'bandeja', 'sustrato', 'aceite', 'crema', 'locion', 'labial', 'spray'] %>
+                                            <% for( oneType of types ) { %>
                                                 <option 
-                                                    value="<%=oneSubCategory%>"
-                                                    <%=(product.subcategory === oneSubCategory) ? 'selected' : null %>
-                                                    > <%= mayuscPrimeraLetra(oneSubCategory) %> 
-                                                </option>
+                                                value="<%=oneType%>"
+                                                <%=(product.type === oneType) ? 'selected' : null %>
+                                                > <%= mayuscPrimeraLetra(oneType) %> </option>
                                             <% } %>
-                                    </select>
+                                        </select>
 
-                                    <label class="label-sale-edit" for="type">Tipo de producto:</label>
-                                    <select name="type" class="input-sale-edit">
-                                        <option value="" selected>Elije el tipo de producto</option>
-                                        <% let types = ['maceta', 'bandeja', 'sustrato', 'aceite', 'crema', 'locion', 'labial', 'spray'] %>
-                                        <% for( oneType of types ) { %>
-                                            <option 
-                                            value="<%=oneType%>"
-                                            <%=(product.type === oneType) ? 'selected' : null %>
-                                            > <%= mayuscPrimeraLetra(oneType) %> </option>
-                                        <% } %>
-                                    </select>
+                                        <label for="info" class="label-sale-edit">Informacion / Detalle del producto:</label>
+                                        <textarea name="info" class="input-sale-edit" cols="30" rows="10"><%= product.info %></textarea>
 
-                                    <label for="info" class="label-sale-edit">Informacion / Detalle del producto:</label>
-                                    <textarea name="info" class="input-sale-edit" cols="30" rows="10"><%= product.info %></textarea>
+                                        <!-- Not visibles inputs for unmutables properties -->
+                                        
+                                        <input type="number" name="salesAmount" class="input-sale-edit" style="display: none;" value="<%=product.salesAmount%>"/>
 
-                                    <!-- Not visibles inputs for unmutables properties -->
-                                    
-                                    <input type="number" name="salesAmount" class="input-sale-edit" style="display: none;" value="<%=product.salesAmount%>"/>
+                                        <input type="text" name="deleted" class="input-sale-edit" style="display: none;" value="<%=product.deleted%>"/>
 
-                                    <input type="text" name="deleted" class="input-sale-edit" style="display: none;" value="<%=product.deleted%>"/>
+                                        <!-- -->
 
-                                    <!-- -->
-
-                                    <input class="btn-save" type="submit" value="Guardar Cambios">
-                                    <button class="btn-save">Cancelar</button>
-                                </form>
-                            </div>
-                        </article>
+                                        <input class="btn-save" type="submit" value="Guardar Cambios">
+                                        <button class="btn-save">Cancelar</button>
+                                    </form>
+                                </div>
+                            </article>
+                        </div>
                     </div>
                 </div>
                 <!-- ---------------------- -->
