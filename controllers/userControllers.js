@@ -99,13 +99,13 @@ const controller = {
 			});
 		};
 
-		const searchedUser = userModel.findByFiled('user_name', req.body.userName);
+		const searchedUser = userModel.findByFiled('email', req.body.email);
 
 		if(!searchedUser){
 			return res.render('userViews/login', {
                 title: "Login",
 				errors: {
-					user_name: {
+					email: {
 						msg: 'No estas registrado!'
 					}	
 				}, 

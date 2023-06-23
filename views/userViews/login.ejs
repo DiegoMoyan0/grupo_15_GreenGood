@@ -21,23 +21,44 @@
 
 		<div class="container">
 			<span class="span-title">Login</span>
-			<form class="form-login">
+			<form class="form-login" action="/user/entry" method="POST">
 				<div class="container-input">
-					<input type="text" placeholder="Email" required class="form-input" />
+					<input type="text" 
+                        name="email" 
+                        placeholder="Email" 
+                        class="form-input <%= locals.errors && errors.email? "is-invalid" : null %>"
+                        value= <%= locals.oldData? oldData.email : null %>
+                    >    
+                    <% if (locals.errors && errors.email) { %>
+                        <svg xmlns="http://www.w3.org/2000/svg" id="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                        </svg>                  
+                        <div class="text-danger" style="color: red; margin: 15px 0; font-size: 0.7rem;">
+                            <%= errors.email.msg %>
+                        </div>
+                    <% }; %> 
 					<span class="span-bar"></span>
 				</div>
 				<div class="container-input">
-					<input
-						type="password"
+					<input type="password"
+                        name="password"
 						placeholder="Contraseña"
-						required
-						class="form-input"
+						class="form-input <%= locals.errors && errors.password? "is-invalid" : null %>"
+                    />    
+                <% if (locals.errors && errors.password) { %>
+                    <svg xmlns="http://www.w3.org/2000/svg" id="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                    </svg>                  
+                    <div class="text-danger" style="color: red; margin: 15px 0; font-size: 0.7rem;">
+                        <%= errors.password.msg %>
+                    </div>
+                <% }; %>
 					/>
 					<span class="span-bar"></span>
 				</div>
                 <div class="container-sesion">
-                    <label  for="sesion">Mantener Sesión iniciada</label>
-                    <input name="sesion" type="checkbox">
+                    <label  for="rememberUser">Mantener Sesión iniciada</label>
+                    <input name="rememberUser" type="checkbox">
                  </div>
                 <button type="submit" class="btn-login">
                     Ingresar

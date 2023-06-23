@@ -22,48 +22,204 @@
 			<form class="form-login" action="/user/register" enctype="multipart/form-data" method="POST">
 				<div class="container-input">
                     <label for="name_data" class="label-register">Nombre y apellido</label>
-					<input type="text" name="name_data" class="input-register" placeholder="Escriba su nombre" required minlength="6" class="form-input" />
+					<input type="text" 
+                    name="name_data" 
+                    class="input-register" 
+                    placeholder="Escriba su nombre"
+                    minlength="6" 
+                    class="form-inputs <%= locals.errors && errors.name_data? "is-invalid" : null %>"
+                    value= <%= locals.oldData? oldData.name_data : null %>
+                    >    
+                    <% if (locals.errors && errors.name_data) { %>
+                        <svg xmlns="http://www.w3.org/2000/svg" id="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                        </svg>                  
+                        <div class="text-danger" style="color: red; font-weight: 600; margin-top: 15px;">
+                            <%= errors.name_data.msg %>
+                        </div>
+                    <% }; %>
 				</div>
+
 				<div class="container-input">
                     <label for="email" class="label-register">Email</label>
-					<input type="email" name="email" class="input-register" placeholder="Escriba su Email" required minlength="6" class="form-input" />
-									</div>
+					<input type="email" 
+                    name="email" 
+                    class="input-register"
+                    placeholder="Escriba su Email" 
+                    minlength="6" 
+                    class="form-inputs <%= locals.errors && errors.email? "is-invalid" : null %>"
+                    value= <%= locals.oldData? oldData.email : null %>
+                    >    
+                    <% if (locals.errors && errors.email) { %>
+                        <svg xmlns="http://www.w3.org/2000/svg" id="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                        </svg>                  
+                        <div class="text-danger" style="color: red; font-weight: 600; margin-top: 15px;">
+                            <%= errors.email.msg %>
+                        </div>
+                    <% }; %>
+				</div>
+
                 <div class="container-input">
                     <label for="user_name" class="label-register">Nombre de usuario</label>
-					<input type="text" name="user_name" class="input-register" placeholder="Escriba su nombre de usuario" required minlength="6" class="form-input" />
-									</div>
+					<input type="text" 
+                    name="user_name" 
+                    class="input-register" 
+                    placeholder="Escriba su nombre de usuario" 
+                    minlength="6" 
+                    class="form-inputs <%= locals.errors && errors.user_name? "is-invalid" : null %>"
+                    value= <%= locals.oldData? oldData.user_name : null %>
+                    >    
+                    <% if (locals.errors && errors.user_name) { %>
+                        <svg xmlns="http://www.w3.org/2000/svg" id="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                        </svg>                  
+                        <div class="text-danger" style="color: red; font-weight: 600; margin-top: 15px;">
+                            <%= errors.user_name.msg %>
+                        </div>
+                    <% }; %>
+                </div>
+
                 <div class="container-input">
                     <label for="address" class="label-register">Dirección</label>
-					<input type="text" name="address" class="input-register" placeholder="Escriba su dirección" required minlength="6" class="form-input" />
-									</div>
+					<input type="text" 
+                    name="address" 
+                    class="input-register" 
+                    placeholder="Escriba su dirección" 
+                    minlength="6" 
+                    class="form-inputs <%= locals.errors && errors.address? "is-invalid" : null %>"
+                    value= <%= locals.oldData? oldData.address : null %>
+                    >    
+                    <% if (locals.errors && errors.address) { %>
+                        <svg xmlns="http://www.w3.org/2000/svg" id="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                        </svg>                  
+                        <div class="text-danger" style="color: red; font-weight: 600; margin-top: 15px;">
+                            <%= errors.address.msg %>
+                        </div>
+                    <% }; %>
+				</div>
+
                 <div class="container-input">
                     <label for="birth_date" class="label-register">Fecha de nacimiento</label>
-                    <input type="date" name="birth_date" min="1900-01-01" max="2023-01-01" class="input-register" id="InputDate" required />
-									</div>
+                    <input type="date" 
+                    name="birth_date" 
+                    min="1900-01-01" 
+                    max="2023-01-01" 
+                    class="input-register"
+                    id="InputDate" 
+                    class="form-inputs <%= locals.errors && errors.birth_date? "is-invalid" : null %>"
+                    value= <%= locals.oldData? oldData.birth_date : null %>
+                    >    
+                    <% if (locals.errors && errors.birth_date) { %>
+                        <svg xmlns="http://www.w3.org/2000/svg" id="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                        </svg>                  
+                        <div class="text-danger" style="color: red; font-weight: 600; margin-top: 15px;">
+                            <%= errors.birth_date.msg %>
+                        </div>
+                    <% }; %>
+				</div>
+
                 <div class="container-input">
                     <label for="phone" class="label-register">Teléfono</label>
-					<input type="tel" name="phone" class="input-register" placeholder="ej (351) 2 341032" required minlength="6" class="form-input" />
-									</div>
+					<input type="tel" 
+                    name="phone" 
+                    class="input-register" 
+                    placeholder="ej (351) 2 341032" 
+                    minlength="6" 
+                    class="form-inputs <%= locals.errors && errors.phone? "is-invalid" : null %>"
+                    value= <%= locals.oldData? oldData.phone : null %>
+                    >    
+                    <% if (locals.errors && errors.phone) { %>
+                        <svg xmlns="http://www.w3.org/2000/svg" id="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                        </svg>                  
+                        <div class="text-danger" style="color: red; font-weight: 600; margin-top: 15px;">
+                            <%= errors.phone.msg %>
+                        </div>
+                    <% }; %>
+				</div>
+
                 <div class="container-input">
                     <label class="label-register">Tipo de Perfil</label><br><br>
-                    <label class="label-register" for="user_type">Vendedor</label>
-                    <input type="radio" id="Vendedor" name="user_type" value="Vendedor">
-                    <label class="label-register" for="user_type">Comprador</label>
-                    <input type="radio" id="Comprador" name="user_type" value="Comprador">
-									</div>
+                    <% if (locals.errors && errors.user_type) { %>
+                        <label class="label-register" style="border-bottom: solid 1px red;" for="user_type">Vendedor</label>
+                        <input type="radio" id="Vendedor" name="user_type" value="Vendedor">
+                        <label class="label-register" style="border-bottom: solid 1px red" for="user_type">Comprador</label>
+                        <input type="radio" id="Comprador" name="user_type" value="Comprador">
+                        <div class="text-danger" style="color: red; font-size: 0.7rem; margin: auto;">
+                            <%= errors.user_type.msg %>
+                        </div>
+                    <% } else{ %>    
+                        <label class="label-register" for="user_type">Vendedor</label>
+                        <input type="radio" id="Vendedor" name="user_type" value="Vendedor" <%= locals.oldData && oldData.userType == "Vendedor" ? "checked" : null %>>
+
+                        <label class="label-register" for="user_type">Comprador</label>
+                        <input type="radio" id="Comprador" name="user_type" value="Comprador" <%= locals.oldData && oldData.userType == "Comprador" ? "checked" : null %>>
+                    <% }; %> 
+				</div>
+
                 <div class="container-input">
                     <label class="label-register" for="user_image">Foto de usuario:</label>
-                    <input class="input-register" type="file" id="foto" name="user_image" accept="image/*">
-					<span class="span-bar"></span>
+                    <% if (locals.errors && errors.user_image) { %>
+                        <input class="input-register" 
+                        type="file" 
+                        id="foto" 
+                        name="user_image" 
+                        accept="image/*"
+                        style="box-shadow: 0px 0px 10px red;"
+                        >
+                        <svg xmlns="http://www.w3.org/2000/svg" id="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                        </svg>                      
+                        <div class="text-danger" style="color: red;font-size: 0.7rem; margin: 15px 0;">
+                            <%= errors.user_image.msg %>
+                        </div>
+                        <span class="span-bar"></span>
+                    <% } else{ %>
+                        <input class="input-register" type="file" id="foto" name="user_image" accept="image/*">
+                        <span class="span-bar"></span>
+                    <% }; %>  
 				</div>
+                
                 <div class="container-input">
                     <label for="password"  class="label-register">Contraseña</label>
-                    <input type="password" name="password" class="input-register" id="password" minlength="8" placeholder="Escriba su contraseña..." required />
-									</div>                    
+                    <input type="password" 
+                    name="password" 
+                    class="input-register" 
+                    id="password" 
+                    minlength="8" 
+                    placeholder="Escriba su contraseña..." 
+                    class="form-inputs <%= locals.errors && errors.password? "is-invalid" : null %>"
+                    >    
+                    <% if (locals.errors && errors.password) { %>
+                        <svg xmlns="http://www.w3.org/2000/svg" id="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                        </svg>                  
+                        <div class="text-danger" style="color: red; font-weight: 600; margin-top: 15px;">
+                            <%= errors.password.msg %>
+                        </div>
+                    <% }; %>
+				</div>                    
                 <div class="container-input">
-                    <input type="password" name="password_confirm" class="input-register" id="password-confirm"
-                    placeholder="Repita su contraseña..." required />
-									</div>
+                    <input type="password" 
+                    name="password_confirm" 
+                    class="input-register" 
+                    id="password-confirm"
+                    placeholder="Repita su contraseña..." 
+                    required 
+                    class="form-inputs <%= locals.errors && errors.password_confirm? "is-invalid" : null %>"
+                    >    
+                    <% if (locals.errors && errors.password_confirm) { %>
+                        <svg xmlns="http://www.w3.org/2000/svg" id="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                        </svg>                  
+                        <div class="text-danger" style="color: red; font-weight: 600; margin-top: 15px;">
+                            <%= errors.password_confirm.msg %>
+                        </div>
+                    <% }; %>
+				</div>
 
                 <button type="submit" class="btn-login">
                     Enviar

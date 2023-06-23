@@ -1,26 +1,42 @@
   /*----------------------------------------- LOGIN --------------------------------------------------*/
-  .section-login {
+.section-login {
   	padding: 1rem;
   	text-align: center;
-  }
+}
 
-  .label-login {
-  	font-size: 0.8rem;
-  	font-weight: 400;
-  	opacity: 1;
-  	text-align: left;
-  }
+.label-login {
+	font-size: 0.8rem;
+	font-weight: 400;
+	opacity: 1;
+	text-align: left;
+}
 
-  .input-login {
-  	width: 100%;
-  	padding: 0.8rem;
-  	margin-bottom: 1rem;
-  	border-radius: 5px;
-  	border: 1px solid #ccc;
-  	max-width: 100%;
-  }
+.input-login {
+	width: 100%;
+	padding: 0.8rem;
+	margin-bottom: 1rem;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	max-width: 100%;
+}
 
-  .btn-login {
+.is-invalid{
+	box-shadow: 0px 0px 10px rgb(240, 12, 12);
+	border-radius: 5px;
+}
+
+#error-icon{
+	display: inline-block;
+	color: red;
+	font-size: 1.5rem;
+	width: 1.5rem;
+	font-weight: 600;
+	position: absolute;
+	top: 23px;
+	right: 4%;
+}
+
+.btn-login {
   	display: block;
   	margin-top: 10px;
   	margin-bottom: 10px;
@@ -34,149 +50,150 @@
   	background-color: #402c68;
   	cursor: pointer;
   	transition: all 0.3s ease-in-out;
-  }
+}
 
-  .btn-login:hover {
+.btn-login:hover {
   	opacity: 0.6;
-  }
+}
 
-  .container-sesion {
-  	margin-top: 1rem;
+.container-sesion {
+	margin-top: 1rem;
   	margin-bottom: 1rem;
   	color: gray;
-  }
+}
 
-  button,
-  input {
+button,
+input {
   	font: inherit;
   	border: none;
   	outline: none;
-  }
+}
 
-  .container {
-  	position: relative;
-  	isolation: isolate;
-  	margin-left: auto;
-  	margin-right: auto;
-  	margin-top: 1rem;
-  	margin-bottom: 1rem;
-  	padding: 7rem 0;
-  	width: 18rem;
-  	height: 34rem;
-  	color: #fff;
-  	background-color: #fff;
-  	border-radius: 1rem;
-  	box-shadow: 0 1px 1rem rgba(0, 0, 0, 0.1);
-  }
+.container {
+position: relative;
+isolation: isolate;
+margin-left: auto;
+margin-right: auto;
+margin-top: 1rem;
+margin-bottom: 1rem;
+padding: 7rem 0;
+width: 18rem;
+height: 34rem;
+color: #fff;
+background-color: #fff;
+border-radius: 1rem;
+box-shadow: 0 1px 1rem rgba(0, 0, 0, 0.1);
+}
 
-  .container::before {
-  	content: '';
-  	position: absolute;
-  	top: 0;
-  	left: 0;
-  	z-index: -1;
-  	width: 100%;
-  	height: 10rem;
-  	background-color: #402c68;
-  	border-radius: 1rem 1rem 100% 100%;
-  }
+.container::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+z-index: -1;
+width: 100%;
+height: 10rem;
+background-color: #402c68;
+border-radius: 1rem 1rem 100% 100%;
+}
 
-  .span-title {
-  	position: absolute;
-  	top: 3.5rem;
-  	left: 30%;
-  	transform: translateX(-50%);
-  	font-size: 2.5rem;
-  }
+.span-title {
+position: absolute;
+top: 3.5rem;
+left: 30%;
+transform: translateX(-50%);
+font-size: 2.5rem;
+}
 
-  /* Animación del título del formulario*/
-  .span-title {
-  	animation-duration: 1.5s;
-  	animation-name: Login-appear;
-  }
+/* Animación del título del formulario*/
+.span-title {
+animation-duration: 1.5s;
+animation-name: Login-appear;
+}
 
-  @keyframes Login-appear {
-  	from {
-  		margin-left: 100%;
-  		width: 300%;
-  	}
+@keyframes Login-appear {
+from {
+	margin-left: 100%;
+	width: 300%;
+}
 
-  	to {
-  		margin-left: 0%;
-  		width: 100%;
-  	}
-  }
+to {
+	margin-left: 0%;
+	width: 100%;
+}
+}
 
-  /* Animación del formulario*/
-  .form-login {
-  	margin-top: 5rem;
-  	padding: 1.5rem;
-  	margin-top: 1.5rem;
-  	border-radius: inherit;
-  	box-shadow: inherit;
-  	box-shadow: 0 2px 5px gray;
-  	border-radius: 10px;
-  	background-color: inherit;
-  	max-width: 80%;
-  	transform: translateX(1.7rem);
-  	animation-duration: 1.5s;
-  	animation-name: Form-appear;
-  }
+/* Animación del formulario*/
+.form-login {
+margin-top: 5rem;
+padding: 1.5rem;
+margin-top: 1.5rem;
+border-radius: inherit;
+box-shadow: inherit;
+box-shadow: 0 2px 5px gray;
+border-radius: 10px;
+background-color: inherit;
+max-width: 80%;
+transform: translateX(1.7rem);
+animation-duration: 1.5s;
+animation-name: Form-appear;
+}
 
-  @keyframes Form-appear {
-  	from {
-  		transform: translateX(-1.5rem);
-  	}
+@keyframes Form-appear {
+from {
+	transform: translateX(-1.5rem);
+}
 
-  	to {
-  		transform: translateX(1.5rem);
-  	}
-  }
+to {
+	transform: translateX(1.5rem);
+}
+}
 
-  .container-input {
-  	position: relative;
-  	display: flex;
-  	align-items: baseline;
-  	margin-inline: auto;
-  }
+.container-input {
+position: relative;
+display: flex;
+flex-direction: column;
+align-items: baseline;
+margin-inline: auto;
+}
 
-  .form-input {
-  	position: relative;
-  	width: 100%;
-  	margin-top: 0.5rem;
-  	padding-block: 1rem;
-  }
+.form-input {
+position: relative;
+width: 100%;
+margin-top: 0.5rem;
+padding-block: 1rem;
+}
 
-  .span-bar {
-  	position: absolute;
-  	left: 0;
-  	bottom: 0;
-  	background-color:
-  		rgba(0, 0, 0, 0.1);
-  	width: 100%;
-  	height: 1px;
-  }
+.span-bar {
+position: absolute;
+left: 0;
+bottom: 0;
+background-color:
+	rgba(0, 0, 0, 0.1);
+width: 100%;
+height: 1px;
+}
 
-  /*----------------------------------------- BREAK --------------------------------------------------*/
-  @media screen and (min-width:768px) {
-  	.container {
-  		width: 22rem
-  	}
+/*----------------------------------------- BREAK --------------------------------------------------*/
+@media screen and (min-width:768px) {
+.container {
+	width: 22rem
+}
 
-  	/* Animación del formulario para el nuevo tamaño de pantalla*/
-  	.form-login {
-  		transform: translateX(5rem);
-  		animation-duration: 1.5s;
-  		animation-name: Form-appear;
-  	}
+/* Animación del formulario para el nuevo tamaño de pantalla*/
+.form-login {
+	transform: translateX(5rem);
+	animation-duration: 1.5s;
+	animation-name: Form-appear;
+}
 
-  	@keyframes Form-appear {
-  		from {
-  			transform: translateX(0rem);
-  		}
+@keyframes Form-appear {
+	from {
+		transform: translateX(0rem);
+	}
 
-  		to {
-  			transform: translateX(5rem);
-  		}
-  	}
-  }
+	to {
+		transform: translateX(5rem);
+	}
+}
+}
