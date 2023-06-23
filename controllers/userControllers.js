@@ -41,9 +41,9 @@ const controller = {
 			});
 		};
 
-		let mailInDb = userModel.findByFiled('email', req.body.email);
+		let emailInDb = userModel.findByFiled('email', req.body.email);
 
-		if (mailInDb) {
+		if (emailInDb) {
 			return res.render('userViews/register',{
                 title: "Registro",
 				errors: {
@@ -74,15 +74,15 @@ const controller = {
 		/* Create a new user */
 		const user = {...req.body};
 
-		const newPassword = bcrypt.hashSync(user.password, 12);
-		user.password = newPassword;
+		const hashedPassword = bcrypt.hashSync(user.password, 12);
+		user.password = hashedPassword;
+		
 		delete user.password_confirm;
-
 		user.user_image = req.file? req.file.filename : "default-user-photo.jpg";
 
 		userModel.createOne(user);
 
-		res.redirect('/');
+		return res.redirect('/user/login');
 
 	},
 
@@ -143,7 +143,7 @@ const controller = {
 
 		//--------------------------//
 
-		return res.redirect('/users/profile');
+		return res.redirect('/user/profile');
 		
 	},
 
@@ -194,8 +194,8 @@ const controller = {
 		/* Update user data  */
 		const user = {...req.body};
 
-		const newPassword = bcrypt.hashSync(user.password, 12);
-		user.password = newPassword;
+		const hashedPassword = bcrypt.hashSync(user.password, 12);
+		user.password = hashedPassword;
 		delete user.password_confirm;
 
 		user.user_image = req.file? req.file.filename : "default-user-photo.jpg";

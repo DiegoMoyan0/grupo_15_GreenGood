@@ -24,7 +24,7 @@
 	font-family: 'Roboto Serif', serif;
 	width: 100%;
 	padding: 0.8rem;
-	margin-bottom: 1rem;
+	margin-bottom: 0.5rem;
 	border-radius: 5px;
 	border: 1px solid #ccc;
 }
@@ -44,15 +44,31 @@
 	border-radius: 5px;
 }
 
-#error-icon{
+.error-icon{
 	display: inline-block;
 	color: red;
 	font-size: 1.5rem;
 	width: 1.5rem;
 	font-weight: 600;
 	position: absolute;
-	top: 23px;
+	top: 30px;
 	right: 4%;
+}
+
+#bd-error-icon{
+	top: 71px;
+}
+
+#pc-error-icon{
+	top: 11px;
+}
+
+
+.text-danger{
+	color: red;
+	font-size: 0.7rem;
+	margin-bottom: 10px;
+	text-align: center;
 }
 
 .btn-login {

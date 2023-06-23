@@ -34,15 +34,13 @@ const uploadPhoto = multer({storage});
 router.get('/login', guestMw, userController.getLogin); 
 router.get('/register', guestMw, userController.getRegister);
 router.get('/profile', authMw, userController.getProfile);  
+router.get('/logout', authMw, userController.getLogout);  
 
 
 /*** POST FORMS ***/ 
 router.post('/entry',validationsLoginMw, userController.loginUser); 
 router.post('/register', uploadPhoto.single('user_image'), validationsRegisterMw, userController.registerUser);
-router.put('/register', uploadPhoto.single('user_image'), validationsUpdateMw, userController.registerUser);
+router.put('/register', uploadPhoto.single('user_image'), validationsUpdateMw, userController.updateUser);
 
-
-router.get('/logout', authMw, userController.getLogout);  
- 
 
 module.exports = router;

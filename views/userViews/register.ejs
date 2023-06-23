@@ -26,15 +26,14 @@
                     name="name_data" 
                     class="input-register" 
                     placeholder="Escriba su nombre"
-                    minlength="6" 
                     class="form-inputs <%= locals.errors && errors.name_data? "is-invalid" : null %>"
                     value= <%= locals.oldData? oldData.name_data : null %>
                     >    
                     <% if (locals.errors && errors.name_data) { %>
-                        <svg xmlns="http://www.w3.org/2000/svg" id="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
                         </svg>                  
-                        <div class="text-danger" style="color: red; font-weight: 600; margin-top: 15px;">
+                        <div class="text-danger">
                             <%= errors.name_data.msg %>
                         </div>
                     <% }; %>
@@ -46,15 +45,14 @@
                     name="email" 
                     class="input-register"
                     placeholder="Escriba su Email" 
-                    minlength="6" 
                     class="form-inputs <%= locals.errors && errors.email? "is-invalid" : null %>"
                     value= <%= locals.oldData? oldData.email : null %>
                     >    
                     <% if (locals.errors && errors.email) { %>
-                        <svg xmlns="http://www.w3.org/2000/svg" id="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
                         </svg>                  
-                        <div class="text-danger" style="color: red; font-weight: 600; margin-top: 15px;">
+                        <div class="text-danger">
                             <%= errors.email.msg %>
                         </div>
                     <% }; %>
@@ -71,10 +69,10 @@
                     value= <%= locals.oldData? oldData.user_name : null %>
                     >    
                     <% if (locals.errors && errors.user_name) { %>
-                        <svg xmlns="http://www.w3.org/2000/svg" id="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
                         </svg>                  
-                        <div class="text-danger" style="color: red; font-weight: 600; margin-top: 15px;">
+                        <div class="text-danger">
                             <%= errors.user_name.msg %>
                         </div>
                     <% }; %>
@@ -91,10 +89,10 @@
                     value= <%= locals.oldData? oldData.address : null %>
                     >    
                     <% if (locals.errors && errors.address) { %>
-                        <svg xmlns="http://www.w3.org/2000/svg" id="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
                         </svg>                  
-                        <div class="text-danger" style="color: red; font-weight: 600; margin-top: 15px;">
+                        <div class="text-danger">
                             <%= errors.address.msg %>
                         </div>
                     <% }; %>
@@ -112,17 +110,17 @@
                     value= <%= locals.oldData? oldData.birth_date : null %>
                     >    
                     <% if (locals.errors && errors.birth_date) { %>
-                        <svg xmlns="http://www.w3.org/2000/svg" id="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" id="bd-error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
                         </svg>                  
-                        <div class="text-danger" style="color: red; font-weight: 600; margin-top: 15px;">
+                        <div class="text-danger">
                             <%= errors.birth_date.msg %>
                         </div>
                     <% }; %>
 				</div>
 
                 <div class="container-input">
-                    <label for="phone" class="label-register">Teléfono</label>
+                    <label for="phone" class="label-register">Teléfono celular</label>
 					<input type="tel" 
                     name="phone" 
                     class="input-register" 
@@ -132,10 +130,10 @@
                     value= <%= locals.oldData? oldData.phone : null %>
                     >    
                     <% if (locals.errors && errors.phone) { %>
-                        <svg xmlns="http://www.w3.org/2000/svg" id="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
                         </svg>                  
-                        <div class="text-danger" style="color: red; font-weight: 600; margin-top: 15px;">
+                        <div class="text-danger">
                             <%= errors.phone.msg %>
                         </div>
                     <% }; %>
@@ -148,15 +146,15 @@
                         <input type="radio" id="Vendedor" name="user_type" value="Vendedor">
                         <label class="label-register" style="border-bottom: solid 1px red" for="user_type">Comprador</label>
                         <input type="radio" id="Comprador" name="user_type" value="Comprador">
-                        <div class="text-danger" style="color: red; font-size: 0.7rem; margin: auto;">
+                        <div class="text-danger">
                             <%= errors.user_type.msg %>
                         </div>
                     <% } else{ %>    
                         <label class="label-register" for="user_type">Vendedor</label>
-                        <input type="radio" id="Vendedor" name="user_type" value="Vendedor" <%= locals.oldData && oldData.userType == "Vendedor" ? "checked" : null %>>
+                        <input type="radio" id="Vendedor" name="user_type" value="Vendedor" <%= locals.oldData && oldData.user_type == "Vendedor" ? "checked" : null %>>
 
                         <label class="label-register" for="user_type">Comprador</label>
-                        <input type="radio" id="Comprador" name="user_type" value="Comprador" <%= locals.oldData && oldData.userType == "Comprador" ? "checked" : null %>>
+                        <input type="radio" id="Comprador" name="user_type" value="Comprador" <%= locals.oldData && oldData.user_type == "Comprador" ? "checked" : null %>>
                     <% }; %> 
 				</div>
 
@@ -170,10 +168,10 @@
                         accept="image/*"
                         style="box-shadow: 0px 0px 10px red;"
                         >
-                        <svg xmlns="http://www.w3.org/2000/svg" id="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
                         </svg>                      
-                        <div class="text-danger" style="color: red;font-size: 0.7rem; margin: 15px 0;">
+                        <div class="text-danger">
                             <%= errors.user_image.msg %>
                         </div>
                         <span class="span-bar"></span>
@@ -194,10 +192,10 @@
                     class="form-inputs <%= locals.errors && errors.password? "is-invalid" : null %>"
                     >    
                     <% if (locals.errors && errors.password) { %>
-                        <svg xmlns="http://www.w3.org/2000/svg" id="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
                         </svg>                  
-                        <div class="text-danger" style="color: red; font-weight: 600; margin-top: 15px;">
+                        <div class="text-danger">
                             <%= errors.password.msg %>
                         </div>
                     <% }; %>
@@ -208,14 +206,13 @@
                     class="input-register" 
                     id="password-confirm"
                     placeholder="Repita su contraseña..." 
-                    required 
                     class="form-inputs <%= locals.errors && errors.password_confirm? "is-invalid" : null %>"
                     >    
                     <% if (locals.errors && errors.password_confirm) { %>
-                        <svg xmlns="http://www.w3.org/2000/svg" id="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" id="pc-error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
                         </svg>                  
-                        <div class="text-danger" style="color: red; font-weight: 600; margin-top: 15px;">
+                        <div class="text-danger">
                             <%= errors.password_confirm.msg %>
                         </div>
                     <% }; %>
@@ -224,7 +221,7 @@
                 <button type="submit" class="btn-login">
                     Enviar
                 </button>
-                <button type="submit" class="btn-login">
+                <button type="reset" class="btn-login">
                     Borrar
                 </button>
                 <a href="/user/login">Ya tengo una cuenta</a>
