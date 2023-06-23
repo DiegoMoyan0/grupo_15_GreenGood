@@ -29,7 +29,7 @@ const controller = {
 
 	registerUser: (req, res) => {
 
-		/* Previeus validations to create a new user */
+		/* Previous validations to create a new user */
 		const resultsValidations = validationResult(req);
 
 		if(resultsValidations.errors.length > 0){
@@ -77,6 +77,12 @@ const controller = {
 		const hashedPassword = bcrypt.hashSync(user.password, 12);
 		user.password = hashedPassword;
 		
+
+		let full_name = user.name_data
+		let first_name = "" //Decidir concatenar y/o separar campos en el formulario
+		let last_name = ""  //Decidir concatenar y/o separar campos en el formulario
+		user.name_data = {full_name, first_name, last_name}
+
 		delete user.password_confirm;
 		user.user_image = req.file? req.file.filename : "default-user-photo.jpg";
 
@@ -149,7 +155,7 @@ const controller = {
 
 	updateUser: (req, res) => {
 
-		/* Previeus validations to edit data from a user */
+		/* Previous validations to edit data from a user */
 		const resultsValidations = validationResult(req);
 
 		if(resultsValidations.errors.length > 0){
@@ -183,7 +189,7 @@ const controller = {
 				title: "Tu perfil",
 				errors: {
 					email: {
-						msg: 'Ese e-mail ya se encuentra registradox!'
+						msg: 'Ese e-mail ya se encuentra registrado!'
 					}
 				}, 
 				oldData: req.body,

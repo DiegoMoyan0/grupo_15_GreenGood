@@ -960,5 +960,21 @@
   "password": "$2b$12$mBj.RqSmUp5MOUiK8lwO7OZ2wstwZ5fSnKY8gC.KSDFDdax30DwBu",
   "user_image": "img-user-1687532760940-Foto 1.jpg",
   "id": "1ce4c53a-e0d9-437d-b2df-eb125df4b4b3"
+ },
+ {
+  "name_data": {
+   "full_name": "fulano",
+   "first_name": "",
+   "last_name": ""
+  },
+  "email": "sunato@mengano.com",
+  "user_name": "sutano3000ssssss",
+  "address": "metropolis",
+  "birth_date": "1990-05-05",
+  "phone": "654654564",
+  "user_type": "Comprador",
+  "password": "$2b$12$V1prWZqpOINBXt0sQtyE0.1PFaM04v5DJgyIvpjZwwYDueMP5RLsi",
+  "user_image": "default-user-photo.jpg",
+  "id": "84dd741f-db42-4f0a-a709-10e86814d4c2"
  }
 ]

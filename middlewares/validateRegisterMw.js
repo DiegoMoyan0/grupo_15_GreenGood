@@ -19,7 +19,7 @@ const validations = [
             };
             return true;
         }),
-    body('adress').notEmpty().withMessage('Tienes que ingresar tu dirección!'),
+    body('address').notEmpty().withMessage('Tienes que ingresar tu dirección!'),
     body('user_image').custom((value, {req}) => {
         let file = req.file;
         let acceptedExtensions = ['.jpg', '.png', '.gif'];
