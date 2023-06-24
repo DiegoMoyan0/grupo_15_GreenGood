@@ -189,6 +189,9 @@
                 
                 <div class="container-input">
                     <label for="password"  class="label-register">Contraseña</label>
+                  <!--  <input type="password" 
+                    onpaste="return false;" oncopy="return false" oncut="return false" ondrag="return false" ondrop="return false" autocomplete=off
+                    -->
                     <input type="password" 
                     name="password" 
                     class="input-register" 
@@ -196,6 +199,7 @@
                     minlength="8" 
                     placeholder="Escriba su contraseña..." 
                     class="form-inputs <%= locals.errors && errors.password? "is-invalid" : null %>"
+                    
                     >    
                     <% if (locals.errors && errors.password) { %>
                         <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -207,6 +211,9 @@
                     <% }; %>
 				</div>                    
                 <div class="container-input">
+            <!--  <input type="password" 
+                    onpaste="return false;" oncopy="return false" oncut="return false" ondrag="return false" ondrop="return false" autocomplete=off
+                    -->
                     <input type="password" 
                     name="password_confirm" 
                     class="input-register" 

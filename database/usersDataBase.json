@@ -992,5 +992,21 @@
   "password": "$2a$12$iEiUUy13/QOgP8ZneuLYS.bItE/vTkAEOW00mJuk3cAVig1.Ol2Yi",
   "user_image": "default-user-photo.jpg",
   "id": "be7f0842-46d7-4cc1-a3f1-281aafd458ae"
+ },
+ {
+  "name_data": {
+   "full_name": "mengano sutano",
+   "first_name": "",
+   "last_name": ""
+  },
+  "email": "megano@sutano.com",
+  "user_name": "megano3000",
+  "address": "Medellin",
+  "birth_date": "1990-03-02",
+  "phone": "65432158",
+  "user_type": "Comprador",
+  "password": "$2a$12$QLiirWbvD8ktsli5rKM6Te8TAgNZH.Go3kTzZ4Ns0F50lyrkzWSEW",
+  "user_image": "img-user-1687629336570-a_c.png",
+  "id": "be7b06de-981b-469a-92b6-5333ac6708d0"
  }
 ]
