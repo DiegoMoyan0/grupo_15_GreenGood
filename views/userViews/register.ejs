@@ -179,7 +179,13 @@
                         <input class="input-register" type="file" id="foto" name="user_image" accept="image/*">
                         <span class="span-bar"></span>
                     <% }; %>  
+
+                    <label class="lbl-preview">Ver vista previa de la imagen</label>
+                <div class="container-preview" style="display: none;">
+                    <img class="img-preview"  style="display: none;"/>
+                  </div>
 				</div>
+
                 
                 <div class="container-input">
                     <label for="password"  class="label-register">Contraseña</label>
@@ -247,5 +253,30 @@
     
 
 </body>
+
+<script>
+
+    //Definir variables de acuerdo a las identificaciones y clases de las etiquetas
+
+    let image = document.getElementById('foto');
+    let imgPreview = document.querySelector('.img-preview');
+    let labelVista = document.querySelector('.lbl-preview');
+    let containerVista = document.querySelector('.container-preview');
+    let backContainer = document.querySelector('.container');
+
+    //Asignamos el contenido del file-input creando una url y source que permita actualizar el atributo src de la etiqueta <img/>, de manera que permita tener una pre-visualización de la imagen cargada una vez se obtenga el evento click
+
+    labelVista.addEventListener('click', function(){
+
+        srcFile = URL.createObjectURL(image.files[0])
+        imgPreview.src = srcFile
+        imgPreview.style.display = 'block';
+        containerVista.style.display = 'block';
+        backContainer.style.height = "75rem";
+
+    }
+    )
+
+</script>
 
 </html>

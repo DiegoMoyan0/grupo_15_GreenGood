@@ -39,12 +39,12 @@
 	max-width: 100%;
 }
 
-.is-invalid{
+.is-invalid {
 	box-shadow: 0px 0px 10px rgb(240, 12, 12);
 	border-radius: 5px;
 }
 
-.error-icon{
+.error-icon {
 	display: inline-block;
 	color: red;
 	font-size: 1.5rem;
@@ -55,16 +55,16 @@
 	right: 4%;
 }
 
-#bd-error-icon{
+#bd-error-icon {
 	top: 71px;
 }
 
-#pc-error-icon{
+#pc-error-icon {
 	top: 11px;
 }
 
 
-.text-danger{
+.text-danger {
 	color: red;
 	font-size: 0.7rem;
 	margin-bottom: 10px;
@@ -115,7 +115,7 @@ input {
 	margin-bottom: 1rem;
 	padding: 7rem 0;
 	width: 18rem;
-	height: 65rem;
+	height: 70rem;
 	color: #fff;
 	background-color: #fff;
 	border-radius: 1rem;
@@ -199,6 +199,32 @@ input {
 	width: 100%;
 	margin-top: 0.5rem;
 	padding-block: 1rem;
+}
+
+/*Varios de los estilos que se encuentran arriba son una adaptación del contenido de este repositorio https://github.com/juliocodes-sm/Posts/tree/main/Forms/01 */
+
+.lbl-preview {
+	height: 4vh;
+	width: 4vw;
+	color: purple;
+	cursor: pointer;
+	text-decoration: underline;
+
+}
+
+.container-preview{
+	width: 70%;
+	height: 20vh;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 1rem;
+}
+
+.img-preview{
+	height:100%;
+	width:100%;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
 }
 
 /*----------------------------------------- BREAK --------------------------------------------------*/
