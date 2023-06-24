@@ -976,5 +976,21 @@
   "password": "$2b$12$V1prWZqpOINBXt0sQtyE0.1PFaM04v5DJgyIvpjZwwYDueMP5RLsi",
   "user_image": "default-user-photo.jpg",
   "id": "84dd741f-db42-4f0a-a709-10e86814d4c2"
+ },
+ {
+  "name_data": {
+   "full_name": "Diego",
+   "first_name": "",
+   "last_name": ""
+  },
+  "email": "diegomoyano02@gmail.com",
+  "user_name": "diegomoyan0",
+  "address": "Capitán",
+  "birth_date": "2023-01-01",
+  "phone": "+5491157300010",
+  "user_type": "Vendedor",
+  "password": "$2a$12$iEiUUy13/QOgP8ZneuLYS.bItE/vTkAEOW00mJuk3cAVig1.Ol2Yi",
+  "user_image": "default-user-photo.jpg",
+  "id": "be7f0842-46d7-4cc1-a3f1-281aafd458ae"
  }
 ]
