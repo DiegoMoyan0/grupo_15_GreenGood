@@ -2,31 +2,53 @@
 <html lang="en">
 
 <head>
-<%- include('../partials/head')%>
-    <link rel="stylesheet" href="/css/login.css">
+    <%- include('../partials/head')%>
+        <link rel="stylesheet" href="/css/profile.css">
 </head>
 
 <body>
 
     <%- include('../partials/header')%>
 
-    <div class="deslizable">
-        <a href="/user/profile"> <i class="fa-solid fa-arrow-up"></i></a>
-    </div>
-    
-    <main>
-        <section>
-            <img src="" alt="">
-        </section>
-    </main>
+        <div class="deslizable">
+            <a href="/user/profile"> <i class="fa-solid fa-arrow-up"></i></a>
+        </div>
+        <main>
+            <section>
+                <h1>Bienvenido <%=user.user_name%></h1>
+                <h2>Perfil:</h2>
+                <img src="/images/users/<%=user.user_image%>">
+                <div class="info-container">
+                    <div class="info">
+                        <span>Nombre:</span> <%=user.user_name%>
+                    </div>
+                    <div class="info">
+                        <span>Apellido:</span> <%=user.last_name%>
+                    </div>
+                    <div class="info">
+                        <span>Email:</span> <%=user.email%>
+                    </div>
+                    <div class="info">
+                        <span>Teléfono:</span> <%=user.phone%>
+                    </div>
+                    <div class="info">
+                        <span>Fecha de nacimiento:</span> <%=user.birth_date%>
+                    </div>
+                    <div class="info">
+                        <span>Dirección:</span> <%=user.address%>
+                    </div>
+                </div>
+                <button class="save-button">Guardar cambios</button>
+            </section>
+        </main>
 
-    <!---------------------------------  FOOTER ---------------------------- -->
-     
-    <footer>
-        <%- include('../partials/footer')%>
-    </footer>
-        
-     
+        <!---------------------------------  FOOTER ---------------------------- -->
+
+        <footer>
+            <%- include('../partials/footer')%>
+        </footer>
+
+
 </body>
-     
+
 </html>
