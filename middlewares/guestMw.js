@@ -2,7 +2,7 @@
 
 function guestMw(req, res, next) {
     if(req.session.userLogged){
-        return res.redirect('/users/profile');
+        return res.redirect('/user/profile');
     };
 
     next();
