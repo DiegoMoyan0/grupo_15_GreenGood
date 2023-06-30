@@ -29,6 +29,33 @@
 	border: 1px solid #ccc;
 }
 
+.photo{
+	margin-bottom: 15px;
+}
+
+#img {
+	margin: 0 30%;
+	width: 6rem;
+	margin-top: 1rem; 
+	box-shadow: none;
+}
+
+#foto {
+	display: none;	
+}
+
+#change_photo {
+    border: solid 1px gainsboro;
+    margin: 50px 35%; 
+    color: #ede4ed;
+    padding: 10px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: #402c68;
+}
+
 .input-login {
 	font-family: 'Roboto Serif', serif;
 	width: 100%;

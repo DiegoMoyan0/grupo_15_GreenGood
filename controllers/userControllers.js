@@ -33,6 +33,8 @@ const controller = {
 		const resultsValidations = validationResult(req);
 
 		if (resultsValidations.errors.length > 0) {
+			console.log(req.body);
+			console.log(req.file);
 			return res.render('userViews/register', {
 				title: "Registro",
 				errors: resultsValidations.mapped(), // mapped() used to transform the validations results into a literal object.
@@ -41,36 +43,6 @@ const controller = {
 			});
 		};
 
-		let emailInDb = userModel.findByFiled('email', req.body.email);
-
-		if (emailInDb) {
-			return res.render('userViews/register', {
-				title: "Registro",
-				errors: {
-					mail: {
-						msg: 'Ese e-mail ya se encuentra registrado!'
-					}
-				},
-				oldData: req.body,
-				oldFile: req.file
-			});
-		}
-
-		let userNameInDb = userModel.findByFiled('user_name', req.body.user_name);
-
-		if (userNameInDb) {
-			return res.render('userViews/register', {
-				title: "Registro",
-				errors: {
-					user_name: {
-						msg: 'Nombre de usuario ya existente, prueba con otro.'
-					}
-				},
-				oldData: req.body,
-				oldFile: req.file
-			});
-		}
-
 		/* Create a new user */
 		const user = { ...req.body };
 
@@ -78,13 +50,13 @@ const controller = {
 		user.password = hashedPassword;
 
 
-		let full_name = user.name_data
+		/* let full_name = user.name_data
 		let first_name = "" //Decidir concatenar y/o separar campos en el formulario
 		let last_name = ""  //Decidir concatenar y/o separar campos en el formulario
 		user.name_data = { full_name, first_name, last_name }
-
+ */
 		delete user.password_confirm;
-		user.user_image = req.file ? req.file.filename : "default-user-photo.jpg";
+		user.user_image = req.file ? req.file.filename : "default-user-photo.png";
 
 		userModel.createOne(user);
 

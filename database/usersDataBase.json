@@ -1008,5 +1008,33 @@
   "password": "$2a$12$QLiirWbvD8ktsli5rKM6Te8TAgNZH.Go3kTzZ4Ns0F50lyrkzWSEW",
   "user_image": "img-user-1687629336570-a_c.png",
   "id": "be7b06de-981b-469a-92b6-5333ac6708d0"
+ },
+ {
+  "name_data": {
+   "full_name": "MAti",
+   "first_name": "",
+   "last_name": ""
+  },
+  "email": "matiliendodev@gmail.com.ar",
+  "user_name": "liendom",
+  "address": "Juan",
+  "birth_date": "2011-05-04",
+  "phone": "3512341032",
+  "user_type": "Vendedor",
+  "password": "$2a$12$9xbMbw1kiqU7/HSOivQGZ.zjjiTjDgK1ECmo1tAxzvKeKCLprZ8o.",
+  "user_image": "img-user-1688002914546-perfil1.jpg",
+  "id": "db4133b5-5a19-4900-8247-64a1c709f1fd"
+ },
+ {
+  "name_data": "Prueba registro",
+  "email": "prueba@prueba.com.ar",
+  "user_name": "prueba123",
+  "address": "Av. Prueba siempre viva",
+  "birth_date": "1991-07-04",
+  "phone": "000000",
+  "user_type": "Vendedor",
+  "password": "$2a$12$Cv/lYriy5c4oPJKB9s9S8uWCN7uNqZUM2h90iLVVdIBPnhCN6Aofa",
+  "user_image": "img-user-1688047071089-Foto 1.jpg",
+  "id": "3f268152-1d58-4d8e-a8c0-731aa3e595ba"
  }
 ]

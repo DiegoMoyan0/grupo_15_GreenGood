@@ -25,9 +25,11 @@
 					<input type="text" 
                     name="name_data" 
                     class="input-register" 
-                    placeholder="Escriba su nombre"
+                    placeholder="Como figura en su DNI"
                     class="form-inputs <%= locals.errors && errors.name_data? "is-invalid" : null %>"
-                    value= <%= locals.oldData? oldData.name_data : null %>
+                    <% if (locals.oldData) { %>
+                        value= "<%= oldData.name_data %>"
+                    <% } %>
                     >    
                     <% if (locals.errors && errors.name_data) { %>
                         <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -44,7 +46,7 @@
 					<input type="email" 
                     name="email" 
                     class="input-register"
-                    placeholder="Escriba su Email" 
+                    placeholder="ej user_email@mail.com" 
                     class="form-inputs <%= locals.errors && errors.email? "is-invalid" : null %>"
                     value= <%= locals.oldData? oldData.email : null %>
                     >    
@@ -54,6 +56,9 @@
                         </svg>                  
                         <div class="text-danger">
                             <%= errors.email.msg %>
+                            <% if (errors.email.msg === 'Ese e-mail ya se encuentra registrado!') { %>
+                                <div><a href="/user/login">Quieres logearte?</a></div>
+                            <% } %>
                         </div>
                     <% }; %>
 				</div>
@@ -63,10 +68,10 @@
 					<input type="text" 
                     name="user_name" 
                     class="input-register" 
-                    placeholder="Escriba su nombre de usuario" 
+                    placeholder="ej. user123" 
                     minlength="6" 
                     class="form-inputs <%= locals.errors && errors.user_name? "is-invalid" : null %>"
-                    value= <%= locals.oldData? oldData.user_name : null %>
+                    value= "<%= locals.oldData? oldData.user_name : null %>"
                     >    
                     <% if (locals.errors && errors.user_name) { %>
                         <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -83,10 +88,10 @@
 					<input type="text" 
                     name="address" 
                     class="input-register" 
-                    placeholder="Escriba su dirección" 
+                    placeholder="Ej. Av. Ejeplo 124 Ciudad" 
                     minlength="6" 
                     class="form-inputs <%= locals.errors && errors.address? "is-invalid" : null %>"
-                    value= <%= locals.oldData? oldData.address : null %>
+                    value= "<%= locals.oldData? oldData.address : null %>"
                     >    
                     <% if (locals.errors && errors.address) { %>
                         <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -125,7 +130,6 @@
                     name="phone" 
                     class="input-register" 
                     placeholder="ej (351) 2 341032" 
-                    minlength="6" 
                     class="form-inputs <%= locals.errors && errors.phone? "is-invalid" : null %>"
                     value= <%= locals.oldData? oldData.phone : null %>
                     >    
@@ -158,8 +162,11 @@
                     <% }; %> 
 				</div>
 
-                <div class="container-input">
+                <div class="container-input photo" >
                     <label class="label-register" for="user_image">Foto de usuario:</label>
+                    <br>
+                    <img src="/images/users/default-user-photo.png" alt="avatar" id="img">
+                    <label for="foto" id="change_photo">Cambiar foto</label>
                     <% if (locals.errors && errors.user_image) { %>
                         <input class="input-register" 
                         type="file" 
@@ -176,14 +183,14 @@
                         </div>
                         <span class="span-bar"></span>
                     <% } else{ %>
-                        <input class="input-register" type="file" id="foto" name="user_image" accept="image/*">
+                        <input class="input-register" type="file" id="foto" name="user_image" accept="image/*" >
                         <span class="span-bar"></span>
                     <% }; %>  
 
-                    <label class="lbl-preview">Ver vista previa de la imagen</label>
-                <div class="container-preview" style="display: none;">
+                    <!-- <label class="lbl-preview">Ver vista previa de la imagen</label> -->
+               <!--  <div class="container-preview" style="display: none;">
                     <img class="img-preview"  style="display: none;"/>
-                  </div>
+                  </div> -->
 				</div>
 
                 
@@ -260,6 +267,23 @@
     
 
 </body>
+
+<script>
+    const defaultFile = '/images/users/default-user-photo.png';
+    const file = document.getElementById('foto');
+    const img = document.getElementById('img');
+    file.addEventListener('change', e => {
+        if(e.target.files[0]){
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                img.src = e.target.result;
+            }
+            reader.readAsDataURL(e.target.files[0]);
+        }else{
+            img.src = defaultFile;
+        }
+    })
+</script>
 
 <script>
 

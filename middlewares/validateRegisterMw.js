@@ -1,15 +1,31 @@
 const path = require('path');
 const { body } = require('express-validator');
+const userModel = require('../models/User.js');
+
 
 const validations = [
     body('name_data').notEmpty().withMessage('Tienes que ingresar tu nombre completo!'),
-    body('user_name').notEmpty().withMessage('Tienes que ingresar tu nombre de usuario!'),
+    body('user_name').notEmpty().withMessage('Tienes que ingresar tu nombre de usuario!').bail()
+        .custom((value, {req}) => {
+            let userNameInDb = userModel.findByFiled('user_name', req.body.user_name);
+            if(userNameInDb){
+                throw new Error('Nombre de usuario ya existente, prueba con otro.');
+            };
+            return true;
+        }),
     body('birth_date').notEmpty().withMessage('Tienes que ingresar tu fecha de nacimiento!'),
     body('email')
         .notEmpty().withMessage('Tienes que ingresar tu e-mail!').bail()
-        .isEmail().withMessage('Debes escribir un e-mail con formato valido'),
+        .trim().isEmail().withMessage('Debes escribir un e-mail con formato valido').bail()
+        .custom((value, {req}) => {
+            let emailInDb = userModel.findByFiled('email', req.body.email);
+            if(emailInDb){
+                throw new Error(`Ese e-mail ya se encuentra registrado!`);
+            };
+            return true;
+        }),
     body('address').notEmpty().withMessage('Tienes que ingresar tu dirección!'),
-    body('phone').isMobilePhone().withMessage('El formato de nro. de tel. celular no es válido'),
+    body('phone').optional().isMobilePhone().withMessage('El formato de nro. de tel. celular no es válido'),
     body('password').notEmpty().withMessage('Tienes que ingresar una contraseña!'),
     body('password_confirm')
         .notEmpty().withMessage('Tienes que ingresar nuevamente la contraseña!').bail()
@@ -20,7 +36,7 @@ const validations = [
             return true;
         }),
     body('address').notEmpty().withMessage('Tienes que ingresar tu dirección!'),
-    body('user_image').custom((value, {req}) => {
+    body('user_image').optional().custom((value, {req}) => {
         let file = req.file;
         let acceptedExtensions = ['.jpg', '.png', '.gif'];
         if(file){
