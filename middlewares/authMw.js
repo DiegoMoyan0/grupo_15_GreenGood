@@ -1,10 +1,11 @@
-//To avoid entring to user profile if not logged
+//To avoid entering to user profile if not logged
 
 function authMw(req, res, next) {
-    if(!req.session.userLogged){
-        return res.redirect('/users/login');
-    };
 
+    if(!req.session.userLogged){
+        return res.redirect('/user/login');
+    }
+    
     next();
 }
 

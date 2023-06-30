@@ -88,7 +88,7 @@
 					<input type="text" 
                     name="address" 
                     class="input-register" 
-                    placeholder="Ej. Av. Ejeplo 124 Ciudad" 
+                    placeholder="Ej. Av. Ejemplo 124 Ciudad" 
                     minlength="6" 
                     class="form-inputs <%= locals.errors && errors.address? "is-invalid" : null %>"
                     value= "<%= locals.oldData? oldData.address : null %>"
@@ -107,7 +107,7 @@
                     <label for="birth_date" class="label-register">Fecha de nacimiento</label>
                     <input type="date" 
                     name="birth_date" 
-                    min="1900-01-01" 
+                    min="2004-01-01" 
                     max="2023-01-01" 
                     class="input-register"
                     id="InputDate" 
@@ -187,19 +187,13 @@
                         <span class="span-bar"></span>
                     <% }; %>  
 
-                    <!-- <label class="lbl-preview">Ver vista previa de la imagen</label> -->
-               <!--  <div class="container-preview" style="display: none;">
-                    <img class="img-preview"  style="display: none;"/>
-                  </div> -->
 				</div>
 
                 
                 <div class="container-input">
                     <label for="password"  class="label-register">Contraseña</label>
-                  <!--  <input type="password" 
+                   <input type="password" 
                     onpaste="return false;" oncopy="return false" oncut="return false" ondrag="return false" ondrop="return false" autocomplete=off
-                    -->
-                    <input type="password" 
                     name="password" 
                     class="input-register" 
                     id="password" 
@@ -218,10 +212,8 @@
                     <% }; %>
 				</div>                    
                 <div class="container-input">
-            <!--  <input type="password" 
-                    onpaste="return false;" oncopy="return false" oncut="return false" ondrag="return false" ondrop="return false" autocomplete=off
-                    -->
-                    <input type="password" 
+                 <input type="password" 
+                    onpaste="return false;" oncopy="return false" oncut="return false" ondrag="return false" ondrop="return false" autocomplete=off 
                     name="password_confirm" 
                     class="input-register" 
                     id="password-confirm"

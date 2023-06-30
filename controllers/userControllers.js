@@ -17,7 +17,8 @@ const controller = {
 	getProfile: (req, res) => {
 		return res.render('userViews/profile', {
 			title: "Tu perfil de usuario",
-			user: req.session.userLogged
+			user: req.session.userLogged,
+			error: false
 		});
 	},
 
@@ -82,7 +83,7 @@ const controller = {
 		let searchedUser = userModel.findByFiled('email', req.body.email);
 	
 		if (!searchedUser) {
-		//Search user by username first
+		//Search user by username
 			searchedUser = userModel.findByFiled('user_name', req.body.email);
 		}
 

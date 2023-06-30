@@ -15,6 +15,15 @@
         </div>
         <main>
             <section>
+
+                <%if (error){%> 
+                <i class="fa-solid fa-circle-exclamation" style="color: #ff0000; font-size: 35px;"></i>
+                <br>
+                <br>
+                <p style="color:red;text-align: center;">Debes editar tu pefil y darte de alta como vendedor para comenzar a publicar productos</p>
+                <br>
+                <%}%>
+        
                 <h1>Bienvenido <%=user.user_name%></h1>
                 <h2>Perfil:</h2>
                 <img src="/images/users/<%=user.user_image%>">

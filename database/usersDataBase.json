@@ -995,22 +995,6 @@
  },
  {
   "name_data": {
-   "full_name": "mengano sutano",
-   "first_name": "",
-   "last_name": ""
-  },
-  "email": "megano@sutano.com",
-  "user_name": "megano3000",
-  "address": "Medellin",
-  "birth_date": "1990-03-02",
-  "phone": "65432158",
-  "user_type": "Comprador",
-  "password": "$2a$12$QLiirWbvD8ktsli5rKM6Te8TAgNZH.Go3kTzZ4Ns0F50lyrkzWSEW",
-  "user_image": "img-user-1687629336570-a_c.png",
-  "id": "be7b06de-981b-469a-92b6-5333ac6708d0"
- },
- {
-  "name_data": {
    "full_name": "MAti",
    "first_name": "",
    "last_name": ""
@@ -1036,5 +1020,29 @@
   "password": "$2a$12$Cv/lYriy5c4oPJKB9s9S8uWCN7uNqZUM2h90iLVVdIBPnhCN6Aofa",
   "user_image": "img-user-1688047071089-Foto 1.jpg",
   "id": "3f268152-1d58-4d8e-a8c0-731aa3e595ba"
+ },
+ {
+  "name_data": "Julian Vendedor",
+  "email": "julian_xyz@dominio.com",
+  "user_name": "julianvender",
+  "address": "Avenida XYZ # 55-22",
+  "birth_date": "1990-01-01",
+  "phone": "333333333",
+  "user_type": "Vendedor",
+  "password": "$2a$12$Xo7qsUAUx34kk5lD6NTSOOpQJ4RZ1X3xAGR9128PjkwXgpI/3Wje2",
+  "user_image": "img-user-1688136461941-a_c.png",
+  "id": "66483571-b6b0-47d4-bf0e-ad51fe84811b"
+ },
+ {
+  "name_data": "Julian Comprador",
+  "email": "julian_comprar@dominio.com",
+  "user_name": "juliancomprar",
+  "address": "Avenida XYZ # 55-22",
+  "birth_date": "1990-01-01",
+  "phone": "999999999",
+  "user_type": "Comprador",
+  "password": "$2a$12$eapv13qRUPv99IlTNQOup.zY6iIR1wn3.w/IRfU4bvbKscAvvkoue",
+  "user_image": "default-user-photo.png",
+  "id": "51ada090-f583-4ef7-9543-69554fc5b50f"
  }
 ]
