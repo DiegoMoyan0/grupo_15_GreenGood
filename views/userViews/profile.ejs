@@ -15,15 +15,6 @@
         </div>
         <main>
             <section>
-
-                <%if (error){%> 
-                <i class="fa-solid fa-circle-exclamation" style="color: #ff0000; font-size: 35px;"></i>
-                <br>
-                <br>
-                <p style="color:red;text-align: center;">Debes editar tu pefil y darte de alta como vendedor para comenzar a publicar productos</p>
-                <br>
-                <%}%>
-        
                 <h1>Bienvenido <%=user.user_name%></h1>
                 <h2>Perfil:</h2>
                 <img src="/images/users/<%=user.user_image%>">
@@ -47,10 +38,27 @@
                         <span>Dirección:</span> <%=user.address%>
                     </div>
                 </div>
+                <button class="save-button-icon">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </button>
                 <button class="save-button">Guardar cambios</button>
             </section>
         </main>
-
+    
+        <script>
+            const saveButtonIcon = document.querySelector('.save-button-icon');
+            const saveButton = document.querySelector('.save-button');
+    
+            saveButtonIcon.addEventListener('click', () => {
+                saveButtonIcon.style.display = 'none';
+                saveButton.style.display = 'block';
+            });
+    
+            saveButton.addEventListener('click', () => {
+                saveButton.style.display = 'none';
+                saveButtonIcon.style.display = 'block';
+            });
+        </script>
         <!---------------------------------  FOOTER ---------------------------- -->
 
         <footer>
