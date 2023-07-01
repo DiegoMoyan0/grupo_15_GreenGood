@@ -34,10 +34,33 @@ const controller = {
             return res.send(message);
         };
 
-        return res.render('productsViews/detail', {
-            title: theProduct.title,
-            theProduct
-        });
+        if (typeof req.session === 'undefined' || typeof req.session.userLogged === 'undefined') {
+            return res.render('productsViews/detail', {
+                title: theProduct.title,
+                theProduct,
+                vendedor: false
+            });
+
+        } else {
+
+            if (req.session.userLogged.user_type === 'Comprador') {
+                return res.render('productsViews/detail', {
+                    title: theProduct.title,
+                    theProduct,
+                    vendedor: false,
+                });
+
+            }
+
+            if (req.session.userLogged.user_type === 'Vendedor') {
+
+                return res.render('productsViews/detail', {
+                    title: theProduct.title,
+                    theProduct,
+                    vendedor: true
+                });
+            }
+        }
     },
 
     getProductPublications: (req, res) => {
