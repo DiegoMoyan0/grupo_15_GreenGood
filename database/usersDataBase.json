@@ -1044,5 +1044,17 @@
   "password": "$2a$12$eapv13qRUPv99IlTNQOup.zY6iIR1wn3.w/IRfU4bvbKscAvvkoue",
   "user_image": "default-user-photo.png",
   "id": "51ada090-f583-4ef7-9543-69554fc5b50f"
+ },
+ {
+  "name_data": "Lalala Perez",
+  "email": "lalala@lala.com",
+  "user_name": "lalala123",
+  "address": "Lalala 123 B1",
+  "birth_date": "2020-02-14",
+  "phone": "315136121",
+  "user_type": "Comprador",
+  "password": "$2a$12$3Vmyuy8IheRqGJiz9zxqUeV4xRvhrUNMEKHsRQyLGX1uc790Ibg9e",
+  "user_image": "default-user-photo.png",
+  "id": "0616c255-e492-431e-86ed-c119cb48a9a1"
  }
 ]

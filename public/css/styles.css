@@ -247,6 +247,7 @@ nav svg:hover {
     border: solid 1px burlywood;
     border-radius: 10px;
     box-shadow: 0px 0px 10px wheat;
+    padding: 5px;
 }
 
 .content-user-icon p{
@@ -254,8 +255,8 @@ nav svg:hover {
 }
 
 .content-icons img{
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     margin: auto;
 }
