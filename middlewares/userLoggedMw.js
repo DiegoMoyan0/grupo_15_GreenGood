@@ -16,10 +16,8 @@ function userLoggedMw(req, res, next) {
     
     if(req.session && req.session.userLogged){
         res.locals.isLogged = true;
-        res.locals.userLogged = req.session.userLogged; // User logged to views
+        res.locals.userLogged = req.session.userLogged; // User logged data to views
     };
-
-    
 
     next();
 }

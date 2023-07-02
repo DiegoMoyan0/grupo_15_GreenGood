@@ -19,7 +19,9 @@
             <li><a href="/">Inicio</a></li>
             <li><a href="/info">Info</a></li>
             <li><a href="/product/list">Productos</a></li>
-            <li><a href="/product/publications">Vender</a></li>
+            <% if (isLogged && userLogged.user_type === 'Vendedor') { %>
+                <li><a href="/product/publications">Vender</a></li>
+            <% } %>
             <li><a href="/faqs">Ayuda</a></li><br>
         </ul>
         <div class="content-icons">
@@ -31,15 +33,26 @@
                     </svg>
                 </span>
             </a>
-            <a href="/user/login">
-                <span><svg class="icons-navbar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                        fill="currentColor" className="w-5 h-5">
-                        <path
-                            d="M10 8a3 3 0 100-6 3 3 0 000 6zM3.465 14.493a1.23 1.23 0 00.41 1.412A9.957 9.957 0 0010 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 00-13.074.003z" />
-                        </svg>
-                    </span>
+            <% if (isLogged) { %>
+                <div class="content-userlogged-icons" id="userOptionsLink">
+                    <img class="icons-navbar" src="/images/users/<%= userLogged.user_image %>" alt="user_image" id="user_image_header">
+                    <p id="loggedName"><% let name = userLogged.name_data.split(' ')%><%= name[0]%></p>
+                </div>
+            <% }else{ %>
+                <a href="/user/login" style="text-decoration: none;">
+                    <div class="content-user-icons">
+                        <span><svg class="icons-navbar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                fill="currentColor" className="w-5 h-5">
+                                <path
+                                    d="M10 8a3 3 0 100-6 3 3 0 000 6zM3.465 14.493a1.23 1.23 0 00.41 1.412A9.957 9.957 0 0010 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 00-13.074.003z" />
+                                </svg>
+                        </span>
+                        <p id="loggedName">Bienvenido</p>
+                    </div>
                 </a>
-                <a href="/product/cart" id="cart-icon">
+            <% } %>
+            
+            <a href="/product/cart" id="cart-icon">
                 <span id="added-product"><input type="tel" value="0"></span>
                 <span><svg class="icons-navbar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                         fill="currentColor" className="w-5 h-5">
@@ -64,17 +77,36 @@
                 <li><a href="/product/publications">Vender</a></li>
                 <li><a href="/faqs">Ayuda</a></li><br>
             </ul>
+            <% if (isLogged) { %>
+                <ul id="userOptions">
+                    <li><%= userLogged.email %></li>
+                    <span class="line"></span>
+                    <li><a href="/user/profile">Mi perfil</a></li>
+                    <li><a href="/user/profile">Mis compras</a></li>
+                    <li><a href="/user/profile">Favoritos</a></li>
+                    <li><a href="/user/logout">Cerrar sesión</a></li>
+                </ul>
+            <% } %>
+            
         </div>
     </nav>
     <script>
-        // Obtenemos las referencias a los elementos del DOM
+        //To display menu options at header in mobile 
         const menuIcon = document.getElementById('menuIcon');
         const menuOptions = document.getElementById('menuOptions');
 
-        // Agregamos un evento al hacer clic en el icono del menú
         menuIcon.addEventListener('click', function () {
-            // Alternamos la clase 'show' en el contenedor de las opciones del menú
             menuOptions.classList.toggle('show');
+        });
+    </script>
+    
+    <script>
+        //To display logged user options at header
+        const loggedName = document.getElementById('userOptionsLink');
+        const userOptions = document.getElementById('userOptions');
+
+        userOptionsLink.addEventListener('click', function () {
+            userOptions.classList.toggle('show');
         });
     </script>
 </header>

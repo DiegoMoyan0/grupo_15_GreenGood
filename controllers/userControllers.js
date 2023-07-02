@@ -23,8 +23,8 @@ const controller = {
 	},
 
 	getLogout: (req, res) => {
-		req.session.destroy;
-		res.clearCookie('userMail');
+		req.session.destroy();
+		res.clearCookie('userEmail');
 		return res.redirect('/');
 	},
 
@@ -123,9 +123,10 @@ const controller = {
 		req.session.userLogged = userToLoggin;
 
 		//Create cookie called "userEmail" to save user logged when "RememberUser is checked"
+		console.log(req.body);
 
 		if (req.body.rememberUser) {
-			res.cookie('userEmail', req.cookies.email, { maxAge: 1000 * 60 * 60 * 24 * 360 });
+			res.cookie('userEmail', searchedUser.email, { maxAge: 1000 * 60 * 60 * 24 * 360 });
 		};
 
 		//--------------------------//

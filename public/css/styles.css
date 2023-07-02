@@ -172,7 +172,6 @@ nav svg:hover {
 
 .content-icons ul {
     background-color: rgba(16, 20, 47, 0.8);
-    display: none;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -181,12 +180,90 @@ nav svg:hover {
     top: 100%;
     right: 0;
     width: 35%;
-    z-index: 15;
+    height: 0;
+    overflow: hidden;
+    z-index: 16;
 }
 
-.content-icons ul.show {
-    display: block;
-    height: 100vh;
+#userOptions{
+    background-color: rgba(16, 20, 47, 0.8);
+    width: fit-content;
+    height: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    z-index: 16;
+    position: absolute;
+    top: 60px;
+    right: 5%;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 10px;
+    max-height: auto;
+}
+
+.content-icons ul.show, #userOptions.show {
+    transition: height 0.7s ease-in;
+    height: 100vw;
+}
+
+#userOptions.show {
+    transition: height 0.5s ease-in-out;
+    height: 156px;
+}
+
+#userOptions.show{
+    border: solid 1px burlywood;
+    border-radius: 10px;
+    box-shadow: 0 0 10px wheat;
+}
+
+
+.content-icons .line {
+    width: 100%;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    border-bottom: solid 1px gray;
+}
+
+#userOptions li{
+    color: #f0f0f0;
+    padding: 5px;
+    margin: 2px;
+}
+
+.content-user-icons, .content-userlogged-icons{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 1rem;
+    padding: 2px;
+}
+
+.content-userlogged-icons{
+    border: solid 1px burlywood;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px wheat;
+}
+
+.content-user-icon p{
+    font-size: 0.8rem;
+}
+
+.content-icons img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: auto;
+}
+
+#loggedName{
+    color: aliceblue;
+    font-size: 1rem;
+    display: none;
 }
 
 
@@ -845,6 +922,8 @@ small {
 
     .logo {
         position: relative;
+        max-width: 100px;
+        margin-right: 0.8rem;
     }
 
     .search-container {
@@ -853,7 +932,6 @@ small {
 
     .search-container {
         width: 20%;
-        /* le da un ancho al buscador */
     }
 
     nav {
@@ -868,18 +946,11 @@ small {
         margin-right: 8px;
     }
 
-    .logo {
-        max-width: 100px;
-        margin-right: 0.8rem;
-        /*le da un maximo tamaño al logo*/
-    }
-
     .nav-center {
         display: flex;
         list-style: none;
         margin: auto 1rem;
         position: relative;
-        /*quita puntos*/
     }
 
     .nav-center li {
@@ -894,7 +965,10 @@ small {
     .nav-center a {
         text-decoration: none;
         text-transform: uppercase;
-        /*quita subrayado*/
+    }
+
+    #loggedName{
+        display: block;
     }
 
     nav #added-product {

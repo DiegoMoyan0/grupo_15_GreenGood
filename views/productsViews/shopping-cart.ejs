@@ -24,13 +24,13 @@
             <p>SITIO SEGURO<br>
             Protegemos tus datos</p>
         </div>
-
-        <div class="login-cart-container">
-            <h4 class="login-cart-title">Si aún no te logeaste, ingresa aquí:</h4>
-            <a class="link-login" href="/user/login">Ingresar</a>
-            <div class="link-register-container">¿No tenés cuenta?<a class="link-register" href="/user/register"></i>Registrate</a></div>
-        </div>
-       
+        <% if (!isLogged) { %>
+            <div class="login-cart-container">
+                <h4 class="login-cart-title">Si aún no te logeaste, ingresa aquí:</h4>
+                <a class="link-login" href="/user/login">Ingresar</a>
+                <div class="link-register-container">¿No tenés cuenta?<a class="link-register" href="/user/register"></i>Registrate</a></div>
+            </div>
+        <% } %> 
     <!------ TU PEDIDO ------>
 
         <div  class="shop-cart-containter">
