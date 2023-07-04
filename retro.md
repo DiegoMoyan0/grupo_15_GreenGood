@@ -82,3 +82,25 @@ Retrospectiva del Sprint 4:
 5. Dejar de hacer:
 - Crear desorden en el código.
 - Tomar decisiones o hacer cambios individuales sin consultar al equipo.
+
+<!-- ---------------------------------------------------------------------------- -->
+Retrospectiva del Sprint 5:
+
+1. Comenzar a hacer:
+- Realizar una refactorización del código para mejorarlo.
+
+2. Hacer más:
+- Reuniones para revisar el progreso y compartir dudas.
+- Explicar implementación de funciones complejas.
+
+3. Continuar haciendo:
+- Organizar el trabajo en equipo en función del tiempo disponible de cada uno.
+- Ayudarse mutuamente con dudas y compartir información adicional.
+- Comunicaciones directas de los cambios o implementaciones realizadas.
+- Investigar mejoras en el proyecto.
+
+4. Hacer menos:
+- Reducir la demora en tareas que no son esenciales.
+
+5. Dejar de hacer:
+- Tomar decisiones o hacer cambios importantes sin consultar al equipo.
