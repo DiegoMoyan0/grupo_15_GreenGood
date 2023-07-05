@@ -56,6 +56,8 @@ routes.put('/:id/update',uploadFile.single('image'), productsController.updatePr
 
 routes.patch('/:id/edit-delete', productsController.softDeleteProduct);
 
+routes.patch('/:id/detail-delete', productsController.softDeleteProductDetail);
+
 routes.delete('/:id/delete', productsController.hardDeleteProduct);
 
 

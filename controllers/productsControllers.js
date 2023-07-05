@@ -144,6 +144,15 @@ const controller = {
 
         return res.redirect('/product/publications');
     },
+    
+    softDeleteProductDetail: (req, res) => {
+
+        let id = Number(req.params.id);
+        productModel.softDeleteById(id);
+
+        return res.redirect('/product/'+req.params.id+'/detail');
+
+    },
 
 
     hardDeleteProduct: (req, res) => {

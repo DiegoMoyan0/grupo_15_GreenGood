@@ -54,7 +54,7 @@
 
 
                                 <p class="stock">Stock:
-                                    <% if(theProduct.stock> 1) {%>
+                                    <% if(theProduct.stock> 1 && theProduct.deleted === false) {%>
                                         <strong>Disponible</strong>
                                 </p>
                                 <% }else{ %>
@@ -81,22 +81,24 @@
                 <button class="btn-product" type="submit" href="#">Añadir al carrito</button>
                 <%if (vendedor){%>
 
-                    <form method ="POST" action="/product/<%=theProduct.id%>/edit-delete?_method=PATCH">
+                    <button class="btn-product" style="background: rgb(56, 56, 146); margin-top: 1rem;">Estás registrado como vendedor... Próximamente podrás editar tu producto aquí</button>
+
+                  <!--  <form method ="POST" action="/product/<%=theProduct.id%>/detail-delete?_method=PATCH">
                         <button type="submit" class="btn-mark-sold"
                             <% if (theProduct.deleted !== true){ %>
                                 style="color: crimson; background-color: aliceblue;"
                                 <%}else{ %>
                                     style="color: white; background-color: rgb(17, 155, 17);"
                                 <%}%>>
-                            <%=theProduct.deleted == true? "Marcar como disponible":"Marcar como vendido"%>
+                            <%=theProduct.deleted == true? "Marcar como disponible":"Marcar como agotado"%>
                         </button>
                     </form>
 
                 <form action="/product/<%= theProduct.id %>/delete?_method=DELETE" method="POST" onsubmit="return confirm('¿Está seguro que desea eliminar este producto de manera permanente?')">
                     <input type="submit" class="btn-delete" value="Eliminar">
                 </form>
-                <button for="input1" class="btn-edit">Editar</button>
 
+                -->
             <%}%>
 
 
