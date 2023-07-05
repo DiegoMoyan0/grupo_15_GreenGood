@@ -1056,5 +1056,17 @@
   "password": "$2a$12$3Vmyuy8IheRqGJiz9zxqUeV4xRvhrUNMEKHsRQyLGX1uc790Ibg9e",
   "user_image": "default-user-photo.png",
   "id": "0616c255-e492-431e-86ed-c119cb48a9a1"
+ },
+ {
+  "name_data": "MAti Liendo",
+  "email": "matiliendodev@gmail.com",
+  "user_name": "liendomaa",
+  "address": "Juan antonio ",
+  "birth_date": "1911-04-01",
+  "phone": "654135415",
+  "user_type": "Comprador",
+  "password": "$2a$12$ZVdSaAODcp4EvBUv4mpYP.aRdcPEEWrYnyhicWTzUi5Vigf6Wkzgm",
+  "user_image": "default-user-photo.png",
+  "id": "f05743e3-49b1-4210-bddc-6b60f2b6d3e9"
  }
 ]

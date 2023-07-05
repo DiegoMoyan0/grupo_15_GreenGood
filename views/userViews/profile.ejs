@@ -20,10 +20,7 @@
                 <img src="/images/users/<%=user.user_image%>">
                 <div class="info-container">
                     <div class="info">
-                        <span>Nombre:</span> <%=user.user_name%>
-                    </div>
-                    <div class="info">
-                        <span>Apellido:</span> <%=user.last_name%>
+                        <span>Nombre completo:</span> <%=user.name_data%>
                     </div>
                     <div class="info">
                         <span>Email:</span> <%=user.email%>
@@ -36,6 +33,9 @@
                     </div>
                     <div class="info">
                         <span>Dirección:</span> <%=user.address%>
+                    </div>
+                    <div class="info">
+                        <span>Tipo de usuario:</span> <%=user.user_type%>
                     </div>
                 </div>
                 <button class="save-button-icon">
