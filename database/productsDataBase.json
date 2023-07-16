@@ -11,7 +11,7 @@
   "subcategory": "recipientes",
   "type": "maceta",
   "deleted": false,
-  "salesAmount": 0
+  "salesAmount": null
  },
  {
   "id": 2,
@@ -27,7 +27,7 @@
   "type": "maceta",
   "manufacturer": "Green Good",
   "deleted": false,
-  "salesAmount": 0
+  "salesAmount": null
  },
  {
   "id": 3,
@@ -41,7 +41,7 @@
   "subcategory": "recipientes",
   "type": "bandeja",
   "deleted": false,
-  "salesAmount": 0
+  "salesAmount": null
  },
  {
   "id": 4,
@@ -57,7 +57,7 @@
   "type": "bandeja",
   "manufacturer": "Green Good",
   "deleted": false,
-  "salesAmount": 0
+  "salesAmount": null
  },
  {
   "id": 5,
@@ -73,7 +73,7 @@
   "type": "bidón",
   "manufacturer": "Green Good",
   "deleted": false,
-  "salesAmount": 0
+  "salesAmount": null
  },
  {
   "id": 6,
@@ -89,7 +89,7 @@
   "type": "macetas",
   "manufacturer": "Green Good",
   "deleted": false,
-  "salesAmount": 0
+  "salesAmount": null
  },
  {
   "id": 7,
@@ -105,7 +105,7 @@
   "type": "maceta",
   "manufacturer": "Green Good",
   "deleted": false,
-  "salesAmount": 0
+  "salesAmount": null
  },
  {
   "id": 8,
