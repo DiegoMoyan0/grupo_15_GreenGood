@@ -5,6 +5,7 @@ const productModel = require('../models/products');
 const userModel = require('../models/User.js');
 
 let db = require("../database/models");
+const Category = require('../database/models/Category');
 const Op = db.Sequelize.Op;
 
 
@@ -12,43 +13,39 @@ const controller = {
 
     // -------Render product Views by GET------- //
 
-    /*
-       getAllProducts: (req, res) => {
-           const products = productModel.findAll();
-           console.log(products[0])
-   
-           return res.render('productsViews/products-list', {
-               title: "Todos los productos",
-               products
-           });
-       },
-   */
-    // -------Render product Views by GET------- //
-
     getAllProducts: async (req, res) => {
-
 
         try {
             const products = await db.Product.findAll(
                 {
-                    raw: true,
-                    include: ['type_products', 'category_products', 'subcategory_products', 'manufacturer_products'],
+                    include: [
+                        {association : 'category' },
+                        {association : 'subcategory' },
+                        {association : 'type' },
+                        {association : 'manufacturer' }],
                 }
-
             );
+            
+            //-------To render only the name values of associated tables
+            products.forEach(product => {
+                product.category = product.category.name;
+                product.subcategory = product.subcategory.name;
+                product.type = product.type.name;
+                product.manufacturer = product.manufacturer.name;
+            });
 
-            console.log(products[0])
+            console.log(products[0].category);
+
             return res.render('productsViews/products-list', {
                 title: "Todos los productos",
                 products: products
-            });
+            });           
+
         } catch (error) {
             //error message
             res.send('Ha ocurrido un error')
         }
     },
-
-
 
     getProductCart: (req, res) => {
         return res.render('productsViews/shopping-cart', {

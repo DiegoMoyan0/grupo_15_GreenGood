@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Manufacturer.associate = models => {
         Manufacturer.hasMany(models.Product, {
-            as: 'manufacturer_products',
+            as: 'manufacturer',
             foreignKey: 'manufacturer_id'
         })
     };

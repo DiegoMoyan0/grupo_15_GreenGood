@@ -19,6 +19,7 @@
         <img src="/images/products/banners/banner-product.jpg" alt="Imagen 2">
         <img src="/images/products/banners/bannerProduct2.jpg" alt="Imagen 3">
     </div> 
+    <script>console.log(products[0])</script>
     <main>
         <div class="categories-container">
             <div class="categories-items">
@@ -62,7 +63,7 @@
                 <h3 class="sub-category"> Sustratos <i class="fa-solid fa-chevron-down"></i></h3>
                 <section class="section-sub-category">
                     <% products.forEach(product => { %>
-                        <% if(product.type === "sustrato" && product.deleted === false) { %>
+                        <% if(product.type === "Sustrato") { %>
                             <article class="card">
                                 <a href="/product/<%= product.id %>/detail"> <img src=/images/products/<%=product.image%> alt="img product">
                                 </a>
@@ -101,7 +102,7 @@
                 <h3 class="sub-category"> Macetas <i class="fa-solid fa-chevron-down"></i> </h3>
                 <section class="section-sub-category">
                     <% products.forEach(product => { %>
-                        <% if(product.type === "maceta" && product.deleted === false) { %>
+                        <% if(product.type === "Maceta") { %>
                             <article class="card">
                                 <a href="/product/<%= product.id %>/detail"> <img src=/images/products/<%=product.image%> alt="img product">
                                 </a>
@@ -140,7 +141,7 @@
                 <h3 class="sub-category"> Bandejas <i class="fa-solid fa-chevron-down"></i> </h3>
                 <section class="section-sub-category">
                     <% products.forEach(product => { %>
-                        <% if(product.type === "bandeja" && product.deleted === false) { %>
+                        <% if(product.type === "Bandeja") { %>
                             <article class="card">
                                 <a href="/product/<%= product.id %>/detail"> <img src=/images/products/<%=product.image%> alt="img product">
                                 </a>
@@ -186,7 +187,7 @@
 
                 <section class="section-sub-category">
                     <% products.forEach(product => { %>
-                        <% if(product.subcategory === "salud" && product.deleted === false) { %>
+                        <% if(product.subcategory === "Salud") { %>
                             <article class="card">
                                 <a href="/product/<%= product.id %>/detail"> <img src=/images/products/<%=product.image%> alt="img product">
                                 </a>
@@ -226,7 +227,7 @@
                 <h3 class="sub-category"> Dermocosmética y cuidado personal<i class="fa-solid fa-chevron-down"></i> </h3>
                 <section class="section-sub-category">
                     <% products.forEach(product => { %>
-                        <% if(product.subcategory === "cosmetica" && product.deleted === false) { %>
+                        <% if(product.subcategory === "Cosmética") { %>
                             <article class="card">
                                 <a href="/product/<%= product.id %>/detail"> <img src=/images/products/<%=product.image%> alt="img product">
                                 </a>
