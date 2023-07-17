@@ -19,13 +19,13 @@ const controller = {
             const products = await db.Product.findAll(
                 {
                     include: [
-                        {association : 'category' },
-                        {association : 'subcategory' },
-                        {association : 'type' },
-                        {association : 'manufacturer' }],
+                        { association: 'category' },
+                        { association: 'subcategory' },
+                        { association: 'type' },
+                        { association: 'manufacturer' }],
                 }
             );
-            
+
             //-------To render only the name values of associated tables
             products.forEach(product => {
                 product.category = product.category.name;
@@ -35,17 +35,19 @@ const controller = {
             });
 
             console.log(products[0].category);
+            console.log(products[0]);
 
             return res.render('productsViews/products-list', {
                 title: "Todos los productos",
                 products: products
-            });           
+            });
 
         } catch (error) {
-            //error message
-            res.send('Ha ocurrido un error')
+            res.redirect('/mainViews/error')
         }
     },
+
+    // -------Pending------- //
 
     getProductCart: (req, res) => {
         return res.render('productsViews/shopping-cart', {
@@ -53,46 +55,60 @@ const controller = {
         });
     },
 
-    getProductDetail: (req, res) => {
-        let id = Number(req.params.id);
+    // ----------------------- //
 
-        let theProduct = productModel.findById(id);
 
-        if (!theProduct) {
-            let message = 'El producto que buscas no se encuentra disponible en estos momentos o se ha eliminado';
-            return res.send(message);
-        };
+    getProductDetail: async (req, res) => {
 
-        if (typeof req.session === 'undefined' || typeof req.session.userLogged === 'undefined') {
-            return res.render('productsViews/detail', {
-                title: theProduct.title,
-                theProduct,
-                vendedor: false
-            });
 
-        } else {
+        try {
 
-            if (req.session.userLogged.user_type === 'Comprador') {
+            let id = Number(req.params.id);
+            const theProduct = await db.Product.findByPk(id)
+
+            console.log(theProduct);
+
+            if (!theProduct) {
+
+                return res.redirect('/mainViews/error')
+            };
+
+            if (typeof req.session === 'undefined' || typeof req.session.userLogged === 'undefined') {
                 return res.render('productsViews/detail', {
                     title: theProduct.title,
                     theProduct,
-                    vendedor: false,
+                    vendedor: false
                 });
 
+            } else {
+
+                if (req.session.userLogged.user_type === 'Comprador') {
+                    return res.render('productsViews/detail', {
+                        title: theProduct.title,
+                        theProduct,
+                        vendedor: false,
+                    });
+
+                }
+
+                if (req.session.userLogged.user_type === 'Vendedor') {
+
+                    return res.render('productsViews/detail', {
+                        title: theProduct.title,
+                        theProduct,
+                        vendedor: true
+                    });
+                }
             }
 
-            if (req.session.userLogged.user_type === 'Vendedor') {
-
-                return res.render('productsViews/detail', {
-                    title: theProduct.title,
-                    theProduct,
-                    vendedor: true
-                });
-            }
+        } catch (error) {
+            res.redirect('/mainViews/error')
         }
+
     },
 
-    getProductPublications: (req, res) => {
+
+    getProductPublications: async (req, res) => {
 
 
         if (typeof req.session === 'undefined' || typeof req.session.userLogged === 'undefined') {
@@ -112,21 +128,45 @@ const controller = {
 
             if (req.session.userLogged.user_type === 'Vendedor') {
 
-                const products = productModel.findAll();
+                try {
+                    let allProducts = await db.Product.findAll(
+                        {raw: true,
+                            include: [
+                                { association: 'category' },
+                                { association: 'subcategory' },
+                                { association: 'type' },
+                                { association: 'manufacturer' },
+                                { association: 'user' }
+                            ],
+                        }
+                    );
 
-                return res.render('productsViews/products-publications', {
-                    title: "Productos publicados",
-                    products
-                });
+                    let userSellerProducts = allProducts.filter(function(products){
+                        return products.user_id === req.session.userLogged.id;
+                    })
+
+                    let products = userSellerProducts
+
+                    return res.render('productsViews/products-publications', {
+                        title: "Productos publicados",
+                        products 
+                    });
+                } catch (error) {
+                    res.redirect('/mainViews/error')
+                }
+
             }
 
         }
 
-
     },
+
+    // --------------------------------------------------------- //
 
 
     // -------Products managment controllers------- //
+
+    // -------Pending------ //
 
 
     createProduct: (req, res) => {
@@ -190,6 +230,8 @@ const controller = {
         productModel.deleteById(id);
         res.redirect('/product/publications');
     },
+
+    // --------------------------------------------------------- //
 
 };
 

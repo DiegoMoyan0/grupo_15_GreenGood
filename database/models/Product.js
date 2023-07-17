@@ -63,6 +63,14 @@ module.exports = (sequelize, DataTypes) => {
                 model: 'manufacturers',
                 key: 'id'
             }  
+        },
+        user_id: {
+            type: DataTypes.INTEGER,  // Pending to change Data type to one that allows UUID
+            allowNull: true, // Pending to delete this property after testing
+            references: {
+                model: 'users',
+                key: 'id'
+            }  
         }
     };
 
@@ -93,6 +101,11 @@ module.exports = (sequelize, DataTypes) => {
         Product.belongsTo(models.Manufacturer, {
             as: 'manufacturer',
             foreignKey: 'manufacturer_id'
+        });
+
+        Product.belongsTo(models.User, {
+            as: 'user',
+            foreignKey: 'user_id'
         });
         
     };

@@ -1,4 +1,4 @@
-const { v4: UUIDV4} = require('uuid');
+const { v4: UUIDV4 } = require('uuid');
 const bcrypt = require('bcryptjs');
 const { Sequelize } = require("sequelize")
 
@@ -8,43 +8,43 @@ module.exports = (sequelize, DataTypes) => {
     const cols = {
         id: {
             type: DataTypes.UUID, //SQL == CHAR(36) BINARY
-            defaultValue: Sequelize.UUIDV4 ,
+            defaultValue: Sequelize.UUIDV4,
             primaryKey: true,
         },
         first_name: {
             type: DataTypes.STRING,
-            allowNull: false,   
+            allowNull: false,
         },
         last_name: {
             type: DataTypes.STRING,
-            allowNull: false,   
+            allowNull: false,
         },
         username: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true  
+            unique: true
         },
         birth_date: {
             type: DataTypes.DATE,
-            allowNull: false,   
+            allowNull: false,
         },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true   
+            unique: true
         },
         image: {
             type: DataTypes.STRING,
-            allowNull: false,   
+            allowNull: false,
         },
         type: {
             type: DataTypes.STRING,
-            allowNull: false,   
+            allowNull: false,
         },
         phone: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true  
+            unique: true
         },
         password: {
             type: DataTypes.STRING,
@@ -70,8 +70,13 @@ module.exports = (sequelize, DataTypes) => {
 
 
     User.associate = models => {
-        
+
+        User.hasMany(models.Product, {
+            as: 'user',
+            foreignKey: 'user_id'
+        })
     };
+    ;
 
     return User;
 };

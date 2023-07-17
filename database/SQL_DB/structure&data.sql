@@ -133,12 +133,14 @@ CREATE TABLE `products` (
   `category_id` int(11) DEFAULT NULL,
   `subcategory_id` int(11) DEFAULT NULL,
   `manufacturer_id` int(11) DEFAULT NULL,
-  `type_id` int(11) DEFAULT NULL
+  `type_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `products`
 --
+
 
 INSERT INTO `products` (`id`, `title`, `description`, `image`, `info`, `price`, `discount`, `stock`, `sales_amount`, `category_id`, `subcategory_id`, `manufacturer_id`, `type_id`) VALUES
 (155, 'Air Pot Medium', 'Maceta Moderna Air Pot - Cultivo in-door - Ca', 'img-1686324366401-airpot-10L.png', 'La maceta Airpottunning mejora el tamaño y rendimiento de tus proyectos, es una Maceta con sistema automático de podado de raíz que permite un crecimiento radicular homogéneo y constante, permite ademas un drenaje hídrico de forma autónoma. Una maceta re-utilizable y de fácil guardado.       \r\nTu maceta Airpottunning consta de 3 piezas, la base, el cuerpo y los tonillos, para armarlo debes poner el cuerpo al rededor de la base, el cuerpo debe tener los orificios tapados hacia arriba, una vez esto ubicado, lo afirmas con los tornillos en el extremo inferior y superior del armado y listo!! es muy firme y la puedes volver a desarmar y armar cuando tu lo necesites, su guardado es compacto.', 3970.00, 28, 344, NULL, 1, 1, 1, 1),
@@ -187,6 +189,11 @@ INSERT INTO `products` (`id`, `title`, `description`, `image`, `info`, `price`, 
 (198, 'Shampoo y Acondicionador CBD', 'Combo cuidado Capilar natural, Shampoo + Acon', 'shampoo-acondicionador-Xml.png', 'Nuestro shampoo y acondicionador de CBD ?. Todos los beneficios del cannabis para tu cabello, este dúo es ideal si presentas caída, resequedad de medios a puntas y raíz grasa o seca. Además, gracias a la alta penetración de los ácidos grasos del cannabis, después de usarlo tu cabello se verá mucho más brillante y sedoso. Reconstruye y fortalece tu cabello. Hidratación profunda. Proporciona fuerza y elasticidad. Detiene la caída.', 1999.99, 0, 52, NULL, 2, 4, 1, 10);
 
 -- --------------------------------------------------------
+
+-- Asignar id de usuario N°1 a los productos 155, 156 y 157 para pruebas
+
+-- UPDATE `products` SET `user_id` = 1 WHERE id < 158;
+
 
 --
 -- Estructura de tabla para la tabla `shopping_session`
