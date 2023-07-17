@@ -1,5 +1,5 @@
 const { v4: UUIDV4} = require('uuid');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const { Sequelize } = require("sequelize")
 
 module.exports = (sequelize, DataTypes) => {

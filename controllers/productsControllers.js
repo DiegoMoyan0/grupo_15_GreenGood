@@ -4,19 +4,51 @@ const path = require('path');
 const productModel = require('../models/products');
 const userModel = require('../models/User.js');
 
+let db = require("../database/models");
+const Op = db.Sequelize.Op;
+
 
 const controller = {
 
-    // -------Render procutcs Views by GET------- //
+    // -------Render product Views by GET------- //
 
-    getAllProducts: (req, res) => {
-        const products = productModel.findAll();
+    /*
+       getAllProducts: (req, res) => {
+           const products = productModel.findAll();
+           console.log(products[0])
+   
+           return res.render('productsViews/products-list', {
+               title: "Todos los productos",
+               products
+           });
+       },
+   */
+    // -------Render product Views by GET------- //
 
-        return res.render('productsViews/products-list', {
-            title: "Todos los productos",
-            products
-        });
+    getAllProducts: async (req, res) => {
+
+
+        try {
+            const products = await db.Product.findAll(
+                {
+                    raw: true,
+                    include: ['type_products', 'category_products', 'subcategory_products', 'manufacturer_products'],
+                }
+
+            );
+
+            console.log(products[0])
+            return res.render('productsViews/products-list', {
+                title: "Todos los productos",
+                products: products
+            });
+        } catch (error) {
+            //error message
+            res.send('Ha ocurrido un error')
+        }
     },
+
+
 
     getProductCart: (req, res) => {
         return res.render('productsViews/shopping-cart', {
@@ -144,13 +176,13 @@ const controller = {
 
         return res.redirect('/product/publications');
     },
-    
+
     softDeleteProductDetail: (req, res) => {
 
         let id = Number(req.params.id);
         productModel.softDeleteById(id);
 
-        return res.redirect('/product/'+req.params.id+'/detail');
+        return res.redirect('/product/' + req.params.id + '/detail');
 
     },
 
