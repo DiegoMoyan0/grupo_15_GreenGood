@@ -44,7 +44,7 @@ const controller = {
 
         } catch (error) {
             console.log(error);
-            res.redirect('/mainViews/error')
+            res.redirect('/mainViews/error');
         }
     },
 
@@ -61,11 +61,10 @@ const controller = {
 
     getProductDetail: async (req, res) => {
 
-
         try {
 
             let id = Number(req.params.id);
-            const theProduct = await db.Product.findByPk(id)
+            const theProduct = await db.Product.findByPk(id);
 
             console.log(theProduct);
 
@@ -88,8 +87,7 @@ const controller = {
                         theProduct,
                         vendedor: false,
                     });
-
-                }
+                };
 
                 if (req.session.userLogged.user_type === 'Vendedor') {
 
@@ -98,17 +96,17 @@ const controller = {
                         theProduct,
                         vendedor: true
                     });
-                }
-            }
+                };
+            };
 
         } catch (error) {
             console.log(error);
-            res.redirect('/mainViews/error')
-        }
+            res.redirect('/mainViews/error');
+        };
 
     },
 
-    //Render the view where sellers users can create, update and delete their own products 
+    //Render the view where sellers-users can create, update and delete their own products 
     getProductPublications: async (req, res) => {
 
         if (typeof req.session === 'undefined' || typeof req.session.userLogged === 'undefined') {
@@ -124,7 +122,7 @@ const controller = {
                     error: true
                 });
 
-            }
+            };
 
             if (req.session.userLogged.user_type === 'Vendedor') {
 
@@ -143,9 +141,9 @@ const controller = {
 
                     let userSellerProducts = allProducts.filter(function(products){
                         return products.user_id === req.session.userLogged.id;
-                    })
+                    });
 
-                    let products = userSellerProducts
+                    let products = userSellerProducts;
 
                     let categories = await db.Category.findAll();
                     let subcategories = await db.Subcategory.findAll();
@@ -163,11 +161,11 @@ const controller = {
                 } catch (error) {
                     console.log(error);
                     res.redirect('/mainViews/error');
-                }
+                };
 
-            }
+            };
 
-        }
+        };
 
     },
 
@@ -175,9 +173,6 @@ const controller = {
 
 
     // -------Products managment controllers------- //
-
-    // -------Pending------ //
-
 
     createProduct: async (req, res) => {
         try {
@@ -209,9 +204,8 @@ const controller = {
         } catch (error) {
             console.log(error);
             res.redirect('/mainViews/error');
-        } 
+        }; 
     },
-
 
     updateProduct: async (req, res) => {
         
@@ -243,38 +237,77 @@ const controller = {
                 }
             });
 
-            res.redirect('/product/detail/' + req.params.id);
+            res.redirect('/product/publications');
             
         } catch (error) {
             console.log(error);
             res.redirect('/mainViews/error');
-        } 
+        }; 
+    },
+
+    softDeleteProduct: async (req, res) => {
+
+        try {
+
+            if (typeof req.session === 'undefined' || typeof req.session.userLogged === 'undefined') {
+                return res.render('userViews/login', { title: "Login" });
+            };
+
+            let softDeletedProduct = await db.Product.destroy({
+                where: {
+                    id: req.params.id
+                }
+            });
+
+            console.log(softDeletedProduct);
+           
+            return res.redirect('/product/publications');
+        } catch (error) {
+            console.log(error);
+            res.redirect('/mainViews/error');
+        };  
+    },
+
+    softDeleteProductDetail: async (req, res) => {
+        try {
+
+            if (typeof req.session === 'undefined' || typeof req.session.userLogged === 'undefined') {
+                return res.render('userViews/login', { title: "Login" });
+            };
+
+            let softDeletedProduct = await db.Product.destroy({
+                where: {
+                    id: req.params.id
+                }
+            });
+
+            console.log(softDeletedProduct);
+           
+            return res.redirect('/product/' + req.params.id + '/detail');
+        } catch (error) {
+            console.log(error);
+            res.redirect('/mainViews/error');
+        };
     },
 
 
-    softDeleteProduct: (req, res) => {
+    hardDeleteProduct: async (req, res) => {
 
-        let id = Number(req.params.id);
-        productModel.softDeleteById(id);
+        try {
+            let DeletedProduct = await db.Product.destroy({
+                where: {
+                    id: req.params.id
+                },
+                force: true // Hard deletion with paranoid model
+            });
 
-        return res.redirect('/product/publications');
-    },
-
-    softDeleteProductDetail: (req, res) => {
-
-        let id = Number(req.params.id);
-        productModel.softDeleteById(id);
-
-        return res.redirect('/product/' + req.params.id + '/detail');
-
-    },
-
-
-    hardDeleteProduct: (req, res) => {
-
-        let id = Number(req.params.id);
-        productModel.deleteById(id);
-        res.redirect('/product/publications');
+            console.log(DeletedProduct);
+           
+            return res.redirect('/product/publications');
+        } catch (error) {
+            console.log(error);
+            res.redirect('/mainViews/error');
+        };
     },
 
     // --------------------------------------------------------- //

@@ -71,12 +71,26 @@ module.exports = (sequelize, DataTypes) => {
                 model: 'users',
                 key: 'id'
             }  
-        }
+        },        
+        created_at: {
+            type: "TIMESTAMP",
+            defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
+        },
+        updated_at: {
+            type: "TIMESTAMP",
+            defaultValue: sequelize.literal(
+              "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"
+            ),
+        },
     };
 
     const config = {
         tableName: 'products',
-        timestamps: false
+        timestamps: true,
+        createdAt: "created_at",
+        updatedAt: "updated_at",
+        paranoid : true,
+        deletedAt: "deleted_at" 
     };
 
     const Product = sequelize.define(alias, cols, config);
