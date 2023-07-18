@@ -60,7 +60,9 @@
                             <article class="container-detail">
                                 <div class="container-price">
                                     <form action="/product/<%=product.id%>/update?_method=PUT" enctype="multipart/form-data" method="post">
-                                        <label class="label-sale-edit" for="image">Foto de Producto:</label>
+                                        <label class="label-sale-edit" for="image">Imagen actual:</label>
+                                        <img src="/images/products/<%= product.image %>" alt="product img" id="img" width="150px">
+                                        <label for="foto" id="change_photo">Cambiar imagen</label>
                                         <input class="input-sale-edit" type="file" id="foto" name="image" accept="image/*" >
 
                                         <label for="title" class="label-sale-edit">Título del producto</label>
@@ -92,39 +94,28 @@
 
                                         <label class="label-sale-edit" for="subcategory">Subcategoría:</label>
                                         <select name="subcategory" class="input-sale-edit">
-                                            <option value="" selected>Sub-categoría</option>
-                                                <% let subCategories = ['recipientes', 'materialorganico', 'salud', 'cosmetica'] %>
-                                                <% for( oneSubCategory of subCategories ) { %>
-                                                    <option 
-                                                        value="<%=oneSubCategory%>"
-                                                        <%=(product.subcategory === oneSubCategory) ? 'selected' : null %>
-                                                        > <%= mayuscPrimeraLetra(oneSubCategory) %> 
-                                                    </option>
+                                            <% subcategories.forEach(subcategory => { %>
+                                                <% if (subcategory.name == product.subcategory) { %>
+                                                    <option value="<%= subcategory.id %>" selected><%= subcategory.name %></option>
+                                                <% } else { %>
+                                                    <option value="<%= subcategory.id %>"><%= subcategory.name %></option>
                                                 <% } %>
+                                            <% }) %>
                                         </select>
 
                                         <label class="label-sale-edit" for="type">Tipo de producto:</label>
                                         <select name="type" class="input-sale-edit">
-                                            <option value="" selected>Elije el tipo de producto</option>
-                                            <% let types = ['maceta', 'bandeja', 'sustrato', 'aceite', 'crema', 'locion', 'labial', 'spray'] %>
-                                            <% for( oneType of types ) { %>
-                                                <option 
-                                                value="<%=oneType%>"
-                                                <%=(product.type === oneType) ? 'selected' : null %>
-                                                > <%= mayuscPrimeraLetra(oneType) %> </option>
-                                            <% } %>
+                                            <% types.forEach(type => { %>
+                                                <% if (type.name == product.type) { %>
+                                                    <option value="<%= type.id %>" selected><%= type.name %></option>
+                                                <% } else { %>
+                                                    <option value="<%= type.id %>"><%= type.name %></option>
+                                                <% } %>
+                                            <% }) %>
                                         </select>
 
                                         <label for="info" class="label-sale-edit">Informacion / Detalle del producto:</label>
                                         <textarea name="info" class="input-sale-edit" cols="30" rows="10"><%= product.info %></textarea>
-
-                                        <!-- Not visibles inputs for unmutables properties -->
-                                        
-                                        <input type="number" name="salesAmount" class="input-sale-edit" style="display: none;" value="<%=product.salesAmount%>"/>
-
-                                        <input type="text" name="deleted" class="input-sale-edit" style="display: none;" value="<%=product.deleted%>"/>
-
-                                        <!-- -->
 
                                         <input class="btn-save" type="submit" value="Guardar Cambios">
                                         <button class="btn-save">Cancelar</button>
@@ -185,8 +176,14 @@
 
                                 <label class="label-sale">Categoría:</label>
                                 <select name="category" id="category-children" class="input-sale" required >
-                                    <option value="cultivo">Producto para el cultivo</option>
-                                    <option value="medicinal">Producto Medicinal</option>
+                                    <% categories.forEach(category => { %>
+                                        <% if (category.name == 'Cultivo') { %>
+                                            <option value="<%= category.id %>">Producto para el cultivo</option>
+                                        <% } %>
+                                        <% if (category.name == 'Medicinal') { %>
+                                            <option value="<%= category.id %>">Producto Medicinal</option>
+                                        <% } %>
+                                    <% }) %>
                                 </select>     
                                                
                                 <div class="form-1-btns">
@@ -202,22 +199,16 @@
                                 <label class="label-sale" for="subcategory">Subcategoría:</label>
                                 <select name="subcategory" id="subcategory-children" class="input-sale" required>
                                     <option value="" selected>Elije una sub-categoria</option>
-                                    <% let subCategories = ['recipientes', 'material orgánico', 'salud', 'cosmetica']; %>
-                                    <% for( oneSubCategory of subCategories ) { %>
-                                        <option 
-                                        value="<%=oneSubCategory%>"
-                                        > <%= mayuscPrimeraLetra(oneSubCategory) %> </option>
-                                    <% }; %>
+                                    <% subcategories.forEach(subcategory => { %>
+                                            <option value="<%= subcategory.id %>"><%= subcategory.name %></option>
+                                    <% }) %>
                                 </select>
                                 <label class="label-sale" for="type">Tipo:</label>
                                 <select name="type" id="type-children" class="input-sale" required>
                                     <option value="" selected>Elije el tipo de producto</option>
-                                    <% let types = ['maceta', 'bandeja', 'sustrato', 'aceite', 'crema', 'locion', 'labial', 'spray']; %>
-                                    <% for( oneType of types ) { %>
-                                        <option 
-                                        value="<%=oneType%>"
-                                        > <%= mayuscPrimeraLetra(oneType) %> </option>
-                                    <% }; %>
+                                    <% types.forEach(type => { %>
+                                        <option value="<%= type.id %>"><%= type.name %></option>
+                                    <% }) %>
                                 </select>
 
                                 <label for="price" class="label-sale">Precio</label>
@@ -240,7 +231,7 @@
                                 <label for="stock" class="label-sale">Stock</label>
                                 <input type="number" name="stock" id ="stock-children" class="input-sale" min="1" max="100000"  id="stock-children"  placeholder="min 1" required >
 
-                                <label for="info" name="info"  class="label-sale">Información</label>
+                                <label for="info" name="info"  class="label-sale">Información detallada</label>
                                 <textarea class="input-sale" id ="info-children" name="info" rows="20" cols="50" placeholder="Escriba aquí el detalle e información útil del producto..."></textarea>
             
                                 <div class="form-3-btns" style="display: none;">
@@ -579,6 +570,24 @@
     let btn_saveEdit = document.querySelector(".btn-save");
     let btn_cancel = document.querySelector(".btn-cancel");
  
+</script>
+
+<!-- To show the product image properly at Edit-Form: -->
+<script>
+    const defaultFile = '/images/products/' + product.image;
+    const file = document.getElementById('foto');
+    const img = document.getElementById('img');
+    file.addEventListener('change', e => {
+        if(e.target.files[0]){
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                img.src = e.target.result;
+            }
+            reader.readAsDataURL(e.target.files[0]);
+        }else{
+            img.src = defaultFile;
+        }
+    })
 </script>
 
 </html>

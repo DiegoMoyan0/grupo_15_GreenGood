@@ -43,6 +43,7 @@ const controller = {
             });
 
         } catch (error) {
+            console.log(error);
             res.redirect('/mainViews/error')
         }
     },
@@ -69,7 +70,6 @@ const controller = {
             console.log(theProduct);
 
             if (!theProduct) {
-
                 return res.redirect('/mainViews/error')
             };
 
@@ -102,14 +102,14 @@ const controller = {
             }
 
         } catch (error) {
+            console.log(error);
             res.redirect('/mainViews/error')
         }
 
     },
 
-
+    //Render the view where sellers users can create, update and delete their own products 
     getProductPublications: async (req, res) => {
-
 
         if (typeof req.session === 'undefined' || typeof req.session.userLogged === 'undefined') {
             return res.render('userViews/login', { title: "Login" });
@@ -147,12 +147,22 @@ const controller = {
 
                     let products = userSellerProducts
 
+                    let categories = await db.Category.findAll();
+                    let subcategories = await db.Subcategory.findAll();
+                    let types = await db.Type.findAll();
+                    let manufacturers = await db.Manufacturer.findAll();
+
                     return res.render('productsViews/products-publications', {
                         title: "Productos publicados",
-                        products 
+                        products,
+                        categories,
+                        subcategories,
+                        types,
+                        manufacturers 
                     });
                 } catch (error) {
-                    res.redirect('/mainViews/error')
+                    console.log(error);
+                    res.redirect('/mainViews/error');
                 }
 
             }
@@ -169,40 +179,76 @@ const controller = {
     // -------Pending------ //
 
 
-    createProduct: (req, res) => {
-        let newData = req.body;
+    createProduct: async (req, res) => {
+        try {
 
-        newData.price = Number(newData.price);
-        newData.discount = Number(newData.discount);
-        newData.salesAmount = 0;
-        newData.deleted = false;
-        newData.manufactured = "Green Good";
-        newData.image = req.file ? req.file.filename : "default-product-image.jpg";
+            if (typeof req.session === 'undefined' || typeof req.session.userLogged === 'undefined') {
+                return res.render('userViews/login', { title: "Login" });
+            };
 
-        productModel.createOne(newData);
+            let newData = req.body;
 
-        res.redirect('/product/publications');
+            const newProduct = db.Product.create({
+                title : newData.title,
+                description : newData.description,
+                info: newData.info,
+                stock: Number(newData.stock),
+                price : Number(newData.price),
+                discount : Number(newData.discount),
+                sales_amount : 0,
+                image : req.file ? req.file.filename : "default-product-image.jpg",
+                category_id: newData.category,
+                subcategory_id: newData.subcategory,
+                type_id: newData.type,
+                user_id: req.session.userLogged.id,
+                manufacturer_id: 1 // Only "Green Good" by now ...
+            });
+
+            res.redirect('/product/publications');
+            
+        } catch (error) {
+            console.log(error);
+            res.redirect('/mainViews/error');
+        } 
     },
 
 
-    updateProduct: (req, res) => {
-        let id = Number(req.params.id);
-        let newData = req.body;
-        let productToEdit = productModel.findById(id)
+    updateProduct: async (req, res) => {
+        
+        try {
 
-        newData.price = Number(newData.price);
-        newData.discount = Number(newData.discount);
-        newData.salesAmount = Number(newData.salesAmount);
-        newData.image = req.file ? req.file.filename : productToEdit.image;
-        if (newData.deleted == "false") {
-            newData.deleted = false;
-        } else if (newData.deleted == "true") {
-            newData.deleted = true;
-        };
+            if (typeof req.session === 'undefined' || typeof req.session.userLogged === 'undefined') {
+                return res.render('userViews/login', { title: "Login" });
+            };
 
-        productModel.updateById(id, newData);
+            let newData = req.body;
 
-        res.redirect('/product/publications');
+            const updatedProduct = db.Product.update({
+                title : newData.title,
+                description : newData.description,
+                info: newData.info,
+                stock: Number(newData.stock),
+                price : Number(newData.price),
+                discount : Number(newData.discount),
+                sales_amount : 0,
+                image : req.file ? req.file.filename : "default-product-image.jpg",
+                category_id: newData.category,
+                subcategory_id: newData.subcategory,
+                type_id: newData.type,
+                user_id: req.session.userLogged.id,
+                manufacturer_id: 1 // Only "Green Good" by now ...
+            }, {
+                where: {
+                    id: req.params.id
+                }
+            });
+
+            res.redirect('/product/detail/' + req.params.id);
+            
+        } catch (error) {
+            console.log(error);
+            res.redirect('/mainViews/error');
+        } 
     },
 
 
