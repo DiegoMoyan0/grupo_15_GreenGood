@@ -143,13 +143,17 @@ const controller = {
                         return products.user_id === req.session.userLogged.id;
                     });
 
+                    
                     let products = userSellerProducts;
 
-                    let categories = await db.Category.findAll();
-                    let subcategories = await db.Subcategory.findAll();
-                    let types = await db.Type.findAll();
-                    let manufacturers = await db.Manufacturer.findAll();
 
+          
+                    let categories = await db.Category.findAll({raw: true});
+                    let subcategories = await db.Subcategory.findAll({raw: true});
+                    let types = await db.Type.findAll({raw: true});
+                    let manufacturers = await db.Manufacturer.findAll({raw: true});
+        
+            
                     return res.render('productsViews/products-publications', {
                         title: "Productos publicados",
                         products,

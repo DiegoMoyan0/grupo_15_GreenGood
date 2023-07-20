@@ -122,7 +122,7 @@ CREATE TABLE `order_items` (
 
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
-  `title` varchar(45) NOT NULL,
+  `title` varchar(45) NOT NULL, 
   `description` varchar(45) NOT NULL,
   `image` varchar(45) NOT NULL,
   `info` text NOT NULL,
@@ -134,9 +134,11 @@ CREATE TABLE `products` (
   `subcategory_id` int(11) DEFAULT NULL,
   `manufacturer_id` int(11) DEFAULT NULL,
   `type_id` int(11) DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL 
+  `user_id` int(11) DEFAULT NULL,
+  `created_at`TIMESTAMP NOT NULL default(CURRENT_TIMESTAMP),
+  `deleted_at`TIMESTAMP  NULL,
+  `updated_at`TIMESTAMP  NULL ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
 --
 -- Volcado de datos para la tabla `products`
 --
@@ -193,7 +195,6 @@ INSERT INTO `products` (`id`, `title`, `description`, `image`, `info`, `price`, 
 -- Asignar id de usuario N°1 a los productos 155, 156 y 157 para pruebas
 
 -- UPDATE `products` SET `user_id` = 1 WHERE id < 158;
-
 
 --
 -- Estructura de tabla para la tabla `shopping_session`
