@@ -1,12 +1,8 @@
-
 const fs = require('fs');
 const path = require('path');
-const productModel = require('../models/products');
-const userModel = require('../models/User.js');
 
 let db = require("../database/models");
-const Category = require('../database/models/Category');
-const { create } = require('domain');
+
 const Op = db.Sequelize.Op;
 
 
@@ -27,8 +23,6 @@ const controller = {
                     { association: 'manufacturer' }],
                 },
             );
-
-            console.log(products[0]);
 
             //-------To render only the name values of associated tables
             products.forEach(product => {

@@ -35,7 +35,7 @@
         <h2 id="ofertas" class="titles"> OFERTAS DESTACADAS</h2>
         <div class="card-container">
             <% products.forEach(product => { %>
-                <% if(product.discount > 15 && product.deleted === false) { %>
+                <% if(product.discount > 15) { %>
                     <article class="card">
                         <a href="/product/<%= product.id %>/detail"> <img src=/images/products/<%=product.image%> alt="img product">
                         </a>
@@ -107,7 +107,7 @@
             <div class="container" id="div-4">
                 <div class="content">
                     <h2>Productos Medicinales <i class="fa-solid fa-chevron-down"></i> </h2>
-                    <p class="p-ocult">En esta sección, ofrecemos una selección de productos a base de cannabis que pueden
+                    <p class="p-ocult">En esta sección, ofrecemos una selección de      productos a base de cannabis que pueden
                         ayudarte en el
                         manejo de diversas condiciones de salud. Desde aceites y cremas hasta tinturas y cápsulas, nuestra
                         gama de productos medicinales es cuidadosamente seleccionada para ofrecerte la mejor calidad y
