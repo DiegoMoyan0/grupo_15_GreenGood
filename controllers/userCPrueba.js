@@ -73,10 +73,10 @@ const controller = {
             res.redirect('/mainViews/error');
         }; 
 
+
 	},
 
-	loginUser: async (req, res) => {
-
+	loginUser: (req, res) => {
 
 		/* Previous validations to login a user */
 		const resultsValidations = validationResult(req);
@@ -88,20 +88,18 @@ const controller = {
 				oldData: req.body,
 			});
 		};
-		
-		try {
-	//Search user by email first
-	let searchedUser = await db.User.findOne(
-		{where:{email: req.body.email}});
+
+
+		//Search user by email first
+		let searchedUser = userModel.findByFiled('email', req.body.email);
 	
 		if (!searchedUser) {
 		//Search user by username
-			searchedUser = await db.User.findOne(
-				{where:{username: req.body.user_name}});
+			searchedUser = userModel.findByFiled('user_name', req.body.email);
 		}
 
 		if (!searchedUser) {
-		
+
 			return res.render('userViews/login', {
 				title: "Login",
 				errors: {
@@ -115,107 +113,36 @@ const controller = {
 
 		const { password: hashedPw } = searchedUser;
 		const isCorrect = bcrypt.compareSync(req.body.password, hashedPw);
-		
-				if (!isCorrect) {
-					return res.render('userViews/login', {
-						title: "Login",
-						errors: {
-							password: {
-								msg: 'Contraseña incorrecta!'
-							}
-						},
-						oldData: req.body,
-					});
-				};
-		
-				userToLoggin = searchedUser;
-				delete userToLoggin.password;
 
-				//Add the logged user to session!
-				
-				req.session.userLogged = userToLoggin;
-				
-				//Create cookie called "userEmail" to save user logged when "RememberUser is checked"
-				console.log(req.body);
-				
-				if (req.body.rememberUser) {
-					res.cookie('userEmail', searchedUser.email, { maxAge: 1000 * 60 * 60 * 24 * 360 });
-				};
-				
-				//--------------------------//
-				
-				return res.redirect('/user/profile');
+		if (!isCorrect) {
+			return res.render('userViews/login', {
+				title: "Login",
+				errors: {
+					password: {
+						msg: 'Contraseña incorrecta!'
+					}
+				},
+				oldData: req.body,
+			});
+		};
 
-} catch (error) {
-	console.log(error);
-	res.redirect('/mainViews/error');
-}
+		userToLoggin = userModel.findByFiled('email', searchedUser.email);
+		delete userToLoggin.password;
 
-		// /* Previous validations to login a user */
-		// const resultsValidations = validationResult(req);
+		//Add the logged user to session!
 
-		// if (resultsValidations.errors.length > 0) {
-		// 	return res.render('userViews/login', {
-		// 		title: "Login",
-		// 		errors: resultsValidations.mapped(),
-		// 		oldData: req.body,
-		// 	});
-		// };
+		req.session.userLogged = userToLoggin;
 
+		//Create cookie called "userEmail" to save user logged when "RememberUser is checked"
+		console.log(req.body);
 
-		// //Search user by email first
-		// let searchedUser = userModel.findByFiled('email', req.body.email);
-	
-		// if (!searchedUser) {
-		// //Search user by username
-		// 	searchedUser = userModel.findByFiled('user_name', req.body.email);
-		// }
+		if (req.body.rememberUser) {
+			res.cookie('userEmail', searchedUser.email, { maxAge: 1000 * 60 * 60 * 24 * 360 });
+		};
 
-		// if (!searchedUser) {
+		//--------------------------//
 
-		// 	return res.render('userViews/login', {
-		// 		title: "Login",
-		// 		errors: {
-		// 			email: {
-		// 				msg: 'No estas registrado!'
-		// 			}
-		// 		},
-		// 		oldData: req.body,
-		// 	});
-		// };
-
-		// const { password: hashedPw } = searchedUser;
-		// const isCorrect = bcrypt.compareSync(req.body.password, hashedPw);
-
-		// if (!isCorrect) {
-		// 	return res.render('userViews/login', {
-		// 		title: "Login",
-		// 		errors: {
-		// 			password: {
-		// 				msg: 'Contraseña incorrecta!'
-		// 			}
-		// 		},
-		// 		oldData: req.body,
-		// 	});
-		// };
-
-		// userToLoggin = userModel.findByFiled('email', searchedUser.email);
-		// delete userToLoggin.password;
-
-		// //Add the logged user to session!
-
-		// req.session.userLogged = userToLoggin;
-
-		// //Create cookie called "userEmail" to save user logged when "RememberUser is checked"
-		// console.log(req.body);
-
-		// if (req.body.rememberUser) {
-		// 	res.cookie('userEmail', searchedUser.email, { maxAge: 1000 * 60 * 60 * 24 * 360 });
-		// };
-
-		// //--------------------------//
-
-		// return res.redirect('/user/profile');
+		return res.redirect('/user/profile');
 
 	},
 

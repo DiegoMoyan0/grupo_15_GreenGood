@@ -1,13 +1,15 @@
 const path = require('path');
 const { body } = require('express-validator');
-const userModel = require('../models/User.js');
-
+// const userModel = require('../models/User.js');
+let db = require("../database/models");
+const Op = db.Sequelize.Op;
 
 const validations = [
     body('name_data').notEmpty().withMessage('Tienes que ingresar tu nombre completo!'),
     body('user_name').notEmpty().withMessage('Tienes que ingresar tu nombre de usuario!').bail()
-        .custom((value, {req}) => {
-            let userNameInDb = userModel.findByFiled('user_name', req.body.user_name);
+        .custom (async (value,{req}) => {
+            let userNameInDb = await db.User.findOne(
+				{where:{username: req.body.user_name}});
             if(userNameInDb){
                 throw new Error('Nombre de usuario ya existente, prueba con otro.');
             };
@@ -17,8 +19,9 @@ const validations = [
     body('email')
         .notEmpty().withMessage('Tienes que ingresar tu e-mail!').bail()
         .trim().isEmail().withMessage('Debes escribir un e-mail con formato valido').bail()
-        .custom((value, {req}) => {
-            let emailInDb = userModel.findByFiled('email', req.body.email);
+        .custom(async(value, {req}) => {
+            let emailInDb = await db.User.findOne(
+                {where:{email: req.body.email}});
             if(emailInDb){
                 throw new Error(`Ese e-mail ya se encuentra registrado!`);
             };

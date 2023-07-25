@@ -1,14 +1,25 @@
 //App Mw to render views with user logged data
+let db = require("../database/models");
+const Op = db.Sequelize.Op;
 
 const userModel = require('../models/User.js');
 
-function userLoggedMw(req, res, next) {
+async function userLoggedMw(req, res, next) {
     
     res.locals.isLogged = false; // Create local variable "isLogged" on FALSE
 
     let emailInCookie = req.cookies.userEmail;
-    let userFromCookie = userModel.findByFiled('email', emailInCookie);
-    let userType = userModel.findByFiled('user_type', req.body.user_type);
+
+    
+    if (!emailInCookie) {
+        return next()
+    }
+
+    let userFromCookie = await db.User.findOne(
+		{where:{email: emailInCookie}});
+        
+    // let userType = await db.User.findOne(
+	// 	{where:{user_type: req.body.user_type}});
 
     if(userFromCookie){
         req.session.userLogged = userFromCookie;

@@ -1068,5 +1068,29 @@
   "password": "$2a$12$ZVdSaAODcp4EvBUv4mpYP.aRdcPEEWrYnyhicWTzUi5Vigf6Wkzgm",
   "user_image": "default-user-photo.png",
   "id": "f05743e3-49b1-4210-bddc-6b60f2b6d3e9"
+ },
+ {
+  "name_data": "Diego Alejo Moyano",
+  "email": "diegoprueba@gmail.com",
+  "user_name": "diegomoyanoprueba",
+  "address": "Capitán Bermúdez 3508",
+  "birth_date": "2004-10-27",
+  "phone": "+5491157300010",
+  "user_type": "Comprador",
+  "password": "$2a$12$4SMgRswgxxtItED4l1L4ROl5bxnmt6l9xcnReDTyYaGukwTDC51SS",
+  "user_image": "img-user-1690066040345-propboole.png",
+  "id": "26f42a08-f820-4791-b2d1-dbc42c474119"
+ },
+ {
+  "name_data": "Diego Alejo Moyano",
+  "email": "diegovendedor@gmail.com",
+  "user_name": "diegoVendedor",
+  "address": "Capitán Bermúdez 3508",
+  "birth_date": "2004-12-28",
+  "phone": "+5491157300010",
+  "user_type": "Vendedor",
+  "password": "$2a$12$1sYHOOEeSnjXKA.K7kXHqeaKYkhGnVolbgUjKoLPoA9HLVqvmUxKu",
+  "user_image": "default-user-photo.png",
+  "id": "5d030e4d-eef3-4d51-aa9a-53114893e0de"
  }
 ]
