@@ -294,12 +294,6 @@
 
 </body>
 
-<!-- A function to capitalizate the first leter of a string -->
-<% function mayuscPrimeraLetra(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-} %> 
-<!-- ----------------------- -->
-
 
 <script>
     // Obtener referencias a los elementos del DOM
@@ -320,8 +314,27 @@
                 containerDropdown.style.display = 'block';
             } else {
                 containerDropdown.style.display = 'none';
-            }
+            };
         });
+    });
+
+   /*  To show the product image properly at Edit-Form: */
+
+    
+    const file = document.getElementById('foto');
+    const img = document.getElementById('img');
+    let defaultFile = img.src;
+
+    file.addEventListener('change', e => {
+        if(e.target.files[0]){
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(e.target.files[0]);
+        }else{
+            img.src = defaultFile;
+        };
     });
 
 </script>
@@ -572,22 +585,6 @@
  
 </script>
 
-<!-- To show the product image properly at Edit-Form: -->
-<script>
-    const defaultFile = '/images/products/' + product.image;
-    const file = document.getElementById('foto');
-    const img = document.getElementById('img');
-    file.addEventListener('change', e => {
-        if(e.target.files[0]){
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                img.src = e.target.result;
-            }
-            reader.readAsDataURL(e.target.files[0]);
-        }else{
-            img.src = defaultFile;
-        }
-    })
-</script>
+
 
 </html>
