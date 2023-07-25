@@ -19,7 +19,7 @@
             <li><a href="/">Inicio</a></li>
             <li><a href="/info">Info</a></li>
             <li><a href="/product/list">Productos</a></li>
-            <% if (isLogged && userLogged.user_type === 'Vendedor') { %>
+            <% if (isLogged && userLogged.type === 'Vendedor') { %>
                 <li><a href="/product/publications">Vender</a></li>
             <% } %>
             <li><a href="/faqs">Ayuda</a></li><br>
@@ -35,7 +35,7 @@
             </a>
             <% if (isLogged) { %>
                 <div class="content-userlogged-icons" id="userOptionsLink">
-                    <img class="icons-navbar" src="/images/users/<%= userLogged.user_image %>" alt="user_image" id="user_image_header">
+                    <img class="icons-navbar" src="/images/users/<%= userLogged.image %>" alt="user_image" id="user_image_header">
                     <p id="loggedName"><% let name = userLogged.first_name.split(' ')%><%= name[0]%></p>
                 </div>
             <% }else{ %>

@@ -17,10 +17,10 @@
             <section>
                 <h1>Bienvenido <%=user.user_name%></h1>
                 <h2>Perfil:</h2>
-                <img src="/images/users/<%=user.user_image%>">
+                <img src="/images/users/<%=user.image%>">
                 <div class="info-container">
                     <div class="info">
-                        <span>Nombre completo:</span> <%=user.name_data%>
+                        <span>Nombre completo:</span> <%=user.first_name%>
                     </div>
                     <div class="info">
                         <span>Email:</span> <%=user.email%>
@@ -35,7 +35,7 @@
                         <span>Dirección:</span> <%=user.address%>
                     </div>
                     <div class="info">
-                        <span>Tipo de usuario:</span> <%=user.user_type%>
+                        <span>Tipo de usuario:</span> <%=user.type%>
                     </div>
                 </div>
                 <button class="save-button-icon">

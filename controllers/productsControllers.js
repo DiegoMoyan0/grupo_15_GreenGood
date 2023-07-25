@@ -6,6 +6,7 @@ const userModel = require('../models/User.js');
 
 let db = require("../database/models");
 const Category = require('../database/models/Category');
+const { create } = require('domain');
 const Op = db.Sequelize.Op;
 
 
@@ -16,15 +17,18 @@ const controller = {
     getAllProducts: async (req, res) => {
 
         try {
-            const products = await db.Product.findAll(
-                {
-                    include: [
-                        { association: 'category' },
-                        { association: 'subcategory' },
-                        { association: 'type' },
-                        { association: 'manufacturer' }],
-                }
+            const products = await db.Product.findAll({
+                raw: true,
+                nest: true,
+                include: [
+                    { association: 'category' },
+                    { association: 'subcategory' },
+                    { association: 'type' },
+                    { association: 'manufacturer' }],
+                },
             );
+
+            console.log(products[0]);
 
             //-------To render only the name values of associated tables
             products.forEach(product => {
@@ -81,7 +85,7 @@ const controller = {
 
             } else {
 
-                if (req.session.userLogged.user_type === 'Comprador') {
+                if (req.session.userLogged.type === 'Comprador') {
                     return res.render('productsViews/detail', {
                         title: theProduct.title,
                         theProduct,
@@ -89,7 +93,7 @@ const controller = {
                     });
                 };
 
-                if (req.session.userLogged.user_type === 'Vendedor') {
+                if (req.session.userLogged.type === 'Vendedor') {
 
                     return res.render('productsViews/detail', {
                         title: theProduct.title,
@@ -114,7 +118,7 @@ const controller = {
 
         } else {
 
-            if (req.session.userLogged.user_type === 'Comprador') {
+            if (req.session.userLogged.type === 'Comprador') {
 
                 return res.render('userViews/profile', {
                     title: "Tu perfil de usuario",
@@ -124,11 +128,13 @@ const controller = {
 
             };
 
-            if (req.session.userLogged.user_type === 'Vendedor') {
+            if (req.session.userLogged.type === 'Vendedor') {
 
                 try {
                     let allProducts = await db.Product.findAll(
-                        {raw: true,
+                        {
+                            raw: true,
+                            nest: true,
                             include: [
                                 { association: 'category' },
                                 { association: 'subcategory' },
@@ -136,24 +142,19 @@ const controller = {
                                 { association: 'manufacturer' },
                                 { association: 'user' }
                             ],
-                        }
-                    );
+                        });
 
                     let userSellerProducts = allProducts.filter(function(products){
                         return products.user_id === req.session.userLogged.id;
                     });
-
-                    
+     
                     let products = userSellerProducts;
 
-
-          
                     let categories = await db.Category.findAll({raw: true});
                     let subcategories = await db.Subcategory.findAll({raw: true});
                     let types = await db.Type.findAll({raw: true});
                     let manufacturers = await db.Manufacturer.findAll({raw: true});
         
-            
                     return res.render('productsViews/products-publications', {
                         title: "Productos publicados",
                         products,
@@ -220,8 +221,13 @@ const controller = {
             };
 
             let newData = req.body;
+            console.log('NewData');
+            console.log(newData);
+            console.log(req.file);
+            console.log('id:');
+            console.log(req.params.id);
 
-            const updatedProduct = db.Product.update({
+            const updatedProduct = await db.Product.update({
                 title : newData.title,
                 description : newData.description,
                 info: newData.info,
@@ -229,17 +235,22 @@ const controller = {
                 price : Number(newData.price),
                 discount : Number(newData.discount),
                 sales_amount : 0,
-                image : req.file ? req.file.filename : "default-product-image.jpg",
+                image : req.file == 'undefined' ? "default-product-image.jpg" : req.file.filename,
                 category_id: newData.category,
                 subcategory_id: newData.subcategory,
                 type_id: newData.type,
                 user_id: req.session.userLogged.id,
-                manufacturer_id: 1 // Only "Green Good" by now ...
+                manufacturer_id: 1, // Only "Green Good" by now ...
+                created_at: null,
+                updated_at: null,
+                deleted_at: null
             }, {
                 where: {
                     id: req.params.id
                 }
             });
+            console.log('Product:');
+            console.log(updatedProduct);
 
             res.redirect('/product/publications');
             
