@@ -7,8 +7,8 @@ module.exports = (sequelize, DataTypes) => {
 
     const cols = {
         id: {
-            type: DataTypes.UUID, //SQL == CHAR(36) BINARY
-            defaultValue: Sequelize.UUIDV4,
+            type: DataTypes.INTEGER, //SQL == CHAR(36) BINARY
+            autoIncrement: true,
             primaryKey: true,
         },
         first_name: {
@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         image: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         type: {
             type: DataTypes.STRING,

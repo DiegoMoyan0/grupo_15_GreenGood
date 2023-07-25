@@ -4,6 +4,7 @@ const userModel = require('../models/User.js');
 const bcrypt = require('bcryptjs');
 const { validationResult } = require('express-validator');
 let db = require("../database/models");
+const { log } = require('console');
 const Op = db.Sequelize.Op;
 
 const controller = {
@@ -151,65 +152,142 @@ const controller = {
 	res.redirect('/mainViews/error');
 }
 	},
+	updateUser: async (req, res) => {
 
-	updateUser: (req, res) => {
+		// /* Previous validations to edit data from a user */
+		// const resultsValidations = validationResult(req);
 
-		/* Previous validations to edit data from a user */
-		const resultsValidations = validationResult(req);
+		// if (resultsValidations.errors.length > 0) {
+		// 	return res.render('users/profile', {
+		// 		title: "Tu perfil",
+		// 		errors: resultsValidations.mapped(),
+		// 		oldData: req.body,
+		// 		oldFile: req.file
+		// 	});
+		// };
 
-		if (resultsValidations.errors.length > 0) {
-			return res.render('users/profile', {
-				title: "Tu perfil",
-				errors: resultsValidations.mapped(),
-				oldData: req.body,
-				oldFile: req.file
-			});
-		};
+		// let userNameInDb = await db.User.findOne(
+		// 	{where:{username: req.body.user_name}});
 
-		let userNameInDb = userModel.findByFiled('user_name', req.body.user_name);
+		// if (userNameInDb) {
+		// 	return res.render('users/profile', {
+		// 		title: "Tu perfil",
+		// 		errors: {
+		// 			user_name: {
+		// 				msg: 'Nombre de usuario ya existente, prueba con otro.'
+		// 			}
+		// 		},
+		// 		oldData: req.body,
+		// 		oldFile: req.file
+		// 	});
+		// }
 
-		if (userNameInDb) {
-			return res.render('users/profile', {
-				title: "Tu perfil",
-				errors: {
-					user_name: {
-						msg: 'Nombre de usuario ya existente, prueba con otro.'
-					}
-				},
-				oldData: req.body,
-				oldFile: req.file
-			});
-		}
+		// let mailInDb = await db.User.findOne(
+		// 	{where:{email: req.body.email}});
 
-		let mailInDb = userModel.findByFiled('email', req.body.email);
-
-		if (mailInDb) {
-			return res.render('users/profile', {
-				title: "Tu perfil",
-				errors: {
-					email: {
-						msg: 'Ese e-mail ya se encuentra registrado!'
-					}
-				},
-				oldData: req.body,
-				oldFile: req.file
-			});
-		}
+		// if (mailInDb) {
+		// 	return res.render('users/profile', {
+		// 		title: "Tu perfil",
+		// 		errors: {
+		// 			email: {
+		// 				msg: 'Ese e-mail ya se encuentra registrado!'
+		// 			}
+		// 		},
+		// 		oldData: req.body,
+		// 		oldFile: req.file
+		// 	});
+		// }
 
 		/* Update user data  */
-		const user = { ...req.body };
+	 	let user_image = req.file ? req.file.filename : "default-user-photo.jpg";
 
-		const hashedPassword = bcrypt.hashSync(user.password, 12);
-		user.password = hashedPassword;
-		delete user.password_confirm;
+		try {
+			let newData = req.body;
 
-		user.user_image = req.file ? req.file.filename : "default-user-photo.jpg";
+			const updatedUser = await db.User.update({
+				first_data: newData.name_data,
+				last_data: newData.name_data,
+				username: newData.user_name,
+				birth_date: newData.birth_date,
+				email: newData.email,
+				password: newData.password,
+				//  adress: newData.adress,
+				image: user_image,
+				type: newData.user_type,
+				phone: newData.phone
+			}, {
+				where: {
+					id: req.params.id
+				}
+			});
 
-		userModel.updateById(user.id, user);
+console.log("NEWDATAAAAAAAAAAAAAAAAAAAAAAA");
+console.log(newData);
+			res.redirect('/user/profile');
 
-		res.redirect('/');
+		} catch (error) {
+			console.log(error);
+			res.redirect('/mainViews/error');
+		}
+	}
+	// updateUser: (req, res) => {
 
-	},
+	// 	/* Previous validations to edit data from a user */
+	// 	const resultsValidations = validationResult(req);
+
+	// 	if (resultsValidations.errors.length > 0) {
+	// 		return res.render('users/profile', {
+	// 			title: "Tu perfil",
+	// 			errors: resultsValidations.mapped(),
+	// 			oldData: req.body,
+	// 			oldFile: req.file
+	// 		});
+	// 	};
+
+	// 	let userNameInDb = userModel.findByFiled('user_name', req.body.user_name);
+
+	// 	if (userNameInDb) {
+	// 		return res.render('users/profile', {
+	// 			title: "Tu perfil",
+	// 			errors: {
+	// 				user_name: {
+	// 					msg: 'Nombre de usuario ya existente, prueba con otro.'
+	// 				}
+	// 			},
+	// 			oldData: req.body,
+	// 			oldFile: req.file
+	// 		});
+	// 	}
+
+	// 	let mailInDb = userModel.findByFiled('email', req.body.email);
+
+	// 	if (mailInDb) {
+	// 		return res.render('users/profile', {
+	// 			title: "Tu perfil",
+	// 			errors: {
+	// 				email: {
+	// 					msg: 'Ese e-mail ya se encuentra registrado!'
+	// 				}
+	// 			},
+	// 			oldData: req.body,
+	// 			oldFile: req.file
+	// 		});
+	// 	}
+
+	// 	/* Update user data  */
+	// 	const user = { ...req.body };
+
+	// 	const hashedPassword = bcrypt.hashSync(user.password, 12);
+	// 	user.password = hashedPassword;
+	// 	delete user.password_confirm;
+
+	// 	user.user_image = req.file ? req.file.filename : "default-user-photo.jpg";
+
+	// 	userModel.updateById(user.id, user);
+
+	// 	res.redirect('/');
+
+	// },
 }
 
 module.exports = controller;

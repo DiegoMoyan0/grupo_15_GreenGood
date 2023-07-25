@@ -15,50 +15,54 @@
         </div>
         <main>
             <section>
-                <h1>Bienvenido <%=user.user_name%></h1>
+                <h1>Bienvenido <%=user.user_name%>
+                </h1>
                 <h2>Perfil:</h2>
-                <img src="/images/users/<%=user.image%>">
-                <div class="info-container">
-                    <div class="info">
-                        <span>Nombre completo:</span> <%=user.first_name%>
+
+                <form class="form-login" action="/user/<%=user.id%>/update?_method=PUT" enctype="multipart/form-data" method="POST">
+                    <img src="/images/users/<%=user.image%>" alt="user img" id="img">
+                    <input class="input-sale-edit" type="file" id="foto" name="image" accept="image/*">
+                    <div class="info-container">
+                        <span>Nombre completo:</span>
+                        <input class="info" value="<%=user.first_name%>" name="name_data" >
+                        <span>Email:</span>
+                        <input class="info" name="email"  value="<%=user.email%>">
+                        <span>Teléfono:</span>
+                        <input class="info" name="user_name"  value="<%=user.username%>">
+                        <span>Teléfono:</span>
+                        <input name="phone"  class="info" value="<%=user.phone%>">
+                        <span>Fecha de nacimiento:</span>
+                        <input name="birth_date"  class="info" value="<%=user.birth_date%>">
+                        <span>Dirección:</span>
+                        <input name="address"  class=" info" value="<%=user.address%>">
+                        <span>Tipo de usuario:</span>
+                        <input name="user_type" class=" info" value="<%=user.type%>">
                     </div>
-                    <div class="info">
-                        <span>Email:</span> <%=user.email%>
-                    </div>
-                    <div class="info">
-                        <span>Teléfono:</span> <%=user.phone%>
-                    </div>
-                    <div class="info">
-                        <span>Fecha de nacimiento:</span> <%=user.birth_date%>
-                    </div>
-                    <div class="info">
-                        <span>Dirección:</span> <%=user.address%>
-                    </div>
-                    <div class="info">
-                        <span>Tipo de usuario:</span> <%=user.type%>
-                    </div>
-                </div>
-                <button class="save-button-icon">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                </button>
-                <button class="save-button">Guardar cambios</button>
+                    <button class="save-button-icon">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                    <button type="submit" class="save-button">Guardar cambios</button>
+                </form>
+                <!-- <form action="/product/    falta boca abierta       %= product.id %>/delete?_method=DELETE" method="POST" onsubmit="return confirm('¿Está seguro que desea eliminar este producto de manera permanente?')">
+                    <input type="submit" class="btn-delete" value="Eliminar">
+                </form> -->
             </section>
         </main>
-    
-        <script>
+
+        <!-- <script>
             const saveButtonIcon = document.querySelector('.save-button-icon');
             const saveButton = document.querySelector('.save-button');
-    
+
             saveButtonIcon.addEventListener('click', () => {
                 saveButtonIcon.style.display = 'none';
                 saveButton.style.display = 'block';
             });
-    
+
             saveButton.addEventListener('click', () => {
                 saveButton.style.display = 'none';
                 saveButtonIcon.style.display = 'block';
             });
-        </script>
+        </script> -->
         <!---------------------------------  FOOTER ---------------------------- -->
 
         <footer>

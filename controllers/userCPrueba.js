@@ -1,14 +1,6 @@
-const fs = require('fs');
-const path = require('path');
-const userModel = require('../models/User.js');
-const bcrypt = require('bcryptjs');
-const { validationResult } = require('express-validator');
-let db = require("../database/models");
-const Op = db.Sequelize.Op;
-
 const controller = {
 
-	updateUser: (req, res) => {
+	updateUser: async (req, res) => {
 
 		/* Previous validations to edit data from a user */
 		const resultsValidations = validationResult(req);
@@ -22,7 +14,8 @@ const controller = {
 			});
 		};
 
-		let userNameInDb = userModel.findByFiled('user_name', req.body.user_name);
+		let userNameInDb = await db.User.findOne(
+			{where:{username: req.body.user_name}});
 
 		if (userNameInDb) {
 			return res.render('users/profile', {
@@ -37,7 +30,8 @@ const controller = {
 			});
 		}
 
-		let mailInDb = userModel.findByFiled('email', req.body.email);
+		let mailInDb = await db.User.findOne(
+			{where:{email: req.body.email}});
 
 		if (mailInDb) {
 			return res.render('users/profile', {
@@ -53,18 +47,33 @@ const controller = {
 		}
 
 		/* Update user data  */
-		const user = { ...req.body };
 
-		const hashedPassword = bcrypt.hashSync(user.password, 12);
-		user.password = hashedPassword;
-		delete user.password_confirm;
+		try {
+			let newData = req.body;
 
-		user.user_image = req.file ? req.file.filename : "default-user-photo.jpg";
+			const updatedUser = await db.User.update({
+				name_data: newData.first_name,
+				name_data: newData.last_name,
+				user_name: newData.user_name,
+				birth_date: newData.birth_date,
+				email: newData.email,
+				password: newData.password,
+				adress: newData.adress,
+				user_image: newData.user_image,
+				user_type: newData.user_type,
+				phone: newData.phone
+			}, {
+				where: {
+					id: req.params.id
+				}
+			});
 
-		userModel.updateById(user.id, user);
+			res.redirect('/user/profile');
 
-		res.redirect('/');
-
+		} catch (error) {
+			console.log(error);
+			res.redirect('/mainViews/error');
+		}
 	},
 }
 
