@@ -105,14 +105,31 @@ const controller = {
     },
 
     //Render the view where sellers-users can create, update and delete their own products 
+    
     getProductPublications: async (req, res) => {
 
+        /*
         if (typeof req.session === 'undefined' || typeof req.session.userLogged === 'undefined') {
             return res.render('userViews/login', { title: "Login" });
 
         } else {
+        */
 
-            if (req.session.userLogged.type === 'Comprador') {
+            //temporary line 
+
+            type  = 'Vendedor';
+
+            ///
+
+
+
+           // if (req.session.userLogged.type === 'Comprador') {
+
+            //temporary line 
+
+           if (type === 'Comprador') {
+
+            //
 
                 return res.render('userViews/profile', {
                     title: "Tu perfil de usuario",
@@ -122,10 +139,21 @@ const controller = {
 
             };
 
-            if (req.session.userLogged.type === 'Vendedor') {
+            //if (req.session.userLogged.type === 'Vendedor') {
+
+            //temporary line 
+
+              if (type === 'Vendedor') {
+
+            //
 
                 try {
-                    let allProducts = await db.Product.findAll(
+                  //  let allProducts = await db.Product.findAll(
+
+                      //temporary line 
+
+                      let products = await db.Product.findAll(
+                      //
                         {
                             raw: true,
                             nest: true,
@@ -138,11 +166,14 @@ const controller = {
                             ],
                         });
 
+                        /*
+
                     let userSellerProducts = allProducts.filter(function(products){
                         return products.user_id === req.session.userLogged.id;
                     });
      
                     let products = userSellerProducts;
+                    */
 
                     let categories = await db.Category.findAll({raw: true});
                     let subcategories = await db.Subcategory.findAll({raw: true});
@@ -164,7 +195,7 @@ const controller = {
 
             };
 
-        };
+      //  };
 
     },
 
@@ -175,14 +206,18 @@ const controller = {
 
     createProduct: async (req, res) => {
         try {
+            /*
 
             if (typeof req.session === 'undefined' || typeof req.session.userLogged === 'undefined') {
                 return res.render('userViews/login', { title: "Login" });
             };
+            */
 
             let newData = req.body;
 
-            const newProduct = db.Product.create({
+            
+
+           let newProduct = db.Product.create({
                 title : newData.title,
                 description : newData.description,
                 info: newData.info,
@@ -194,9 +229,14 @@ const controller = {
                 category_id: newData.category,
                 subcategory_id: newData.subcategory,
                 type_id: newData.type,
-                user_id: req.session.userLogged.id,
-                manufacturer_id: 1 // Only "Green Good" by now ...
+               // user_id: req.session.userLogged.id,
+               manufacturer_id: 1 // Only "Green Good" by now ...
             });
+
+            
+
+            console.log(newProduct)
+            console.log(newData)
 
             res.redirect('/product/publications');
             
@@ -210,26 +250,21 @@ const controller = {
         
         try {
 
+            /*
+
             if (typeof req.session === 'undefined' || typeof req.session.userLogged === 'undefined') {
                 return res.render('userViews/login', { title: "Login" });
             };
+            */
 
             let newData = req.body;
-            let newImage = "";
-            if(!req.file){
-                newImage = "default-product-image.jpg";
-            } else {
-                newImage = req.file.filename;
-            };
-             
-            console.log('NewData');
-            console.log(newData);
-            console.log(req.file);
-            console.log(newImage);
             console.log('id:');
             console.log(req.params.id);
+            console.log(newData);
+        
 
             const updatedProduct = await db.Product.update({
+                id: req.params.id,
                 title : newData.title,
                 description : newData.description,
                 info: newData.info,
@@ -237,19 +272,25 @@ const controller = {
                 price : Number(newData.price),
                 discount : Number(newData.discount),
                 sales_amount : 0,
-                image : newImage,
-                category_id: newData.category,
+                image : typeof req.file === 'undefined' ? "default-product-image.jpg" : req.file.filename,
+               // category_id: newData.category,
                 subcategory_id: newData.subcategory,
                 type_id: newData.type,
-                user_id: req.session.userLogged.id,
+                //user_id: req.session.userLogged.id,
+                user_id: 2,
                 manufacturer_id: 1, // Only "Green Good" by now ...
-                }, {
-                    where: {
-                        id: Number(req.params.id)
+               // created_at: null,
+                updated_at: new Date(),
+                //deleted_at: null
+            }, {
+                where: {
+                    id: req.params.id 
                 }
             });
-            console.log('Product:');
-            console.log(updatedProduct);
+            //console.log('Product:');
+           // console.log(updatedProduct);
+          //  console.log(newData)
+          //  console.log(req.params.id)
 
             res.redirect('/product/publications');
             

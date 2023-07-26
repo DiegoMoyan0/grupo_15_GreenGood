@@ -137,7 +137,7 @@ CREATE TABLE `products` (
   `user_id` int(11) DEFAULT NULL,
   `created_at`TIMESTAMP NOT NULL default(CURRENT_TIMESTAMP),
   `deleted_at`TIMESTAMP  NULL,
-  `updated_at`TIMESTAMP  NULL ON UPDATE CURRENT_TIMESTAMP
+  `updated_at`TIMESTAMP  NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 --
 -- Volcado de datos para la tabla `products`
@@ -194,7 +194,7 @@ INSERT INTO `products` (`id`, `title`, `description`, `image`, `info`, `price`, 
 
 -- Asignar id de usuario N°1 a los productos 155, 156 y 157 para pruebas
 
--- UPDATE `products` SET `user_id` = 1 WHERE id < 158;
+-- UPDATE `products` SET `user_id` = 2 WHERE id < 158;
 
 --
 -- Estructura de tabla para la tabla `shopping_session`
@@ -278,7 +278,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `username`, `email`, `birth_date`, `image`, `phone`, `type`, `password`) VALUES
-(1, 'Usuario', 'De Prueba', 'usuariodeprueba', 'usuario@prueba.com', '1993-07-02', 'default-user-photo.png', '0521547898', 'Administrador', 'pruebapassword');
+(1, 'Usuario', 'De Prueba', 'usuariodeprueba', 'usuario@prueba.com', '1993-07-02', 'default-user-photo.png', '0521547898', 'Administrador', 'pruebapassword'),
+(2, 'julian', 'vendedor', 'julianvendedor', 'usuario@vendedor.com', '1993-07-02', 'default-user-photo.png', '9999999999', 'Vendedor', 'pruebapassword'),
+(3, 'julian', 'comprador', 'juliancomprador', 'usuario@comprador.com', '1993-07-02', 'default-user-photo.png', '9999999999', 'Comprador', 'pruebapassword');
 
 -- --------------------------------------------------------
 

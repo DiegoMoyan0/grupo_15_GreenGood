@@ -40,7 +40,8 @@ router.get('/logout', authMw, userController.getLogout);
 /*** POST FORMS ***/ 
 router.post('/entry',validationsLoginMw, userController.loginUser); 
 router.post('/register', uploadPhoto.single('user_image'), validationsRegisterMw, userController.registerUser);
-router.put('/register', uploadPhoto.single('user_image'), validationsUpdateMw, userController.updateUser);
+router.put('/:id/update', uploadPhoto.single('user_image'), validationsUpdateMw, userController.updateUser);
 
+router.delete('/:id/delete', userController.hardDeleteUser);
 
 module.exports = router;
