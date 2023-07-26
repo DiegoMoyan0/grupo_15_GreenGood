@@ -153,51 +153,6 @@ const controller = {
 }
 	},
 	updateUser: async (req, res) => {
-
-		// /* Previous validations to edit data from a user */
-		// const resultsValidations = validationResult(req);
-
-		// if (resultsValidations.errors.length > 0) {
-		// 	return res.render('users/profile', {
-		// 		title: "Tu perfil",
-		// 		errors: resultsValidations.mapped(),
-		// 		oldData: req.body,
-		// 		oldFile: req.file
-		// 	});
-		// };
-
-		// let userNameInDb = await db.User.findOne(
-		// 	{where:{username: req.body.user_name}});
-
-		// if (userNameInDb) {
-		// 	return res.render('users/profile', {
-		// 		title: "Tu perfil",
-		// 		errors: {
-		// 			user_name: {
-		// 				msg: 'Nombre de usuario ya existente, prueba con otro.'
-		// 			}
-		// 		},
-		// 		oldData: req.body,
-		// 		oldFile: req.file
-		// 	});
-		// }
-
-		// let mailInDb = await db.User.findOne(
-		// 	{where:{email: req.body.email}});
-
-		// if (mailInDb) {
-		// 	return res.render('users/profile', {
-		// 		title: "Tu perfil",
-		// 		errors: {
-		// 			email: {
-		// 				msg: 'Ese e-mail ya se encuentra registrado!'
-		// 			}
-		// 		},
-		// 		oldData: req.body,
-		// 		oldFile: req.file
-		// 	});
-		// }
-
 		/* Update user data  */
 	 	let user_image = req.file ? req.file.filename : "default-user-photo.jpg";
 
@@ -205,11 +160,11 @@ const controller = {
 			let newData = req.body;
 
 			const updatedUser = await db.User.update({
-				first_data: newData.name_data,
-				last_data: newData.name_data,
+				first_name: newData.first_name,
+				last_name: newData.last_name,
 				username: newData.user_name,
 				birth_date: newData.birth_date,
-				email: newData.email,
+				// email: newData.email,
 				password: newData.password,
 				//  adress: newData.adress,
 				image: user_image,
@@ -221,73 +176,32 @@ const controller = {
 				}
 			});
 
-console.log("NEWDATAAAAAAAAAAAAAAAAAAAAAAA");
-console.log(newData);
 			res.redirect('/user/profile');
 
 		} catch (error) {
 			console.log(error);
 			res.redirect('/mainViews/error');
 		}
-	}
-	// updateUser: (req, res) => {
+	},
 
-	// 	/* Previous validations to edit data from a user */
-	// 	const resultsValidations = validationResult(req);
 
-	// 	if (resultsValidations.errors.length > 0) {
-	// 		return res.render('users/profile', {
-	// 			title: "Tu perfil",
-	// 			errors: resultsValidations.mapped(),
-	// 			oldData: req.body,
-	// 			oldFile: req.file
-	// 		});
-	// 	};
+    hardDeleteUser: async (req, res) => {
 
-	// 	let userNameInDb = userModel.findByFiled('user_name', req.body.user_name);
-
-	// 	if (userNameInDb) {
-	// 		return res.render('users/profile', {
-	// 			title: "Tu perfil",
-	// 			errors: {
-	// 				user_name: {
-	// 					msg: 'Nombre de usuario ya existente, prueba con otro.'
-	// 				}
-	// 			},
-	// 			oldData: req.body,
-	// 			oldFile: req.file
-	// 		});
-	// 	}
-
-	// 	let mailInDb = userModel.findByFiled('email', req.body.email);
-
-	// 	if (mailInDb) {
-	// 		return res.render('users/profile', {
-	// 			title: "Tu perfil",
-	// 			errors: {
-	// 				email: {
-	// 					msg: 'Ese e-mail ya se encuentra registrado!'
-	// 				}
-	// 			},
-	// 			oldData: req.body,
-	// 			oldFile: req.file
-	// 		});
-	// 	}
-
-	// 	/* Update user data  */
-	// 	const user = { ...req.body };
-
-	// 	const hashedPassword = bcrypt.hashSync(user.password, 12);
-	// 	user.password = hashedPassword;
-	// 	delete user.password_confirm;
-
-	// 	user.user_image = req.file ? req.file.filename : "default-user-photo.jpg";
-
-	// 	userModel.updateById(user.id, user);
-
-	// 	res.redirect('/');
-
-	// },
+        try {
+            let DeletedUser = await db.User.destroy({
+                where: {
+                    id: req.params.id
+                },
+                force: true // Hard deletion with paranoid model
+            });
+           
+            return res.redirect('userViews/login');
+        } catch (error) {
+            console.log(error);
+            res.redirect('/mainViews/error');
+        };
+    }
+	
 }
 
 module.exports = controller;

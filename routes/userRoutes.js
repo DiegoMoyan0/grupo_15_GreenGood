@@ -42,8 +42,6 @@ router.post('/entry',validationsLoginMw, userController.loginUser);
 router.post('/register', uploadPhoto.single('user_image'), validationsRegisterMw, userController.registerUser);
 router.put('/:id/update', uploadPhoto.single('user_image'), validationsUpdateMw, userController.updateUser);
 
-/*** @EDIT ONE USER ***/ 
-// router.put('/:id/update',uploadPhoto.single('image'), userController.updateUser);
-
+router.delete('/:id/delete', userController.hardDeleteUser);
 
 module.exports = router;

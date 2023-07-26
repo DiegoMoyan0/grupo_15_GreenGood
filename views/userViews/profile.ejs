@@ -19,50 +19,67 @@
                 </h1>
                 <h2>Perfil:</h2>
 
-                <form class="form-login" action="/user/<%=user.id%>/update?_method=PUT" enctype="multipart/form-data" method="POST">
+                <form class="form-login" action="/user/<%=user.id%>/update?_method=PUT" enctype="multipart/form-data"
+                    method="POST">
                     <img src="/images/users/<%=user.image%>" alt="user img" id="img">
                     <input class="input-sale-edit" type="file" id="foto" name="image" accept="image/*">
                     <div class="info-container">
-                        <span>Nombre completo:</span>
-                        <input class="info" value="<%=user.first_name%>" name="name_data" >
+                        <span>Nombre:</span>
+                        <input class="info" value="<%=user.first_name%>" name="first_name">
+                        <span>Apellido:</span>
+                        <input class="info" value="<%=user.last_name%>" name="last_name">
                         <span>Email:</span>
-                        <input class="info" name="email"  value="<%=user.email%>">
+                        <input class="info" value="<%=user.email%>">
+                        <span>Username:</span>
+                        <input class="info" name="user_name" value="<%=user.username%>">
                         <span>Teléfono:</span>
-                        <input class="info" name="user_name"  value="<%=user.username%>">
-                        <span>Teléfono:</span>
-                        <input name="phone"  class="info" value="<%=user.phone%>">
+                        <input name="phone" class="info" value="<%=user.phone%>">
                         <span>Fecha de nacimiento:</span>
-                        <input name="birth_date"  class="info" value="<%=user.birth_date%>">
+                        <input name="birth_date" class="info" value="<%=user.birth_date%>">
                         <span>Dirección:</span>
-                        <input name="address"  class=" info" value="<%=user.address%>">
-                        <span>Tipo de usuario:</span>
-                        <input name="user_type" class=" info" value="<%=user.type%>">
+                        <input name="address" class=" info" value="<%=user.address%>">
+                        <span>Tipo de usuario:</span><br>
+                        <label for="Vendedor">Vendedor</label>
+                        <input type="radio" id="Vendedor" name="user_type" value="Vendedor" <% if
+                            (user.type==="Vendedor" ) { %> checked <% } %>>
+
+                            <label for="Comprador">Comprador</label>
+                            <input type="radio" id="Comprador" name="user_type" value="Comprador" <% if
+                                (user.type==="Comprador" ) { %> checked <% } %>>
                     </div>
                     <button class="save-button-icon">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </button>
+                    <button class="cancelar-button" style="display: none;">Cancelar</button>
                     <button type="submit" class="save-button">Guardar cambios</button>
                 </form>
-                <!-- <form action="/product/    falta boca abierta       %= product.id %>/delete?_method=DELETE" method="POST" onsubmit="return confirm('¿Está seguro que desea eliminar este producto de manera permanente?')">
+
+                <form action="/user/<%= user.id %>/delete?_method=DELETE" method="POST"
+                    onsubmit="return confirm('¿Está seguro que desea eliminar su cuenta de manera permanente?')">
                     <input type="submit" class="btn-delete" value="Eliminar">
-                </form> -->
+                </form>
             </section>
         </main>
 
-        <!-- <script>
-            const saveButtonIcon = document.querySelector('.save-button-icon');
-            const saveButton = document.querySelector('.save-button');
+        // <script>
+        //     const saveButtonIcon = document.querySelector('.save-button-icon');
+        //     const saveButton = document.querySelector('.save-button');
+        //     const cancelarButton = document.querySelector('.cancelar-button');
 
-            saveButtonIcon.addEventListener('click', () => {
-                saveButtonIcon.style.display = 'none';
-                saveButton.style.display = 'block';
-            });
-
-            saveButton.addEventListener('click', () => {
-                saveButton.style.display = 'none';
-                saveButtonIcon.style.display = 'block';
-            });
-        </script> -->
+        //     saveButtonIcon.addEventListener('click', (e) => {
+        //         e.preventDefault();
+        //         saveButtonIcon.style.display = 'none';
+        //         saveButton.style.display = 'block';
+        //         cancelarButton.style.display = 'block';
+        //     });
+            
+        //     saveButton.addEventListener('click', () => {
+        //         saveButton.style.display = 'none';
+        //         cancelarButton.style.display = 'none';
+        //         saveButtonIcon.style.display = 'block';
+        //     });
+        // </script>
+        
         <!---------------------------------  FOOTER ---------------------------- -->
 
         <footer>
