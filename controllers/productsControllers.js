@@ -215,9 +215,17 @@ const controller = {
             };
 
             let newData = req.body;
+            let newImage = "";
+            if(!req.file){
+                newImage = "default-product-image.jpg";
+            } else {
+                newImage = req.file.filename;
+            };
+             
             console.log('NewData');
             console.log(newData);
             console.log(req.file);
+            console.log(newImage);
             console.log('id:');
             console.log(req.params.id);
 
@@ -229,18 +237,15 @@ const controller = {
                 price : Number(newData.price),
                 discount : Number(newData.discount),
                 sales_amount : 0,
-                image : req.file == 'undefined' ? "default-product-image.jpg" : req.file.filename,
+                image : newImage,
                 category_id: newData.category,
                 subcategory_id: newData.subcategory,
                 type_id: newData.type,
                 user_id: req.session.userLogged.id,
                 manufacturer_id: 1, // Only "Green Good" by now ...
-                created_at: null,
-                updated_at: null,
-                deleted_at: null
-            }, {
-                where: {
-                    id: req.params.id
+                }, {
+                    where: {
+                        id: Number(req.params.id)
                 }
             });
             console.log('Product:');
