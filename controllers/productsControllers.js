@@ -188,6 +188,7 @@ const controller = {
                         types,
                         manufacturers 
                     });
+                    
                 } catch (error) {
                     console.log(error);
                     res.redirect('/mainViews/error');
@@ -273,10 +274,10 @@ const controller = {
                 discount : Number(newData.discount),
                 sales_amount : 0,
                 image : typeof req.file === 'undefined' ? "default-product-image.jpg" : req.file.filename,
-               // category_id: newData.category,
-                subcategory_id: newData.subcategory,
-                type_id: newData.type,
-                //user_id: req.session.userLogged.id,
+                category_id: Number(newData.category),
+                subcategory_id: Number(newData.subcategory),
+                type_id: Number(newData.type),
+                user_id: Number(req.session.userLogged.id),
                 user_id: 2,
                 manufacturer_id: 1, // Only "Green Good" by now ...
                // created_at: null,
@@ -288,8 +289,8 @@ const controller = {
                 }
             });
             //console.log('Product:');
-           // console.log(updatedProduct);
-          //  console.log(newData)
+            console.log(req.file);
+            console.log(newData);
           //  console.log(req.params.id)
 
             res.redirect('/product/publications');

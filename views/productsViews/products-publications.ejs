@@ -23,6 +23,7 @@
             <a href="#" class="btn-publication">Crear un nuevo producto!</a>
 
             <% products.forEach(product => { %>
+                
                 <div class="publication-container">
                     <article>
                         <br>
@@ -60,6 +61,7 @@
                             <article class="container-detail">
                                 <div class="container-price">
                                     <form action="/product/<%=product.id%>/update?_method=PUT" enctype="multipart/form-data" method="post">
+                                      
                                         <label class="label-sale-edit" for="image">Imagen actual:</label>
                                         <img src="/images/products/<%= product.image %>" alt="product img" id="img" width="150px">
                                         <label for="foto" id="change_photo">Cambiar imagen</label>
@@ -82,12 +84,12 @@
 
                                         <label class="label-sale-edit" for="category">Categoría:</label>
                                         <select name="category" class="input-sale-edit">
-                                            <option value="cultivo" 
-                                                <%=(product.category === "cultivo") ? 'selected' : null %> 
+                                            <option value="1" 
+                                                <%=(product.category.name == "Cultivo") ? 'selected' : null %> 
                                                 >Productos para el cultivo
                                             </option>
-                                            <option value="medicinal"
-                                                <%=(product.category === "medicinal") ? 'selected' : null %>
+                                            <option value="2"
+                                                <%=(product.category.name == "Medicinal") ? 'selected' : null %>
                                                 >Productos Medicinales
                                             </option>
                                         </select>
@@ -95,8 +97,8 @@
                                         <label class="label-sale-edit" for="subcategory">Subcategoría:</label>
                                         <select name="subcategory" class="input-sale-edit">
                                             <% subcategories.forEach(subcategory => { %>
-                                                <% if (subcategory.name == product.subcategory) { %>
-                                                    <option value="<%= subcategory.id %>" selected><%= subcategory.name %></option>
+                                                <% if (subcategory.name == product.subcategory.name) { %>
+                                                    <option value="<%= product.subcategory_id %>" selected><%= product.subcategory.name %></option>
                                                 <% } else { %>
                                                     <option value="<%= subcategory.id %>"><%= subcategory.name %></option>
                                                 <% } %>
@@ -106,8 +108,8 @@
                                         <label class="label-sale-edit" for="type">Tipo de producto:</label>
                                         <select name="type" class="input-sale-edit">
                                             <% types.forEach(type => { %>
-                                                <% if (type.name == product.type) { %>
-                                                    <option value="<%= type.id %>" selected><%= type.name %></option>
+                                                <% if (type.name == product.type.name) { %>
+                                                    <option value="<%= product.type_id %>" selected><%= product.type.name %></option>
                                                 <% } else { %>
                                                     <option value="<%= type.id %>"><%= type.name %></option>
                                                 <% } %>
@@ -315,33 +317,28 @@
             } else {
                 containerDropdown.style.display = 'none';
             };
+             /*  To show the product image properly at Edit-Form: */
+
+            let file = document.getElementById('foto');
+            let img = document.getElementById('img');
+            let defaultFile = img.src;
+
+            file.addEventListener('change', e => {
+                if(e.target.files[0]){
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        img.src = e.target.result;
+                    };
+                    reader.readAsDataURL(e.target.files[0]);
+                }else{
+                    img.src = defaultFile;
+                };
+                console.log(file.value);
+                console.log(file);
+                console.log(file.files[0]);
+            });
         });
     });
-
-   /*  To show the product image properly at Edit-Form: */
-
-    
-    const file = document.getElementById('foto');
-    const img = document.getElementById('img');
-    let defaultFile = img.src;
-
-    file.addEventListener('change', e => {
-        if(e.target.files[0]){
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                img.src = e.target.result;
-            };
-            reader.readAsDataURL(e.target.files[0]);
-        }else{
-            img.src = defaultFile;
-        };
-        console.log(file.value);
-        console.log(file);
-        console.log(file.files[0]);
-    });
-
-
-
 </script>
 
 <script>
