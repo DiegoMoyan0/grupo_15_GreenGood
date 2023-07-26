@@ -79,7 +79,7 @@ module.exports = (sequelize, DataTypes) => {
         updated_at: {
             type: "TIMESTAMP",
             defaultValue: sequelize.literal(
-              "NULL ON UPDATE CURRENT_TIMESTAMP"), //Pending to change default for NULL and add ON UPDATE property
+              "NULL"),
         },
 
         //Pending to double-check if deleted_at requires any parameters while using paranoid
