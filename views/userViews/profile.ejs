@@ -29,7 +29,7 @@
                         <span>Apellido:</span>
                         <input class="info" value="<%=user.last_name%>" name="last_name">
                         <span>Email:</span>
-                        <input class="info" value="<%=user.email%>">
+                        <input disabled class="info" value="<%=user.email%>">
                         <span>Username:</span>
                         <input class="info" name="user_name" value="<%=user.username%>">
                         <span>Teléfono:</span>
@@ -61,7 +61,7 @@
                     <button class="save-button-icon">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </button>
-                    <button class="cancelar-button" style="display: none;">Cancelar</button>
+                    <button class="cancelar-button">Cancelar</button>
                     <button type="submit" class="save-button">Guardar cambios</button>
                 </form>
 

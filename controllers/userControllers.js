@@ -228,8 +228,11 @@ const controller = {
                 },
                 /* force: true */ // Hard deletion with paranoid model
             });
-           
-            return res.redirect('userViews/login');
+
+			req.session.destroy();
+			res.clearCookie('userEmail');
+            
+			return res.redirect('/');
         } catch (error) {
             console.log(error);
             res.redirect('/mainViews/error');
