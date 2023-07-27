@@ -21,22 +21,42 @@
 			<span class="span-title-register">Register</span>
 			<form class="form-login" action="/user/register" enctype="multipart/form-data" method="POST">
 				<div class="container-input">
-                    <label for="name_data" class="label-register">Nombre y apellido</label>
+                    <label for="first_name" class="label-register">Nombre/s</label>
 					<input type="text" 
-                    name="name_data" 
+                    name="first_name" 
                     class="input-register" 
                     placeholder="Como figura en su DNI"
-                    class="form-inputs <%= locals.errors && errors.name_data? "is-invalid" : null %>"
+                    class="form-inputs <%= locals.errors && errors.first_name? "is-invalid" : null %>"
                     <% if (locals.oldData) { %>
-                        value= "<%= oldData.name_data %>"
+                        value= "<%= oldData.first_name %>"
                     <% } %>
                     >    
-                    <% if (locals.errors && errors.name_data) { %>
+                    <% if (locals.errors && errors.first_name) { %>
                         <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
                         </svg>                  
                         <div class="text-danger">
-                            <%= errors.name_data.msg %>
+                            <%= errors.first_name.msg %>
+                        </div>
+                    <% }; %>
+				</div>
+                <div class="container-input">
+                    <label for="last_name" class="label-register">Apellido/s</label>
+					<input type="text" 
+                    name="last_name" 
+                    class="input-register" 
+                    placeholder="Como figura en su DNI"
+                    class="form-inputs <%= locals.errors && errors.last_name? "is-invalid" : null %>"
+                    <% if (locals.oldData) { %>
+                        value= "<%= oldData.last_name %>"
+                    <% } %>
+                    >    
+                    <% if (locals.errors && errors.last_name) { %>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                        </svg>                  
+                        <div class="text-danger">
+                            <%= errors.last_name.msg %>
                         </div>
                     <% }; %>
 				</div>
@@ -82,26 +102,109 @@
                         </div>
                     <% }; %>
                 </div>
+                <br>
+                <br>
 
-                <div class="container-input">
-                    <label for="address" class="label-register">Dirección</label>
-					<input type="text" 
-                    name="address" 
-                    class="input-register" 
-                    placeholder="Ej. Av. Ejemplo 124 Ciudad" 
-                    minlength="6" 
-                    class="form-inputs <%= locals.errors && errors.address? "is-invalid" : null %>"
-                    value= "<%= locals.oldData? oldData.address : null %>"
-                    >    
-                    <% if (locals.errors && errors.address) { %>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
-                        </svg>                  
-                        <div class="text-danger">
-                            <%= errors.address.msg %>
-                        </div>
-                    <% }; %>
-				</div>
+                <div>
+                    <h3 class="label-register" >Tus datos para envíos:</h3>
+                    <div class="container-input">
+                        <label for="street" class="label-register">Calle</label>
+                        <input type="text" 
+                        name="street" 
+                        class="input-register" 
+                        placeholder="Ej. Av. Ejemplo" 
+                        minlength="4" 
+                        class="form-inputs <%= locals.errors && errors.street? "is-invalid" : null %>"
+                        value= "<%= locals.oldData? oldData.street : null %>"
+                        >    
+                        <% if (locals.errors && errors.street) { %>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                            </svg>                  
+                            <div class="text-danger">
+                                <%= errors.street.msg %>
+                            </div>
+                        <% }; %>
+                    </div>
+                    <div class="container-input">
+                        <label for="number" class="label-register">Número/Altura/Depto</label>
+                        <input type="text" 
+                        name="number" 
+                        class="input-register" 
+                        placeholder="Ej. 123 1A" 
+                        minlength="1" 
+                        class="form-inputs <%= locals.errors && errors.number? "is-invalid" : null %>"
+                        value= "<%= locals.oldData? oldData.number : null %>"
+                        >    
+                        <% if (locals.errors && errors.number) { %>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                            </svg>                  
+                            <div class="text-danger">
+                                <%= errors.number.msg %>
+                            </div>
+                        <% }; %>
+                    </div>
+                    <div class="container-input">
+                        <label for="city" class="label-register">Ciudad</label>
+                        <input type="text" 
+                        name="city" 
+                        class="input-register" 
+                        placeholder="Ej. Rio Cuarto" 
+                        minlength="3" 
+                        class="form-inputs <%= locals.errors && errors.city? "is-invalid" : null %>"
+                        value= "<%= locals.oldData? oldData.city : null %>"
+                        >    
+                        <% if (locals.errors && errors.city) { %>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                            </svg>                  
+                            <div class="text-danger">
+                                <%= errors.city.msg %>
+                            </div>
+                        <% }; %>
+                    </div>
+                    <div class="container-input">
+                        <label for="province" class="label-register">Provincia</label>
+                        <input type="text" 
+                        name="province" 
+                        class="input-register" 
+                        placeholder="Ej. Córdoba" 
+                        minlength="3" 
+                        class="form-inputs <%= locals.errors && errors.province? "is-invalid" : null %>"
+                        value= "<%= locals.oldData? oldData.province : null %>"
+                        >    
+                        <% if (locals.errors && errors.province) { %>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                            </svg>                  
+                            <div class="text-danger">
+                                <%= errors.province.msg %>
+                            </div>
+                        <% }; %>
+                    </div>
+                    <div class="container-input">
+                        <label for="country" class="label-register">País</label>
+                        <input type="text" 
+                        name="country" 
+                        class="input-register" 
+                        placeholder="Ej. Argentina" 
+                        minlength="3" 
+                        class="form-inputs <%= locals.errors && errors.country? "is-invalid" : null %>"
+                        value= "<%= locals.oldData? oldData.country : null %>"
+                        >    
+                        <% if (locals.errors && errors.country) { %>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                            </svg>                  
+                            <div class="text-danger">
+                                <%= errors.country.msg %>
+                            </div>
+                        <% }; %>
+                    </div>
+                </div>
+                <br>
+                <br>
 
                 <div class="container-input">
                     <label for="birth_date" class="label-register">Fecha de nacimiento</label>

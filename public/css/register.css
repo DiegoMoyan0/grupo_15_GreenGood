@@ -2,6 +2,11 @@
 .section-register {
 	padding: 1rem;
 	text-align: center;
+	height: 250vh;
+}
+.input-register::placeholder{
+	color: #c6c5c5;
+	font-size: 0.7rem;
 }
 
 .label-login {
