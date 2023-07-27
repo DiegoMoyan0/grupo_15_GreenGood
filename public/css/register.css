@@ -34,6 +34,13 @@
 	border: 1px solid #ccc;
 }
 
+.adress-div{
+	border: solid 1px #ccc;
+	padding: 20px;
+	border-radius: 10px;
+	background-color: #d8d5d55a;
+}
+
 .photo{
 	margin-bottom: 15px;
 }

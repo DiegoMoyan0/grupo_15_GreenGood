@@ -101,12 +101,97 @@
                             <%= errors.user_name.msg %>
                         </div>
                     <% }; %>
-                </div>
-                <br>
-                <br>
+                </div>             
 
-                <div>
-                    <h3 class="label-register" >Tus datos para envíos:</h3>
+                <div class="container-input">
+                    <label for="birth_date" class="label-register">Fecha de nacimiento</label>
+                    <input type="date" 
+                    name="birth_date" 
+                    min="1900-01-01" 
+                    max="2005-01-01" 
+                    class="input-register"
+                    id="InputDate" 
+                    class="form-inputs <%= locals.errors && errors.birth_date? "is-invalid" : null %>"
+                    value= <%= locals.oldData? oldData.birth_date : null %>
+                    >    
+                    <% if (locals.errors && errors.birth_date) { %>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" id="bd-error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                        </svg>                  
+                        <div class="text-danger">
+                            <%= errors.birth_date.msg %>
+                        </div>
+                    <% }; %>
+				</div>
+
+                <div class="container-input">
+                    <label for="phone" class="label-register">Teléfono celular</label>
+					<input type="tel" 
+                    name="phone" 
+                    class="input-register" 
+                    placeholder="ej (351) 2 341032" 
+                    class="form-inputs <%= locals.errors && errors.phone? "is-invalid" : null %>"
+                    value= <%= locals.oldData? oldData.phone : null %>
+                    >    
+                    <% if (locals.errors && errors.phone) { %>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                        </svg>                  
+                        <div class="text-danger">
+                            <%= errors.phone.msg %>
+                        </div>
+                    <% }; %>
+				</div>
+
+                <div class="container-input">
+                    <label class="label-register">Tipo de Perfil</label><br><br>
+                    <% if (locals.errors && errors.user_type) { %>
+                        <label class="label-register" style="border-bottom: solid 1px red;" for="user_type">Vendedor</label>
+                        <input type="radio" id="Vendedor" name="user_type" value="Vendedor">
+                        <label class="label-register" style="border-bottom: solid 1px red" for="user_type">Comprador</label>
+                        <input type="radio" id="Comprador" name="user_type" value="Comprador">
+                        <div class="text-danger">
+                            <%= errors.user_type.msg %>
+                        </div>
+                    <% } else{ %>    
+                        <label class="label-register" for="user_type">Vendedor</label>
+                        <input type="radio" id="Vendedor" name="user_type" value="Vendedor" <%= locals.oldData && oldData.user_type == "Vendedor" ? "checked" : null %>>
+
+                        <label class="label-register" for="user_type">Comprador</label>
+                        <input type="radio" id="Comprador" name="user_type" value="Comprador" <%= locals.oldData && oldData.user_type == "Comprador" ? "checked" : null %>>
+                    <% }; %> 
+				</div>
+
+                <div class="container-input photo" >
+                    <label class="label-register" for="user_image">Foto de usuario:</label>
+                    <br>
+                    <img src="/images/users/default-user-photo.png" alt="avatar" id="img">
+                    <label for="foto" id="change_photo">Cambiar foto</label>
+                    <% if (locals.errors && errors.user_image) { %>
+                        <input class="input-register" 
+                        type="file" 
+                        id="foto" 
+                        name="user_image" 
+                        accept="image/*"
+                        style="box-shadow: 0px 0px 10px red;"
+                        >
+                        <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                        </svg>                      
+                        <div class="text-danger">
+                            <%= errors.user_image.msg %>
+                        </div>
+                        <span class="span-bar"></span>
+                    <% } else{ %>
+                        <input class="input-register" type="file" id="foto" name="user_image" accept="image/*" >
+                        <span class="span-bar"></span>
+                    <% }; %>  
+
+				</div>
+                <br>
+                <br>
+                <div class="adress-div">
+                    <h3 class="label-register" >Sus datos para envíos:</h3>
                     <div class="container-input">
                         <label for="street" class="label-register">Calle</label>
                         <input type="text" 
@@ -205,92 +290,6 @@
                 </div>
                 <br>
                 <br>
-
-                <div class="container-input">
-                    <label for="birth_date" class="label-register">Fecha de nacimiento</label>
-                    <input type="date" 
-                    name="birth_date" 
-                    min="1900-01-01" 
-                    max="2005-01-01" 
-                    class="input-register"
-                    id="InputDate" 
-                    class="form-inputs <%= locals.errors && errors.birth_date? "is-invalid" : null %>"
-                    value= <%= locals.oldData? oldData.birth_date : null %>
-                    >    
-                    <% if (locals.errors && errors.birth_date) { %>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" id="bd-error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
-                        </svg>                  
-                        <div class="text-danger">
-                            <%= errors.birth_date.msg %>
-                        </div>
-                    <% }; %>
-				</div>
-
-                <div class="container-input">
-                    <label for="phone" class="label-register">Teléfono celular</label>
-					<input type="tel" 
-                    name="phone" 
-                    class="input-register" 
-                    placeholder="ej (351) 2 341032" 
-                    class="form-inputs <%= locals.errors && errors.phone? "is-invalid" : null %>"
-                    value= <%= locals.oldData? oldData.phone : null %>
-                    >    
-                    <% if (locals.errors && errors.phone) { %>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
-                        </svg>                  
-                        <div class="text-danger">
-                            <%= errors.phone.msg %>
-                        </div>
-                    <% }; %>
-				</div>
-
-                <div class="container-input">
-                    <label class="label-register">Tipo de Perfil</label><br><br>
-                    <% if (locals.errors && errors.user_type) { %>
-                        <label class="label-register" style="border-bottom: solid 1px red;" for="user_type">Vendedor</label>
-                        <input type="radio" id="Vendedor" name="user_type" value="Vendedor">
-                        <label class="label-register" style="border-bottom: solid 1px red" for="user_type">Comprador</label>
-                        <input type="radio" id="Comprador" name="user_type" value="Comprador">
-                        <div class="text-danger">
-                            <%= errors.user_type.msg %>
-                        </div>
-                    <% } else{ %>    
-                        <label class="label-register" for="user_type">Vendedor</label>
-                        <input type="radio" id="Vendedor" name="user_type" value="Vendedor" <%= locals.oldData && oldData.user_type == "Vendedor" ? "checked" : null %>>
-
-                        <label class="label-register" for="user_type">Comprador</label>
-                        <input type="radio" id="Comprador" name="user_type" value="Comprador" <%= locals.oldData && oldData.user_type == "Comprador" ? "checked" : null %>>
-                    <% }; %> 
-				</div>
-
-                <div class="container-input photo" >
-                    <label class="label-register" for="user_image">Foto de usuario:</label>
-                    <br>
-                    <img src="/images/users/default-user-photo.png" alt="avatar" id="img">
-                    <label for="foto" id="change_photo">Cambiar foto</label>
-                    <% if (locals.errors && errors.user_image) { %>
-                        <input class="input-register" 
-                        type="file" 
-                        id="foto" 
-                        name="user_image" 
-                        accept="image/*"
-                        style="box-shadow: 0px 0px 10px red;"
-                        >
-                        <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
-                        </svg>                      
-                        <div class="text-danger">
-                            <%= errors.user_image.msg %>
-                        </div>
-                        <span class="span-bar"></span>
-                    <% } else{ %>
-                        <input class="input-register" type="file" id="foto" name="user_image" accept="image/*" >
-                        <span class="span-bar"></span>
-                    <% }; %>  
-
-				</div>
 
                 
                 <div class="container-input">
