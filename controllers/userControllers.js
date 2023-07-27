@@ -75,16 +75,12 @@ const controller = {
 				user_id: newUser.id
 			});
 
-			console.log(newUser);
-			console.log(newAdress);
-
             res.redirect('/user/login');
             
         } catch (error) {
             console.log(error);
             res.redirect('/mainViews/error');
         }; 
-
 	},
 
 	loginUser: async (req, res) => {
@@ -110,9 +106,10 @@ const controller = {
 					{ association: 'address' },
 				],
 			},
-			{where:{email: req.body.email}});
+			{
+				where:{email: req.body.email}
+			});
 
-			console.log(searchedUser);
 		
 			if (!searchedUser) {
 			//Search user by username
@@ -164,11 +161,10 @@ const controller = {
 			req.session.userLogged = userToLoggin;
 					
 			//Create cookie called "userEmail" to save user logged when "RememberUser ichecked"
-			console.log(userToLoggin);
 					
 			if (req.body.rememberUser) {
 				res.cookie('userEmail', searchedUser.email, { maxAge: 1000 * 60 * 60 * 24 * 360 });
-			}
+			};
 					
 			//--------------------------//
 					
@@ -191,9 +187,8 @@ const controller = {
 				last_name: newData.last_name,
 				username: newData.user_name,
 				birth_date: newData.birth_date,
-				// email: newData.email,
+				// email: newData.email
 				password: newData.password,
-				//  adress: newData.adress,
 				image: user_image,
 				type: newData.user_type,
 				phone: newData.phone
@@ -203,12 +198,24 @@ const controller = {
 				}
 			});
 
+			const updatedAddress = await db.Address.update({
+				street: newData.street,
+				number: newData.number,
+				city: newData.city,
+				province: newData.province,
+				country: newData.country
+			},{
+				where: {
+					user_id: req.session.userLogged.id
+				}
+			});
+
 			res.redirect('/user/profile');
 
 		} catch (error) {
 			console.log(error);
 			res.redirect('/mainViews/error');
-		}
+		};
 	},
 
 
@@ -219,7 +226,7 @@ const controller = {
                 where: {
                     id: req.params.id
                 },
-                force: true // Hard deletion with paranoid model
+                /* force: true */ // Hard deletion with paranoid model
             });
            
             return res.redirect('userViews/login');
@@ -229,6 +236,6 @@ const controller = {
         };
     }
 	
-}
+};
 
 module.exports = controller;

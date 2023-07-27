@@ -44,14 +44,14 @@ module.exports = (sequelize, DataTypes) => {
 
     const Address = sequelize.define(alias, cols, config);
 
-  /*   Address.associate = models => {
+    Address.associate = models => {
 
         Address.belongsTo(models.User, {
             as: 'address',
-            foreignKey: 'user_id'
+            foreignKey: 'user_id',
         });
         
-    }; */
+    }; 
 
     return Address;
 };
