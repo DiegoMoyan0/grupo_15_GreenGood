@@ -102,66 +102,82 @@ const controller = {
 		};
 		
 		try {
-	//Search user by email first
-	let searchedUser = await db.User.findOne(
-		{where:{email: req.body.email}});
-	
-		if (!searchedUser) {
-		//Search user by username
-			searchedUser = await db.User.findOne(
-				{where:{username: req.body.user_name}});
-		}
+			//Search user by email first
+			let searchedUser = await db.User.findOne({
+				raw: true,
+				nest: true,
+				include: [
+					{ association: 'address' },
+				],
+			},
+			{where:{email: req.body.email}});
 
-		if (!searchedUser) {
+			console.log(searchedUser);
 		
-			return res.render('userViews/login', {
-				title: "Login",
-				errors: {
-					email: {
-						msg: 'No estas registrado!'
-					}
+			if (!searchedUser) {
+			//Search user by username
+				searchedUser = await db.User.findOne({
+					raw: true,
+					nest: true,
+					include: [
+						{ association: 'address' },
+					],
 				},
-				oldData: req.body,
-			});
+				{
+					where:{username: req.body.user_name}
+				});
+			};
+
+			if (!searchedUser) {
+			
+				return res.render('userViews/login', {
+					title: "Login",
+					errors: {
+						email: {
+							msg: 'No estas registrado!'
+						}
+					},
+					oldData: req.body,
+				});
+			};
+
+			const { password: hashedPw } = searchedUser;
+			const isCorrect = bcrypt.compareSync(req.body.password, hashedPw);
+			
+			if (!isCorrect) {
+				return res.render('userViews/login', {
+					title: "Login",
+					errors: {
+						password: {
+							msg: 'Contraseña incorrecta!'
+						}
+					},
+					oldData: req.body,
+				});
+			};
+			
+			userToLoggin = searchedUser;
+			/* delete userToLoggin.password; */ // We want to update password at profile by now
+
+			//Add the logged user to session!
+					
+			req.session.userLogged = userToLoggin;
+					
+			//Create cookie called "userEmail" to save user logged when "RememberUser ichecked"
+			console.log(userToLoggin);
+					
+			if (req.body.rememberUser) {
+				res.cookie('userEmail', searchedUser.email, { maxAge: 1000 * 60 * 60 * 24 * 360 });
+			}
+					
+			//--------------------------//
+					
+			return res.redirect('/user/profile');
+
+		} catch (error) {
+			console.log(error);
+			res.redirect('/mainViews/error');
 		};
-
-		const { password: hashedPw } = searchedUser;
-		const isCorrect = bcrypt.compareSync(req.body.password, hashedPw);
-		
-				if (!isCorrect) {
-					return res.render('userViews/login', {
-						title: "Login",
-						errors: {
-							password: {
-								msg: 'Contraseña incorrecta!'
-							}
-						},
-						oldData: req.body,
-					});
-				};
-		
-				userToLoggin = searchedUser;
-				delete userToLoggin.password;
-
-				//Add the logged user to session!
-				
-				req.session.userLogged = userToLoggin;
-				
-				//Create cookie called "userEmail" to save user logged when "RememberUser is checked"
-				console.log(req.body);
-				
-				if (req.body.rememberUser) {
-					res.cookie('userEmail', searchedUser.email, { maxAge: 1000 * 60 * 60 * 24 * 360 });
-				};
-				
-				//--------------------------//
-				
-				return res.redirect('/user/profile');
-
-} catch (error) {
-	console.log(error);
-	res.redirect('/mainViews/error');
-}
 	},
 	updateUser: async (req, res) => {
 		/* Update user data  */
