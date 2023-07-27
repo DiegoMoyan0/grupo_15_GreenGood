@@ -66,17 +66,17 @@ const controller = {
                 password: newData.password,
             });
 
-			const newAdress = await db.Address.create({
-				street: newData.street,
-				number: newData.number,
-				city: newData.city,
-				province: newData.province,
-				country: newData.country,
-				user_id: newUser.id
-			});
+			// const newAdress = await db.Address.create({
+			// 	street: newData.street,
+			// 	number: newData.number,
+			// 	city: newData.city,
+			// 	province: newData.province,
+			// 	country: newData.country,
+			// 	user_id: newUser.id
+			// });
 
 			console.log(newUser);
-			console.log(newAdress);
+			// console.log(newAdress);
 
             res.redirect('/user/login');
             
@@ -221,8 +221,11 @@ const controller = {
                 },
                 force: true // Hard deletion with paranoid model
             });
-           
-            return res.redirect('userViews/login');
+
+			req.session.destroy();
+			res.clearCookie('userEmail');
+            
+			return res.redirect('/');
         } catch (error) {
             console.log(error);
             res.redirect('/mainViews/error');
