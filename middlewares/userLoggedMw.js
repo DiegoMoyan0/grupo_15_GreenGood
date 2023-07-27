@@ -5,38 +5,45 @@ const Op = db.Sequelize.Op;
 const userModel = require('../models/User.js');
 
 async function userLoggedMw(req, res, next) {
-    
-    res.locals.isLogged = false; // Create local variable "isLogged" on FALSE
 
-    let emailInCookie = req.cookies.userEmail;
+    try {
+        res.locals.isLogged = false; // Create local variable "isLogged" on FALSE
 
-    
-    if (!emailInCookie) {
-        return next()
-    }
+        let emailInCookie = req.cookies.userEmail;
 
-    let userFromCookie = await db.User.findOne({
-            raw: true,
-            nest: true,
-            include: [
-                { association: 'address' },
-            ],
-        },
-		{where:{email: emailInCookie}});
         
-    // let userType = await db.User.findOne(
-	// 	{where:{user_type: req.body.user_type}});
+        if (!emailInCookie) {
+            return next()
+        }
 
-    if(userFromCookie){
-        req.session.userLogged = userFromCookie;
+        let userFromCookie = await db.User.findOne({
+                raw: true,
+                nest: true,
+                include: [
+                    { association: 'address' },
+                ],
+            },
+            {where:{email: emailInCookie}});
+            
+        // let userType = await db.User.findOne(
+        // 	{where:{user_type: req.body.user_type}});
+
+        if(userFromCookie){
+            req.session.userLogged = userFromCookie;
+        };
+        
+        if(req.session && req.session.userLogged){
+            res.locals.isLogged = true;
+            res.locals.userLogged = req.session.userLogged; // User logged data to views
+        };
+
+        next();
+            
+    } catch (error) {
+        console.log(error);
+        res.redirect('/mainViews/error');
     };
     
-    if(req.session && req.session.userLogged){
-        res.locals.isLogged = true;
-        res.locals.userLogged = req.session.userLogged; // User logged data to views
-    };
-
-    next();
-}
+};
 
 module.exports = userLoggedMw;
