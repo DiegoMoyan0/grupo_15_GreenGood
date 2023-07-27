@@ -317,28 +317,40 @@
             } else {
                 containerDropdown.style.display = 'none';
             };
-             /*  To show the product image properly at Edit-Form: */
-
-            let file = document.getElementById('foto');
-            let img = document.getElementById('img');
-            let defaultFile = img.src;
-
-            file.addEventListener('change', e => {
-                if(e.target.files[0]){
-                    const reader = new FileReader();
-                    reader.onload = function (e) {
-                        img.src = e.target.result;
-                    };
-                    reader.readAsDataURL(e.target.files[0]);
-                }else{
-                    img.src = defaultFile;
-                };
-                console.log(file.value);
-                console.log(file);
-                console.log(file.files[0]);
-            });
         });
     });
+
+     /*  To show the product image properly at Edit-Form: */
+
+    let inputsFile = Array.from(document.querySelectorAll('#foto'));
+    let inputsImg = Array.from(document.querySelectorAll('#img'));
+    console.log(inputsFile);
+    console.log(inputsImg);
+
+    for (let x = 0; x < inputsFile.length; x++) {
+        let file = inputsFile[x];
+        let defaultFile = inputsImg[x].src;
+        file.addEventListener('change', e => {
+            if(e.target.files[0]){
+                for (let y = 0; y < inputsFile.length; y++) {
+                    let file = inputsFile[y];
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        inputsImg[y].src = e.target.result;
+                    };
+                    reader.readAsDataURL(e.target.files[0]);
+                };
+            }else{
+                for (let y = 0; y < inputsFile.length; y++) {
+                    let file = inputsFile[y];
+                    inputsImg[y].src = defaultFile;
+                };
+            };
+            console.log(file.value);
+            console.log(file);
+            console.log(file.files[0]);
+        });   
+    };   
 </script>
 
 <script>
