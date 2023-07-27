@@ -216,9 +216,7 @@ const controller = {
 
             let newData = req.body;
 
-            
-
-           let newProduct = db.Product.create({
+            let newProduct = db.Product.create({
                 title : newData.title,
                 description : newData.description,
                 info: newData.info,
@@ -227,17 +225,15 @@ const controller = {
                 discount : Number(newData.discount),
                 sales_amount : 0,
                 image : req.file ? req.file.filename : "default-product-image.jpg",
-                category_id: newData.category,
-                subcategory_id: newData.subcategory,
-                type_id: newData.type,
-               // user_id: req.session.userLogged.id,
-               manufacturer_id: 1 // Only "Green Good" by now ...
+                category_id: Number(newData.category),
+                subcategory_id: Number(newData.subcategory),
+                type_id: Number(newData.type),
+                user_id: req.session.userLogged.id,
+                manufacturer_id: 1 // Only "Green Good" by now ...
             });
 
-            
-
             console.log(newProduct)
-            console.log(newData)
+          
 
             res.redirect('/product/publications');
             
@@ -277,8 +273,7 @@ const controller = {
                 category_id: Number(newData.category),
                 subcategory_id: Number(newData.subcategory),
                 type_id: Number(newData.type),
-                user_id: Number(req.session.userLogged.id),
-                user_id: 2,
+                user_id: req.session.userLogged.id,
                 manufacturer_id: 1, // Only "Green Good" by now ...
                // created_at: null,
                 updated_at: new Date(),

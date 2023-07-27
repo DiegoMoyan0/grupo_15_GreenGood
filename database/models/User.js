@@ -1,4 +1,4 @@
-const { v4: UUIDV4 } = require('uuid');
+const { v4: uuidv4 } = require('uuid');
 const bcrypt = require('bcryptjs');
 const { Sequelize } = require("sequelize")
 
@@ -7,9 +7,10 @@ module.exports = (sequelize, DataTypes) => {
 
     const cols = {
         id: {
-            type: DataTypes.INTEGER, //SQL == CHAR(36) BINARY
-            autoIncrement: true,
+            type: DataTypes.UUID,
+            defaultValue: () => uuidv4(), // To generate an UUID automatically when creating a new user
             primaryKey: true,
+            allowNull: false,
         },
         first_name: {
             type: DataTypes.STRING,
@@ -75,8 +76,13 @@ module.exports = (sequelize, DataTypes) => {
             as: 'user',
             foreignKey: 'user_id'
         })
+
+        User.hasOne(models.Address, {
+            as: 'address',
+            foreignKey: 'user_id',
+            onDelete: 'CASCADE',  // Esto asegura que si se elimina un usuario, también se elimine su dirección asociada
+        });
     };
-    ;
 
     return User;
 };

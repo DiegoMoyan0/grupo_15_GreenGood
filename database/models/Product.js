@@ -58,14 +58,14 @@ module.exports = (sequelize, DataTypes) => {
         manufacturer_id: {
             type: DataTypes.INTEGER,
             allowNull: true,
-            defaultValue: 1, // Green Good as default manufacturer for any product.
+            defaultValue: 1, // Green Good as default manufacturer for any product by now.
             references: {
                 model: 'manufacturers',
                 key: 'id'
             }  
         },
         user_id: {
-            type: DataTypes.INTEGER,  // Pending to change Data type to one that allows UUID
+            type: DataTypes.STRING(255),  
             allowNull: true, // Pending to delete this property after testing
             references: {
                 model: 'users',
