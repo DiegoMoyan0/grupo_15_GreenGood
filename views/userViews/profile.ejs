@@ -22,7 +22,7 @@
                 <form class="form-login" action="/user/<%=user.id%>/update?_method=PUT" enctype="multipart/form-data"
                     method="POST">
                     <img src="/images/users/<%=user.image%>" alt="user img" id="img">
-                    <input class="input-sale-edit" type="file" id="foto" name="image" accept="image/*">
+                    <input class="input-sale-edit" type="file" id="foto" name="user_image" accept="image/*">
                     <div class="info-container">
                         <span>Nombre:</span>
                         <input class="info" value="<%=user.first_name%>" name="first_name">
