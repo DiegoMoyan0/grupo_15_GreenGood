@@ -16,14 +16,18 @@ async function userLoggedMw(req, res, next) {
             return next()
         }
 
-        let userFromCookie = await db.User.findOne({
+
+        let userFromCookie = await db.User.findOne(
+            
+            {
                 raw: true,
                 nest: true,
                 include: [
                     { association: 'address' },
                 ],
+                where:{email: emailInCookie}
             },
-            {where:{email: emailInCookie}});
+            );
             
         // let userType = await db.User.findOne(
         // 	{where:{user_type: req.body.user_type}});

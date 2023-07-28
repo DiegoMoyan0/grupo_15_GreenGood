@@ -10,6 +10,7 @@ const userController = require('../controllers/userControllers');
 const validationsRegisterMw = require('../middlewares/validateRegisterMw');
 const validationsLoginMw = require('../middlewares/validateLoginMw');
 const validationsUpdateMw = require('../middlewares/validateUpdateMw');
+const validationsUserLoggedMw = require('../middlewares/userLoggedMw');
 const guestMw = require('../middlewares/guestMw');
 const authMw = require('../middlewares/authMw');
 
@@ -33,7 +34,7 @@ const uploadPhoto = multer({storage});
 /*** GET FORMS ***/ 
 router.get('/login', guestMw, userController.getLogin); 
 router.get('/register', guestMw, userController.getRegister);
-router.get('/profile', authMw, userController.getProfile);  
+router.get('/profile', authMw, validationsUserLoggedMw, userController.getProfile);  
 router.get('/logout', authMw, userController.getLogout);  
 
 

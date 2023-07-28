@@ -33,8 +33,12 @@ const controller = {
 
 	registerUser: async (req, res) => {
 
+
+
 		/* Previous validations to create a new user */
-		/* const resultsValidations = validationResult(req);
+
+		/*
+		 const resultsValidations = validationResult(req);
 
 		if (resultsValidations.errors.length > 0) {
 			console.log(req.body);
@@ -45,7 +49,8 @@ const controller = {
 				oldData: req.body,
 				oldFile: req.file
 			});
-		}; */
+		}; 
+		*/
 
 		// delete user.password_confirm;
 
@@ -106,21 +111,12 @@ const controller = {
 				console.log('es un correo')
 				searchedUser = await db.User.findOne(
 					{
-						where: { email: req.body.email }
-					},
-					{
-						
 						raw: true,
 						nest: true,
 
 						include: [
-							{ association: 'address' },
-							{where: { email: req.body.email }}
+							{ association: 'address' }
 						],
-						
-		
-					},
-					{
 						where: { email: req.body.email }
 					}
 				);
@@ -134,19 +130,13 @@ const controller = {
 						where: { username: req.body.email }
 					},
 					{
-						
 						raw: true,
 						nest: true,
 						
 						include: [
 							{ association: 'address' },
-							{where: { username: req.body.email }}
 						],
-						
-						
-						
-					},
-					{
+
 						where: { email: req.body.email }
 					}
 					);
@@ -247,7 +237,7 @@ const controller = {
 				}
 			});
 
-			res.redirect('/user/profile');
+			res.redirect('/');
 
 		} catch (error) {
 			console.log(error);
