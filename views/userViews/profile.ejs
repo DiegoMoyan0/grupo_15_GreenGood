@@ -10,96 +10,137 @@
 
     <%- include('../partials/header')%>
 
-        <div class="deslizable">
-            <a href="/user/profile"> <i class="fa-solid fa-arrow-up"></i></a>
-        </div>
-        <main>
-            <section>
-                <h1>Bienvenido <%=user.user_name%>
-                </h1>
-                <h2>Perfil:</h2>
+    <div class="deslizable">
+        <a href="/user/profile"> <i class="fa-solid fa-arrow-up"></i></a>
+    </div>
+    <main>
+        <section>
+            <% let userName = user.first_name + ' ' + user.last_name  %>
+            <h1>Bienvenido <%=userName%>
+            </h1>
+            <h2>Perfil:</h2>
 
-                <form class="form-login" action="/user/<%=user.id%>/update?_method=PUT" enctype="multipart/form-data"
-                    method="POST">
-                    <img src="/images/users/<%=user.image%>" alt="user img" id="img">
-                    <input class="input-sale-edit" type="file" id="foto" name="user_image" accept="image/*">
-                    <div class="info-container">
+            <form class="form-login" action="/user/<%=user.id%>/update?_method=PUT" enctype="multipart/form-data"
+                method="POST">
+                
+                <img src="/images/users/<%=user.image%>" alt="user img" id="img">
+                <label for="foto" id="change_photo">Cambiar foto</label>
+                <input class="input-sale-edit" type="file" id="foto" name="user_image" accept="image/*" >
+                
+                <span class="span-bar"></span>
+                
+                <div class="info-container">
+                    <div class="inputs-div">
                         <span>Nombre:</span>
                         <input class="info" value="<%=user.first_name%>" name="first_name">
+                    </div>
+                    <div class="inputs-div">
                         <span>Apellido:</span>
                         <input class="info" value="<%=user.last_name%>" name="last_name">
+                    </div>
+                    
+                    <div class="inputs-div">
                         <span>Email:</span>
                         <input disabled class="info" value="<%=user.email%>">
+                    </div>
+                    <div class="inputs-div">
                         <span>Username:</span>
                         <input class="info" name="user_name" value="<%=user.username%>">
+                    </div>
+                    <div class="inputs-div">
                         <span>Teléfono:</span>
                         <input name="phone" class="info" value="<%=user.phone%>">
+                    </div>
+                    <div class="inputs-div">
                         <span>Fecha de nacimiento:</span>
                         <input name="birth_date" class="info" value="<%=user.birth_date%>">
-                        <div class="address-div">
-                            <h3>Sus datos de dirección de envío:</h3>
-                            <span for="street" class="adress-span">Calle</span>
-                            <input name="street" class="info adress-input"  type="text" value="<%=user.address.street%>">
-                            <span for="number" class="adress-span">Numeración/Altura/Dpto</span>
-                            <input name="number" class="info adress-input"  type="text" value="<%=user.address.number%>">
-                            <span for="city" class="adress-span">Ciudad</span>
-                            <input name="city" class="info adress-input"  type="text" value="<%=user.address.city%>">
-                            <span for="province" class="adress-span">Provincia</span>
-                            <input name="province" class="info adress-input"  type="text" value="<%=user.address.province%>">
-                            <span for="country" class="adress-span">País</span>
-                            <input name="country" class="info adress-input"  type="text" value="<%=user.address.country%>">
-                        </div>
+                    </div>
+
+                    <div class="address-div">
+                        <h3>Sus datos de dirección de envío:</h3>
+                        <span for="street" class="adress-span">Calle</span>
+                        <input name="street" class="info adress-input"  type="text" value="<%=user.address.street%>">
+                        <span for="number" class="adress-span">Numeración/Altura/Dpto</span>
+                        <input name="number" class="info adress-input"  type="text" value="<%=user.address.number%>">
+                        <span for="city" class="adress-span">Ciudad</span>
+                        <input name="city" class="info adress-input"  type="text" value="<%=user.address.city%>">
+                        <span for="province" class="adress-span">Provincia</span>
+                        <input name="province" class="info adress-input"  type="text" value="<%=user.address.province%>">
+                        <span for="country" class="adress-span">País</span>
+                        <input name="country" class="info adress-input"  type="text" value="<%=user.address.country%>">
+                    </div>
+                    <div class="inputs-div">
                         <span>Tipo de usuario:</span><br>
                         <label for="Vendedor">Vendedor</label>
                         <input type="radio" id="Vendedor" name="user_type" value="Vendedor" <% if
-                            (user.type==="Vendedor" ) { %> checked <% } %>>
+                        (user.type==="Vendedor" ) { %> checked <% } %>>
 
-                            <label for="Comprador">Comprador</label>
-                            <input type="radio" id="Comprador" name="user_type" value="Comprador" <% if
-                                (user.type==="Comprador" ) { %> checked <% } %>>
+                        <label for="Comprador">Comprador</label>
+                        <input type="radio" id="Comprador" name="user_type" value="Comprador" <% if
+                            (user.type==="Comprador" ) { %> checked <% } %>>
                     </div>
-                    <button class="save-button-icon">
-                        <i class="fa-solid fa-pen-to-square"></i>
-                    </button>
-                    <button class="cancelar-button">Cancelar</button>
-                    <button type="submit" class="save-button">Guardar cambios</button>
-                </form>
+                    
+                </div>
+                <button class="save-button-icon">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+                <button class="cancelar-button">Cancelar</button>
+                <button type="submit" class="save-button">Guardar cambios</button>
+            </form>
 
-                <form action="/user/<%= user.id %>/delete?_method=DELETE" method="POST"
-                    onsubmit="return confirm('¿Está seguro que desea eliminar su cuenta de manera permanente?')">
-                    <input type="submit" class="btn-delete" value="Eliminar">
-                </form>
-            </section>
-        </main>
+            <form action="/user/<%= user.id %>/delete?_method=DELETE" method="POST"
+                onsubmit="return confirm('¿Está seguro que desea eliminar su cuenta de manera permanente?')">
+                <input type="submit" class="btn-delete" value="Eliminar">
+            </form>
+        </section>
+    </main>
 
         /*
 
-        // <script>
-        //     const saveButtonIcon = document.querySelector('.save-button-icon');
-        //     const saveButton = document.querySelector('.save-button');
-        //     const cancelarButton = document.querySelector('.cancelar-button');
+    // <script>
+    //     const saveButtonIcon = document.querySelector('.save-button-icon');
+    //     const saveButton = document.querySelector('.save-button');
+    //     const cancelarButton = document.querySelector('.cancelar-button');
 
-        //     saveButtonIcon.addEventListener('click', (e) => {
-        //         e.preventDefault();
-        //         saveButtonIcon.style.display = 'none';
-        //         saveButton.style.display = 'block';
-        //         cancelarButton.style.display = 'block';
-        //     });
-            
-        //     saveButton.addEventListener('click', () => {
-        //         saveButton.style.display = 'none';
-        //         cancelarButton.style.display = 'none';
-        //         saveButtonIcon.style.display = 'block';
-        //     });
-        // </script>
-
-        */
+    //     saveButtonIcon.addEventListener('click', (e) => {
+    //         e.preventDefault();
+    //         saveButtonIcon.style.display = 'none';
+    //         saveButton.style.display = 'block';
+    //         cancelarButton.style.display = 'block';
+    //     });
         
-        <!---------------------------------  FOOTER ---------------------------- -->
+    //     saveButton.addEventListener('click', () => {
+    //         saveButton.style.display = 'none';
+    //         cancelarButton.style.display = 'none';
+    //         saveButtonIcon.style.display = 'block';
+    //     });
+    // </script>
 
-        <footer>
-            <%- include('../partials/footer')%>
-        </footer>
+    */
+        
+    <!---------------------------------  FOOTER ---------------------------- -->
+
+    <footer>
+        <%- include('../partials/footer')%>
+    </footer>
+
+    
+    <script>
+        const defaultFile = '/images/users/default-user-photo.png';
+        const file = document.getElementById('foto');
+        const img = document.getElementById('img');
+        file.addEventListener('change', e => {
+            if(e.target.files[0]){
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    img.src = e.target.result;
+                }
+                reader.readAsDataURL(e.target.files[0]);
+            }else{
+                img.src = defaultFile;
+            }
+        })
+    </script>
 
 
 </body>

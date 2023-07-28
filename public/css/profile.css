@@ -40,12 +40,19 @@ img {
 .info-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
     margin: 2rem auto;
     gap: 20px;
-    flex-direction: column;
-    align-items: flex-start;
-    align-content: space-around;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.inputs-div{
+    max-width: 70%;
+    display: inline;
+}
+
+span {
+    display: block;
 }
 
 .info {
@@ -55,7 +62,7 @@ img {
     padding: 10px;
     border: 1px solid #e2e2e2;
     border-radius: 5px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 5px 10px #402c68e0;
     width: 100%;
     box-sizing: border-box;
 }
@@ -64,9 +71,36 @@ img {
     font-weight: bold;
 }
 
-.address-div{
+#img {
+    margin: 1rem 25%;
+    width: 50%;
+    box-shadow: 1px 5px 10px #402c68e0;
+}
+
+#foto {
+	display: none;	
+}
+
+#change_photo {
+    border: solid 1px gainsboro;
+    margin: 50px 35%; 
+    color: #ede4ed;
+    padding: 10px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: #402c68;
+}
+
+.address-div {
     display: grid;
     justify-items: center;
+    border: solid 1.5px #402c68;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #18004b0a;
+    color: #18004b;
 }
 
 .cancelar-button 
@@ -130,12 +164,3 @@ img {
     opacity: 0;
 }
 
-@media (min-width: 768px) {
-
-
-
-    .info {
-        width: calc(50% - 10px);
-    }
-
-}
