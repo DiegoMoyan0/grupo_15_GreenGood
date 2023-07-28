@@ -167,9 +167,12 @@
                                     <h2 id="header-create">¡Hola!<br><br> Empecemos con los datos básicos</h2>
                                 <br></div>
 
-                                <label class="label-sale" for="image">Foto del producto: (próximamente disponbile) </label>
-                                <input class="input-sale" id="image-children" type="file" id="image-children" name="image" accept="image/*" >
-                                                                                
+                                <label class="label-sale" for="image">Una imagen del producto: </label>
+                                <br>
+                                <img src="/images/products/default-product-image.jpg" alt="product img" id="imgCreate" style="width: 50%;">
+                                <!-- <label for="image" id="change_photo">Cambiar foto</label> -->
+                                <input class="input-sale" type="file" id="image-children" name="image" accept="image/*" >
+                                            
                                 <label for="title" class="label-sale">Título del producto</label>
                                 <input type="text" name="title" id="title-children" class="input-sale" id="InputName" placeholder="Ingrese el título..." minlength="10" maxlength="400" required />
 
@@ -295,6 +298,24 @@
     </footer>
 
 </body>
+
+<script>
+    //Script para previsualizar img del producto en CREATE
+    const defaultFile = '/images/products/default-product-image.jpg';
+    const file = document.getElementById('image-children');
+    const img = document.getElementById('imgCreate');
+    file.addEventListener('change', e => {
+        if(e.target.files[0]){
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                img.src = e.target.result;
+            }
+            reader.readAsDataURL(e.target.files[0]);
+        }else{
+            img.src = defaultFile;
+        }
+    })
+</script>
 
 
 <script>
