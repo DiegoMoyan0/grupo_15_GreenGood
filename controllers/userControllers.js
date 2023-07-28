@@ -1,10 +1,8 @@
 const fs = require('fs');
 const path = require('path');
-const userModel = require('../models/User.js');
 const bcrypt = require('bcryptjs');
 const { validationResult } = require('express-validator');
 let db = require("../database/models");
-const { log } = require('console');
 const Op = db.Sequelize.Op;
 
 const controller = {
@@ -33,16 +31,11 @@ const controller = {
 
 	registerUser: async (req, res) => {
 
-
-
 		/* Previous validations to create a new user */
-
-		/*
-		 const resultsValidations = validationResult(req);
+		const resultsValidations = validationResult(req);
 
 		if (resultsValidations.errors.length > 0) {
-			console.log(req.body);
-			console.log(req.file);
+			
 			return res.render('userViews/register', {
 				title: "Registro",
 				errors: resultsValidations.mapped(), // mapped() used to transform the validations results into a literal object.
@@ -50,15 +43,14 @@ const controller = {
 				oldFile: req.file
 			});
 		}; 
-		*/
-
-		// delete user.password_confirm;
+		
+		delete req.body.password_confirm;
 
 		try {
 
 			let newData = req.body;
-			console.log(newData);
-
+			let hashedPassword = await bcrypt.hash(req.body.password, 10);
+			
 			const newUser = await db.User.create({
 				first_name: newData.first_name,
 				last_name: newData.last_name,
@@ -68,7 +60,7 @@ const controller = {
 				image: req.file ? req.file.filename : "default-user-photo.png",
 				type: newData.user_type,
 				phone: Number(newData.phone),
-				password: newData.password,
+				password: hashedPassword,
 			});
 
 			const newAdress = await db.Address.create({
@@ -90,7 +82,6 @@ const controller = {
 
 	loginUser: async (req, res) => {
 
-
 		/* Previous validations to login a user */
 		const resultsValidations = validationResult(req);
 
@@ -102,6 +93,7 @@ const controller = {
 			});
 		};
 
+		let searchedUser = {};
 
 		try {
 
@@ -113,36 +105,28 @@ const controller = {
 					{
 						raw: true,
 						nest: true,
-
 						include: [
 							{ association: 'address' }
 						],
+					},{
 						where: { email: req.body.email }
 					}
 				);
-			} else {
-
-				//	if (!searchedUser) {
+			} else if (req.body.email.indexOf('@') == -1) {
 				//Search user by username
 				console.log('es un username')
 				searchedUser = await db.User.findOne(
 					{
-						where: { username: req.body.email }
-					},
-					{
 						raw: true,
 						nest: true,
-						
 						include: [
 							{ association: 'address' },
 						],
-
-						where: { email: req.body.email }
+					},{
+						where: { username: req.body.user_name }
 					}
-					);
-				//		};
-
-			}
+				);
+			};
 
 			if (!searchedUser) {
 
@@ -157,13 +141,8 @@ const controller = {
 				});
 			};
 
-			//const { password: hashedPw } = searchedUser;
-			//const isCorrect = bcrypt.compareSync(req.body.password, hashedPw);
-
-			//Temporary line
-
-			let isCorrect = req.body.password === searchedUser.password
-			//
+			const { password: hashedPw } = searchedUser;
+			const isCorrect = bcrypt.compareSync(req.body.password, hashedPw);
 
 			if (!isCorrect) {
 				return res.render('userViews/login', {
@@ -179,11 +158,13 @@ const controller = {
 
 			userToLoggin = searchedUser;
 
-			/* delete userToLoggin.password; */ // We want to update password at profile by now
+			delete userToLoggin.password; 
 
 			//Add the logged user to session!
 
 			req.session.userLogged = userToLoggin;
+
+			console.log(req.session.userLogged);
 
 			//Create cookie called "userEmail" to save user logged when "RememberUser ichecked"
 
@@ -192,8 +173,6 @@ const controller = {
 			};
 
 			//--------------------------//
-
-			//user.image = "/images/users/"+ searchedUser.image
 
 			return res.redirect('/user/profile');
 
@@ -209,14 +188,23 @@ const controller = {
 		try {
 			let newData = req.body;
 
+			//--> To save the previous image of the user edited and use it when "req.file" is 'undefined':
+
+            const user = await db.User.findByPk(req.session.userLogged.id);
+            let user_prev_img = '';
+
+            if(!req.file){
+                user_prev_img = user.image;
+            };
+
+            //--------------------------------------------//
+
 			const updatedUser = await db.User.update({
 				first_name: newData.first_name,
 				last_name: newData.last_name,
 				username: newData.user_name,
 				birth_date: newData.birth_date,
-				// email: newData.email
-				password: newData.password,
-				image: user_image,
+				image: typeof req.file === 'undefined' ? user_prev_img : req.file.filename,
 				type: newData.user_type,
 				phone: newData.phone
 			}, {

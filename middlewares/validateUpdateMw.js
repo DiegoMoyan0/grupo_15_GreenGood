@@ -2,23 +2,31 @@ const path = require('path');
 const { body } = require('express-validator');
 
 const validations = [
-    body('name_data').notEmpty().withMessage('Tienes que ingresar tu nombre completo!'),
+    body('first_name').notEmpty().withMessage('Tienes que ingresar tu nombre/s tal cual figura en el DNI.'),
+    body('last_name').notEmpty().withMessage('Tienes que ingresar tu apellido/s tal cual figura en el DNI.'),
     body('user_name').notEmpty().withMessage('Tienes que ingresar tu nombre de usuario!'),
-    body('birthDate')
-        .notEmpty().withMessage('Tienes que ingresar tu fecha de nacimiento!'),
-    body('email')
-        .notEmpty().withMessage('Tienes que ingresar tu e-mail!').bail()
-        .isEmail().withMessage('Debes escribir un e-mail con formato valido'),
-    body('password').notEmpty().withMessage('Tienes que ingresar una contraseña!'),
-    body('password_confirm')
-        .notEmpty().withMessage('Tienes que ingresar nuevamente la contraseña!').bail()
-        .custom((value, {req}) => {
-            if(req.body.password !== req.body.passwordConfirm){
-                throw new Error('Las contraseñas deben ser identicas');
-            };
+    body('birth_date').notEmpty().isDate().withMessage('Tienes que ingresar tu fecha de nacimiento!').bail()
+        .custom((value) => {
+            let birthday = new Date(value);
+            let today = new Date();
+            let age = today.getFullYear() - birthday.getFullYear();
+            let monthDiff = today.getMonth() - birthday.getMonth();
+        
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthday.getDate())) {
+            age--;
+            }
+        
+            if (age >= 18) {
             return true;
+            }
+        
+            throw new Error('Debes ser mayor de 18 años');
         }),
-    body('adress').notEmpty().withMessage('Tienes que ingresar tu dirección!'),
+    body('street').notEmpty().withMessage('Tienes que ingresar nombre de la calle.'),
+    body('number').notEmpty().withMessage('Tienes que ingresar la numeración.'),
+    body('city').notEmpty().withMessage('Tienes que ingresar la ciudad.'),
+    body('province').notEmpty().withMessage('Tienes que ingresar la provincia.'),
+    body('country').notEmpty().withMessage('Tienes que ingresar país.'),
     body('user_image').custom((value, {req}) => {
         let file = req.file;
         let acceptedExtensions = ['.jpg', '.png', '.gif'];

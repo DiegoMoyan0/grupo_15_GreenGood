@@ -1,11 +1,11 @@
 const path = require('path');
 const { body } = require('express-validator');
-// const userModel = require('../models/User.js');
 let db = require("../database/models");
 const Op = db.Sequelize.Op;
 
 const validations = [
-    body('name_data').notEmpty().withMessage('Tienes que ingresar tu nombre completo!'),
+    body('first_name').notEmpty().withMessage('Tienes que ingresar tu nombre/s tal cual figura en el DNI.'),
+    body('last_name').notEmpty().withMessage('Tienes que ingresar tu apellido/s tal cual figura en el DNI.'),
     body('user_name').notEmpty().withMessage('Tienes que ingresar tu nombre de usuario!').bail()
         .custom (async (value,{req}) => {
             let userNameInDb = await db.User.findOne(
@@ -15,7 +15,23 @@ const validations = [
             };
             return true;
         }),
-    body('birth_date').notEmpty().withMessage('Tienes que ingresar tu fecha de nacimiento!'),
+    body('birth_date').notEmpty().isDate().withMessage('Tienes que ingresar tu fecha de nacimiento!').bail()
+        .custom((value) => {
+            let birthday = new Date(value);
+            let today = new Date();
+            let age = today.getFullYear() - birthday.getFullYear();
+            let monthDiff = today.getMonth() - birthday.getMonth();
+        
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthday.getDate())) {
+            age--;
+            }
+        
+            if (age >= 18) {
+            return true;
+            }
+        
+            throw new Error('Debes ser mayor de 18 años para registrarte');
+        }),
     body('email')
         .notEmpty().withMessage('Tienes que ingresar tu e-mail!').bail()
         .trim().isEmail().withMessage('Debes escribir un e-mail con formato valido').bail()
@@ -27,7 +43,11 @@ const validations = [
             };
             return true;
         }),
-    body('address').notEmpty().withMessage('Tienes que ingresar tu dirección!'),
+    body('street').notEmpty().withMessage('Tienes que ingresar nombre de la calle.'),
+    body('number').notEmpty().withMessage('Tienes que ingresar la numeración.'),
+    body('city').notEmpty().withMessage('Tienes que ingresar la ciudad.'),
+    body('province').notEmpty().withMessage('Tienes que ingresar la provincia.'),
+    body('country').notEmpty().withMessage('Tienes que ingresar país.'),
     body('phone').optional().isMobilePhone().withMessage('El formato de nro. de tel. celular no es válido'),
     body('password').notEmpty().withMessage('Tienes que ingresar una contraseña!'),
     body('password_confirm')
@@ -38,7 +58,6 @@ const validations = [
             };
             return true;
         }),
-    body('address').notEmpty().withMessage('Tienes que ingresar tu dirección!'),
     body('user_image').optional().custom((value, {req}) => {
         let file = req.file;
         let acceptedExtensions = ['.jpg', '.png', '.gif'];

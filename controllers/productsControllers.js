@@ -242,9 +242,6 @@ const controller = {
         try {
 
             let newData = req.body;
-            console.log('id:');
-            console.log(req.params.id);
-            console.log(newData);
 
             //--> To save the previous image of the product edited and use it when "req.file" is 'undefined':
 
