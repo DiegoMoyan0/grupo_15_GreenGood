@@ -150,21 +150,21 @@ const controller = {
                 try {
                    let allProducts = await db.Product.findAll(
 
-                      //temporary line 
+                    //temporary line 
 
-                      //let products = await db.Product.findAll(
-                      //
-                        {
-                            raw: true,
-                            nest: true,
-                            include: [
-                                { association: 'category' },
-                                { association: 'subcategory' },
-                                { association: 'type' },
-                                { association: 'manufacturer' },
-                                { association: 'user' }
-                            ],
-                        });
+                    //let products = await db.Product.findAll(
+                    //
+                    {
+                        raw: true,
+                        nest: true,
+                        include: [
+                            { association: 'category' },
+                            { association: 'subcategory' },
+                            { association: 'type' },
+                            { association: 'manufacturer' },
+                            { association: 'user' }
+                        ],
+                    });
 
                         
 
@@ -207,12 +207,6 @@ const controller = {
 
     createProduct: async (req, res) => {
         try {
-            /*
-
-            if (typeof req.session === 'undefined' || typeof req.session.userLogged === 'undefined') {
-                return res.render('userViews/login', { title: "Login" });
-            };
-            */
 
             let newData = req.body;
 
@@ -247,19 +241,22 @@ const controller = {
         
         try {
 
-            /*
-
-            if (typeof req.session === 'undefined' || typeof req.session.userLogged === 'undefined') {
-                return res.render('userViews/login', { title: "Login" });
-            };
-            */
-
             let newData = req.body;
             console.log('id:');
             console.log(req.params.id);
             console.log(newData);
-        
 
+            //--> To save the previous image of the product edited and use it when "req.file" is 'undefined':
+
+            const product = await db.Product.findByPk(req.params.id);
+            let product_prev_img = '';
+
+            if(!req.file){
+                product_prev_img = product.image;
+            };
+
+            //--------------------------------------------//
+        
             const updatedProduct = await db.Product.update({
                 id: req.params.id,
                 title : newData.title,
@@ -269,7 +266,7 @@ const controller = {
                 price : Number(newData.price),
                 discount : Number(newData.discount),
                 sales_amount : 0,
-                image : typeof req.file === 'undefined' ? "default-product-image.jpg" : req.file.filename,
+                image : typeof req.file === 'undefined' ? product_prev_img : req.file.filename,
                 category_id: Number(newData.category),
                 subcategory_id: Number(newData.subcategory),
                 type_id: Number(newData.type),
@@ -283,10 +280,10 @@ const controller = {
                     id: req.params.id 
                 }
             });
-            //console.log('Product:');
+          /*   console.log('Product Edit img:');
             console.log(req.file);
-            console.log(newData);
-          //  console.log(req.params.id)
+            console.log('Product Edit data:');
+            console.log(newData); */
 
             res.redirect('/product/publications');
             
