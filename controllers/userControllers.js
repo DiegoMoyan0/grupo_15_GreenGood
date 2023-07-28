@@ -49,22 +49,22 @@ const controller = {
 
 		// delete user.password_confirm;
 
-        try {
+		try {
 
-            let newData = req.body;
+			let newData = req.body;
 			console.log(newData);
 
-            const newUser = await db.User.create({
-                first_name : newData.first_name,
-                last_name : newData.last_name,
-                username: newData.user_name,
-                birth_date : newData.birth_date,
-                email : newData.email,
-                image : req.file ? req.file.filename : "default-user-photo.png",
-                type : newData.user_type,
-                phone: Number(newData.phone),
-                password: newData.password,
-            });
+			const newUser = await db.User.create({
+				first_name: newData.first_name,
+				last_name: newData.last_name,
+				username: newData.user_name,
+				birth_date: newData.birth_date,
+				email: newData.email,
+				image: req.file ? req.file.filename : "default-user-photo.png",
+				type: newData.user_type,
+				phone: Number(newData.phone),
+				password: newData.password,
+			});
 
 			const newAdress = await db.Address.create({
 				street: newData.street,
@@ -75,12 +75,12 @@ const controller = {
 				user_id: newUser.id
 			});
 
-            res.redirect('/user/login');
-            
-        } catch (error) {
-            console.log(error);
-            res.redirect('/mainViews/error');
-        }; 
+			res.redirect('/user/login');
+
+		} catch (error) {
+			console.log(error);
+			res.redirect('/mainViews/error');
+		};
 	},
 
 	loginUser: async (req, res) => {
@@ -96,37 +96,66 @@ const controller = {
 				oldData: req.body,
 			});
 		};
-		
+
+
 		try {
-			//Search user by email first
-			let searchedUser = await db.User.findOne({
-				raw: true,
-				nest: true,
-				include: [
-					{ association: 'address' },
-				],
-			},
-			{
-				where:{email: req.body.email}
-			});
 
+			if (req.body.email.indexOf('@') > -1) {
+
+				//Search user by email first
+				console.log('es un correo')
+				searchedUser = await db.User.findOne(
+					{
+						where: { email: req.body.email }
+					},
+					{
+						
+						raw: true,
+						nest: true,
+
+						include: [
+							{ association: 'address' },
+							{where: { email: req.body.email }}
+						],
+						
 		
-			if (!searchedUser) {
-			//Search user by username
-				searchedUser = await db.User.findOne({
-					raw: true,
-					nest: true,
-					include: [
-						{ association: 'address' },
-					],
-				},
-				{
-					where:{username: req.body.user_name}
-				});
-			};
+					},
+					{
+						where: { email: req.body.email }
+					}
+				);
+			} else {
+
+				//	if (!searchedUser) {
+				//Search user by username
+				console.log('es un username')
+				searchedUser = await db.User.findOne(
+					{
+						where: { username: req.body.email }
+					},
+					{
+						
+						raw: true,
+						nest: true,
+						
+						include: [
+							{ association: 'address' },
+							{where: { username: req.body.email }}
+						],
+						
+						
+						
+					},
+					{
+						where: { email: req.body.email }
+					}
+					);
+				//		};
+
+			}
 
 			if (!searchedUser) {
-			
+
 				return res.render('userViews/login', {
 					title: "Login",
 					errors: {
@@ -138,9 +167,14 @@ const controller = {
 				});
 			};
 
-			const { password: hashedPw } = searchedUser;
-			const isCorrect = bcrypt.compareSync(req.body.password, hashedPw);
-			
+			//const { password: hashedPw } = searchedUser;
+			//const isCorrect = bcrypt.compareSync(req.body.password, hashedPw);
+
+			//Temporary line
+
+			let isCorrect = req.body.password === searchedUser.password
+			//
+
 			if (!isCorrect) {
 				return res.render('userViews/login', {
 					title: "Login",
@@ -152,22 +186,25 @@ const controller = {
 					oldData: req.body,
 				});
 			};
-			
+
 			userToLoggin = searchedUser;
+
 			/* delete userToLoggin.password; */ // We want to update password at profile by now
 
 			//Add the logged user to session!
-					
+
 			req.session.userLogged = userToLoggin;
-					
+
 			//Create cookie called "userEmail" to save user logged when "RememberUser ichecked"
-					
+
 			if (req.body.rememberUser) {
 				res.cookie('userEmail', searchedUser.email, { maxAge: 1000 * 60 * 60 * 24 * 360 });
 			};
-					
+
 			//--------------------------//
-					
+
+			//user.image = "/images/users/"+ searchedUser.image
+
 			return res.redirect('/user/profile');
 
 		} catch (error) {
@@ -177,7 +214,7 @@ const controller = {
 	},
 	updateUser: async (req, res) => {
 		/* Update user data  */
-	 	let user_image = req.file ? req.file.filename : "default-user-photo.jpg";
+		let user_image = req.file ? req.file.filename : "default-user-photo.jpg";
 
 		try {
 			let newData = req.body;
@@ -204,7 +241,7 @@ const controller = {
 				city: newData.city,
 				province: newData.province,
 				country: newData.country
-			},{
+			}, {
 				where: {
 					user_id: req.session.userLogged.id
 				}
@@ -219,26 +256,26 @@ const controller = {
 	},
 
 
-    hardDeleteUser: async (req, res) => {
+	hardDeleteUser: async (req, res) => {
 
-        try {
-            let DeletedUser = await db.User.destroy({
-                where: {
-                    id: req.params.id
-                },
-                /* force: true */ // Hard deletion with paranoid model
-            });
+		try {
+			let DeletedUser = await db.User.destroy({
+				where: {
+					id: req.params.id
+				},
+				/* force: true */ // Hard deletion with paranoid model
+			});
 
 			req.session.destroy();
 			res.clearCookie('userEmail');
-            
+
 			return res.redirect('/');
-        } catch (error) {
-            console.log(error);
-            res.redirect('/mainViews/error');
-        };
-    }
-	
+		} catch (error) {
+			console.log(error);
+			res.redirect('/mainViews/error');
+		};
+	}
+
 };
 
 module.exports = controller;

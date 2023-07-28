@@ -108,26 +108,26 @@ const controller = {
     
     getProductPublications: async (req, res) => {
 
-        /*
+        
         if (typeof req.session === 'undefined' || typeof req.session.userLogged === 'undefined') {
             return res.render('userViews/login', { title: "Login" });
 
         } else {
-        */
+        
 
             //temporary line 
 
-            type  = 'Vendedor';
+           // type  = 'Vendedor';
 
             ///
 
 
 
-           // if (req.session.userLogged.type === 'Comprador') {
+           if (req.session.userLogged.type === 'Comprador') {
 
             //temporary line 
 
-           if (type === 'Comprador') {
+         //  if (type === 'Comprador') {
 
             //
 
@@ -139,20 +139,20 @@ const controller = {
 
             };
 
-            //if (req.session.userLogged.type === 'Vendedor') {
+           if (req.session.userLogged.type === 'Vendedor') {
 
             //temporary line 
 
-              if (type === 'Vendedor') {
+             // if (type === 'Vendedor') {
 
             //
 
                 try {
-                  //  let allProducts = await db.Product.findAll(
+                   let allProducts = await db.Product.findAll(
 
                       //temporary line 
 
-                      let products = await db.Product.findAll(
+                      //let products = await db.Product.findAll(
                       //
                         {
                             raw: true,
@@ -166,14 +166,14 @@ const controller = {
                             ],
                         });
 
-                        /*
+                        
 
                     let userSellerProducts = allProducts.filter(function(products){
                         return products.user_id === req.session.userLogged.id;
                     });
      
                     let products = userSellerProducts;
-                    */
+                    
 
                     let categories = await db.Category.findAll({raw: true});
                     let subcategories = await db.Subcategory.findAll({raw: true});
@@ -196,7 +196,7 @@ const controller = {
 
             };
 
-      //  };
+        };
 
     },
 

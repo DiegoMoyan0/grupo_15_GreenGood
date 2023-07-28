@@ -62,10 +62,14 @@ module.exports = (sequelize, DataTypes) => {
 
     // Hook to hash user password before register:
 
+    /*
+
     User.beforeCreate(async (user) => {
         const hashedPassword = await bcrypt.hash(user.password, 12);
         user.password = hashedPassword;
     });
+
+    */
 
     //----------------------------//
 
