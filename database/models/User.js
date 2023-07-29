@@ -60,17 +60,6 @@ module.exports = (sequelize, DataTypes) => {
 
     const User = sequelize.define(alias, cols, config);
 
-    // Hook to hash user password before register:
-
-    /*
-
-    User.beforeCreate(async (user) => {
-        const hashedPassword = await bcrypt.hash(user.password, 12);
-        user.password = hashedPassword;
-    });
-
-    */
-
     //----------------------------//
 
 
@@ -83,6 +72,11 @@ module.exports = (sequelize, DataTypes) => {
 
         User.hasOne(models.Address, {
             as: 'address',
+            foreignKey: 'user_id',
+            onDelete: 'CASCADE',  // Esto asegura que si se elimina un usuario, también se elimine su dirección asociada
+        });
+        User.hasOne(models.CartItem, {
+            as: 'cart',
             foreignKey: 'user_id',
             onDelete: 'CASCADE',  // Esto asegura que si se elimina un usuario, también se elimine su dirección asociada
         });

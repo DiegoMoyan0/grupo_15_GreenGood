@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const alias = 'LikedProduct';
+    const alias = 'OrderDetail';
 
     const cols = {
         id: {
@@ -7,11 +7,21 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             autoIncrement: true
         },
-        product_id: {
+        order_date: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: 1
+        },
+        detail_total: {
+            type: DataTypes.FLOAT,
+            allowNull: false,
+            defaultValue: 1
+        },
+        user_payment_id: {
             type: DataTypes.INTEGER,
             allowNull: true, 
             references: {
-                model: 'product',
+                model: 'userPayment',
                 key: 'id'
             }  
         },
@@ -19,18 +29,18 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(255),  
             allowNull: true, // Pending to delete this property after testing
             references: {
-                model: 'user',
+                model: 'users',
                 key: 'id'
             }  
         }
     };
 
     const config = {
-        tableName: 'liked_products',
+        tableName: 'order_details',
         timestamps: false
     };
 
-    const LikedProduct = sequelize.define(alias, cols, config);
+    const OrderDetail = sequelize.define(alias, cols, config);
 
-    return LikedProduct;
+    return OrderDetail;
 };

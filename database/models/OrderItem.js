@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const alias = 'CartItem';
+    const alias = 'OrderItem';
 
     const cols = {
         id: {
@@ -12,43 +12,35 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             defaultValue: 1
         },
-        product_id: {
+        amount: {
+            type: DataTypes.FLOAT,
+            allowNull: false,
+            defaultValue: 1
+        },
+        order_detail_id: {
             type: DataTypes.INTEGER,
             allowNull: true, 
             references: {
-                model: 'products',
+                model: 'orderDetail',
                 key: 'id'
             }  
         },
-        shopping_session_id: {
+        cart_item_id: {
             type: DataTypes.INTEGER,
             allowNull: true, 
             references: {
-                model: 'shoppingSession',
+                model: 'cartItems',
                 key: 'id'
             }  
         }
     };
 
     const config = {
-        tableName: 'cart_items',
+        tableName: 'order_items',
         timestamps: false
     };
 
-    const CartItem = sequelize.define(alias, cols, config);
+    const OrderItem = sequelize.define(alias, cols, config);
 
-    CartItem.associate = models => {
-        CartItem.belongsTo(models.Product, {
-            as: 'product',
-            foreignKey: 'product_id',
-            onDelete: 'CASCADE'
-        });
-        CartItem.belongsTo(models.ShoppingSession, {
-            as: 'shoppingSession',
-            foreignKey: 'shopping_session_id',
-            onDelete: 'CASCADE'
-        });
-    };
-
-    return CartItem;
+    return OrderItem;
 };
