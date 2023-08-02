@@ -125,4 +125,4 @@ Retrospectiva del Sprint 6:
 - Reducir la demora en tareas que no son esenciales.
 
 5. Dejar de hacer:
-- Tomar decisiones o hacer cambios importantes sin consultar al equipo, especialmente si estyá relacionado con la estructura de los modelos y la base de datos.
+- Tomar decisiones o hacer cambios importantes sin consultar al equipo, especialmente si está relacionado con la estructura de los modelos y la base de datos.
