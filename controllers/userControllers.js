@@ -103,27 +103,29 @@ const controller = {
 				console.log('es un correo')
 				searchedUser = await db.User.findOne(
 					{
+						where: { email: req.body.email }
+					},
+					{
 						raw: true,
 						nest: true,
 						include: [
 							{ association: 'address' }
 						],
-					},{
-						where: { email: req.body.email }
 					}
 				);
-			} else if (req.body.email.indexOf('@') == -1) {
+			} else {
 				//Search user by username
 				console.log('es un username')
 				searchedUser = await db.User.findOne(
+					{
+						where: { username: req.body.email }
+					},
 					{
 						raw: true,
 						nest: true,
 						include: [
 							{ association: 'address' },
 						],
-					},{
-						where: { username: req.body.user_name }
 					}
 				);
 			};
@@ -225,14 +227,13 @@ const controller = {
 				}
 			});
 
-			res.redirect('/');
+			res.redirect('/user/profile');
 
 		} catch (error) {
 			console.log(error);
 			res.redirect('/mainViews/error');
 		};
 	},
-
 
 	hardDeleteUser: async (req, res) => {
 

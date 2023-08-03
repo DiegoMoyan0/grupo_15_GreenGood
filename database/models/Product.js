@@ -90,7 +90,7 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: true,
         createdAt: "created_at",
         updatedAt: "updated_at",
-        paranoid : true,
+        paranoid : true, // Pending to soft-delete 
         deletedAt: "deleted_at" 
     };
 

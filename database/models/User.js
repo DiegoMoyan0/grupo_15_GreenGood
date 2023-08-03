@@ -78,7 +78,7 @@ module.exports = (sequelize, DataTypes) => {
         User.hasOne(models.CartItem, {
             as: 'cart',
             foreignKey: 'user_id',
-            onDelete: 'CASCADE',  // Esto asegura que si se elimina un usuario, también se elimine su dirección asociada
+            onDelete: 'CASCADE',  
         });
     };
 
