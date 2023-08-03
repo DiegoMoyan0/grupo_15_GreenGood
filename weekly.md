@@ -1,7 +1,8 @@
 Informe de la Reunión Semanal - Semana 1
+
 Fecha: [13/07/2023]
-Resumen:
-En la reunión semanal del equipo de desarrollo, se llevó a cabo un análisis exhaustivo del progreso y las actividades desarrolladas durante la semana previa. A continuación, se presentan los puntos más relevantes abordados en la reunión:
+
+Resumen: En la reunión semanal del equipo de desarrollo, se llevó a cabo un análisis exhaustivo del progreso y las actividades desarrolladas durante la semana previa. A continuación, se presentan los puntos más relevantes abordados en la reunión:
 
 1. Actividades realizadas esta semana:
 
@@ -21,9 +22,10 @@ El equipo ha acordado enfocarse en la finalización de las actividades necesaria
 - Resolver los inconvenientes identificados para garantizar un correcto funcionamiento de los modelos y Sequelize.
 
 Informe de la Reunión Semanal - Semana 2
+
 Fecha: [20/07/2023]
-Resumen:
-En la reunión semanal del equipo de desarrollo, se llevó a cabo un análisis exhaustivo del progreso y las actividades desarrolladas durante la semana previa. A continuación, se presentan los puntos más relevantes abordados en la reunión:
+
+Resumen: En la reunión semanal del equipo de desarrollo, se llevó a cabo un análisis exhaustivo del progreso y las actividades desarrolladas durante la semana previa. A continuación, se presentan los puntos más relevantes abordados en la reunión:
 
 1. Actividades realizadas esta semana:
 
@@ -35,17 +37,18 @@ Durante el período en cuestión, el equipo informó acerca de los siguientes lo
 - Aunque se mencionaron otras actividades realizadas, no se proporcionaron detalles específicos al respecto.
 
 2. Impedimentos encontrados:
--Conflictos en el CRUD para crear y actualizar productos y publicaciones.
--Conflictos en el CRUD para crear y actualizar usuarios.
+- Conflictos en el CRUD para crear y actualizar productos y publicaciones.
+- Conflictos en el CRUD para crear y actualizar usuarios.
 
 3. Plan para la próxima semana:
 El equipo ha acordado enfocarse en la finalización de las actividades necesarias para el actual Sprint. Se espera que se concentren en los siguientes aspectos:
 - Resolver los inconvenientes identificados para garantizar un correcto funcionamiento del CRUD de productos y usuarios.
 
 Informe de la Reunión Semanal - Semana 3
+
 Fecha: [27/07/2023]
-Resumen:
-En la reunión semanal del equipo de desarrollo, se revisaron los avances y las actividades realizadas durante la semana previa. A continuación, se presentan los puntos más destacados abordados en la reunión:
+
+Resumen: En la reunión semanal del equipo de desarrollo, se revisaron los avances y las actividades realizadas durante la semana previa. A continuación, se presentan los puntos más destacados abordados en la reunión:
 
 1. Actividades realizadas esta semana:
 
@@ -59,10 +62,11 @@ El equipo compartió las siguientes tareas y logros completados durante la seman
 
 2. Impedimentos encontrados:
 
--Inconveniente con las relaciones entre algunas tablas y modelos de la base de datos.
--Conflicto en la consulta de la tabla de direcciones de usuarios y la tabla de usuarios.
--Error relacionado con la dependencia Multer y el método HTTP para cargar la imagen de usuario.
--Inconveniente con la sesión de los usuarios que se autenticaban.
+- Inconveniente con las relaciones entre algunas tablas y modelos de la base de datos.
+- Conflicto en la consulta de la tabla de direcciones de usuarios y la tabla de usuarios.
+- Error relacionado con la dependencia Multer y el método HTTP para cargar la imagen de usuario.
+- Inconveniente con la sesión de los usuarios que se autenticaban.
 
 3. Plan para la próxima semana:
--Solucionar los impedimentos encontrados y luego de eso enfocarse en el próximo Sprint, denominado Sprint-7.
+   
+- Solucionar los impedimentos encontrados y luego de eso enfocarse en el próximo Sprint, denominado Sprint-7.
