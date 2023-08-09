@@ -22,7 +22,7 @@
 			<form class="form-login" action="/user/register" enctype="multipart/form-data" method="POST">
 				<div class="container-input">
                     <label for="first_name" class="label-register">Nombre/s</label>
-					<input type="text" 
+					<input type="text" id="first_name"
                     name="first_name" 
                     class="input-register" 
                     placeholder="Como figura en su DNI"
@@ -43,7 +43,7 @@
                 <div class="container-input">
                     <label for="last_name" class="label-register">Apellido/s</label>
 					<input type="text" 
-                    name="last_name" 
+                    name="last_name" id="last_name"
                     class="input-register" 
                     placeholder="Como figura en su DNI"
                     class="form-inputs <%= locals.errors && errors.last_name? "is-invalid" : null %>"
@@ -63,7 +63,7 @@
 
 				<div class="container-input">
                     <label for="email" class="label-register">Email</label>
-					<input type="email" 
+					<input id="email" type="email" 
                     name="email" 
                     class="input-register"
                     placeholder="ej user_email@mail.com" 
