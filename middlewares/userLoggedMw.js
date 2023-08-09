@@ -1,4 +1,4 @@
-//App Mw to render views with user logged data
+///App Mw to render views with user logged data
 let db = require("../database/models");
 const Op = db.Sequelize.Op;
 

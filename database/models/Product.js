@@ -123,18 +123,18 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: 'user_id'
         });
 
-        Product.hasOne(models.CartItem, {
+        Product.hasMany(models.CartItem, {
             as: 'product',
             foreignKey: 'product_id'
         });
 
-        Product.belongsToMany(models.ShoppingSession, {
+        /* Product.belongsToMany(models.ShoppingSession, {
             as: 'cart_products',
             through: 'cart_items',
             foreignKey: 'product_id',
             outherKey: 'shopping_session_id',
             timestamps: false
-        });
+        }); */
         
     };
 
