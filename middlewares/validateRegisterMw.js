@@ -16,7 +16,7 @@ schema
     .has().not().spaces()                           // Should not have spaces
     .is().not().oneOf(['Passw0rd', 'Password123']); // Blacklist these values
 
-schema.validate(req.body.password, { details: true })
+/* schema.validate(req.body.password, { details: true }) */
 
 const validations = [
     body('first_name').notEmpty().withMessage('Tienes que ingresar tu nombre/s tal cual figura en el DNI.').bail().isLength({ min: 2 }).withMessage('Debe tener al menos 2 caracteres'),

@@ -101,33 +101,22 @@ const controller = {
 
 				//Search user by email first
 				console.log('es un correo')
-				searchedUser = await db.User.findOne(
-					{
-						where: { email: req.body.email }
-					},
-					{
-						raw: true,
-						nest: true,
-						include: [
-							{ association: 'address' }
-						],
-					}
-				);
+
+				searchedUser = await db.User.findOne({
+					where: { email: req.body.email },
+					raw: true,
+					nest: true,
+					include: ["address"],
+				});
 			} else {
 				//Search user by username
 				console.log('es un username')
-				searchedUser = await db.User.findOne(
-					{
-						where: { username: req.body.email }
-					},
-					{
-						raw: true,
-						nest: true,
-						include: [
-							{ association: 'address' },
-						],
-					}
-				);
+				searchedUser = await db.User.findOne({
+					where: { email: req.body.email },
+					raw: true,
+					nest: true,
+					include: ["address"],
+				});
 			};
 
 			if (!searchedUser) {
@@ -165,8 +154,6 @@ const controller = {
 			//Add the logged user to session!
 
 			req.session.userLogged = userToLoggin;
-
-			console.log(req.session.userLogged);
 
 			//Create cookie called "userEmail" to save user logged when "RememberUser ichecked"
 
@@ -209,10 +196,8 @@ const controller = {
 				image: typeof req.file === 'undefined' ? user_prev_img : req.file.filename,
 				type: newData.user_type,
 				phone: newData.phone
-			}, {
-				where: {
-					id: req.params.id
-				}
+				}, 
+				{where: {id: req.params.id}
 			});
 
 			const updatedAddress = await db.Address.update({
@@ -221,10 +206,7 @@ const controller = {
 				city: newData.city,
 				province: newData.province,
 				country: newData.country
-			}, {
-				where: {
-					user_id: req.session.userLogged.id
-				}
+				}, { where: { user_id: req.session.userLogged.id }
 			});
 
 			res.redirect('/user/profile');

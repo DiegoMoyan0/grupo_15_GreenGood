@@ -32,9 +32,6 @@ const controller = {
                 product.manufacturer = product.manufacturer.name;
             });
 
-            console.log(products[0].category);
-            console.log(products[0]);
-
             return res.render('productsViews/products-list', {
                 title: "Todos los productos",
                 products: products
@@ -46,13 +43,31 @@ const controller = {
         }
     },
 
-    // -------Pending------- //
+    // -------Pending ShoppingCart------- //
 
-    getProductCart: (req, res) => {
+    getProductCart: async (req, res) => {
+
+        try {
+            let cartItems = await db.CartItem.findAll({
+                where: { shopping_session_id: 1 },
+                raw: true,
+                nest: true,
+                include: ["shoppingSession","product"],
+            });
+            console.log(cartItems);
+            
+        } catch (error) {
+            console.error('Error:', error);
+            res.status(500).json({ message: 'Error al obtener los elementos del carrito.' });
+        };
         return res.render('productsViews/shopping-cart', {
             title: "Carrito de Compras"
         });
     },
+
+
+
+
 
     // ----------------------- //
 
@@ -153,7 +168,7 @@ const controller = {
                     //temporary line 
 
                     //let products = await db.Product.findAll(
-                    //
+                    
                     {
                         raw: true,
                         nest: true,
@@ -277,10 +292,6 @@ const controller = {
                     id: req.params.id 
                 }
             });
-          /*   console.log('Product Edit img:');
-            console.log(req.file);
-            console.log('Product Edit data:');
-            console.log(newData); */
 
             res.redirect('/product/publications');
             

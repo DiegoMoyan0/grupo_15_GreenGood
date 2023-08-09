@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     };
 
     const config = {
-        tableName: 'shopping_sessions',
+        tableName: 'shopping_session',
         timestamps: false
     };
 
@@ -34,17 +34,11 @@ module.exports = (sequelize, DataTypes) => {
             as: 'user',
             foreignKey: 'user_id'
         });
-        ShoppingSession.hasOne(models.CartItem, {
-            as: 'shoppingSession',
+        ShoppingSession.hasMany(models.CartItem, {
+            as: 'cartItems',
             foreignKey: 'shopping_session_id'
         });
-       /*  ShoppingSession.belongsToMany(models.Products, {
-            as: 'cart_products',
-            through: 'cart_items',
-            foreignKey: 'shopping_session_id',
-            outherKey: 'product_id',
-            timestamps: false
-        }); */
+      
     }
 
     return ShoppingSession;
