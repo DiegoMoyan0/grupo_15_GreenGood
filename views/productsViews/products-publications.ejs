@@ -21,6 +21,22 @@
             <h2>Mis Publicaciones</h2>
             <br>
             <a href="#" class="btn-publication">Crear un nuevo producto!</a>
+            <% if (locals.errors) { %>
+                <% var msgsArray = []; %>
+                <% for (var key in errors) {
+                    if (errors.hasOwnProperty(key)) {
+                      msgsArray.push(errors[key].msg);
+                    }
+                  } %>
+                <div>
+                    <ul>
+                        <% msgsArray.forEach(msg => { %>
+                            <li style="color: brown;"><%= msg %></li>
+                        <% }) %>
+                    </ul>
+                </div>
+             
+            <% } %>
 
             <% products.forEach(product => { %>
                 
@@ -77,7 +93,7 @@
                                         <input type="number" name="price" step="0.01" class="input-sale-edit" min="100" max="100000" id="InputPrice-edit" value="<%=product.price%>" required>
 
                                         <label for="discount" class="label-sale-edit">Porcentaje de descuento</label>
-                                        <input type="number" name="discount" class="input-sale-edit" min="0" max="50"                                  id="InputPrice-edit" value="<%=product.discount%>" required />
+                                        <input type="number" name="discount" class="input-sale-edit"                 id="InputPrice-edit" value="<%=product.discount%>"  />
 
                                         <label for="stock" class="label-sale-edit">Stock</label>
                                         <input type="number" name="stock" class="input-sale-edit" min="1" id="InputPrice-edit" value="<%=product.stock%>" required >
@@ -172,15 +188,20 @@
                                 <img src="/images/products/default-product-image.jpg" alt="product img" id="imgCreate" style="width: 50%;">
                                 <!-- <label for="image" id="change_photo">Cambiar foto</label> -->
                                 <input class="input-sale" type="file" id="image-children" name="image" accept="image/*" >
+                                <span class="error" id="image-error"></span>
                                             
                                 <label for="title" class="label-sale">Título del producto</label>
-                                <input type="text" name="title" id="title-children" class="input-sale" id="InputName" placeholder="Ingrese el título..." minlength="10" maxlength="400" required />
+                                <input type="text" name="title" id="title-children" class="input-sale" id="InputName" placeholder="ej. Air Pot Large"/>
+                                <span class="error" id="title-error"></span>
 
-                                <label for="InputDescription" class="label-sale">Descripción</label>
-                                <textarea class="text-area-description" id ="description-children" name="description" rows="3" cols="50" required minlength="6" placeholder="Escriba aquí breve descripción del producto..." required ></textarea>
+                                <label for="description" class="label-sale">Descripción</label>
+                                <textarea class="text-area-description" id ="description-children" name="description" rows="3" cols="50" placeholder="ej.'Maceta Moderna Air Pot Large - Cultivo in-door'"></textarea>
+                                <span class="error" id="description-error"></span>
 
                                 <label class="label-sale">Categoría:</label>
-                                <select name="category" id="category-children" class="input-sale" required >
+                                <span class="error" id="category-error"></span>
+                                <select name="category" id="category-children" class="input-sale">
+                                    <option value="" disabled selected>Selecciona la categoría principal</option>
                                     <% categories.forEach(category => { %>
                                         <% if (category.name == 'Cultivo') { %>
                                             <option value="<%= category.id %>">Producto para el cultivo</option>
@@ -197,30 +218,34 @@
                             </form>
                         </div>
                         <div class="container-form-2" style="display: none;">
-                            <h2>Ahora, categorías y precios</h2>
+                            <h2>Ahora, sub-categorías y precios</h2>
                             <!--Form Child 2-->
                             <form id="form-val-2">
 
                                 <label class="label-sale" for="subcategory">Subcategoría:</label>
-                                <select name="subcategory" id="subcategory-children" class="input-sale" required>
-                                    <option value="" selected>Elije una sub-categoria</option>
+                                <span class="error" id="subcategory-error"></span>
+                                <select name="subcategory" id="subcategory-children" class="input-sale">
+                                    <option value="" disabled selected>Elije una sub-categoria</option>
                                     <% subcategories.forEach(subcategory => { %>
                                             <option value="<%= subcategory.id %>"><%= subcategory.name %></option>
                                     <% }) %>
                                 </select>
                                 <label class="label-sale" for="type">Tipo:</label>
-                                <select name="type" id="type-children" class="input-sale" required>
-                                    <option value="" selected>Elije el tipo de producto</option>
+                                <span class="error" id="type-error"></span>
+                                <select name="type" id="type-children" class="input-sale">
+                                    <option value="" disabled selected>Elije el tipo de producto</option>
                                     <% types.forEach(type => { %>
                                         <option value="<%= type.id %>"><%= type.name %></option>
                                     <% }) %>
                                 </select>
 
                                 <label for="price" class="label-sale">Precio</label>
-                                <input type="number"  step="any" name="price"  class="input-sale" min="100" max="100000"  id="price-children" id="InputPrice" placeholder="ej. 899.99" required />
+                                <span class="error" id="price-error"></span>
+                                <input type="number"  step="any" name="price"  class="input-sale" id="price-children" id="InputPrice" placeholder="ej. 899.99" />
                                 
-                                <label for="discount" class="label-sale">Descuento</label>
-                                <input type="number" name="discount"  class="input-sale" min="0" max="100"  id="discount-children" placeholder="5" required >
+                                <label for="discount" class="label-sale">Porcentaje de descuento</label>
+                                <span class="error" id="discount-error"></span>
+                                <input type="number" name="discount"  class="input-sale" id="discount-children" placeholder="ej. 5">
 
                                 <div class="form-2-btns" style="display: none;">
                                     <button type="button" class="btn-back">Atrás</button>
@@ -234,9 +259,11 @@
                             <form id="form-val-3">
 
                                 <label for="stock" class="label-sale">Stock</label>
-                                <input type="number" name="stock" id ="stock-children" class="input-sale" min="1" max="100000"  id="stock-children"  placeholder="min 1" required >
+                                <span class="error" id="stock-error"></span>
+                                <input type="number" name="stock" id ="stock-children" class="input-sale" id="stock-children"  placeholder="min 1">
 
                                 <label for="info" name="info"  class="label-sale">Información detallada</label>
+                                <span class="error" id="info-error"></span>
                                 <textarea class="input-sale" id ="info-children" name="info" rows="20" cols="50" placeholder="Escriba aquí el detalle e información útil del producto..."></textarea>
             
                                 <div class="form-3-btns" style="display: none;">
@@ -253,23 +280,23 @@
 
                         <input class="input-sale" type="file" id="image-parent" name="image" accept="image/*">
 
-                        <input type="text" name="title"  id="title-parent" class="input-sale" required />
+                        <input type="text" name="title"  id="title-parent" class="input-sale"/>
 
-                        <input  type="text" name="description" id="description-parent" required/>
+                        <input  type="text" name="description" id="description-parent"/>
 
-                        <input type="number"  step="any" name="price"  id="price-parent"  class="input-sale" min="100" max="100000"  placeholder="ej. 899" required/>
+                        <input type="number"  step="any" name="price"  id="price-parent"  class="input-sale" min="100" max="100000" />
 
-                        <input type="number" name="discount"  class="input-sale" min="100" max="100000"  id="discount-parent"  required />
+                        <input type="number" name="discount"  class="input-sale" id="discount-parent" />
 
-                        <input type="number" name="stock"  class="input-sale" min="1" max="100000"  id="stock-parent"  required />
+                        <input type="number" name="stock"  class="input-sale" id="stock-parent" />
 
-                        <input type="text" name="category" id="category-parent" required />
+                        <input type="text" name="category" id="category-parent" />
                         
-                        <input  type="text" name="subcategory" id="subcategory-parent" class="input-sale" required/>
+                        <input  type="text" name="subcategory" id="subcategory-parent" class="input-sale" >
 
-                        <input  type="text" name="type" id="type-parent" class="input-sale" required/>
+                        <input  type="text" name="type" id="type-parent" class="input-sale" >
 
-                        <input  type="text" name="info" id="info-parent" class="input-sale" required />
+                        <input  type="text" name="info" id="info-parent" class="input-sale" />
 
                         <input type="submit"/>
 
@@ -345,8 +372,6 @@
 
     let inputsFile = Array.from(document.querySelectorAll('#foto'));
     let inputsImg = Array.from(document.querySelectorAll('#img'));
-    console.log(inputsFile);
-    console.log(inputsImg);
 
     for (let x = 0; x < inputsFile.length; x++) {
         let file = inputsFile[x];
@@ -367,9 +392,6 @@
                     inputsImg[y].src = defaultFile;
                 };
             };
-            console.log(file.value);
-            console.log(file);
-            console.log(file.files[0]);
         });   
     };   
 </script>

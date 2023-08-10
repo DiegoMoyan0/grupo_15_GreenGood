@@ -1,8 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-
 let db = require("../database/models");
-
+const { validationResult } = require('express-validator');
 const Op = db.Sequelize.Op;
 
 
@@ -128,13 +127,11 @@ const controller = {
 
             };
 
-           if (req.session.userLogged.type === 'Vendedor') {
+            if (req.session.userLogged.type === 'Vendedor') {
 
             //temporary line 
 
              // if (type === 'Vendedor') {
-
-            //
 
                 try {
                    let allProducts = await db.Product.findAll(
@@ -195,7 +192,14 @@ const controller = {
     // -------Products managment controllers------- //
 
     createProduct: async (req, res) => {
+    
         try {
+            /* Previous validations to create a new product */
+		    const resultsValidations = validationResult(req);
+
+            if (resultsValidations.errors.length > 0) {
+                return res.json(resultsValidations.errors)
+            };
 
             let newData = req.body;
 
@@ -216,7 +220,6 @@ const controller = {
             });
 
             console.log(newProduct)
-          
 
             res.redirect('/product/publications');
             
@@ -229,6 +232,13 @@ const controller = {
     updateProduct: async (req, res) => {
         
         try {
+
+            /* Previous validations to create a new product */
+		    const resultsValidations = validationResult(req);
+
+            if (resultsValidations.errors.length > 0) {
+                return res.json(resultsValidations.errors)
+            };
 
             let newData = req.body;
 

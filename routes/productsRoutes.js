@@ -3,6 +3,7 @@
 const express = require('express');
 const routes = express.Router();
 const multer = require('multer');
+const validationsCrudProducts = require('../middlewares/validateCrudProductsMw');
 
 
 // ************ Controller Require ************/
@@ -41,11 +42,11 @@ routes.get('/publications', productsController.getProductPublications);
 
 
 /*** @POST / CREATE ONE PRODUCT ***/ 
-routes.post('/create', uploadFile.single('image'), productsController.createProduct);
+routes.post('/create', uploadFile.single('image'),validationsCrudProducts, productsController.createProduct);
 
 
 /*** @EDIT ONE PRODUCT ***/ 
-routes.put('/:id/update',uploadFile.single('image'), productsController.updateProduct);
+routes.put('/:id/update',uploadFile.single('image'),validationsCrudProducts, productsController.updateProduct);
 
 
 /*** @DELETE AND @PATCH ONE PRODUCT ***/ 
