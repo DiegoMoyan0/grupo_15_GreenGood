@@ -40,10 +40,6 @@ routes.get('/:id/detail', productsController.getProductDetail);
 routes.get('/publications', productsController.getProductPublications);
 
 
-/*** @GET PRODUCTS CART SHOPPING VIEW ***/ 
-routes.get('/cart', productsController.getProductCart);
-
-
 /*** @POST / CREATE ONE PRODUCT ***/ 
 routes.post('/create', uploadFile.single('image'), productsController.createProduct);
 

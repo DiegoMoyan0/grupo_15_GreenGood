@@ -36,6 +36,7 @@ app.use(userLoggedMw); /*App Mw for logged user with cookie*/
 
 const mainRoutes = require('./routes/mainRoutes');
 const productsRoutes = require('./routes/productsRoutes');
+const cartRoutes = require('./routes/cartRoutes');
 const userRoutes = require('./routes/userRoutes');
 
 // **Statics resources** //
@@ -49,6 +50,7 @@ app.set('view engine', 'ejs');
 app.use(mainRoutes);
 app.use('/user',userRoutes);
 app.use('/product',productsRoutes);
+app.use('/cart',cartRoutes);
 
 
 //*Normalize PORT*/

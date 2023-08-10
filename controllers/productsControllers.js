@@ -43,32 +43,6 @@ const controller = {
         }
     },
 
-    // -------Pending ShoppingCart------- //
-
-    getProductCart: async (req, res) => {
-
-        try {
-            let cartItems = await db.CartItem.findAll({
-                where: { shopping_session_id: 1 },
-                raw: true,
-                nest: true,
-                include: ["shoppingSession","product"],
-            });
-            console.log(cartItems);
-            
-        } catch (error) {
-            console.error('Error:', error);
-            res.status(500).json({ message: 'Error al obtener los elementos del carrito.' });
-        };
-        return res.render('productsViews/shopping-cart', {
-            title: "Carrito de Compras"
-        });
-    },
-
-
-
-
-
     // ----------------------- //
 
 
