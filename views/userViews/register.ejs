@@ -39,7 +39,9 @@
                             <%= errors.first_name.msg %>
                         </div>
                     <% }; %>
+                    <span class="error" id="first_name-error"></span>
 				</div>
+
                 <div class="container-input">
                     <label for="last_name" class="label-register">Apellido/s</label>
 					<input type="text" 
@@ -59,6 +61,7 @@
                             <%= errors.last_name.msg %>
                         </div>
                     <% }; %>
+                    <span class="error" id="last_name-error"></span>
 				</div>
 
 				<div class="container-input">
@@ -81,6 +84,7 @@
                             <% } %>
                         </div>
                     <% }; %>
+                    <span class="error" id="email-error"></span>
 				</div>
 
                 <div class="container-input">
@@ -101,6 +105,7 @@
                             <%= errors.user_name.msg %>
                         </div>
                     <% }; %>
+                    <span class="error" id="username-error"></span>
                 </div>             
 
                 <div class="container-input">
@@ -122,6 +127,7 @@
                             <%= errors.birth_date.msg %>
                         </div>
                     <% }; %>
+                    <span class="error" id="birthdate-error"></span>
 				</div>
 
                 <div class="container-input">
@@ -141,6 +147,7 @@
                             <%= errors.phone.msg %>
                         </div>
                     <% }; %>
+                    <span class="error" id="phone-error"></span>
 				</div>
 
                 <div class="container-input">
@@ -186,7 +193,7 @@
                         <input class="input-register" type="file" id="foto" name="user_image" accept="image/*" >
                         <span class="span-bar"></span>
                     <% }; %>  
-
+                    <span class="error" id="user_image-error"></span>
 				</div>
                 <br>
                 <br>
@@ -210,6 +217,7 @@
                                 <%= errors.street.msg %>
                             </div>
                         <% }; %>
+                        <span class="error" id="street-error"></span>
                     </div>
                     <div class="container-input">
                         <label for="number" class="label-register">Número/Altura/Depto</label>
@@ -229,6 +237,8 @@
                                 <%= errors.number.msg %>
                             </div>
                         <% }; %>
+                        <span class="error" id="number-error"></span>
+
                     </div>
                     <div class="container-input">
                         <label for="city" class="label-register">Ciudad</label>
@@ -248,6 +258,8 @@
                                 <%= errors.city.msg %>
                             </div>
                         <% }; %>
+                        <span class="error" id="city-error"></span>
+
                     </div>
                     <div class="container-input">
                         <label for="province" class="label-register">Provincia</label>
@@ -267,6 +279,8 @@
                                 <%= errors.province.msg %>
                             </div>
                         <% }; %>
+                        <span class="error" id="province-error"></span>
+
                     </div>
                     <div class="container-input">
                         <label for="country" class="label-register">País</label>
@@ -286,6 +300,8 @@
                                 <%= errors.country.msg %>
                             </div>
                         <% }; %>
+                        <span class="error" id="country-error"></span>
+
                     </div>
                 </div>
                 <br>
@@ -312,6 +328,8 @@
                             <%= errors.password.msg %>
                         </div>
                     <% }; %>
+                    <span class="error" id="password-error"></span>
+
 				</div>                    
                 <div class="container-input">
                  <input type="password" 
@@ -330,6 +348,8 @@
                             <%= errors.password_confirm.msg %>
                         </div>
                     <% }; %>
+                    <span class="error" id="password_confirm-error"></span>
+
 				</div>
 
                 <button type="submit" class="btn-login">
