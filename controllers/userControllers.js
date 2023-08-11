@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcryptjs');
 const { validationResult } = require('express-validator');
-let db = require("../database/models");
+const db =  require("../database/models");
 const Op = db.Sequelize.Op;
 
 const controller = {
@@ -132,8 +132,17 @@ const controller = {
 				});
 			};
 
+		
+
 			const { password: hashedPw } = searchedUser;
 			const isCorrect = bcrypt.compareSync(req.body.password, hashedPw);
+
+
+			// Temporary lines
+
+			//let isCorrect = req.body.password === searchedUser.password
+			//console.log(isCorrect)
+
 
 			if (!isCorrect) {
 				return res.render('userViews/login', {

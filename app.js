@@ -5,6 +5,7 @@ const app = express();
 const path = require('path');
 const methodOverride = require('method-override');
 const logger = require('morgan');// A tool that logs HTTP requests in the terminal
+const db = require("./database/models");
 
 //------ Login Mw -------//
 const cookieParser = require('cookie-parser');
@@ -51,6 +52,42 @@ app.use(mainRoutes);
 app.use('/user',userRoutes);
 app.use('/product',productsRoutes);
 app.use('/cart',cartRoutes);
+
+
+/*** FRONTEND TO BACKEND VALIDATIONS (PREVIEW) ***/
+
+app.get('/verify-email', async (req, res) => {
+  const emailInForm = req.query.email; // Get the email parameter from the query
+
+  try {
+      let exists = false; 
+
+      if (emailInForm.indexOf('@') > -1) {
+          // Find a user by email and retrieve only the 'email'
+          const userByEmail = await db.User.findOne({
+              where: { email: emailInForm },
+              attributes: ['email'],
+              raw: true,
+          });
+          exists = !!userByEmail;
+      } else {
+          // Find a user by username and retrieve the 'username'
+          const userByUsername = await db.User.findOne({
+              where: { username: emailInForm },
+              attributes: ['username'],
+              raw: true,
+          });
+          exists = !!userByUsername;
+      }
+      res.send(exists.toString()); // Send a response indicating whether the email/username exists as a string
+  } catch (error) {
+      res.status(500).send('Error en la consulta desde el servidor :' + error); 
+  }
+});
+
+
+/**/ 
+
 
 
 //*Normalize PORT*/
