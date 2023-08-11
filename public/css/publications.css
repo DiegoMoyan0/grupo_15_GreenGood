@@ -567,6 +567,34 @@ overflow-y: scroll;
 	transform: translate(-50%,-50%);
 }
 
+.error{
+  color: #f52c15;
+  font-size: 0.8rem;
+  margin: 2px 0 8px 0;
+  padding: 2px;
+  display: flex; 
+  align-items: center;
+  font-weight: 600;
+}
+
+.error-icon {
+  width: 1em;
+  height: 1em;
+  font-size: 1.5rem;
+  margin: auto;
+}
+
+.is-valid{
+  border-color: rgb(17, 189, 17);
+  box-shadow: 0 0 10px rgb(17, 189, 17);
+}
+
+.not-valid{
+  border-color: rgb(189, 26, 17);
+  box-shadow: 0 0 10px rgb(189, 26, 17);
+}
+
+
 /*-------------------------------------------------------------------------------------/*
 
 /* Breakpoints */

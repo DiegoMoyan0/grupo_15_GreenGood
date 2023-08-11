@@ -4,7 +4,7 @@
 <head>
     <%- include('../partials/head') %>
         <link rel="stylesheet" href="/css/publications.css">
-
+    <script src="/javascript/validationFront/createProduct.js"></script>
 </head>
 
 <body class="body-publications">
@@ -187,8 +187,8 @@
                                 <br>
                                 <img src="/images/products/default-product-image.jpg" alt="product img" id="imgCreate" style="width: 50%;">
                                 <!-- <label for="image" id="change_photo">Cambiar foto</label> -->
-                                <input class="input-sale" type="file" id="image-children" name="image" accept="image/*" >
-                                <span class="error" id="image-error"></span>
+                                <input class="input-sale" type="file" id="image-children" name="image">
+                                <span class="error" id="image-error" ></span>
                                             
                                 <label for="title" class="label-sale">Título del producto</label>
                                 <input type="text" name="title" id="title-children" class="input-sale" id="InputName" placeholder="ej. Air Pot Large"/>
@@ -204,16 +204,16 @@
                                     <option value="" disabled selected>Selecciona la categoría principal</option>
                                     <% categories.forEach(category => { %>
                                         <% if (category.name == 'Cultivo') { %>
-                                            <option value="<%= category.id %>">Producto para el cultivo</option>
+                                            <option value="<%= category.name %>">Producto para el cultivo</option>
                                         <% } %>
                                         <% if (category.name == 'Medicinal') { %>
-                                            <option value="<%= category.id %>">Producto Medicinal</option>
+                                            <option value="<%= category.name %>">Producto Medicinal</option>
                                         <% } %>
                                     <% }) %>
                                 </select>     
                                                
-                                <div class="form-1-btns">
-                                    <button type="button" class="btn-next">Siguiente</button>
+                                <div class="form-1-btns" id="btn-next1-parent">
+                                    <button type="button" class="btn-next" id="btn-next1">Siguiente</button>
                                 </div>
                             </form>
                         </div>
