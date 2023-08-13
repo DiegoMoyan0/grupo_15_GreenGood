@@ -4,7 +4,8 @@
 <head>
     <%- include('../partials/head') %>
         <link rel="stylesheet" href="/css/publications.css">
-    <script src="/javascript/validationFront/createProduct.js"></script>
+
+    <script src="/javascript/validationFront/crudProducts.js"></script>
 </head>
 
 <body class="body-publications">
@@ -38,7 +39,8 @@
              
             <% } %>
 
-            <% products.forEach(product => { %>
+            <% for (let index = 0; index < products.length; index++) { %>
+                <% const product = products[index]; %>
                 
                 <div class="publication-container">
                     <article>
@@ -76,30 +78,37 @@
                         <div class="container-answer1">
                             <article class="container-detail">
                                 <div class="container-price">
-                                    <form action="/product/<%=product.id%>/update?_method=PUT" enctype="multipart/form-data" method="post">
+                                    <form action="/product/<%=product.id%>/update?_method=PUT" enctype="multipart/form-data" method="post" id="edit-form">
                                       
                                         <label class="label-sale-edit" for="image">Imagen actual:</label>
                                         <img src="/images/products/<%= product.image %>" alt="product img" id="img" width="150px">
-                                        <label for="foto" id="change_photo">Cambiar imagen</label>
-                                        <input class="input-sale-edit" type="file" id="foto" name="image" accept="image/*">
+                                        <label for="image-edit" id="change_photo">Cambiar imagen</label>
+                                        <span class="errorE" id="imageEdit-error" ></span>
+                                        <input class="input-sale-edit" type="file" id="image-edit" name="image" accept="image/*" hidden>
 
-                                        <label for="title" class="label-sale-edit">Título del producto</label>
-                                        <input type="text" class="input-sale-edit" name="title" id="InputName"                                  value="<%=product.title%>" minlength="4" maxlength="400" required />
+                                        <label for="title-edit" class="label-sale-edit">Título del producto</label>
+                                        <span class="errorE" id="titleEdit-error" ></span>
+                                        <input type="text" class="input-sale-edit" name="title" id="title-edit" value="<%=product.title%>"/>
 
-                                        <label for="description" class="label-sale-edit">Descripción resumida</label> 
-                                        <textarea name="description" class="input-sale-edit" cols="30" rows="3"><%= product.description %></textarea>
+                                        <label for="description-edit" class="label-sale-edit">Descripción resumida</label>
+                                        <span class="errorE" id="descriptionEdit-error" ></span> 
+                                        <textarea name="description" class="input-sale-edit" id="description-edit" cols="30" rows="3"><%= product.description %></textarea>
 
-                                        <label for="price" class="label-sale-edit">Precio</label>
-                                        <input type="number" name="price" step="0.01" class="input-sale-edit" min="100" max="100000" id="InputPrice-edit" value="<%=product.price%>" required>
+                                        <label for="price-edit" class="label-sale-edit">Precio</label>
+                                        <span class="errorE" id="priceEdit-error" ></span> 
+                                        <input type="number" name="price" step="0.01" class="input-sale-edit" id="price-edit" value="<%=product.price%>" required>
 
-                                        <label for="discount" class="label-sale-edit">Porcentaje de descuento</label>
-                                        <input type="number" name="discount" class="input-sale-edit"                 id="InputPrice-edit" value="<%=product.discount%>"  />
+                                        <label for="discount-edit" class="label-sale-edit">Porcentaje de descuento</label>
+                                        <span class="errorE" id="discountEdit-error" ></span>
+                                        <input type="number" name="discount" class="input-sale-edit"                 id="discount-edit" value="<%=product.discount%>"  />
 
-                                        <label for="stock" class="label-sale-edit">Stock</label>
-                                        <input type="number" name="stock" class="input-sale-edit" min="1" id="InputPrice-edit" value="<%=product.stock%>" required >
+                                        <label for="stock-edit" class="label-sale-edit">Stock</label>
+                                        <span class="errorE" id="stockEdit-error" ></span>
+                                        <input type="number" name="stock" class="input-sale-edit" id="stock-edit" value="<%=product.stock%>">
 
-                                        <label class="label-sale-edit" for="category">Categoría:</label>
-                                        <select name="category" class="input-sale-edit">
+                                        <label class="label-sale-edit" for="category-edit">Categoría:</label>
+                                        <span class="errorE" id="categoryEdit-error" ></span>
+                                        <select name="category" class="input-sale-edit" id="category-edit">
                                             <option value="1" 
                                                 <%=(product.category.name == "Cultivo") ? 'selected' : null %> 
                                                 >Productos para el cultivo
@@ -110,8 +119,9 @@
                                             </option>
                                         </select>
 
-                                        <label class="label-sale-edit" for="subcategory">Subcategoría:</label>
-                                        <select name="subcategory" class="input-sale-edit">
+                                        <label class="label-sale-edit" for="subcategory-edit">Subcategoría:</label>
+                                        <span class="errorE" id="subcategoryEdit-error" ></span>
+                                        <select name="subcategory" class="input-sale-edit" id="subcategory-edit">
                                             <% subcategories.forEach(subcategory => { %>
                                                 <% if (subcategory.name == product.subcategory.name) { %>
                                                     <option value="<%= product.subcategory_id %>" selected><%= product.subcategory.name %></option>
@@ -121,8 +131,9 @@
                                             <% }) %>
                                         </select>
 
-                                        <label class="label-sale-edit" for="type">Tipo de producto:</label>
-                                        <select name="type" class="input-sale-edit">
+                                        <label class="label-sale-edit" for="type-edit">Tipo de producto:</label>
+                                        <span class="errorE" id="typeEdit-error" ></span>
+                                        <select name="type" class="input-sale-edit" id="type-edit">
                                             <% types.forEach(type => { %>
                                                 <% if (type.name == product.type.name) { %>
                                                     <option value="<%= product.type_id %>" selected><%= product.type.name %></option>
@@ -132,11 +143,12 @@
                                             <% }) %>
                                         </select>
 
-                                        <label for="info" class="label-sale-edit">Informacion / Detalle del producto:</label>
-                                        <textarea name="info" class="input-sale-edit" cols="30" rows="10"><%= product.info %></textarea>
+                                        <label for="info-edit" class="label-sale-edit">Informacion / Detalle del producto:</label>
+                                        <span class="errorE" id="infoEdit-error" ></span>
+                                        <textarea name="info" class="input-sale-edit" id="info-edit" cols="30" rows="10"><%= product.info %></textarea>
 
-                                        <input class="btn-save" type="submit" value="Guardar Cambios">
-                                        <button class="btn-save">Cancelar</button>
+                                        <input class="btn-save" type="submit" value="Guardar Cambios" id="edit-btn">
+                                        <button class="btn-cancel">Cancelar</button>
                                     </form>
                                 </div>
                             </article>
@@ -144,7 +156,7 @@
                     </div>
                 </div>
                 <!-- ---------------------- -->
-            <% }) %>
+            <% }; %>
         </section>
 
 
@@ -185,18 +197,21 @@
 
                                 <label class="label-sale" for="image">Una imagen del producto: </label>
                                 <br>
-                                <img src="/images/products/default-product-image.jpg" alt="product img" id="imgCreate" style="width: 50%;">
-                                <!-- <label for="image" id="change_photo">Cambiar foto</label> -->
-                                <input class="input-sale" type="file" id="image-children" name="image">
                                 <span class="error" id="image-error" ></span>
+                                <img src="/images/products/default-product-image.jpg" alt="product img" id="imgCreate" style="width: 50%;">
+                                <!-- <label for="image" id="change_photo">Cambiar image-edit</label> -->
+                                <input class="input-sale" type="file" id="image-children" name="image">
+                                
                                             
                                 <label for="title" class="label-sale">Título del producto</label>
-                                <input type="text" name="title" id="title-children" class="input-sale" id="InputName" placeholder="ej. Air Pot Large"/>
                                 <span class="error" id="title-error"></span>
+                                <input type="text" name="title" id="title-children" class="input-sale" placeholder="ej. Air Pot Large"/>
+                               
 
                                 <label for="description" class="label-sale">Descripción</label>
-                                <textarea class="text-area-description" id ="description-children" name="description" rows="3" cols="50" placeholder="ej.'Maceta Moderna Air Pot Large - Cultivo in-door'"></textarea>
                                 <span class="error" id="description-error"></span>
+                                <textarea class="text-area-description" id ="description-children" name="description" rows="3" cols="50" placeholder="ej.'Maceta Moderna Air Pot Large - Cultivo in-door'"></textarea>
+                                
 
                                 <label class="label-sale">Categoría:</label>
                                 <span class="error" id="category-error"></span>
@@ -204,10 +219,10 @@
                                     <option value="" disabled selected>Selecciona la categoría principal</option>
                                     <% categories.forEach(category => { %>
                                         <% if (category.name == 'Cultivo') { %>
-                                            <option value="<%= category.name %>">Producto para el cultivo</option>
+                                            <option value="<%= category.id %>">Producto para el cultivo</option>
                                         <% } %>
                                         <% if (category.name == 'Medicinal') { %>
-                                            <option value="<%= category.name %>">Producto Medicinal</option>
+                                            <option value="<%= category.id %>">Producto Medicinal</option>
                                         <% } %>
                                     <% }) %>
                                 </select>     
@@ -215,6 +230,7 @@
                                 <div class="form-1-btns" id="btn-next1-parent">
                                     <button type="button" class="btn-next" id="btn-next1">Siguiente</button>
                                 </div>
+                                <input type="reset" value="Limpiar campos" class="btn-back">
                             </form>
                         </div>
                         <div class="container-form-2" style="display: none;">
@@ -247,10 +263,11 @@
                                 <span class="error" id="discount-error"></span>
                                 <input type="number" name="discount"  class="input-sale" id="discount-children" placeholder="ej. 5">
 
-                                <div class="form-2-btns" style="display: none;">
-                                    <button type="button" class="btn-back">Atrás</button>
-                                    <button type="button" class="btn-next">Siguiente</button>
+                                <div class="form-2-btns" id="btn-next2-parent" style="display: none;">
+                                    <button type="button" id="btn-back2"  class="btn-back">Atrás</button>
+                                    <button type="button" id="btn-next2" class="btn-next">Siguiente</button>
                                 </div>
+                                <input type="reset" value="Limpiar campos" class="btn-back">
                             </form>
                         </div>
                         <div class="container-form-3" style="display: none;">
@@ -266,10 +283,11 @@
                                 <span class="error" id="info-error"></span>
                                 <textarea class="input-sale" id ="info-children" name="info" rows="20" cols="50" placeholder="Escriba aquí el detalle e información útil del producto..."></textarea>
             
-                                <div class="form-3-btns" style="display: none;">
-                                    <button type="button" class="btn-back">Atrás</button>
-                                    <button type="button" class="btn-done">Finalizar</button>
+                                <div class="form-3-btns" id="btn-next3-parent" style="display: none;">
+                                    <button type="button" id="btn-back3" class="btn-back">Atrás</button>
+                                    <button type="button" id="btn-next3" class="btn-done">Finalizar</button>
                                 </div>
+                                <input type="reset" value="Limpiar campos" class="btn-back">
                             </form>
                         </div>
                     </div>
@@ -361,6 +379,7 @@
 
             // Mostrar u ocultar el contenedor correspondiente según su estado actual
             if (containerDropdown.style.display === 'none') {
+                containerDropdown.classList.add('onView')
                 containerDropdown.style.display = 'block';
             } else {
                 containerDropdown.style.display = 'none';
@@ -370,7 +389,7 @@
 
      /*  To show the product image properly at Edit-Form: */
 
-    let inputsFile = Array.from(document.querySelectorAll('#foto'));
+    let inputsFile = Array.from(document.querySelectorAll('#image-edit'));
     let inputsImg = Array.from(document.querySelectorAll('#img'));
 
     for (let x = 0; x < inputsFile.length; x++) {

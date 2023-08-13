@@ -568,8 +568,8 @@ overflow-y: scroll;
 }
 
 .error{
-  color: #f52c15;
-  font-size: 0.8rem;
+  color: #fb6051bd;
+  font-size: 0.7rem;
   margin: 2px 0 8px 0;
   padding: 2px;
   display: flex; 
@@ -581,17 +581,17 @@ overflow-y: scroll;
   width: 1em;
   height: 1em;
   font-size: 1.5rem;
-  margin: auto;
+  margin-left: 5px;
 }
 
-.is-valid{
-  border-color: rgb(17, 189, 17);
-  box-shadow: 0 0 10px rgb(17, 189, 17);
+.is-valid {
+  border-color: rgb(175 236 175);
+  box-shadow: 0 0 10px rgb(184 223 184);
 }
 
-.not-valid{
-  border-color: rgb(189, 26, 17);
-  box-shadow: 0 0 10px rgb(189, 26, 17);
+.not-valid {
+  border-color: rgb(215 151 148);
+  box-shadow: 0 0 10px rgb(247 145 139);
 }
 
 

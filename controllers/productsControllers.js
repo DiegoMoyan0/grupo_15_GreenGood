@@ -202,6 +202,7 @@ const controller = {
             };
 
             let newData = req.body;
+            console.log(newData);
 
             let newProduct = db.Product.create({
                 title : newData.title,
