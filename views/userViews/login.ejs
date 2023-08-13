@@ -39,8 +39,7 @@
                             <%= errors.email.msg %>
                         </div>
                     <% }; %> 
-                    <span class="span-bar"></span>
-                    <div style="color:red" id="message"></div>
+                    <span class="error" id="error"></span>
                 </div>
                 <div class="container-input">
                     <input type="password"
@@ -58,7 +57,7 @@
                             <%= errors.password.msg %>
                         </div>
                     <% }; %>
-                    <span class="span-bar"></span>
+                    <span class="error-password" id="error-password"></span>
                 </div>
                 <div class="container-sesion">
                     <label  for="rememberUser">Mantener Sesión iniciada</label>
