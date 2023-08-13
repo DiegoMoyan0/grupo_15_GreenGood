@@ -176,7 +176,8 @@ height: 1px;
 
 /*Varios de los estilos que se encuentran arriba son una adaptación del contenido de este repositorio https://github.com/juliocodes-sm/Posts/tree/main/Forms/01 */
 
-.error{
+.error,
+.error-password{
 	color: #f52c15;
 	font-size: 0.8rem;
 	margin: 2px 0 8px 0;
