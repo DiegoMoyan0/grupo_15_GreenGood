@@ -70,3 +70,56 @@ El equipo compartió las siguientes tareas y logros completados durante la seman
 3. Plan para la próxima semana:
    
 - Solucionar los impedimentos encontrados y luego de eso enfocarse en el próximo Sprint, denominado Sprint-7.
+
+Informe de la Reunión Semanal - Semana 4
+
+Fecha: [03/08/2023]
+
+Resumen: En la reunión semanal del equipo de desarrollo, se revisaron los avances y las actividades realizadas durante la semana previa. A continuación, se presentan los puntos más destacados abordados en la reunión:
+
+1. Actividades realizadas esta semana:
+
+El equipo compartió las siguientes tareas y logros completados durante la semana:
+
+- Se resolvieron parcialmente los impedimentos identificados en la reunión anterior.
+- Se preparó el proyecto para realizar entrega correspondiente a Sprint-6.
+- Se llevaron a cabo modificaciones en la base de datos y sus relaciones con el objetivo de mejorar su funcionalidad.
+- Se realizó una revisión minuciosa y se brindaron comentarios sobre el código existente para asegurar su calidad y legibilidad.
+- Se comenzó a revisar el código existente para validaciones de formularios y se enumeraron las tareas pendientes englobadas en el Sprint-7, junto a una división de tareas.
+
+2. Impedimentos encontrados:
+
+- Inoconvenientes en las vistas cuando el susuario esta logueado pero sin crear cookie.
+- Falta de validaciones desde el backend para campos de dirección del registro de susuarios, crud productos y edición de perfil.
+- Necesidad de avanzar con el código para generar un carrito de compras funcional.
+
+3. Plan para la próxima semana:
+   
+- Solucionar los impedimentos encontrados y luego de eso enfocarse en el próximo Sprint, denominado Sprint-7.
+
+Informe de la Reunión Semanal - Semana 5
+
+Fecha: [11/08/2023]
+
+Resumen: En la reunión semanal del equipo de desarrollo, se revisaron los avances y las actividades realizadas durante la semana previa. A continuación, se presentan los puntos más destacados abordados en la reunión:
+
+1. Actividades realizadas esta semana:
+
+El equipo compartió las siguientes tareas y logros completados durante la semana:
+
+- Se resolvieron parcialmente los impedimentos identificados en la reunión anterior.
+- Se discutió las maneras mas eficientes y organizadas para realizar validaciones desde el Frontend.
+- Se analizó código para validar datos del login desde el front usando una API propia.
+
+2. Impedimentos encontrados:
+
+- Inoconvenientes en las vistas cuando el susuario esta logueado pero sin crear cookie.
+- Falta de validaciones desde el backend para password y edición de perfil.
+- Complejidad avanzada a la hora de generar el endpoint de la API para validar en tiempo real los datos del usuario en el formulario de login.
+- Necesidad de empezar a organizar el código para generar diversos endponits funcionales de API Rest propia.
+- Necesidad seguir avanzando con el código para generar un carrito de compras funcional.
+
+
+3. Plan para la próxima semana:
+   
+- Solucionar los impedimentos encontrados, finalizar las validaciones del frontend y preparar el proyecto para la entrega del Sprint-7.
