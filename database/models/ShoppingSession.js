@@ -9,7 +9,11 @@ module.exports = (sequelize, DataTypes) => {
         },
         total: {
             type: DataTypes.FLOAT,
-            allowNull: false,
+            allowNull: true,
+        },
+        init_date: {
+            type: DataTypes.DATE,
+            allowNull: false
         },
         user_id: {
             type: DataTypes.STRING(255),  

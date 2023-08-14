@@ -1,4 +1,3 @@
-const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcryptjs');
 const { validationResult } = require('express-validator');
@@ -133,16 +132,12 @@ const controller = {
 			};
 
 
-			// Users with hashed password
+			//Users with hashed password
 
-			//const { password: hashedPw } = searchedUser;
-			//const isCorrect = bcrypt.compareSync(req.body.password, hashedPw);
+			const { password: hashedPw } = searchedUser;
+			const isCorrect = bcrypt.compareSync(req.body.password, hashedPw);
 
 			// Temporary lines for debugging and testing users with unhashed password
-
-			let isCorrect = req.body.password === searchedUser.password
-			console.log(isCorrect)
-
 
 			if (!isCorrect) {
 				return res.render('userViews/login', {

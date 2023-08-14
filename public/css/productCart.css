@@ -187,10 +187,17 @@ td img {
     padding-right: 5px;
     border-right: solid 2px rgba(0, 0, 0, 0.7);
     display: inline;
+    cursor: pointer;
 }
 
-.eliminate span {
+
+.eliminate {
+    color: #10142f;
+    border: none;
+    background-color: white;
+    text-decoration: underline;
     font-size: 10px;
+    cursor: pointer;
 }
 
 .tdata-save {
@@ -610,7 +617,7 @@ footer {
             height: 1px;
         }
 
-        .eliminate span {
+        .eliminate{
             font-size: 14px;
         }
 

@@ -78,7 +78,10 @@
                                                             class="fa-brands fa-whatsapp"></i></a>
                                                 </div>
                 </div>
-                <button class="btn-product" type="submit" href="#">Añadir al carrito</button>
+                <form action="/cart/addCartItem/<%= theProduct.id %>" method="post" >
+                    <button class="btn-product" type="submit">Añadir al carrito</button>
+                </form>
+                
                 <%if (vendedor){%>
 
                     <button class="btn-product" style="background: rgb(56, 56, 146); margin-top: 1rem;">Estás registrado como vendedor... Próximamente podrás editar tu producto aquí</button>

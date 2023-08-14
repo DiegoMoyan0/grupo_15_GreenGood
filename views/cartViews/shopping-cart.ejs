@@ -49,173 +49,70 @@
 
             <!-- Added products -->
 
+            <% if (cartItems.length == 0 && cartItems) { %>
                 <!-- Default view without added products -->
                 <article class="empty-cart-content" data-bind="fadeVisible: !hasItems() &amp;&amp; !loading()" style="display: none;">  
 
                     <h2 class="empty-cart-title" data-i18n="cart.emptyTitle">Su carrito está vacio</h2>
                     <div class="empty-cart-message">Para seguir comprando, navegar por las categorías en el sitio, o busque su producto.</div> 
-                    <div class="clearfix empty-cart-links"><a href="/" id="cart-choose-products">Elegir productos</a></div>
+                    <div class="clearfix empty-cart-links"><a href="/products" id="cart-choose-products">Elegir productos</a></div>
                 </article> 
-
-                <article class="cart-products"> 
-
-                    <table>
-
-                        <tr class="trow-product">
-
-                            <td class="product-img"><img src= "/images/products/aceite-50ml.png" alt="imagen gotero">
-                            </td>
-
-                            <td class="tdata-product-info">
-                                <div class="highlight">
-                                    <div class="promo">-25%</div>
-                                    <div class="promo-text"> Exclusivo online</div>
-                                </div>
-                                <p class="product-name"><strong>Aceite a base de CBD</strong></p>
-                                <p class="prodcut-datail">Aceite medicinal con CBD en gotero de 50 ml</p>
-                            </td>
-                        </tr>
-
-                        <tr class="trow-buttons">
-                            <td></td>
-                            <td class="trow-buttons-tdr">
-                                <div class="tdata-eliminate">
-                                    <a href="#" class="eliminate"><span>Eliminar</span></a>
-                                </div>
-                                <div class="tdata-save">    
-                                    <a href="" class="save"><button>Guardar en favs</button></a>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr class="trow-price">
-                            <td class="tdata-aumount">
-                                <div class="select-amount-container">
-                                    <a href="#" class="decrease-amount">
-                                        <i class="fa-solid fa-minus"></i>
-                                    </a>
-                                    <input type="tel" value="1" class="amount" id="amount" min="1" max="50" required/>
-                                    <a href="#" class="increase-amount">
-                                        <i class="fa-solid fa-plus"></i>
-                                    </a>
-                                </div>
-                            </td>
-
-                            <td class="tdata-price">
-                                <p class="product-price"><div id="text-product-price">Precio sin descuentos</div><strong>$899.99</strong><p>
-                            </td>
-                        </tr>
-
-                    </table>
-
-                </article>
-
-                <article class="cart-products">
-
-                    <table>
-
-                        <tr class="trow-product">
-
-                            <td class="product-img"><img src="/images/products/crema-facial-30ml.png" alt="imagen gotero">
-                            </td>
-
-                            <td class="tdata-product-info">
-                                <div class="highlight">
-                                    <div class="promo">-25%</div>
-                                    <div class="promo-text"> Exclusivo online</div>
-                                </div>
-                                <p class="product-name"><strong>Crema facial</strong></p>
-                                <p class="prodcut-datail">Crema facial abase de CBD de 30 ml</p>
-                            </td>
-                        </tr>
-
-                        <tr class="trow-buttons">
-                            <td></td>
-                            <td class="trow-buttons-tdr">
-                                <div class="tdata-eliminate">
-                                    <a href="#" class="eliminate"><span>Eliminar</span></a>
-                                </div>
-                                <div class="tdata-save">    
-                                    <a href="" class="save"><button>Guardar en favs</button></a>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr class="trow-price">
-                            <td class="tdata-aumount">
-                                <div class="select-amount-container">
-                                    <a href="#" class="decrease-amount">
-                                        <i class="fa-solid fa-minus"></i>
-                                    </a>
-                                    <input type="tel" value="1" class="amount" id="amount" min="1" max="50" required/>
-                                    <a href="#" class="increase-amount">
-                                        <i class="fa-solid fa-plus"></i>
-                                    </a>
-                                </div>
-                            </td>
-
-                            <td class="tdata-price">
-                                <p class="product-price"><div id="text-product-price">Precio sin descuentos</div><strong>$899.99</strong><p>
-                            </td>
-                        </tr>
-
-                    </table>
-
-                </article>
-
-                <article class="cart-products">
-
-                    <table>
-
-                        <tr class="trow-product">
-
-                            <td class="product-img"><img src="/images/products/esencia-250ml.png" alt="imagen gotero">
-                            </td>
-
-                            <td class="tdata-product-info">
-                                <div class="highlight">
-                                    <div class="promo">-25%</div>
-                                    <div class="promo-text"> Exclusivo online</div>
-                                </div>
-                                <p class="product-name"><strong>Esencia CBD</strong></p>
-                                <p class="prodcut-datail">Cosmetica: esencia a base de CBA de 250 ml</p>
-                            </td>
-                        </tr>
-
-                        <tr class="trow-buttons">
-                            <td></td>
-                            <td class="trow-buttons-tdr">
-                                <div class="tdata-eliminate">
-                                    <a href="#" class="eliminate"><span>Eliminar</span></a>
-                                </div>
-                                <div class="tdata-save">    
-                                    <a href="" class="save"><button>Guardar en favs</button></a>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr class="trow-price">
-                            <td class="tdata-aumount">
-                                <div class="select-amount-container">
-                                    <a href="#" class="decrease-amount">
-                                        <i class="fa-solid fa-minus"></i>
-                                    </a>
-                                    <input type="tel" value="1" class="amount" id="amount" min="1" max="50" required/>
-                                    <a href="#" class="increase-amount">
-                                        <i class="fa-solid fa-plus"></i>
-                                    </a>
-                                </div>
-                            </td>
-
-                            <td class="tdata-price">
-                                <p class="product-price"><div id="text-product-price">Precio sin descuentos</div><strong>$899.99</strong><p>
-                            </td>
-                        </tr>
-
-                    </table>
-
-                </article>
-
+            <% } else if (cartItems.length > 0 && cartItems) { %>                
+                <% cartItems.forEach(item => { %>
+                    <article class="cart-products"> 
+                        <table>
+                            <tr class="trow-product">
+                                <td class="product-img"><img src= "/images/products/<%= item.product.image %>" alt="imagen gotero">
+                                </td>
+                                <td class="tdata-product-info">
+                                    <% if (item.product.discount > 0) { %>
+                                        <div class="highlight">
+                                            <div class="promo">- <%= item.product.discount %>%</div>
+                                            <div class="promo-text"> Exclusivo online</div>
+                                        </div>
+                                    <% } %>
+                                    <p class="product-name"><strong><%= item.product.title %></strong></p>
+                                    <p class="prodcut-datail"><%= item.product.description %></p>
+                                </td>
+                            </tr>
+                            <tr class="trow-buttons">
+                                <td></td>
+                                <td class="trow-buttons-tdr">
+                                    <div class="tdata-eliminate">
+                                        <form method="post" action="/cart/<%= item.product.id %>/delete?_method=DELETE" class="tdata-eliminate"><button type="submit" class="eliminate">Eliminar</button></form>
+                                    </div>
+                                    <div class="tdata-save">    
+                                        <a href="" class="save"><button>Guardar en favs</button></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="trow-price">
+                                <td class="tdata-aumount">
+                                    <div class="select-amount-container">
+                                        <form method="post" action="/cart/<%= item.product.id %>/updateQuantity?_method=PUT">
+                                            <a href="#" class="decrease-amount">
+                                                <i class="fa-solid fa-minus"></i>
+                                            </a>
+                                            <input type="tel" value="<%= item.quantity %>" name="quantity" class="amount" id="amount" min="1" max="50" required/>
+                                            <a href="#" class="increase-amount">
+                                                <i class="fa-solid fa-plus"></i>
+                                            </a>
+                                            <button type="submit">Modificar cantidad</button>
+                                        </form>
+                                    </div>
+                                </td>
+                                <td class="tdata-price">
+                                    <% if (item.product.discount > 0) { %>
+                                        <div id="text-product-price">Antes:<strong style="text-decoration: line-through;">$<%= item.product.price %></strong></div><p class="product-price"><strong>$<%= (item.product.price)*(1-(item.product.discount/100)) %></strong></p>      
+                                    <% }else{ %>
+                                        <p class="product-price"><div id="text-product-price">Precio sin descuentos</div><strong>$<%= item.product.price %></strong></p>
+                                    <% } %>
+                                </td>
+                            </tr>
+                        </table>
+                    </article>
+                <% }) %>
+            <% }; %>
             </section>
 
         <!-- Detalle de compra -->

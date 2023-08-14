@@ -33,6 +33,7 @@ async function userLoggedMw(req, res, next) {
         // 	{where:{user_type: req.body.user_type}});
 
         if(userFromCookie){
+            delete userFromCookie.password;
             req.session.userLogged = userFromCookie;
         };
         

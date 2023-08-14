@@ -323,6 +323,7 @@ window.onload = function () {
 
         const imageEdit = editForm.querySelector('#image-edit');
         const titleEdit = editForm.querySelector('#title-edit');
+        const title = editForm.querySelector('#title');
         const descriptionEdit = editForm.querySelector('#description-edit');
         const priceEdit = editForm.querySelector('#price-edit');
         const discountEdit = editForm.querySelector('#discount-edit');
