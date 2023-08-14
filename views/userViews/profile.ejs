@@ -88,13 +88,13 @@
                         <button class="save-button-icon">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
-                        <button class="cancelar-button">Cancelar</button>
                         <button type="submit" class="save-button">Guardar cambios</button>
                     </form>
+                    <button class ="cancelar-button">Cancelar</button>
 
                     <form action="/user/<%= user.id %>/delete?_method=DELETE" method="POST"
                         onsubmit="return confirm('¿Está seguro que desea eliminar su cuenta de manera permanente?')">
-                        <input type="submit" class="btn-delete" value="Eliminar">
+                        <input type="submit" class="btn-delete" value="Eliminar Cuenta">
                     </form>
             </section>
         </main>
