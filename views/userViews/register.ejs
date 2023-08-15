@@ -19,7 +19,7 @@
         <section class="section-register">
         <div class="container">
 			<span class="span-title-register">Register</span>
-			<form class="form-login" action="/user/register" enctype="multipart/form-data" method="POST">
+			<form id="register-form" class="form-login" action="/user/register" enctype="multipart/form-data" method="POST">
 				<div class="container-input">
                     <label for="first_name" class="label-register">Nombre/s</label>
 					<input type="text" id="first_name"
@@ -61,7 +61,7 @@
                             <%= errors.last_name.msg %>
                         </div>
                     <% }; %>
-                    <span class="error" id="last_name-error"></span>
+                    <span class="error" id="last_name-error" ></span>
 				</div>
 
 				<div class="container-input">
@@ -90,7 +90,7 @@
                 <div class="container-input">
                     <label for="user_name" class="label-register">Nombre de usuario</label>
 					<input type="text" 
-                    name="user_name" 
+                    name="user_name" id="user_name"
                     class="input-register" 
                     placeholder="ej. user123" 
                     minlength="6" 
@@ -132,7 +132,7 @@
 
                 <div class="container-input">
                     <label for="phone" class="label-register">Teléfono celular</label>
-					<input type="tel" 
+					<input type="tel" id="phone"
                     name="phone" 
                     class="input-register" 
                     placeholder="ej (351) 2 341032" 
@@ -201,7 +201,7 @@
                     <h3 class="label-register" >Sus datos para envíos:</h3>
                     <div class="container-input">
                         <label for="street" class="label-register">Calle</label>
-                        <input type="text" 
+                        <input type="text" id="street"
                         name="street" 
                         class="input-register" 
                         placeholder="Ej. Av. Ejemplo" 
@@ -221,7 +221,7 @@
                     </div>
                     <div class="container-input">
                         <label for="number" class="label-register">Número/Altura/Depto</label>
-                        <input type="text" 
+                        <input type="text" id="number"
                         name="number" 
                         class="input-register" 
                         placeholder="Ej. 123 1A" 
@@ -242,7 +242,7 @@
                     </div>
                     <div class="container-input">
                         <label for="city" class="label-register">Ciudad</label>
-                        <input type="text" 
+                        <input type="text" id="city"
                         name="city" 
                         class="input-register" 
                         placeholder="Ej. Rio Cuarto" 
@@ -263,7 +263,7 @@
                     </div>
                     <div class="container-input">
                         <label for="province" class="label-register">Provincia</label>
-                        <input type="text" 
+                        <input type="text" id="province"
                         name="province" 
                         class="input-register" 
                         placeholder="Ej. Córdoba" 
@@ -284,7 +284,7 @@
                     </div>
                     <div class="container-input">
                         <label for="country" class="label-register">País</label>
-                        <input type="text" 
+                        <input type="text" id="country"
                         name="country" 
                         class="input-register" 
                         placeholder="Ej. Argentina" 
@@ -352,7 +352,7 @@
 
 				</div>
 
-                <button type="submit" class="btn-login">
+                <button type="submit" id="btn-register" class="btn-login">
                     Enviar
                 </button>
                 <button type="reset" class="btn-login">
@@ -373,13 +373,13 @@
 
     <%- include('../partials/counseling')%>
 
- <!---------------------------------  FOOTER ---------------------------- -->
-
- <footer>
-    <%- include('../partials/footer')%>
- </footer>
+    <!---------------------------------  FOOTER ---------------------------- -->
     
-
+    <footer>
+        <%- include('../partials/footer')%>
+    </footer>
+    
+    <script src="/javascript/validationFront/register.js"></script>
 </body>
 
 <script>
@@ -423,5 +423,5 @@
     )
 
 </script>
-<script src="javascript/validationFront/register.js"></script>
+
 </html>

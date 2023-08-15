@@ -1,194 +1,331 @@
 window.onload = function () {
 
-    function validation() {
+    //1- HTML elements:
+    const first_name = document.getElementById("first_name");
+    const last_name = document.getElementById("last_name");
+    const email = document.getElementById("email");
+    const username = document.getElementById("user_name");
+    const birthdate = document.getElementById("inputDate");
+    const phone = document.getElementById("phone");
+    const image = document.getElementById("user_image");
+    const street = document.getElementById("street");
+    const number = document.getElementById("number");
+    const city = document.getElementById("city");
+    const province = document.getElementById("province");
+    const country = document.getElementById("country");
+    const password = document.getElementById("password");
+    const repassword = document.getElementById("password_confirm");
+    const registerForm = document.getElementById("register-form")
 
-        const first_name = document.getElementById("first_name").value;
-        const last_name = document.getElementById("last_name").value;
-        const email = document.getElementById("email").value;
-        const username = document.getElementById("user_name").value;
-        const birthdate = document.getElementById("birth_date").value;
-        const phone = document.getElementById("phone").value;
-        const image = document.getElementById("user_image");
-        const street = document.getElementById("street").value;
-        const number = document.getElementById("number").value;
-        const city = document.getElementById("city").value;
-        const province = document.getElementById("province").value;
-        const country = document.getElementById("country").value;
-        const password = document.getElementById("password").value;
-        const repassword = document.getElementById("password_confirm").value;
+    //2- Objeto para almacenar los errores
+    let errorMessages = {};
 
-        const errors = {}; // Objeto para almacenar los errores
+    //3- Validate functions for each input:
+    function validateFirstName() {
+        if (emptyField(first_name.value)) {
+            first_name.classList.add('not-valid');
+            first_name.classList.remove('is-valid');
+            errorMessages.first_name = "El nombre no puede quedar vacío";
+        } else if (first_name.value.length < 2) {
+            first_name.classList.add('not-valid');
+            errorMessages.first_name = "Mínimo 2 caracteres para el nombre";
+        } else {
+            delete errorMessages.first_name;
+            first_name.classList.add('is-valid');
+            first_name.classList.remove('not-valid');
+        };
+        displayErrors();
+    };
 
-        // Limpia los mensajes de error anteriores
+    function validateLastName() {//validateTitle
+        if (emptyField(last_name.value)) {
+            last_name.classList.add('not-valid');
+            last_name.classList.remove('is-valid');
+            errorMessages.last_name = "El apellido no puede quedar vacío";
+        } else if (last_name.value.length < 2) {
+            last_name.classList.add('not-valid');
+            errorMessages.last_name = "Mínimo 2 caracteres para el apellido";
+        } else {
+            delete errorMessages.last_name;
+            last_name.classList.add('is-valid');
+            last_name.classList.remove('not-valid');
+        };
+        displayErrors();
+    };
+
+    //VALIDAR email
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+    function validateEmail() {
+        if (emptyField(email.value)) {
+            email.classList.add('not-valid');
+            email.classList.remove('is-valid');
+            errorMessages.email = "El email no puede quedar vacío";
+        } else if (emailRegex.test(email)) {
+            email.classList.add('not-valid');
+            errorMessages.email = "El email debe ser valido";
+        } else {
+            delete errorMessages.email;
+            email.classList.add('is-valid');
+            email.classList.remove('not-valid');
+        };
+        displayErrors();
+    };
+
+
+    function validateUsername() {
+        if (emptyField(username.value)) {
+            username.classList.add('not-valid');
+            username.classList.remove('is-valid');
+            errorMessages.username = "El nombre de usuario no puede quedar vacío";
+        } else if (username.value.length < 2) {
+            username.classList.add('not-valid');
+            errorMessages.username = "Mínimo 2 caracteres para el nombre";
+        } else {
+            delete errorMessages.username;
+            username.classList.add('is-valid');
+            username.classList.remove('not-valid');
+        };
+        displayErrors();
+    };
+
+    // VALIDAR cumple
+    // function birthdateIsValid(value) {
+    //     // Implementa la validación de la fecha de nacimiento aquí
+
+    //     let birthday = new Date(value);
+    //     let today = new Date();
+    //     let age = today.getFullYear() - birthday.getFullYear();
+    //     let monthDiff = today.getMonth() - birthday.getMonth();
+
+    //     if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthday.getDate())) {
+    //         age--;
+    //     }
+
+    //     if (age >= 18) {
+    //         return true;
+    //     }
+    // }
+
+
+    function validateBirthdate() {
+        const birthdate = birthdate.value;
+        if (!birthdateIsValid(birthdate)) {
+            errorMessages.birthdate = "Fecha de nacimiento inválida";
+        } else {
+            delete errorMessages.birthdate;
+        }
+        displayErrors();
+    }
+
+    //------------------------------------------------------------------------//
+    //VALIDAR TELEFONO VALIDO
+    // Expresión regular para validar que el teléfono sea numérico y tenga al menos 7 dígitos
+    const phoneRegex = /^[0-9]{7,}$/;
+    function validatePhone() {
+
+        if (emptyField(phone.value)) {
+            phone.classList.add('not-valid');
+            phone.classList.remove('is-valid');
+            errorMessages.phone = "El telefono no puede quedar vacío";
+        } else if (phoneRegex.test(phone)) {
+            phone.classList.add('not-valid');
+            errorMessages.phone = "El telefono debe ser valido";
+        } else {
+            delete errorMessages.phone;
+            phone.classList.add('is-valid');
+            phone.classList.remove('not-valid');
+        };
+        displayErrors();
+    };
+
+
+    function validateImage() {
+        const acceptedExtensions = ['jpg', 'png', 'jpeg', 'gif'];
+        const selectedFile = image.files[0];
+
+        if (selectedFile) {
+            const fileName = selectedFile.name;
+            const fileExtension = fileName.split('.').pop().toLowerCase();
+            if (!acceptedExtensions.includes(fileExtension)) {
+                console.log(fileExtension);
+                image.classList.add('not-valid');
+                image.classList.remove('is-valid');
+                errorMessages.image = `Extensiones válidas: ${acceptedExtensions.join(', ')}.`;
+            } else {
+                image.classList.add('is-valid');
+                image.classList.remove('not-valid');
+                delete errorMessages.image;
+            };
+        };
+        displayErrors();
+    };
+    function validateStreet() {
+        if (emptyField(street.value)) {
+            street.classList.add('not-valid');
+            street.classList.remove('is-valid');
+            errorMessages.street = "La calle no puede quedar vacía";
+        } else {
+            delete errorMessages.street;
+            street.classList.add('is-valid');
+            street.classList.remove('not-valid');
+        };
+        displayErrors();
+    };
+    function validateNumber() {
+
+        if (emptyField(number.value)) {
+            number.classList.add('not-valid');
+            number.classList.remove('is-valid');
+            errorMessages.number = "El Numero no puede quedar vacío";
+        } else if (number.value.length < 2) {
+            number.classList.add('not-valid');
+            errorMessages.number = "Mínimo 2 caracteres para el Numero";
+        } else {
+            delete errorMessages.number;
+            number.classList.add('is-valid');
+            number.classList.remove('not-valid');
+        };
+        displayErrors();
+    };
+    function validateCity() {
+        if (emptyField(city.value)) {
+            city.classList.add('not-valid');
+            city.classList.remove('is-valid');
+            errorMessages.city = "La ciudad no puede quedar vacía";
+        } else {
+            delete errorMessages.city;
+            city.classList.add('is-valid');
+            city.classList.remove('not-valid');
+        };
+        displayErrors();
+    };
+    function validateProvince() {
+        if (emptyField(province.value)) {
+            province.classList.add('not-valid');
+            province.classList.remove('is-valid');
+            errorMessages.province = "La provincia no puede quedar vacía";
+        } else {
+            delete errorMessages.province;
+            province.classList.add('is-valid');
+            province.classList.remove('not-valid');
+        };
+        displayErrors();
+    };
+    function validateCountry() {
+        if (emptyField(country.value)) {
+            country.classList.add('not-valid');
+            country.classList.remove('is-valid');
+            errorMessages.country = "El pais no puede quedar vacío";
+        } else {
+            delete errorMessages.country;
+            country.classList.add('is-valid');
+            country.classList.remove('not-valid');
+        };
+        displayErrors();
+    };
+    //VALIDAR CONTRASEÑAS
+
+    function validatePassword() {
+        if (emptyField(password.value)) {
+            password.classList.add('not-valid');
+            password.classList.remove('is-valid');
+            errorMessages.password = "La contraseña no puede quedar vacío";
+        } else if (password.length < 8) {
+            errorMessages.password = "La contraseña debe tener al menos 8 caracteres";
+        } else if (!/\d/.test(password)) {
+            errorMessages.password = "La contraseña debe contener al menos un número";
+        } else if (!/[A-Z]/.test(password)) {
+            errorMessages.password = "La contraseña debe contener al menos una letra mayúscula";
+        } else if (!/[^a-zA-Z0-9]/.test(password)) {
+            errorMessages.password = "La contraseña debe contener al menos un caracter no alfanumérico";
+        } else {
+            delete errorMessages.password;
+        }
+        //La función test es un método que se utiliza en JavaScript con expresiones regulares para verificar si una cadena de texto cumple con un patrón específico. Las expresiones regulares (también conocidas como regex) son patrones que describen conjuntos de cadenas de texto. La función test devuelve true si la cadena coincide con el patrón, y false si no coincide.
+
+        displayErrors();
+    }
+    function validateRepassword() {
+        if (emptyField(repassword.value)) {
+            repassword.classList.add('not-valid');
+            password.classList.remove('is-valid');
+            errorMessages.repassword = "La contraseña no puede quedar vacío";
+        } else if (repassword.value == password.value) {
+            errorMessages.repassword = "La contraseña debe coincidir";
+        } else {
+            delete errorMessages.repassword;
+        }
+        //La función test es un método que se utiliza en JavaScript con expresiones regulares para verificar si una cadena de texto cumple con un patrón específico. Las expresiones regulares (también conocidas como regex) son patrones que describen conjuntos de cadenas de texto. La función test devuelve true si la cadena coincide con el patrón, y false si no coincide.
+
+        displayErrors();
+    }
+
+    // 4- General validation functions:
+    function emptyField(inputValue) {
+        return inputValue.trim() == ""
+    };
+
+    function displayErrors() {
+        // To clear prev errors
         const errorElements = document.getElementsByClassName("error");
+        const errorIcon = `<svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+        </svg>`;
         for (const errorElement of errorElements) {
             errorElement.textContent = "";
+        };
+        // To show spans with errors
+        for (const field in errorMessages) {
+            if (errorMessages.hasOwnProperty(field)) {
+                document.getElementById(`${field}-error`).innerHTML = errorMessages[field] + errorIcon;
+            };
+        };
+    };
+
+    //5 - User intereactions with inputs
+    first_name.addEventListener('input', validateFirstName);
+    last_name.addEventListener('input', validateLastName);
+    email.addEventListener('input', validateEmail);
+    username.addEventListener('input', validateUsername);
+    birthdate.addEventListener('input', validateBirthdate);
+    phone.addEventListener('input', validatePhone);
+    image.addEventListener('input', validateImage);
+    street.addEventListener('input', validateStreet);
+    number.addEventListener('input', validateNumber);
+    city.addEventListener('input', validateCity);
+    province.addEventListener('input', validateProvince);
+    country.addEventListener('input', validateCountry);
+    password.addEventListener("input", validatePassword)
+    repassword.addEventListener("input", validateRepassword)
+
+    registerForm.addEventListener("submit", e => {
+        e.preventDefault();
+        validateFirstName();
+        validateLastName();
+        validateEmail();
+        validateUsername();
+        validateBirthdate();
+        validatePhone();
+        validateImage();
+        validateStreet();
+        validateNumber();
+        validateCity();
+        validateProvince();
+        validateCountry();
+        validatePassword();
+        validateRepassword();
+
+        if (!Object.keys(errorMessages).length > 0) {
+            registerForm.submit()
         }
 
-        if (nombre.length < 2) {
-            errors.first_name = "Nombre debe tener al menos 2 caracteres";
-
-        }
-
-        if (Apellido.length < 2) {
-            errors.last_name = "Nombre debe tener al menos 2 caracteres";
-        }
-
-        if (!birthdateIsValid(birthdate)) {
-            errors.birthdate = "Fecha de nacimiento inválida";
-        }
-        // Expresión regular para validar el formato de email
-        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-        if (emailRegex.test(email)) {
-            errors.email = "Ingresa un email válido.";
-        }
-
-
-        if () {
-            errors.password ="La contraseña debe tener al menos 8 caracteres, incluyendo al menos una mayúscula, una minúscula, un número y un carácter especial.";
-
-        }
-
-        const allowedExtensions = ["jpg", "jpeg", "png", "gif"];
-        if (algo)) {
-            alert("La imagen debe tener una extensión válida")
-        }
-    }
-
-    validation();
-
-    document.getElementById("form-login").addEventListener("submit", function (event) {
-    }
-    )
+    })
 }
-
-// Realiza otras validaciones similares para los demás campos...
-
-// Muestra los errores en los elementos del formulario
-for (const field in errors) {
-    if (errors.hasOwnProperty(field)) {
-        document.getElementById(`${field}-error`).textContent = errors[field];
-    }
-}
-
-// Si no hay errores, puedes proceder al envío del formulario
-if (Object.keys(errors).length === 0) {
-    // Envía el formulario al servidor o realiza otras acciones
-}
-  });
-
-function birthdateIsValid(value) {
-    // Implementa la validación de la fecha de nacimiento aquí
-
-    let birthday = new Date(value);
-    let today = new Date();
-    let age = today.getFullYear() - birthday.getFullYear();
-    let monthDiff = today.getMonth() - birthday.getMonth();
-
-    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthday.getDate())) {
-        age--;
-    }
-
-    if (age >= 18) {
-        return true;
-    }
-}
-// Implementa las funciones de validación restantes (phoneIsValid, emailIsValid, etc.)
-
-
-//--------------------------------------------------------------------------------//
-
-
-//FORMA DINÁMICA DE MOSTRAR ERRORES:
-
-//Puedes utilizar el evento input para mostrar y ocultar los mensajes de error en tiempo real mientras el usuario llena los campos del formulario:
-
-// Agregar eventos "input" a los campos para validar en tiempo real
-form.name.addEventListener("input", validateName);
-form.birthdate.addEventListener("input", validateBirthdate);
-// Agrega eventos similares para los otros campos...
-
-function validateName() {
-    const name = form.name.value;
-    if (name.length < 2) {
-        errorMessages.name = "Nombre debe tener al menos 2 caracteres";
-    } else {
-        delete errorMessages.name;
-    }
-    displayErrors();
-}
-
-// function validateBirthdate() {
-//     const birthdate = form.birthdate.value;
-//     if (!birthdateIsValid(birthdate)) {
-//         errorMessages.birthdate = "Fecha de nacimiento inválida";
-//     } else {
-//         delete errorMessages.birthdate;
-//     }
-//     displayErrors();
-// }
-
-// Agrega funciones de validación y eventos "input" similares para los otros campos...
-
-function displayErrors() {
-    // Limpia los mensajes de error anteriores
-    const errorElements = document.getElementsByClassName("error");
-    for (const errorElement of errorElements) {
-        errorElement.textContent = "";
-    }
-
-    // Muestra los errores en los elementos del formulario
-    for (const field in errorMessages) {
-        if (errorMessages.hasOwnProperty(field)) {
-            document.getElementById(`${field}-error`).textContent = errorMessages[field];
-        }
-    }
-}
-
-// Agregar evento "submit" al formulario
-form.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    // Realiza la validación final aquí antes de enviar el formulario
-});
-
-//Este código utiliza los eventos input para validar cada campo en tiempo real a medida que el usuario llena el formulario. Los mensajes de error se muestran y ocultan automáticamente en función del contenido del campo. La función displayErrors se llama cada vez que ocurre un evento input en cualquier campo, lo que actualiza los mensajes de error visibles en el formulario.
-
 
 //----------------------------------------------------------------------------//
 
-//VALIDAR CONTRASEÑAS
-
-// Agregar evento "input" al campo de contraseña
-form.password.addEventListener("input", validatePassword);
-
-function validatePassword() {
-    const password = form.password.value;
-
-    // Limpia el mensaje de error anterior
-    document.getElementById("password-error").textContent = "";
-
-    if (password.length < 8) {
-        errorMessages.password = "La contraseña debe tener al menos 8 caracteres";
-    } else if (!/\d/.test(password)) {
-        errorMessages.password = "La contraseña debe contener al menos un número";
-    } else if (!/[A-Z]/.test(password)) {
-        errorMessages.password = "La contraseña debe contener al menos una letra mayúscula";
-    } else if (!/[^a-zA-Z0-9]/.test(password)) {
-        errorMessages.password = "La contraseña debe contener al menos un caracter no alfanumérico";
-    } else {
-        delete errorMessages.password;
-    }
-    //La función test es un método que se utiliza en JavaScript con expresiones regulares para verificar si una cadena de texto cumple con un patrón específico. Las expresiones regulares (también conocidas como regex) son patrones que describen conjuntos de cadenas de texto. La función test devuelve true si la cadena coincide con el patrón, y false si no coincide.
-
-    displayErrors();
-}
-
-function displayErrors() {
-    // Resto del código para mostrar los errores
-}
-
-//El código anterior implementa una función validatePassword que verifica que la contraseña cumpla con los siguientes criterios:
+//Lafunción validatePassword que verifica que la contraseña cumpla con los siguientes criterios:
 /* 
 Tener al menos 8 caracteres.
 Contener al menos un número.
@@ -198,22 +335,11 @@ Cada vez que el usuario ingrese o modifique la contraseña, el evento input acti
 
 Asegúrate de completar la función displayErrors y agregar los eventos input necesarios para los otros campos del formulario. */
 
-
-
-
 /*1) ^[a-zA-Z0-9._-]+: Al menos un carácter alfanumérico, punto, guión bajo o guión antes de la '@'.
 2) @: El carácter '@'.
 3) [a-zA-Z0-9.-]+: Al menos un carácter alfanumérico, punto o guión después de la '@'.
 4) \.: El carácter '.' que separa el dominio de nivel superior.
 5) [a-zA-Z]{2,4}$: De 2 a 4 caracteres alfabéticos para el dominio de nivel superior. */
-
-
-//------------------------------------------------------------------------//
-//VALIDAR TELEFONO VALIDO
-
-// Expresión regular para validar que el teléfono sea numérico y tenga al menos 7 dígitos
-
-const phoneRegex = /^[0-9]{7,}$/;
 
 /* 1) ^: Comienzo de la cadena.
 2) [0-9]{7,}: Al menos 7 dígitos numéricos.

@@ -1,4 +1,16 @@
 /*----------------------------------------- REGISTER --------------------------------------------------*/
+.is-valid {
+	border-color: rgb(175 236 175);
+	box-shadow: 0 0 10px rgb(184 223 184);
+  }
+  
+  .not-valid {
+	border-color: rgb(215 151 148);
+	box-shadow: 0 0 10px rgb(247 145 139);
+  }
+.error{
+	color: red;
+}
 .section-register {
 	padding: 1rem;
 	text-align: center;
