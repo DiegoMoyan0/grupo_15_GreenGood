@@ -5,7 +5,7 @@ window.onload = function () {
     const last_name = document.getElementById("last_name");
     const email = document.getElementById("email");
     const username = document.getElementById("user_name");
-    const birthdate = document.getElementById("inputDate");
+    const birthdate = document.getElementById("birth_date");
     const phone = document.getElementById("phone");
     const image = document.getElementById("user_image");
     const street = document.getElementById("street");
@@ -14,7 +14,7 @@ window.onload = function () {
     const province = document.getElementById("province");
     const country = document.getElementById("country");
     const password = document.getElementById("password");
-    const repassword = document.getElementById("password_confirm");
+    const repassword = document.getElementById("repassword");
     const registerForm = document.getElementById("register-form")
 
     //2- Objeto para almacenar los errores
@@ -61,9 +61,9 @@ window.onload = function () {
             email.classList.add('not-valid');
             email.classList.remove('is-valid');
             errorMessages.email = "El email no puede quedar vacío";
-        } else if (emailRegex.test(email)) {
+        } else if (!emailRegex.test(email.value)) {
             email.classList.add('not-valid');
-            errorMessages.email = "El email debe ser valido";
+            errorMessages.email = "Formato de email inválido";
         } else {
             delete errorMessages.email;
             email.classList.add('is-valid');
@@ -89,34 +89,34 @@ window.onload = function () {
         displayErrors();
     };
 
-    // VALIDAR cumple
-    // function birthdateIsValid(value) {
-    //     // Implementa la validación de la fecha de nacimiento aquí
-
-    //     let birthday = new Date(value);
-    //     let today = new Date();
-    //     let age = today.getFullYear() - birthday.getFullYear();
-    //     let monthDiff = today.getMonth() - birthday.getMonth();
-
-    //     if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthday.getDate())) {
-    //         age--;
-    //     }
-
-    //     if (age >= 18) {
-    //         return true;
-    //     }
-    // }
-
-
     function validateBirthdate() {
-        const birthdate = birthdate.value;
-        if (!birthdateIsValid(birthdate)) {
-            errorMessages.birthdate = "Fecha de nacimiento inválida";
+        console.log('Dentro de la funcion');
+        
+        let birthday = new Date(birthdate.value);
+        let today = new Date();
+        let age = today.getFullYear() - birthday.getFullYear();
+        let monthDiff = today.getMonth() - birthday.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthday.getDate())) {
+            age--;
+        };
+        console.log(age);
+
+        if (emptyField(birthdate.value)) {
+            birthdate.classList.add('not-valid');
+            birthdate.classList.remove('is-valid');
+            errorMessages.birthdate = "Debes indicar tu fecha de nacimiento";
+        } else if (age < 18) {
+            birthdate.classList.add('not-valid');
+            errorMessages.birthdate = "Debes ser mayor de 18 años";
         } else {
             delete errorMessages.birthdate;
-        }
+            birthdate.classList.add('is-valid');
+            birthdate.classList.remove('not-valid');
+        };
+
         displayErrors();
-    }
+    };
+
 
     //------------------------------------------------------------------------//
     //VALIDAR TELEFONO VALIDO
@@ -263,17 +263,17 @@ window.onload = function () {
         if (emptyField(repassword.value)) {
             repassword.classList.add('not-valid');
             repassword.classList.remove('is-valid');
-            // errorMessages.repassword = "La contraseña no puede quedar vacío";
-        } else if (!repassword.value == password.value) {
+            errorMessages.repassword = "La contraseña no puede quedar vacío";
+        } else if (repassword.value !== password.value) {
             repassword.classList.add('not-valid');
             repassword.classList.remove('is-valid');
-            errorMessages.repassword = "La contraseña debe coincidir";
+            errorMessages.repassword = "Las contraseñas deben coincidir";
         } else {
             delete errorMessages.repassword;
             repassword.classList.remove('not-valid');
             repassword.classList.add('is-valid');
         }
-        //La función test es un método que se utiliza en JavaScript con expresiones regulares para verificar si una cadena de texto cumple con un patrón específico. Las expresiones regulares (también conocidas como regex) son patrones que describen conjuntos de cadenas de texto. La función test devuelve true si la cadena coincide con el patrón, y false si no coincide.
+
 
         displayErrors();
     }
@@ -296,6 +296,7 @@ window.onload = function () {
         for (const field in errorMessages) {
             if (errorMessages.hasOwnProperty(field)) {
                 document.getElementById(`${field}-error`).innerHTML = errorMessages[field] + errorIcon;
+                document.getElementById(`${field}-error`).style.opacity = 1;
             };
         };
     };
@@ -305,9 +306,9 @@ window.onload = function () {
     last_name.addEventListener('input', validateLastName);
     email.addEventListener('input', validateEmail);
     username.addEventListener('input', validateUsername);
-    // birthdate.addEventListener('input', validateBirthdate);
+    birthdate.addEventListener('blur', validateBirthdate);
     phone.addEventListener('input', validatePhone);
-    // image.addEventListener('input', validateImage);
+    image.addEventListener('input', validateImage);
     street.addEventListener('input', validateStreet);
     number.addEventListener('input', validateNumber);
     city.addEventListener('input', validateCity);

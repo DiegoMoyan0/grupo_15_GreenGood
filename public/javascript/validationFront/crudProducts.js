@@ -105,6 +105,7 @@ window.onload = function () {
         for (const field in errorMessages) {
             if (errorMessages.hasOwnProperty(field)) {
                 document.getElementById(`${field}-error`).innerHTML = errorMessages[field] + errorIcon ;
+                document.getElementById(`${field}-error`).style.opacity = 1;
             };
         };
     };
@@ -536,6 +537,7 @@ window.onload = function () {
             for (const field in errorMessagesEdit) {
                 if (errorMessagesEdit.hasOwnProperty(field)) {
                     editForm.querySelector(`#${field}-error`).innerHTML = errorMessagesEdit[field] + errorIcon ;
+                    document.getElementById(`${field}-error`).style.opacity = 1;
                 };
             };
             

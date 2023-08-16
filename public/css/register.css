@@ -4,12 +4,19 @@
 	box-shadow: 0 0 10px rgb(184 223 184);
   }
   
-  .not-valid {
+.not-valid {
 	border-color: rgb(215 151 148);
 	box-shadow: 0 0 10px rgb(247 145 139);
-  }
-.error{
-	color: red;
+}
+
+.error {
+    display: block;
+    color: #db7070;
+    font-size: 0.7rem;
+    font-weight: 600;
+    transition: all 0.5s;
+    margin-bottom: 10px;
+	opacity: 0;
 }
 .section-register {
 	padding: 1rem;
@@ -64,7 +71,7 @@
 	box-shadow: none;
 }
 
-#foto {
+#user_image {
 	display: none;	
 }
 
@@ -95,14 +102,18 @@
 	border-radius: 5px;
 }
 
-.error-icon {
+.error-icon{
 	display: inline-block;
-	color: red;
-	font-size: 1.5rem;
+	color: #db7070;
+	font-size: 1.2rem;
 	width: 1.5rem;
 	font-weight: 600;
 	position: absolute;
 	top: 30px;
+	right: 4%;
+}
+#birthdate-error .error-icon{
+	top: 73px;
 	right: 4%;
 }
 
@@ -113,7 +124,6 @@
 #pc-error-icon {
 	top: 11px;
 }
-
 
 .text-danger {
 	color: red;

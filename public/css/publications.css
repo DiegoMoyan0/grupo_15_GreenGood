@@ -418,6 +418,8 @@ overflow-y: scroll;
 	width: 350px;
 	max-width: 100%;
 	margin: 0 auto 20px;
+  color: gray;
+  position: relative;
 }
 
 .wrapper .form-wrap .input-wrap:last-child{
@@ -567,22 +569,27 @@ overflow-y: scroll;
 	transform: translate(-50%,-50%);
 }
 
-.error{
-  color: #fb6051bd;
+.error {
+  display: block;
+  color: #db7070;
   font-size: 0.7rem;
-  margin: 2px 0 8px 0;
-  padding: 2px;
-  display: flex; 
-  align-items: center;
   font-weight: 600;
+  transition: all 0.5s;
+  margin-bottom: 10px;
+  opacity: 0;
 }
 
-.error-icon {
-  width: 1em;
-  height: 1em;
-  font-size: 1.5rem;
-  margin-left: 5px;
+.error-icon{
+	display: inline-block;
+	color: #db7070;
+	font-size: 1.2rem;
+	width: 1.5rem;
+	font-weight: 600;
+	position: absolute;
+  top: 110.3%;
+  right: 5%;
 }
+
 
 .is-valid {
   border-color: rgb(175 236 175);
@@ -629,7 +636,7 @@ overflow-y: scroll;
   .form-container > label,
   .form-container > input{
     display: block;
-    color: gray
+
   }
 
 

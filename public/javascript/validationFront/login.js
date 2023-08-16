@@ -6,11 +6,9 @@ let errorSpan = document.getElementById('error');
 let errorSpanPass = document.getElementById('error-password');
 let loginForm = document.getElementById('login-form');
 let loginButton = document.getElementById('login-button');
-/*
 let errorIcon = `<svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
         </svg>`;
-*/
 
 let errors = {};
 
@@ -21,8 +19,8 @@ emailInput.addEventListener('input', () => {
     if (!email) {
 
         errors.email = { msg: 'El campo de email/usuario es requerido.' };
-        errorSpan.textContent =   errors.email.msg;
-      // errorSpan.innerHTML = errorIcon + ' ' + errors.email.msg;
+        errorSpan.innerHTML =   errors.email.msg + errorIcon;
+        errorSpan.style.opacity = 1;
 
         emailInput.classList.remove('is-valid');
         emailInput.classList.add('not-valid');
@@ -31,8 +29,6 @@ emailInput.addEventListener('input', () => {
 
         emailInput.classList.add('is-valid');
         emailInput.classList.remove('not-valid');
-
-        errorSpan.style.color = 'red';
 
         delete errors.email;
 
@@ -44,14 +40,14 @@ emailInput.addEventListener('input', () => {
 
 // Validate password input
 
-passwordInput.addEventListener('change', () => {
+passwordInput.addEventListener('input', () => {
     const password = passwordInput.value.trim();
     if (!password) {
 
         errors.password = { msg: 'El campo de contraseña es requerido.' };
-        errorSpanPass.textContent = errors.password.msg;
-       // errorSpanPass.innerHTML = errorIcon + ' ' + errors.password.msg;
-        
+        errorSpanPass.innerHTML = errors.password.msg + errorIcon;
+        errorSpanPass.style.opacity = 1;
+          
         passwordInput.classList.remove('is-valid');
         passwordInput.classList.add('not-valid');
 
@@ -85,7 +81,7 @@ let verifyEmail = async (email) => {
 
             errorSpan.textContent = 'El email/usuario está registrado en nuestra base de datos';
 
-            errorSpan.style.color = 'green';
+            errorSpan.style.color = '#9fc476';
 
             emailInput.classList.add('is-valid');
             emailInput.classList.remove('not-valid');
@@ -93,10 +89,8 @@ let verifyEmail = async (email) => {
         } else {
 
             errors.email = { msg: 'El email/usuario no está registrado en nuestra base de datos'};
-            errorSpan.textContent = errors.email.msg;
-           // errorSpan.innerHTML = errorIcon + ' ' + errors.email.msg;
-
-            errorSpan.style.color = 'red';
+            errorSpan.innerHTML = errors.email.msg + errorIcon;
+            errorSpan.style.opacity = 1;
 
             emailInput.classList.remove('is-valid');
             emailInput.classList.add('not-valid');
@@ -113,6 +107,5 @@ loginForm.addEventListener('submit', (event) => {
     if (Object.keys(errors).length > 0 || !emailInput.value.trim() || !passwordInput.value.trim()) { // Double-check that there are no errors nor empty fields...
         event.preventDefault();
         errorSpan.textContent = 'Por favor, complete todos los campos requeridos.';
-        errorSpan.style.color = 'red';
     }
 });

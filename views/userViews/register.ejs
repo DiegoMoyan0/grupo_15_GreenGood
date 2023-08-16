@@ -112,10 +112,8 @@
                     <label for="birth_date" class="label-register">Fecha de nacimiento</label>
                     <input type="date" 
                     name="birth_date" 
-                    min="1900-01-01" 
-                    max="2005-01-01" 
                     class="input-register"
-                    id="InputDate" 
+                    id="birth_date" 
                     class="form-inputs <%= locals.errors && errors.birth_date? "is-invalid" : null %>"
                     value= <%= locals.oldData? oldData.birth_date : null %>
                     >    
@@ -173,11 +171,11 @@
                     <label class="label-register" for="user_image">Foto de usuario:</label>
                     <br>
                     <img src="/images/users/default-user-photo.png" alt="avatar" id="img">
-                    <label for="foto" id="change_photo">Cambiar foto</label>
+                    <label for="user_image" id="change_photo">Cambiar foto</label>
                     <% if (locals.errors && errors.user_image) { %>
                         <input class="input-register" 
                         type="file" 
-                        id="foto" 
+                        id="user_image" 
                         name="user_image" 
                         accept="image/*"
                         style="box-shadow: 0px 0px 10px red;"
@@ -186,11 +184,11 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
                         </svg>                      
                         <div class="text-danger">
-                            <%= errors.user_image.msg %>
+                            <%= errors.foto.msg %>
                         </div>
                         <span class="span-bar"></span>
                     <% } else{ %>
-                        <input class="input-register" type="file" id="foto" name="user_image" accept="image/*" >
+                        <input class="input-register" type="file" id="user_image" name="user_image" accept="image/*" >
                         <span class="span-bar"></span>
                     <% }; %>  
                     <span class="error" id="user_image-error"></span>
@@ -336,7 +334,7 @@
                     onpaste="return false;" oncopy="return false" oncut="return false" ondrag="return false" ondrop="return false" autocomplete=off 
                     name="password_confirm" 
                     class="input-register" 
-                    id="password_confirm"
+                    id="repassword"
                     placeholder="Repita su contraseña..." 
                     class="form-inputs <%= locals.errors && errors.password_confirm? "is-invalid" : null %>"
                     >    
@@ -348,7 +346,7 @@
                             <%= errors.password_confirm.msg %>
                         </div>
                     <% }; %>
-                    <span class="error" id="password_confirm-error"></span>
+                    <span class="error" id="repassword-error"></span>
 
 				</div>
 
@@ -384,7 +382,7 @@
 
 <script>
     const defaultFile = '/images/users/default-user-photo.png';
-    const file = document.getElementById('foto');
+    const file = document.getElementById('user_image');
     const img = document.getElementById('img');
     file.addEventListener('change', e => {
         if(e.target.files[0]){
@@ -403,7 +401,7 @@
 
     //Definir variables de acuerdo a las identificaciones y clases de las etiquetas
 
-    let image = document.getElementById('foto');
+    let image = document.getElementById('user_image');
     let imgPreview = document.querySelector('.img-preview');
     let labelVista = document.querySelector('.lbl-preview');
     let containerVista = document.querySelector('.container-preview');
