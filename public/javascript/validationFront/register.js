@@ -68,6 +68,7 @@ window.onload = function () {
             delete errorMessages.email;
             email.classList.add('is-valid');
             email.classList.remove('not-valid');
+            verifyEmail(email.value)
         };
         displayErrors();
     };
@@ -85,13 +86,49 @@ window.onload = function () {
             delete errorMessages.username;
             username.classList.add('is-valid');
             username.classList.remove('not-valid');
+            verifyUser(username.value)
         };
         displayErrors();
     };
 
+    // Functions to check if user name and email are already registered on the database via API and provide instant feedback
+
+    let verifyUser = async (user) => {
+        try {
+            const response = await fetch('user/verify-email?email=' + user);
+            const result = await response.text();
+
+            if (result === 'true') {
+                username.classList.add('not-valid');
+                errorMessages.username = 'El usuario ya está registrado en nuestra base de datos, prueba con otro'
+                displayErrors();
+            }
+        } catch (error) {
+            errors.userName.textContent = 'Error al verificar el usuario.';
+            console.log(error);
+        }
+    };
+
+    let verifyEmail = async (emailRegister) => {
+        try {
+            const response = await fetch('user/verify-email?email=' + emailRegister);
+            const result = await response.text();
+
+            if (result === 'true') {
+                email.classList.add('not-valid');
+                errorMessages.email = 'El email ya está registrado en nuestra base de datos, prueba con otro'
+                displayErrors();
+            }
+        } catch (error) {
+            errors.userName.textContent = 'Error al verificar el correo electrónico.';
+            console.log(error);
+        }
+    };
+    //
+
     function validateBirthdate() {
         console.log('Dentro de la funcion');
-        
+
         let birthday = new Date(birthdate.value);
         let today = new Date();
         let age = today.getFullYear() - birthday.getFullYear();

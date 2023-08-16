@@ -621,7 +621,6 @@ saveButton.addEventListener('click', () => {
             console.log('se envío el formulario')
 
   
-
             saveButton.style.display = 'none';
             cancelButton.style.display = 'none';
             editButton.style.display = 'block';
