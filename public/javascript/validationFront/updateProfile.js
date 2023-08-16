@@ -133,6 +133,8 @@ let validateFirstName = () => {
         if (!errorSpan) {
             inputFields[0].errorSpan = document.createElement("span");
             firstNameInput.parentNode.appendChild(inputFields[0].errorSpan);
+            inputFields[0].errorSpan.style.color = '#d92929';
+            inputFields[0].errorSpan.style.fontSize = '0.8rem'
         }
 
         inputFields[0].errorSpan.textContent = errors.firstName;
@@ -160,6 +162,8 @@ let validateLastName = () => {
         if (!errorSpan) {
             inputFields[1].errorSpan = document.createElement("span");
             lastNameInput.parentNode.appendChild(inputFields[1].errorSpan);
+            inputFields[1].errorSpan.style.color = '#d92929';
+            inputFields[1].errorSpan.style.fontSize = '0.8rem'
         }
 
         inputFields[1].errorSpan.textContent = errors.lastName;
@@ -193,6 +197,8 @@ let validateUserName = () => {
         if (!errorSpan) {
             inputFields[2].errorSpan = document.createElement("span");
             userNameInput.parentNode.appendChild(inputFields[2].errorSpan);
+            inputFields[2].errorSpan.style.color = '#d92929';
+            inputFields[2].errorSpan.style.fontSize = '0.8rem'
         }
 
         inputFields[2].errorSpan.textContent = errors.userName;
@@ -214,7 +220,7 @@ let validateUserName = () => {
 
 };
 
-// Function to check if user name is already taken on the database via API and provide instant feedback
+// Function to check if username is already taken on the database via API and provide instant feedback
 let verifyEmail = async (user) => {
     try {
         const response = await fetch('user/verify-email?email=' + user);
@@ -226,32 +232,31 @@ let verifyEmail = async (user) => {
             if (user == userNameCurrent) {
 
 
+                errors.userName = 'Este es tu usuario actual';
                 if (!errorSpan) {
                     inputFields[2].errorSpan = document.createElement("span");
                     userNameInput.parentNode.appendChild(inputFields[2].errorSpan);
+                    inputFields[2].errorSpan.style.color = '#9fc476';
+                    inputFields[2].errorSpan.style.fontSize = '0.8rem'
                 }
 
-                inputFields[2].errorSpan.textContent = errors.userName;
 
-                errors.userName.textContent = 'Este es tu usuario actual';
+                inputFields[2].errorSpan.textContent = errors.userName;
 
                 userNameInput.classList.add('is-valid');
                 userNameInput.classList.remove('not-valid');
 
-                if (inputFields[2].errorSpan) {
-                    inputFields[2].errorSpan.remove();
-                    inputFields[2].errorSpan = null;
-                }
-
 
             } else {
 
-                errors.userName.textContent = 'El usuario ya está registrado en nuestra base de datos, prueba con otro';
+                errors.userName = 'El usuario ya está registrado en nuestra base de datos, prueba con otro';
 
 
                 if (!errorSpan) {
                     inputFields[2].errorSpan = document.createElement("span");
                     userNameInput.parentNode.appendChild(inputFields[2].errorSpan);
+                    inputFields[2].errorSpan.style.color = '#d92929';
+                    inputFields[2].errorSpan.style.fontSize = '0.8rem'
                 }
 
 
@@ -276,9 +281,6 @@ let verifyEmail = async (user) => {
             }
 
             errors.userName = ''
-
-            
-
 
         }
     } catch (error) {
@@ -305,6 +307,8 @@ let validatePhone = () => {
         if (!errorSpan) {
             inputFields[3].errorSpan = document.createElement("span");
             phoneInput.parentNode.appendChild(inputFields[3].errorSpan);
+            inputFields[3].errorSpan.style.color = '#d92929';
+            inputFields[3].errorSpan.style.fontSize = '0.8rem'
         }
 
         inputFields[3].errorSpan.textContent = errors.phone;
@@ -327,6 +331,8 @@ let validatePhone = () => {
             if (!inputFields[3].errorSpan) {
                 inputFields[3].errorSpan = document.createElement("span");
                 phoneInput.parentNode.appendChild(inputFields[3].errorSpan);
+                inputFields[3].errorSpan.style.color = '#d92929';
+                inputFields[3].errorSpan.style.fontSize = '0.8rem'
             }
 
             phoneInput.classList.remove('is-valid');
@@ -354,72 +360,70 @@ let validatePhone = () => {
 let validateBirthDate = () => {
 
 
-  
-  
-        let birthday = new Date(birthDateInput.value);
+    let birthday = new Date(birthDateInput.value);
 
-        let today = new Date();
-        let age = today.getFullYear() - birthday.getFullYear();
-        let monthDiff = today.getMonth() - birthday.getMonth();
+    let today = new Date();
+    let age = today.getFullYear() - birthday.getFullYear();
+    let monthDiff = today.getMonth() - birthday.getMonth();
 
-        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthday.getDate())) {
-            age--;
-        };
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthday.getDate())) {
+        age--;
+    };
 
 
-        
+
+    if (inputFields[4].errorSpan) {
+        inputFields[4].errorSpan.remove();
+        inputFields[4].errorSpan = null;
+    }
+
+    if (!birthDateInput.value.trim()) {
+        birthDateInput.classList.add('not-valid');
+        birthDateInput.classList.remove('is-valid');
+
+
+        if (!inputFields[4].errorSpan) {
+            inputFields[4].errorSpan = document.createElement("span");
+            birthDateInput.parentNode.appendChild(inputFields[4].errorSpan);
+            inputFields[4].errorSpan.style.color = '#d92929';
+            inputFields[4].errorSpan.style.fontSize = '0.8rem'
+        }
+
+
+        errors.birthDate = "Debes indicar tu fecha de nacimiento";
+
+        inputFields[4].errorSpan.textContent = errors.birthDate
+
+
+    } else if (age < 18) {
+        birthDateInput.classList.remove('is-valid');
+        birthDateInput.classList.add('not-valid');
+        errors.birthDate = "Debes ser mayor de 18 años";
+
+
+        if (!inputFields[4].errorSpan) {
+            inputFields[4].errorSpan = document.createElement("span");
+            birthDateInput.parentNode.appendChild(inputFields[4].errorSpan);
+            inputFields[4].errorSpan.style.color = '#d92929';
+            inputFields[4].errorSpan.style.fontSize = '0.8rem'
+        }
+
+        inputFields[4].errorSpan.textContent = errors.birthDate
+
+
+    } else {
+        delete errors.birthDate;
+
+        birthDateInput.classList.add('is-valid');
+        birthDateInput.classList.remove('not-valid');
+
         if (inputFields[4].errorSpan) {
             inputFields[4].errorSpan.remove();
             inputFields[4].errorSpan = null;
         }
-
-        if (!birthDateInput.value.trim()) {
-            birthDateInput.classList.add('not-valid');
-            birthDateInput.classList.remove('is-valid');
-
-            
-            if (!inputFields[4].errorSpan) {
-                inputFields[4].errorSpan = document.createElement("span");
-                birthDateInput.parentNode.appendChild(inputFields[4].errorSpan);
-            }
-
-
-            errors.birthDate = "Debes indicar tu fecha de nacimiento";
-
-            inputFields[4].errorSpan.textContent = errors.birthDate
-
-
-
-
-        } else if (age < 18) {
-            birthDateInput.classList.remove('is-valid');
-            birthDateInput.classList.add('not-valid');
-            errors.birthDate = "Debes ser mayor de 18 años";
-
-
-
-
-            if (!inputFields[4].errorSpan) {
-                inputFields[4].errorSpan = document.createElement("span");
-                birthDateInput.parentNode.appendChild(inputFields[4].errorSpan);
-            }
-
-            inputFields[4].errorSpan.textContent = errors.birthDate
-
-
-        } else {
-            delete errors.birthDate;
-
-            birthDateInput.classList.add('is-valid');
-            birthDateInput.classList.remove('not-valid');
-
-            if (inputFields[4].errorSpan) {
-                inputFields[4].errorSpan.remove();
-                inputFields[4].errorSpan = null;
-            }
-        };
-
     };
+
+};
 
 
 
@@ -444,15 +448,16 @@ let validateAddressStreet = () => {
             inputFields[5].errorSpan = document.createElement("span");
             inputFields[5].parentNode.insertBefore(inputFields[5].errorSpan, addressStreet.nextSibling);
             inputFields[5].errorSpan.style.color = '#d92929';
+            inputFields[5].errorSpan.style.fontSize = '0.8rem'
         }
 
-        inputFields[5].errorSpan.textContent =  errors.addressStreet
+        inputFields[5].errorSpan.textContent = errors.addressStreet
 
 
 
     } else {
         errors.addressStreet = '';
-       // delete  errors.addressStreet
+        // delete  errors.addressStreet
         addressStreet.classList.add('is-valid');
         addressStreet.classList.remove('not-valid');
 
@@ -469,54 +474,57 @@ let validateAddressNumber = () => {
 
 
 
+    if (inputFields[6].errorSpan) {
+        inputFields[6].errorSpan.remove();
+        inputFields[6].errorSpan = null;
+    }
+
+    if (!addressNumber.value.trim()) {
+        errors.addressNumber = 'La numeración es requerida.';
+        addressNumber.classList.remove('is-valid');
+        addressNumber.classList.add('not-valid');
+
+
+        if (!inputFields[6].errorSpan) {
+            inputFields[6].errorSpan = document.createElement("span");
+            inputFields[6].parentNode.insertBefore(inputFields[6].errorSpan, addressNumber.nextSibling);
+            inputFields[6].errorSpan.style.color = '#d92929';
+            inputFields[6].errorSpan.style.fontSize = '0.8rem'
+        }
+
+        inputFields[6].errorSpan.textContent = errors.addressNumber
+
+
+    } else if (addressNumber.value.trim().length < 2) {
+        addressNumber.classList.add('not-valid');
+        errors.addressNumber = "Mínimo 2 caracteres para el Numero";
+
+        if (!inputFields[6].errorSpan) {
+            inputFields[6].errorSpan = document.createElement("span");
+            inputFields[6].parentNode.insertBefore(inputFields[6].errorSpan, addressNumber.nextSibling);
+            inputFields[6].errorSpan.style.color = '#d92929';
+            inputFields[6].errorSpan.style.fontSize = '0.8rem'
+        }
+
+        inputFields[6].errorSpan.textContent = errors.addressNumber
+    } else {
+        delete errors.addressStreet;
+        addressNumber.classList.add('is-valid');
+        addressNumber.classList.remove('not-valid');
+
         if (inputFields[6].errorSpan) {
             inputFields[6].errorSpan.remove();
             inputFields[6].errorSpan = null;
         }
 
-        if (!addressNumber.value.trim()) {
-            errors.addressNumber = 'La numeración es requerida.';
-            addressNumber.classList.remove('is-valid');
-            addressNumber.classList.add('not-valid');
 
-
-            if (!inputFields[6].errorSpan) {
-                inputFields[6].errorSpan = document.createElement("span");
-                inputFields[6].parentNode.insertBefore(inputFields[6].errorSpan, addressNumber.nextSibling);
-                inputFields[6].errorSpan.style.color = '#d92929';
-            }
-    
-            inputFields[6].errorSpan.textContent = errors.addressNumber
-
-
-        } else if (addressNumber.value.trim().length < 2) {
-            addressNumber.classList.add('not-valid');
-            errors.addressNumber =  "Mínimo 2 caracteres para el Numero";
-            
-            if (!inputFields[6].errorSpan) {
-                inputFields[6].errorSpan = document.createElement("span");
-                inputFields[6].parentNode.insertBefore(inputFields[6].errorSpan, addressNumber.nextSibling);
-                inputFields[6].errorSpan.style.color = '#d92929';
-            }
-            inputFields[6].errorSpan.textContent = errors.addressNumber
-        } else {
-            delete errors.addressStreet;
-            addressNumber.classList.add('is-valid');
-            addressNumber.classList.remove('not-valid');
-
-            if (inputFields[6].errorSpan) {
-                inputFields[6].errorSpan.remove();
-                inputFields[6].errorSpan = null;
-            }
-    
-
-        };
-    
     };
+
+};
 
 
 let validateAddressCity = () => {
-    
+
     if (!addressCity.value.trim()) {
         errors.addressCity = 'La ciudad es requerida.';
         addressCity.classList.remove('is-valid');
@@ -526,6 +534,7 @@ let validateAddressCity = () => {
             inputFields[7].errorSpan = document.createElement("span");
             inputFields[7].parentNode.insertBefore(inputFields[7].errorSpan, addressCity.nextSibling);
             inputFields[7].errorSpan.style.color = '#d92929';
+            inputFields[7].errorSpan.style.fontSize = '0.8rem'
         }
 
         inputFields[7].errorSpan.textContent = errors.addressCity
@@ -552,6 +561,7 @@ let validateAddressProvince = () => {
             inputFields[8].errorSpan = document.createElement("span");
             inputFields[8].parentNode.insertBefore(inputFields[8].errorSpan, addressProvince.nextSibling);
             inputFields[8].errorSpan.style.color = '#d92929';
+            inputFields[8].errorSpan.style.fontSize = '0.8rem'
         }
 
         inputFields[8].errorSpan.textContent = errors.addressProvince
@@ -572,6 +582,7 @@ let validateAddressProvince = () => {
 
 let validateAddressCountry = () => {
     if (!addressCountry.value.trim()) {
+
         errors.addressCountry = 'El país es requerido.';
         addressCountry.classList.remove('is-valid');
         addressCountry.classList.add('not-valid');
@@ -580,15 +591,16 @@ let validateAddressCountry = () => {
             inputFields[9].errorSpan = document.createElement("span");
             inputFields[9].parentNode.insertBefore(inputFields[9].errorSpan, addressCountry.nextSibling);
             inputFields[9].errorSpan.style.color = '#d92929';
+            inputFields[9].errorSpan.style.fontSize = '0.8rem'
         }
 
-        inputFields[8].errorSpan.textContent = errors.addressProvince
+        inputFields[9].errorSpan.textContent = errors.addressCountry
     } else {
         errors.addressCountry = '';
         addressCountry.classList.add('is-valid');
         addressCountry.classList.remove('not-valid');
 
-        
+
         if (inputFields[9].errorSpan) {
             inputFields[9].errorSpan.remove();
             inputFields[9].errorSpan = null;
@@ -597,12 +609,11 @@ let validateAddressCountry = () => {
 };
 
 
-
 /////////////////////////////////////////////////////////
 
 saveButton.addEventListener('click', () => {
 
-
+    errors.userName == 'Este es tu usuario actual'? errors.userName = '': errors.userName
 
     updateProfileForm.addEventListener('submit', (e) => {
 
@@ -614,13 +625,11 @@ saveButton.addEventListener('click', () => {
 
         } else {
 
-            alert('Actualización de datos existosa');
+            alert('Actualización de datos exitosa');
 
             updateProfileForm.submit();
             console.log(updateProfileForm.submit())
-            console.log('se envío el formulario')
 
-  
             saveButton.style.display = 'none';
             cancelButton.style.display = 'none';
             editButton.style.display = 'block';
