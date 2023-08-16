@@ -128,13 +128,16 @@ window.onload = function () {
             phone.classList.add('not-valid');
             phone.classList.remove('is-valid');
             errorMessages.phone = "El telefono no puede quedar vacío";
-        } else if (phoneRegex.test(phone)) {
+            console.log("ENTRO AL IF");
+        } else if (!phoneRegex.test(phone.value)) {
             phone.classList.add('not-valid');
             errorMessages.phone = "El telefono debe ser valido";
+            console.log("ENTRO AL ELSE IF");
         } else {
             delete errorMessages.phone;
-            phone.classList.add('is-valid');
             phone.classList.remove('not-valid');
+            phone.classList.add('is-valid');
+            console.log("ENTRO AL ELSE");
         };
         displayErrors();
     };
@@ -231,16 +234,26 @@ window.onload = function () {
             password.classList.add('not-valid');
             password.classList.remove('is-valid');
             errorMessages.password = "La contraseña no puede quedar vacío";
-        } else if (password.length < 8) {
-            errorMessages.password = "La contraseña debe tener al menos 8 caracteres";
-        } else if (!/\d/.test(password)) {
+        } else if (!/\d/.test(password.value)) {
+            password.classList.add('not-valid');
+            password.classList.remove('is-valid');
             errorMessages.password = "La contraseña debe contener al menos un número";
-        } else if (!/[A-Z]/.test(password)) {
+        } else if (!/[A-Z]/.test(password.value)) {
+            password.classList.add('not-valid');
+            password.classList.remove('is-valid');
             errorMessages.password = "La contraseña debe contener al menos una letra mayúscula";
-        } else if (!/[^a-zA-Z0-9]/.test(password)) {
-            errorMessages.password = "La contraseña debe contener al menos un caracter no alfanumérico";
+        } else if (!/[^a-zA-Z0-9]/.test(password.value)) {
+            password.classList.add('not-valid');
+            password.classList.remove('is-valid');
+            errorMessages.password = "La contraseña debe contener al menos un caracter especial";
+        } else if (password.value.length < 8) {
+            password.classList.add('not-valid');
+            password.classList.remove('is-valid');
+            errorMessages.password = "La contraseña debe tener al menos 8 caracteres";
         } else {
             delete errorMessages.password;
+            password.classList.remove('not-valid');
+            password.classList.add('is-valid');
         }
         //La función test es un método que se utiliza en JavaScript con expresiones regulares para verificar si una cadena de texto cumple con un patrón específico. Las expresiones regulares (también conocidas como regex) son patrones que describen conjuntos de cadenas de texto. La función test devuelve true si la cadena coincide con el patrón, y false si no coincide.
 
@@ -249,12 +262,16 @@ window.onload = function () {
     function validateRepassword() {
         if (emptyField(repassword.value)) {
             repassword.classList.add('not-valid');
-            password.classList.remove('is-valid');
-            errorMessages.repassword = "La contraseña no puede quedar vacío";
-        } else if (repassword.value == password.value) {
+            repassword.classList.remove('is-valid');
+            // errorMessages.repassword = "La contraseña no puede quedar vacío";
+        } else if (!repassword.value == password.value) {
+            repassword.classList.add('not-valid');
+            repassword.classList.remove('is-valid');
             errorMessages.repassword = "La contraseña debe coincidir";
         } else {
             delete errorMessages.repassword;
+            repassword.classList.remove('not-valid');
+            repassword.classList.add('is-valid');
         }
         //La función test es un método que se utiliza en JavaScript con expresiones regulares para verificar si una cadena de texto cumple con un patrón específico. Las expresiones regulares (también conocidas como regex) son patrones que describen conjuntos de cadenas de texto. La función test devuelve true si la cadena coincide con el patrón, y false si no coincide.
 
@@ -288,9 +305,9 @@ window.onload = function () {
     last_name.addEventListener('input', validateLastName);
     email.addEventListener('input', validateEmail);
     username.addEventListener('input', validateUsername);
-    birthdate.addEventListener('input', validateBirthdate);
+    // birthdate.addEventListener('input', validateBirthdate);
     phone.addEventListener('input', validatePhone);
-    image.addEventListener('input', validateImage);
+    // image.addEventListener('input', validateImage);
     street.addEventListener('input', validateStreet);
     number.addEventListener('input', validateNumber);
     city.addEventListener('input', validateCity);
