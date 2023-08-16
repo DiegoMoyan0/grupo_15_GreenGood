@@ -201,6 +201,13 @@ let validateUserName = () => {
     const user = userNameInput.value.trim()
 
     if (!userNameInput.value.trim()) {
+
+        if (inputFields[2].errorSpan) {
+            inputFields[2].errorSpan.remove();
+            inputFields[2].errorSpan = null;
+        }
+        errors.userName = ''
+
         errors.userName = 'El usuario es requerido.';
         userNameInput.classList.remove('is-valid');
         userNameInput.classList.add('not-valid');
@@ -279,8 +286,8 @@ let verifyEmail = async (user) => {
 
         } else {
 
-            errors.userName = { msg: 'El usuario está disponible en nuestra base de datos' };
-            errors.userName.textContent = errors.userName.msg;
+            //errors.userName = { msg: 'El usuario está disponible en nuestra base de datos' };
+           // errors.userName.textContent = errors.userName.msg;
 
 
             userNameInput.classList.add('is-valid');
