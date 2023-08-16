@@ -6,6 +6,9 @@ let lastNameInput = document.querySelector('input[name="last_name"]');
 let userNameInput = document.querySelector('input[name="user_name"]')
 let phoneInput = document.querySelector('input[name="phone"]');
 let birthDateInput = document.querySelector('input[name="birth_date"]')
+let userImageInput = document.querySelector('input[name="user_image"]')
+let photoUpdateButton = document.getElementById('change_photo')
+const img = document.getElementById('img');
 
 // Constant elements
 
@@ -39,7 +42,8 @@ let errors = {
     addressNumber: '',
     addressCity: '',
     addressProvince: '',
-    addressCountry: ''
+    addressCountry: '',
+    userImage: ''
 };
 
 
@@ -54,7 +58,8 @@ let inputFields = [
     addressNumber,
     addressCity,
     addressProvince,
-    addressCountry
+    addressCountry,
+    userImageInput,
 ];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -67,6 +72,8 @@ window.onload = () => {
     userNameInput.addEventListener('change', validateUserName);
     phoneInput.addEventListener('change', validatePhone);
     birthDateInput.addEventListener('change', validateBirthDate);
+    userImageInput.addEventListener('change', validateImage);
+
 
     addressStreet.addEventListener('change', validateAddressStreet);
     addressNumber.addEventListener('change', validateAddressNumber);
@@ -78,6 +85,8 @@ window.onload = () => {
     inputFields.forEach(field => {
         field.setAttribute('disabled', 'true');
     });
+
+    photoUpdateButton.style.display = 'none';
 
     editButton.addEventListener('click', (e) => {
 
@@ -91,6 +100,7 @@ window.onload = () => {
         editButton.style.display = 'none';
         cancelButton.style.display = 'block';
         saveButton.style.display = 'block';
+        photoUpdateButton.style.display = 'unset';
 
     })
 
@@ -107,6 +117,7 @@ window.onload = () => {
 
         });
 
+        photoUpdateButton.style.display = 'none';
         saveButton.style.display = 'none';
         editButton.style.display = 'block';
         cancelButton.style.display = 'none'
@@ -608,12 +619,76 @@ let validateAddressCountry = () => {
     }
 };
 
+let validateImage = () => {
+
+    const acceptedExtensions = ['jpg', 'png', 'jpeg', 'gif'];
+    const selectedFile = userImageInput.files[0];
+    const defaultFile = '/images/users/default-user-photo.png';
+    const file = document.getElementById('foto');
+
+
+    if (selectedFile) {
+        const fileName = selectedFile.name;
+        const fileExtension = fileName.split('.').pop().toLowerCase();
+        if (!acceptedExtensions.includes(fileExtension)) {
+
+            console.log('extensión invalida');
+            console.log(errors.userImage)
+            console.log(fileExtension);
+
+            userImageInput.classList.add('not-valid');
+            userImageInput.classList.remove('is-valid');
+
+            if (!inputFields[10].errorSpan) {
+                inputFields[10].errorSpan = document.createElement("span");
+                inputFields[10].parentNode.insertBefore(inputFields[10].errorSpan, userImageInput.nextSibling);
+                inputFields[10].errorSpan.style.color = '#d92929';
+                inputFields[10].errorSpan.style.fontSize = '0.8rem';
+                inputFields[10].errorSpan.style.margin = '1rem'
+            }
+
+            errors.userImage = `Extensiones válidas: ${acceptedExtensions.join(', ')}.`;
+            inputFields[10].errorSpan.textContent = errors.userImage;
+
+        } else {
+
+            console.log('extensión VALIDA');
+
+
+            userImageInput.classList.add('is-valid');
+            userImageInput.classList.remove('not-valid');
+            delete errors.userImage
+            console.log(errors.userImage)
+
+            if (inputFields[10].errorSpan) {
+                inputFields[10].errorSpan.remove();
+                inputFields[10].errorSpan = null;
+            }
+
+            file.addEventListener('change', (e) => {
+                if (e.target.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        img.src = e.target.result;
+                    }
+                    reader.readAsDataURL(e.target.files[0]);
+                } else {
+                    img.src = defaultFile;
+                }
+            })
+
+        };
+    };
+
+};
+
+
 
 /////////////////////////////////////////////////////////
 
 saveButton.addEventListener('click', () => {
 
-    errors.userName == 'Este es tu usuario actual'? errors.userName = '': errors.userName
+    errors.userName == 'Este es tu usuario actual' ? errors.userName = '' : errors.userName
 
     updateProfileForm.addEventListener('submit', (e) => {
 
@@ -636,22 +711,4 @@ saveButton.addEventListener('click', () => {
         }
     });
 });
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const defaultFile = '/images/users/default-user-photo.png';
-const file = document.getElementById('foto');
-const img = document.getElementById('img');
-file.addEventListener('change', e => {
-    if (e.target.files[0]) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            img.src = e.target.result;
-        }
-        reader.readAsDataURL(e.target.files[0]);
-    } else {
-        img.src = defaultFile;
-    }
-})
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
