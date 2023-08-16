@@ -8,6 +8,7 @@ let phoneInput = document.querySelector('input[name="phone"]');
 let birthDateInput = document.querySelector('input[name="birth_date"]')
 let userImageInput = document.querySelector('input[name="user_image"]')
 let photoUpdateButton = document.getElementById('change_photo')
+let userTypeInput = document.querySelectorAll('input[name="user_type"]')
 const img = document.getElementById('img');
 
 // Constant elements
@@ -86,6 +87,10 @@ window.onload = () => {
         field.setAttribute('disabled', 'true');
     });
 
+    userTypeInput.forEach(radioButton => {
+        radioButton.setAttribute('disabled', 'true');
+    });
+
     photoUpdateButton.style.display = 'none';
 
     editButton.addEventListener('click', (e) => {
@@ -95,6 +100,11 @@ window.onload = () => {
 
         inputFields.forEach(field => {
             field.removeAttribute('disabled');
+        });
+
+
+        userTypeInput.forEach(radioButton => {
+            radioButton.removeAttribute('disabled');
         });
 
         editButton.style.display = 'none';
@@ -115,6 +125,10 @@ window.onload = () => {
             field.classList.remove('is-valid');
             field.classList.remove('not-valid');
 
+        });
+
+        userTypeInput.forEach(radioButton => {
+            radioButton.setAttribute('disabled', 'true');
         });
 
         photoUpdateButton.style.display = 'none';
@@ -287,7 +301,7 @@ let verifyEmail = async (user) => {
         } else {
 
             //errors.userName = { msg: 'El usuario está disponible en nuestra base de datos' };
-           // errors.userName.textContent = errors.userName.msg;
+            // errors.userName.textContent = errors.userName.msg;
 
 
             userNameInput.classList.add('is-valid');
