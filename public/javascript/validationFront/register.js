@@ -144,6 +144,7 @@ window.onload = function () {
 
 
     function validateImage() {
+        console.log('Dentro de validate image');
         const acceptedExtensions = ['jpg', 'png', 'jpeg', 'gif'];
         const selectedFile = image.files[0];
 

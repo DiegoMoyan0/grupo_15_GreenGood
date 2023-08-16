@@ -177,7 +177,6 @@
                         type="file" 
                         id="user_image" 
                         name="user_image" 
-                        accept="image/*"
                         style="box-shadow: 0px 0px 10px red;"
                         >
                         <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -188,10 +187,10 @@
                         </div>
                         <span class="span-bar"></span>
                     <% } else{ %>
-                        <input class="input-register" type="file" id="user_image" name="user_image" accept="image/*" >
+                        <input class="input-register" type="file" id="user_image" name="user_image" >
                         <span class="span-bar"></span>
                     <% }; %>  
-                    <span class="error" id="user_image-error"></span>
+                    <span class="error" id="image-error"></span>
 				</div>
                 <br>
                 <br>

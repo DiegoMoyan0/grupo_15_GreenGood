@@ -80,7 +80,7 @@ let verifyEmail = async (email) => {
         if (result === 'true') {
 
             errorSpan.textContent = 'El email/usuario está registrado en nuestra base de datos';
-
+            errorSpan.style.opacity = 1;
             errorSpan.style.color = '#9fc476';
 
             emailInput.classList.add('is-valid');

@@ -185,6 +185,7 @@ height: 1px;
 	transition: all 0.5s;
 	margin: 10px 0;
 	opacity: 0;
+	text-align: left;
 }
 
 .error-icon{

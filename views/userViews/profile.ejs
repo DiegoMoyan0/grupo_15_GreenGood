@@ -58,23 +58,23 @@
 
                             <div class="address-div">
                                 <h3>Sus datos de dirección de envío:</h3>
-                                <span for="street" class="adress-span">Calle</span>
+                                <label for="street" class="adress-span">Calle</label>
                                 <input name="street" class="info adress-input" type="text"
                                     value="<%=user.address.street%>">
-                                <span for="number" class="adress-span">Numeración/Altura/Dpto</span>
+                                <label for="number" class="adress-span">Numeración/Altura/Dpto</label>
                                 <input name="number" class="info adress-input" type="text"
                                     value="<%=user.address.number%>">
-                                <span for="city" class="adress-span">Ciudad</span>
+                                <label for="city" class="adress-span">Ciudad</label>
                                 <input name="city" class="info adress-input" type="text" value="<%=user.address.city%>">
-                                <span for="province" class="adress-span">Provincia</span>
+                                <label for="province" class="adress-span">Provincia</label>
                                 <input name="province" class="info adress-input" type="text"
                                     value="<%=user.address.province%>">
-                                <span for="country" class="adress-span">País</span>
+                                <label for="country" class="adress-span">País</label>
                                 <input name="country" class="info adress-input" type="text"
                                     value="<%=user.address.country%>">
                             </div>
                             <div class="inputs-div">
-                                <span>Tipo de usuario:</span><br>
+                                <label>Tipo de usuario:</label><br>
                                 <label for="Vendedor">Vendedor</label>
                                 <input type="radio" id="Vendedor" name="user_type" value="Vendedor" <% if
                                     (user.type==="Vendedor" ) { %> checked <% } %>>
