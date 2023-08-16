@@ -7,6 +7,11 @@ let userNameInput = document.querySelector('input[name="user_name"]')
 let phoneInput = document.querySelector('input[name="phone"]');
 let birthDateInput = document.querySelector('input[name="birth_date"]')
 
+// Constant elements
+
+const userNameCurrent = userNameInput.value
+const updateProfileForm = document.querySelector(".form-login")
+
 // User Address
 
 let addressStreet = document.querySelector('input[name="street"]');
@@ -15,7 +20,7 @@ let addressCity = document.querySelector('input[name="city"]');
 let addressProvince = document.querySelector('input[name="province"]');
 let addressCountry = document.querySelector('input[name="country"]');
 
-// Edit save and cancel buttons
+// Edit, save and cancel buttons
 
 let editButton = document.querySelector('.save-button-icon')
 let cancelButton = document.querySelector('.cancelar-button')
@@ -23,14 +28,6 @@ let saveButton = document.querySelector('.save-button');
 
 
 
-saveButton.addEventListener('click', () => {
-    saveButton.style.display = 'none';
-    cancelButton.style.display = 'none';
-    editButton.style.display = 'block';
-});
-
-
-// Except email
 
 let errors = {
     firstName: '',
@@ -45,7 +42,7 @@ let errors = {
     addressCountry: ''
 };
 
-// Except email
+
 
 let inputFields = [
     firstNameInput,
@@ -86,7 +83,6 @@ window.onload = () => {
 
         e.preventDefault();
 
-        // console.log('Click en el botón de edición');
 
         inputFields.forEach(field => {
             field.removeAttribute('disabled');
@@ -102,7 +98,7 @@ window.onload = () => {
     cancelButton.addEventListener('click', (e) => {
 
         e.preventDefault();
-        // console.log('Click en el botón CANCELAR edición');
+
 
         inputFields.forEach(field => {
             field.setAttribute('disabled', 'true');
@@ -125,18 +121,33 @@ window.onload = () => {
 
 // User validation
 
-let validateFirstName = () => {
+let errorSpan = null;
 
+let validateFirstName = () => {
     if (!firstNameInput.value.trim()) {
+
         errors.firstName = 'El nombre es requerido.';
         firstNameInput.classList.remove('is-valid');
         firstNameInput.classList.add('not-valid');
+
+        if (!errorSpan) {
+            inputFields[0].errorSpan = document.createElement("span");
+            firstNameInput.parentNode.appendChild(inputFields[0].errorSpan);
+        }
+
+        inputFields[0].errorSpan.textContent = errors.firstName;
+
     } else {
+
         errors.firstName = '';
         firstNameInput.classList.add('is-valid');
         firstNameInput.classList.remove('not-valid');
-    }
 
+        if (inputFields[0].errorSpan) {
+            inputFields[0].errorSpan.remove();
+            inputFields[0].errorSpan = null;
+        }
+    }
 };
 
 let validateLastName = () => {
@@ -145,10 +156,26 @@ let validateLastName = () => {
         errors.lastName = 'El apellido es requerido.';
         lastNameInput.classList.remove('is-valid');
         lastNameInput.classList.add('not-valid');
+
+        if (!errorSpan) {
+            inputFields[1].errorSpan = document.createElement("span");
+            lastNameInput.parentNode.appendChild(inputFields[1].errorSpan);
+        }
+
+        inputFields[1].errorSpan.textContent = errors.lastName;
+
+
     } else {
         errors.lastName = '';
         lastNameInput.classList.add('is-valid');
         lastNameInput.classList.remove('not-valid');
+
+        if (inputFields[1].errorSpan) {
+            inputFields[1].errorSpan.remove();
+            inputFields[1].errorSpan = null;
+        }
+
+
     }
 
 };
@@ -156,83 +183,362 @@ let validateLastName = () => {
 
 let validateUserName = () => {
 
+    const user = userNameInput.value.trim()
+
     if (!userNameInput.value.trim()) {
         errors.userName = 'El usuario es requerido.';
         userNameInput.classList.remove('is-valid');
         userNameInput.classList.add('not-valid');
+
+        if (!errorSpan) {
+            inputFields[2].errorSpan = document.createElement("span");
+            userNameInput.parentNode.appendChild(inputFields[2].errorSpan);
+        }
+
+        inputFields[2].errorSpan.textContent = errors.userName;
+
+
     } else {
         errors.userName = '';
         userNameInput.classList.add('is-valid');
         userNameInput.classList.remove('not-valid');
+
+
+        if (inputFields[2].errorSpan) {
+            inputFields[2].errorSpan.remove();
+            inputFields[2].errorSpan = null;
+        }
+
+        verifyEmail(user)
     }
 
+};
+
+// Function to check if user name is already taken on the database via API and provide instant feedback
+let verifyEmail = async (user) => {
+    try {
+        const response = await fetch('user/verify-email?email=' + user);
+        const result = await response.text();
+
+        if (result === 'true') {
+
+
+            if (user == userNameCurrent) {
+
+
+                if (!errorSpan) {
+                    inputFields[2].errorSpan = document.createElement("span");
+                    userNameInput.parentNode.appendChild(inputFields[2].errorSpan);
+                }
+
+                inputFields[2].errorSpan.textContent = errors.userName;
+
+                errors.userName.textContent = 'Este es tu usuario actual';
+
+                userNameInput.classList.add('is-valid');
+                userNameInput.classList.remove('not-valid');
+
+                if (inputFields[2].errorSpan) {
+                    inputFields[2].errorSpan.remove();
+                    inputFields[2].errorSpan = null;
+                }
+
+
+            } else {
+
+                errors.userName.textContent = 'El usuario ya está registrado en nuestra base de datos, prueba con otro';
+
+
+                if (!errorSpan) {
+                    inputFields[2].errorSpan = document.createElement("span");
+                    userNameInput.parentNode.appendChild(inputFields[2].errorSpan);
+                }
+
+
+                inputFields[2].errorSpan.textContent = errors.userName;
+
+                userNameInput.classList.remove('is-valid');
+                userNameInput.classList.add('not-valid');
+            }
+
+        } else {
+
+            errors.userName = { msg: 'El usuario está disponible en nuestra base de datos' };
+            errors.userName.textContent = errors.userName.msg;
+
+
+            userNameInput.classList.add('is-valid');
+            userNameInput.classList.remove('not-valid');
+
+            if (inputFields[2].errorSpan) {
+                inputFields[2].errorSpan.remove();
+                inputFields[2].errorSpan = null;
+            }
+
+            errors.userName = ''
+
+            
+
+
+        }
+    } catch (error) {
+        errors.userName.textContent = 'Error al verificar el correo electrónico.';
+        console.log(error);
+    }
 };
 
 
 let validatePhone = () => {
 
+
     if (!phoneInput.value.trim()) {
+
         errors.phone = 'El teléfono es requerido.';
         phoneInput.classList.remove('is-valid');
         phoneInput.classList.add('not-valid');
 
+        if (inputFields[3].errorSpan) {
+            inputFields[3].errorSpan.remove();
+            inputFields[3].errorSpan = null;
+        }
+
+        if (!errorSpan) {
+            inputFields[3].errorSpan = document.createElement("span");
+            phoneInput.parentNode.appendChild(inputFields[3].errorSpan);
+        }
+
+        inputFields[3].errorSpan.textContent = errors.phone;
+
+
     } else {
+
+        const phoneRegex = /^[0-9]{7,}$/;
+
         errors.phone = '';
-        phoneInput.classList.add('is-valid');
-        phoneInput.classList.remove('not-valid');
+
+
+        if (!phoneRegex.test(phoneInput.value.trim()) && phoneInput.value.trim() > 0) {
+
+            if (inputFields[3].errorSpan) {
+                inputFields[3].errorSpan.remove();
+                inputFields[3].errorSpan = null;
+            }
+
+            if (!inputFields[3].errorSpan) {
+                inputFields[3].errorSpan = document.createElement("span");
+                phoneInput.parentNode.appendChild(inputFields[3].errorSpan);
+            }
+
+            phoneInput.classList.remove('is-valid');
+            phoneInput.classList.add('not-valid');
+
+            errors.phone = 'Debe tener al menos 7 digitos';
+
+            inputFields[3].errorSpan.textContent = errors.phone
+
+        } else {
+
+            errors.phone = '';
+            phoneInput.classList.add('is-valid');
+            phoneInput.classList.remove('not-valid');
+
+            if (inputFields[3].errorSpan) {
+                inputFields[3].errorSpan.remove();
+                inputFields[3].errorSpan = null;
+            }
+        }
+
     }
 };
 
 let validateBirthDate = () => {
 
-    if (!birthDateInput.value.trim()) {
-        errors.birthDate = 'La fecha de nacimiento es requerida.';
-        birthDateInput.classList.remove('is-valid');
-        birthDateInput.classList.add('not-valid');
-    } else {
 
-        errors.birthDate = '';
-        birthDateInput.classList.add('is-valid');
-        birthDateInput.classList.remove('not-valid');
-    }
+  
+  
+        let birthday = new Date(birthDateInput.value);
 
-}
+        let today = new Date();
+        let age = today.getFullYear() - birthday.getFullYear();
+        let monthDiff = today.getMonth() - birthday.getMonth();
+
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthday.getDate())) {
+            age--;
+        };
+
+
+        
+        if (inputFields[4].errorSpan) {
+            inputFields[4].errorSpan.remove();
+            inputFields[4].errorSpan = null;
+        }
+
+        if (!birthDateInput.value.trim()) {
+            birthDateInput.classList.add('not-valid');
+            birthDateInput.classList.remove('is-valid');
+
+            
+            if (!inputFields[4].errorSpan) {
+                inputFields[4].errorSpan = document.createElement("span");
+                birthDateInput.parentNode.appendChild(inputFields[4].errorSpan);
+            }
+
+
+            errors.birthDate = "Debes indicar tu fecha de nacimiento";
+
+            inputFields[4].errorSpan.textContent = errors.birthDate
+
+
+
+
+        } else if (age < 18) {
+            birthDateInput.classList.remove('is-valid');
+            birthDateInput.classList.add('not-valid');
+            errors.birthDate = "Debes ser mayor de 18 años";
+
+
+
+
+            if (!inputFields[4].errorSpan) {
+                inputFields[4].errorSpan = document.createElement("span");
+                birthDateInput.parentNode.appendChild(inputFields[4].errorSpan);
+            }
+
+            inputFields[4].errorSpan.textContent = errors.birthDate
+
+
+        } else {
+            delete errors.birthDate;
+
+            birthDateInput.classList.add('is-valid');
+            birthDateInput.classList.remove('not-valid');
+
+            if (inputFields[4].errorSpan) {
+                inputFields[4].errorSpan.remove();
+                inputFields[4].errorSpan = null;
+            }
+        };
+
+    };
+
+
+
 
 // Address validation
 
+///////////////////////////////////////////////////////////////////////
+
 let validateAddressStreet = () => {
+
+
+
     if (!addressStreet.value.trim()) {
+
         errors.addressStreet = 'La calle es requerida.';
         addressStreet.classList.remove('is-valid');
         addressStreet.classList.add('not-valid');
+
+
+
+        if (!inputFields[5].errorSpan) {
+            inputFields[5].errorSpan = document.createElement("span");
+            inputFields[5].parentNode.insertBefore(inputFields[5].errorSpan, addressStreet.nextSibling);
+            inputFields[5].errorSpan.style.color = '#d92929';
+        }
+
+        inputFields[5].errorSpan.textContent =  errors.addressStreet
+
+
+
     } else {
         errors.addressStreet = '';
+       // delete  errors.addressStreet
         addressStreet.classList.add('is-valid');
         addressStreet.classList.remove('not-valid');
+
+
+        if (inputFields[5].errorSpan) {
+            inputFields[5].errorSpan.remove();
+            inputFields[5].errorSpan = null;
+        }
+
     }
 };
 
 let validateAddressNumber = () => {
-    if (!addressNumber.value.trim()) {
-        errors.addressNumber = 'La numeración es requerida.';
-        addressNumber.classList.remove('is-valid');
-        addressNumber.classList.add('not-valid');
-    } else {
-        errors.addressNumber = '';
-        addressNumber.classList.add('is-valid');
-        addressNumber.classList.remove('not-valid');
-    }
-};
+
+
+
+        if (inputFields[6].errorSpan) {
+            inputFields[6].errorSpan.remove();
+            inputFields[6].errorSpan = null;
+        }
+
+        if (!addressNumber.value.trim()) {
+            errors.addressNumber = 'La numeración es requerida.';
+            addressNumber.classList.remove('is-valid');
+            addressNumber.classList.add('not-valid');
+
+
+            if (!inputFields[6].errorSpan) {
+                inputFields[6].errorSpan = document.createElement("span");
+                inputFields[6].parentNode.insertBefore(inputFields[6].errorSpan, addressNumber.nextSibling);
+                inputFields[6].errorSpan.style.color = '#d92929';
+            }
+    
+            inputFields[6].errorSpan.textContent = errors.addressNumber
+
+
+        } else if (addressNumber.value.trim().length < 2) {
+            addressNumber.classList.add('not-valid');
+            errors.addressNumber =  "Mínimo 2 caracteres para el Numero";
+            
+            if (!inputFields[6].errorSpan) {
+                inputFields[6].errorSpan = document.createElement("span");
+                inputFields[6].parentNode.insertBefore(inputFields[6].errorSpan, addressNumber.nextSibling);
+                inputFields[6].errorSpan.style.color = '#d92929';
+            }
+            inputFields[6].errorSpan.textContent = errors.addressNumber
+        } else {
+            delete errors.addressStreet;
+            addressNumber.classList.add('is-valid');
+            addressNumber.classList.remove('not-valid');
+
+            if (inputFields[6].errorSpan) {
+                inputFields[6].errorSpan.remove();
+                inputFields[6].errorSpan = null;
+            }
+    
+
+        };
+    
+    };
+
 
 let validateAddressCity = () => {
+    
     if (!addressCity.value.trim()) {
         errors.addressCity = 'La ciudad es requerida.';
         addressCity.classList.remove('is-valid');
         addressCity.classList.add('not-valid');
+
+        if (!inputFields[7].errorSpan) {
+            inputFields[7].errorSpan = document.createElement("span");
+            inputFields[7].parentNode.insertBefore(inputFields[7].errorSpan, addressCity.nextSibling);
+            inputFields[7].errorSpan.style.color = '#d92929';
+        }
+
+        inputFields[7].errorSpan.textContent = errors.addressCity
+
     } else {
         errors.addressCity = '';
         addressCity.classList.add('is-valid');
         addressCity.classList.remove('not-valid');
+
+        if (inputFields[7].errorSpan) {
+            inputFields[7].errorSpan.remove();
+            inputFields[7].errorSpan = null;
+        }
     }
 };
 
@@ -241,11 +547,27 @@ let validateAddressProvince = () => {
         errors.addressProvince = 'La provincia es requerida.';
         addressProvince.classList.remove('is-valid');
         addressProvince.classList.add('not-valid');
+
+        if (!inputFields[8].errorSpan) {
+            inputFields[8].errorSpan = document.createElement("span");
+            inputFields[8].parentNode.insertBefore(inputFields[8].errorSpan, addressProvince.nextSibling);
+            inputFields[8].errorSpan.style.color = '#d92929';
+        }
+
+        inputFields[8].errorSpan.textContent = errors.addressProvince
+
+
     } else {
         errors.addressProvince = '';
         addressProvince.classList.add('is-valid');
         addressProvince.classList.remove('not-valid');
+
+        if (inputFields[8].errorSpan) {
+            inputFields[8].errorSpan.remove();
+            inputFields[8].errorSpan = null;
+        }
     }
+
 };
 
 let validateAddressCountry = () => {
@@ -253,13 +575,59 @@ let validateAddressCountry = () => {
         errors.addressCountry = 'El país es requerido.';
         addressCountry.classList.remove('is-valid');
         addressCountry.classList.add('not-valid');
+
+        if (!inputFields[9].errorSpan) {
+            inputFields[9].errorSpan = document.createElement("span");
+            inputFields[9].parentNode.insertBefore(inputFields[9].errorSpan, addressCountry.nextSibling);
+            inputFields[9].errorSpan.style.color = '#d92929';
+        }
+
+        inputFields[8].errorSpan.textContent = errors.addressProvince
     } else {
         errors.addressCountry = '';
         addressCountry.classList.add('is-valid');
         addressCountry.classList.remove('not-valid');
+
+        
+        if (inputFields[9].errorSpan) {
+            inputFields[9].errorSpan.remove();
+            inputFields[9].errorSpan = null;
+        }
     }
 };
 
+
+
+/////////////////////////////////////////////////////////
+
+saveButton.addEventListener('click', () => {
+
+
+
+    updateProfileForm.addEventListener('submit', (e) => {
+
+        if (Object.values(errors).some(error => error !== '')) {
+
+            e.preventDefault();
+
+            alert('Hay errores en los campos, por favor verifica los datos ingresados');
+
+        } else {
+
+            alert('Actualización de datos existosa');
+
+            updateProfileForm.submit();
+            console.log(updateProfileForm.submit())
+            console.log('se envío el formulario')
+
+  
+
+            saveButton.style.display = 'none';
+            cancelButton.style.display = 'none';
+            editButton.style.display = 'block';
+        }
+    });
+});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const defaultFile = '/images/users/default-user-photo.png';

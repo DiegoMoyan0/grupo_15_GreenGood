@@ -134,10 +134,14 @@ const controller = {
 
 			//Users with hashed password
 
-			const { password: hashedPw } = searchedUser;
-			const isCorrect = bcrypt.compareSync(req.body.password, hashedPw);
+			//const { password: hashedPw } = searchedUser;
+			//const isCorrect = bcrypt.compareSync(req.body.password, hashedPw);
 
 			// Temporary lines for debugging and testing users with unhashed password
+
+			let isCorrect = searchedUser.password === req.body.password;
+
+			//
 
 			if (!isCorrect) {
 				return res.render('userViews/login', {

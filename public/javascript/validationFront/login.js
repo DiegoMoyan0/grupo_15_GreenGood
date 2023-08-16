@@ -20,6 +20,7 @@ emailInput.addEventListener('input', () => {
 
         errors.email = { msg: 'El campo de email/usuario es requerido.' };
         errorSpan.innerHTML =   errors.email.msg + errorIcon;
+        errorSpan.style.color = '#d92929';
         errorSpan.style.opacity = 1;
 
         emailInput.classList.remove('is-valid');
@@ -46,6 +47,7 @@ passwordInput.addEventListener('input', () => {
 
         errors.password = { msg: 'El campo de contraseña es requerido.' };
         errorSpanPass.innerHTML = errors.password.msg + errorIcon;
+        errorSpanPass.style.color = '#d92929';
         errorSpanPass.style.opacity = 1;
           
         passwordInput.classList.remove('is-valid');
@@ -91,6 +93,7 @@ let verifyEmail = async (email) => {
             errors.email = { msg: 'El email/usuario no está registrado en nuestra base de datos'};
             errorSpan.innerHTML = errors.email.msg + errorIcon;
             errorSpan.style.opacity = 1;
+            errorSpan.style.color = '#d92929';
 
             emailInput.classList.remove('is-valid');
             emailInput.classList.add('not-valid');
