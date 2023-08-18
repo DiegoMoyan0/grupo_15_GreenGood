@@ -50,9 +50,15 @@ const controller = {
         try {
 
             let id = Number(req.params.id);
-            const theProduct = await db.Product.findByPk(id);
-
-            console.log(theProduct);
+            const theProduct = await db.Product.findByPk(id, {
+                raw: true,
+                nest: true,
+                include: [
+                    { association: 'category' },
+                    { association: 'subcategory' },
+                    { association: 'type' },
+                    { association: 'manufacturer' }],
+                });
 
             if (!theProduct) {
                 return res.redirect('/mainViews/error')
