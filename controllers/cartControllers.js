@@ -66,15 +66,12 @@ const controller = {
                 });
             };
 
-            console.log(shopSession);
-
             let cartItems = await db.CartItem.findAll({
                 where: { shopping_session_id: shopSession.id },
                 raw: true,
                 nest: true,
                 include: ["shoppingSession","product"],
             });
-            console.log(cartItems);
             
             return res.render('cartViews/shopping-cart', {
                 title: "Carrito de Compras",

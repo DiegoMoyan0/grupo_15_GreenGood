@@ -1,24 +1,25 @@
 ///App Mw to render views with user logged data
 let db = require("../database/models");
-const Op = db.Sequelize.Op;
-
 const userModel = require('../models/User.js');
 
 async function userLoggedMw(req, res, next) {
 
     try {
-        res.locals.isLogged = false; // Create local variable "isLogged" on FALSE
+        
+        if(req.session.userLogged){
+            res.locals.isLogged = true; // Create local variable "isLogged" 
+            res.locals.userLogged = req.session.userLogged;
+            return next();
+        };
 
+        res.locals.isLogged = false; 
         let emailInCookie = req.cookies.userEmail;
-
         
         if (!emailInCookie) {
-            return next()
-        }
+            return next();
+        };
 
-
-        let userFromCookie = await db.User.findOne(
-            
+        let userFromCookie = await db.User.findOne(   
             {
                 raw: true,
                 nest: true,
@@ -27,10 +28,7 @@ async function userLoggedMw(req, res, next) {
                 ],
                 where:{email: emailInCookie}
             },
-            );
-            
-        // let userType = await db.User.findOne(
-        // 	{where:{user_type: req.body.user_type}});
+        );
 
         if(userFromCookie){
             delete userFromCookie.password;

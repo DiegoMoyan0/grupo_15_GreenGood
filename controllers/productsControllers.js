@@ -202,7 +202,6 @@ const controller = {
             };
 
             let newData = req.body;
-            console.log(newData);
 
             let newProduct = db.Product.create({
                 title : newData.title,
@@ -219,8 +218,6 @@ const controller = {
                 user_id: req.session.userLogged.id,
                 manufacturer_id: 1 // Only "Green Good" by now ...
             });
-
-            console.log(newProduct)
 
             res.redirect('/product/publications');
             
@@ -299,8 +296,6 @@ const controller = {
                     id: req.params.id
                 }
             });
-
-            console.log(softDeletedProduct);
            
             return res.redirect('/product/publications');
         } catch (error) {
@@ -321,8 +316,6 @@ const controller = {
                     id: req.params.id
                 }
             });
-
-            console.log(softDeletedProduct);
            
             return res.redirect('/product/' + req.params.id + '/detail');
         } catch (error) {
@@ -341,8 +334,6 @@ const controller = {
                 },
                 force: true // Hard deletion with paranoid model
             });
-
-            console.log(DeletedProduct);
            
             return res.redirect('/product/publications');
         } catch (error) {
