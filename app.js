@@ -40,6 +40,11 @@ const productsRoutes = require('./routes/productsRoutes');
 const cartRoutes = require('./routes/cartRoutes');
 const userRoutes = require('./routes/userRoutes');
 
+const productsApiRoutes = require('./routes/Api/productsApiRoutes');
+const usersApiRoutes = require('./routes/Api/usersApiRoutes');
+const cartApiRoutes = require('./routes/Api/productsApiRoutes');
+const favProdsApiRoutes = require('./routes/Api/favProdsApiRoutes');
+
 // **Statics resources** //
 const publicPath = path.resolve(__dirname, './public');
 app.use(express.static(publicPath));
@@ -52,6 +57,12 @@ app.use(mainRoutes);
 app.use('/user',userRoutes);
 app.use('/product',productsRoutes);
 app.use('/cart',cartRoutes);
+
+//**API REST ENDPOINTS */
+app.use('/api/product',productsApiRoutes);
+app.use('/api/user',usersApiRoutes);
+app.use('/api/cart',cartApiRoutes);
+app.use('/api/favProd',favProdsApiRoutes);
 
 
 //*Normalize PORT*/

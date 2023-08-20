@@ -209,7 +209,7 @@ const controller = {
 
             let newData = req.body;
 
-            let newProduct = db.Product.create({
+            await db.Product.create({
                 title : newData.title,
                 description : newData.description,
                 info: newData.info,
