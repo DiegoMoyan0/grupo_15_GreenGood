@@ -43,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: 'shopping_session_id'
         });
       
-    }
+    };
 
     return ShoppingSession;
 };

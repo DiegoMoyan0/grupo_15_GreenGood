@@ -13,7 +13,7 @@ const controller = {
 
             let shopSession = await db.ShoppingSession.findOne({
                 where: { user_id: req.session.userLogged.id },
-                raw: true,
+                /* raw: true, */ //Cannot get an array of cartItems if it is true
                 nest: true,
                 include: ["user", "cartItems"],
             });
@@ -25,7 +25,7 @@ const controller = {
 
                 shopSession = await db.ShoppingSession.findOne({
                     where: { user_id: req.session.userLogged.id },
-                    raw: true,
+                   /* raw: true, */ //Cannot get an array of cartItems if it is true
                     nest: true,
                     include: ["cartItems"]
                 });
@@ -49,7 +49,7 @@ const controller = {
         try {
             let shopSession = await db.ShoppingSession.findOne({
                 where: { user_id: req.session.userLogged.id },
-                raw: true,
+                /* raw: true, */ //Cannot get an array of cartItems if it is true
                 nest: true,
                 include: ["user", "cartItems"],
             });
@@ -60,7 +60,7 @@ const controller = {
                 });
                 shopSession = await db.ShoppingSession.findOne({
                     where: { user_id: req.session.userLogged.id },
-                    raw: true,
+                   /*  raw: true,  */
                     nest: true,
                     include: ["cartItems"],
                 });

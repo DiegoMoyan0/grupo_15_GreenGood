@@ -7,6 +7,52 @@ const Op = db.Sequelize.Op;
 
 const controller = {
 
+    getShoppingSession: async (req, res) => {
+
+        try {
+            let shopSession = await db.ShoppingSession.findOne({
+                where: { user_id: req.session.userLogged.id },
+                /* raw: true, */ //Cannot get an array of cartItems if it is true
+                nest: true,
+                include: ["user", "cartItems"],
+            });
+
+            let response = {};
+            
+            if(shopSession) {
+                response = {
+                    meta: {
+                        status : 200, //200 for success with content,
+                        success: true,
+                        url: 'api/cart/shoppingSession'
+                    },
+                    data: shopSession
+                }
+            }else{
+                response = {
+                    meta: {
+                        status : 204, //204 for success without content,
+                        success: false,
+                        url: 'api/cart/shoppingSession'
+                    },
+                    data: shopSession
+                }
+            }; 
+
+            return res.json(response);
+            
+        } catch (error) {
+            console.log(error);
+            res.json({
+                meta: {
+                    status: 503,
+                    success: false,
+                    message: "An error occurred while processing your request."
+                }
+            });
+        };
+    },
+
     addCartItem: async (req, res) => {
     
         try {
@@ -65,7 +111,79 @@ const controller = {
                 };
             };
 
-            res.json(response);
+            return res.json(response);
+
+        } catch (error) {
+            console.log(error);
+            res.json({
+                meta: {
+                    status: 503,
+                    success: false,
+                    message: "An error occurred while processing your request."
+                }
+            });            
+        }; 
+    },
+    modifQuantity: async (req, res) => {
+    
+        try {
+            const idCartItem = Number(req.body.cartItem_id);
+            const newQuantity = Number(req.body.quantity);
+
+            if(newQuantity <= 0){
+                return res.json({
+                    meta: {
+                        status: 400,
+                        success: false,
+                        message: `Edited cart item quantity is not valid: '${newQuantity}'`
+                    }
+                });
+            };
+
+            let prevCartItem = await db.CartItem.findOne({ where:{ id: idCartItem } });
+
+            let response = {};
+            let updatedCartItem = {}
+
+            if(prevCartItem){
+                updatedCartItem = await db.CartItem.update({
+                    quantity: newQuantity
+                },{ 
+                    where:{ id: idCartItem}
+                });
+                if(updatedCartItem){
+                    response ={
+                        meta:{
+                            status: 201, //, 201 for successful resource edition
+                            success: true,
+                            message: `Cart Item id = ${prevCartItem.id}, edited quantity successfully.`,
+                            url: 'api/cart/quantity',
+                        },                   
+                        data: updatedCartItem
+                    };
+                }else{
+                    response ={
+                        meta: {
+                            status: 500,
+                            success: false,
+                            message: `Cart Item id = ${prevCartItem.id}, edited quantity failed.`,
+                            url: 'api/cart/quantity'
+                        }
+                    };
+                };
+            }else{
+                response = {
+                    meta: {
+                        status : 204, //204 for success without content,
+                        success: false,
+                        message: `Cart item id is not valid: '${idCartItem}'`,
+                        url: 'api/cart/quantity'
+                    },
+                    data: prevCartItem
+                } 
+            };
+
+            return res.json(response);
 
         } catch (error) {
             console.log(error);
@@ -79,118 +197,48 @@ const controller = {
         }; 
     },
 
-    getCart: async (req, res) => {
-
-        try {
-            let shopSession = await db.ShoppingSession.findOne({
-                where: { user_id: req.session.userLogged.id },
-                raw: true,
-                nest: true,
-                include: ["user", "cartItems"],
-            });
-            if (shopSession == null){
-                await db.ShoppingSession.create({
-                    init_date: Date.now(),
-                    user_id: req.session.userLogged.id
-                });
-                shopSession = await db.ShoppingSession.findOne({
-                    where: { user_id: req.session.userLogged.id },
-                    raw: true,
-                    nest: true,
-                    include: ["cartItems"],
-                });
-            };
-
-            let cartItems = await db.CartItem.findAll({
-                where: { shopping_session_id: shopSession.id },
-                raw: true,
-                nest: true,
-                include: ["shoppingSession","product"],
-            });
-        
-            
-        } catch (error) {
-            console.error('Error:', error);
-            return res.status(500).json({ message: 'Error al obtener los elementos del carrito.' });
-        };
-        
-    },
-
     removeCartItem: async (req, res) => {
     
         try {
 
-            let shopSession = await db.ShoppingSession.findOne({
-                where: { user_id: req.session.userLogged.id },
-                raw: true,
-                nest: true,
-                include: ["user", "cartItems"],
-            });
-            if (shopSession == null){
-                await db.ShoppingSession.create({
-                    init_date: Date.now(),
-                    user_id: req.session.userLogged.id
-                });
-
-                shopSession = await db.ShoppingSession.findOne({
-                    where: { user_id: req.session.userLogged.id },
-                    raw: true,
-                    nest: true,
-                    include: ["cartItems"]
-                });
-            };
-
-            await db.CartItem.destroy({
+            let deletedCartItem = await db.CartItem.destroy({
                 where: {
-                    product_id: req.params.id
+                    id: req.query.id
                 }
             });
+            if(deletedCartItem){
+                response ={
+                    meta:{
+                        status: 201, //, 201 for successful resource edition
+                        success: true,
+                        message: `Cart Item deletion successfully.`,
+                        url: 'api/cart/delete',
+                    },                   
+                    data: deletedCartItem
+                };
+            }else{
+                response ={
+                    meta: {
+                        status: 500,
+                        success: false,
+                        message: `Cart Item deletion failed.`,
+                        url: 'api/cart/delete'
+                    },
+                    data: deletedCartItem
+                };
+            };
 
-            res.redirect(`/cart`);
+            return res.json(response);
             
         } catch (error) {
             console.log(error);
-            res.redirect('/mainViews/error');
-        }; 
-    },
-
-    modifItemQuantity: async (req, res) => {
-    
-        try {
-
-            let shopSession = await db.ShoppingSession.findOne({
-                where: { user_id: req.session.userLogged.id },
-                raw: true,
-                nest: true,
-                include: ["user", "cartItems"],
-            });
-            if (shopSession == null){
-                await db.ShoppingSession.create({
-                    init_date: Date.now(),
-                    user_id: req.session.userLogged.id
-                });
-
-                shopSession = await db.ShoppingSession.findOne({
-                    where: { user_id: req.session.userLogged.id },
-                    raw: true,
-                    nest: true,
-                    include: ["cartItems"]
-                });
-            };
-
-            await db.CartItem.update({
-                quantity: Number(req.body.quantity),
-                product_id: Number(req.params.id),
-                shopping_session_id: shopSession.id
-            },{
-                where: {
-                    product_id: req.params.id
+            res.json({
+                meta: {
+                    status: 503,
+                    success: false,
+                    message: "An error occurred while processing your request."
                 }
-            });
-            
-        } catch (error) {
-            console.log(error);
-            res.redirect('/mainViews/error');
+            });   
         }; 
     }
 
