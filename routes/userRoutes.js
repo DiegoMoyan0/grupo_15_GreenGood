@@ -38,7 +38,6 @@ router.get('/register', guestMw, userController.getRegister);
 router.get('/profile', authMw, validationsUserLoggedMw, userController.getProfile);  
 router.get('/logout', authMw, userController.getLogout);  
 
-router.get('/user/verify-email', userController.verifyEmail)
 
 /*** POST FORMS ***/ 
 router.post('/entry',validationsLoginMw, userController.loginUser); 

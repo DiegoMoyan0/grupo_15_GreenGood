@@ -76,7 +76,7 @@ let validateForm = () => {
 // Function to check if email exists on the database via API and provide instant feedback
 let verifyEmail = async (email) => {
     try {
-        const response = await fetch('user/verify-email?email=' + email);
+        const response = await fetch('/api/user/verify-email?email=' + email);
         const result = await response.text();
 
         if (result === 'true') {

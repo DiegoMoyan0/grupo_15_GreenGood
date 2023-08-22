@@ -95,7 +95,7 @@ window.onload = function () {
 
     let verifyUser = async (user) => {
         try {
-            const response = await fetch('user/verify-email?email=' + user);
+            const response = await fetch('/api/user/verify-email?email=' + user);
             const result = await response.text();
 
             if (result === 'true') {
@@ -111,7 +111,7 @@ window.onload = function () {
 
     let verifyEmail = async (emailRegister) => {
         try {
-            const response = await fetch('user/verify-email?email=' + emailRegister);
+            const response = await fetch('/api/user/verify-email?email='+ emailRegister);
             const result = await response.text();
 
             if (result === 'true') {

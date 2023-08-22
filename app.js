@@ -60,7 +60,7 @@ app.use('/cart',cartRoutes);
 
 //**API REST ENDPOINTS */
 app.use('/api/product',productsApiRoutes);
-/* app.use('/api/user',usersApiRoutes); */
+app.use('/api/user',usersApiRoutes);
 app.use('/api/cart',cartApiRoutes);
 /* app.use('/api/favProd',favProdsApiRoutes); */
 

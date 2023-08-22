@@ -174,6 +174,7 @@ let displayErrors = (field) => {
         field.parentNode.insertBefore(field.errorSpan, field.nextSibling);
         field.errorSpan.style.color = '#d92929';
         field.errorSpan.style.fontSize = '0.8rem';
+        field.errorSpan.style.marginBottom = '1rem';
         field.errorSpan.innerHTML= field.error + errorIcon
     } else if (field == userImageInput) {
         field.errorSpan = document.createElement("span");
@@ -234,7 +235,7 @@ let validateUserName = () => {
 // Function to check if username is already taken on the database via API and provide instant feedback
 let verifyEmail = async (user) => {
     try {
-        const response = await fetch('user/verify-email?email=' + user);
+        const response = await fetch('/api/user/verify-email?email=' + user);
         const result = await response.text();
 
         if (result === 'true') {
@@ -254,7 +255,7 @@ let verifyEmail = async (user) => {
 
             } else {
                 removeErrors(userNameInput);
-                errors.userName = 'El usuario ya está registrado en nuestra base de datos, prueba con otro';
+                errors.userName = 'Ese usuario ya está registrado';
                 displayErrors(userNameInput);
                 userNameInput.errorSpan.innerHTML= errors.userName + errorIcon;
             }
@@ -392,8 +393,6 @@ let validateImage = () => {
             userImageInput.errorSpan.innerHTML = errors.userImage + errorIcon;
 
         } else {
-
-            //console.log('extensión VALIDA');
 
             errors.userImage = '';
             console.log(errors.userImage)
