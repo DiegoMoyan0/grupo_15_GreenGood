@@ -40,6 +40,43 @@ const usersController = {
         };
     },
 
+    getUserById: async (req, res) => {
+        
+        try {
+
+            const user = await db.User.findByPk(req.params.id, {
+                raw: true,
+                nest: true,
+                attributes: ['id', 'first_name', 'last_name', 'email','image'] //Pending to Image detail url
+            });
+        
+            console.log(req.params.id);
+
+ 
+            let response = {
+                meta: {
+                    status: 200, //200 for success with content,
+                    success: true,
+                    url: 'api/user/users/:id'
+                },
+                users: user,
+                userImageUrl: user.image, //Pending to create the sp url or the user image
+            };
+            return res.json(response);
+    
+        } catch (error) {
+            console.log(error);
+            res.json({
+                meta: {
+                    status: 503,
+                    success: false,
+                    message: "An error occurred while processing your request."
+                    //503 (Service Unavailable) to indicate that the server is currently unable to handle the request.
+                }
+            });
+        };
+    },
+
     verifyEmail: async (req, res) => {
         const emailInForm = req.query.email; // Get the email parameter from the query
 
