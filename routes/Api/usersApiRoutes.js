@@ -3,7 +3,6 @@
 const express = require('express');
 const routes = express.Router();
 const multer = require('multer');
-const validationsCrudProducts = require('../../middlewares/validateCrudProductsMw');
 
 
 // ************ Controller Require ************/
@@ -29,5 +28,9 @@ const uploadFile = multer({storage});
 /*** @GET EXISTING EMAIL OR USERNAME CONFIRMATION ***/ 
 
 routes.get('/verify-email', userApiController.verifyEmail)
+
+routes.get('/users', userApiController.getAll)
+
+
 
 module.exports = routes;
