@@ -182,9 +182,9 @@ span {
 	font-size: 1.2rem;
 	width: 1.5rem;
 	font-weight: 600;
-	position: absolute;
-	top: 22px;
-    right: 0%;
+	position: relative;
+	top: 7px;
+    left: 1%;
 }
   
 .is-valid {

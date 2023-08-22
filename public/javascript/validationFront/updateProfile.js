@@ -29,6 +29,10 @@ let editButton = document.querySelector('.save-button-icon')
 let cancelButton = document.querySelector('.cancelar-button')
 let saveButton = document.querySelector('.save-button');
 
+let errorIcon = `<svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+        </svg>`;
+
 let inputFields = [
     firstNameInput,
     lastNameInput,
@@ -163,26 +167,21 @@ let displayErrors = (field) => {
         field.parentNode.appendChild(field.errorSpan);
         field.errorSpan.style.color = '#d92929';
         field.errorSpan.style.fontSize = '0.8rem'
-        console.log(addressFields.indexOf(field))
-
-        console.log(field.error)
-        console.log(userNameInput.error)
-        
-        console.log('por aquí pasó el error del user')
-        field.errorSpan.textContent = field.error;
+        field.errorSpan.innerHTML= field.error + errorIcon
     }
     if (!errorSpan && (addressFields.indexOf(field) > -1) && field !== userImageInput) {
         field.errorSpan = document.createElement("span");
         field.parentNode.insertBefore(field.errorSpan, field.nextSibling);
         field.errorSpan.style.color = '#d92929';
         field.errorSpan.style.fontSize = '0.8rem';
-        field.errorSpan.textContent = field.error;
+        field.errorSpan.innerHTML= field.error + errorIcon
     } else if (field == userImageInput) {
         field.errorSpan = document.createElement("span");
         field.parentNode.insertBefore(field.errorSpan, field.nextSibling);
         field.errorSpan.style.color = '#d92929';
         field.errorSpan.style.fontSize = '0.8rem';
         field.errorSpan.style.margin = '1rem';
+        field.errorSpan.innerHTML= field.error + errorIcon
     }
 
 }
@@ -257,7 +256,7 @@ let verifyEmail = async (user) => {
                 removeErrors(userNameInput);
                 errors.userName = 'El usuario ya está registrado en nuestra base de datos, prueba con otro';
                 displayErrors(userNameInput);
-                userNameInput.errorSpan.textContent = errors.userName;
+                userNameInput.errorSpan.innerHTML= errors.userName + errorIcon;
             }
 
         } else {
@@ -283,7 +282,7 @@ let validatePhone = () => {
         if (!phoneRegex.test(phoneInput.value.trim()) && phoneInput.value.trim() > 0) {
             errors.phone = 'Debe tener al menos 7 digitos';
             displayErrors(phoneInput)
-            inputFields[3].errorSpan.textContent = errors.phone
+            phoneInput.errorSpan.innerHTML = errors.phone + errorIcon
         } else {
             errors.phone = '';
             removeErrors(phoneInput);
@@ -311,7 +310,7 @@ let validateBirthDate = () => {
     } else if (age < 18) {
         errors.birthDate = "Debes ser mayor de 18 años";
         displayErrors(birthDateInput)
-        inputFields[4].errorSpan.textContent = errors.birthDate
+        birthDateInput.errorSpan.innerHTML = errors.birthDate + errorIcon
     } else {
         errors.birthDate = '';
         removeErrors(birthDateInput)
@@ -342,7 +341,7 @@ let validateAddressNumber = () => {
     } else if (addressNumber.value.trim().length < 2) {
         errors.addressNumber = "Mínimo 2 caracteres para el número";
         displayErrors(addressNumber)
-        inputFields[6].errorSpan.textContent = errors.addressNumber
+        addressNumber.errorSpan.innerHTML = errors.addressNumber + errorIcon
     } else {
         errors.addressStreet = '';
         removeErrors(addressNumber)
@@ -388,16 +387,9 @@ let validateImage = () => {
         const fileName = selectedFile.name;
         const fileExtension = fileName.split('.').pop().toLowerCase();
         if (!acceptedExtensions.includes(fileExtension)) {
-
-            console.log('extensión invalida');
-            console.log(errors.userImage)
-            console.log(fileExtension);
-
             displayErrors(userImageInput)
-
             errors.userImage = `Extensiones válidas: ${acceptedExtensions.join(', ')}.`;
-
-            userImageInput.errorSpan.textContent = errors.userImage;
+            userImageInput.errorSpan.innerHTML = errors.userImage + errorIcon;
 
         } else {
 
