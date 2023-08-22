@@ -3,11 +3,11 @@
 const express = require('express');
 const routes = express.Router();
 const multer = require('multer');
-const validationsCrudProducts = require('../middlewares/validateCrudProductsMw');
+const validationsCrudProducts = require('../../middlewares/validateCrudProductsMw');
 
 
 // ************ Controller Require ************/
-const productsApiController = require('../controllers/Api/productsApiControllers');
+const productsApiController = require('../../controllers/Api/productsApiControllers');
 
 
 // --- Config Disk Storage with Multer module ---/
@@ -25,7 +25,6 @@ const storage = multer.diskStorage({
 const uploadFile = multer({storage});
 
 //---------------------------------------------------------//
-
 
 
 /*** @GET ALL PRODUCTS ***/ 

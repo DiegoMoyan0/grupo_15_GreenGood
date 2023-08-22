@@ -7,40 +7,75 @@ const Op = db.Sequelize.Op;
 
 const controller = {
 
-    newCartItem: async (req, res) => {
+    addCartItem: async (req, res) => {
     
         try {
+            const idProduct = Number(req.body.product_id);
+            const idShoppingSession = Number(req.body.shopping_session_id);
 
-            let shopSession = await db.ShoppingSession.findOne({
-                where: { user_id: req.session.userLogged.id },
-                raw: true,
-                nest: true,
-                include: ["user", "cartItems"],
-            });
-            if (shopSession == null){
-                await db.ShoppingSession.create({
-                    init_date: Date.now(),
-                    user_id: req.session.userLogged.id
+            let prevCartItem = await db.CartItem.findOne({ where:{ product_id: idProduct, shopping_session_id: idShoppingSession } });
+
+            let updatedCartItem;
+            let createdCartItem;
+
+            if(prevCartItem){
+                let newQuantity = prevCartItem.quantity + 1 ;
+                updatedCartItem = await db.CartItem.update({
+                    quantity: newQuantity
+                },{ 
+                    where:{ product_id: idProduct}
                 });
-
-                shopSession = await db.ShoppingSession.findOne({
-                    where: { user_id: req.session.userLogged.id },
-                    raw: true,
-                    nest: true,
-                    include: ["cartItems"]
+            }else{
+                createdCartItem = await db.CartItem.create({
+                    product_id: idProduct,
+                    shopping_session_id: idShoppingSession
                 });
             };
 
-            await db.CartItem.create({
-                product_id: Number(req.params.id),
-                shopping_session_id: shopSession.id
-            });
+            let response = {};
 
-           
-            
+            if(updatedCartItem){
+                response ={
+                    meta:{
+                        status: 201, //, 201 for successful resource edition
+                        success: true,
+                        message: `Cart Item id = ${prevCartItem.id}, incremented quantity successfully.`,
+                        url: 'api/cart/add',
+                    },                   
+                    data: updatedCartItem
+                };
+            }else if (createdCartItem){
+                response ={
+                    meta:{
+                        status: 201, //, 201 for successful resource edition
+                        success: true,
+                        message: `Cart Item created successfully.`,
+                        url: 'api/cart/add',
+                    },                   
+                    data: createdCartItem
+                };
+            }else{
+                response ={
+                    meta: {
+                        status: 500,
+                        success: false,
+                        message: `Cart Item id = ${prevCartItem.id}, incremented quantity failed.`,
+                        url: 'api/cart/add'
+                    }
+                };
+            };
+
+            res.json(response);
+
         } catch (error) {
             console.log(error);
-            res.redirect('/mainViews/error');
+            res.json({
+                meta: {
+                    status: 503,
+                    success: false,
+                    message: "An error occurred while processing your request."
+                }
+            });            
         }; 
     },
 
@@ -158,8 +193,6 @@ const controller = {
             res.redirect('/mainViews/error');
         }; 
     }
-
-
 
 };
 

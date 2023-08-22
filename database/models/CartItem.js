@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
             references: {
                 model: 'products',
                 key: 'id'
-            }  
+            }
         },
         shopping_session_id: {
             type: DataTypes.INTEGER,
@@ -32,7 +32,14 @@ module.exports = (sequelize, DataTypes) => {
 
     const config = {
         tableName: 'cart_items',
-        timestamps: false
+        timestamps: false,
+        //To ensure that in the same session there cannot be more than one cart item with the same product id 
+        indexes: [
+            {
+                unique: true,
+                fields: ['product_id', 'shopping_session_id']
+            }
+        ]
     };
 
     const CartItem = sequelize.define(alias, cols, config);

@@ -1,5 +1,5 @@
 const path = require('path');
-const db = require('../database/models');
+const db = require('../../database/models');
 const { validationResult } = require('express-validator');
 const Op = db.Sequelize.Op;
 /* const moment = require('moment'); */
