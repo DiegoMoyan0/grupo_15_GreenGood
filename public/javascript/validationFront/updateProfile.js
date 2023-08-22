@@ -1,4 +1,3 @@
-
 // User
 
 let firstNameInput = document.querySelector('input[name="first_name"]');
@@ -30,24 +29,9 @@ let editButton = document.querySelector('.save-button-icon')
 let cancelButton = document.querySelector('.cancelar-button')
 let saveButton = document.querySelector('.save-button');
 
-
-
-
-let errors = {
-    firstName: '',
-    lastName: '',
-    userName: '',
-    phone: '',
-    birthDate: '',
-    addressStreet: '',
-    addressNumber: '',
-    addressCity: '',
-    addressProvince: '',
-    addressCountry: '',
-    userImage: ''
-};
-
-
+let errorIcon = `<svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+        </svg>`;
 
 let inputFields = [
     firstNameInput,
@@ -63,8 +47,37 @@ let inputFields = [
     userImageInput,
 ];
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+let addressFields = [
+    addressStreet,
+    addressNumber,
+    addressCity,
+    addressProvince,
+    addressCountry,
+    userImageInput
+];
 
+// Fields with mutiple or additional errors
+
+let errors = {
+    userName: '',
+    phone: '',
+    birthDate: '',
+    addressNumber: '',
+    userImage: ''
+};
+
+// Single error fields
+
+firstNameInput.error = 'El nombre es requerido';
+lastNameInput.error = 'El apellido es requerido';
+
+addressStreet.error = 'La dirección es requerida';;
+addressCity.error = 'La ciudad es requerida';
+addressProvince.error = 'La provincia es requerida';
+addressCountry.error = 'El país es requerido';
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 window.onload = () => {
 
@@ -75,13 +88,15 @@ window.onload = () => {
     birthDateInput.addEventListener('change', validateBirthDate);
     userImageInput.addEventListener('change', validateImage);
 
-
     addressStreet.addEventListener('change', validateAddressStreet);
     addressNumber.addEventListener('change', validateAddressNumber);
     addressCity.addEventListener('change', validateAddressCity);
     addressProvince.addEventListener('change', validateAddressProvince);
     addressCountry.addEventListener('change', validateAddressCountry);
 
+    // Disable fields on load
+
+    photoUpdateButton.style.display = 'none';
 
     inputFields.forEach(field => {
         field.setAttribute('disabled', 'true');
@@ -91,17 +106,14 @@ window.onload = () => {
         radioButton.setAttribute('disabled', 'true');
     });
 
-    photoUpdateButton.style.display = 'none';
-
+    // Add event listeners to form buttons
     editButton.addEventListener('click', (e) => {
 
         e.preventDefault();
 
-
         inputFields.forEach(field => {
             field.removeAttribute('disabled');
         });
-
 
         userTypeInput.forEach(radioButton => {
             radioButton.removeAttribute('disabled');
@@ -114,11 +126,10 @@ window.onload = () => {
 
     })
 
-
+    // Add event listeners to form buttons
     cancelButton.addEventListener('click', (e) => {
 
         e.preventDefault();
-
 
         inputFields.forEach(field => {
             field.setAttribute('disabled', 'true');
@@ -138,9 +149,7 @@ window.onload = () => {
     })
 
 
-
 }
-
 
 ////////////////////////////////////////////////////////////////////////
 
@@ -148,105 +157,75 @@ window.onload = () => {
 
 let errorSpan = null;
 
+let displayErrors = (field) => {
+
+    field.classList.remove('is-valid');
+    field.classList.add('not-valid');
+
+    if (!errorSpan && (addressFields.indexOf(field) === -1)) {
+        field.errorSpan = document.createElement("span");
+        field.parentNode.appendChild(field.errorSpan);
+        field.errorSpan.style.color = '#d92929';
+        field.errorSpan.style.fontSize = '0.8rem'
+        field.errorSpan.innerHTML= field.error + errorIcon
+    }
+    if (!errorSpan && (addressFields.indexOf(field) > -1) && field !== userImageInput) {
+        field.errorSpan = document.createElement("span");
+        field.parentNode.insertBefore(field.errorSpan, field.nextSibling);
+        field.errorSpan.style.color = '#d92929';
+        field.errorSpan.style.fontSize = '0.8rem';
+        field.errorSpan.innerHTML= field.error + errorIcon
+    } else if (field == userImageInput) {
+        field.errorSpan = document.createElement("span");
+        field.parentNode.insertBefore(field.errorSpan, field.nextSibling);
+        field.errorSpan.style.color = '#d92929';
+        field.errorSpan.style.fontSize = '0.8rem';
+        field.errorSpan.style.margin = '1rem';
+        field.errorSpan.innerHTML= field.error + errorIcon
+    }
+
+}
+
+
+let removeErrors = (field) => {
+
+    field.classList.add('is-valid');
+    field.classList.remove('not-valid');
+
+    if (field.errorSpan) {
+        field.errorSpan.remove();
+        field.errorSpan = null;
+    }
+    field.error = ''
+}
+
+
 let validateFirstName = () => {
     if (!firstNameInput.value.trim()) {
-
-        errors.firstName = 'El nombre es requerido.';
-        firstNameInput.classList.remove('is-valid');
-        firstNameInput.classList.add('not-valid');
-
-        if (!errorSpan) {
-            inputFields[0].errorSpan = document.createElement("span");
-            firstNameInput.parentNode.appendChild(inputFields[0].errorSpan);
-            inputFields[0].errorSpan.style.color = '#d92929';
-            inputFields[0].errorSpan.style.fontSize = '0.8rem'
-        }
-
-        inputFields[0].errorSpan.textContent = errors.firstName;
-
+        displayErrors(firstNameInput)
     } else {
-
-        errors.firstName = '';
-        firstNameInput.classList.add('is-valid');
-        firstNameInput.classList.remove('not-valid');
-
-        if (inputFields[0].errorSpan) {
-            inputFields[0].errorSpan.remove();
-            inputFields[0].errorSpan = null;
-        }
+        removeErrors(firstNameInput);
     }
 };
 
 let validateLastName = () => {
-
     if (!lastNameInput.value.trim()) {
-        errors.lastName = 'El apellido es requerido.';
-        lastNameInput.classList.remove('is-valid');
-        lastNameInput.classList.add('not-valid');
-
-        if (!errorSpan) {
-            inputFields[1].errorSpan = document.createElement("span");
-            lastNameInput.parentNode.appendChild(inputFields[1].errorSpan);
-            inputFields[1].errorSpan.style.color = '#d92929';
-            inputFields[1].errorSpan.style.fontSize = '0.8rem'
-        }
-
-        inputFields[1].errorSpan.textContent = errors.lastName;
-
-
+        displayErrors(lastNameInput)
     } else {
-        errors.lastName = '';
-        lastNameInput.classList.add('is-valid');
-        lastNameInput.classList.remove('not-valid');
-
-        if (inputFields[1].errorSpan) {
-            inputFields[1].errorSpan.remove();
-            inputFields[1].errorSpan = null;
-        }
-
-
+        removeErrors(lastNameInput);
     }
-
 };
-
 
 let validateUserName = () => {
 
     const user = userNameInput.value.trim()
+    removeErrors(userNameInput);
+    userNameInput.error = 'El usuario es requerido';
 
     if (!userNameInput.value.trim()) {
-
-        if (inputFields[2].errorSpan) {
-            inputFields[2].errorSpan.remove();
-            inputFields[2].errorSpan = null;
-        }
-        errors.userName = ''
-
-        errors.userName = 'El usuario es requerido.';
-        userNameInput.classList.remove('is-valid');
-        userNameInput.classList.add('not-valid');
-
-        if (!errorSpan) {
-            inputFields[2].errorSpan = document.createElement("span");
-            userNameInput.parentNode.appendChild(inputFields[2].errorSpan);
-            inputFields[2].errorSpan.style.color = '#d92929';
-            inputFields[2].errorSpan.style.fontSize = '0.8rem'
-        }
-
-        inputFields[2].errorSpan.textContent = errors.userName;
-
-
+        displayErrors(userNameInput);
     } else {
-        errors.userName = '';
-        userNameInput.classList.add('is-valid');
-        userNameInput.classList.remove('not-valid');
-
-
-        if (inputFields[2].errorSpan) {
-            inputFields[2].errorSpan.remove();
-            inputFields[2].errorSpan = null;
-        }
-
+        removeErrors(userNameInput);
         verifyEmail(user)
     }
 
@@ -260,60 +239,29 @@ let verifyEmail = async (user) => {
 
         if (result === 'true') {
 
-
             if (user == userNameCurrent) {
-
 
                 errors.userName = 'Este es tu usuario actual';
                 if (!errorSpan) {
-                    inputFields[2].errorSpan = document.createElement("span");
-                    userNameInput.parentNode.appendChild(inputFields[2].errorSpan);
-                    inputFields[2].errorSpan.style.color = '#9fc476';
-                    inputFields[2].errorSpan.style.fontSize = '0.8rem'
+                    userNameInput.errorSpan = document.createElement("span");
+                    userNameInput.parentNode.appendChild(userNameInput.errorSpan);
+                    userNameInput.errorSpan.style.color = '#9fc476';
+                    userNameInput.errorSpan.style.fontSize = '0.8rem'
                 }
-
-
-                inputFields[2].errorSpan.textContent = errors.userName;
-
+                userNameInput.errorSpan.textContent = errors.userName;
                 userNameInput.classList.add('is-valid');
                 userNameInput.classList.remove('not-valid');
 
-
             } else {
-
+                removeErrors(userNameInput);
                 errors.userName = 'El usuario ya está registrado en nuestra base de datos, prueba con otro';
-
-
-                if (!errorSpan) {
-                    inputFields[2].errorSpan = document.createElement("span");
-                    userNameInput.parentNode.appendChild(inputFields[2].errorSpan);
-                    inputFields[2].errorSpan.style.color = '#d92929';
-                    inputFields[2].errorSpan.style.fontSize = '0.8rem'
-                }
-
-
-                inputFields[2].errorSpan.textContent = errors.userName;
-
-                userNameInput.classList.remove('is-valid');
-                userNameInput.classList.add('not-valid');
+                displayErrors(userNameInput);
+                userNameInput.errorSpan.innerHTML= errors.userName + errorIcon;
             }
 
         } else {
-
-            //errors.userName = { msg: 'El usuario está disponible en nuestra base de datos' };
-            // errors.userName.textContent = errors.userName.msg;
-
-
-            userNameInput.classList.add('is-valid');
-            userNameInput.classList.remove('not-valid');
-
-            if (inputFields[2].errorSpan) {
-                inputFields[2].errorSpan.remove();
-                inputFields[2].errorSpan = null;
-            }
-
             errors.userName = ''
-
+            removeErrors(userNameInput);
         }
     } catch (error) {
         errors.userName.textContent = 'Error al verificar el correo electrónico.';
@@ -321,69 +269,23 @@ let verifyEmail = async (user) => {
     }
 };
 
-
 let validatePhone = () => {
 
-
     if (!phoneInput.value.trim()) {
-
-        errors.phone = 'El teléfono es requerido.';
-        phoneInput.classList.remove('is-valid');
-        phoneInput.classList.add('not-valid');
-
-        if (inputFields[3].errorSpan) {
-            inputFields[3].errorSpan.remove();
-            inputFields[3].errorSpan = null;
-        }
-
-        if (!errorSpan) {
-            inputFields[3].errorSpan = document.createElement("span");
-            phoneInput.parentNode.appendChild(inputFields[3].errorSpan);
-            inputFields[3].errorSpan.style.color = '#d92929';
-            inputFields[3].errorSpan.style.fontSize = '0.8rem'
-        }
-
-        inputFields[3].errorSpan.textContent = errors.phone;
-
-
+        removeErrors(phoneInput);
+        phoneInput.error = 'El teléfono es requerido';
+        displayErrors(phoneInput);
     } else {
-
+        removeErrors(phoneInput);
         const phoneRegex = /^[0-9]{7,}$/;
 
-        errors.phone = '';
-
-
         if (!phoneRegex.test(phoneInput.value.trim()) && phoneInput.value.trim() > 0) {
-
-            if (inputFields[3].errorSpan) {
-                inputFields[3].errorSpan.remove();
-                inputFields[3].errorSpan = null;
-            }
-
-            if (!inputFields[3].errorSpan) {
-                inputFields[3].errorSpan = document.createElement("span");
-                phoneInput.parentNode.appendChild(inputFields[3].errorSpan);
-                inputFields[3].errorSpan.style.color = '#d92929';
-                inputFields[3].errorSpan.style.fontSize = '0.8rem'
-            }
-
-            phoneInput.classList.remove('is-valid');
-            phoneInput.classList.add('not-valid');
-
             errors.phone = 'Debe tener al menos 7 digitos';
-
-            inputFields[3].errorSpan.textContent = errors.phone
-
+            displayErrors(phoneInput)
+            phoneInput.errorSpan.innerHTML = errors.phone + errorIcon
         } else {
-
             errors.phone = '';
-            phoneInput.classList.add('is-valid');
-            phoneInput.classList.remove('not-valid');
-
-            if (inputFields[3].errorSpan) {
-                inputFields[3].errorSpan.remove();
-                inputFields[3].errorSpan = null;
-            }
+            removeErrors(phoneInput);
         }
 
     }
@@ -391,9 +293,7 @@ let validatePhone = () => {
 
 let validateBirthDate = () => {
 
-
     let birthday = new Date(birthDateInput.value);
-
     let today = new Date();
     let age = today.getFullYear() - birthday.getFullYear();
     let monthDiff = today.getMonth() - birthday.getMonth();
@@ -402,63 +302,21 @@ let validateBirthDate = () => {
         age--;
     };
 
-
-
-    if (inputFields[4].errorSpan) {
-        inputFields[4].errorSpan.remove();
-        inputFields[4].errorSpan = null;
-    }
+    removeErrors(birthDateInput);
 
     if (!birthDateInput.value.trim()) {
-        birthDateInput.classList.add('not-valid');
-        birthDateInput.classList.remove('is-valid');
-
-
-        if (!inputFields[4].errorSpan) {
-            inputFields[4].errorSpan = document.createElement("span");
-            birthDateInput.parentNode.appendChild(inputFields[4].errorSpan);
-            inputFields[4].errorSpan.style.color = '#d92929';
-            inputFields[4].errorSpan.style.fontSize = '0.8rem'
-        }
-
-
-        errors.birthDate = "Debes indicar tu fecha de nacimiento";
-
-        inputFields[4].errorSpan.textContent = errors.birthDate
-
-
+        birthDateInput.error = 'La fecha de nacimiento es requerida';
+        displayErrors(birthDateInput)
     } else if (age < 18) {
-        birthDateInput.classList.remove('is-valid');
-        birthDateInput.classList.add('not-valid');
         errors.birthDate = "Debes ser mayor de 18 años";
-
-
-        if (!inputFields[4].errorSpan) {
-            inputFields[4].errorSpan = document.createElement("span");
-            birthDateInput.parentNode.appendChild(inputFields[4].errorSpan);
-            inputFields[4].errorSpan.style.color = '#d92929';
-            inputFields[4].errorSpan.style.fontSize = '0.8rem'
-        }
-
-        inputFields[4].errorSpan.textContent = errors.birthDate
-
-
+        displayErrors(birthDateInput)
+        birthDateInput.errorSpan.innerHTML = errors.birthDate + errorIcon
     } else {
-        delete errors.birthDate;
-
-        birthDateInput.classList.add('is-valid');
-        birthDateInput.classList.remove('not-valid');
-
-        if (inputFields[4].errorSpan) {
-            inputFields[4].errorSpan.remove();
-            inputFields[4].errorSpan = null;
-        }
+        errors.birthDate = '';
+        removeErrors(birthDateInput)
     };
 
 };
-
-
-
 
 // Address validation
 
@@ -466,177 +324,55 @@ let validateBirthDate = () => {
 
 let validateAddressStreet = () => {
 
-
-
     if (!addressStreet.value.trim()) {
-
-        errors.addressStreet = 'La calle es requerida.';
-        addressStreet.classList.remove('is-valid');
-        addressStreet.classList.add('not-valid');
-
-
-
-        if (!inputFields[5].errorSpan) {
-            inputFields[5].errorSpan = document.createElement("span");
-            inputFields[5].parentNode.insertBefore(inputFields[5].errorSpan, addressStreet.nextSibling);
-            inputFields[5].errorSpan.style.color = '#d92929';
-            inputFields[5].errorSpan.style.fontSize = '0.8rem'
-        }
-
-        inputFields[5].errorSpan.textContent = errors.addressStreet
-
-
-
+        displayErrors(addressStreet)
     } else {
-        errors.addressStreet = '';
-        // delete  errors.addressStreet
-        addressStreet.classList.add('is-valid');
-        addressStreet.classList.remove('not-valid');
-
-
-        if (inputFields[5].errorSpan) {
-            inputFields[5].errorSpan.remove();
-            inputFields[5].errorSpan = null;
-        }
-
+        removeErrors(addressStreet)
     }
 };
 
 let validateAddressNumber = () => {
 
-
-
-    if (inputFields[6].errorSpan) {
-        inputFields[6].errorSpan.remove();
-        inputFields[6].errorSpan = null;
-    }
+    removeErrors(addressNumber)
 
     if (!addressNumber.value.trim()) {
-        errors.addressNumber = 'La numeración es requerida.';
-        addressNumber.classList.remove('is-valid');
-        addressNumber.classList.add('not-valid');
-
-
-        if (!inputFields[6].errorSpan) {
-            inputFields[6].errorSpan = document.createElement("span");
-            inputFields[6].parentNode.insertBefore(inputFields[6].errorSpan, addressNumber.nextSibling);
-            inputFields[6].errorSpan.style.color = '#d92929';
-            inputFields[6].errorSpan.style.fontSize = '0.8rem'
-        }
-
-        inputFields[6].errorSpan.textContent = errors.addressNumber
-
-
+        addressNumber.error = 'El número de la dirección es requerido'
+        displayErrors(addressNumber)
     } else if (addressNumber.value.trim().length < 2) {
-        addressNumber.classList.add('not-valid');
-        errors.addressNumber = "Mínimo 2 caracteres para el Numero";
-
-        if (!inputFields[6].errorSpan) {
-            inputFields[6].errorSpan = document.createElement("span");
-            inputFields[6].parentNode.insertBefore(inputFields[6].errorSpan, addressNumber.nextSibling);
-            inputFields[6].errorSpan.style.color = '#d92929';
-            inputFields[6].errorSpan.style.fontSize = '0.8rem'
-        }
-
-        inputFields[6].errorSpan.textContent = errors.addressNumber
+        errors.addressNumber = "Mínimo 2 caracteres para el número";
+        displayErrors(addressNumber)
+        addressNumber.errorSpan.innerHTML = errors.addressNumber + errorIcon
     } else {
-        delete errors.addressStreet;
-        addressNumber.classList.add('is-valid');
-        addressNumber.classList.remove('not-valid');
-
-        if (inputFields[6].errorSpan) {
-            inputFields[6].errorSpan.remove();
-            inputFields[6].errorSpan = null;
-        }
-
-
+        errors.addressStreet = '';
+        removeErrors(addressNumber)
     };
 
 };
 
-
 let validateAddressCity = () => {
 
     if (!addressCity.value.trim()) {
-        errors.addressCity = 'La ciudad es requerida.';
-        addressCity.classList.remove('is-valid');
-        addressCity.classList.add('not-valid');
-
-        if (!inputFields[7].errorSpan) {
-            inputFields[7].errorSpan = document.createElement("span");
-            inputFields[7].parentNode.insertBefore(inputFields[7].errorSpan, addressCity.nextSibling);
-            inputFields[7].errorSpan.style.color = '#d92929';
-            inputFields[7].errorSpan.style.fontSize = '0.8rem'
-        }
-
-        inputFields[7].errorSpan.textContent = errors.addressCity
-
+        displayErrors(addressCity)
     } else {
-        errors.addressCity = '';
-        addressCity.classList.add('is-valid');
-        addressCity.classList.remove('not-valid');
-
-        if (inputFields[7].errorSpan) {
-            inputFields[7].errorSpan.remove();
-            inputFields[7].errorSpan = null;
-        }
-    }
-};
+        removeErrors(addressCity)
+    };
+}
 
 let validateAddressProvince = () => {
+
     if (!addressProvince.value.trim()) {
-        errors.addressProvince = 'La provincia es requerida.';
-        addressProvince.classList.remove('is-valid');
-        addressProvince.classList.add('not-valid');
-
-        if (!inputFields[8].errorSpan) {
-            inputFields[8].errorSpan = document.createElement("span");
-            inputFields[8].parentNode.insertBefore(inputFields[8].errorSpan, addressProvince.nextSibling);
-            inputFields[8].errorSpan.style.color = '#d92929';
-            inputFields[8].errorSpan.style.fontSize = '0.8rem'
-        }
-
-        inputFields[8].errorSpan.textContent = errors.addressProvince
-
-
+        displayErrors(addressProvince)
     } else {
-        errors.addressProvince = '';
-        addressProvince.classList.add('is-valid');
-        addressProvince.classList.remove('not-valid');
-
-        if (inputFields[8].errorSpan) {
-            inputFields[8].errorSpan.remove();
-            inputFields[8].errorSpan = null;
-        }
+        removeErrors(addressProvince)
     }
 
 };
 
 let validateAddressCountry = () => {
     if (!addressCountry.value.trim()) {
-
-        errors.addressCountry = 'El país es requerido.';
-        addressCountry.classList.remove('is-valid');
-        addressCountry.classList.add('not-valid');
-
-        if (!inputFields[9].errorSpan) {
-            inputFields[9].errorSpan = document.createElement("span");
-            inputFields[9].parentNode.insertBefore(inputFields[9].errorSpan, addressCountry.nextSibling);
-            inputFields[9].errorSpan.style.color = '#d92929';
-            inputFields[9].errorSpan.style.fontSize = '0.8rem'
-        }
-
-        inputFields[9].errorSpan.textContent = errors.addressCountry
+        displayErrors(addressCountry)
     } else {
-        errors.addressCountry = '';
-        addressCountry.classList.add('is-valid');
-        addressCountry.classList.remove('not-valid');
-
-
-        if (inputFields[9].errorSpan) {
-            inputFields[9].errorSpan.remove();
-            inputFields[9].errorSpan = null;
-        }
+        removeErrors(addressCountry)
     }
 };
 
@@ -647,44 +383,22 @@ let validateImage = () => {
     const defaultFile = '/images/users/default-user-photo.png';
     const file = document.getElementById('foto');
 
-
     if (selectedFile) {
         const fileName = selectedFile.name;
         const fileExtension = fileName.split('.').pop().toLowerCase();
         if (!acceptedExtensions.includes(fileExtension)) {
-
-            console.log('extensión invalida');
-            console.log(errors.userImage)
-            console.log(fileExtension);
-
-            userImageInput.classList.add('not-valid');
-            userImageInput.classList.remove('is-valid');
-
-            if (!inputFields[10].errorSpan) {
-                inputFields[10].errorSpan = document.createElement("span");
-                inputFields[10].parentNode.insertBefore(inputFields[10].errorSpan, userImageInput.nextSibling);
-                inputFields[10].errorSpan.style.color = '#d92929';
-                inputFields[10].errorSpan.style.fontSize = '0.8rem';
-                inputFields[10].errorSpan.style.margin = '1rem'
-            }
-
+            displayErrors(userImageInput)
             errors.userImage = `Extensiones válidas: ${acceptedExtensions.join(', ')}.`;
-            inputFields[10].errorSpan.textContent = errors.userImage;
+            userImageInput.errorSpan.innerHTML = errors.userImage + errorIcon;
 
         } else {
 
-            console.log('extensión VALIDA');
+            //console.log('extensión VALIDA');
 
-
-            userImageInput.classList.add('is-valid');
-            userImageInput.classList.remove('not-valid');
-            delete errors.userImage
+            errors.userImage = '';
             console.log(errors.userImage)
 
-            if (inputFields[10].errorSpan) {
-                inputFields[10].errorSpan.remove();
-                inputFields[10].errorSpan = null;
-            }
+            removeErrors(userImageInput)
 
             file.addEventListener('change', (e) => {
                 if (e.target.files[0]) {
@@ -702,7 +416,6 @@ let validateImage = () => {
     };
 
 };
-
 
 
 /////////////////////////////////////////////////////////
@@ -732,4 +445,3 @@ saveButton.addEventListener('click', () => {
         }
     });
 });
-
