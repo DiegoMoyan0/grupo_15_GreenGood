@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-let db = require("../database/models");
+let db = require("../../database/models");
 const Op = db.Sequelize.Op;
 
 // -------Pending ShoppingCart------- //
@@ -10,8 +10,10 @@ const controller = {
     getShoppingSession: async (req, res) => {
 
         try {
+            const idUser = req.params.idUser;
+
             let shopSession = await db.ShoppingSession.findOne({
-                where: { user_id: req.session.userLogged.id },
+                where: { user_id: idUser },
                 /* raw: true, */ //Cannot get an array of cartItems if it is true
                 nest: true,
                 include: ["user", "cartItems"],
@@ -24,7 +26,7 @@ const controller = {
                     meta: {
                         status : 200, //200 for success with content,
                         success: true,
-                        url: 'api/cart/shoppingSession'
+                        url: 'http://localhost:3000/api/cart/shoppingSession/:idUser/get'
                     },
                     data: shopSession
                 }
@@ -33,7 +35,7 @@ const controller = {
                     meta: {
                         status : 204, //204 for success without content,
                         success: false,
-                        url: 'api/cart/shoppingSession'
+                        url: 'http://localhost:3000/api/cart/shoppingSession/:idUser/get'
                     },
                     data: shopSession
                 }
@@ -47,9 +49,51 @@ const controller = {
                 meta: {
                     status: 503,
                     success: false,
-                    message: "An error occurred while processing your request."
+                    message: "An error occurred while processing your request at shopping session."
                 }
             });
+        };
+    },
+
+    initShoppingSession: async (req, res) => {
+        try {
+            const idUser = req.params.idUser;
+
+            let shopSession = await db.ShoppingSession.create({
+                init_date: Date.now(),
+                user_id: idUser
+            });
+
+            if(shopSession) {
+                response = {
+                    meta: {
+                        status : 200, //200 for success with content,
+                        success: true,
+                        url: 'http://localhost:3000/api/cart/shoppingSession/:idUser/init'
+                    },
+                    data: shopSession
+                }
+            }else{
+                response = {
+                    meta: {
+                        status : 204, //204 for success without content,
+                        success: false,
+                        url: 'http://localhost:3000/api/cart/shoppingSession/:idUser/init'
+                    },
+                    data: shopSession
+                }
+            }; 
+
+            return res.json(response);
+        } catch (error) {
+            console.log(error);
+            res.json({
+                meta: {
+                    status: 503,
+                    success: false,
+                    message: "An error occurred while processing your request at shopping session."
+                }
+            }); 
         };
     },
 
@@ -85,8 +129,9 @@ const controller = {
                     meta:{
                         status: 201, //, 201 for successful resource edition
                         success: true,
+                        updated: true,
                         message: `Cart Item id = ${prevCartItem.id}, incremented quantity successfully.`,
-                        url: 'api/cart/add',
+                        url: 'http://localhost:3000/api/cart/add',
                     },                   
                     data: updatedCartItem
                 };
@@ -95,8 +140,9 @@ const controller = {
                     meta:{
                         status: 201, //, 201 for successful resource edition
                         success: true,
+                        created: true,
                         message: `Cart Item created successfully.`,
-                        url: 'api/cart/add',
+                        url: 'http://localhost:3000/api/cart/add',
                     },                   
                     data: createdCartItem
                 };
@@ -106,7 +152,7 @@ const controller = {
                         status: 500,
                         success: false,
                         message: `Cart Item id = ${prevCartItem.id}, incremented quantity failed.`,
-                        url: 'api/cart/add'
+                        url: 'http://localhost:3000/api/cart/add'
                     }
                 };
             };
@@ -127,7 +173,7 @@ const controller = {
     modifQuantity: async (req, res) => {
     
         try {
-            const idCartItem = Number(req.body.cartItem_id);
+            const idCartItem = Number(req.params.idCartItem);
             const newQuantity = Number(req.body.quantity);
 
             if(newQuantity <= 0){
@@ -157,7 +203,7 @@ const controller = {
                             status: 201, //, 201 for successful resource edition
                             success: true,
                             message: `Cart Item id = ${prevCartItem.id}, edited quantity successfully.`,
-                            url: 'api/cart/quantity',
+                            url: 'http://localhost:3000/api/cart/:idCartItem/updateQuantity',
                         },                   
                         data: updatedCartItem
                     };
@@ -167,7 +213,7 @@ const controller = {
                             status: 500,
                             success: false,
                             message: `Cart Item id = ${prevCartItem.id}, edited quantity failed.`,
-                            url: 'api/cart/quantity'
+                            url: 'http://localhost:3000/api/cart/:idCartItem/updateQuantity'
                         }
                     };
                 };
@@ -177,7 +223,7 @@ const controller = {
                         status : 204, //204 for success without content,
                         success: false,
                         message: `Cart item id is not valid: '${idCartItem}'`,
-                        url: 'api/cart/quantity'
+                        url: 'http://localhost:3000/api/cart/:idCartItem/updateQuantity'
                     },
                     data: prevCartItem
                 } 
@@ -201,9 +247,11 @@ const controller = {
     
         try {
 
+            const idCartItem = req.params.idCartItem;
+
             let deletedCartItem = await db.CartItem.destroy({
                 where: {
-                    id: req.query.id
+                    id: idCartItem
                 }
             });
             if(deletedCartItem){
@@ -212,7 +260,7 @@ const controller = {
                         status: 201, //, 201 for successful resource edition
                         success: true,
                         message: `Cart Item deletion successfully.`,
-                        url: 'api/cart/delete',
+                        url: 'http://localhost:3000/api/cart/:idCartItem/delete',
                     },                   
                     data: deletedCartItem
                 };
@@ -222,7 +270,7 @@ const controller = {
                         status: 500,
                         success: false,
                         message: `Cart Item deletion failed.`,
-                        url: 'api/cart/delete'
+                        url: 'http://localhost:3000/api/cart/:idCartItem/delete'
                     },
                     data: deletedCartItem
                 };

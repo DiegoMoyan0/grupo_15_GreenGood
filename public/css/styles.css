@@ -635,6 +635,22 @@ p {
     transition: all 0.3s ease-in-out;
 }
 
+.btn-product.clicked{
+    animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      background-color: #f0f0f0;
+    }
+    50% {
+      transform: scale(1.2);
+      color: whitesmoke;
+      background-color: #402c68;
+    }
+}
+
 .btn-product:hover {
     opacity: 1;
     background-color: #f0f0f0;

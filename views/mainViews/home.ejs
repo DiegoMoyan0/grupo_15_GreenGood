@@ -59,7 +59,12 @@
                                $<%= Math.round(((product.price)* ((100 - product.discount)/100 )), -2) %>
                             </p>
                         </div>
-                            <a href="/product/cart"> <button type="submit" class="btn-product"> Agregar al carrito</button></a>
+                        <button 
+                            type="submit" 
+                            class="btn-product" 
+                            id="<%= product.id %>"
+                            > Agregar al carrito
+                        </button>
                     </article>
                 <% }; %>
             <% }); %>

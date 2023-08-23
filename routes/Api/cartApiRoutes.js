@@ -7,17 +7,20 @@ const routes = express.Router();
 const cartApiController = require('../../controllers/Api/cartApiControllers');
 
 
-/*** @GET PRODUCTS CART SHOPPING VIEW ***/ 
-routes.get('/', cartApiController.getCart);
+/*** @GET SHOPPING SESSION WITH THE CART ITEMS ***/ 
+routes.get('/shoppingSession/:idUser/get', cartApiController.getShoppingSession);
+
+/*** @POST CREATE A NEW SHOPPING SESSION***/ 
+routes.get('/shoppingSession/:idUser/init', cartApiController.initShoppingSession);
 
 /*** @POST NEW CART ITEM ADDED ***/ 
 routes.post('/add', cartApiController.addCartItem);
 
-/*** @DELETE REMOVE ONE CART ITEM ***/ 
-routes.delete('/:id/delete', cartApiController.removeCartItem);
-
 /*** @PATCH EDIT QUANTITY OF ONE ITEM ***/ 
-routes.patch('/:id/updateQuantity', cartApiController.modifItemQuantity);
+routes.patch('/:idCartItem/updateQuantity', cartApiController.modifQuantity);
+
+/*** @DELETE REMOVE ONE CART ITEM ***/ 
+routes.delete('/:idCartItem/delete', cartApiController.removeCartItem);
 
 
 module.exports = routes;

@@ -4,6 +4,7 @@
 <head>
 <%- include('../partials/head')%>
     <link rel="stylesheet" href="/css/product.css">
+    <script src="/javascript/productsList.js"></script>
 </head>
 
 <body>
@@ -18,8 +19,8 @@
         <img src="/images/products/banners/bannerProduct.jpg" alt="Imagen 1">
         <img src="/images/products/banners/banner-product.jpg" alt="Imagen 2">
         <img src="/images/products/banners/bannerProduct2.jpg" alt="Imagen 3">
-    </div> 
-    <script>console.log(products[0])</script>
+    </div>
+
     <main>
         <div class="categories-container">
             <div class="categories-items">
@@ -93,7 +94,12 @@
                                         </p>
                                     <% } %>
                                 </div>
-                                    <a href="/product/cart"> <button type="submit" class="btn-product"> Agregar al carrito</button></a>
+                                    <button 
+                                        type="submit" 
+                                        class="btn-product" 
+                                        id="<%= product.id %>"
+                                        > Agregar al carrito
+                                    </button>
                             </article>
                         <% }; %>
                     <% }); %>
@@ -132,7 +138,12 @@
                                         </p>
                                     <% } %>
                                 </div>
-                                    <a href="/product/cart"> <button type="submit" class="btn-product"> Agregar al carrito</button></a>
+                                <button 
+                                    type="submit" 
+                                    class="btn-product" 
+                                    id="<%= product.id %>"
+                                    > Agregar al carrito
+                                </button>
                             </article>
                         <% }; %>
                     <% }); %>
@@ -171,7 +182,12 @@
                                         </p>
                                     <% } %>
                                 </div>
-                                    <a href="/product/cart"> <button type="submit" class="btn-product"> Agregar al carrito</button></a>
+                                <button 
+                                    type="submit" 
+                                    class="btn-product" 
+                                    id="<%= product.id %>"
+                                    > Agregar al carrito
+                                </button>
                             </article>
                         <% }; %>
                     <% }); %>
@@ -217,7 +233,12 @@
                                         </p>
                                     <% } %>
                                 </div>
-                                    <a href="/product/cart"> <button type="submit" class="btn-product"> Agregar al carrito</button></a>
+                                <button 
+                                    type="submit" 
+                                    class="btn-product" 
+                                    id="<%= product.id %>"
+                                    > Agregar al carrito
+                                </button>
                             </article>
                         <% }; %>
                     <% }); %>
@@ -257,7 +278,12 @@
                                         </p>
                                     <% } %>
                                 </div>
-                                    <a href="/product/cart"> <button type="submit" class="btn-product"> Agregar al carrito</button></a>
+                                <button 
+                                    type="submit" 
+                                    class="btn-product" 
+                                    id="<%= product.id %>"
+                                    > Agregar al carrito
+                                </button>
                             </article>
                         <% }; %>
                     <% }); %>

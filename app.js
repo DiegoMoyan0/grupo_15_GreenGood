@@ -42,7 +42,7 @@ const userRoutes = require('./routes/userRoutes');
 
 const productsApiRoutes = require('./routes/Api/productsApiRoutes');
 const usersApiRoutes = require('./routes/Api/usersApiRoutes');
-const cartApiRoutes = require('./routes/Api/productsApiRoutes');
+const cartApiRoutes = require('./routes/Api/cartApiRoutes');
 const favProdsApiRoutes = require('./routes/Api/favProdsApiRoutes');
 
 // **Statics resources** //
