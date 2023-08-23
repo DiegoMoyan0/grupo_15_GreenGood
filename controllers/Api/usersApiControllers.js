@@ -10,13 +10,23 @@ const usersController = {
     getAll: async (req, res) => {
 
         try {
+
+
+            const page = parseInt(req.query.page) || 1
+            const limit = 10
+            const offset = (page - 1) * limit
+
+            console.log(req.query.page)
+   
             const users = await db.User.findAll({
                 raw: true,
                 nest: true,
-                attributes: ['id', 'first_name', 'last_name', 'email']
+                attributes: ['id', 'first_name', 'last_name', 'email'],
+                limit,
+                offset
             });
 
-            // Create function that adds the detail URL to the users
+            //Create function that adds the detail URL to the users
 
             let addUrl = (user) => {
                 return {
@@ -28,16 +38,28 @@ const usersController = {
                 };
             }
             
-            // Apply or execute function that adds the detail URL to the users
+            //Apply or execute the function that adds the detail URL to the users
             
             const usersWithDetail = users.map(addUrl);
-        
+
+            //Pagination logic for user list
+
+            console.log( usersWithDetail.length );
+                        
+            const totalPages = (usersWithDetail.length + limit - 1) / limit;
+            const nextPage = page < totalPages ? page + 1 : null
+            const prevPage = page > 1 ? page - 1 : null
+
+
             let response = {
                 meta: {
                     status: 200, //200 for success with content,
                     success: true,
                     count: usersWithDetail.length,
-                    url: 'api/user/users'
+                    url: 'api/user/users',
+                    next:  nextPage ? `/api/user/users?page=${nextPage}` : null,
+                    previous: prevPage ? `/api/user/users?page=${prevPage}` : null
+                
                 },
                 users: usersWithDetail,
             };
