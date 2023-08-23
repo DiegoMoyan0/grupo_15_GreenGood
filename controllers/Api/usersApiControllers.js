@@ -13,18 +13,33 @@ const usersController = {
             const users = await db.User.findAll({
                 raw: true,
                 nest: true,
-                // include: ["address"],
-                attributes: ['id', 'first_name', 'last_name', 'email'] //Pending to check detail url
+                attributes: ['id', 'first_name', 'last_name', 'email']
             });
 
+            // Create function that adds the detail URL to the users
+
+            let addUrl = (user) => {
+                return {
+                    id: user.id,
+                    first_name: user.first_name,
+                    last_name: user.last_name,
+                    email: user.email,
+                    user_detail: `/api/user/users/${user.id}`
+                };
+            }
+            
+            // Apply or execute function that adds the detail URL to the users
+            
+            const usersWithDetail = users.map(addUrl);
+        
             let response = {
                 meta: {
                     status: 200, //200 for success with content,
                     success: true,
-                    count: users.length,
+                    count: usersWithDetail.length,
                     url: 'api/user/users'
                 },
-                users: users
+                users: usersWithDetail,
             };
             return res.json(response);
         } catch (error) {
@@ -47,12 +62,9 @@ const usersController = {
             const user = await db.User.findByPk(req.params.id, {
                 raw: true,
                 nest: true,
-                attributes: ['id', 'first_name', 'last_name', 'email','image'] //Pending to Image detail url
+                attributes: ['id', 'first_name', 'last_name', 'email', 'image', 'type','username'],
             });
-        
-            console.log(req.params.id);
-
- 
+         
             let response = {
                 meta: {
                     status: 200, //200 for success with content,
@@ -60,7 +72,7 @@ const usersController = {
                     url: 'api/user/users/:id'
                 },
                 users: user,
-                userImageUrl: user.image, //Pending to create the sp url or the user image
+                user_image: `/images/users/${user.image}`
             };
             return res.json(response);
     

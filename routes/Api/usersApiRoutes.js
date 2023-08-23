@@ -26,15 +26,12 @@ const uploadFile = multer({storage});
 //---------------------------------------------------------//
 
 /*** @GET EXISTING EMAIL OR USERNAME CONFIRMATION ***/ 
-
 routes.get('/verify-email', userApiController.verifyEmail)
 
 /*** @GET ALL USERS ***/ 
-
 routes.get('/users', userApiController.getAll)
 
 /*** @GET USER BY ID ***/ 
-
 routes.get('/users/:id', userApiController.getUserById)
 
 module.exports = routes;
