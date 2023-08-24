@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-08-2023 a las 03:18:40
+-- Tiempo de generación: 24-08-2023 a las 04:32:23
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -40,9 +40,8 @@ CREATE TABLE `cart_items` (
 
 INSERT INTO `cart_items` (`id`, `quantity`, `product_id`, `shopping_session_id`) VALUES
 (1, 3, 170, 1),
-(7, 1, 161, 1),
-(8, 1, 179, 1),
-(11, 6, 178, 7);
+(71, 1, 161, 8),
+(73, 1, 179, 8);
 
 -- --------------------------------------------------------
 
@@ -207,6 +206,16 @@ INSERT INTO `products` (`id`, `title`, `description`, `image`, `info`, `price`, 
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `sequelizemeta`
+--
+
+CREATE TABLE `sequelizemeta` (
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `shopping_session`
 --
 
@@ -223,7 +232,9 @@ CREATE TABLE `shopping_session` (
 
 INSERT INTO `shopping_session` (`id`, `total`, `init_date`, `user_id`) VALUES
 (1, 3500.00, '2023-08-02', '64263d5a-8b3b-46a8-96b6-9d6dad5e7d80'),
-(7, 0.00, '2023-08-13', '69d11747-f007-4622-bd14-e9268dc46935');
+(7, 0.00, '2023-08-13', '69d11747-f007-4622-bd14-e9268dc46935'),
+(8, 0.00, '2023-08-16', 'eebe1508-6e25-4639-ab38-01a1c3088e6b'),
+(9, 0.00, '2023-08-24', 'fa696f5a-9027-4016-bde6-bcce2d2f45e4');
 
 -- --------------------------------------------------------
 
@@ -299,7 +310,9 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `username`, `email`, `birth_date`, `image`, `phone`, `type`, `password`) VALUES
 ('01c20ab5-0e8f-49a3-94ee-a6178611c05d', 'Mati', 'Liendo', 'liendom', 'matiliendodev@gmail.com', '2004-12-09', 'default-user-photo.png', '3512341032', 'Vendedor', '$2a$10$bbuBjhZTo3lEmr3CqmMDuesNOO10kQcQ7k3km32MKUD0yUPknQ6M2'),
 ('64263d5a-8b3b-46a8-96b6-9d6dad5e7d80', 'Prueba123', 'Prueba123456', 'prueba123User', 'Prueba123@Prueba123.com', '2005-01-01', 'img-user-1691954978550-linkedinperfil2.png', '3512341032', 'Vendedor', '$2a$12$PHB48z3V9KAwiKKiDI7.c.tti5Tj2TglzMA1HlybB5fO7FV7SaHq6'),
-('69d11747-f007-4622-bd14-e9268dc46935', 'carrito', 'test', 'carritotest', 'carrito@test.com', '2005-01-01', 'img-user-1691969354989-Canva perfil1.png', '1651653156', 'Vendedor', '$2a$10$oxCcA4CaPv5QDnCi9I51EO/DQEzvwuLuU4Ql5j1/4ky8Sov.fvspK');
+('69d11747-f007-4622-bd14-e9268dc46935', 'carrito', 'test', 'carritotest', 'carrito@test.com', '2005-01-01', 'img-user-1691969354989-Canva perfil1.png', '1651653156', 'Vendedor', '$2a$10$oxCcA4CaPv5QDnCi9I51EO/DQEzvwuLuU4Ql5j1/4ky8Sov.fvspK'),
+('eebe1508-6e25-4639-ab38-01a1c3088e6b', 'Carrito', 'Test', 'carritotest2', 'carrito2@test.com', '1995-04-16', 'img-user-1692194668891-linkedinperfil2.png', '351152341032', 'Vendedor', '$2a$10$Clg3fgEUDabAVLV3OG0X8e4VxYl3RvKdD.FgkLqo5.fbihyRdbtNK'),
+('fa696f5a-9027-4016-bde6-bcce2d2f45e4', 'Carrito3', 'Test', 'carrito3test', 'carrito3@test.com', '2003-06-23', 'default-user-photo.png', '0', 'Vendedor', '$2a$10$EK39aznPd/tJUNUFoVMjUO5XeimDvxw7UhThlDIZFMkXoVRexlnxG');
 
 -- --------------------------------------------------------
 
@@ -330,7 +343,9 @@ INSERT INTO `user_addresses` (`id`, `user_id`, `street`, `number`, `city`, `prov
 (6, '64263d5a-8b3b-46a8-96b6-9d6dad5e7d80', 'calle', '123', 'ciudad', 'provincia', 'pais'),
 (7, '01c20ab5-0e8f-49a3-94ee-a6178611c05d', 'Aviador Mira', '1234', 'ciudad', 'provincia', 'pais'),
 (8, '0f01a56e-f8ce-44b8-adf6-97cfa13ccee3', 'Aviador Mira', '3053', 'Córdoba', 'Córdoba', 'Argentina'),
-(9, '69d11747-f007-4622-bd14-e9268dc46935', 'calle', '1234', 'Ciudad', 'Provincia', 'Pais');
+(9, '69d11747-f007-4622-bd14-e9268dc46935', 'calle', '1234', 'Ciudad', 'Provincia', 'Pais'),
+(10, 'eebe1508-6e25-4639-ab38-01a1c3088e6b', 'Aviador Mira', '3053', 'Córdoba', 'Córdoba', 'Argentina'),
+(11, 'fa696f5a-9027-4016-bde6-bcce2d2f45e4', 'calle', '123', 'ciudad', 'provincia', 'Argentina');
 
 -- --------------------------------------------------------
 
@@ -408,6 +423,13 @@ ALTER TABLE `products`
   ADD KEY `user_id` (`user_id`);
 
 --
+-- Indices de la tabla `sequelizemeta`
+--
+ALTER TABLE `sequelizemeta`
+  ADD PRIMARY KEY (`name`),
+  ADD UNIQUE KEY `name` (`name`);
+
+--
 -- Indices de la tabla `shopping_session`
 --
 ALTER TABLE `shopping_session`
@@ -454,7 +476,7 @@ ALTER TABLE `user_payments`
 -- AUTO_INCREMENT de la tabla `cart_items`
 --
 ALTER TABLE `cart_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT de la tabla `categories`
@@ -496,7 +518,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT de la tabla `shopping_session`
 --
 ALTER TABLE `shopping_session`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `subcategories`
@@ -514,7 +536,7 @@ ALTER TABLE `types`
 -- AUTO_INCREMENT de la tabla `user_addresses`
 --
 ALTER TABLE `user_addresses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `user_payments`
