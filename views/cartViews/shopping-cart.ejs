@@ -59,7 +59,7 @@
                 </article> 
             <% } else if (cartItems.length > 0 && cartItems) { %>                
                 <% cartItems.forEach(item => { %>
-                    <article class="cart-products"> 
+                    <article class="cart-products" id="<%= item.id %>"> 
                         <table>
                             <tr class="trow-product">
                                 <td class="product-img"><img src= "/images/products/<%= item.product.image %>" alt="imagen gotero">
@@ -79,7 +79,7 @@
                                 <td></td>
                                 <td class="trow-buttons-tdr">
                                     <div class="tdata-eliminate">
-                                        <form method="post" action="/cart/<%= item.product.id %>/delete?_method=DELETE" class="tdata-eliminate"><button type="submit" class="eliminate">Eliminar</button></form>
+                                       <button type="submit" class="eliminate">Eliminar</button></form>
                                     </div>
                                     <div class="tdata-save">    
                                         <a href="" class="save"><button>Guardar en favs</button></a>
@@ -89,16 +89,13 @@
                             <tr class="trow-price">
                                 <td class="tdata-aumount">
                                     <div class="select-amount-container">
-                                        <form method="post" action="/cart/<%= item.product.id %>/updateQuantity?_method=PUT">
-                                            <a href="#" class="decrease-amount">
-                                                <i class="fa-solid fa-minus"></i>
-                                            </a>
-                                            <input type="tel" value="<%= item.quantity %>" name="quantity" class="amount" id="amount" min="1" max="50" required/>
-                                            <a href="#" class="increase-amount">
-                                                <i class="fa-solid fa-plus"></i>
-                                            </a>
-                                            <button type="submit">Modificar cantidad</button>
-                                        </form>
+                                        <span href="#" class="decrease-amount">
+                                            <i class="fa-solid fa-minus"></i>
+                                        </span>
+                                        <input type="tel" value="<%= item.quantity %>" name="quantity" class="amount" id="amount" min="1" max="50"/>
+                                        <span href="#" class="increase-amount">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </span>
                                     </div>
                                 </td>
                                 <td class="tdata-price">
@@ -198,5 +195,7 @@
     </footer>
 
 </body>
+
+<script src="javascript/cartView.js"></script>
 
 </html>

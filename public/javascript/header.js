@@ -72,7 +72,6 @@ window.onload = function () {
             try {
                 const response = await fetch(url, requestOptions);
                 const responseData = await response.json();
-                console.log(responseData);
 
                 if(responseData.meta.success){
                     btn.classList.add('clicked');
@@ -94,4 +93,6 @@ window.onload = function () {
             };
         });
     });
+
+    console.log(cartItemCountInput);
 }
