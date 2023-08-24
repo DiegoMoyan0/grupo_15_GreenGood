@@ -5,6 +5,15 @@ const routes = express.Router();
 const multer = require('multer');
 
 
+// ************ Controller Require ************
+const validationsRegisterMw = require('../../middlewares/validateRegisterMw');
+const validationsLoginMw = require('../../middlewares/validateLoginMw');
+const validationsUpdateMw = require('../../middlewares/validateUpdateMw');
+const validationsUserLoggedMw = require('../../middlewares/userLoggedMw');
+const guestMw = require('../../middlewares/guestMw');
+const authMw = require('../../middlewares/authMw');
+
+
 // ************ Controller Require ************/
 const userApiController = require('../../controllers/Api/usersApiControllers');
 
@@ -21,7 +30,7 @@ const storage = multer.diskStorage({
     },
 })
 
-const uploadFile = multer({storage});
+const uploadPhoto = multer({storage});
 
 //---------------------------------------------------------//
 
@@ -33,5 +42,8 @@ routes.get('/users', userApiController.getAll)
 
 /*** @GET USER BY ID ***/ 
 routes.get('/users/:id', userApiController.getUserById)
+
+/*** @PUT UPDATE USER PROFILE INFO ***/ 
+routes.put('/users/:id/update', uploadPhoto.single('user_image'), validationsUpdateMw, userApiController.updateUser);
 
 module.exports = routes;

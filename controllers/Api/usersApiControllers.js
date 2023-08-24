@@ -17,7 +17,7 @@ const usersController = {
             const offset = (page - 1) * limit
 
             console.log(req.query.page)
-   
+
             const users = await db.User.findAll({
                 raw: true,
                 nest: true,
@@ -37,15 +37,15 @@ const usersController = {
                     user_detail: `/api/user/users/${user.id}`
                 };
             }
-            
+
             //Apply or execute the function that adds the detail URL to the users
-            
+
             const usersWithDetail = users.map(addUrl);
 
             //Pagination logic for user list
 
-            console.log( usersWithDetail.length );
-                        
+            console.log(usersWithDetail.length);
+
             const totalPages = (usersWithDetail.length + limit - 1) / limit;
             const nextPage = page < totalPages ? page + 1 : null
             const prevPage = page > 1 ? page - 1 : null
@@ -57,9 +57,9 @@ const usersController = {
                     success: true,
                     count: usersWithDetail.length,
                     url: 'api/user/users',
-                    next:  nextPage ? `/api/user/users?page=${nextPage}` : null,
+                    next: nextPage ? `/api/user/users?page=${nextPage}` : null,
                     previous: prevPage ? `/api/user/users?page=${prevPage}` : null
-                
+
                 },
                 users: usersWithDetail,
             };
@@ -78,15 +78,15 @@ const usersController = {
     },
 
     getUserById: async (req, res) => {
-        
+
         try {
 
             const user = await db.User.findByPk(req.params.id, {
                 raw: true,
                 nest: true,
-                attributes: ['id', 'first_name', 'last_name', 'email', 'image', 'type','username'],
+                attributes: ['id', 'first_name', 'last_name', 'email', 'image', 'type', 'username'],
             });
-         
+
             let response = {
                 meta: {
                     status: 200, //200 for success with content,
@@ -97,7 +97,7 @@ const usersController = {
                 user_image: `/images/users/${user.image}`
             };
             return res.json(response);
-    
+
         } catch (error) {
             console.log(error);
             res.json({
@@ -109,6 +109,120 @@ const usersController = {
                 }
             });
         };
+    },
+
+    updateUser: async (req, res) => {
+        
+        try {
+
+            const resultsValidations = validationResult(req);
+
+            if (resultsValidations.errors.length > 0) {
+                return res.json({
+                    meta: {
+                        status: 400,
+                        success: false,
+                        errors: validationErrors.errors
+                    }
+                });
+            };
+
+            let newData = req.body;
+
+            //--> To save the previous image of the user edited and use it when "req.file" is 'undefined':
+
+            const user = await db.User.findByPk(req.session.userLogged.id);
+            let user_prev_img = '';
+
+            if (!req.file) {
+                user_prev_img = user.image;
+            };
+
+            //--------------------------------------------//
+
+            const updatedUser = await db.User.update({
+                first_name: newData.first_name,
+                last_name: newData.last_name,
+                username: newData.user_name,
+                birth_date: newData.birth_date,
+                image: typeof req.file === 'undefined' ? user_prev_img : req.file.filename,
+                type: newData.user_type,
+                phone: newData.phone
+            },
+                {
+                    where: { id: req.params.id }
+                });
+
+            const updatedAddress = await db.Address.update({
+                street: newData.street,
+                number: newData.number,
+                city: newData.city,
+                province: newData.province,
+                country: newData.country
+            }, {
+                where: { user_id: req.session.userLogged.id }
+            });
+
+            // Instant update of the user data in req.session
+
+            if(updatedUser && updatedAddress){
+
+            req.session.userLogged.first_name = newData.first_name
+            req.session.userLogged.last_name = newData.last_name
+            req.session.userLogged.username = newData.user_name
+            req.session.userLogged.birth_date = newData.birth_date
+            req.session.userLogged.image = typeof req.file === 'undefined' ? user_prev_img : req.file.filename,
+            req.session.userLogged.type = newData.user_type
+            req.session.userLogged.phone = newData.phone
+
+            req.session.userLogged.address.street = newData.street
+            req.session.userLogged.address.number = newData.number
+            req.session.userLogged.address.city = newData.city
+            req.session.userLogged.address.province = newData.province
+            req.session.userLogged.address.country = newData.country
+            }
+
+            let response = {};
+
+            if (updatedUser && updatedAddress) {
+                response = {
+                    meta: {
+                        status: 201, //, 201 for successful resource edition
+                        success: true,
+                        message: "User profile updated successfully.",
+                        url: 'api/user/users/:id/update',
+                    },
+                    user_data: newData
+                };
+            } else {
+                response = {
+                    meta: {
+                        status: 500,
+                        success: false,
+                        message: "User profile edition failed.",
+                        url: 'api/user/users/:id/update'
+                    }
+                };
+            };
+
+
+            if (response.meta.success) {
+                res.redirect('/user/profile');
+            } else {
+                res.json(response);
+            }
+
+        } catch (error) {
+            console.log(error);
+            res.json({
+                meta: {
+                    status: 503,
+                    success: false,
+                    message: "An error occurred while processing your request."
+                }
+            });
+        };
+
     },
 
     verifyEmail: async (req, res) => {

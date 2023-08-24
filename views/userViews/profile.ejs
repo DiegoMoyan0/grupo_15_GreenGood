@@ -19,8 +19,8 @@
                     <h1>Bienvenido <%=userName%>
                     </h1>
                     <h2>Perfil:</h2>
-
-                    <form class="form-login" action="/user/<%=user.id%>/update?_method=PUT"
+                    
+                    <form class="form-login" action="../../api/user/users/<%=user.id%>/update?_method=PUT"
                         enctype="multipart/form-data" method="POST">
 
                         <img src="/images/users/<%=user.image%>" alt="user img" id="img">

@@ -15,7 +15,7 @@ const controller = {
 	},
 
 	getProfile: (req, res) => {
-		return res.render('userViews/profile', {
+		return res.render('userViews/profile',  {
 			title: "Tu perfil de usuario",
 			user: req.session.userLogged,
 			error: false
@@ -137,6 +137,9 @@ const controller = {
 			const { password: hashedPw } = searchedUser;
 			const isCorrect = bcrypt.compareSync(req.body.password, hashedPw);
 
+			// Temporary line for testing purposes
+
+			//let isCorrect = req.body.password === searchedUser.password;
 
 			if (!isCorrect) {
 				return res.render('userViews/login', {
@@ -215,7 +218,20 @@ const controller = {
 				where: { user_id: req.session.userLogged.id }
 			});
 
-			res.redirect('/user/profile');
+			console.log(req.session.userLogged)
+
+			
+
+			console.log(newData)
+			console.log(req.session.userLogged)
+
+
+
+			//console.log(req.session.userLogged)
+
+			//req.session.userLogged = updatedUser ;
+
+			return res.redirect('/user/profile');
 
 		} catch (error) {
 			console.log(error);
