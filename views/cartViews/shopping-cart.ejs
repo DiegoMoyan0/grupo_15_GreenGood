@@ -51,11 +51,10 @@
 
             <% if (cartItems.length == 0 && cartItems) { %>
                 <!-- Default view without added products -->
-                <article class="empty-cart-content" data-bind="fadeVisible: !hasItems() &amp;&amp; !loading()" style="display: none;">  
-
+                <article class="empty-cart-content" data-bind="fadeVisible: !hasItems() &amp;&amp; !loading()" style="color: antiquewhite;">  
                     <h2 class="empty-cart-title" data-i18n="cart.emptyTitle">Su carrito está vacio</h2>
                     <div class="empty-cart-message">Para seguir comprando, navegar por las categorías en el sitio, o busque su producto.</div> 
-                    <div class="clearfix empty-cart-links"><a href="/products" id="cart-choose-products">Elegir productos</a></div>
+                    <div class="clearfix empty-cart-links"><a href="/product/list" style="color: aqua;" id="cart-choose-products">Elegir productos</a></div>
                 </article> 
             <% } else if (cartItems.length > 0 && cartItems) { %>                
                 <% cartItems.forEach(item => { %>
@@ -112,7 +111,7 @@
             <% }; %>
             </section>
 
-        <!-- Detalle de compra -->
+        <!-- Order Detail -->
 
         <div class="order-detail-container">
 
@@ -130,23 +129,23 @@
 
                         <li>
                             <div class="payment-items">Subtotal</div>
-                            <div class="payment-amounts">$899.99</div>
+                            <div class="payment-amounts" id="subtotal"></div>
                         </li>
                         <li>
                             <div class="payment-items">Envío</div>
-                            <div class="payment-amounts">$1000</div>
+                            <div class="payment-amounts" id="shipping"></div>
                         </li>
                         <li id="off">
                             <div class="payment-items">Descuentos</div>
-                            <div class="payment-amounts">- $200</div>
+                            <div class="payment-amounts" id="discounts"></div>
                         </li>
 
                         <div id="division"></div>
 
                         <li>
                             <div class="payment-total">
-                                <div class="payment-items">TOTAL</div>
-                                <div class="payment-amounts">$1699.99</div>
+                                <div class="payment-items" >TOTAL</div>
+                                <div class="payment-amounts" id="total"></div>
                             </div>
                         </li>  
 

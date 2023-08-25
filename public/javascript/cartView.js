@@ -40,6 +40,7 @@ cartProducts.forEach(card => {
         } catch (error) {
             console.error('Error editing quantity:', error);
         };
+        orderDatails()
     };
 
     //------------------------------------------------------------------------//
@@ -70,11 +71,51 @@ cartProducts.forEach(card => {
         } catch (error) {
             console.log("Error removing cart item:", error);
         };
+        orderDatails()
     };
 
     //------------------------------------------------------------------------//
 
+    // -----------------------------Order datail -----------------------------//
+    const userID = document.querySelector(".user-data").id;
 
+    async function orderDatails () {
+        let response = await fetch(`http://localhost:3000/api/cart/allItems/${userID}/get`);
+        allItems =  await response.json();
+        if (allItems.meta.success){
+            let subtotal = 0;
+            let discounts = 0;
+            let total = 0;
+            let shipping = 1000;
+
+            allItems.data.forEach(item => {
+                let amountItem = item.quantity;
+                let productPrice = item.product.price;
+                let productDiscount = item.product.discount;
+                let discountAmount;
+                productDiscount > 0 ? discountAmount = productPrice * productDiscount / 100 : discountAmount = 0 ;
+                let finalPrice = productPrice * amountItem;
+                let finalDiscounts = discountAmount * amountItem;
+
+                subtotal += finalPrice;
+                discounts += finalDiscounts;
+                total += (subtotal - discounts);
+                if (total > 500 && total < 5000){
+                    total += shipping
+                };
+            });
+
+            document.getElementById("subtotal").textContent = `$${subtotal}`;
+            if(total > 5000){
+                document.getElementById("shipping").textContent = `GRATIS`;
+            }else{
+                document.getElementById("shipping").textContent = `$${shipping}`;
+            };
+            document.getElementById("discounts").textContent = `- $${discounts}`;
+            document.getElementById("total").textContent = `$${total}`;
+        };
+    };
+    orderDatails()
 });
 
 

@@ -97,6 +97,57 @@ const controller = {
         };
     },
 
+    getCart: async (req, res) => {
+
+        try {
+            let shopSession = await db.ShoppingSession.findOne({
+                where: { user_id: req.params.idUser },
+                /* raw: true, */ //Cannot get an array of cartItems if it is true
+                nest: true,
+                include: ["user", "cartItems"],
+            });
+
+            let cartItems = await db.CartItem.findAll({
+                where: { shopping_session_id: shopSession.id },
+                raw: true,
+                nest: true,
+                include: ["shoppingSession","product"],
+            });
+            
+            if(cartItems) {
+                response = {
+                    meta: {
+                        status : 200, //200 for success with content,
+                        success: true,
+                        url: 'http://localhost:3000/api/cart/allItems/:idUser/get'
+                    },
+                    data: cartItems
+                }
+            }else{
+                response = {
+                    meta: {
+                        status : 204, //204 for success without content,
+                        success: false,
+                        url: 'http://localhost:3000/api/cart/allItems/:idUser/get'
+                    },
+                    data: cartItems
+                }
+            }; 
+
+            return res.json(response);
+            
+        } catch (error) {
+            console.log(error);
+            res.json({
+                meta: {
+                    status: 503,
+                    success: false,
+                    message: "An error occurred while getting all the cart items."
+                }
+            }); 
+        };
+    },
+
     addCartItem: async (req, res) => {
     
         try {

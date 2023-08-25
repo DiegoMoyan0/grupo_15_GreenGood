@@ -10,6 +10,9 @@ const cartApiController = require('../../controllers/Api/cartApiControllers');
 /*** @GET SHOPPING SESSION WITH THE CART ITEMS ***/ 
 routes.get('/shoppingSession/:idUser/get', cartApiController.getShoppingSession);
 
+/*** @GET ALL THE CART ITEMS ***/ 
+routes.get('/allItems/:idUser/get', cartApiController.getCart);
+
 /*** @POST CREATE A NEW SHOPPING SESSION***/ 
 routes.get('/shoppingSession/:idUser/init', cartApiController.initShoppingSession);
 

@@ -608,7 +608,7 @@ footer {
         .tdata-price {
             font-size: 1.5rem;
             position: absolute;
-            top: 130px;
+            top: 50%;
             right: 20px;
         }
 
