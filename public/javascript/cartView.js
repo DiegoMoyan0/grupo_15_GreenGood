@@ -1,5 +1,32 @@
 const cartProducts = Array.from(document.querySelectorAll(".cart-products"));
 
+// ------------------------Eliminating all cart items ------------------------//
+
+const emptyBtn = document.querySelector('#delete-cart-items');
+const confirBtn = document.querySelector('#confirm');
+let flagEmpty = false;
+
+emptyBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    confirBtn.style.height = 'fit-content';
+    confirBtn.style.padding = '8px';
+    confirBtn.style.border = '1px';
+    flagEmpty = true;
+});
+
+if(flagEmpty){
+    console.log(flagEmpty);
+    confirBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        cartProducts.forEach(card => {
+            const idCart = Number(card.id);
+            console.log(idCart);
+        });
+    });
+};
+
+//------------------------------------------------------------------------//
+
 
 cartProducts.forEach(card => {
 
@@ -71,7 +98,6 @@ cartProducts.forEach(card => {
         } catch (error) {
             console.log("Error removing cart item:", error);
         };
-        orderDatails()
     };
 
     //------------------------------------------------------------------------//
@@ -108,11 +134,22 @@ cartProducts.forEach(card => {
             document.getElementById("subtotal").textContent = `$${subtotal}`;
             if(total > 5000){
                 document.getElementById("shipping").textContent = `GRATIS`;
+                document.getElementById("shipping").style.color = 'rgba(54, 242, 29, 1)';
+                document.getElementById("shipping").style.fontWeight = '600';
             }else{
                 document.getElementById("shipping").textContent = `$${shipping}`;
             };
-            document.getElementById("discounts").textContent = `- $${discounts}`;
+            if (discounts > 0){
+                document.getElementById("discounts").textContent = `- $${discounts}`;
+            }else{ document.getElementById("discounts").textContent = ``; }
             document.getElementById("total").textContent = `$${total}`;
+
+            //Set progress var//
+
+            const progress = document.getElementById('amount-progress');
+
+            progress.value = total;
+
         };
     };
     orderDatails()

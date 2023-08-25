@@ -153,6 +153,7 @@ const controller = {
         try {
             const idProduct = Number(req.body.product_id);
             const idShoppingSession = Number(req.body.shopping_session_id);
+            const quantityValue = Number(req.body.quantity);
 
             let prevCartItem = await db.CartItem.findOne({ where:{ product_id: idProduct, shopping_session_id: idShoppingSession } });
 
@@ -160,7 +161,7 @@ const controller = {
             let createdCartItem;
 
             if(prevCartItem){
-                let newQuantity = prevCartItem.quantity + 1 ;
+                let newQuantity = prevCartItem.quantity += quantityValue;
                 updatedCartItem = await db.CartItem.update({
                     quantity: newQuantity
                 },{ 

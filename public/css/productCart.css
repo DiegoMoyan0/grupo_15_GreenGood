@@ -125,6 +125,25 @@ main {
     font-weight: 600;
     color: rgb(202, 47, 202);
     margin-right: 10px;
+    display: flex;
+    align-content: center;
+    flex-direction: row;
+    align-items: center;
+}
+
+#confirm {
+    height: 0px;
+    display: block;
+    overflow: hidden;
+    border: 0px solid #fff;
+    padding: 0px;
+    border-radius: 10px;
+    background-color: beige;
+    font-size: 0.7rem;
+    color: rgb(199, 73, 132);
+    text-decoration: none;
+    transition: all 0.5seg ease-in;
+    margin-right: 5px;
 }
 
 /*----------------------------------------- ARTICULOS --------------------------------------------------*/

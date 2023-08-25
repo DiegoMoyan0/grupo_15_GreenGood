@@ -5,8 +5,16 @@ window.onload = function () {
     const userID = document.querySelector(".user-data").id;
     let shoppingSessionFlag = false;
     let shoppingSession;
-    let count;
 
+    const amountInputDetail = document.getElementById('amount');
+    let quantityFront = 1;
+    if (amountInputDetail){
+        amountInputDetail.onchange = () =>{ 
+            quantityFront = Number(amountInputDetail.value);
+        };
+    };
+    
+    
     //-----------------------------------Contador carrito------------------------------------------//
 
     if(!userID){
@@ -16,8 +24,7 @@ window.onload = function () {
             let response = await fetch(`http://localhost:3000/api/cart/shoppingSession/${userID}/get`);
             shoppingSession =  await response.json();
             if (shoppingSession.meta.success){
-                count = Number(shoppingSession.data.cartItems.length);
-                cartItemCountInput.value = count;
+                cartItemCountInput.value  = Number(shoppingSession.data.cartItems.length);
             }else{
                 cartItemCountInput.value = 0;
             };
@@ -59,8 +66,10 @@ window.onload = function () {
             const url = `http://localhost:3000/api/cart/add`;
             const data = {
                 product_id: idProduct,
-                shopping_session_id: idSession
+                shopping_session_id: idSession,
+                quantity: quantityFront
             };
+            console.log(data);
             const requestOptions = {
                 method: 'POST',
                 headers: {
@@ -78,12 +87,11 @@ window.onload = function () {
                     btn.textContent = "Producto agregado" 
                     setTimeout(() => {
                         btn.classList.remove('clicked');
-                        btn.textContent = "Agragar otra unidad al carrito"  
+                        !amountInputDetail? btn.textContent = "Agragar otra unidad al carrito" : null  
                     }, 3000);
                     if(responseData.meta.created){
-                        // Después de agregar el producto, obtengo la nueva cantidad total en el carrito y actualizo el contador
-                        count = count + 1;
-                        cartItemCountInput.value = count;
+                        // Después de agregar el producto, actualizo contador de carrito
+                        cartItemCountInput.value ++;
                     };  
                 };
                 
