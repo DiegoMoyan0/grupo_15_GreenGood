@@ -15,7 +15,7 @@ const controller = {
 	},
 
 	getProfile: (req, res) => {
-		return res.render('userViews/profile',  {
+		return res.render('userViews/profile', {
 			title: "Tu perfil de usuario",
 			user: req.session.userLogged,
 			error: false
@@ -218,18 +218,26 @@ const controller = {
 				where: { user_id: req.session.userLogged.id }
 			});
 
-			console.log(req.session.userLogged)
 
-			
+			// Instant update of the user data in req.session
 
-			console.log(newData)
-			console.log(req.session.userLogged)
+			if (updatedUser && updatedAddress) {
 
+				req.session.userLogged.first_name = newData.first_name
+				req.session.userLogged.last_name = newData.last_name
+				req.session.userLogged.username = newData.user_name
+				req.session.userLogged.birth_date = newData.birth_date
+				req.session.userLogged.image = typeof req.file === 'undefined' ? user_prev_img : req.file.filename,
+				req.session.userLogged.type = newData.user_type
+				req.session.userLogged.phone = newData.phone
 
+				req.session.userLogged.address.street = newData.street
+				req.session.userLogged.address.number = newData.number
+				req.session.userLogged.address.city = newData.city
+				req.session.userLogged.address.province = newData.province
+				req.session.userLogged.address.country = newData.country
+			}
 
-			//console.log(req.session.userLogged)
-
-			//req.session.userLogged = updatedUser ;
 
 			return res.redirect('/user/profile');
 
@@ -242,7 +250,7 @@ const controller = {
 	hardDeleteUser: async (req, res) => {
 
 		try {
-			let DeletedUser = await db.User.destroy({
+			let deletedUser = await db.User.destroy({
 				where: {
 					id: req.params.id
 				},

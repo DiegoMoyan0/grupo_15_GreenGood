@@ -129,7 +129,7 @@ const usersController = {
 
             let newData = req.body;
 
-            //--> To save the previous image of the user edited and use it when "req.file" is 'undefined':
+            //--> To save the previous image of the updated user and use it when "req.file" is 'undefined':
 
             const user = await db.User.findByPk(req.session.userLogged.id);
             let user_prev_img = '';
@@ -205,12 +205,15 @@ const usersController = {
                 };
             };
 
+            /*
 
             if (response.meta.success) {
                 res.redirect('/user/profile');
             } else {
                 res.json(response);
             }
+
+            */
 
         } catch (error) {
             console.log(error);
@@ -223,6 +226,157 @@ const usersController = {
             });
         };
 
+    },
+
+    registerUser: async (req, res) => {
+
+		/* Previous validations to create a new user */
+		const resultsValidations = validationResult(req);
+
+        if (resultsValidations.errors.length > 0) {
+            return res.json({
+                meta: {
+                    status: 400,
+                    success: false,
+                    errors: validationErrors.errors
+                }
+            });
+        };
+
+		delete req.body.password_confirm;
+
+		try {
+
+			let newData = req.body;
+			let hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+			const newUser = await db.User.create({
+				first_name: newData.first_name,
+				last_name: newData.last_name,
+				username: newData.user_name,
+				birth_date: newData.birth_date,
+				email: newData.email,
+				image: req.file ? req.file.filename : "default-user-photo.png",
+				type: newData.user_type,
+				phone: Number(newData.phone),
+				password: hashedPassword,
+			});
+
+			const newAdress = await db.Address.create({
+				street: newData.street,
+				number: newData.number,
+				city: newData.city,
+				province: newData.province,
+				country: newData.country,
+				user_id: newUser.id
+			});
+
+
+            let response = {};
+
+            if(newUser && newAdress){
+                response ={
+                    meta: {
+                        status: 201, // 201 for successful resource creation
+                        success: true,
+                        message: "User registered successfully.",
+                        url: 'api/user/register',
+                    },                    
+                    data:newUser
+                };
+            }else{
+                response ={
+                    meta: {
+                        status: 500, // This code indicates that something went wrong on the server side.
+                        success: false,
+                        message: "User registration failed.",
+                        url: 'api/user/register'
+                    }
+                };
+            };
+            res.json(response);
+
+
+             /*
+
+            if (response.meta.success) {
+                res.redirect('/user/login');
+            } else {
+                res.json(response);
+            }
+
+            */
+                    
+        } catch (error) {
+            console.log(error);
+            res.json({
+                meta: {
+                    status: 503,
+                    success: false,
+                    message: "An error occurred while processing your request."
+                }
+            });
+        };
+    },
+
+    hardDeleteUser: async (req, res) => {
+
+		try {
+			let deletedUser = await db.User.destroy({
+				where: {
+					id: req.params.id
+				},
+				/* force: true */ // Hard deletion with paranoid model
+			});
+
+			req.session.destroy();
+			res.clearCookie('userEmail');
+
+            
+            let response = {};
+            if(deletedUser){
+                response ={
+                    meta: {
+                        status: 201, //, 201 for successful resource deletion
+                        success: true,
+                        message: "User profile deleted successfully.",
+                         url: 'api/user/:id/delete',
+                    },
+                    data:deletedUser
+                };
+            }else{
+                response ={
+                    meta: {
+                        status: 500,
+                        success: false,
+                        message: "User profile deletion failed.",
+                        url: 'api/user/:id/delete'
+                    }
+                };
+            };
+            res.json(response);
+
+
+            /*
+
+            if (response.meta.success) {
+               return res.redirect('/');
+            } else {
+                res.json(response);
+            }
+
+            */
+			
+        } catch (error) {
+            console.log(error);
+            res.json({
+                meta: {
+                    status: 503,
+                    success: false,
+                    message: "An error occurred while processing your request."
+                }
+            });
+        };
     },
 
     verifyEmail: async (req, res) => {
