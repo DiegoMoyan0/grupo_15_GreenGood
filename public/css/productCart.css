@@ -119,7 +119,7 @@ main {
     color: whitesmoke;
 }
 
-.empty-cart {
+.empty-cart-container {
     font-size: 15px;
     cursor: pointer;
     font-weight: 600;
@@ -129,21 +129,38 @@ main {
     align-content: center;
     flex-direction: row;
     align-items: center;
+    position: relative;
 }
 
-#confirm {
-    height: 0px;
+.confirm-btn {
+    max-height: 0px;
     display: block;
     overflow: hidden;
-    border: 0px solid #fff;
     padding: 0px;
+    background-color: inherit;
+    color: #10142f;
     border-radius: 10px;
-    background-color: beige;
     font-size: 0.7rem;
+    transition: all 0.4s ease-in-out;
+    position: absolute;
+    top: -7px;
+    right: 105px;
+    width: 99px;
+}
+
+.confirm-btn.confirm-open {
+    max-height: 500px;
+    padding: 8px;
+    border: 1px solid rgb(199, 73, 132);
+    box-shadow: 0 0 10px rgb(199, 73, 132);
     color: rgb(199, 73, 132);
-    text-decoration: none;
-    transition: all 0.5seg ease-in;
-    margin-right: 5px;
+    background-color: beige;
+    border-radius: 10px;
+    cursor: pointer;
+    position: absolute;
+    top: -7px;
+    right: 105px;
+    width: 99px;  
 }
 
 /*----------------------------------------- ARTICULOS --------------------------------------------------*/
@@ -444,7 +461,7 @@ td img {
     height: 10px;
     border: solid 1px whitesmoke;
     border-radius: 20px;
-    -webkit-appearance: none;
+    -webkit-appearance: none;   
 }
 
 /* Configuro los colores y la forma de la barrita de progreso o de carga  */
@@ -454,11 +471,21 @@ td img {
     border-radius: 10px;
 }
 
-::-webkit-progress-value {
+.base::-webkit-progress-value {
+    background-color: #656865;
+    border-radius: 10px;
+}
+
+.free-shipping::-webkit-progress-value {
     background-color: #28e50f;
     border-radius: 10px;
 }
 
+.minimun::-webkit-progress-value {
+    background-color: #e50f88;
+    border-radius: 10px;
+}
+  
 .container-progress-bar div {
     margin-top: 10px;
     text-align: center;
