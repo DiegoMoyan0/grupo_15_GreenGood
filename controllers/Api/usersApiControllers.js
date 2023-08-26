@@ -408,7 +408,7 @@ const usersController = {
         };
     },
 
-    getProvinceData: async (req, res) => {
+    getProvinceSum: async (req, res) => {
 
         try {
 
@@ -442,8 +442,7 @@ const usersController = {
                 meta: {
                     status: 200, //200 for success with content,
                     success: true,
-                    count: orderDetail.length,
-                    url: 'api/user/province-data',
+                    url: 'api/user/province-sum',
                 },
                 provinceSum: provinceTotals
             };
@@ -462,6 +461,160 @@ const usersController = {
             });
         };
     },
+
+    getCountrySum: async (req, res) => {
+
+        try {
+
+            const orderDetail = await db.OrderDetail.findAll({
+                raw: true,
+                nest: true,
+                include: [
+                    {
+                        model: db.Address,
+                        as: 'userDataAddress',
+                        attributes: ['country']
+                    }
+                ],
+                group: ['userDataAddress.country', 'userDataAddress.province', 'OrderDetail.detail_total']
+            });
+
+            let countrySum = orderDetail
+
+            const countryTotals = {};
+
+            countrySum.forEach(countryOrder => {
+                const country = countryOrder.userDataAddress.country;
+                const detailTotal = parseFloat(countryOrder.detail_total);
+
+                if (country) {
+                    countryTotals[country] = (countryTotals[country] || 0) + detailTotal;
+                }
+            });
+
+            let response = {
+                meta: {
+                    status: 200, //200 for success with content,
+                    success: true,
+                    url: 'api/user/country-sum',
+                },
+                countrySum: countryTotals
+            };
+
+            return res.json(response);
+
+        } catch (error) {
+            console.log(error);
+            res.json({
+                meta: {
+                    status: 503,
+                    success: false,
+                    message: "An error occurred while processing your request."
+                    //503 (Service Unavailable) to indicate that the server is currently unable to handle the request.
+                }
+            });
+        };
+    },
+
+    getUserCountry: async (req, res) => {
+
+        try {
+
+            const users = await db.User.findAll({
+                raw: true,
+                nest: true,
+                include: [
+                    {
+                        model: db.Address,
+                        as: 'address',
+                        attributes: ['country']
+                    }
+                ],
+            });
+
+            const userPerCountry = {};
+            users.forEach(user => {
+                const country = user.address.country;
+                userPerCountry[country] = (userPerCountry[country] || 0) + 1;
+            });
+
+
+            let response = {
+                meta: {
+                    status: 200, //200 for success with content,
+                    success: true,
+                    url: 'api/user/users-per-country',
+                },
+                userPerCountry: userPerCountry,
+                //users: users
+            };
+
+            console.log(userPerCountry);
+
+            return res.json(response);
+
+        } catch (error) {
+            console.log(error);
+            res.json({
+                meta: {
+                    status: 503,
+                    success: false,
+                    message: "An error occurred while processing your request."
+                    //503 (Service Unavailable) to indicate that the server is currently unable to handle the request.
+                }
+            });
+        };
+    },
+
+    getUserProvince: async (req, res) => {
+
+        try {
+
+            const users = await db.User.findAll({
+                raw: true,
+                nest: true,
+                include: [
+                    {
+                        model: db.Address,
+                        as: 'address',
+                        attributes: ['province']
+                    }
+                ],
+            });
+
+            const userPerProvince = {};
+            users.forEach(user => {
+                const country = user.address.province;
+                userPerProvince[country] = (userPerProvince[country] || 0) + 1;
+            });
+
+
+            let response = {
+                meta: {
+                    status: 200, //200 for success with content,
+                    success: true,
+                    url: 'api/user/users-per-province',
+                },
+                userPerProvince: userPerProvince,
+            };
+
+            console.log(userPerProvince);
+
+            return res.json(response);
+
+        } catch (error) {
+            console.log(error);
+            res.json({
+                meta: {
+                    status: 503,
+                    success: false,
+                    message: "An error occurred while processing your request."
+                    //503 (Service Unavailable) to indicate that the server is currently unable to handle the request.
+                }
+            });
+        };
+    },
+
 
 };
 

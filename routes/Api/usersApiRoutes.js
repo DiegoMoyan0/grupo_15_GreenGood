@@ -1,5 +1,4 @@
 //*** Require's ***/
-
 const express = require('express');
 const routes = express.Router();
 const multer = require('multer');
@@ -7,11 +6,11 @@ const multer = require('multer');
 
 // ************ Controller Require ************
 const validationsRegisterMw = require('../../middlewares/validateRegisterMw');
-const validationsLoginMw = require('../../middlewares/validateLoginMw');
+//const validationsLoginMw = require('../../middlewares/validateLoginMw');
 const validationsUpdateMw = require('../../middlewares/validateUpdateMw');
-const validationsUserLoggedMw = require('../../middlewares/userLoggedMw');
-const guestMw = require('../../middlewares/guestMw');
-const authMw = require('../../middlewares/authMw');
+//const validationsUserLoggedMw = require('../../middlewares/userLoggedMw');
+//const guestMw = require('../../middlewares/guestMw');
+//const authMw = require('../../middlewares/authMw');
 
 
 // ************ Controller Require ************/
@@ -44,7 +43,16 @@ routes.get('/users', userApiController.getAll)
 routes.get('/users/:id', userApiController.getUserById)
 
 /*** @GET USERS PURCHASES BY PROVINCE ***/ 
-routes.get('/province-data', userApiController.getProvinceData)
+routes.get('/province-sum', userApiController.getProvinceSum)
+
+/*** @GET USERS PURCHASES BY COUNTRY ***/ 
+routes.get('/country-sum', userApiController.getCountrySum)
+
+/*** @GET REGISTERED USERS BY COUNTRY***/ 
+routes.get('/users-per-country', userApiController.getUserCountry)
+
+/*** @GET REGISTERED USERS BY PROVINCE***/ 
+routes.get('/users-per-province', userApiController.getUserProvince)
 
 /*** @PUT UPDATE USER PROFILE INFO ***/ 
 routes.put('/users/:id/update', uploadPhoto.single('user_image'), validationsUpdateMw, userApiController.updateUser);
