@@ -1,30 +1,51 @@
 const cartProducts = Array.from(document.querySelectorAll(".cart-products"));
+const userID = document.querySelector(".user-data").id;
 
 // ------------------------Eliminating all cart items ------------------------//
 
 const emptyBtn = document.querySelector('#delete-cart-items');
-const confirBtn = document.querySelector('#confirm');
-let flagEmpty = false;
+const confirmBtn = document.querySelector('#confirm');
+
 
 emptyBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    confirBtn.style.height = 'fit-content';
-    confirBtn.style.padding = '8px';
-    confirBtn.style.border = '1px';
-    flagEmpty = true;
-});
+    confirmBtn.classList.toggle('confirm-open');
 
-if(flagEmpty){
-    console.log(flagEmpty);
-    confirBtn.addEventListener('click', (e) => {
+    confirmBtn.addEventListener('click', (e) => {
         e.preventDefault();
         cartProducts.forEach(card => {
             const idCart = Number(card.id);
-            console.log(idCart);
+            async function removeAllCartItems () {
+                const urlDelete = `http://localhost:3000/api/cart/${idCart}/delete`;
+                const reqOptionsDelete = {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json' 
+                    },
+                    body: JSON.stringify({}) 
+                };
+                try {
+                    const response = await fetch(urlDelete, reqOptionsDelete);
+                    const deletion = await response.json();
+                    if(!deletion.meta.success){
+                        console.log('Error removing cart item');
+                    };
+                } catch (error) {
+                    console.log("Error removing cart item:", error);
+                };
+            };
+            removeAllCartItems();
         });
+        
+        confirmBtn.textContent = 'CARRITO VACIADO';
+        setTimeout(function() {
+            location.reload(); 
+        }, 1500); 
     });
-};
+});
 
+
+   
 //------------------------------------------------------------------------//
 
 
@@ -91,7 +112,6 @@ cartProducts.forEach(card => {
             const response = await fetch(urlDelete, reqOptionsDelete);
             const deletion = await response.json();
             if(deletion.meta.success){
-                card.remove();
                 // Recarga la página después de eliminar el elemento
                 location.reload();
             }else{console.log('Error removing cart item');};
@@ -102,58 +122,91 @@ cartProducts.forEach(card => {
 
     //------------------------------------------------------------------------//
 
-    // -----------------------------Order datail -----------------------------//
-    const userID = document.querySelector(".user-data").id;
-
-    async function orderDatails () {
-        let response = await fetch(`http://localhost:3000/api/cart/allItems/${userID}/get`);
-        allItems =  await response.json();
-        if (allItems.meta.success){
-            let subtotal = 0;
-            let discounts = 0;
-            let total = 0;
-            let shipping = 1000;
-
-            allItems.data.forEach(item => {
-                let amountItem = item.quantity;
-                let productPrice = item.product.price;
-                let productDiscount = item.product.discount;
-                let discountAmount;
-                productDiscount > 0 ? discountAmount = productPrice * productDiscount / 100 : discountAmount = 0 ;
-                let finalPrice = productPrice * amountItem;
-                let finalDiscounts = discountAmount * amountItem;
-
-                subtotal += finalPrice;
-                discounts += finalDiscounts;
-                total += (subtotal - discounts);
-                if (total > 500 && total < 5000){
-                    total += shipping
-                };
-            });
-
-            document.getElementById("subtotal").textContent = `$${subtotal}`;
-            if(total > 5000){
-                document.getElementById("shipping").textContent = `GRATIS`;
-                document.getElementById("shipping").style.color = 'rgba(54, 242, 29, 1)';
-                document.getElementById("shipping").style.fontWeight = '600';
-            }else{
-                document.getElementById("shipping").textContent = `$${shipping}`;
-            };
-            if (discounts > 0){
-                document.getElementById("discounts").textContent = `- $${discounts}`;
-            }else{ document.getElementById("discounts").textContent = ``; }
-            document.getElementById("total").textContent = `$${total}`;
-
-            //Set progress var//
-
-            const progress = document.getElementById('amount-progress');
-
-            progress.value = total;
-
-        };
-    };
-    orderDatails()
 });
+
+// -----------------------------Order datail -----------------------------/
+async function orderDatails () {
+    let response = await fetch(`http://localhost:3000/api/cart/allItems/${userID}/get`);
+    allItems =  await response.json();
+    if (allItems.meta.success){
+        let subtotal = 0;
+        let discounts = 0;
+        let total = 0;
+        const shipping = 1000;
+        let finalTotal = 0;
+
+        allItems.data.forEach(item => {
+            let amountItem = item.quantity;
+            let productPrice = item.product.price;
+            let productDiscount = item.product.discount;
+            let discountAmount;
+            productDiscount > 0 ? discountAmount = productPrice * productDiscount / 100 : discountAmount = 0 ;
+            let finalPrice = productPrice * amountItem;
+            let finalDiscounts = discountAmount * amountItem;
+
+            subtotal += finalPrice;
+            discounts += finalDiscounts;
+            total = (subtotal - discounts);
+        });
+
+        finalTotal = total;
+        if (total > 500 && total < 5000){
+            finalTotal += shipping;
+        };
+
+        document.getElementById("subtotal").textContent = `$${subtotal.toLocaleString('es-ES', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          }).replace(' ', ',')}`;
+
+        if(total > 5000){
+            document.getElementById("shipping").textContent = `GRATIS`;
+            document.getElementById("shipping").style.color = 'rgba(54, 242, 29, 1)';
+            document.getElementById("shipping").style.fontWeight = '600';
+        }else{
+            document.getElementById("shipping").textContent = `$${shipping}`;
+            document.getElementById("shipping").style.color = '#f5f5f5';
+        };
+
+        if (discounts > 0){
+            document.getElementById("discounts").textContent = `- $${discounts.toFixed(2).replace('.', ',')}`;
+        }else{ 
+            document.getElementById("discounts").textContent = `(s/OFF)`;
+            document.getElementById("discounts").style.color = '#f5f5f5';
+            document.getElementById("discounts").style.fontWeight = '400';
+            document.getElementById("discounts").style.fontSize = '0.8rem';
+        };
+
+        document.getElementById("total").textContent = `$${finalTotal.toLocaleString('es-ES', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          }).replace(' ', ',')}`;
+
+        //Set progress var//
+
+        const progress = document.getElementById('amount-progress');
+        progress.value = finalTotal;
+
+        if(progress.value < 500){
+            progress.classList.add('minimun');
+            progress.classList.remove('free-shipping');
+            progress.classList.remove('base');
+        }else if (progress.value > 5000){
+            progress.classList.add('free-shipping');
+            progress.classList.remove('minimun');
+            progress.classList.remove('base');
+        }else{
+            progress.classList.add('base');
+            progress.classList.remove('free-shipping');
+            progress.classList.remove('minimun');
+        };          
+    };
+};
+
+orderDatails()
+
+
+
 
 
 

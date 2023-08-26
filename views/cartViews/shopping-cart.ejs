@@ -41,7 +41,7 @@
                     <i class="fa-solid fa-cart-arrow-down"></i>
                     <h2>Mi carrito</h2>
                 </div>
-                <div class="empty-cart-container"><!-- <a href="/cart" class="empty-cart" id="empty-cart"></a> --><span id="confirm">Estas seguro?</span><span id="delete-cart-items">Vaciar carrito</span></div>
+                <div class="empty-cart-container"><span id="confirm" class="confirm-btn">Estas seguro?</span><span id="delete-cart-items">Vaciar carrito</span></div>
 
             </div>
 
@@ -99,9 +99,9 @@
                                 </td>
                                 <td class="tdata-price">
                                     <% if (item.product.discount > 0) { %>
-                                        <div id="text-product-price">Antes:<strong style="text-decoration: line-through;">$<%= item.product.price %></strong></div><p class="product-price"><strong>$<%= (item.product.price)*(1-(item.product.discount/100)) %></strong></p>      
+                                        <div id="text-product-price">Antes:<strong style="text-decoration: line-through;">$<%= Number(item.product.price).toFixed(2).replace('.', ',') %></strong></div><p class="product-price" style="color: rgba(234, 22, 103, 0.911); font-size: larger;"><strong>$<%= ((item.product.price)*(1-(item.product.discount/100))).toFixed(2).replace('.', ',') %></strong></p>      
                                     <% }else{ %>
-                                        <p class="product-price"><div id="text-product-price">Precio sin descuentos</div><strong>$<%= item.product.price %></strong></p>
+                                        <p class="product-price"><div id="text-product-price">Precio sin descuentos</div><strong>$<%= Number(item.product.price).toFixed(2).replace('.', ',') %></strong></p>
                                     <% } %>
                                 </td>
                             </tr>
@@ -129,11 +129,11 @@
 
                         <li>
                             <div class="payment-items">Subtotal</div>
-                            <div class="payment-amounts" id="subtotal"></div>
+                            <div class="payment-amounts" id="subtotal">$ 00,00</div>
                         </li>
                         <li>
                             <div class="payment-items">Envío</div>
-                            <div class="payment-amounts" id="shipping"></div>
+                            <div class="payment-amounts" id="shipping">$ 00,00</div>
                         </li>
                         <li id="off">
                             <div class="payment-items">Descuentos</div>
@@ -145,7 +145,7 @@
                         <li>
                             <div class="payment-total">
                                 <div class="payment-items" >TOTAL</div>
-                                <div class="payment-amounts" id="total"></div>
+                                <div class="payment-amounts" id="total">$ 00,00</div>
                             </div>
                         </li>  
 
