@@ -17,21 +17,21 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             defaultValue: 1
         },
-        user_payments_id: {
+        user_payment_id: {
             type: DataTypes.INTEGER,
-            allowNull: true, 
+            allowNull: true,
             references: {
                 model: 'userPayment',
                 key: 'id'
-            }  
+            }
         },
         user_id: {
-            type: DataTypes.STRING(255),  
+            type: DataTypes.STRING(255),
             allowNull: true, // Pending to delete this property after testing
             references: {
                 model: 'users',
                 key: 'id'
-            }  
+            }
         }
     };
 
@@ -41,6 +41,17 @@ module.exports = (sequelize, DataTypes) => {
     };
 
     const OrderDetail = sequelize.define(alias, cols, config);
+
+
+    OrderDetail.associate = models => {
+
+        OrderDetail.belongsTo(models.Address, {
+            as: 'userDataAddress',
+            foreignKey: 'user_id',
+            targetKey: 'user_id'
+        });
+    };
+
 
     return OrderDetail;
 };

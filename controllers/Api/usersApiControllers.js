@@ -7,6 +7,35 @@ const Op = db.Sequelize.Op;
 
 const usersController = {
 
+    verifyEmail: async (req, res) => {
+        const emailInForm = req.query.email; // Get the email parameter from the query
+
+        try {
+            let exists = false;
+
+            if (emailInForm.indexOf('@') > -1) {
+                // Find a user by email and retrieve the 'email'
+                const userByEmail = await db.User.findOne({
+                    where: { email: emailInForm },
+                    attributes: ['email'],
+                    raw: true,
+                });
+                exists = !!userByEmail;
+            } else {
+                // Find a user by username and retrieve the 'username'
+                const userByUsername = await db.User.findOne({
+                    where: { username: emailInForm },
+                    attributes: ['username'],
+                    raw: true,
+                });
+                exists = !!userByUsername;
+            }
+            res.send(exists.toString()); // Send a response indicating whether the email/username exists as a string
+        } catch (error) {
+            res.status(500).send('Error en la consulta desde el servidor :' + error);
+        }
+    },
+
     getAll: async (req, res) => {
 
         try {
@@ -112,7 +141,7 @@ const usersController = {
     },
 
     updateUser: async (req, res) => {
-        
+
         try {
 
             const resultsValidations = validationResult(req);
@@ -165,21 +194,21 @@ const usersController = {
 
             // Instant update of the user data in req.session
 
-            if(updatedUser && updatedAddress){
+            if (updatedUser && updatedAddress) {
 
-            req.session.userLogged.first_name = newData.first_name
-            req.session.userLogged.last_name = newData.last_name
-            req.session.userLogged.username = newData.user_name
-            req.session.userLogged.birth_date = newData.birth_date
-            req.session.userLogged.image = typeof req.file === 'undefined' ? user_prev_img : req.file.filename,
-            req.session.userLogged.type = newData.user_type
-            req.session.userLogged.phone = newData.phone
+                req.session.userLogged.first_name = newData.first_name
+                req.session.userLogged.last_name = newData.last_name
+                req.session.userLogged.username = newData.user_name
+                req.session.userLogged.birth_date = newData.birth_date
+                req.session.userLogged.image = typeof req.file === 'undefined' ? user_prev_img : req.file.filename,
+                    req.session.userLogged.type = newData.user_type
+                req.session.userLogged.phone = newData.phone
 
-            req.session.userLogged.address.street = newData.street
-            req.session.userLogged.address.number = newData.number
-            req.session.userLogged.address.city = newData.city
-            req.session.userLogged.address.province = newData.province
-            req.session.userLogged.address.country = newData.country
+                req.session.userLogged.address.street = newData.street
+                req.session.userLogged.address.number = newData.number
+                req.session.userLogged.address.city = newData.city
+                req.session.userLogged.address.province = newData.province
+                req.session.userLogged.address.country = newData.country
             }
 
             let response = {};
@@ -230,8 +259,8 @@ const usersController = {
 
     registerUser: async (req, res) => {
 
-		/* Previous validations to create a new user */
-		const resultsValidations = validationResult(req);
+        /* Previous validations to create a new user */
+        const resultsValidations = validationResult(req);
 
         if (resultsValidations.errors.length > 0) {
             return res.json({
@@ -243,49 +272,49 @@ const usersController = {
             });
         };
 
-		delete req.body.password_confirm;
+        delete req.body.password_confirm;
 
-		try {
+        try {
 
-			let newData = req.body;
-			let hashedPassword = await bcrypt.hash(req.body.password, 10);
+            let newData = req.body;
+            let hashedPassword = await bcrypt.hash(req.body.password, 10);
 
-			const newUser = await db.User.create({
-				first_name: newData.first_name,
-				last_name: newData.last_name,
-				username: newData.user_name,
-				birth_date: newData.birth_date,
-				email: newData.email,
-				image: req.file ? req.file.filename : "default-user-photo.png",
-				type: newData.user_type,
-				phone: Number(newData.phone),
-				password: hashedPassword,
-			});
+            const newUser = await db.User.create({
+                first_name: newData.first_name,
+                last_name: newData.last_name,
+                username: newData.user_name,
+                birth_date: newData.birth_date,
+                email: newData.email,
+                image: req.file ? req.file.filename : "default-user-photo.png",
+                type: newData.user_type,
+                phone: Number(newData.phone),
+                password: hashedPassword,
+            });
 
-			const newAdress = await db.Address.create({
-				street: newData.street,
-				number: newData.number,
-				city: newData.city,
-				province: newData.province,
-				country: newData.country,
-				user_id: newUser.id
-			});
+            const newAdress = await db.Address.create({
+                street: newData.street,
+                number: newData.number,
+                city: newData.city,
+                province: newData.province,
+                country: newData.country,
+                user_id: newUser.id
+            });
 
 
             let response = {};
 
-            if(newUser && newAdress){
-                response ={
+            if (newUser && newAdress) {
+                response = {
                     meta: {
                         status: 201, // 201 for successful resource creation
                         success: true,
                         message: "User registered successfully.",
                         url: 'api/user/register',
-                    },                    
-                    data:newUser
+                    },
+                    data: newUser
                 };
-            }else{
-                response ={
+            } else {
+                response = {
                     meta: {
                         status: 500, // This code indicates that something went wrong on the server side.
                         success: false,
@@ -297,16 +326,16 @@ const usersController = {
             res.json(response);
 
 
-             /*
+            /*
 
-            if (response.meta.success) {
-                res.redirect('/user/login');
-            } else {
-                res.json(response);
-            }
+           if (response.meta.success) {
+               res.redirect('/user/login');
+           } else {
+               res.json(response);
+           }
 
-            */
-                    
+           */
+
         } catch (error) {
             console.log(error);
             res.json({
@@ -321,31 +350,31 @@ const usersController = {
 
     hardDeleteUser: async (req, res) => {
 
-		try {
-			let deletedUser = await db.User.destroy({
-				where: {
-					id: req.params.id
-				},
-				/* force: true */ // Hard deletion with paranoid model
-			});
+        try {
+            let deletedUser = await db.User.destroy({
+                where: {
+                    id: req.params.id
+                },
+                /* force: true */ // Hard deletion with paranoid model
+            });
 
-			req.session.destroy();
-			res.clearCookie('userEmail');
+            req.session.destroy();
+            res.clearCookie('userEmail');
 
-            
+
             let response = {};
-            if(deletedUser){
-                response ={
+            if (deletedUser) {
+                response = {
                     meta: {
                         status: 201, //, 201 for successful resource deletion
                         success: true,
                         message: "User profile deleted successfully.",
-                         url: 'api/user/:id/delete',
+                        url: 'api/user/:id/delete',
                     },
-                    data:deletedUser
+                    data: deletedUser
                 };
-            }else{
-                response ={
+            } else {
+                response = {
                     meta: {
                         status: 500,
                         success: false,
@@ -366,7 +395,7 @@ const usersController = {
             }
 
             */
-			
+
         } catch (error) {
             console.log(error);
             res.json({
@@ -379,33 +408,63 @@ const usersController = {
         };
     },
 
-    verifyEmail: async (req, res) => {
-        const emailInForm = req.query.email; // Get the email parameter from the query
+    getProvinceData: async (req, res) => {
 
         try {
-            let exists = false;
 
-            if (emailInForm.indexOf('@') > -1) {
-                // Find a user by email and retrieve the 'email'
-                const userByEmail = await db.User.findOne({
-                    where: { email: emailInForm },
-                    attributes: ['email'],
-                    raw: true,
-                });
-                exists = !!userByEmail;
-            } else {
-                // Find a user by username and retrieve the 'username'
-                const userByUsername = await db.User.findOne({
-                    where: { username: emailInForm },
-                    attributes: ['username'],
-                    raw: true,
-                });
-                exists = !!userByUsername;
-            }
-            res.send(exists.toString()); // Send a response indicating whether the email/username exists as a string
+            const orderDetail = await db.OrderDetail.findAll({
+                raw: true,
+                nest: true,
+                //attributes: ['order_date', 'detail_total', 'user_id'],
+                include: [
+                    {
+                        model: db.Address,
+                        as: 'userDataAddress',
+                        attributes: ['province']
+                    }
+                ],
+                group: ['userDataAddress.province', 'OrderDetail.detail_total']
+            });
+
+            let provinceSum = orderDetail
+
+            const provinceTotals = {};
+
+            provinceSum.forEach(provinceOrder => {
+                const province = provinceOrder.userDataAddress.province;
+                const detailTotal = provinceOrder.detail_total;
+
+                if (province) {
+                    provinceTotals[province] = (provinceTotals[province] || 0) + detailTotal;
+                }
+            });
+
+            // console.log(provinceTotals);
+
+            let response = {
+                meta: {
+                    status: 200, //200 for success with content,
+                    success: true,
+                    count: orderDetail.length,
+                    url: 'api/user/province-data',
+                },
+                //orderData: orderDetail,
+                provinceSum: provinceTotals
+            };
+
+            return res.json(response);
+
         } catch (error) {
-            res.status(500).send('Error en la consulta desde el servidor :' + error);
-        }
+            console.log(error);
+            res.json({
+                meta: {
+                    status: 503,
+                    success: false,
+                    message: "An error occurred while processing your request."
+                    //503 (Service Unavailable) to indicate that the server is currently unable to handle the request.
+                }
+            });
+        };
     },
 
 };

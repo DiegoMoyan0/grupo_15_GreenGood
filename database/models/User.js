@@ -69,16 +69,15 @@ module.exports = (sequelize, DataTypes) => {
             as: 'user',
             foreignKey: 'user_id'
         })
-
         User.hasOne(models.Address, {
             as: 'address',
             foreignKey: 'user_id',
-            onDelete: 'CASCADE',  // Esto asegura que si se elimina un usuario, también se elimine su dirección asociada
+            onDelete: 'CASCADE',  // This ensures that when a user is deleted, the associated address is also deleted.
         });
         User.hasMany(models.ShoppingSession, {
             as: 'shoppingSessions',
             foreignKey: 'user_id',
-        });
+        });     
   
     };
 

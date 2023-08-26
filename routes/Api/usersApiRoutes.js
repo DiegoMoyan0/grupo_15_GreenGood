@@ -43,6 +43,9 @@ routes.get('/users', userApiController.getAll)
 /*** @GET USER BY ID ***/ 
 routes.get('/users/:id', userApiController.getUserById)
 
+/*** @GET USERS PURCHASES BY PROVINCE ***/ 
+routes.get('/province-data', userApiController.getProvinceData)
+
 /*** @PUT UPDATE USER PROFILE INFO ***/ 
 routes.put('/users/:id/update', uploadPhoto.single('user_image'), validationsUpdateMw, userApiController.updateUser);
 
@@ -51,5 +54,7 @@ routes.post('/register', uploadPhoto.single('user_image'), validationsRegisterMw
 
 /*** @DELETE USER ***/ 
 routes.delete('/:id/delete', userApiController.hardDeleteUser);
+
+
 
 module.exports = routes;
