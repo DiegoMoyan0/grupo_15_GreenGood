@@ -48,7 +48,12 @@ const controller = {
 		try {
 
 			let newData = req.body;
+
 			let hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+			//Temporary line for testing purposes
+
+			//let hashedPassword =req.body.password
 
 			const newUser = await db.User.create({
 				first_name: newData.first_name,
@@ -97,10 +102,7 @@ const controller = {
 		try {
 
 			if (req.body.email.indexOf('@') > -1) {
-
 				//Search user by email first
-				console.log('es un correo')
-
 				searchedUser = await db.User.findOne({
 					where: { email: req.body.email },
 					raw: true,
@@ -109,9 +111,8 @@ const controller = {
 				});
 			} else {
 				//Search user by username
-				console.log('es un username')
 				searchedUser = await db.User.findOne({
-					where: { email: req.body.email },
+					where: { username: req.body.email },
 					raw: true,
 					nest: true,
 					include: ["address"],
