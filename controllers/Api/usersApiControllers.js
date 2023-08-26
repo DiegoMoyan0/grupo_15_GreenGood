@@ -415,7 +415,6 @@ const usersController = {
             const orderDetail = await db.OrderDetail.findAll({
                 raw: true,
                 nest: true,
-                //attributes: ['order_date', 'detail_total', 'user_id'],
                 include: [
                     {
                         model: db.Address,
@@ -432,14 +431,12 @@ const usersController = {
 
             provinceSum.forEach(provinceOrder => {
                 const province = provinceOrder.userDataAddress.province;
-                const detailTotal = provinceOrder.detail_total;
+                const detailTotal = parseFloat(provinceOrder.detail_total);
 
                 if (province) {
                     provinceTotals[province] = (provinceTotals[province] || 0) + detailTotal;
                 }
             });
-
-            // console.log(provinceTotals);
 
             let response = {
                 meta: {
@@ -448,7 +445,6 @@ const usersController = {
                     count: orderDetail.length,
                     url: 'api/user/province-data',
                 },
-                //orderData: orderDetail,
                 provinceSum: provinceTotals
             };
 
