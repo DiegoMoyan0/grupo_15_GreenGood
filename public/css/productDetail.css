@@ -31,18 +31,34 @@
     max-width: 31rem;
 }
 
-#fav{
+.fav-icon{
     color: #7D387D;
-    width: 10%;
+    width: 40px;
     padding: 1%;
     position: absolute;
-    z-index: 10;
     top: 21%;
     left: 80%;
-    transition: transform 0.5s;
+    transition: all 0.5s;
 }
 
-#fav:hover{
+.fav-icon-selected {
+    animation: scaleAnimation 1s ease-in-out;
+    filter: drop-shadow(0px 0px 4px rgb(248, 4, 24));
+}
+
+@keyframes scaleAnimation {
+    0% {
+        transform: scale(1); 
+    }
+    50% {
+        transform: scale(1.2); 
+    }
+    100% {
+        transform: scale(1); 
+    }
+}
+
+.fav-icon:hover{
     transform: scale(1.1);
 }
 

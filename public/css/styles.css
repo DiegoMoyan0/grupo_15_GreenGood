@@ -13,7 +13,6 @@ body {
     width: 100vw;
     background-color: #10142F;
     z-index: -1;
-
     /*  fondo de la pagina entera */
 }
 
@@ -471,6 +470,35 @@ p {
 
 /* ------------------------------- OFFER SLIDER ------------------------------- */
 
+.scrolling-text {
+    overflow: hidden;
+    position: relative;
+    width: 100vw;
+    height: 50px;
+    padding: 10px;
+    background-color: #F3F2F3;
+    color: #2c5a40;
+    box-shadow: 0px 0 5px white;
+    display: flex; /* Para alinear los h2 en una fila */
+}
+.scrolling-text h2 {
+    width: 100%;
+} 
+
+.scrolling-text h2 {
+    white-space: nowrap;
+    animation: scrollText 8s linear infinite; /* Animación con nombre "scrollText" */
+}
+
+@keyframes scrollText {
+    0% {
+        transform: translateX(0%); /* Empieza desde la derecha */
+    }
+    100% {
+        transform: translateX(100%); /* Llega a la izquierda */
+    }
+}
+
 .card-container {
     display: flex;
     flex-wrap: wrap;
@@ -495,7 +523,6 @@ p {
     box-shadow: 0px 0px 10px #64ff00;
     cursor: pointer;
     transition: transform 0.5s;
-    overflow: hidden;
     position: relative;
 }
 
@@ -504,18 +531,34 @@ p {
         /* cambia al pasar por arriba el mouse  */
 }
 
-#fav-icon{
+.fav-icon{
     color: #7D387D;
     width: 40px;
     padding: 1%;
     position: absolute;
-    z-index: 10;
     top: 10px;
     right: 10px;
-    transition: transform 0.5s;
+    transition: all 0.5s;
 }
 
-#share-icon{
+.fav-icon-selected {
+    animation: scaleAnimation 1s ease-in-out;
+    filter: drop-shadow(0px 0px 4px rgb(248, 4, 24));
+}
+
+@keyframes scaleAnimation {
+    0% {
+      transform: scale(1); 
+    }
+    50% {
+      transform: scale(1.2); 
+    }
+    100% {
+        transform: scale(1); 
+    }
+}
+
+.share-icon{
     color: #7D387D;
     width: 40px;
     padding: 1.5%;
@@ -526,11 +569,25 @@ p {
     transition: transform 0.5s;
 }
 
-#share-icon:hover{
+.share-msg{
+    color: #402c68;
+    position: absolute;
+    top: 18%;
+    right: -20%;
+    width: 200px;
+    border: 1px solid #402c68;
+    background-color: #f0f0f0;
+    padding: 8px;
+    font-size: 0.5rem;
+    border-radius: 30px;
+    font-weight: 1000;
+}
+
+.share-icon:hover{
     transform: scale(1.1);
 }
 
-#fav-icon:hover{
+.fav-icon:hover{
     transform: scale(1.1);
 }
 

@@ -38,6 +38,9 @@ emptyBtn.addEventListener('click', (e) => {
         });
         
         confirmBtn.textContent = 'CARRITO VACIADO';
+        confirmBtn.style.color = "whitesmoke";
+        confirmBtn.style.backgroundColor = "rgb(202, 47, 202)";
+        
         setTimeout(function() {
             location.reload(); 
         }, 1500); 
@@ -150,7 +153,7 @@ async function orderDatails () {
         });
 
         finalTotal = total;
-        if (total > 500 && total < 5000){
+        if (total > 0 && total < 5000){
             finalTotal += shipping;
         };
 
@@ -187,7 +190,7 @@ async function orderDatails () {
         const progress = document.getElementById('amount-progress');
         progress.value = finalTotal;
 
-        if(progress.value < 500){
+        if(progress.value < 1500){
             progress.classList.add('minimun');
             progress.classList.remove('free-shipping');
             progress.classList.remove('base');

@@ -154,6 +154,7 @@ main {
     border: 1px solid rgb(199, 73, 132);
     box-shadow: 0 0 10px rgb(199, 73, 132);
     color: rgb(199, 73, 132);
+    text-align: center;
     background-color: beige;
     border-radius: 10px;
     cursor: pointer;
@@ -461,7 +462,11 @@ td img {
     height: 10px;
     border: solid 1px whitesmoke;
     border-radius: 20px;
-    -webkit-appearance: none;   
+    appearance: none;   
+}
+
+progress::-webkit-progress-value {
+    transition: width 0.5s ease; /* Aplica la transición en el cambio de ancho */
 }
 
 /* Configuro los colores y la forma de la barrita de progreso o de carga  */
