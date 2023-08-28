@@ -48,12 +48,10 @@ module.exports = (sequelize, DataTypes) => {
         CartItem.belongsTo(models.Product, {
             as: 'product',
             foreignKey: 'product_id',
-            onDelete: 'CASCADE'
         });
         CartItem.belongsTo(models.ShoppingSession, {
             as: 'shoppingSession',
             foreignKey: 'shopping_session_id',
-            onDelete: 'CASCADE'
         });
     };
 

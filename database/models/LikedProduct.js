@@ -11,13 +11,13 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             allowNull: true, 
             references: {
-                model: 'product',
+                model: 'products',
                 key: 'id'
-            }  
+            } 
         },
         user_id: {
             type: DataTypes.STRING(255),  
-            allowNull: true, // Pending to delete this property after testing
+            allowNull: true, 
             references: {
                 model: 'user',
                 key: 'id'
@@ -31,6 +31,20 @@ module.exports = (sequelize, DataTypes) => {
     };
 
     const LikedProduct = sequelize.define(alias, cols, config);
+
+    LikedProduct.associate = models => {
+
+        LikedProduct.belongsTo(models.User, {
+            as: 'user',
+            foreignKey: 'user_id',
+            onDelete: 'CASCADE'
+        });
+        LikedProduct.belongsTo(models.Product, {
+            as: 'favproduct',
+            foreignKey: 'product_id',
+            onDelete: 'CASCADE'
+        }); 
+    };
 
     return LikedProduct;
 };

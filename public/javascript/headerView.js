@@ -14,7 +14,6 @@ window.onload = function () {
         };
     };
     
-    
     //-----------------------------------Contador carrito------------------------------------------//
 
     if(!userID){
@@ -116,26 +115,39 @@ window.onload = function () {
         };
 
         fIcon.onclick = function () {
+            let favDivMsg = document.createElement('span');
+            favDivMsg.style.top = "-5%";
+            favDivMsg.style.right = "-5%";
+            favDivMsg.style.width = "100px";
+            favDivMsg.classList.add('share-msg');
+
             if(!Array.from(fIcon.classList).includes('fav-icon-selected')){
-              let favProducts = localStorage.getItem('favs');
-              if(favProducts != null){
-                let favArray = favProducts.split(",");
-                favArray.push(fIcon.id);
-                localStorage.setItem("favs", favArray);
-              }else{
-                localStorage.setItem("favs", fIcon.id);
-              };
-              fIcon.classList.add('fav-icon-selected');
-              fIcon.setAttribute('fill', 'currentColor');
-              alert('Se agrego fav');
+                let favProducts = localStorage.getItem('favs');
+                if(favProducts != null){
+                    let favArray = favProducts.split(",");
+                    favArray.push(fIcon.id);
+                    localStorage.setItem("favs", favArray);
+                }else{
+                    localStorage.setItem("favs", fIcon.id);
+                };
+                fIcon.classList.add('fav-icon-selected');
+                fIcon.setAttribute('fill', 'currentColor');
+                
+                favDivMsg.textContent = "Agregado a favoritos";
+                fIcon.parentElement.appendChild(favDivMsg);
             }else{
-              let favArray = localStorage.getItem('favs').split(",");
-              let newFavArray = favArray.filter(item => item != fIcon.id);
-              fIcon.classList.remove('fav-icon-selected');
-              fIcon.setAttribute('fill', 'none');
-              alert('Se quitó de favoritos');
-              localStorage.setItem("favs", newFavArray);
+                let favArray = localStorage.getItem('favs').split(",");
+                let newFavArray = favArray.filter(item => item != fIcon.id);
+                fIcon.classList.remove('fav-icon-selected');
+                fIcon.setAttribute('fill', 'none');
+                localStorage.setItem("favs", newFavArray);
+
+                favDivMsg.textContent = "Se quitó de favoritos";
+                fIcon.parentElement.appendChild(favDivMsg);
             };
+            setTimeout(function() {
+                fIcon.parentElement.removeChild(favDivMsg);
+            }, 1500);
         }; 
     });
 
@@ -149,7 +161,6 @@ window.onload = function () {
         async function copyLink() {
             // Obtén la URL del detalle del producto
             let url = `http://localhost:3000/product/${shIcon.id}/detail`;
-            console.log(url);
           
             // Copia el contenido del input al portapapeles usando el API Clipboard
             try {
@@ -168,4 +179,36 @@ window.onload = function () {
             };
         }; 
     });  
+};
+//----------------Store fav products into DDBB--------------//
+
+const userIDfav = document.querySelector(".user-data").id;
+
+userIDfav? window.addEventListener('beforeunload', favProductsStore) : "";
+
+async function favProductsStore(e) {
+    let idProducts = localStorage.getItem('favs');
+    
+    const url = `http://localhost:3000/api/favProducts/${userIDfav}/store`;
+    const data = {
+        favProducts: idProducts,
+    };
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json' 
+        },
+        body: JSON.stringify(data) 
+    };
+    try {
+        console.log(requestOptions);
+        const response = await fetch(url, requestOptions);
+        const responseData = await response.json();
+        if(!responseData.meta.success){
+            e.preventDefault();
+            alert('Hubo un error al cargar los productos favoritos');
+        };
+    } catch (error) {
+        console.error('Hubo un error al cargar los productos favoritos: ', error);     
+    };
 };

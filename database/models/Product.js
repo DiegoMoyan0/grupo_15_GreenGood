@@ -115,26 +115,27 @@ module.exports = (sequelize, DataTypes) => {
         
         Product.belongsTo(models.Manufacturer, {
             as: 'manufacturer',
-            foreignKey: 'manufacturer_id'
+            foreignKey: 'manufacturer_id',
+            onDelete: 'CASCADE'
         });
 
         Product.belongsTo(models.User, {
             as: 'user',
-            foreignKey: 'user_id'
+            foreignKey: 'user_id',
+            onDelete: 'CASCADE'
         });
 
         Product.hasMany(models.CartItem, {
             as: 'product',
-            foreignKey: 'product_id'
+            foreignKey: 'product_id',
+            onDelete: 'CASCADE'
         });
 
-        /* Product.belongsToMany(models.ShoppingSession, {
-            as: 'cart_products',
-            through: 'cart_items',
+        Product.hasMany(models.LikedProduct, {
+            as: 'favproduct',
             foreignKey: 'product_id',
-            outherKey: 'shopping_session_id',
-            timestamps: false
-        }); */
+            onDelete: 'CASCADE'
+        });
         
     };
 

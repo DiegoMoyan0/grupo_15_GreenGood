@@ -77,7 +77,12 @@ module.exports = (sequelize, DataTypes) => {
         User.hasMany(models.ShoppingSession, {
             as: 'shoppingSessions',
             foreignKey: 'user_id',
-        });     
+        });
+        User.hasMany(models.LikedProduct, {
+            as: 'favproducts',
+            foreignKey: 'user_id',
+            onDelete: 'CASCADE'
+        });      
   
     };
 

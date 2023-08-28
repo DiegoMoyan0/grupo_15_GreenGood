@@ -1,9 +1,4 @@
-const fs = require('fs');
-const path = require('path');
 let db = require("../../database/models");
-const Op = db.Sequelize.Op;
-
-// -------Pending ShoppingCart------- //
 
 const controller = {
 
