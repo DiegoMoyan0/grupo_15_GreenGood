@@ -22,7 +22,11 @@ module.exports = (sequelize, DataTypes) => {
                 model: 'users',
                 key: 'id'
             }  
-        }
+        },
+        finish_date: {
+            type: DataTypes.DATE,
+            allowNull: true,
+        },
     };
 
     const config = {

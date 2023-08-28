@@ -2,7 +2,6 @@ const path = require('path');
 const db = require('../../database/models');
 const { validationResult } = require('express-validator');
 const Op = db.Sequelize.Op;
-/* const moment = require('moment'); */
 
 const productsController = {
     getAll: async (req, res) => {
@@ -43,7 +42,170 @@ const productsController = {
                 meta: {
                     status: 503,
                     success: false,
-                    message: "An error occurred while processing your request."
+                    message: "An error occurred while processing your request GET ALL."
+                    //503 (Service Unavailable) to indicate that the server is currently unable to handle the request.
+                }
+            });
+        };
+    },
+    getAllByCategory: async (req, res) => {
+
+        try {
+            const products = await db.Category.findAll({
+                raw: true,
+                nest: true,
+                include: [
+                    { association: 'categoryProducts' },
+                ],
+                where:{
+                    name: req.query.category
+                }
+            });
+            console.log(products);
+
+            let response = {
+                meta: {
+                    status : 200, //200 for success with content,
+                    success: true,
+                    total: products.length,
+                    url: 'api/product/list/category'
+                },
+                data: products
+            }; 
+            return res.json(response);
+        }catch (error) {
+            console.log(error);
+            res.json({
+                meta: {
+                    status: 503,
+                    success: false,
+                    message: "An error occurred while processing your request GET ALL BY CATEGORY."
+                    //503 (Service Unavailable) to indicate that the server is currently unable to handle the request.
+                }
+            });
+        };
+    },
+    getAllBySubcategory: async (req, res) => {
+
+        try {
+            const products = await db.Subcategory.findAll({
+                raw: true,
+                nest: true,
+                include: [
+                    { association: 'subcategoryProducts' },
+                ],
+                where:{
+                    name: req.query.subcategory
+                }
+            });
+
+            let response = {
+                meta: {
+                    status : 200, //200 for success with content,
+                    success: true,
+                    total: products.length,
+                    url: 'api/product/list/subcategory'
+                },
+                data: products
+            }; 
+            return res.json(response);
+        }catch (error) {
+            console.log(error);
+            res.json({
+                meta: {
+                    status: 503,
+                    success: false,
+                    message: "An error occurred while processing your request GET ALL BY SUBCATEGORY."
+                    //503 (Service Unavailable) to indicate that the server is currently unable to handle the request.
+                }
+            });
+        };
+    },
+    getAllByType: async (req, res) => {
+
+        try {
+            const products = await db.Type.findAll({
+                raw: true,
+                nest: true,
+                include: [
+                    { association: 'typeProducts' },
+                ],
+                where:{
+                    name: req.query.type
+                }
+            });
+
+            let response = {
+                meta: {
+                    status : 200, //200 for success with content,
+                    success: true,
+                    total: products.length,
+                    url: 'api/product/list/type'
+                },
+                data: products
+            }; 
+            return res.json(response);
+        }catch (error) {
+            console.log(error);
+            res.json({
+                meta: {
+                    status: 503,
+                    success: false,
+                    message: "An error occurred while processing your request GET ALL BY TYPE."
+                    //503 (Service Unavailable) to indicate that the server is currently unable to handle the request.
+                }
+            });
+        };
+    },
+    getPages: async (req, res) => {
+
+        const currentPage = Number(req.query.page) || 1;
+        const productsPerPage = Number(req.query.per_page) || 10;
+        console.log('DENTRO DE GET PAGES');
+
+        try {
+            const offset = (currentPage - 1) * productsPerPage;
+
+            const products = await db.Product.findAll({
+                raw: true,
+                nest: true,
+                limit: productsPerPage,
+                offset: offset,
+                include: [
+                    { association: 'category' },
+                    { association: 'subcategory' },
+                    { association: 'type' },
+                    { association: 'manufacturer' }],
+                },
+            );
+
+
+            //-------To render only the name values of associated tables
+            products.forEach(product => {
+                product.category = product.category.name;
+                product.subcategory = product.subcategory.name;
+                product.type = product.type.name;
+                product.manufacturer = product.manufacturer.name;
+            });
+
+            let response = {
+                meta: {
+                    status : 200, //200 for success with content,
+                    success: true,
+                    total: products.length,
+                    currentPage: currentPage,
+                    url: 'api/product/getPages?page=1&per_page=10'
+                },
+                data: products
+            }; 
+            return res.json(response);
+        }catch (error) {
+            console.log(error);
+            res.json({
+                meta: {
+                    status: 503,
+                    success: false,
+                    message: "An error occurred while processing your request at GET PAGES."
                     //503 (Service Unavailable) to indicate that the server is currently unable to handle the request.
                 }
             });
@@ -71,7 +233,7 @@ const productsController = {
                         status: 200, // 200 for success with content,
                         success: true,
                         total: product.length,
-                        url: '/api/product/:id'
+                        url: '/api/product/:id/detail'
                     },
                     data: product
                 };
@@ -82,7 +244,7 @@ const productsController = {
                         success: false,
                         total: product.length,
                         error: "The product searched does not exist at DDBB",
-                        url: '/api/product/:id'
+                        url: '/api/product/:id/detail'
                     },
                     data: ""
                 };
@@ -96,7 +258,7 @@ const productsController = {
                 meta: {
                     status: 503,
                     success: false,
-                    message: "An error occurred while processing your request."
+                    message: "An error occurred while processing your request GET DETAIL."
                 }
             });
         };
@@ -129,7 +291,7 @@ const productsController = {
                 meta: {
                     status: 503,
                     success: false,
-                    message: "An error occurred while processing your request."
+                    message: "An error occurred while processing your request GET NEWESTS."
                 }
             });
         };
@@ -140,7 +302,10 @@ const productsController = {
                 order : [
                     ['sales_amount', 'DESC']
                 ],
-                limit: 5
+                limit: 5,
+                where: {
+                    sales_amount: {[Op.gt] : 5}
+                }
             });
     
             let response = {
@@ -161,7 +326,7 @@ const productsController = {
                 meta: {
                     status: 503,
                     success: false,
-                    message: "An error occurred while processing your request."
+                    message: "An error occurred while processing your request GET MOST SELLED."
                 }
             });
         };
@@ -172,7 +337,7 @@ const productsController = {
 
             let SaleProducts =  await db.Product.findAll({
                 where: {
-                    discount: {[db.Sequelize.Op.gte] : minDiscountPercentage}
+                    discount: {[Op.gte] : minDiscountPercentage}
                 },
                 order: [
                     ['discount', 'DESC']
@@ -198,7 +363,7 @@ const productsController = {
                 meta: {
                     status: 503,
                     success: false,
-                    message: "An error occurred while processing your request."
+                    message: "An error occurred while processing your request GET SALE."
                 }
             });
         };
@@ -259,7 +424,7 @@ const productsController = {
                     }
                 };
             };
-            res.json(response);
+            return res.json(response);
             
         } catch (error) {
             console.log(error);
@@ -267,7 +432,7 @@ const productsController = {
                 meta: {
                     status: 503,
                     success: false,
-                    message: "An error occurred while processing your request."
+                    message: "An error occurred while processing your request POST CREATE."
                 }
             });
         };
@@ -329,7 +494,8 @@ const productsController = {
                     }
                 };
             };
-            res.json(response);
+
+            return res.json(response);
             
         } catch (error) {
             console.log(error);
@@ -337,7 +503,7 @@ const productsController = {
                 meta: {
                     status: 503,
                     success: false,
-                    message: "An error occurred while processing your request."
+                    message: "An error occurred while processing your request PUT UPDATE."
                 }
             });
         };
@@ -369,7 +535,7 @@ const productsController = {
                     }
                 };
             };
-            res.json(response);
+            return res.json(response);
             
         } catch (error) {
             console.log(error);
@@ -377,7 +543,7 @@ const productsController = {
                 meta: {
                     status: 503,
                     success: false,
-                    message: "An error occurred while processing your request."
+                    message: "An error occurred while processing your request DELETE."
                 }
             });
         };
@@ -409,7 +575,7 @@ const productsController = {
                     }
                 };
             };
-            res.json(response);
+            return res.json(response);
             
         } catch (error) {
             console.log(error);
@@ -417,7 +583,7 @@ const productsController = {
                 meta: {
                     status: 503,
                     success: false,
-                    message: "An error occurred while processing your request."
+                    message: "An error occurred while processing your request SOFT DELETE."
                 }
             });
         };

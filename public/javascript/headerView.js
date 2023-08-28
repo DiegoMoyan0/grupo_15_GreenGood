@@ -116,10 +116,8 @@ window.onload = function () {
 
         fIcon.onclick = function () {
             let favDivMsg = document.createElement('span');
-            favDivMsg.style.top = "-5%";
-            favDivMsg.style.right = "-5%";
-            favDivMsg.style.width = "100px";
             favDivMsg.classList.add('share-msg');
+            favDivMsg.classList.add('fav');
 
             if(!Array.from(fIcon.classList).includes('fav-icon-selected')){
                 let favProducts = localStorage.getItem('favs');
@@ -180,11 +178,12 @@ window.onload = function () {
         }; 
     });  
 };
+
 //----------------Store fav products into DDBB--------------//
 
 const userIDfav = document.querySelector(".user-data").id;
 
-userIDfav? window.addEventListener('beforeunload', favProductsStore) : "";
+userIDfav? window.addEventListener('beforeunload', favProductsStore) : ""; //Antes de cambiar de ventana
 
 async function favProductsStore(e) {
     let idProducts = localStorage.getItem('favs');

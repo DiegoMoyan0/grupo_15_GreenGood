@@ -8,7 +8,7 @@ const controller = {
             const idUser = req.params.idUser;
 
             let shopSession = await db.ShoppingSession.findOne({
-                where: { user_id: idUser },
+                where: { user_id: idUser, finish_date: null },
                 /* raw: true, */ //Cannot get an array of cartItems if it is true
                 nest: true,
                 include: ["user", "cartItems"],
@@ -53,11 +53,13 @@ const controller = {
     initShoppingSession: async (req, res) => {
         try {
             const idUser = req.params.idUser;
+            console.log(idUser);
 
             let shopSession = await db.ShoppingSession.create({
                 init_date: Date.now(),
                 user_id: idUser
             });
+            console.log(shopSession);
 
             if(shopSession) {
                 response = {
@@ -95,12 +97,26 @@ const controller = {
     getCart: async (req, res) => {
 
         try {
+            let response = {};
+
             let shopSession = await db.ShoppingSession.findOne({
-                where: { user_id: req.params.idUser },
+                where: { user_id: req.params.idUser, finish_date: null },
                 /* raw: true, */ //Cannot get an array of cartItems if it is true
                 nest: true,
                 include: ["user", "cartItems"],
             });
+
+            if(!shopSession){
+                response = {
+                    meta: {
+                        status : 204, //204 for success without content,
+                        success: false,
+                        url: 'http://localhost:3000/api/cart/allItems/:idUser/get'
+                    },
+                    data: shopSession
+                };
+                return res.json(response);
+            };
 
             let cartItems = await db.CartItem.findAll({
                 where: { shopping_session_id: shopSession.id },
@@ -335,7 +351,82 @@ const controller = {
                 }
             });   
         }; 
-    }
+    },
+
+    finishShoppingSession: async (req, res) => {
+    
+        try {
+            const idShoppingSession = Number(req.params.idShoppingSession);
+            const total = Number(req.body.total);
+            const finishDate = Date.now();
+            
+            let response = {};
+            let updatedShoppingSession = {}
+
+            if(total <= 500){
+                return res.json({
+                    meta: {
+                        status: 400,
+                        success: false,
+                        message: `Total amount invalid: '${total}'`
+                    }
+                });
+            };
+
+            let prevShoppingSession = await db.ShoppingSession.findOne({ where:{ id: idShoppingSession } });
+
+            if(prevShoppingSession){
+                updatedShoppingSession = await db.ShoppingSession.update({
+                    total: total,
+                    finish_date: finishDate,
+                },{ 
+                    where:{ id: idShoppingSession}
+                });
+                if(updatedShoppingSession){
+                    response ={
+                        meta:{
+                            status: 201, //, 201 for successful resource edition
+                            success: true,
+                            message: `Shopping Session id = ${prevShoppingSession.id}, finished successfully.`,
+                            url: 'http://localhost:3000/api/cart/shoppingSession/:idShoppingSession/finish',
+                        },                   
+                        data: updatedShoppingSession
+                    };
+                }else{
+                    response ={
+                        meta: {
+                            status: 500,
+                            success: false,
+                            message: `Shopping Session id = ${prevShoppingSession.id}, finished failed.`,
+                            url: 'http://localhost:3000/api/cart/shoppingSession/:idShoppingSession/finish'
+                        }
+                    };
+                };
+            }else{
+                response = {
+                    meta: {
+                        status : 204, //204 for success without content,
+                        success: false,
+                        message: `Shopping Session id is not valid: '${idShoppingSession}'`,
+                        url: 'http://localhost:3000/api/cart/shoppingSession/:idShoppingSession/finish'
+                    },
+                    data: prevShoppingSession
+                } 
+            };
+
+            return res.json(response);
+
+        } catch (error) {
+            console.log(error);
+            res.json({
+                meta: {
+                    status: 503,
+                    success: false,
+                    message: "An error occurred while processing your request."
+                }
+            });            
+        }; 
+    },
 
 };
 

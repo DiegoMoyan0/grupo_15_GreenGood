@@ -26,12 +26,23 @@ const uploadFile = multer({storage});
 
 //---------------------------------------------------------//
 
-
 /*** @GET ALL PRODUCTS ***/ 
 routes.get('/list', productsApiController.getAll);
 
+/*** @GET LIST WITH PAGES OF PRODUCTS ***/ 
+routes.get('/getPages', productsApiController.getPages);
+
+/*** @GET ALL PRODUCTS BY CATEGORY***/ 
+routes.get('/list/category', productsApiController.getAllByCategory);
+
+/*** @GET ALL PRODUCTS BY SUBCATEGORY***/ 
+routes.get('/list/subcategory', productsApiController.getAllBySubcategory);
+
+/*** @GET ALL PRODUCTS BY TYPE***/ 
+routes.get('/list/type', productsApiController.getAllByType);
+
 /*** @GET ONE PRODUCT DETAIL ***/ 
-routes.get('/:id', productsApiController.getDetail);
+routes.get('/:id/detail', productsApiController.getDetail);
 
 /*** @GET 10 of the latests created products ***/ 
 routes.get('/newests', productsApiController.getNewests);

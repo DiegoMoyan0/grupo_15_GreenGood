@@ -14,7 +14,7 @@ routes.get('/shoppingSession/:idUser/get', cartApiController.getShoppingSession)
 routes.get('/allItems/:idUser/get', cartApiController.getCart);
 
 /*** @POST CREATE A NEW SHOPPING SESSION***/ 
-routes.get('/shoppingSession/:idUser/init', cartApiController.initShoppingSession);
+routes.post('/shoppingSession/:idUser/init', cartApiController.initShoppingSession);
 
 /*** @POST NEW CART ITEM ADDED ***/ 
 routes.post('/add', cartApiController.addCartItem);
@@ -24,6 +24,9 @@ routes.patch('/:idCartItem/updateQuantity', cartApiController.modifQuantity);
 
 /*** @DELETE REMOVE ONE CART ITEM ***/ 
 routes.delete('/:idCartItem/delete', cartApiController.removeCartItem);
+
+/*** @PATCH EDIT SHOPPING SESSION TOTAL AND END DATE ***/ 
+routes.patch('/shoppingSession/:idShoppingSession/finish', cartApiController.finishShoppingSession);
 
 
 module.exports = routes;

@@ -125,8 +125,18 @@
 
 .discount{
     display: inline-block;
-    width: 45%;
+    width: 70%;
     font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.fav {
+    top: 10%;
+    right: 2%;
+    width: 150px;
+    font-size: 12px;
+    border: none; 
+    box-shadow: 2px 2px 5px #402c68;
 }
 
 .old{
