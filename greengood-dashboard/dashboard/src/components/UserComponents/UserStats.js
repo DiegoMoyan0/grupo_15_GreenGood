@@ -1,6 +1,8 @@
 import React from 'react';
 import LastUserCard from './LastUserCard'
 import UserHighChart from './UserHighChart'
+import UserTypePieChart from './UserTypePieChart'
+
 
 function UserStats() {
   return (
@@ -13,12 +15,14 @@ function UserStats() {
   <LastUserCard title="Info Users" />
         
 
-
-  
       </div>
 
-  {/*<!-- <UserHighChart />-->*/}
+  {/*<!--   -->*/}
+
   <UserHighChart  title="Monthly Registrations" />
+
+
+  <UserTypePieChart  title="User Type Tistribution" />
       
  
     </React.Fragment>

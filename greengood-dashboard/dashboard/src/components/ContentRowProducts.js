@@ -22,9 +22,8 @@ function ContentRowProducts(props) {
         console.error('Error fetching data:', error);
       }
     };
-
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
   console.log(products)
   console.log(products.meta.total)
