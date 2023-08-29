@@ -6,12 +6,7 @@ const multer = require('multer');
 
 // ************ Controller Require ************
 const validationsRegisterMw = require('../../middlewares/validateRegisterMw');
-//const validationsLoginMw = require('../../middlewares/validateLoginMw');
 const validationsUpdateMw = require('../../middlewares/validateUpdateMw');
-//const validationsUserLoggedMw = require('../../middlewares/userLoggedMw');
-//const guestMw = require('../../middlewares/guestMw');
-//const authMw = require('../../middlewares/authMw');
-
 
 // ************ Controller Require ************/
 const userApiController = require('../../controllers/Api/usersApiControllers');
@@ -41,6 +36,9 @@ routes.get('/users', userApiController.getAll)
 
 /*** @GET USER BY ID ***/ 
 routes.get('/users/:id', userApiController.getUserById)
+
+/*** @GET USER COUNT BY TYPE ***/ 
+routes.get('/type-count', userApiController.getUserByType)
 
 /*** @GET USERS PURCHASES BY PROVINCE ***/ 
 routes.get('/province-sum', userApiController.getProvinceSum)

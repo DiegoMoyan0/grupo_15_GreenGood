@@ -139,6 +139,45 @@ const usersController = {
         };
     },
 
+    getUserByType: async (req, res) => {
+    try {
+        const users = await db.User.findAll({
+            attributes: ['type'],
+            raw: true,
+        });
+
+        let userCount = {};
+
+        users.forEach(user => {
+            if (user.type in userCount) {
+                userCount[user.type]++;
+            } else {
+                userCount[user.type] = 1;
+            }
+        });
+
+        let response = {
+            meta: {
+                status: 200,
+                success: true,
+                url: 'api/user/type-count'
+            },
+            counts: userCount,
+        };
+
+        return res.json(response);
+    } catch (error) {
+        console.log(error);
+        res.json({
+            meta: {
+                status: 503,
+                success: false,
+                message: 'An error occurred while processing your request.',
+            },
+        });
+    }
+},
+
     updateUser: async (req, res) => {
 
         try {
