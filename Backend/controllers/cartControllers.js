@@ -11,6 +11,7 @@ const controller = {
                 nest: true,
                 include: ["user", "cartItems"],
             });
+            console.log(shopSession);
             if (shopSession == null){
                 await db.ShoppingSession.create({
                     init_date: Date.now(),

@@ -15,7 +15,6 @@ window.onload = function () {
     };
     
     //-----------------------------------Contador carrito------------------------------------------//
-
     if(!userID){
         cartItemCountInput.value = 0;    
     }else{
@@ -48,10 +47,10 @@ window.onload = function () {
 
                     if (shoppingSession.meta.success){
                         shoppingSessionFlag = true;
-                    }else if (!shoppingSession.meta.success && shoppingSession.meta.status == 204 ){
-                        let response = await fetch(`http://localhost:3001/api/cart/shoppingSession/${userID}/init`);
-                        let initShoppingSession = await response.json();
-                        if(initShoppingSession.meta.success){
+                    }else{
+                        let response = await fetch(`http://localhost:3001/api/cart/shoppingSession/${userID}/init`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: "" })
+                        shoppingSession = await response.json();
+                        if(shoppingSession.meta.success){
                             shoppingSessionFlag = true;
                         };
                     }; 
@@ -200,7 +199,6 @@ async function favProductsStore(e) {
         body: JSON.stringify(data) 
     };
     try {
-        console.log(requestOptions);
         const response = await fetch(url, requestOptions);
         const responseData = await response.json();
         if(!responseData.meta.success){
