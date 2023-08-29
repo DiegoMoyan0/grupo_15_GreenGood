@@ -37,6 +37,9 @@ routes.get('/users', userApiController.getAll)
 /*** @GET USER BY ID ***/ 
 routes.get('/users/:id', userApiController.getUserById)
 
+/*** @GET USER IMAGE BY ID ***/ 
+routes.get('/image/:id', userApiController.getUserImageById)
+
 /*** @GET LAST USER REGISTERED ***/ 
 routes.get('/last-registered', userApiController.GetLastRegistered)
 

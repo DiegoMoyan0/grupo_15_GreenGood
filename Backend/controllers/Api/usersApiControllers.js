@@ -139,7 +139,56 @@ const usersController = {
         };
     },
 
+    getUserImageById: async (req, res) => {
+
+
+        try {
+          const user = await db.User.findByPk(req.params.id, {
+            attributes: ['image', 'id'],
+          });
+      
+          if (!user) {
+            return res.status(404).json({
+              meta: {
+                status: 404,
+                success: false,
+                message: 'User Img not found',
+              },
+            });
+          }
+
+          const port = '3001'
+
+      
+          const imagePath = `http://localhost:${port}/images/users/${user.image}`;
+      
+          let response = {
+            meta: {
+              status: 200,
+              success: true,
+              url: 'api/user/image/:id',
+            },
+            userImage: imagePath,
+          };
+      
+          return res.json(response)
+
+
+        } catch (error) {
+          console.log(error);
+          res.status(500).json({
+            meta: {
+              status: 503,
+              success: false,
+              message: 'An error occurred while processing your request.',
+            },
+          });
+        }
+      },
+    
+
     getUserByType: async (req, res) => {
+
     try {
         const users = await db.User.findAll({
             attributes: ['type'],
@@ -165,7 +214,7 @@ const usersController = {
             counts: userCount,
         };
 
-        return res.json(response);
+        return res.json(response)
     } catch (error) {
         console.log(error);
         res.json({
@@ -181,9 +230,19 @@ const usersController = {
 GetLastRegistered: async (req, res) => {
     try {
         let lastUserRegistered = await db.User.findOne({
+            raw: true,
+            nest: true,
             order: [
                 ['created_at', 'DESC']
             ],
+            include: [
+                {
+                    model: db.Address,
+                    as: 'address',
+                    attributes: ['country', 'province']
+                }
+            ],
+            attributes: ['id', 'first_name', 'last_name', 'email', 'image', 'type', 'created_at'],   
         });
 
         let response = {
@@ -193,7 +252,8 @@ GetLastRegistered: async (req, res) => {
                 total: 1,
                 url: '/api/user/last-registered'
             },
-            user: lastUserRegistered
+            user: lastUserRegistered,
+            user_image: `/images/users/${lastUserRegistered.image}`
         };
 
         return res.json(response);
@@ -207,6 +267,7 @@ GetLastRegistered: async (req, res) => {
                 message: "An error occurred while processing your request."
             }
         });
+
     }
 },
 
@@ -355,7 +416,7 @@ GetMonthlyRegistrations: async (req, res) => {
             } else {
                 response = {
                     meta: {
-                        status: 500,
+                        status: 503,
                         success: false,
                         message: "User profile edition failed.",
                         url: 'api/user/users/:id/update'
@@ -445,7 +506,7 @@ GetMonthlyRegistrations: async (req, res) => {
             } else {
                 response = {
                     meta: {
-                        status: 500, // This code indicates that something went wrong on the server side.
+                        status: 503, // This code indicates that something went wrong on the server side.
                         success: false,
                         message: "User registration failed.",
                         url: 'api/user/register'
@@ -505,7 +566,7 @@ GetMonthlyRegistrations: async (req, res) => {
             } else {
                 response = {
                     meta: {
-                        status: 500,
+                        status: 503,
                         success: false,
                         message: "User profile deletion failed.",
                         url: 'api/user/:id/delete'
