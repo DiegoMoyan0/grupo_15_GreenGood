@@ -34,7 +34,14 @@ function SideBar(){
                 <li className="nav-item">
                     <a className="nav-link collapsed" href="/">
                         <i className="fas fa-fw fa-folder"></i>
-                        <span>Pages</span>
+                        <span>Product Stats</span>
+                    </a>
+                </li>
+                {/*<!-- Nav Item - Pages -->*/}
+                <li className="nav-item">
+                    <a className="nav-link collapsed" href="/UserStats">
+                        <i className="fas fa-fw fa-folder"></i>
+                        <span>User Stats</span>
                     </a>
                 </li>
 

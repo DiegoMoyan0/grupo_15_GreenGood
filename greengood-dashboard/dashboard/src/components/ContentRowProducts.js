@@ -37,13 +37,13 @@ function ContentRowProducts(props) {
       borderColor: 'primary',
     },
     {
-      titulo: 'Seller Users in Data Base',
+      titulo: 'Seller-Type Users in Data Base',
       cifra: `${userCount.Vendedor}`,
       icono: 'user',
       borderColor: 'warning',
     },
     {
-      titulo: 'Buyers Users in Data Base',
+      titulo: 'Buyer-Type Users in Data Base',
       cifra: `${userCount.Comprador}`,
       icono: 'user',
       borderColor: 'success',

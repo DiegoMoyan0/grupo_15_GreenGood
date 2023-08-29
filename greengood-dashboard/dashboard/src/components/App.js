@@ -1,14 +1,21 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import SideBar from './SideBar';
-import ContentWrapper from './ContentWrapper';
+import ContentWrapper from './ContentWrapper'
+import UserStats from './UserComponents/UserStats'
+
 function App() {
   return (
-    <React.Fragment>
-      	<div id="wrapper">
+    <Router>
+      <React.Fragment>
+        <div id="wrapper">
           <SideBar />
-          <ContentWrapper />
+          <Routes>
+          <Route path="/" exact element={ <ContentWrapper />}></Route>
+           <Route path="/UserStats" exact element={<UserStats />} /></Routes>
         </div>
-    </React.Fragment>
+      </React.Fragment>
+    </Router>
   );
 }
 
