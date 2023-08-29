@@ -212,6 +212,7 @@ const usersController = {
                 url: 'api/user/type-count'
             },
             counts: userCount,
+            total_users: users.length
         };
 
         return res.json(response)
