@@ -158,7 +158,7 @@ const usersController = {
 
         let response = {
             meta: {
-                status: 200,
+                status: 200,  //200 for success with content,
                 success: true,
                 url: 'api/user/type-count'
             },
@@ -174,6 +174,97 @@ const usersController = {
                 success: false,
                 message: 'An error occurred while processing your request.',
             },
+        });
+    }
+},
+
+GetLastRegistered: async (req, res) => {
+    try {
+        let lastUserRegistered = await db.User.findOne({
+            order: [
+                ['created_at', 'DESC']
+            ],
+        });
+
+        let response = {
+            meta: {
+                status: 200,  //200 for success with content,
+                success: true,
+                total: 1,
+                url: '/api/user/last-registered'
+            },
+            user: lastUserRegistered
+        };
+
+        return res.json(response);
+
+    } catch (error) {
+        console.log(error);
+        res.json({
+            meta: {
+                status: 503,
+                success: false,
+                message: "An error occurred while processing your request."
+            }
+        });
+    }
+},
+
+GetMonthlyRegistrations: async (req, res) => {
+
+    try {
+
+
+        const users = await db.User.findAll();
+
+        const monthsMap = {
+            '01': 'Ene', '02': 'Feb', '03': 'Mar', '04': 'Abr',
+            '05': 'May', '06': 'Jun', '07': 'Jul', '08': 'Ago',
+            '09': 'Sep', '10': 'Oct', '11': 'Nov', '12': 'Dic'
+        };
+
+        const registrationsByMonth = {};
+
+        users.forEach(user => {
+            const createdAt = new Date(user.created_at)
+            const month = monthsMap[(createdAt.getMonth() + 1).toString().padStart(2, '0')]
+            if (!registrationsByMonth[month]) {
+                registrationsByMonth[month] = 1
+            } else {
+                registrationsByMonth[month]++
+            }
+        });
+
+        console.log(registrationsByMonth)
+
+        const results = [];
+
+        for (const month in registrationsByMonth) {
+        results.push({ month, count: registrationsByMonth[month] })
+        }
+
+        console.log(results)
+
+        let response = {
+            meta: {
+                status: 200,
+                success: true,
+                total: results.length,
+                url: '/api/user/monthly-registrations'
+            },
+            registrationsByMonth: results
+        };
+
+        return res.json(response);
+
+    } catch (error) {
+        console.log(error);
+        res.json({
+            meta: {
+                status: 503,
+                success: false,
+                message: "An error occurred while processing your request."
+            }
         });
     }
 },

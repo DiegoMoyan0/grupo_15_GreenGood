@@ -37,6 +37,12 @@ routes.get('/users', userApiController.getAll)
 /*** @GET USER BY ID ***/ 
 routes.get('/users/:id', userApiController.getUserById)
 
+/*** @GET LAST USER REGISTERED ***/ 
+routes.get('/last-registered', userApiController.GetLastRegistered)
+
+/*** @GET MONTHLY REGISTERED USERS ***/ 
+routes.get('/monthly-registrations', userApiController.GetMonthlyRegistrations)
+
 /*** @GET USER COUNT BY TYPE ***/ 
 routes.get('/type-count', userApiController.getUserByType)
 
