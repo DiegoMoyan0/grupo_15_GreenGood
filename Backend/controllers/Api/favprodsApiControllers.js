@@ -20,7 +20,7 @@ const controller = {
                     meta: {
                         status : 200, //200 for success with content,
                         success: true,
-                        url: 'http://localhost:3000/api/favProducts/all/:idUser/get'
+                        url: 'http://localhost:3001/api/favProducts/all/:idUser/get'
                     },
                     data: favItems
                 }
@@ -29,7 +29,7 @@ const controller = {
                     meta: {
                         status : 204, //204 for success without content,
                         success: false,
-                        url: 'http://localhost:3000/api/favProducts/all/:idUser/get'
+                        url: 'http://localhost:3001/api/favProducts/all/:idUser/get'
                     },
                     data: favItems
                 }
@@ -65,7 +65,7 @@ const controller = {
                         status: 201,
                         success: true,
                         message: `0 fav Products from user id = ${idUser} at localstorage`,
-                        url: 'http://localhost:3000/api/favProducts/:idUser/store'
+                        url: 'http://localhost:3001/api/favProducts/:idUser/store'
                     }
                 };
             };
@@ -101,7 +101,7 @@ const controller = {
                         success: true,
                         updated: true,
                         message: `Fav Products from user id = ${idUser} updated with products '${idProducts}' successfully.`,
-                        url: 'http://localhost:3000/api/favProducts/:idUser/store',
+                        url: 'http://localhost:3001/api/favProducts/:idUser/store',
                     },                   
                     data: idProducts
                 };
@@ -111,7 +111,7 @@ const controller = {
                         status: 500,
                         success: false,
                         message: `Error while updating fav Products from user id = ${idUser}`,
-                        url: 'http://localhost:3000/api/favProducts/:idUser/store'
+                        url: 'http://localhost:3001/api/favProducts/:idUser/store'
                     }
                 };
             };

@@ -21,7 +21,7 @@ const controller = {
                     meta: {
                         status : 200, //200 for success with content,
                         success: true,
-                        url: 'http://localhost:3000/api/cart/shoppingSession/:idUser/get'
+                        url: 'http://localhost:3001/api/cart/shoppingSession/:idUser/get'
                     },
                     data: shopSession
                 }
@@ -30,7 +30,7 @@ const controller = {
                     meta: {
                         status : 204, //204 for success without content,
                         success: false,
-                        url: 'http://localhost:3000/api/cart/shoppingSession/:idUser/get'
+                        url: 'http://localhost:3001/api/cart/shoppingSession/:idUser/get'
                     },
                     data: shopSession
                 }
@@ -66,7 +66,7 @@ const controller = {
                     meta: {
                         status : 200, //200 for success with content,
                         success: true,
-                        url: 'http://localhost:3000/api/cart/shoppingSession/:idUser/init'
+                        url: 'http://localhost:3001/api/cart/shoppingSession/:idUser/init'
                     },
                     data: shopSession
                 }
@@ -75,7 +75,7 @@ const controller = {
                     meta: {
                         status : 204, //204 for success without content,
                         success: false,
-                        url: 'http://localhost:3000/api/cart/shoppingSession/:idUser/init'
+                        url: 'http://localhost:3001/api/cart/shoppingSession/:idUser/init'
                     },
                     data: shopSession
                 }
@@ -111,7 +111,7 @@ const controller = {
                     meta: {
                         status : 204, //204 for success without content,
                         success: false,
-                        url: 'http://localhost:3000/api/cart/allItems/:idUser/get'
+                        url: 'http://localhost:3001/api/cart/allItems/:idUser/get'
                     },
                     data: shopSession
                 };
@@ -130,7 +130,7 @@ const controller = {
                     meta: {
                         status : 200, //200 for success with content,
                         success: true,
-                        url: 'http://localhost:3000/api/cart/allItems/:idUser/get'
+                        url: 'http://localhost:3001/api/cart/allItems/:idUser/get'
                     },
                     data: cartItems
                 }
@@ -139,7 +139,7 @@ const controller = {
                     meta: {
                         status : 204, //204 for success without content,
                         success: false,
-                        url: 'http://localhost:3000/api/cart/allItems/:idUser/get'
+                        url: 'http://localhost:3001/api/cart/allItems/:idUser/get'
                     },
                     data: cartItems
                 }
@@ -194,7 +194,7 @@ const controller = {
                         success: true,
                         updated: true,
                         message: `Cart Item id = ${prevCartItem.id}, incremented quantity successfully.`,
-                        url: 'http://localhost:3000/api/cart/add',
+                        url: 'http://localhost:3001/api/cart/add',
                     },                   
                     data: updatedCartItem
                 };
@@ -205,7 +205,7 @@ const controller = {
                         success: true,
                         created: true,
                         message: `Cart Item created successfully.`,
-                        url: 'http://localhost:3000/api/cart/add',
+                        url: 'http://localhost:3001/api/cart/add',
                     },                   
                     data: createdCartItem
                 };
@@ -215,7 +215,7 @@ const controller = {
                         status: 500,
                         success: false,
                         message: `Cart Item id = ${prevCartItem.id}, incremented quantity failed.`,
-                        url: 'http://localhost:3000/api/cart/add'
+                        url: 'http://localhost:3001/api/cart/add'
                     }
                 };
             };
@@ -266,7 +266,7 @@ const controller = {
                             status: 201, //, 201 for successful resource edition
                             success: true,
                             message: `Cart Item id = ${prevCartItem.id}, edited quantity successfully.`,
-                            url: 'http://localhost:3000/api/cart/:idCartItem/updateQuantity',
+                            url: 'http://localhost:3001/api/cart/:idCartItem/updateQuantity',
                         },                   
                         data: updatedCartItem
                     };
@@ -276,7 +276,7 @@ const controller = {
                             status: 500,
                             success: false,
                             message: `Cart Item id = ${prevCartItem.id}, edited quantity failed.`,
-                            url: 'http://localhost:3000/api/cart/:idCartItem/updateQuantity'
+                            url: 'http://localhost:3001/api/cart/:idCartItem/updateQuantity'
                         }
                     };
                 };
@@ -286,7 +286,7 @@ const controller = {
                         status : 204, //204 for success without content,
                         success: false,
                         message: `Cart item id is not valid: '${idCartItem}'`,
-                        url: 'http://localhost:3000/api/cart/:idCartItem/updateQuantity'
+                        url: 'http://localhost:3001/api/cart/:idCartItem/updateQuantity'
                     },
                     data: prevCartItem
                 } 
@@ -323,7 +323,7 @@ const controller = {
                         status: 201, //, 201 for successful resource edition
                         success: true,
                         message: `Cart Item deletion successfully.`,
-                        url: 'http://localhost:3000/api/cart/:idCartItem/delete',
+                        url: 'http://localhost:3001/api/cart/:idCartItem/delete',
                     },                   
                     data: deletedCartItem
                 };
@@ -333,7 +333,7 @@ const controller = {
                         status: 500,
                         success: false,
                         message: `Cart Item deletion failed.`,
-                        url: 'http://localhost:3000/api/cart/:idCartItem/delete'
+                        url: 'http://localhost:3001/api/cart/:idCartItem/delete'
                     },
                     data: deletedCartItem
                 };
@@ -388,7 +388,7 @@ const controller = {
                             status: 201, //, 201 for successful resource edition
                             success: true,
                             message: `Shopping Session id = ${prevShoppingSession.id}, finished successfully.`,
-                            url: 'http://localhost:3000/api/cart/shoppingSession/:idShoppingSession/finish',
+                            url: 'http://localhost:3001/api/cart/shoppingSession/:idShoppingSession/finish',
                         },                   
                         data: updatedShoppingSession
                     };
@@ -398,7 +398,7 @@ const controller = {
                             status: 500,
                             success: false,
                             message: `Shopping Session id = ${prevShoppingSession.id}, finished failed.`,
-                            url: 'http://localhost:3000/api/cart/shoppingSession/:idShoppingSession/finish'
+                            url: 'http://localhost:3001/api/cart/shoppingSession/:idShoppingSession/finish'
                         }
                     };
                 };
@@ -408,7 +408,7 @@ const controller = {
                         status : 204, //204 for success without content,
                         success: false,
                         message: `Shopping Session id is not valid: '${idShoppingSession}'`,
-                        url: 'http://localhost:3000/api/cart/shoppingSession/:idShoppingSession/finish'
+                        url: 'http://localhost:3001/api/cart/shoppingSession/:idShoppingSession/finish'
                     },
                     data: prevShoppingSession
                 } 

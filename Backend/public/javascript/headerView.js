@@ -20,7 +20,7 @@ window.onload = function () {
         cartItemCountInput.value = 0;    
     }else{
         async function initCountInput (){
-            let response = await fetch(`http://localhost:3000/api/cart/shoppingSession/${userID}/get`);
+            let response = await fetch(`http://localhost:3001/api/cart/shoppingSession/${userID}/get`);
             shoppingSession =  await response.json();
             if (shoppingSession.meta.success){
                 cartItemCountInput.value  = Number(shoppingSession.data.cartItems.length);
@@ -42,14 +42,14 @@ window.onload = function () {
                     shoppingSessionFlag = false;
                     alert("Debes iniciar session para agregar items al carrito, deseas loguearte?");
                 }else{
-                    let response = await fetch(`http://localhost:3000/api/cart/shoppingSession/${userID}/get`);
+                    let response = await fetch(`http://localhost:3001/api/cart/shoppingSession/${userID}/get`);
 
                     shoppingSession =  await response.json();
 
                     if (shoppingSession.meta.success){
                         shoppingSessionFlag = true;
                     }else if (!shoppingSession.meta.success && shoppingSession.meta.status == 204 ){
-                        let response = await fetch(`http://localhost:3000/api/cart/shoppingSession/${userID}/init`);
+                        let response = await fetch(`http://localhost:3001/api/cart/shoppingSession/${userID}/init`);
                         let initShoppingSession = await response.json();
                         if(initShoppingSession.meta.success){
                             shoppingSessionFlag = true;
@@ -60,7 +60,7 @@ window.onload = function () {
 
             const idProduct = Number(btn.id);
             const idSession = Number(shoppingSession.data.id);
-            const url = `http://localhost:3000/api/cart/add`;
+            const url = `http://localhost:3001/api/cart/add`;
             const data = {
                 product_id: idProduct,
                 shopping_session_id: idSession,
@@ -85,7 +85,7 @@ window.onload = function () {
                     setTimeout(() => {
                         btn.classList.remove('clicked');
                         !amountInputDetail? btn.textContent = "Agragar otra unidad al carrito" : null  
-                    }, 3000);
+                    }, 3001);
                     if(responseData.meta.created){
                         // Después de agregar el producto, actualizo contador de carrito
                         cartItemCountInput.value ++;
@@ -158,7 +158,7 @@ window.onload = function () {
 
         async function copyLink() {
             // Obtén la URL del detalle del producto
-            let url = `http://localhost:3000/product/${shIcon.id}/detail`;
+            let url = `http://localhost:3001/product/${shIcon.id}/detail`;
           
             // Copia el contenido del input al portapapeles usando el API Clipboard
             try {
@@ -188,7 +188,7 @@ userIDfav? window.addEventListener('beforeunload', favProductsStore) : ""; //Ant
 async function favProductsStore(e) {
     let idProducts = localStorage.getItem('favs');
     
-    const url = `http://localhost:3000/api/favProducts/${userIDfav}/store`;
+    const url = `http://localhost:3001/api/favProducts/${userIDfav}/store`;
     const data = {
         favProducts: idProducts,
     };

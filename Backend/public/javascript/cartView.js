@@ -16,7 +16,7 @@ emptyBtn.addEventListener('click', (e) => {
         cartProducts.forEach(card => {
             const idCart = Number(card.id);
             async function removeAllCartItems () {
-                const urlDelete = `http://localhost:3000/api/cart/${idCart}/delete`;
+                const urlDelete = `http://localhost:3001/api/cart/${idCart}/delete`;
                 const reqOptionsDelete = {
                     method: 'DELETE',
                     headers: {
@@ -74,7 +74,7 @@ cartProducts.forEach(card => {
 
     async function modifQuantity () {
         let amout = amountInput.value;
-        const url = `http://localhost:3000/api/cart/${idCart}/updateQuantity`;
+        const url = `http://localhost:3001/api/cart/${idCart}/updateQuantity`;
         const data = {
             quantity: amout
         };
@@ -103,7 +103,7 @@ cartProducts.forEach(card => {
     eliminateBtn.addEventListener('click', removeCartItem);
 
     async function removeCartItem () {
-        const urlDelete = `http://localhost:3000/api/cart/${idCart}/delete`;
+        const urlDelete = `http://localhost:3001/api/cart/${idCart}/delete`;
         const reqOptionsDelete = {
             method: 'DELETE',
             headers: {
@@ -129,7 +129,7 @@ cartProducts.forEach(card => {
 
 // -----------------------------Order datail -----------------------------/
 async function orderDatails () {
-    let response = await fetch(`http://localhost:3000/api/cart/allItems/${userID}/get`);
+    let response = await fetch(`http://localhost:3001/api/cart/allItems/${userID}/get`);
     allItems =  await response.json();
     if (allItems.meta.success){
         let subtotal = 0;
