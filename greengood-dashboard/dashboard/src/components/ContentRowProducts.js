@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 function ContentRowProducts(props) {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState({ meta: {}, data: [] })
   const [userCount, setUserCounts] = useState({ Vendedor: 0, Comprador: 0 });
 
   useEffect(() => {
@@ -14,9 +14,10 @@ function ContentRowProducts(props) {
         const userCountNumber = await userCountsResponse.json();
 
         if (productsData.meta.success && userCountNumber.meta.success) {
-          setProducts(productsData);
+          setProducts(productsData); 
           setUserCounts(userCountNumber.counts);
         }
+
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -25,10 +26,13 @@ function ContentRowProducts(props) {
     fetchData();
   }, []);
 
+  console.log(products)
+  console.log(products.meta.total)
+
   const arrayMetrics = [
     {
       titulo: 'Products in Data Base',
-      cifra: `${products.meta.total}`, 
+      cifra: `${products.meta.total}`,
       icono: 'gift',
       borderColor: 'primary',
     },
