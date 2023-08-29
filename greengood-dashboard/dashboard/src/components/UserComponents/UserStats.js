@@ -8,23 +8,13 @@ function UserStats() {
   return (
     <React.Fragment>
       <div>
-
-
-  {/*<!-- <UserCard title="Info Users" />-->*/}
-
-  <LastUserCard title="Info Users" />
-        
-
+        {/*<!-- <UserCard title="Info Users" />-->*/}
+        <LastUserCard title="Info Users" />    
       </div>
-
-  {/*<!--   -->*/}
-
-  <UserHighChart  title="Monthly Registrations" />
-
-
-  <UserTypePieChart  title="User Type Tistribution" />
-      
- 
+      {/*<!--   -->*/}
+      <UserHighChart  title="Monthly Registrations" />
+      <UserTypePieChart  title="User Type Tistribution" />
+            
     </React.Fragment>
   );
 }

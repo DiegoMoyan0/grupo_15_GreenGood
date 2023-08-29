@@ -19,13 +19,8 @@ function LastUserCard() {
 
           const userImageData = await userImageResponse.json()
 
-          console.log(userImageData)
-
-
-
           if (userImageData.meta.success) {
             userData.userImage = userImageData.userImage
-            console.log(userData.userImage)
           }
 
           setUserData(userData)
@@ -52,7 +47,7 @@ function LastUserCard() {
     <div className="card">
       <div className="card-header">Último usuario registrado</div>
       <div className="card-body">
-        <img src={userData.userImage} alt="User" className="user-image" />
+        <img src={userData.userImage} alt="User" className="user-image img-fluid" />
         <h5 className="card-title">{userData.user.first_name} {userData.user.last_name}</h5>
         <p className="card-text">Tipo: {userData.user.type}</p>
         <p className="card-text">Provincia: {userData.user.address.province}</p>

@@ -3,13 +3,10 @@ import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
 function UserTypePieChart() {
-
   
   const [UserTypeData, setChartData] = useState([])
 
   useEffect(() => {
-
-
 
     const fetchData = async () => {
       try {
@@ -30,11 +27,6 @@ function UserTypePieChart() {
       }
     };
 
-
-
-
-    console.log(UserTypeData)
-
     fetchData();
   }, []);
 
@@ -53,8 +45,6 @@ function UserTypePieChart() {
         showInLegend: true,
       },
     },
-
-
 
     colors: ['#240D54', '#132E0D'],
     series: [
