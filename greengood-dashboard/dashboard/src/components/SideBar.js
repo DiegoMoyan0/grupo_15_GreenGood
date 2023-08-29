@@ -45,12 +45,12 @@ function SideBar(){
                     </a>
                 </li>
 
-                {/*<!-- Nav Item - Charts -->*/}
+                {/*<!-- Nav Item - Charts -->
                 <li className="nav-item">
                     <a className="nav-link" href="/">
                         <i className="fas fa-fw fa-chart-area"></i>
                         <span>Charts</span></a>
-                </li>
+                </li> */}
 
                 {/*<!-- Nav Item - Tables -->*/}
                 <li className="nav-item">
