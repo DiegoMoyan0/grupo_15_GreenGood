@@ -2,23 +2,24 @@ import React, { useEffect, useState } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
+// Create component
 function UserTypePieChart() {
-  
+  // Define state variables and state-updating functions
   const [UserTypeData, setChartData] = useState([])
-
+  // Define useEffect hook to manipulate data being fetched from the API
   useEffect(() => {
-
     const fetchData = async () => {
       try {
         const response = await fetch('http://localhost:3001/api/user/type-count')
         const data = await response.json();
         
         if (data.meta.success) {
-         // const totalCount = data.total_users;
           const UserTypeData = Object.entries(data.counts).map(([type, count]) => ({
             name: type,
             y: count,
           }));
+
+          //Update state variable value
           setChartData(UserTypeData);
         }
 
@@ -30,9 +31,10 @@ function UserTypePieChart() {
     fetchData();
   }, []);
 
+
+  // Set up chart options
   const options = {
     chart: {
-
       type: 'pie',
     },
     title: {
@@ -45,8 +47,7 @@ function UserTypePieChart() {
         showInLegend: true,
       },
     },
-
-    colors: ['#240D54', '#132E0D'],
+    colors: ['#93D746', '#220B52'],
     series: [
       {
         name: 'Cantidad',
