@@ -158,7 +158,6 @@ const usersController = {
           }
 
           const port = '3001'
-
       
           const imagePath = `http://localhost:${port}/images/users/${user.image}`;
       

@@ -18,13 +18,17 @@ const productsController = {
                     { association: 'manufacturer' }],
                 },
             );
-
-            //-------To get only the name values of associated tables
+            const port = '3001';
+            
+            //-------To get only the name values of associated tables and the path of the image ------//
             products.forEach(product => {
+                const imagePath = `http://localhost:${port}/images/products/${product.image}`;
+
                 product.category = product.category.name;
                 product.subcategory = product.subcategory.name;
                 product.type = product.type.name;
                 product.manufacturer = product.manufacturer.name;
+                product.image = imagePath;
             });
 
             let response = {
@@ -180,12 +184,17 @@ const productsController = {
             );
 
 
-            //-------To get only the name values of associated tables
+            const port = '3001';
+            
+            //-------To get only the name values of associated tables and the path of the image ------//
             products.forEach(product => {
+                const imagePath = `http://localhost:${port}/images/products/${product.image}`;
+
                 product.category = product.category.name;
                 product.subcategory = product.subcategory.name;
                 product.type = product.type.name;
                 product.manufacturer = product.manufacturer.name;
+                product.image = imagePath;
             });
 
             let response = {
