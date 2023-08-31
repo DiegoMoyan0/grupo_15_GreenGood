@@ -47,7 +47,7 @@ function ContentRowProducts() {
   ];
 
   return (
-    <React.Fragment>
+    <>
       {arrayMetrics.map((box, index) => {
         return (
           <div className="col-md-4 mb-4" key={index + 'ContentRowMovies'}>
@@ -92,7 +92,7 @@ function ContentRowProducts() {
 
         );
       })}
-    </React.Fragment>
+    </>
   );
 }
 
