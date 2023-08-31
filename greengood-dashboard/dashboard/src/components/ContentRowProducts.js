@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function ContentRowProducts(props) {
+function ContentRowProducts() {
   const [products, setProducts] = useState({ meta: {}, data: [] })
   const [userCount, setUserCounts] = useState({ Vendedor: 0, Comprador: 0 });
 
@@ -14,7 +14,7 @@ function ContentRowProducts(props) {
         const userCountNumber = await userCountsResponse.json();
 
         if (productsData.meta.success && userCountNumber.meta.success) {
-          setProducts(productsData); 
+          setProducts(productsData);
           setUserCounts(userCountNumber.counts);
         }
 
