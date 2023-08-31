@@ -25,9 +25,6 @@ function ContentRowProducts(props) {
     fetchData()
   }, [])
 
-  console.log(products)
-  console.log(products.meta.total)
-
   const arrayMetrics = [
     {
       titulo: 'Products in Data Base',
@@ -50,7 +47,7 @@ function ContentRowProducts(props) {
   ];
 
   return (
-    <React.Fragment>
+    <>
       {arrayMetrics.map((box, index) => {
         return (
           <div className="col-md-4 mb-4" key={index + 'ContentRowMovies'}>
@@ -72,7 +69,7 @@ function ContentRowProducts(props) {
           </div>
         );
       })}
-    </React.Fragment>
+    </>
   );
 }
 
