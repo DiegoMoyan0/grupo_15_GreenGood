@@ -47,7 +47,7 @@ function ContentRowProducts() {
   ];
 
   return (
-    <React.Fragment>
+    <>
       {arrayMetrics.map((box, index) => {
         return (
           <div className="col-md-4 mb-4" key={index + 'ContentRowMovies'}>
@@ -67,9 +67,32 @@ function ContentRowProducts() {
               </div>
             </div>
           </div>
+
         );
       })}
-    </React.Fragment>
+      {arrayMetrics.map((box, index) => {
+        return (
+          <div className="col-md-4 mb-4" key={index + 'ContentRowMovies'}>
+            <div className={`card border-left-${box.borderColor} shadow h-100 py-2`}>
+              <div className="card-body">
+                <div className="row no-gutters align-items-center">
+                  <div className="col mr-2">
+                    <div className={`text-xs font-weight-bold text-${box.borderColor} text-uppercase mb-1`}>
+                      {box.titulo}
+                    </div>
+                    <div className="h5 mb-0 font-weight-bold text-gray-800">{box.cifra}</div>
+                  </div>
+                  <div className="col-auto">
+                    <i className={`fas fa-${box.icono} fa-2x text-gray-300`}></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        );
+      })}
+    </>
   );
 }
 

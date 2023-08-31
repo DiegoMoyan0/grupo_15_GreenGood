@@ -7,14 +7,15 @@ import UserStats from './UserComponents/UserStats'
 function App() {
   return (
     <Router>
-      <React.Fragment>
+      <>
         <div id="wrapper">
           <SideBar />
           <Routes>
-          <Route path="/" exact element={ <ContentWrapper />}></Route>
-           <Route path="/UserStats" exact element={<UserStats />} /></Routes>
+            <Route path="/" exact={true} element={ <ContentWrapper />}/>
+            <Route path="/UserStats" exact={true} element={<UserStats />}/>
+          </Routes>
         </div>
-      </React.Fragment>
+      </>
     </Router>
   );
 }

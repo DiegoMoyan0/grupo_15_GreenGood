@@ -4,11 +4,12 @@ import ContentRowProducts from "./ContentRowProducts";
 import LastProduct from "./LastProduct";
 import LastUser from "./LastUser";
 import Subcategories from "./Subcategories";
+import ProductsTable from "./TablesComponents/ProductsTable";
 
 
 function ContentRowTop(){
     return(
-        <React.Fragment>
+        <>
 				{/*<!-- Content Row Top -->*/}
 				<div className="container-fluid">
 					<div className="d-sm-flex aligns-items-center justify-content-between mb-4">
@@ -36,12 +37,14 @@ function ContentRowTop(){
 
 						{/*<!-- Subcategories in DB -->*/}
 						<Subcategories />
+
+						<ProductsTable/>
 						
 					</div>
 				</div>
 				{/*<!--End Content Row Top-->*/}
 
-        </React.Fragment>
+        </>
     )
 
 }
