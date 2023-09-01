@@ -2,6 +2,7 @@ import React from 'react';
 import LastUserCard from './LastUserCard';
 import UserColumnChart from './UserColumnChart';
 import UserTypePieChart from './UserTypePieChart';
+import UserPurchasesProvince from './UserPurchasesProvince';
 
 // Create user stats main component
 function UserStats() {
@@ -19,6 +20,9 @@ function UserStats() {
         <div className="row">
           <div className="col-md-4">
             <LastUserCard title="Last Registered User" />
+          </div>
+          <div className="col mt-5">
+            <UserPurchasesProvince title="User Purchases Per Province" />
           </div>
         </div>
       </div>

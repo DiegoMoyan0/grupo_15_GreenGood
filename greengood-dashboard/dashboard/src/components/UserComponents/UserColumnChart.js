@@ -40,7 +40,7 @@ function UserColumnChart() {
 
     fetchData();
   }, []);
-
+  
   // Set up chart options
   const options = {
     chart: {
