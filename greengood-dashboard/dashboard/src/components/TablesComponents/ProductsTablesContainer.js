@@ -7,7 +7,7 @@ function ProductsTable() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const productsResponse = await fetch('http://localhost:3001/api/product/getPages?page=1&per_page=10')
+        const productsResponse = await fetch('http://localhost:3001/api/product/list')
         const productsData = await productsResponse.json();
 
         if (productsData.meta.success) {

@@ -54,7 +54,7 @@ function SideBar(){
 
                 {/*<!-- Nav Item - Tables -->*/}
                 <li className="nav-item">
-                    <a className="nav-link" href="/">
+                    <a className="nav-link" href="/Tables">
                         <i className="fas fa-fw fa-table"></i>
                         <span>Tables</span></a>
                 </li>

@@ -4,7 +4,7 @@ import ContentRowProducts from "./ContentRowProducts";
 import LastProduct from "./LastProduct";
 import LastUser from "./LastUser";
 import Subcategories from "./Subcategories";
-import ProductsTable from "./TablesComponents/ProductsTable";
+import ProductsTable from "./TablesComponents/ProductsTablesContainer";
 
 
 function ContentRowTop(){
@@ -37,8 +37,6 @@ function ContentRowTop(){
 
 						{/*<!-- Subcategories in DB -->*/}
 						<Subcategories />
-
-						<ProductsTable/>
 						
 					</div>
 				</div>

@@ -10,13 +10,16 @@ import Paper from '@mui/material/Paper';
 import PropTypes from 'prop-types';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import TableFooter from '@mui/material/TableFooter';
 import TablePagination from '@mui/material/TablePagination';
 import IconButton from '@mui/material/IconButton';
 import FirstPageIcon from '@mui/icons-material/FirstPage';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import LastPageIcon from '@mui/icons-material/LastPage';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function TablePaginationActions(props) {
     const theme = useTheme();
@@ -102,16 +105,14 @@ export default function CustomizedTables({products}) {
     }));
     
     function createData(image, manufacturer, title, category, subcategory, stock, salesAmount, price, discount, createdDate, editedDate, softDeletedDate) {
-    return { image, manufacturer, title, category, subcategory, stock, salesAmount, price, discount, createdDate, editedDate, softDeletedDate };
-    }
-
-    products.map( prod => {
-        return createData(prod.image, prod.manufacturer, prod.title, prod.category, prod.subcategory, prod.stock, prod.salesAmount, prod.price, prod.discount, prod.created_at, prod.updated_at, prod.deleted_at );
-    });
+      return { image, manufacturer, title, category, subcategory, stock, salesAmount, price, discount, createdDate, editedDate, softDeletedDate };
+    };
     
     const rows = products.map( prod => {
-        return createData(prod.image, prod.manufacturer, prod.title, prod.category, prod.subcategory, prod.stock, prod.sales_amount, prod.price, prod.discount, prod.created_at, prod.updated_at, prod.deleted_at );
+        return createData(prod.image, prod.manufacturer, prod.title, prod.category, prod.subcategory, prod.stock, prod.sales_amount, prod.price, prod.discount, prod.createdDate, prod.updatedDate, prod.softDeletedDate );
     });
+
+    console.log(rows);
 
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -136,17 +137,18 @@ export default function CustomizedTables({products}) {
         <TableHead>
           <TableRow>
             <StyledTableCell>Imagen</StyledTableCell>
-            <StyledTableCell align="right">Manufacturer</StyledTableCell>
-            <StyledTableCell align="right">Título</StyledTableCell>
-            <StyledTableCell align="right">Categoría</StyledTableCell>
-            <StyledTableCell align="right">Subcategoría</StyledTableCell>
-            <StyledTableCell align="right">Stock</StyledTableCell>
-            <StyledTableCell align="right">Ventas</StyledTableCell>
-            <StyledTableCell align="right">Precio(ARS$)</StyledTableCell>
-            <StyledTableCell align="right">Descuento(%)</StyledTableCell>
-            <StyledTableCell align="right">Fecha de creación</StyledTableCell>
-            <StyledTableCell align="right">Fecha de edición</StyledTableCell>
-            <StyledTableCell align="right">Fecha de discontinuación</StyledTableCell>
+            <StyledTableCell align="center">Manufacturer</StyledTableCell>
+            <StyledTableCell align="center">Título</StyledTableCell>
+            <StyledTableCell align="center">Categoría</StyledTableCell>
+            <StyledTableCell align="center">Subcategoría</StyledTableCell>
+            <StyledTableCell align="center">Stock</StyledTableCell>
+            <StyledTableCell align="center">Ventas</StyledTableCell>
+            <StyledTableCell align="center">Precio(ARS$)</StyledTableCell>
+            <StyledTableCell align="center">Descuento(%)</StyledTableCell>
+            <StyledTableCell align="center">Creación</StyledTableCell>
+            <StyledTableCell align="center">Modificación</StyledTableCell>
+            <StyledTableCell align="center">Retirado</StyledTableCell>
+            <StyledTableCell align="center">Detalle</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -158,17 +160,22 @@ export default function CustomizedTables({products}) {
               <StyledTableCell component="th" scope="row">
                 <img src={row.image} alt="Product Img" className="product-image img-fluid" />
               </StyledTableCell>
-              <StyledTableCell align="right" >{row.manufacturer}</StyledTableCell>
-              <StyledTableCell align="right" >{row.title}</StyledTableCell>
-              <StyledTableCell align="right" >{row.category}</StyledTableCell>
-              <StyledTableCell align="right" >{row.subcategory}</StyledTableCell>
-              <StyledTableCell align="right" >{row.stock}</StyledTableCell>
-              <StyledTableCell align="right" >{row.salesAmount}</StyledTableCell>
-              <StyledTableCell align="right" >${row.price}</StyledTableCell>
-              <StyledTableCell align="right" >{row.discount}%</StyledTableCell>
-              <StyledTableCell align="right" >{row.created_at}</StyledTableCell>
-              <StyledTableCell align="right" >{row.updated_at}</StyledTableCell>
-              <StyledTableCell align="right" >{row.deleted_at}</StyledTableCell>
+              <StyledTableCell align="center" >{row.manufacturer}</StyledTableCell>
+              <StyledTableCell align="center" >{row.title}</StyledTableCell>
+              <StyledTableCell align="center" >{row.category}</StyledTableCell>
+              <StyledTableCell align="center" >{row.subcategory}</StyledTableCell>
+              <StyledTableCell align="center" >{row.stock}</StyledTableCell>
+              <StyledTableCell align="center" >{row.salesAmount === 0.00? row.salesAmount: "--"  }</StyledTableCell>
+              <StyledTableCell align="center" >${row.price}</StyledTableCell>
+              <StyledTableCell align="center" >{row.discount}%</StyledTableCell>
+              <StyledTableCell align="center" >{row.createdDate}</StyledTableCell>
+              <StyledTableCell align="center" >{row.editedDate}</StyledTableCell>
+              <StyledTableCell align="center" >{row.softDeletedDate}</StyledTableCell>
+              <StyledTableCell align="center" >
+                    <a className="link-dark" href="/ProductDetail">
+                      <FontAwesomeIcon icon={faSearch} />
+                    </a>
+              </StyledTableCell>
             </StyledTableRow>
           ))}
           {emptyRows > 0 && (

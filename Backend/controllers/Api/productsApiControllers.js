@@ -18,12 +18,17 @@ const productsController = {
                     { association: 'manufacturer' }],
                 },
             );
+
             const port = '3001';
             
-            //-------To get only the name values of associated tables and the path of the image ------//
+            //-------Replaced some properties for a better access ------//
             products.forEach(product => {
+                //Image path
                 const imagePath = `http://localhost:${port}/images/products/${product.image}`;
-
+                //Change Date format
+                product.createdDate = new Date(product.created_at).toLocaleDateString();
+                product.updatedDate = product.updated_at != null? new Date(product.updated_at).toLocaleDateString() : '(Sin cambios)';
+                product.softDeletedDate = product.deleted_at != null? new Date(product.deleted_at).toLocaleDateString() : '(Aún venta)';
                 product.category = product.category.name;
                 product.subcategory = product.subcategory.name;
                 product.type = product.type.name;
@@ -183,13 +188,17 @@ const productsController = {
                 },
             );
 
-
+            
             const port = '3001';
             
-            //-------To get only the name values of associated tables and the path of the image ------//
+            //-------Replaced some properties for a better access ------//
             products.forEach(product => {
+                //Image path
                 const imagePath = `http://localhost:${port}/images/products/${product.image}`;
-
+                //Change Date format
+                product.createdDate = new Date(product.created_at).toLocaleDateString();
+                product.updatedDate = product.updated_at != null? new Date(product.updated_at).toLocaleDateString() : '(Sin cambios)';
+                product.softDeletedDate = product.deleted_at != null? new Date(product.deleted_at).toLocaleDateString() : '(Aún venta)';
                 product.category = product.category.name;
                 product.subcategory = product.subcategory.name;
                 product.type = product.type.name;
@@ -283,6 +292,23 @@ const productsController = {
                     { association: 'manufacturer' }],
                 },
             );
+             //-------Replaced some properties for a better access ------//
+
+            //Image path
+            const port = '3001';
+            const imagePath = `http://localhost:${port}/images/products/${product.image}`;
+            product.image = imagePath;
+            //Change Date format
+            product.createdDate = new Date(product.created_at).toLocaleDateString();
+            product.updatedDate = product.updated_at != null? new Date(product.updated_at).toLocaleDateString() : '(Sin cambios)';
+            product.softDeletedDate = product.deleted_at != null? new Date(product.deleted_at).toLocaleDateString() : '(Aún venta)';
+            //Change associations
+            product.category = product.category.name;
+            product.subcategory = product.subcategory.name;
+            product.type = product.type.name;
+            product.manufacturer = product.manufacturer.name;
+        
+
             let response = {};
 
             if(product){

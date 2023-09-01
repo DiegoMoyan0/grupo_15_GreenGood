@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import SideBar from './SideBar';
 import ContentWrapper from './ContentWrapper'
 import UserStats from './UserComponents/UserStats'
+import Tables from './TablesComponents/Tables'
+import ProductDetail from './TablesComponents/ProductDetail'
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
           <Routes>
             <Route path="/" exact={true} element={ <ContentWrapper />}/>
             <Route path="/UserStats" exact={true} element={<UserStats />}/>
+            <Route path="/Tables" exact={true} element={<Tables />}/>
+            <Route path="/ProductDetail" exact={true} element={<ProductDetail />}/>
           </Routes>
         </div>
       </>
