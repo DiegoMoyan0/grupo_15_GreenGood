@@ -35,6 +35,7 @@ const productsController = {
                 product.manufacturer = product.manufacturer.name;
                 product.image = imagePath;
             });
+            
 
             let response = {
                 meta: {

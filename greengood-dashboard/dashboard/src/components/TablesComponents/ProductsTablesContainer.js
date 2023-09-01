@@ -27,7 +27,7 @@ function ProductsTable() {
   }
 
   return (
-    <div className="container fluis">
+    <div className="container fluis p-2">
       <CustomizedTables products={productsData.data}/>
     </div>
   );

@@ -16,7 +16,7 @@ function App() {
             <Route path="/" exact={true} element={ <ContentWrapper />}/>
             <Route path="/UserStats" exact={true} element={<UserStats />}/>
             <Route path="/Tables" exact={true} element={<Tables />}/>
-            <Route path="/ProductDetail" exact={true} element={<ProductDetail />}/>
+            <Route path="/product/:id/detail" element={<ProductDetail/>}/>
           </Routes>
         </div>
       </>

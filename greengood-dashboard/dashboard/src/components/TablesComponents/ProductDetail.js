@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 
-function ProductDetail() {
+function ProductDetail(props) {
   const [productData, setProductData] = useState(null);
-  const id = 177;
+  const {id} = useParams();
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,16 +26,16 @@ function ProductDetail() {
   }, []);
 
   if (!productData) {
-    return <div>Cargando información...</div>
+    return <div className='d-flex justify-content-center align-items-center'>Cargando información...</div>
   }
 
   const prod = productData.data;
 
   return (
-    <div className="container fluis">
+    <div className="container fluis d-flex justify-content-center align-items-center">
       <div className="card mb-3">
       <div className="row g-0">
-        <div className="col-md-4">
+        <div className="col-md-4 d-flex justify-content-center align-items-center">
           <img src={prod.image} alt="" className='img-fluid'/>
         </div>
         <div className="col-md-8">
@@ -80,7 +82,7 @@ function ProductDetail() {
             </div>
         
             <p className="card-text">{prod.info}</p>
-            <p className="card-text"><small className="text-body-secondary">Last updated 3 mins ago</small></p>
+            <p className="card-text"><small className="text-body-secondary">Producto Green Good </small></p>
           </div>
         </div>
       </div>

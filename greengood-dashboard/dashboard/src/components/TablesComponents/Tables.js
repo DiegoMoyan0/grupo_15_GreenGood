@@ -1,8 +1,9 @@
 import React from 'react';
 import ProductsTablesContainer from "./ProductsTablesContainer";
 
-// Create user stats main component
+// Products Tables
 function Tables() {
+  
   return (
     <React.Fragment>
       <div className="container-fluid">
@@ -11,9 +12,9 @@ function Tables() {
             <ProductsTablesContainer title="User Type Distribution" />
           </div> */}
           <div className="col">
-            <h3 className="">Listado de todos los productos de la base de datos Green Good</h3>
-            <ProductsTablesContainer title="Monthly Registrations" />
+            <h3 className="m-4">Listado de todos los productos de la base de datos Green Good</h3>
           </div>
+           <ProductsTablesContainer title="Monthly Registrations" />
         </div>
         <div className="row">
           {/* <div className="col-md-4">

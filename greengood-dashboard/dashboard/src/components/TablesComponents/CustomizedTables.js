@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -104,15 +105,13 @@ export default function CustomizedTables({products}) {
     },
     }));
     
-    function createData(image, manufacturer, title, category, subcategory, stock, salesAmount, price, discount, createdDate, editedDate, softDeletedDate) {
-      return { image, manufacturer, title, category, subcategory, stock, salesAmount, price, discount, createdDate, editedDate, softDeletedDate };
+    function createData(id, image, manufacturer, title, category, subcategory, stock, salesAmount, price, discount, createdDate, editedDate, softDeletedDate) {
+      return { id, image, manufacturer, title, category, subcategory, stock, salesAmount, price, discount, createdDate, editedDate, softDeletedDate };
     };
     
     const rows = products.map( prod => {
-        return createData(prod.image, prod.manufacturer, prod.title, prod.category, prod.subcategory, prod.stock, prod.sales_amount, prod.price, prod.discount, prod.createdDate, prod.updatedDate, prod.softDeletedDate );
+        return createData(prod.id, prod.image, prod.manufacturer, prod.title, prod.category, prod.subcategory, prod.stock, prod.sales_amount, prod.price, prod.discount, prod.createdDate, prod.updatedDate, prod.softDeletedDate );
     });
-
-    console.log(rows);
 
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -132,8 +131,8 @@ export default function CustomizedTables({products}) {
 
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 1000 }} aria-label="custom pagination table">
+    <TableContainer component={Paper} sx={{ width: '100%' }}>
+      <Table sx={{ width: '100%' }} aria-label="custom pagination table">
         <TableHead>
           <TableRow>
             <StyledTableCell>Imagen</StyledTableCell>
@@ -172,9 +171,9 @@ export default function CustomizedTables({products}) {
               <StyledTableCell align="center" >{row.editedDate}</StyledTableCell>
               <StyledTableCell align="center" >{row.softDeletedDate}</StyledTableCell>
               <StyledTableCell align="center" >
-                    <a className="link-dark" href="/ProductDetail">
+                    <Link className="link-dark" to={`/product/${row.id}/detail`}>
                       <FontAwesomeIcon icon={faSearch} />
-                    </a>
+                    </Link>
               </StyledTableCell>
             </StyledTableRow>
           ))}
