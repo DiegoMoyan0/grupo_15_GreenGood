@@ -71,7 +71,6 @@ const productsController = {
                     name: req.query.category
                 }
             });
-            console.log(products);
 
             let response = {
                 meta: {
@@ -248,12 +247,21 @@ const productsController = {
                 }
             );
 
-            //-------To get only the name values of associated tables
+            const port = '3001';
+            
+            //-------Replaced some properties for a better access ------//
             searchedProducts.forEach(product => {
+                //Image path
+                const imagePath = `http://localhost:${port}/images/products/${product.image}`;
+                //Change Date format
+                product.createdDate = new Date(product.created_at).toLocaleDateString();
+                product.updatedDate = product.updated_at != null? new Date(product.updated_at).toLocaleDateString() : '(Sin cambios)';
+                product.softDeletedDate = product.deleted_at != null? new Date(product.deleted_at).toLocaleDateString() : '(Aún venta)';
                 product.category = product.category.name;
                 product.subcategory = product.subcategory.name;
                 product.type = product.type.name;
                 product.manufacturer = product.manufacturer.name;
+                product.image = imagePath;
             });
 
             let response = {
@@ -355,6 +363,13 @@ const productsController = {
                     ['created_at', 'DESC']
                 ],
                 limit: 10
+            });
+
+            newestProducts.forEach(product => {
+                //Image path
+                const port = '3001';
+                const imagePath = `http://localhost:${port}/images/products/${product.image}`;
+                product.image = imagePath;
             });
     
             let response = {
