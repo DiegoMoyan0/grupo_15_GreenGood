@@ -36,7 +36,7 @@ function LastUserCard() {
 
   return (
 
-    <div className="card mt-3">
+    <div className="card mt-3 border border-secondary p-0">
       <div className="card-header text-center">Último Usuario Registrado</div>
       <div className="card-body text-center">
         <img className="img-fluid" style={{ maxWidth: '100%', maxHeight: '200px' }} src={userData.user.image} />
