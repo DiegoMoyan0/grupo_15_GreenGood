@@ -2,6 +2,8 @@ const path = require('path');
 const db = require('../../database/models');
 const { validationResult } = require('express-validator');
 const Op = db.Sequelize.Op;
+/* const moment = require('moment'); */
+
 
 const usersController = {
 
@@ -230,48 +232,49 @@ const usersController = {
             },
           });
         }
-    },
+      },
     
+
     getUserByType: async (req, res) => {
 
-        try {
-            const users = await db.User.findAll({
-                attributes: ['type'],
-                raw: true,
-            });
+    try {
+        const users = await db.User.findAll({
+            attributes: ['type'],
+            raw: true,
+        });
 
-            let userCount = {};
+        let userCount = {};
 
-            users.forEach(user => {
-                if (user.type in userCount) {
-                    userCount[user.type]++;
-                } else {
-                    userCount[user.type] = 1;
-                }
-            });
+        users.forEach(user => {
+            if (user.type in userCount) {
+                userCount[user.type]++;
+            } else {
+                userCount[user.type] = 1;
+            }
+        });
 
-            let response = {
-                meta: {
-                    status: 200,  //200 for success with content,
-                    success: true,
-                    url: 'api/user/type-count'
-                },
-                counts: userCount,
-                total_users: users.length
-            };
+        let response = {
+            meta: {
+                status: 200,  //200 for success with content,
+                success: true,
+                url: 'api/user/type-count'
+            },
+            counts: userCount,
+            total_users: users.length
+        };
 
-            return res.json(response)
-        } catch (error) {
-            console.log(error);
-            res.json({
-                meta: {
-                    status: 503,
-                    success: false,
-                    message: 'An error occurred while processing your request.',
-                },
-            });
-        }
-    },
+        return res.json(response)
+    } catch (error) {
+        console.log(error);
+        res.json({
+            meta: {
+                status: 503,
+                success: false,
+                message: 'An error occurred while processing your request.',
+            },
+        });
+    }
+},
 
 GetLastRegistered: async (req, res) => {
     try {
@@ -291,6 +294,14 @@ GetLastRegistered: async (req, res) => {
             attributes: ['id', 'first_name', 'last_name', 'email', 'image', 'type', 'created_at'],   
         });
 
+        
+        const port = '3001'
+
+        //Image path
+        const imagePath = `http://localhost:${port}/images/users/${lastUserRegistered.image}`;
+        //Change Date format
+        lastUserRegistered.image = imagePath;
+
         let response = {
             meta: {
                 status: 200,  //200 for success with content,
@@ -299,82 +310,81 @@ GetLastRegistered: async (req, res) => {
                 url: '/api/user/last-registered'
             },
             user: lastUserRegistered,
-            user_image: `/images/users/${lastUserRegistered.image}`
         };
 
-            return res.json(response);
+        return res.json(response);
 
-        } catch (error) {
-            console.log(error);
-            res.json({
-                meta: {
-                    status: 503,
-                    success: false,
-                    message: "An error occurred while processing your request."
-                }
-            });
-
-        }
-    },
-
-    GetMonthlyRegistrations: async (req, res) => {
-
-        try {
-
-
-            const users = await db.User.findAll();
-
-            const monthsMap = {
-                '01': 'Ene', '02': 'Feb', '03': 'Mar', '04': 'Abr',
-                '05': 'May', '06': 'Jun', '07': 'Jul', '08': 'Ago',
-                '09': 'Sep', '10': 'Oct', '11': 'Nov', '12': 'Dic'
-            };
-
-            const registrationsByMonth = {};
-
-            users.forEach(user => {
-                const createdAt = new Date(user.created_at)
-                const month = monthsMap[(createdAt.getMonth() + 1).toString().padStart(2, '0')]
-                if (!registrationsByMonth[month]) {
-                    registrationsByMonth[month] = 1
-                } else {
-                    registrationsByMonth[month]++
-                }
-            });
-
-            console.log(registrationsByMonth)
-
-            const results = [];
-
-            for (const month in registrationsByMonth) {
-            results.push({ month, count: registrationsByMonth[month] })
+    } catch (error) {
+        console.log(error);
+        res.json({
+            meta: {
+                status: 503,
+                success: false,
+                message: "An error occurred while processing your request."
             }
+        });
 
-            console.log(results)
+    }
+},
 
-            let response = {
-                meta: {
-                    status: 200,
-                    success: true,
-                    total: results.length,
-                    url: '/api/user/monthly-registrations'
-                },
-                registrationsByMonth: results
-            };
+GetMonthlyRegistrations: async (req, res) => {
 
-            return res.json(response);
+    try {
 
-        } catch (error) {
-            console.log(error);
-            res.json({
-                meta: {
-                    status: 503,
-                    success: false,
-                    message: "An error occurred while processing your request."
-                }
-            });
+
+        const users = await db.User.findAll();
+
+        const monthsMap = {
+            '01': 'Ene', '02': 'Feb', '03': 'Mar', '04': 'Abr',
+            '05': 'May', '06': 'Jun', '07': 'Jul', '08': 'Ago',
+            '09': 'Sep', '10': 'Oct', '11': 'Nov', '12': 'Dic'
+        };
+
+        const registrationsByMonth = {};
+
+        users.forEach(user => {
+            const createdAt = new Date(user.created_at)
+            const month = monthsMap[(createdAt.getMonth() + 1).toString().padStart(2, '0')]
+            if (!registrationsByMonth[month]) {
+                registrationsByMonth[month] = 1
+            } else {
+                registrationsByMonth[month]++
+            }
+        });
+
+        console.log(registrationsByMonth)
+
+        const results = [];
+
+        for (const month in registrationsByMonth) {
+        results.push({ month, count: registrationsByMonth[month] })
         }
-    },
+
+        console.log(results)
+
+        let response = {
+            meta: {
+                status: 200,
+                success: true,
+                total: results.length,
+                url: '/api/user/monthly-registrations'
+            },
+            registrationsByMonth: results
+        };
+
+        return res.json(response);
+
+    } catch (error) {
+        console.log(error);
+        res.json({
+            meta: {
+                status: 503,
+                success: false,
+                message: "An error occurred while processing your request."
+            }
+        });
+    }
+},
 
     updateUser: async (req, res) => {
 
@@ -850,6 +860,7 @@ GetLastRegistered: async (req, res) => {
             });
         };
     },
+
 
 };
 
