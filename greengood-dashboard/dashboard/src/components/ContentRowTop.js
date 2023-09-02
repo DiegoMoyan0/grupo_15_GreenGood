@@ -13,7 +13,7 @@ function ContentRowTop(){
 				{/*<!-- Content Row Top -->*/}
 				<div className="container-fluid">
 					<div className="d-sm-flex aligns-items-center justify-content-between mb-4">
-						<h1 className="h3 mb-0 text-gray-800">Dashboard Greengood</h1>
+						<h1 className="h3 mb-0 text-gray-8000 ">Dashboard Greengood</h1>
 					</div>
 				
 					{/*<!-- Content Row Products-->*/}
