@@ -103,6 +103,48 @@ const usersController = {
         };
     },
 
+    getUsersList: async (req, res) => {
+
+        try {
+            const users = await db.User.findAll({
+                raw: true,
+                nest: true,
+                },
+            );
+            const port = '3001'
+
+            users.forEach(user => {
+                //Image path
+                const imagePath = `http://localhost:${port}/images/users/${user.image}`;
+                //Change Date format
+                user.created_at = new Date(user.created_at).toLocaleDateString();
+                user.updated_at = user.updated_at != null? new Date(user.updated_at).toLocaleDateString() : '(Sin cambios)';
+                user.image = imagePath;
+            });
+            
+           
+            let response = {
+                meta: {
+                    status : 200, //200 for success with content,
+                    success: true,
+                    total: users.length,
+                    url: 'api/user/full-list'
+                },
+                usersList: users
+            }; 
+            return res.json(response);
+        }catch (error) {
+            console.log(error);
+            res.json({
+                meta: {
+                    status: 503,
+                    success: false,
+                    message: "An error occurred while processing your request."
+                }
+            });
+        };
+    },
+
     getUserById: async (req, res) => {
 
         try {
@@ -113,14 +155,20 @@ const usersController = {
                 attributes: ['id', 'first_name', 'last_name', 'email', 'image', 'type', 'username'],
             });
 
+            const port = '3001'
+
+                //Image path
+                const imagePath = `http://localhost:${port}/images/users/${user.image}`;
+                //Change Date format
+                user.image = imagePath;
+
             let response = {
                 meta: {
                     status: 200, //200 for success with content,
                     success: true,
                     url: 'api/user/users/:id'
                 },
-                users: user,
-                user_image: `/images/users/${user.image}`
+                users: user
             };
             return res.json(response);
 
@@ -136,6 +184,7 @@ const usersController = {
             });
         };
     },
+
 
     getUserImageById: async (req, res) => {
 
@@ -224,34 +273,34 @@ const usersController = {
         }
     },
 
-    GetLastRegistered: async (req, res) => {
-        try {
-            let lastUserRegistered = await db.User.findOne({
-                raw: true,
-                nest: true,
-                order: [
-                    ['created_at', 'DESC']
-                ],
-                include: [
-                    {
-                        model: db.Address,
-                        as: 'address',
-                        attributes: ['country', 'province']
-                    }
-                ],
-                attributes: ['id', 'first_name', 'last_name', 'email', 'image', 'type', 'created_at'],   
-            });
+GetLastRegistered: async (req, res) => {
+    try {
+        let lastUserRegistered = await db.User.findOne({
+            raw: true,
+            nest: true,
+            order: [
+                ['created_at', 'DESC']
+            ],
+            include: [
+                {
+                    model: db.Address,
+                    as: 'address',
+                    attributes: ['country', 'province']
+                }
+            ],
+            attributes: ['id', 'first_name', 'last_name', 'email', 'image', 'type', 'created_at'],   
+        });
 
-            let response = {
-                meta: {
-                    status: 200,  //200 for success with content,
-                    success: true,
-                    total: 1,
-                    url: '/api/user/last-registered'
-                },
-                user: lastUserRegistered,
-                user_image: `/images/users/${lastUserRegistered.image}`
-            };
+        let response = {
+            meta: {
+                status: 200,  //200 for success with content,
+                success: true,
+                total: 1,
+                url: '/api/user/last-registered'
+            },
+            user: lastUserRegistered,
+            user_image: `/images/users/${lastUserRegistered.image}`
+        };
 
             return res.json(response);
 

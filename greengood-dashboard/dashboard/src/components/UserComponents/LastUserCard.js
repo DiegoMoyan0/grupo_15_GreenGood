@@ -12,13 +12,6 @@ function LastUserCard() {
         const userData = await userResponse.json();
 
         if (userData.meta.success) {
-          const userId = userData.user.id
-          const userImageResponse = await fetch(`http://localhost:3001/api/user/image/${userId}`)
-          const userImageData = await userImageResponse.json()
-
-          if (userImageData.meta.success) {
-            userData.userImage = userImageData.userImage
-          }
           //Update state variable value
           setUserData(userData)
         }
@@ -39,13 +32,14 @@ function LastUserCard() {
 
   //Change Date format
   const registrationDate = new Date(userData.user.created_at).toLocaleDateString()
+  console.log(userData.user.image)
 
   return (
 
     <div className="card mt-3">
       <div className="card-header text-center">Último Usuario Registrado</div>
       <div className="card-body text-center">
-        <img  className="img-fluid" style={{ maxWidth: '100%', maxHeight: '200px' }} src={userData.userImage}/>
+        <img className="img-fluid" style={{ maxWidth: '100%', maxHeight: '200px' }} src={userData.user.image} />
         <h5 className="card-title mt-3">{userData.user.first_name} {userData.user.last_name}</h5>
         <p className="card-text text-center">Tipo: {userData.user.type}</p>
         <p className="card-text text-center">Provincia: {userData.user.address.province}</p>

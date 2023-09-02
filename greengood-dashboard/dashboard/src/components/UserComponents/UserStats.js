@@ -2,7 +2,9 @@ import React from 'react';
 import LastUserCard from './LastUserCard';
 import UserColumnChart from './UserColumnChart';
 import UserTypePieChart from './UserTypePieChart';
-import UserPurchasesProvince from './UserPurchasesProvince';
+import UserRegionalPurchases from './UserRegionalPurchases';
+import UserTable from "./UserTable";
+
 
 // Create user stats main component
 function UserStats() {
@@ -22,7 +24,15 @@ function UserStats() {
             <LastUserCard title="Last Registered User" />
           </div>
           <div className="col mt-5">
-            <UserPurchasesProvince title="User Purchases Per Province" />
+            <UserRegionalPurchases title="User Purchases Per Country" />
+          </div>
+        </div>
+        <div className="container-fluid">
+          <div className="row mt-5">
+            <div className="col">
+              <h3 className="mt-4 ml-4 mb-0 mr-4 p-4 text-center text-white bg-dark">Listado de todos los usuarios de la base de datos Green Good</h3>
+              <UserTable title="User Table" />
+            </div>
           </div>
         </div>
       </div>
