@@ -2753,23 +2753,31 @@ fieldset:disabled a.btn {
 }
 
 .btn-danger {
-    color: #fff;
-    background-color: #e74a3b;
-    border-color: #e74a3b
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: bold;
+    opacity: 0.9;
+    padding: 0.8rem 1.2rem;
+    color: white;
+    border: 1px solid #9ED66F;
+    background-color: #9ED66F;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 
 .btn-danger:hover {
-    color: #fff;
-    background-color: #e02d1b;
-    border-color: #d52a1a
+    opacity: 1;
+    background-color: #f0f0f0;
+    color: #9ED66F;
 }
 
-.btn-danger.focus,
+/* .btn-danger.focus,
 .btn-danger:focus {
     box-shadow: 0 0 0 .2rem rgba(235, 101, 88, .5)
-}
+} */
 
-.btn-danger.disabled,
+/* .btn-danger.disabled,
 .btn-danger:disabled {
     color: #fff;
     background-color: #e74a3b;
@@ -2788,7 +2796,7 @@ fieldset:disabled a.btn {
 .btn-danger:not(:disabled):not(.disabled):active:focus,
 .show>.btn-danger.dropdown-toggle:focus {
     box-shadow: 0 0 0 .2rem rgba(235, 101, 88, .5)
-}
+} */
 
 .btn-light {
     color: #3a3b45;
@@ -6815,9 +6823,13 @@ button.bg-dark:hover {
     background-color: #42444e !important
 }
 
-.bg-white {
-    background-color: #fff !important
-}
+.custom-navbar-bg {
+    background: linear-gradient(157deg, #ede4edbf, #18004B, #10142F);
+    /* Utiliza el valor RGBA para un color violeta oscuro semi-transparente */
+    /* Los valores de rojo, verde y azul corresponden a #240d54 y el último valor (0.8) controla la transparencia */
+    color: white; /* Establece el color del texto en blanco o el color deseado */
+  }
+  
 
 .bg-transparent {
     background-color: transparent !important
@@ -10675,7 +10687,7 @@ a:focus {
 }
 
 #wrapper #content-wrapper {
-    background-color: #f8f9fc;
+    background-color: #10142F;
     width: 100%;
     overflow-x: hidden
 }
@@ -10786,9 +10798,9 @@ a:focus {
 }
 
 .bg-gradient-secondary {
-    background-color: #858796;
-    background-image: linear-gradient(180deg, #858796 10%, #60616f 100%);
-    background-size: cover
+    background-color: #240d54; /* Cambia este valor al color violeta deseado */
+    background-image: none; /* Elimina la imagen de fondo */
+    background-size: initial; /* Restaura el tamaño de fondo predeterminado */
 }
 
 .bg-gradient-success {
@@ -10903,6 +10915,9 @@ a:focus {
     color: #6e707e !important
 }
 
+.text-gray-8000 {
+    color: white !important
+}
 .text-gray-800 {
     color: #5a5c69 !important
 }

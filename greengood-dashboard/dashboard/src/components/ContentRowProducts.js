@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 function ContentRowProducts() {
   const [products, setProducts] = useState({ meta: {}, data: [] })
   const [userCount, setUserCounts] = useState({ Vendedor: 0, Comprador: 0 });
+  const [cultivoCount, setCultivoCount] = useState(0); // Contador para la categoría 'Cultivo'
+  const [medicinalCount, setMedicinalCount] = useState(0); // Contador para la categoría 'Medicinal'
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,6 +20,14 @@ function ContentRowProducts() {
           setUserCounts(userCountNumber.counts);
         }
 
+        // Calcular los contadores de categoría 'Cultivo' y 'Medicinal'
+        const cultivoTotal = productsData.data.filter((product) => product.category === 'Cultivo').length;
+        const medicinalTotal = productsData.data.filter((product) => product.category === 'Medicinal').length;
+        
+        // Actualizar los estados de los contadores
+        setCultivoCount(cultivoTotal);
+        setMedicinalCount(medicinalTotal);
+
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -25,22 +35,42 @@ function ContentRowProducts() {
     fetchData()
   }, [])
 
-  const arrayMetrics = [
+  const arrayMetricsP = [
     {
-      titulo: 'Products in Data Base',
+      titulo: 'Total Products in Data Base',
       cifra: `${products.meta.total}`,
       icono: 'gift',
       borderColor: 'primary',
     },
     {
-      titulo: 'Seller-Type Users in Data Base',
-      cifra: `${userCount.Vendedor}`,
+      titulo: 'Total Products Cultive in Data Base',
+      cifra: `${cultivoCount}`,
+      icono: 'gift',
+      borderColor: 'warning',
+    },
+    {
+      titulo: 'Total Products Medicine in Data Base',
+      cifra: `${medicinalCount}`,
+      icono: 'gift',
+      borderColor: 'success',
+    },
+  ];
+  const arrayMetricsU = [
+    {
+      titulo: 'Total Users in Data Base',
+      cifra: `${userCount.Comprador + userCount.Vendedor}`,
+      icono: 'gift',
+      borderColor: 'primary',
+    },
+    {
+      titulo: 'Total Users Buyers in Data Base',
+      cifra: `${userCount.Comprador}`,
       icono: 'user',
       borderColor: 'warning',
     },
     {
-      titulo: 'Buyer-Type Users in Data Base',
-      cifra: `${userCount.Comprador}`,
+      titulo: 'Total Users Sellers in Data Base',
+      cifra: `${userCount.Vendedor}`,
       icono: 'user',
       borderColor: 'success',
     },
@@ -48,7 +78,7 @@ function ContentRowProducts() {
 
   return (
     <>
-      {arrayMetrics.map((box, index) => {
+      {arrayMetricsP.map((box, index) => {
         return (
           <div className="col-md-4 mb-4" key={index + 'ContentRowMovies'}>
             <div className={`card border-left-${box.borderColor} shadow h-100 py-2`}>
@@ -70,7 +100,7 @@ function ContentRowProducts() {
 
         );
       })}
-      {arrayMetrics.map((box, index) => {
+      {arrayMetricsU.map((box, index) => {
         return (
           <div className="col-md-4 mb-4" key={index + 'ContentRowMovies'}>
             <div className={`card border-left-${box.borderColor} shadow h-100 py-2`}>
