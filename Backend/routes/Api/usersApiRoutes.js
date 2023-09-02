@@ -31,8 +31,11 @@ const uploadPhoto = multer({storage});
 /*** @GET EXISTING EMAIL OR USERNAME CONFIRMATION ***/ 
 routes.get('/verify-email', userApiController.verifyEmail)
 
-/*** @GET ALL USERS ***/ 
+/*** @GET ALL USERS WITH LIMITED FIELDS ***/ 
 routes.get('/users', userApiController.getAll)
+
+/*** @GET ALL USERS WITH ALL FIELDS ***/ 
+routes.get('/full-list', userApiController.getUsersList)
 
 /*** @GET USER BY ID ***/ 
 routes.get('/users/:id', userApiController.getUserById)

@@ -3,7 +3,7 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
 // Create component
-function UserPurchasesProvince() {
+function UserRegionalPurchases() {
   // Define state variables and state-updating functions
   const [chartData, setChartData] = useState([]);
   const [chartCountries, setChartCountries] = useState([]);
@@ -108,4 +108,4 @@ function UserPurchasesProvince() {
   );
 }
 
-export default UserPurchasesProvince;
+export default UserRegionalPurchases;
