@@ -41,10 +41,12 @@ function LastUserCard() {
       <div className="card-body text-center">
         <img className="img-fluid" style={{ maxWidth: '100%', maxHeight: '200px' }} src={userData.user.image} />
         <h5 className="card-title mt-3">{userData.user.first_name} {userData.user.last_name}</h5>
-        <p className="card-text text-center">Tipo: {userData.user.type}</p>
-        <p className="card-text text-center">Provincia: {userData.user.address.province}</p>
-        <p className="card-text text-center">País: {userData.user.address.country}</p>
-        <p className="card-text text-center">Fecha de Registro: {registrationDate}</p>
+        <div className="d-flex flex-column w-75 mx-auto">
+          <p className="card-text text-center  border border-secondary"><strong>Tipo:</strong> {userData.user.type}</p>
+          <p className="card-text text-center  border border-secondary"><strong>Provincia:</strong> {userData.user.address.province}</p>
+          <p className="card-text text-center  border border-secondary"><strong>País:</strong> {userData.user.address.country}</p>
+          <p className="card-text text-center  border border-secondary"><strong>Fecha de Registro:</strong> {registrationDate}</p>
+        </div>
       </div>
     </div>
   );

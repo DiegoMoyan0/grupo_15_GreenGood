@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import SideBar from './SideBar';
 import ContentWrapper from './ContentWrapper'
 import UserStats from './UserComponents/UserStats'
+import UserDetailCard from './UserComponents/UserDetailCard'
 import Tables from './TablesComponents/Tables'
 import ProductDetail from './TablesComponents/ProductDetail'
 import ProductsStats from './ProductsComponents/ProductsStats';
@@ -19,6 +20,7 @@ function App() {
             <Route path="/productsStats" exact={true} element={<ProductsStats />}/>
             <Route path="/Tables" exact={true} element={<Tables />}/>
             <Route path="/product/:id/detail" element={<ProductDetail/>}/>
+            <Route path="/user/:id/detail" exact={true} element={<UserDetailCard/>}/>
           </Routes>
         </div>
       </>

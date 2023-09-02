@@ -45,6 +45,10 @@ function UserTypePieChart() {
         allowPointSelect: true,
         cursor: 'pointer',
         showInLegend: true,
+        dataLabels: {
+          enabled: true,
+          format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+        },
       },
     },
     colors: ['#93D746', '#220B52'],
@@ -53,7 +57,7 @@ function UserTypePieChart() {
         name: 'Cantidad',
         data: UserTypeData,
       },
-    ],
+    ]
   };
 
   return (

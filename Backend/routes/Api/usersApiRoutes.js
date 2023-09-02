@@ -37,8 +37,11 @@ routes.get('/users', userApiController.getAll)
 /*** @GET ALL USERS WITH ALL FIELDS ***/ 
 routes.get('/full-list', userApiController.getUsersList)
 
-/*** @GET USER BY ID ***/ 
+/*** @GET USER BY ID WITH LIMITED DETAILS***/ 
 routes.get('/users/:id', userApiController.getUserById)
+
+/*** @GET USER BY ID ALL LIMITED DETAILS***/ 
+routes.get('/users/:id/detail', userApiController.getUserDetailById)
 
 /*** @GET USER IMAGE BY ID ***/ 
 routes.get('/image/:id', userApiController.getUserImageById)

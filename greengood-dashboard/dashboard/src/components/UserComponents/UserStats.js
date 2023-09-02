@@ -18,15 +18,15 @@ function UserStats() {
             <div className="col-md-4">
               <UserTypePieChart title="User Type Distribution" />
             </div>
-            <div className="col">
+            <div className="col-md-8">
               <UserColumnChart title="Monthly Registrations" />
             </div>
           </div>
           <div className="row">
-            <div className="col-md-4 p-3">
+            <div className="col-md-4 mt-4">
               <LastUserCard title="Last Registered User" />
             </div>
-            <div className="col mt-3 p-3">
+            <div className="col-md-8 mt-5">
               <UserRegionalPurchases title="User Purchases Per Country" />
             </div>
           </div>
