@@ -12254,3 +12254,27 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
     width: 100%
 }
+
+/* Estilos personalizados para ocultar las barras de desplazamiento horizontal */
+.custom-horizontal-scroll-container {
+    max-width: 100%; /* Ajusta el ancho máximo según tus necesidades */
+    overflow-x: hidden; /* Oculta la barra de desplazamiento horizontal */
+    position: relative;
+  }
+  
+  .custom-horizontal-scroll-content {
+    display: inline-block;
+    white-space: nowrap; /* Evita el desplazamiento vertical */
+    overflow-x: auto; /* Habilita el desplazamiento horizontal */
+    padding-bottom: 1px; /* Evita que el contenido se corte */
+    margin-bottom: -1px; /* Evita que el contenido se corte */
+  }
+  
+  /* Cambia el cursor al estilo de desplazamiento */
+  .custom-horizontal-scroll-content {
+    cursor: grab;
+  }
+  
+  .custom-horizontal-scroll-content:active {
+    cursor: grabbing;
+  }

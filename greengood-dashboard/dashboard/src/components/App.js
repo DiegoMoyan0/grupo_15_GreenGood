@@ -5,6 +5,7 @@ import ContentWrapper from './ContentWrapper'
 import UserStats from './UserComponents/UserStats'
 import Tables from './TablesComponents/Tables'
 import ProductDetail from './TablesComponents/ProductDetail'
+import ProductsStats from './ProductsComponents/ProductsStats';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path="/" exact={true} element={ <ContentWrapper />}/>
             <Route path="/UserStats" exact={true} element={<UserStats />}/>
+            <Route path="/productsStats" exact={true} element={<ProductsStats />}/>
             <Route path="/Tables" exact={true} element={<Tables />}/>
             <Route path="/product/:id/detail" element={<ProductDetail/>}/>
           </Routes>

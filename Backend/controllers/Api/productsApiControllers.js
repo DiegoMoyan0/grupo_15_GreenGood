@@ -167,6 +167,98 @@ const productsController = {
             });
         };
     },
+    getAssociationsStats: async (req, res) => {
+
+        try {
+            const products = await db.Product.findAll({
+                include: [
+                    { association: 'category' },
+                    { association: 'subcategory' },
+                    { association: 'type' },
+                    { association: 'favproduct' },
+                    { association: 'manufacturer' }
+                ],
+                where: {
+                    deleted_at: null
+                }
+            });
+
+            const productsJSON = products.map(product => product.toJSON()); // Instead of RAW and NEST
+            
+            //Fav Counts
+            let favCounts = {};
+            let favArray = products.map(product => {
+                return product.favproduct.length? { sum: product.favproduct.length, title: product.title, description: product.description, image: product.image } : null;
+            });
+            let filteredArray = favArray.filter(item => item !== null && item !== undefined);
+            favCounts = filteredArray.sort((a, b) => b.sum - a.sum); //To order desc.
+
+            let typeCounts = {};
+            let categoryCounts = {};
+            let subcategoryCounts = {};
+            let manufacturerCounts = {};
+
+            //Categoy Counts
+            productsJSON.forEach(product => {
+                if (product.category && product.category.name in categoryCounts) {
+                    categoryCounts[product.category.name]++;
+                } else if(product.category) {
+                    categoryCounts[product.category.name] = 1;
+                };
+            });
+
+            //Types Counts
+            productsJSON.forEach(product => {
+                if (product.type && product.type.name in typeCounts) {
+                    typeCounts[product.type.name]++;
+                } else if(product.type) {
+                    typeCounts[product.type.name] = 1;
+                };
+            });
+
+            //Subcategory Counts
+            productsJSON.forEach(product => {
+                if (product.subcategory && product.subcategory.name in subcategoryCounts) {
+                    subcategoryCounts[product.subcategory.name]++;
+                } else if(product.subcategory) {
+                    subcategoryCounts[product.subcategory.name] = 1;
+                };
+            });
+
+            productsJSON.forEach(product => {
+                if (product.manufacturer && product.manufacturer.name in manufacturerCounts) {
+                    manufacturerCounts[product.manufacturer.name]++;
+                } else if(product.manufacturer) {
+                    manufacturerCounts[product.manufacturer.name] = 1;
+                };
+            });
+    
+            let response = {
+                meta: {
+                    status: 200,  //200 for success with content,
+                    success: true,
+                    url: 'api/product/stats'
+                },
+                total_products: productsJSON.length,
+                typeCounts,
+                categoryCounts,
+                subcategoryCounts,
+                manufacturerCounts,
+                favCounts
+            };
+
+            return res.json(response)
+        } catch (error) {
+            console.log(error);
+            res.json({
+                meta: {
+                    status: 503,
+                    success: false,
+                    message: 'An error occurred while processing your request.',
+                },
+            });
+        }
+    },
     getPages: async (req, res) => {
 
         const currentPage = Number(req.query.page) || 1;

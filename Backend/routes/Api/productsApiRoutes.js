@@ -32,6 +32,9 @@ routes.get('/list', productsApiController.getAll);
 /*** @GET LIST WITH PAGES OF PRODUCTS ***/ 
 routes.get('/getPages', productsApiController.getPages);
 
+/*** @GET PRODUCTS STATS ***/ 
+routes.get('/stats', productsApiController.getAssociationsStats);
+
 /*** @GET ALL PRODUCTS BY CATEGORY***/ 
 routes.get('/list/category', productsApiController.getAllByCategory);
 
