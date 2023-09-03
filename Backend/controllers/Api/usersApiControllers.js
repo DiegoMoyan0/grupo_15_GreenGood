@@ -44,8 +44,6 @@ const usersController = {
             const limit = 10
             const offset = (page - 1) * limit
 
-            console.log(req.query.page)
-
             const users = await db.User.findAll({
                 raw: true,
                 nest: true,
@@ -72,8 +70,6 @@ const usersController = {
 
             //Pagination logic for user list
 
-            console.log(usersWithDetail.length);
-
             const totalPages = (usersWithDetail.length + limit - 1) / limit;
             const nextPage = page < totalPages ? page + 1 : null
             const prevPage = page > 1 ? page - 1 : null
@@ -92,6 +88,7 @@ const usersController = {
                 users: usersWithDetail,
             };
             return res.json(response);
+            
         } catch (error) {
             console.log(error);
             res.json({
@@ -111,7 +108,7 @@ const usersController = {
             const users = await db.User.findAll({
                 raw: true,
                 nest: true,
-                },
+            },
             );
             const port = '3001'
 
@@ -120,22 +117,22 @@ const usersController = {
                 const imagePath = `http://localhost:${port}/images/users/${user.image}`;
                 //Change Date format
                 user.created_at = new Date(user.created_at).toLocaleDateString();
-                user.updated_at = user.updated_at != null? new Date(user.updated_at).toLocaleDateString() : '(Sin cambios)';
+                user.updated_at = user.updated_at != null ? new Date(user.updated_at).toLocaleDateString() : '(Sin cambios)';
                 user.image = imagePath;
             });
-            
-           
+
+
             let response = {
                 meta: {
-                    status : 200, //200 for success with content,
+                    status: 200, //200 for success with content,
                     success: true,
                     total: users.length,
                     url: 'api/user/full-list'
                 },
                 usersList: users
-            }; 
+            };
             return res.json(response);
-        }catch (error) {
+        } catch (error) {
             console.log(error);
             res.json({
                 meta: {
@@ -159,10 +156,10 @@ const usersController = {
 
             const port = '3001'
 
-                //Image path
-                const imagePath = `http://localhost:${port}/images/users/${user.image}`;
-                //Change Date format
-                user.image = imagePath;
+            //Image path
+            const imagePath = `http://localhost:${port}/images/users/${user.image}`;
+            //Change Date format
+            user.image = imagePath;
 
             let response = {
                 meta: {
@@ -187,204 +184,246 @@ const usersController = {
         };
     },
 
+    getUserDetailById: async (req, res) => {
+
+        try {
+
+            const user = await db.User.findByPk(req.params.id, {
+                raw: true,
+                nest: true,
+                include: [
+                    {
+                        model: db.Address,
+                        as: 'address',
+                    }
+                ],
+            });
+
+            const port = '3001'
+
+            //Image path
+            const imagePath = `http://localhost:${port}/images/users/${user.image}`;
+            //Change Date format
+            user.image = imagePath;
+            typeof user.created_at === 'undefined' ? user.created_at = '01/01/2023' : user.created_at
+            typeof user.updated_at === 'undefined' ? user.updated_at = '01/01/2023' : user.created_at
+
+            let response = {
+                meta: {
+                    status: 200, //200 for success with content,
+                    success: true,
+                    url: 'api/user/users/:id/detail'
+                },
+                user: user
+            };
+            return res.json(response);
+
+        } catch (error) {
+            console.log(error);
+            res.json({
+                meta: {
+                    status: 503,
+                    success: false,
+                    message: "An error occurred while processing your request."
+                    //503 (Service Unavailable) to indicate that the server is currently unable to handle the request.
+                }
+            });
+        };
+    },
 
     getUserImageById: async (req, res) => {
 
 
         try {
-          const user = await db.User.findByPk(req.params.id, {
-            attributes: ['image', 'id'],
-          });
-      
-          if (!user) {
-            return res.status(404).json({
-              meta: {
-                status: 404,
-                success: false,
-                message: 'User Img not found',
-              },
+            const user = await db.User.findByPk(req.params.id, {
+                attributes: ['image', 'id'],
             });
-          }
 
-          const port = '3001'
-      
-          const imagePath = `http://localhost:${port}/images/users/${user.image}`;
-      
-          let response = {
-            meta: {
-              status: 200,
-              success: true,
-              url: 'api/user/image/:id',
-            },
-            userImage: imagePath,
-          };
-      
-          return res.json(response)
+            if (!user) {
+                return res.status(404).json({
+                    meta: {
+                        status: 404,
+                        success: false,
+                        message: 'User Img not found',
+                    },
+                });
+            }
+
+            const port = '3001'
+
+            const imagePath = `http://localhost:${port}/images/users/${user.image}`;
+
+            let response = {
+                meta: {
+                    status: 200,
+                    success: true,
+                    url: 'api/user/image/:id',
+                },
+                userImage: imagePath,
+            };
+
+            return res.json(response)
 
 
         } catch (error) {
-          console.log(error);
-          res.status(500).json({
-            meta: {
-              status: 503,
-              success: false,
-              message: 'An error occurred while processing your request.',
-            },
-          });
+            console.log(error);
+            res.status(500).json({
+                meta: {
+                    status: 503,
+                    success: false,
+                    message: 'An error occurred while processing your request.',
+                },
+            });
         }
-      },
-    
+    },
+
 
     getUserByType: async (req, res) => {
 
-    try {
-        const users = await db.User.findAll({
-            attributes: ['type'],
-            raw: true,
-        });
+        try {
+            const users = await db.User.findAll({
+                attributes: ['type'],
+                raw: true,
+            });
 
-        let userCount = {};
+            let userCount = {};
 
-        users.forEach(user => {
-            if (user.type in userCount) {
-                userCount[user.type]++;
-            } else {
-                userCount[user.type] = 1;
-            }
-        });
-
-        let response = {
-            meta: {
-                status: 200,  //200 for success with content,
-                success: true,
-                url: 'api/user/type-count'
-            },
-            counts: userCount,
-            total_users: users.length
-        };
-
-        return res.json(response)
-    } catch (error) {
-        console.log(error);
-        res.json({
-            meta: {
-                status: 503,
-                success: false,
-                message: 'An error occurred while processing your request.',
-            },
-        });
-    }
-},
-
-GetLastRegistered: async (req, res) => {
-    try {
-        let lastUserRegistered = await db.User.findOne({
-            raw: true,
-            nest: true,
-            order: [
-                ['created_at', 'DESC']
-            ],
-            include: [
-                {
-                    model: db.Address,
-                    as: 'address',
-                    attributes: ['country', 'province']
+            users.forEach(user => {
+                if (user.type in userCount) {
+                    userCount[user.type]++;
+                } else {
+                    userCount[user.type] = 1;
                 }
-            ],
-            attributes: ['id', 'first_name', 'last_name', 'email', 'image', 'type', 'created_at'],   
-        });
+            });
 
-        
-        const port = '3001'
+            let response = {
+                meta: {
+                    status: 200,  //200 for success with content,
+                    success: true,
+                    url: 'api/user/type-count'
+                },
+                counts: userCount,
+                total_users: users.length
+            };
 
-        //Image path
-        const imagePath = `http://localhost:${port}/images/users/${lastUserRegistered.image}`;
-        //Change Date format
-        lastUserRegistered.image = imagePath;
-
-        let response = {
-            meta: {
-                status: 200,  //200 for success with content,
-                success: true,
-                total: 1,
-                url: '/api/user/last-registered'
-            },
-            user: lastUserRegistered,
-        };
-
-        return res.json(response);
-
-    } catch (error) {
-        console.log(error);
-        res.json({
-            meta: {
-                status: 503,
-                success: false,
-                message: "An error occurred while processing your request."
-            }
-        });
-
-    }
-},
-
-GetMonthlyRegistrations: async (req, res) => {
-
-    try {
-
-
-        const users = await db.User.findAll();
-
-        const monthsMap = {
-            '01': 'Ene', '02': 'Feb', '03': 'Mar', '04': 'Abr',
-            '05': 'May', '06': 'Jun', '07': 'Jul', '08': 'Ago',
-            '09': 'Sep', '10': 'Oct', '11': 'Nov', '12': 'Dic'
-        };
-
-        const registrationsByMonth = {};
-
-        users.forEach(user => {
-            const createdAt = new Date(user.created_at)
-            const month = monthsMap[(createdAt.getMonth() + 1).toString().padStart(2, '0')]
-            if (!registrationsByMonth[month]) {
-                registrationsByMonth[month] = 1
-            } else {
-                registrationsByMonth[month]++
-            }
-        });
-
-        console.log(registrationsByMonth)
-
-        const results = [];
-
-        for (const month in registrationsByMonth) {
-        results.push({ month, count: registrationsByMonth[month] })
+            return res.json(response)
+        } catch (error) {
+            console.log(error);
+            res.json({
+                meta: {
+                    status: 503,
+                    success: false,
+                    message: 'An error occurred while processing your request.',
+                },
+            });
         }
+    },
 
-        console.log(results)
+    GetLastRegistered: async (req, res) => {
+        try {
+            let lastUserRegistered = await db.User.findOne({
+                raw: true,
+                nest: true,
+                order: [
+                    ['created_at', 'DESC']
+                ],
+                include: [
+                    {
+                        model: db.Address,
+                        as: 'address',
+                        attributes: ['country', 'province']
+                    }
+                ],
+                attributes: ['id', 'first_name', 'last_name', 'email', 'image', 'type', 'created_at'],
+            });
 
-        let response = {
-            meta: {
-                status: 200,
-                success: true,
-                total: results.length,
-                url: '/api/user/monthly-registrations'
-            },
-            registrationsByMonth: results
-        };
 
-        return res.json(response);
+            const port = '3001'
 
-    } catch (error) {
-        console.log(error);
-        res.json({
-            meta: {
-                status: 503,
-                success: false,
-                message: "An error occurred while processing your request."
+            //Image path
+            const imagePath = `http://localhost:${port}/images/users/${lastUserRegistered.image}`;
+            //Change Date format
+            lastUserRegistered.image = imagePath;
+
+            let response = {
+                meta: {
+                    status: 200,  //200 for success with content,
+                    success: true,
+                    total: 1,
+                    url: '/api/user/last-registered'
+                },
+                user: lastUserRegistered,
+            };
+
+            return res.json(response);
+
+        } catch (error) {
+            console.log(error);
+            res.json({
+                meta: {
+                    status: 503,
+                    success: false,
+                    message: "An error occurred while processing your request."
+                }
+            });
+
+        }
+    },
+
+    GetMonthlyRegistrations: async (req, res) => {
+
+        try {
+
+
+            const users = await db.User.findAll();
+
+            const monthsMap = {
+                '01': 'Ene', '02': 'Feb', '03': 'Mar', '04': 'Abr',
+                '05': 'May', '06': 'Jun', '07': 'Jul', '08': 'Ago',
+                '09': 'Sep', '10': 'Oct', '11': 'Nov', '12': 'Dic'
+            };
+
+            const registrationsByMonth = {};
+
+            users.forEach(user => {
+                const createdAt = new Date(user.created_at)
+                const month = monthsMap[(createdAt.getMonth() + 1).toString().padStart(2, '0')]
+                if (!registrationsByMonth[month]) {
+                    registrationsByMonth[month] = 1
+                } else {
+                    registrationsByMonth[month]++
+                }
+            });
+
+            const results = [];
+
+            for (const month in registrationsByMonth) {
+                results.push({ month, count: registrationsByMonth[month] })
             }
-        });
-    }
-},
+
+            let response = {
+                meta: {
+                    status: 200,
+                    success: true,
+                    total: results.length,
+                    url: '/api/user/monthly-registrations'
+                },
+                registrationsByMonth: results
+            };
+
+            return res.json(response);
+
+        } catch (error) {
+            console.log(error);
+            res.json({
+                meta: {
+                    status: 503,
+                    success: false,
+                    message: "An error occurred while processing your request."
+                }
+            });
+        }
+    },
 
     updateUser: async (req, res) => {
 
@@ -480,16 +519,6 @@ GetMonthlyRegistrations: async (req, res) => {
                 };
             };
 
-            /*
-
-            if (response.meta.success) {
-                res.redirect('/user/profile');
-            } else {
-                res.json(response);
-            }
-
-            */
-
         } catch (error) {
             console.log(error);
             res.json({
@@ -571,17 +600,6 @@ GetMonthlyRegistrations: async (req, res) => {
             };
             res.json(response);
 
-
-            /*
-
-           if (response.meta.success) {
-               res.redirect('/user/login');
-           } else {
-               res.json(response);
-           }
-
-           */
-
         } catch (error) {
             console.log(error);
             res.json({
@@ -630,17 +648,6 @@ GetMonthlyRegistrations: async (req, res) => {
                 };
             };
             res.json(response);
-
-
-            /*
-
-            if (response.meta.success) {
-               return res.redirect('/');
-            } else {
-                res.json(response);
-            }
-
-            */
 
         } catch (error) {
             console.log(error);
@@ -785,17 +792,29 @@ GetMonthlyRegistrations: async (req, res) => {
             });
 
 
+            const countryShortNames = {
+                Colombia: 'co',
+                Argentina: 'ar',
+              };
+              
+              const userCountrydata = [];
+              
+              for (const country in userPerCountry) {
+                const countryShortName = countryShortNames[country];
+                if (countryShortName) {
+                    userCountrydata.push([countryShortName, userPerCountry[country]]);
+                }
+              }
+
+
             let response = {
                 meta: {
                     status: 200, //200 for success with content,
                     success: true,
                     url: 'api/user/users-per-country',
                 },
-                userPerCountry: userPerCountry,
-                //users: users
+                countryData:  userCountrydata,
             };
-
-            console.log(userPerCountry);
 
             return res.json(response);
 
@@ -843,8 +862,6 @@ GetMonthlyRegistrations: async (req, res) => {
                 },
                 userPerProvince: userPerProvince,
             };
-
-            console.log(userPerProvince);
 
             return res.json(response);
 

@@ -98,7 +98,7 @@ function UserRegionalPurchases() {
   }
 
   return (
-    <div className="container">
+    <div className="container border border-secondary p-0">
       <HighchartsReact
         highcharts={Highcharts}
         constructorType={"chart"}

@@ -67,7 +67,7 @@ function UserColumnChart() {
   };
 
   return (
-    <div className="container">
+    <div className="container border border-secondary p-0">
       <HighchartsReact highcharts={Highcharts} options={options} />
     </div>
   );

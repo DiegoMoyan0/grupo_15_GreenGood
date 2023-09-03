@@ -57,7 +57,12 @@ function SideBar(){
                 <li className="nav-item">
                     <a className="nav-link" href="/Tables">
                         <i className="fas fa-fw fa-table"></i>
-                        <span>Tables</span></a>
+                        <span>Product Table</span></a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link" href="/UserTableWrapper">
+                        <i className="fas fa-fw fa-table"></i>
+                        <span>User Table</span></a>
                 </li>
 
                 {/*<!-- Divider -->*/}
