@@ -266,6 +266,57 @@ const productsController = {
             });
         }
     },
+    getSalesAmountsPerMonth: async (req, res) => {
+
+        try {
+            const orderDetails = await db.OrderDetail.findAll();
+
+            const monthsMap = {
+                '01': 'Ene', '02': 'Feb', '03': 'Mar', '04': 'Abr',
+                '05': 'May', '06': 'Jun', '07': 'Jul', '08': 'Ago',
+                '09': 'Sep', '10': 'Oct', '11': 'Nov', '12': 'Dic'
+            };
+
+            const salesAmountsPerMonth = {};
+
+            orderDetails.forEach(order => {
+                const orderDate = new Date(order.order_date);
+                const detailTotal = Number(order.detail_total)
+                const month = monthsMap[(orderDate.getMonth() + 1).toString().padStart(2, '0')]
+                if (!salesAmountsPerMonth[month]) {
+                    salesAmountsPerMonth[month] = detailTotal;
+                } else {
+                    salesAmountsPerMonth[month] += detailTotal;
+                };
+            });
+
+            const results = [];
+
+            for (const month in salesAmountsPerMonth) {
+                results.push({ month, count: salesAmountsPerMonth[month] })
+            };
+    
+            let response = {
+                meta: {
+                    status: 200,  //200 for success with content,
+                    success: true,
+                    url: 'api/product/stats/sales-amounts-per-month'
+                },
+                salesAmountsPerMonth: results,
+            };
+
+            return res.json(response)
+        } catch (error) {
+            console.log(error);
+            res.json({
+                meta: {
+                    status: 503,
+                    success: false,
+                    message: 'An error occurred while processing your request.',
+                },
+            });
+        }
+    },
     getPages: async (req, res) => {
 
         const currentPage = Number(req.query.page) || 1;

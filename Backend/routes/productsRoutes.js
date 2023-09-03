@@ -28,7 +28,6 @@ const uploadFile = multer({storage});
 //---------------------------------------------------------//
 
 
-
 /*** @GET ALL PRODUCTS VIEW ***/ 
 routes.get('/list', productsController.getAllProducts);
 

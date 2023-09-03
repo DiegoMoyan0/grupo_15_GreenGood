@@ -1,10 +1,10 @@
 import  React  from "react";
-import imagenFondo from '../assets/images/logo.png';
 import ContentRowProducts from "./ContentRowProducts";
 import LastProduct from "./LastProduct";
 import LastUser from "./LastUser";
 import Subcategories from "./Subcategories";
 import ContentRowUsers from "./ContentRowUsers";
+import SalesChart from "./SalesChart";
 
 
 function ContentRowTop(){
@@ -36,7 +36,7 @@ function ContentRowTop(){
 					{/*<!-- Last Product in DB -->*/}
 					<LastProduct />
 					{/*<!-- Subcategories in DB -->*/}
-					<Subcategories />
+					<SalesChart/>
 					{/*<!-- Last User in DB -->*/}
 					<LastUser />
 

@@ -35,6 +35,9 @@ routes.get('/getPages', productsApiController.getPages);
 /*** @GET PRODUCTS STATS ***/ 
 routes.get('/stats', productsApiController.getAssociationsStats);
 
+/*** @GET TOTALS OF SALES AMOUNTS PER MONTH ***/ 
+routes.get('/stats/sales-amounts-per-month', productsApiController.getSalesAmountsPerMonth);
+
 /*** @GET ALL PRODUCTS BY CATEGORY***/ 
 routes.get('/list/category', productsApiController.getAllByCategory);
 
