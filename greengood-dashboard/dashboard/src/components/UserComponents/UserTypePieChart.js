@@ -51,7 +51,7 @@ function UserTypePieChart() {
         },
       },
     },
-    colors: ['#93D746', '#220B52'],
+    colors: ['#220B52', '#93D746'],
     series: [
       {
         name: 'Cantidad',

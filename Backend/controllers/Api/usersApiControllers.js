@@ -383,11 +383,11 @@ const usersController = {
                 '09': 'Sep', '10': 'Oct', '11': 'Nov', '12': 'Dic'
             };
 
-            const registrationsByMonth = {};
+            let registrationsByMonth = {};
 
             users.forEach(user => {
                 const createdAt = new Date(user.created_at)
-                const month = monthsMap[(createdAt.getMonth() + 1).toString().padStart(2, '0')]
+                const month = monthsMap[(createdAt.getMonth()+1).toString().padStart(2, '0')]
                 if (!registrationsByMonth[month]) {
                     registrationsByMonth[month] = 1
                 } else {
@@ -395,6 +395,15 @@ const usersController = {
                 }
             });
 
+            const sortedMonths = {};
+            Object.keys(monthsMap).forEach(key => {
+              const month = monthsMap[key];
+              if (registrationsByMonth[month]) {
+                sortedMonths[month] = registrationsByMonth[month];
+              }
+            });
+            
+            registrationsByMonth = sortedMonths
             const results = [];
 
             for (const month in registrationsByMonth) {
@@ -795,6 +804,16 @@ const usersController = {
             const countryShortNames = {
                 Colombia: 'co',
                 Argentina: 'ar',
+                Brasil: 'br',
+                Chile: 'cl',
+                Perú:'pe',
+                Paraguay: 'py',
+                Ecuador: 'ec',
+                Venezuela: 've',
+                Bolivia: 'bo',
+                Uruguay: 'uy',
+                Suriname: 'sr',
+                Guyana: 'gy'
               };
               
               const userCountrydata = [];
@@ -805,7 +824,6 @@ const usersController = {
                     userCountrydata.push([countryShortName, userPerCountry[country]]);
                 }
               }
-
 
             let response = {
                 meta: {

@@ -22,13 +22,7 @@ const UserCountryMap = () => {
                 setCountriesMap(countriesMap)
 
                 let defaultColor = '#3B246B'
-                // Create new array to include the default color for each country
-                const cleanList = [];
-                for (let i = 0; i < usersPerCountry.countryData.length; i += 1) {
-                    const countryCode = usersPerCountry.countryData[i][0];
-                    const value = usersPerCountry.countryData[i][1];
-                    cleanList.push({ 'hc-key': countryCode, value, color: defaultColor });
-                }
+                let cleanList = usersPerCountry.countryData
 
                 // Set up chart options
                 const options = {
@@ -50,7 +44,7 @@ const UserCountryMap = () => {
                     },
                     colorAxis: {
                         min: 0,
-                        minColor: '#E6DEE9',
+                        minColor: '#F5F5F5',
                         maxColor: defaultColor,
                       },
                     series: [
