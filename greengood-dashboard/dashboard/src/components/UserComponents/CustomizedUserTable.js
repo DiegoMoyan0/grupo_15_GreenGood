@@ -135,7 +135,7 @@ export default function CustomizedUserTable({ users }) {
         <Table sx={{ width: '100%' }} aria-label="custom pagination table">
           <TableHead>
             <TableRow>
-              <StyledTableCell>Imagen</StyledTableCell>
+              <StyledTableCell align="center">Imagen</StyledTableCell>
               <StyledTableCell align="center">Nombre</StyledTableCell>
               <StyledTableCell align="center">Apellido</StyledTableCell>
               <StyledTableCell align="center">Usuario</StyledTableCell>
@@ -155,7 +155,7 @@ export default function CustomizedUserTable({ users }) {
             ).map((row) => (
               <StyledTableRow key={row.id}>
                 <StyledTableCell component="th" scope="row">
-                  <img src={row.image} style={{ maxWidth: '100%', maxHeight: '200px' }} alt="user Img" className="user-image img-fluid" />
+                  <img src={row.image} style={{ maxWidth: '100%', maxHeight: '100px' }} alt="user Image" className="user-image img-fluid" />
                 </StyledTableCell>
                 <StyledTableCell align="center" >{row.firstName}</StyledTableCell>
                 <StyledTableCell align="center" >{row.lastName}</StyledTableCell>

@@ -44,8 +44,6 @@ const usersController = {
             const limit = 10
             const offset = (page - 1) * limit
 
-            console.log(req.query.page)
-
             const users = await db.User.findAll({
                 raw: true,
                 nest: true,
@@ -72,8 +70,6 @@ const usersController = {
 
             //Pagination logic for user list
 
-            console.log(usersWithDetail.length);
-
             const totalPages = (usersWithDetail.length + limit - 1) / limit;
             const nextPage = page < totalPages ? page + 1 : null
             const prevPage = page > 1 ? page - 1 : null
@@ -92,6 +88,7 @@ const usersController = {
                 users: usersWithDetail,
             };
             return res.json(response);
+            
         } catch (error) {
             console.log(error);
             res.json({
@@ -398,15 +395,11 @@ const usersController = {
                 }
             });
 
-            console.log(registrationsByMonth)
-
             const results = [];
 
             for (const month in registrationsByMonth) {
                 results.push({ month, count: registrationsByMonth[month] })
             }
-
-            console.log(results)
 
             let response = {
                 meta: {
@@ -806,10 +799,7 @@ const usersController = {
                     url: 'api/user/users-per-country',
                 },
                 userPerCountry: userPerCountry,
-                //users: users
             };
-
-            console.log(userPerCountry);
 
             return res.json(response);
 
@@ -857,8 +847,6 @@ const usersController = {
                 },
                 userPerProvince: userPerProvince,
             };
-
-            console.log(userPerProvince);
 
             return res.json(response);
 

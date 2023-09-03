@@ -39,7 +39,7 @@ function LastUserCard() {
     <div className="card mt-3 border border-secondary p-0">
       <div className="card-header text-center">Último Usuario Registrado</div>
       <div className="card-body text-center">
-        <img className="img-fluid" style={{ maxWidth: '100%', maxHeight: '200px' }} src={userData.user.image} />
+        <img className="img-fluid" style={{ maxWidth: '100%', maxHeight: '150px' }} alt="user Image" src={userData.user.image} />
         <h5 className="card-title mt-3">{userData.user.first_name} {userData.user.last_name}</h5>
         <div className="d-flex flex-column w-75 mx-auto">
           <p className="card-text text-center  border border-secondary"><strong>Tipo:</strong> {userData.user.type}</p>
