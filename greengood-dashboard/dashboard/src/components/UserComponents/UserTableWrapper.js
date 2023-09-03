@@ -1,18 +1,20 @@
 import React from 'react';
 import UserTable from './UserTable'
+import TopBar from "../TopBar";
 
 function UserTableWrapper() {
-  
+
   return (
     <React.Fragment>
-          <div className="container-fluid">
-            <div className="row mt-5 p-3">
-              <div className="col">
-                <h3 className="mt-4 ml-4 mb-0 mr-4 p-4 text-center text-white bg-dark">Listado de todos los usuarios de la base de datos Green Good</h3>
-                <UserTable title="User Table" />
-              </div>
-            </div>
+      <div className="container-fluid p-0" style={{ backgroundColor: '#F7F7F8'}}>
+        <TopBar />
+        <div className="row p-2">
+          <div className="col">
+            <h3 className="mt-1 ml-4 mb-0 mr-4 p-4 text-center text-white bg-dark">Lista de usuarios - Base de datos GreenGood</h3>
+            <UserTable title="User Table" />
           </div>
+        </div>
+      </div>
     </React.Fragment>
   );
 }
