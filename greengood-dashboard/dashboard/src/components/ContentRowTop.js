@@ -35,9 +35,8 @@ function ContentRowTop(){
 				<div className="row ml-3">
 					{/*<!-- Last Product in DB -->*/}
 					<LastProduct />
-
 					{/*<!-- Subcategories in DB -->*/}
-						<Subcategories />
+					<Subcategories />
 					{/*<!-- Last User in DB -->*/}
 					<LastUser />
 
