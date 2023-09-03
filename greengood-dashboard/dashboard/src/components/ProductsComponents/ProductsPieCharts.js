@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
-function ProductPieChart({props}) {
+function ProductPieChart() {
 
   const [ProductsStatsData, setChartData] = useState({})
 
@@ -83,7 +83,7 @@ function ProductPieChart({props}) {
         showInLegend: true,
       },
     },
-    colors: ['#93D746', '#FF5733' ],
+    colors: ['#240d54d9', '#dc3545' ],
     series: [
       {
         name: 'Cantidad',
@@ -150,9 +150,9 @@ function ProductPieChart({props}) {
             <div className="container col-md-3" style={{ minWidth: '400px' }}>
             <HighchartsReact highcharts={Highcharts} options={subcategoryOptions} />
             </div>
-            <div className="container col-md-3 " style={{ minWidth: '400px' }}>
+           {/*  <div className="container col-md-3 " style={{ minWidth: '400px' }}>
             <HighchartsReact highcharts={Highcharts} options={manufacturerOptions} />
-            </div>
+            </div> */}
         </div>
     </>
   );

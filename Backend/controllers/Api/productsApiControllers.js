@@ -185,9 +185,16 @@ const productsController = {
 
             const productsJSON = products.map(product => product.toJSON()); // Instead of RAW and NEST
             
+            productsJSON.forEach(product => {
+                //Image path
+                const port = '3001';
+                const imagePath = `http://localhost:${port}/images/products/${product.image}`;
+                product.image = imagePath;
+            });
+           
             //Fav Counts
             let favCounts = {};
-            let favArray = products.map(product => {
+            let favArray = productsJSON.map(product => {
                 return product.favproduct.length? { sum: product.favproduct.length, title: product.title, description: product.description, image: product.image } : null;
             });
             let filteredArray = favArray.filter(item => item !== null && item !== undefined);
@@ -498,6 +505,18 @@ const productsController = {
                 where: {
                     sales_amount: {[Op.gt] : 5}
                 }
+            });
+
+            mostSelledProducts.forEach(product => {
+                //Image path
+                const port = '3001';
+                const imagePath = `http://localhost:${port}/images/products/${product.image}`;
+                product.image = imagePath;
+                //Change Date format
+                product.createdDate = new Date(product.created_at).toLocaleDateString();
+                product.updatedDate = product.updated_at != null? new Date(product.updated_at).toLocaleDateString() : '(Sin cambios)';
+                product.softDeletedDate = product.deleted_at != null? new Date(product.deleted_at).toLocaleDateString() : '(Aún venta)';
+                product.image = imagePath;
             });
     
             let response = {

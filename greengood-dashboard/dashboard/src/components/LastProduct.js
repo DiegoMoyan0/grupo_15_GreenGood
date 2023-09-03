@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import imagenFondo from '../assets/images/logo.png';
+import { Link } from 'react-router-dom';
 
 
 function LastProduct() {
@@ -35,7 +36,7 @@ function LastProduct() {
     const registrationDate = new Date(productData.created_at).toLocaleDateString()
 
     return (
-        <div className="col-lg-6 mb-4">
+        <div className="col-lg-3 mb-4">
             <div className="card shadow mb-4">
                 <div className="card-header py-3">
                     <h5 className="m-0 font-weight-bold text-gray-800">Last product in Data Base</h5>
@@ -46,10 +47,11 @@ function LastProduct() {
                     </div>
                     <h5 className="card-title mt-3 text-center">{productData.title}</h5>
                     <p className="card-text text-center">Descripcion: {productData.description}</p>
-                    <p className="card-text text-center">Info: {productData.info}</p>
                     <p className="card-text text-center">Price: {productData.price}</p>
                     <p className="card-text text-center">Fecha de Registro: {registrationDate}</p>
-                    <a className="btn btn-danger" target="_blank" rel="nofollow" href="/UserStats">View Product detail</a>
+                    <Link className="btn btn-danger" target="_blank" rel="nofollow" to={`/product/${productData.id}/detail`}>
+                        View Product detail
+                    </Link>
                 </div>
             </div>
         </div>

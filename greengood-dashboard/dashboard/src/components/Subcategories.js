@@ -4,7 +4,7 @@ import imagenFondo from '../assets/images/logo.png';
 
 function Subcategories() {
     return (
-        <div className="col-lg-6 mb-4">
+        <div className="col-lg-5 mb-4">
             <div className="card shadow mb-4">
                 <div className="card-header py-3">
                     <h5 className="m-0 font-weight-bold text-gray-800">Subcategories of Products in Data Base</h5>
