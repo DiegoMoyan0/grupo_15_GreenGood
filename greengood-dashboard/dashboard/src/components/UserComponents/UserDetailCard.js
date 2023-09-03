@@ -41,7 +41,7 @@ function UserDetailCard() {
             <div className="card-header text-center">Datos de {userData.user.first_name}</div>
             <div className="card-body text-center p-5">
                 <img className="img-fluid" style={{ maxWidth: '100%', maxHeight: '400px' }} src={userData.user.image} />
-                <h5 className="card-title mt-1 ">{userData.user.first_name} {userData.user.last_name}</h5>
+                <h5 className="card-title mt-3 ">{userData.user.first_name} {userData.user.last_name}</h5>
                 <div className='d-flex flex-column w-75 mx-auto'>
                     <p className="card-text text-center border border-secondary"><strong>Nombre de usuario:</strong> {userData.user.username}</p>
                     <p className="card-text text-center  border border-secondary"><strong>Tipo de usuario:</strong> {userData.user.type}</p>

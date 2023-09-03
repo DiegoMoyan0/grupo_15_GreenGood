@@ -792,13 +792,28 @@ const usersController = {
             });
 
 
+            const countryShortNames = {
+                Colombia: 'co',
+                Argentina: 'ar',
+              };
+              
+              const userCountrydata = [];
+              
+              for (const country in userPerCountry) {
+                const countryShortName = countryShortNames[country];
+                if (countryShortName) {
+                    userCountrydata.push([countryShortName, userPerCountry[country]]);
+                }
+              }
+
+
             let response = {
                 meta: {
                     status: 200, //200 for success with content,
                     success: true,
                     url: 'api/user/users-per-country',
                 },
-                userPerCountry: userPerCountry,
+                countryData:  userCountrydata,
             };
 
             return res.json(response);
