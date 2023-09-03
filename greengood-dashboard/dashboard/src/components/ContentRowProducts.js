@@ -36,21 +36,18 @@ function ContentRowProducts() {
       titulo: 'Total Products in Data Base',
       cifra: `${products.meta.total}`,
       icono: 'gift',
-      borderColor: 'grey',
-      color: "black"
+      color: "#c83333"
     },
     {
       titulo: 'Total Products Cultive in Data Base',
       cifra: `${cultivoCount}`,
       icono: 'seedling',
-      borderColor: 'success',
       color: "#1cc88a"
     },
     {
       titulo: 'Total Products Medicine in Data Base',
       cifra: `${medicinalCount}`,
       icono: 'prescription-bottle',
-      borderColor: 'primary',
       color: "#4e73df"
     },
   ];
@@ -60,11 +57,11 @@ function ContentRowProducts() {
       {arrayMetricsP.map((box, index) => {
         return (
           <div className={`col-md-${index === 0 ? '12' : '6'} mb-4`} key={index + 'ContentRowProducts'} style={{boder: "1px"}}>
-            <div className={`card border-${box.borderColor} shadow h-55`}>
+            <div className={`card shadow h-55`} style={{borderBlockColor: box.color}}>
               <div className="card-body">
                 <div className="row no-gutters align-items-center">
                   <div className="col mr-2 text-center">
-                    <div className={`text-${index === 0 ? '' : 'xs'} font-weight-bold text-${box.borderColor} text-uppercase mb-1`} style={{}}>
+                    <div className={`text-${index === 0 ? '' : 'xs'} font-weight-bold text-uppercase mb-1`} style={{color: box.color }}>
                       {box.titulo}
                     </div>
                     <div className="h5 mb-0 font-weight-bold text-gray-800">{box.cifra}</div>
@@ -76,7 +73,6 @@ function ContentRowProducts() {
               </div>
             </div>
           </div>
-
         );
       })}
     </>

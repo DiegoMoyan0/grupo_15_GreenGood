@@ -31,7 +31,7 @@ function BestSellers() {
     fetchData();
   }, []);
 
-  if (!ProductsData) {
+  if (!ProductsData || ProductsData.length === 0) {
     return <div>Cargando información...</div>
   };
 
@@ -42,9 +42,9 @@ function BestSellers() {
 
   return (
     <>
-      <CardGroup>
+      <CardGroup >
         {ProductsData.map((product, index) => (
-            <Card key={index + "bestSellerskey"}>
+            <Card key={index + "bestSellerskey"} >
                 <Card.Img variant="top" src={product.image} />
                 <div className="star-rating">
                     {Array.from({ length: generateStarRating(index + 1) }, (_, starIndex) => (

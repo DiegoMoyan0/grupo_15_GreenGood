@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import TopBar from '../TopBar';
 
 
 function ProductDetail(props) {
@@ -32,8 +33,9 @@ function ProductDetail(props) {
   const prod = productData.data;
 
   return (
-    <div className="container fluis d-flex justify-content-center align-items-center">
-      <div className="card mb-3">
+    <div className="container-fluid text-center p-0">
+      <TopBar />
+      <div className="card container fluis d-flex justify-content-center align-items-center p-0 mt-8">
       <div className="row g-0">
         <div className="col-md-4 d-flex justify-content-center align-items-center">
           <img src={prod.image} alt="" className='img-fluid'/>

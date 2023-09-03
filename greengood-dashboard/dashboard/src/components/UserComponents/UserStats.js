@@ -10,7 +10,7 @@ import TopBar from "../TopBar";
 function UserStats() {
   return (
     <React.Fragment>
-      <div className="container-fluid p-0" style={{ backgroundColor: '#F7F7F8' }}>
+      <div className="container-fluid p-0" style={{ backgroundColor: '#10142F' }}>
         <TopBar />
         <div className="container-fluid">
           <div className="row">

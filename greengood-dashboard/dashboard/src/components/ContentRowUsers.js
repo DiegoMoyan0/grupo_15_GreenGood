@@ -28,20 +28,23 @@ function ContentRowUsers() {
     {
       titulo: 'Total Users in Data Base',
       cifra: `${userCount.Comprador + userCount.Vendedor}`,
-      icono: 'gift',
-      borderColor: 'primary',
+      icono: 'users',
+      borderColor: '#2b5297',
+      color: "#2b5297"
     },
     {
       titulo: 'Total Users Buyers in Data Base',
       cifra: `${userCount.Comprador}`,
       icono: 'user',
-      borderColor: 'warning',
+      borderColor: '#f6c23e',
+      color: "#f6c23e"
     },
     {
       titulo: 'Total Users Sellers in Data Base',
       cifra: `${userCount.Vendedor}`,
       icono: 'user',
-      borderColor: 'success',
+      borderColor: '#973be7',
+      color: "#973be7"
     },
   ];
 
@@ -49,18 +52,18 @@ function ContentRowUsers() {
     <>
       {arrayMetricsU.map((box, index) => {
         return (
-          <div className="col-md-4 mb-4" key={index + 'ContentRowMovies'}>
-            <div className={`card border-left-${box.borderColor} shadow h-100 py-2`}>
+          <div className={`col-md-${index === 0 ? '12' : '6'} mb-4`} key={index + 'ContentRowProducts'} style={{boder: "1px"}}>
+            <div className={`card shadow h-55`} style={{borderBlockColor: box.borderColor}}>
               <div className="card-body">
                 <div className="row no-gutters align-items-center">
-                  <div className="col mr-2">
-                    <div className={`text-xs font-weight-bold text-${box.borderColor} text-uppercase mb-1`}>
+                  <div className="col mr-2 text-center">
+                    <div className={`text-${index === 0 ? '' : 'xs'} font-weight-bold text-uppercase mb-1`} style={{color: box.borderColor }}>
                       {box.titulo}
                     </div>
                     <div className="h5 mb-0 font-weight-bold text-gray-800">{box.cifra}</div>
                   </div>
                   <div className="col-auto">
-                    <i className={`fas fa-${box.icono} fa-2x text-gray-300`}></i>
+                    <i className={`fas fa-${box.icono} fa-2x `} style={{color: `${box.color}`}}></i>
                   </div>
                 </div>
               </div>

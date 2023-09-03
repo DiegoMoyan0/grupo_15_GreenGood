@@ -17,29 +17,28 @@ function ContentRowTop(){
 				</div>
 			
 				{/*<!-- Content Row Products-->*/}
-				<div className="row">
-					<div className="row col-5 p-3 mb-4 ml-4 mr-5 rounded" style={{border:"3px solid #ea1667e8"}}>
-						<h4 style={{color: "#ea1667e8"}} className="mb-5">Productos</h4>
+				<div className="row d-flex align-content-center justify-content-between">
+					<div className="row col-5 p-3 mb-4 ml-4 mr-5 rounded" style={{border: "2px solid grey", boxShadow: "0 0 10px grey"}}>
+						<h4 style={{color: "white"}} className="mb-5">Productos</h4>
 						<ContentRowProducts />
 					</div>
 					
 					{/*<!-- Content Row Users-->*/}
-					<div className="row col-5 p-3 mb-4 ml-5 rounded" style={{border:"3px solid #ea1667e8"}}>
-						<h4 style={{color: "#ea1667e8"}}>Usuarios</h4>
+					<div className="row col-5 p-3 mb-4 mr-2 rounded" style={{border: "2px solid grey", boxShadow: "0 0 10px grey"}}>
+						<h4 style={{color: "white"}}  className="mb-5">Usuarios</h4>
 						<ContentRowUsers />
 					</div>
 				</div>
 				
 
 				{/*<!-- Content Row Last Product in Data Base -->*/}
-				<div className="row ml-3">
+				<div className="ml-3 d-flex align-content-center justify-content-between ">
 					{/*<!-- Last Product in DB -->*/}
 					<LastProduct />
 					{/*<!-- Subcategories in DB -->*/}
 					<SalesChart/>
 					{/*<!-- Last User in DB -->*/}
 					<LastUser />
-
 				</div>
 			</div>
 			{/*<!--End Content Row Top-->*/}

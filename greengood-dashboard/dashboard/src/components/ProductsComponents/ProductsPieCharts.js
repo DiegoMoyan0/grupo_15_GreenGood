@@ -115,7 +115,7 @@ function ProductPieChart() {
     ],
   };
 
-  const manufacturerOptions = {
+  /* const manufacturerOptions = {
     chart: {
       type: 'pie',
     },
@@ -136,18 +136,18 @@ function ProductPieChart() {
         data: ProductsStatsData["manufacturer"],
       },
     ],
-  };
+  }; */
 
   return (
     <>
-        <div className="container d-md-flex ">
-            <div className="container col-md-3 w-100 " style={{ minWidth: '400px' }} >
-            <HighchartsReact highcharts={Highcharts} options={typeOptions} />
+        <div className="container d-md-flex pt-4 pb-4 rounded" style={{border: "2px solid grey", boxShadow: "0 0 10px grey"}}>
+            <div className="container col-md-3 " style={{ minWidth: '350px'}} >
+            <HighchartsReact highcharts={Highcharts} options={typeOptions} style={{width: "100%"}}/>
             </div>
-            <div className="container col-md-3  " style={{ minWidth: '400px' }}>
+            <div className="container col-md-3  " style={{ minWidth: '350px' }}>
             <HighchartsReact highcharts={Highcharts} options={categoryOptions} />
             </div>
-            <div className="container col-md-3" style={{ minWidth: '400px' }}>
+            <div className="container col-md-3" style={{ minWidth: '350px' }}>
             <HighchartsReact highcharts={Highcharts} options={subcategoryOptions} />
             </div>
            {/*  <div className="container col-md-3 " style={{ minWidth: '400px' }}>
