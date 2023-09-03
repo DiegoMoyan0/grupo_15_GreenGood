@@ -155,7 +155,7 @@ export default function CustomizedUserTable({ users }) {
             ).map((row) => (
               <StyledTableRow key={row.id}>
                 <StyledTableCell component="th" scope="row">
-                  <img src={row.image} style={{ maxWidth: '100%', maxHeight: '100px' }} alt="user Image" className="user-image img-fluid" />
+                  <img src={row.image} style={{ width: '100px', height: '100px' }} alt="user Image" className="user-image img-fluid" />
                 </StyledTableCell>
                 <StyledTableCell align="center" >{row.firstName}</StyledTableCell>
                 <StyledTableCell align="center" >{row.lastName}</StyledTableCell>

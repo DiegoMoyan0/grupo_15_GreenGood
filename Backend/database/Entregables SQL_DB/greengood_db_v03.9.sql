@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-08-2023 a las 04:32:23
+-- Tiempo de generación: 29-08-2023 a las 16:22:58
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -23,7 +23,6 @@ SET time_zone = "+00:00";
 
 CREATE SCHEMA IF NOT EXISTS `greengood_db` DEFAULT CHARACTER SET utf8 ;
 USE `greengood_db` ;
-
 -- --------------------------------------------------------
 
 --
@@ -42,10 +41,9 @@ CREATE TABLE `cart_items` (
 --
 
 INSERT INTO `cart_items` (`id`, `quantity`, `product_id`, `shopping_session_id`) VALUES
-(1, 3, 170, 1),
-(10, 1, 203, 10),
-(71, 1, 161, 8),
-(73, 1, 179, 8);
+(75, 1, 161, 13),
+(79, 1, 167, 12),
+(80, 1, 161, 12);
 
 -- --------------------------------------------------------
 
@@ -112,12 +110,20 @@ CREATE TABLE `order_details` (
   `user_id` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Volcado de datos para la tabla `order_details`
+--
+
+INSERT INTO `order_details` (`id`, `order_date`, `detail_total`, `user_payment_id`, `user_id`) VALUES
+(1, '2023-08-24', 1828.68, 1, 'ef608cde-a0b1-4943-a6fa-5217fbfc8b70'),
+(2, '2023-08-24', 4928.26,2, 'c2e21c9c-bbd9-403a-83c3-2a1e3e29f042'),
+(3, '2023-09-02', 4516.2,3, '21d6ee06-3653-46a7-aaa2-5e7988b8a3d3');
+-- (4, '2023-08-24', , , ''),
+-- (5, '2023-08-24', , , ''),
+-- (6, '2023-08-24', , , ''),
+-- (7, '2023-08-24', , , '');
+
 -- --------------------------------------------------------
-
-
- INSERT INTO `order_details` (`id`, `order_date`, `detail_total`, `user_payment_id`,  `user_id`) VALUES
- (1, '2023-08-24',7700.00 , 1,'ef608cde-a0b1-4943-a6fa-5217fbfc8b70'),
- (2, '2023-08-24',9700.00 , 2,'c2e21c9c-bbd9-403a-83c3-2a1e3e29f042');
 
 --
 -- Estructura de tabla para la tabla `order_items`
@@ -131,11 +137,16 @@ CREATE TABLE `order_items` (
   `cart_item_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- --------------------------------------------------------
+--
+-- Volcado de datos para la tabla `order_items`
+--
 
- INSERT INTO `order_items` (`id`, `quantity`, `amount`, `order_detail_id`, `cart_item_id`) VALUES
- (1, 1, 7700.00, 1, 10),
- (2, 1, 9700.00, 1, 11);
+INSERT INTO `order_items` (`id`, `quantity`, `amount`, `order_detail_id`, `cart_item_id`) VALUES
+(1, 4, 457.17, 1, 10),
+(2, 12, 376.35, 1, 12),
+(3, 2, 2464.13, 2, 13);
+
+-- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `products`
@@ -169,9 +180,9 @@ INSERT INTO `products` (`id`, `title`, `description`, `image`, `info`, `price`, 
 (155, 'Air Pot Medium', 'Maceta Moderna Air Pot - Cultivo in-door - Ca', 'img-1690415689893-airpot-10L.png', 'La maceta Airpottunning mejora el tamaño y rendimiento de tus proyectos, es una Maceta con sistema automático de podado de raíz que permite un crecimiento radicular homogéneo y constante, permite ademas un drenaje hídrico de forma autónoma. Una maceta re-utilizable y de fácil guardado.       \r\nTu maceta Airpottunning consta de 3 piezas, la base, el cuerpo y los tonillos, para armarlo debes poner el cuerpo al rededor de la base, el cuerpo debe tener los orificios tapados hacia arriba, una vez esto ubicado, lo afirmas con los tornillos en el extremo inferior y superior del armado y listo!! es muy firme y la puedes volver a desarmar y armar cuando tu lo necesites, su guardado es compacto.', 3970.00, 30, 344, 0.00, 1, 1, 1, 1, NULL, '2023-07-18 19:35:18', '2023-07-26 23:54:49', NULL),
 (156, 'Air Pot Large', 'Maceta Moderna Air Pot Large - Cultivo in-doo', 'airpot-30L.png', 'La maceta Airpottunning mejora el tamaño y rendimiento de tus proyectos, es una Maceta con sistema automático de podado de raíz que permite un crecimiento radicular homogéneo y constante, permite ademas un drenaje hídrico de forma autónoma. Una maceta re-utilizable y de fácil guardado.        Tu maceta Airpottunning consta de 3 piezas, la base, el cuerpo y los tonillos, para armarlo debes poner el cuerpo al rededor de la base, el cuerpo debe tener los orificios tapados hacia arriba, una vez esto ubicado, lo afirmas con los tornillos en el extremo inferior y superior del armado y listo!! es muy firme y la puedes volver a desarmar y armar cuando tu lo necesites, su guardado es compacto.', 4970.00, 10, 120, NULL, 1, 1, 1, 1, NULL, '2023-07-18 19:35:18', '2023-07-18 19:35:18', NULL),
 (157, 'Bandeja Cuadrada In-Grow Small', 'Plato/Bandeja chica - Cultivo Indoor: Maceta ', 'img-undefined-1686573019430-bandeja-cuadrada.png', 'Modelo: Plastico. Color: Negro. Altura x Ancho x Largo: 5 cm x 25 cm x 25 cm. Unidades por envase: 1.', 2532.00, 1, 657, NULL, 1, 1, 1, 2, NULL, '2023-07-18 19:35:18', '2023-07-18 19:35:18', NULL),
-(158, 'Bandeja Cultivo Large', 'Bandeja Cultivo 50 Alveolos Germinar Esquejes', 'bandeja-semillera.png', 'Capacidad 50 alveolos (plantines). Ideal para germinar gran cantidad de plantas, o para esquejes. // Perforaciones de buen tamaño que determina auto poda radicular aérea y buen drenaje. Fácilmente extraíble el plantin una vez enraizado. Medidas: 54.5 cm. x 28 cm. Diámetro del alveolo: 5cm. Profundidad 6 cm.', 2464.13, 7, 564, NULL, 1, 1, 1, 2, NULL, '2023-07-18 19:35:18', '2023-07-18 19:35:18', NULL),
-(159, 'Bidón para Sustrato', 'Bidón plástico 10 litros de capacidad para su', 'bidon-sustrato.png', 'Bidón plástico 10L sin contenido', 376.35, 15, 162, 0.00, 1, 1, 1, 1, NULL, '2023-07-18 19:35:18', '2023-07-27 11:18:27', NULL),
-(160, 'Inflada / Bolsa Cultivo', 'Maceta de bolsa plástica - Capacidad: 10 litr', 'bolsa-10L.png', '*PLÁSTICO DE PRIMERA LíNEA. *10 perforaciones para el drenaje *tratada para los rayos U. V. *degradables *de 160 micrones *fuelle de 24cm *indicadas para el cultivo intensivo económicas y rendidoras.', 457.17, 6, 960, NULL, 1, 1, 1, 1, NULL, '2023-07-18 19:35:18', '2023-07-18 19:35:18', NULL),
+(158, 'Bandeja Cultivo Large', 'Bandeja Cultivo 50 Alveolos Germinar Esquejes', 'bandeja-semillera.png', 'Capacidad 50 alveolos (plantines). Ideal para germinar gran cantidad de plantas, o para esquejes. // Perforaciones de buen tamaño que determina auto poda radicular aérea y buen drenaje. Fácilmente extraíble el plantin una vez enraizado. Medidas: 54.5 cm. x 28 cm. Diámetro del alveolo: 5cm. Profundidad 6 cm.', 2464.13, 7, 564, 4928.26, 1, 1, 1, 2, NULL, '2023-07-18 19:35:18', '2023-07-18 19:35:18', NULL),
+(159, 'Bidón para Sustrato', 'Bidón plástico 10 litros de capacidad para su', 'bidon-sustrato.png', 'Bidón plástico 10L sin contenido', 376.35, 15, 162, 4516.2, 1, 1, 1, 1, NULL, '2023-07-18 19:35:18', '2023-07-27 11:18:27', NULL),
+(160, 'Inflada / Bolsa Cultivo', 'Maceta de bolsa plástica - Capacidad: 10 litr', 'bolsa-10L.png', '*PLÁSTICO DE PRIMERA LíNEA. *10 perforaciones para el drenaje *tratada para los rayos U. V. *degradables *de 160 micrones *fuelle de 24cm *indicadas para el cultivo intensivo económicas y rendidoras.', 457.17, 6, 960, 1828.68, 1, 1, 1, 1, NULL, '2023-07-18 19:35:18', '2023-07-18 19:35:18', NULL),
 (161, 'Geotextil Grow Small', 'Maceta Moderna Geotextil Gris - 1capidad: 12,', 'geotextil-12,5l.png', '• Material: Tela geotextil. • Capacidad: 12,5 litros • Medidas: Alto 27 cm x Diámetro 26 cm. • Durabilidad: Entre 5 a 10 años. • Reutilizable y ecológico. • Ideal para utilizarla tanto en cultivos interiores como exteriores. • Favorece una mayor absorción de agua y nutrientes. • Tela con porosidad que potencia el desarrollo de los cultivos. • Permite un drenaje natural y uniforme, evitando el exceso de humedad. • La tela geotextil debe lavarse a baja temperatura y es reutilizable. • Evitá el excesivo peso de las macetas de cemento en tu balcón o terraza. • No se quiebran como las de cemento • No se pudren como las de madera. • No se degradan como las de plástico • Permite la aireación del sustrato, esto genera un ambiente saludable para desarrollar raíces sanas y bien distribuidas, favoreciendo una mayor absorción de agua y nutrientes, desarrollando todo el potencial de sus cultivos.', 2738.69, 34, 737, NULL, 1, 1, 1, 1, NULL, '2023-07-18 19:35:18', '2023-07-18 19:35:18', NULL),
 (162, 'Geotextil Grow Large', 'Maceta Moderna Geotextil Negra  - Circular de', 'geotextil-circular-20L.png', '• Material: Tela geotextil. • Capacidad: 20 litros • Medidas: Alto 37 cm x Diámetro 36 cm. • Durabilidad: Entre 5 a 10 años. • Reutilizable y ecológico. • Ideal para utilizarla tanto en cultivos interiores como exteriores. • Favorece una mayor absorción de agua y nutrientes. • Tela con porosidad que potencia el desarrollo de los cultivos. • Permite un drenaje natural y uniforme, evitando el exceso de humedad. • La tela geotextil debe lavarse a baja temperatura y es reutilizable. • Evitá el excesivo peso de las macetas de cemento en tu balcón o terraza. • No se quiebran como las de cemento • No se pudren como las de madera. • No se degradan como las de plástico • Permite la aireación del sustrato, esto genera un ambiente saludable para desarrollar raíces sanas y bien distribuidas, favoreciendo una mayor absorción de agua y nutrientes, desarrollando todo el potencial de sus cultivos.', 3738.69, 0, 251, NULL, 1, 1, 1, 1, NULL, '2023-07-18 19:35:18', '2023-07-18 19:35:18', NULL),
 (163, 'Geotextil Grow XLarge', 'Maceta Moderna Geotextil Negra  - Circular de', 'geotextil-circular-25L.png', '• Material: Tela geotextil. • Capacidad: 25 litros • Medidas: Alto 47 cm x Diámetro 37 cm. • Durabilidad: Entre 5 a 10 años. • Reutilizable y ecológico. • Ideal para utilizarla tanto en cultivos interiores como exteriores. • Favorece una mayor absorción de agua y nutrientes. • Tela con porosidad que potencia el desarrollo de los cultivos. • Permite un drenaje natural y uniforme, evitando el exceso de humedad. • La tela geotextil debe lavarse a baja temperatura y es reutilizable. • Evitá el excesivo peso de las macetas de cemento en tu balcón o terraza. • No se quiebran como las de cemento • No se pudren como las de madera. • No se degradan como las de plástico • Permite la aireación del sustrato, esto genera un ambiente saludable para desarrollar raíces sanas y bien distribuidas, favoreciendo una mayor absorción de agua y nutrientes, desarrollando todo el potencial de sus cultivos.', 5499.99, 15, 129, NULL, 1, 1, 1, 1, NULL, '2023-07-18 19:35:18', '2023-07-18 19:35:18', NULL),
@@ -211,13 +222,10 @@ INSERT INTO `products` (`id`, `title`, `description`, `image`, `info`, `price`, 
 (197, 'Labial Balm con CBD', 'Bálsamo labial \"Lip-Balm\" a base de orgánicos', 'lipbalm-5gr.png', 'El bálsamo labial de Green Good CBD es un ungüento con 50 mg de CBD (Cannabidiol) en un cómodo e higiénico formato en stick con todos los beneficios del Cannabidiol en aplicación cosmética. Un bálsamo formulado a base de ingredientes naturales como aceite de semillas de cáñamo, mantequilla de semillas de cacao, aceite de ricino y cera de abejas, indicado para el cuidado diario de tus labios en cualquier época del año. Su aplicación regular protege tus labios de los agentes externos más comunes como temperaturas extremas de frío o calor, sequedad o alteraciones típicas como calenturas o boqueras. Sin parabenos ni colorantes artificiales, libre de toxinas y metales pesados, que protege tus labios de forma natural. Su uso regular mantiene tus labios suaves, sanos y brillantes. // El Lip Balm con CBD también es perfecto para combatir el sol, el frío y la contaminación con su acción hidratante, calmante, anti irritaciones y antiinflamatoria para labios o zonas sensibles e irritados. Ideal para utilizar día y noche. // Beneficios del Lip Balm con CBD // - Repara áreas secas: Aporta luminosidad, nutrición y ayuda a calmar y reparar los labios dañados. - Reduce el dolor e inflamación: Gracias a los beneficios del cannabidiol, ayudará a calmar el dolor e inflamación de los labios. - Protege tus labios: Ayuda a reducir los daños ocasionados por el frío o la piel seca de tus labios. Hidratándolos y protegiéndolos de la contaminación y del envejecimiento. - Nutre y tiene una alta absorción: El CBD (cannabidiol), junto con el aceite de ricino y la cera de abeja, te aportará una profunda hidratación y una alta absorción.', 820.00, 10, 21, NULL, 2, 4, 1, 9, NULL, '2023-07-18 19:35:18', '2023-07-18 19:35:18', NULL),
 (198, 'Shampoo y Acondicionador CBD', 'Combo cuidado Capilar natural, Shampoo + Acon', 'shampoo-acondicionador-Xml.png', 'Nuestro shampoo y acondicionador de CBD ?. Todos los beneficios del cannabis para tu cabello, este dúo es ideal si presentas caída, resequedad de medios a puntas y raíz grasa o seca. Además, gracias a la alta penetración de los ácidos grasos del cannabis, después de usarlo tu cabello se verá mucho más brillante y sedoso. Reconstruye y fortalece tu cabello. Hidratación profunda. Proporciona fuerza y elasticidad. Detiene la caída.', 1999.99, 0, 52, NULL, 2, 4, 1, 10, NULL, '2023-07-18 19:35:18', '2023-07-18 19:35:18', NULL),
 (199, 'Aceite GG PRUEBA CRUD', 'Aceite GG PRUEBA CRUD SOLO  CREATE FORM 18/7 ', 'img-undefined-1689700378009-aceite-greengood.png', '\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"', 5000.00, 10, 10, 0.00, 2, 3, 1, 6, NULL, '2023-07-18 19:35:18', '2023-07-18 19:35:18', NULL),
-(201, 'Air Pot Large', 'Maceta Moderna Air Pot Large - Cultivo in-doo', 'airpot-30L.png', 'La maceta Airpottunning mejora el tamaño y rendimiento de tus proyectos, es una Maceta con sistema automático de podado de raíz que permite un crecimiento radicular homogéneo y constante, permite ademas un drenaje hídrico de forma autónoma. Una maceta re-utilizable y de fácil guardado.        Tu maceta Airpottunning consta de 3 piezas, la base, el cuerpo y los tonillos, para armarlo debes poner el cuerpo al rededor de la base, el cuerpo debe tener los orificios tapados hacia arriba, una vez esto ubicado, lo afirmas con los tornillos en el extremo inferior y superior del armado y listo!! es muy firme y la puedes volver a desarmar y armar cuando tu lo necesites, su guardado es compacto.', 4970.00, 10, 120, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-25 18:06:25', '2023-07-25 18:06:25', NULL),
-(202, 'Bandeja Cultivo Large', 'Bandeja Cultivo 50 Alveolos Germinar Esquejes', 'bandeja-semillera.png', 'Capacidad 50 alveolos (plantines). Ideal para germinar gran cantidad de plantas, o para esquejes. // Perforaciones de buen tamaño que determina auto poda radicular aérea y buen drenaje. Fácilmente extraíble el plantin una vez enraizado. Medidas: 54.5 cm. x 28 cm. Diámetro del alveolo: 5cm. Profundidad 6 cm.', 2464.13, 7, 564, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-25 18:06:25', '2023-07-25 18:06:25', NULL),
-(203, 'Producto Prueba Vendedor 1', 'Bandeja Cultivo 50 Alveolos Germinar Esquejes', 'bandeja-semillera.png', 'Capacidad 50 alveolos (plantines). Ideal para germinar gran cantidad de plantas, o para esquejes. // Perforaciones de buen tamaño que determina auto poda radicular aérea y buen drenaje. Fácilmente extraíble el plantin una vez enraizado. Medidas: 54.5 cm. x 28 cm. Diámetro del alveolo: 5cm. Profundidad 6 cm.', 7700.00, 7, 564, NULL, NULL, NULL, NULL, NULL, '9aa55d11-1c5f-4785-8c21-b8195610867f', '2023-07-25 18:06:25', '2023-07-25 18:06:25', NULL),
-(204, 'Producto Prueba Vendedor 2', 'Bandeja Cultivo 50 Alveolos Germinar Esquejes', 'bandeja-semillera.png', 'Capacidad 50 alveolos (plantines). Ideal para germinar gran cantidad de plantas, o para esquejes. // Perforaciones de buen tamaño que determina auto poda radicular aérea y buen drenaje. Fácilmente extraíble el plantin una vez enraizado. Medidas: 54.5 cm. x 28 cm. Diámetro del alveolo: 5cm. Profundidad 6 cm.', 2464.13, 7, 564, NULL, NULL, NULL, NULL, NULL, '9aa55d11-1c5f-4785-8c21-b8195610867f', '2023-07-25 18:06:25', '2023-07-25 18:06:25', NULL),
-(205, 'Producto Prueba Vendedor 3', 'Bandeja Cultivo 50 Alveolos Germinar Esquejes', 'bandeja-semillera.png', 'Capacidad 50 alveolos (plantines). Ideal para germinar gran cantidad de plantas, o para esquejes. // Perforaciones de buen tamaño que determina auto poda radicular aérea y buen drenaje. Fácilmente extraíble el plantin una vez enraizado. Medidas: 54.5 cm. x 28 cm. Diámetro del alveolo: 5cm. Profundidad 6 cm.', 2464.13, 7, 564, NULL, NULL, NULL, NULL, NULL, '9aa55d11-1c5f-4785-8c21-b8195610867f', '2023-07-25 18:06:25', '2023-07-25 18:06:25', NULL),
-(208, 'SUSTRATO PRUEBA EDIT', 'MACETA PRUEBA EDITMACETA PRUEBA EDITMACETA PR', 'img-1691884533568-Sustratos.png', 'MACETA PRUEBA EDITMACETA PRUEBA EDITMACETA PRUEBA EDITMACETA PRUEBA EDITMACETA PRUEBA EDIT', 500.00, 50, 13, 0.00, 2, 2, 1, 5, '64263d5a-8b3b-46a8-96b6-9d6dad5e7d80', '2023-08-10 13:40:01', '2023-08-13 19:28:03', NULL),
-(213, 'MACETA PRUEBA EDIT', 'MACETA PRUEBA EDITMACETA PRUEBA EDITMACETA PR', 'img-1691884504343-Macetas.png', 'MACETA PRUEBA EDITMACETA PRUEBA EDITMACETA PRUEBA EDITMACETA PRUEBA EDITMACETA PRUEBA EDITMACETA PRUEBA EDITMACETA PRUEBA EDITMACETA PRUEBA EDIT', 3500.00, 10, 20, 0.00, 1, 1, 1, 3, '64263d5a-8b3b-46a8-96b6-9d6dad5e7d80', '2023-08-12 23:55:04', '2023-08-12 23:55:04', NULL);
+(200, 'Air Pot Large', 'Maceta Moderna Air Pot Large - Cultivo in-doo', 'airpot-30L.png', 'La maceta Airpottunning mejora el tamaño y rendimiento de tus proyectos, es una Maceta con sistema automático de podado de raíz que permite un crecimiento radicular homogéneo y constante, permite ademas un drenaje hídrico de forma autónoma. Una maceta re-utilizable y de fácil guardado.        Tu maceta Airpottunning consta de 3 piezas, la base, el cuerpo y los tonillos, para armarlo debes poner el cuerpo al rededor de la base, el cuerpo debe tener los orificios tapados hacia arriba, una vez esto ubicado, lo afirmas con los tornillos en el extremo inferior y superior del armado y listo!! es muy firme y la puedes volver a desarmar y armar cuando tu lo necesites, su guardado es compacto.', 4970.00, 10, 120, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-25 18:06:25', '2023-07-25 18:06:25', NULL),
+(201, 'Bandeja Cultivo Large', 'Bandeja Cultivo 50 Alveolos Germinar Esquejes', 'bandeja-semillera.png', 'Capacidad 50 alveolos (plantines). Ideal para germinar gran cantidad de plantas, o para esquejes. // Perforaciones de buen tamaño que determina auto poda radicular aérea y buen drenaje. Fácilmente extraíble el plantin una vez enraizado. Medidas: 54.5 cm. x 28 cm. Diámetro del alveolo: 5cm. Profundidad 6 cm.', 2464.13, 7, 564, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-25 18:06:25', '2023-07-25 18:06:25', NULL),
+(202, 'SUSTRATO PRUEBA EDIT', 'MACETA PRUEBA EDITMACETA PRUEBA EDITMACETA PR', 'img-1691884533568-Sustratos.png', 'MACETA PRUEBA EDITMACETA PRUEBA EDITMACETA PRUEBA EDITMACETA PRUEBA EDITMACETA PRUEBA EDIT', 500.00, 50, 13, 0.00, 2, 2, 1, 5, '64263d5a-8b3b-46a8-96b6-9d6dad5e7d80', '2023-08-10 13:40:01', '2023-08-13 19:28:03', NULL),
+(203, 'MACETA PRUEBA EDIT', 'MACETA PRUEBA EDITMACETA PRUEBA EDITMACETA PR', 'img-1691884504343-Macetas.png', 'MACETA PRUEBA EDITMACETA PRUEBA EDITMACETA PRUEBA EDITMACETA PRUEBA EDITMACETA PRUEBA EDITMACETA PRUEBA EDITMACETA PRUEBA EDITMACETA PRUEBA EDIT', 3500.00, 10, 20, 0.00, 1, 1, 1, 3, '64263d5a-8b3b-46a8-96b6-9d6dad5e7d80', '2023-08-12 23:55:04', '2023-08-12 23:55:04', NULL);
 
 -- --------------------------------------------------------
 
@@ -239,20 +247,17 @@ CREATE TABLE `shopping_session` (
   `id` int(11) NOT NULL,
   `total` decimal(10,2) NOT NULL,
   `init_date` date NOT NULL,
-  `user_id` varchar(255) NOT NULL
+  `user_id` varchar(255) NOT NULL,
+  `finish_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `shopping_session`
 --
 
-INSERT INTO `shopping_session` (`id`, `total`, `init_date`, `user_id`) VALUES
-(1, 3500.00, '2023-08-02', '64263d5a-8b3b-46a8-96b6-9d6dad5e7d80'),
-(7, 0.00, '2023-08-13', '69d11747-f007-4622-bd14-e9268dc46935'),
-(8, 0.00, '2023-08-16', 'eebe1508-6e25-4639-ab38-01a1c3088e6b'),
-(9, 0.00, '2023-08-24', 'fa696f5a-9027-4016-bde6-bcce2d2f45e4'),
-(10, 7700.00, '2023-08-24','ef608cde-a0b1-4943-a6fa-5217fbfc8b70'),
-(11, 9700.00, '2023-08-24','c2e21c9c-bbd9-403a-83c3-2a1e3e29f042');
+INSERT INTO `shopping_session` (`id`, `total`, `init_date`, `user_id`, `finish_date`) VALUES
+(12, 0.00, '2023-08-29', 'fa696f5a-9027-4016-bde6-bcce2d2f45e4', NULL),
+(13, 0.00, '2023-08-29', 'fa696f5a-9027-4016-bde6-bcce2d2f45e4', NULL);
 
 -- --------------------------------------------------------
 
@@ -329,16 +334,19 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `username`, `email`, `birth_date`, `image`, `phone`, `type`, `password`, `created_at`, `updated_at`, `deleted_at`) VALUES
-('01c20ab5-0e8f-49a3-94ee-a6178611c05d', 'Mati', 'Liendo', 'liendom', 'matiliendodev@gmail.com', '2004-12-09', 'default-user-photo.png', '3512341032', 'Vendedor', '$2a$10$bbuBjhZTo3lEmr3CqmMDuesNOO10kQcQ7k3km32MKUD0yUPknQ6M2', '2023-04-18 14:35:18',  '2023-04-18 14:35:18', NULL),
-('64263d5a-8b3b-46a8-96b6-9d6dad5e7d80', 'Prueba123', 'Prueba123456', 'prueba123User', 'Prueba123@Prueba123.com', '2005-01-01', 'img-user-1691954978550-linkedinperfil2.png', '3512341032', 'Vendedor', '$2a$12$PHB48z3V9KAwiKKiDI7.c.tti5Tj2TglzMA1HlybB5fO7FV7SaHq6', '2023-04-18 14:35:18',  '2023-04-18 14:35:18', NULL),
-('69d11747-f007-4622-bd14-e9268dc46935', 'carrito', 'test', 'carritotest', 'carrito@test.com', '2005-01-01', 'img-user-1691969354989-Canva perfil1.png', '1651653156', 'Vendedor', '$2a$10$oxCcA4CaPv5QDnCi9I51EO/DQEzvwuLuU4Ql5j1/4ky8Sov.fvspK', '2023-05-18 14:35:18',  '2023-05-18 14:35:18', NULL),
-('eebe1508-6e25-4639-ab38-01a1c3088e6b', 'Carrito', 'Test', 'carritotest2', 'carrito2@test.com', '1995-04-16', 'img-user-1692194668891-linkedinperfil2.png', '351152341032', 'Vendedor', '$2a$10$Clg3fgEUDabAVLV3OG0X8e4VxYl3RvKdD.FgkLqo5.fbihyRdbtNK', '2023-05-18 14:35:18',  '2023-05-18 14:35:18', NULL),
-('fa696f5a-9027-4016-bde6-bcce2d2f45e4', 'Carrito3', 'Test', 'carrito3test', 'carrito3@test.com', '2003-06-23', 'default-user-photo.png', '0', 'Vendedor', '$2a$10$EK39aznPd/tJUNUFoVMjUO5XeimDvxw7UhThlDIZFMkXoVRexlnxG', '2023-07-18 14:35:18',  '2023-07-18 14:35:18', NULL),
-('ef608cde-a0b1-4943-a6fa-5217fbfc8b70', 'CompradorDos', 'Dos', 'Comprador2', 'comprador2@comprador.com', '1980-06-23', 'default-user-photo.png', '1234567', 'Comprador', '$2a$10$8YbefwMEMSg/DCW4T3QCJuAbIn6H5MCVqivKryAw0abu5kMRCTX8S','2023-08-28 14:35:18', '2023-08-28 14:35:18', NULL),
-('9aa55d11-1c5f-4785-8c21-b8195610867f', 'Julian', 'Vendedor', 'julianvendedor', 'julian@vendedor.com', '1980-06-23', 'default-user-photo.png', '1234567', 'Vendedor', '$2a$10$xsxrcO/rVfh6ctrQ.qxxE.gfAmK00Q/U06he5r/jC7nepGXTXp8jG', '2023-08-29 14:35:18', '2023-08-29 14:35:18', NULL),
-('c2e21c9c-bbd9-403a-83c3-2a1e3e29f042', 'Julian', 'Comprador', 'juliancomprador', 'julian@comprador.com', '1980-06-23', 'default-user-photo.png', '1234567', 'Comprador', '$2a$10$5m4.loaJt062HE6oTMlUU.DBg.i//djtj71KWTdarw.l1Wh8HwVPy', '2023-07-18 14:35:18',  '2023-07-18 14:35:18', NULL),
-('4efea15a-fa9a-4ae1-a1c9-b316f02b4706', 'CompradorTres', 'Comprador', 'Comprador3', 'comprador3@comprador.com', '1980-06-23', 'default-user-photo.png', '1234567', 'Comprador', '$2a$10$UVchSdU2cd0m8.Y7n2Fdv.npPuPcWSNGOGNKqWQcpRNAuiYr625z.',  '2023-06-18 14:35:18',  '2023-06-18 14:35:18', NULL);
-
+('01c20ab5-0e8f-49a3-94ee-a6178611c05d', 'Mati', 'Liendo', 'liendom', 'matiliendodev@gmail.com', '2004-12-09', 'default-user-photo.png', '3512341032', 'Vendedor', '$2a$10$bbuBjhZTo3lEmr3CqmMDuesNOO10kQcQ7k3km32MKUD0yUPknQ6M2', '2023-09-02 14:35:18', '2023-09-02 14:35:18', NULL),
+('4efea15a-fa9a-4ae1-a1c9-b316f02b4706', 'Lautaro', 'Pérez', 'Lautaro', 'Lautaro@argentina', '1980-06-23', 'img-user-1693752607122-bandera_Argentina.JPG', '1234567', 'Comprador', '$2a$10$UVchSdU2cd0m8.Y7n2Fdv.npPuPcWSNGOGNKqWQcpRNAuiYr625z.', '2023-06-18 14:35:18', '2023-06-18 14:35:18', NULL),
+('64263d5a-8b3b-46a8-96b6-9d6dad5e7d80', 'Prueba123', 'Prueba123456', 'prueba123User', 'Prueba123@Prueba123.com', '2005-01-01', 'img-user-1691954978550-linkedinperfil2.png', '3512341032', 'Vendedor', '$2a$12$PHB48z3V9KAwiKKiDI7.c.tti5Tj2TglzMA1HlybB5fO7FV7SaHq6', '2023-08-18 14:35:18', '2023-08-18 14:35:18', NULL),
+('69d11747-f007-4622-bd14-e9268dc46935', 'carrito', 'test', 'carritotest', 'carrito@test.com', '2005-01-01', 'img-user-1691969354989-Canva perfil1.png', '1651653156', 'Vendedor', '$2a$10$oxCcA4CaPv5QDnCi9I51EO/DQEzvwuLuU4Ql5j1/4ky8Sov.fvspK', '2023-05-18 14:35:18', '2023-05-18 14:35:18', NULL),
+('9aa55d11-1c5f-4785-8c21-b8195610867f', 'Julian', 'Vendedor', 'JulianVendedor', 'Julian@colombia.com', '1980-06-23', 'img-user-1693754220003-bandera_Colombia.JPG', '1234567', 'Vendedor', '$2a$10$xsxrcO/rVfh6ctrQ.qxxE.gfAmK00Q/U06he5r/jC7nepGXTXp8jG', '2023-08-29 14:35:18', '2023-08-29 14:35:18', NULL),
+('c2e21c9c-bbd9-403a-83c3-2a1e3e29f042', 'Julian', 'Comprador', 'juliancomprador', 'julian@comprador.com', '1980-06-23', 'img-user-1693752685101-a_c.png', '1234567', 'Comprador', '$2a$10$5m4.loaJt062HE6oTMlUU.DBg.i//djtj71KWTdarw.l1Wh8HwVPy', '2023-07-18 14:35:18', '2023-07-18 14:35:18', NULL),
+('eebe1508-6e25-4639-ab38-01a1c3088e6b', 'Carrito', 'Test', 'carritotest2', 'carrito2@test.com', '1995-04-16', 'img-user-1692194668891-linkedinperfil2.png', '351152341032', 'Vendedor', '$2a$10$Clg3fgEUDabAVLV3OG0X8e4VxYl3RvKdD.FgkLqo5.fbihyRdbtNK', '2023-07-18 14:35:18', '2023-07-18 14:35:18', NULL),
+('ef608cde-a0b1-4943-a6fa-5217fbfc8b70', 'João', 'Miranda', 'JoãoComprador', 'JoãoComprador@brasil.com', '1980-06-23', 'bandera_brasil.JPG', '1234567', 'Comprador', '$2a$10$8YbefwMEMSg/DCW4T3QCJuAbIn6H5MCVqivKryAw0abu5kMRCTX8S', '2023-08-20 14:35:18', '2023-08-20 14:35:18', NULL),
+('ff43d5c8-1d65-4436-b7f5-997da4fc9697', 'Marcos', 'Restrepo', 'MarcosComprador', 'Marcos@peru.com', '1990-05-06', 'img-user-1693751130456-bandera_perÃº.JPG', '1234567', 'Comprador', '$2a$10$sXGx8cMj98zv.pDplJII6edK3dkUhOjTCkTIiYD8D6axZEj8LNhui', '2023-09-02 14:35:18', '2023-09-02 14:35:18', NULL),
+('7e95d5ac-e682-4092-ab91-e1170acbd3b2', 'Laura', 'Alzate', 'LauraCompradora', 'Laura@paraguay.com', '1990-06-23', 'img-user-1693751773832-bandera_Paraguay.JPG', '1234567', 'Comprador', '$2a$10$.Db/HSQIbYxLqQ26ENqiXu8YGyXoDjxFbvpMfpqATlsytfPSm738W', '2023-09-02 14:35:18', '2023-09-02 14:35:18', NULL),
+('82a91196-b5e7-4fef-9650-30e52f3ab0a2', 'Camila', 'Benítez', 'CamilaCompradora', 'camila@chile.com', '2003-06-23', 'img-user-1693752248186-bandera_Chile.JPG', '12345678', 'Comprador', '$2a$10$mWx0RTuADuLekNAp4angseJYx3LVYp4po7wcoBYYumn0Kb4vWIoLO', '2023-09-03 10:35:18', '2023-09-03 10:35:18', NULL),
+('1266442a-b3bd-4be9-b39a-839fb1860bc9', 'Carlos', 'Vásquez', 'CarlosVendedor', 'Carlos@colombia.com', '1980-06-23', 'img-user-1693756307915-bandera_Colombia.JPG', '12345678', 'Comprador', '$2a$10$S7aIuuh7y0ylk7qTnS5iT.70eQKNhWzlu3VtgKT8OJtqF3caEu9Ni', '2023-09-03 10:35:18', '2023-09-03 10:35:18', NULL),
+('21d6ee06-3653-46a7-aaa2-5e7988b8a3d3', 'Santiago', 'López', 'SantiagoComprador', 'santiago@argentina.com', '1980-06-23', 'img-user-1693756579759-bandera_Argentina.JPG', '12345678', 'Comprador', '$2a$10$j5a.NtAO7p8ZxguQAZcqGuRqxD3wOv2XzLqNJbQPRrdd77MdBWxbK', '2023-09-03 10:35:18', '2023-09-03 10:35:18', NULL);
 
 -- --------------------------------------------------------
 
@@ -365,16 +373,21 @@ INSERT INTO `user_addresses` (`id`, `user_id`, `street`, `number`, `city`, `prov
 (2, '2', '9 Basil Street', '5', 'Montgomery', 'Alabama', 'United States'),
 (3, '3', '4 Porter Plaza', '8', 'Mobile', 'Alabama', 'United States'),
 (4, '4', '37 Clemons Alley', '4528', 'Birmingham', 'Alabama', 'United States'),
-(5, '9aa55d11-1c5f-4785-8c21-b8195610867f', '07235 Claremont Point', '08', 'Birmingham', 'Quindío', 'Colombia'),
+(5, '9aa55d11-1c5f-4785-8c21-b8195610867f', '07235 Claremont Point', '08', 'Medellín', 'Antioquia', 'Colombia'),
 (6, '64263d5a-8b3b-46a8-96b6-9d6dad5e7d80', 'calle', '123', 'ciudad', 'provincia', 'pais'),
 (7, '01c20ab5-0e8f-49a3-94ee-a6178611c05d', 'Aviador Mira', '1234', 'ciudad', 'provincia', 'pais'),
 (8, '0f01a56e-f8ce-44b8-adf6-97cfa13ccee3', 'Aviador Mira', '3053', 'Córdoba', 'Córdoba', 'Argentina'),
 (9, '69d11747-f007-4622-bd14-e9268dc46935', 'calle', '1234', 'Ciudad', 'Provincia', 'Pais'),
 (10, 'eebe1508-6e25-4639-ab38-01a1c3088e6b', 'Aviador Mira', '3053', 'Córdoba', 'Córdoba', 'Argentina'),
 (11, 'fa696f5a-9027-4016-bde6-bcce2d2f45e4', 'calle', '123', 'ciudad', 'Buenos Aires', 'Argentina'),
-(12, 'ef608cde-a0b1-4943-a6fa-5217fbfc8b70', 'calle 10', '123', 'Medellín','Antioquia','Colombia'),
-(13, 'c2e21c9c-bbd9-403a-83c3-2a1e3e29f042', 'calle 10', '123', 'Medellín','Antioquia','Colombia'),
-(14, '4efea15a-fa9a-4ae1-a1c9-b316f02b4706', 'calle 10', '123', 'Armenia','Quindío','Colombia');
+(12, 'ef608cde-a0b1-4943-a6fa-5217fbfc8b70', 'calle 10', '123', 'Río de Janeiro', 'Estado de Río de Janeiro', 'Brasil'),
+(13, 'c2e21c9c-bbd9-403a-83c3-2a1e3e29f042', 'calle 10', '123', 'Medellín', 'Antioquia', 'Colombia'),
+(14, '4efea15a-fa9a-4ae1-a1c9-b316f02b4706', 'calle 10', '123', 'Córdoba', 'Córdoba', 'Argentina'),
+(15, 'ff43d5c8-1d65-4436-b7f5-997da4fc9697', 'calle 22', '55', 'Ciudad de Lima', 'Lima', 'Perú' ),
+(16, '7e95d5ac-e682-4092-ab91-e1170acbd3b2', 'calle 66', '77', 'Asunción', 'Distrito Capital', 'Paraguay'),
+(17, '82a91196-b5e7-4fef-9650-30e52f3ab0a2', 'calle 12', '99', 'Santiago de Chile', 'Metropolitana de Santiago', 'Chile'),
+(18, '1266442a-b3bd-4be9-b39a-839fb1860bc9', 'calle 55', '22', 'Armenia', 'Quindío', 'Colombia'),
+(19, '21d6ee06-3653-46a7-aaa2-5e7988b8a3d3', 'calle 55', '22', 'Buenos Aires', 'Provincia de Buenos Aires', 'Argentina');
 
 
 
@@ -395,11 +408,17 @@ CREATE TABLE `user_payments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Índices para tablas volcadas
+-- Volcado de datos para la tabla `user_payments`
 --
 
- INSERT INTO `user_payments` (`id`, `payment_type`, `payment_vendor`,`account_number`, `card_number`, `card_exp`, `user_id`) VALUES
- (1,'Tarjeta de crédito','AMEX','3065526354','666852120','20270101', 'ef608cde-a0b1-4943-a6fa-5217fbfc8b70');
+INSERT INTO `user_payments` (`id`, `payment_type`, `payment_vendor`, `account_number`, `card_number`, `card_exp`, `user_id`) VALUES
+(1, 'Tarjeta de crédito', 'AMEX', '3065526354', '666852120', '20270101', 'ef608cde-a0b1-4943-a6fa-5217fbfc8b70'),
+(2, 'Tarjeta de crédito', 'AMEX', '3065526354', '666332120', '20260101', 'c2e21c9c-bbd9-403a-83c3-2a1e3e29f042'),
+(3, 'Tarjeta de crédito', 'MC', '3065526354', '666856540', '20270201', '21d6ee06-3653-46a7-aaa2-5e7988b8a3d3');
+
+--
+-- Índices para tablas volcadas
+--
 
 --
 -- Indices de la tabla `cart_items`
@@ -418,7 +437,6 @@ ALTER TABLE `categories`
 --
 -- Indices de la tabla `liked_products`
 --
-
 ALTER TABLE `liked_products`
   ADD PRIMARY KEY (`id`),
   ADD KEY `product_id` (`product_id`),
@@ -511,7 +529,7 @@ ALTER TABLE `user_payments`
 -- AUTO_INCREMENT de la tabla `cart_items`
 --
 ALTER TABLE `cart_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT de la tabla `categories`
@@ -535,13 +553,13 @@ ALTER TABLE `manufacturers`
 -- AUTO_INCREMENT de la tabla `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `products`
@@ -553,7 +571,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT de la tabla `shopping_session`
 --
 ALTER TABLE `shopping_session`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `subcategories`
@@ -571,13 +589,13 @@ ALTER TABLE `types`
 -- AUTO_INCREMENT de la tabla `user_addresses`
 --
 ALTER TABLE `user_addresses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `user_payments`
 --
 ALTER TABLE `user_payments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
@@ -587,7 +605,6 @@ ALTER TABLE `user_payments`
 -- Filtros para la tabla `cart_items`
 --
 ALTER TABLE `cart_items`
---  ADD CONSTRAINT `fk_cart_item_products1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_cart_item_shopping_session1` FOREIGN KEY (`shopping_session_id`) REFERENCES `shopping_session` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
@@ -595,43 +612,7 @@ ALTER TABLE `cart_items`
 --
 ALTER TABLE `liked_products`
   ADD CONSTRAINT `fk_liked_products_products1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `order_details`
---
--- ALTER TABLE `order_details`
---  ADD CONSTRAINT `fk_order_details_user_payment1` FOREIGN KEY (`user_payment_id`) REFERENCES `user_payments` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
---  ADD CONSTRAINT `order_details_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
---
--- Filtros para la tabla `order_items`
---
--- ALTER TABLE `order_items`
---  ADD CONSTRAINT `fk_order_items_cart_item1` FOREIGN KEY (`cart_item_id`) REFERENCES `cart_items` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
---  ADD CONSTRAINT `fk_order_items_order_details1` FOREIGN KEY (`order_detail_id`) REFERENCES `order_details` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `products`
---
--- ALTER TABLE `products`
---  ADD CONSTRAINT `fk_products_category1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
---  ADD CONSTRAINT `fk_products_manufacturer1` FOREIGN KEY (`manufacturer_id`) REFERENCES `manufacturers` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
---  ADD CONSTRAINT `fk_products_subcategory1` FOREIGN KEY (`subcategory_id`) REFERENCES `subcategories` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
---  ADD CONSTRAINT `fk_products_type1` FOREIGN KEY (`type_id`) REFERENCES `types` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
---  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `shopping_session`
---
--- ALTER TABLE `shopping_session`
---  ADD CONSTRAINT `shopping_session_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `user_payments`
---
--- ALTER TABLE `user_payments`
---  ADD CONSTRAINT `user_payments_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
--- COMMIT;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

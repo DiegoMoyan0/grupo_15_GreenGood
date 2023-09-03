@@ -64,7 +64,7 @@ function UserRegionalPurchases() {
       gridLineWidth: 0
     },
     tooltip: {
-      valueSuffix: '$  mil'
+      valueSuffix: '$'
     },
     plotOptions: {
       bar: {
