@@ -39,10 +39,10 @@ function UserDetailCard() {
 
         <div className="container-fluid p-0" style={{ backgroundColor: '#F7F7F8' }}>
             <TopBar />
-            <div className="card border border-secondary p-7 mt-3 w-25 mx-auto" >
+            <div className="card border border-secondary ml-auto mr-auto mt-5 w-25" >
                 <div className="card-header text-center">Datos de {userData.user.first_name}</div>
                 <div className="card-body text-center p-9">
-                    <img className="img-fluid" style={{ maxWidth: '100%', maxHeight: '400px' }} src={userData.user.image} />
+                    <img className="img-fluid" style={{ maxWidth: '100%', maxHeight: '200px' }} src={userData.user.image} />
                     <h5 className="card-title text-center mt-3">{userData.user.first_name} {userData.user.last_name}</h5>
                     <div className='d-flex flex-column mx-auto'>
                         <p className="card-text text-center border border-secondary"><strong>Nombre de usuario:</strong> {userData.user.username}</p>

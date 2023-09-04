@@ -47,7 +47,7 @@ function UserColumnChart() {
       type: 'column',
     },
     title: {
-      text: 'Usuarios GreenGood',
+      text: 'Registro Mensual - Usuarios GreenGood',
     },
     colors: ['#220B52'],
     xAxis: {

@@ -6,9 +6,9 @@ function UserTableWrapper() {
 
   return (
     <React.Fragment>
-      <div className="container-fluid p-0" style={{ backgroundColor: '#F7F7F8'}}>
+      <div className="container-fluid p-0" style={{ backgroundColor: '#10142F' }}>
         <TopBar />
-        <div className="row p-2">
+        <div className="row p-5">
           <div className="col">
             <h3 className="mt-1 ml-4 mb-0 mr-4 p-4 text-center text-white bg-dark">Lista de usuarios - Base de datos GreenGood</h3>
             <UserTable title="User Table" />

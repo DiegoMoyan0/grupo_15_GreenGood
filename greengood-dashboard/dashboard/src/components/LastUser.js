@@ -50,7 +50,7 @@ function LastUser() {
         </div>
         <div className="card-body d-flex flex-column justify-content-center align-items-center">
           <div className="text-center">
-            <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{ width: 40 + 'rem' }} src={userData.userImage} alt=" User" />
+            <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{ width: 40 + 'rem', height: 20 + 'rem' }}  src={userData.userImage} alt=" User" />
           </div>
           <h5 className="card-title mt-3 text-center">{userData.user.first_name} {userData.user.last_name}</h5>
           <p className="card-text text-center">Tipo: {userData.user.type}</p>

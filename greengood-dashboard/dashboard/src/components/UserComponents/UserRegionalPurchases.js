@@ -55,7 +55,7 @@ function UserRegionalPurchases() {
     yAxis: {
       min: 0,
       title: {
-        text: 'Compras ($USD)',
+        text: 'Compras ($ARS)',
         align: 'high'
       },
       labels: {
