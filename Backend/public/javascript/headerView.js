@@ -11,8 +11,10 @@ window.onload = function () {
     if (amountInputDetail){
         amountInputDetail.onchange = () =>{ 
             quantityFront = Number(amountInputDetail.value);
+            console.log(quantityFront);
         };
     };
+   
     
     //-----------------------------------Contador carrito------------------------------------------//
     if(!userID){
@@ -30,7 +32,7 @@ window.onload = function () {
         initCountInput();  
     };
     
-    //-----------------------------------Contador carrito------------------------------------------//
+    //-----------------------------------Handle Shopping Cart------------------------------------------//
 
     allAddCartBtns.forEach( btn => {
         btn.addEventListener("click", async e => {
@@ -98,20 +100,54 @@ window.onload = function () {
     });
 
     //-----------------------------------FAV ICONS------------------------------------------//
+
+    function handleLogout() {
+        localStorage.clear();
+        alert("¡Cierre de sesión ejecutado!");
+    };
+    if (window.location.pathname === "/user/logout") {
+        handleLogout();
+    };
+
     const favIcons = Array.from(document.getElementsByClassName('fav-icon')); 
-    
+    const userIDfav = document.querySelector(".user-data").id;
+    let preFavsStorage;
 
-    favIcons.forEach(fIcon => {
-
-        let prevFavs = localStorage.getItem('favs');
-
-        if(prevFavs != null && prevFavs != ''){
-            let prevFavArray = prevFavs.split(",");
-            if(prevFavArray.includes(fIcon.id)){
-                fIcon.classList.add('fav-icon-selected');
-                fIcon.setAttribute('fill', 'currentColor');
+    if(!userIDfav){
+        preFavsStorage = localStorage.getItem('favs'); 
+        favIcons.forEach(fIcon => {
+            if(preFavsStorage != null && preFavsStorage != ''){
+                let prevFavArray = preFavsStorage.split(",");
+                if(prevFavArray.includes(fIcon.id)){
+                    fIcon.classList.add('fav-icon-selected');
+                    fIcon.setAttribute('fill', 'currentColor');
+                };
+            };
+        });  
+    }else{
+        async function initPrevsFavs (){
+            let response = await fetch(`http://localhost:3001/api/favProducts/all/${userID}/get`);
+            let prevFavsData =  await response.json();
+            if (prevFavsData.meta.success){
+                localStorage.setItem("favs", prevFavsData.data.favStorage);
+                preFavsStorage = localStorage.getItem('favs');
+                favIcons.forEach(fIcon => {
+                    if(preFavsStorage != null && preFavsStorage != ''){
+                        let prevFavArray = preFavsStorage.split(",");
+                        if(prevFavArray.includes(fIcon.id)){
+                            fIcon.classList.add('fav-icon-selected');
+                            fIcon.setAttribute('fill', 'currentColor');
+                        };
+                    };
+                });
+            }else{
+                preFavsStorage = localStorage.getItem('favs'); 
             };
         };
+        initPrevsFavs();  
+    };
+
+    favIcons.forEach(fIcon => {
 
         fIcon.onclick = function () {
             let favDivMsg = document.createElement('span');
@@ -148,7 +184,16 @@ window.onload = function () {
         }; 
     });
 
-    //-----------------------------------FAV ICONS------------------------------------------//
+    // To handle logout when any link to "/user/logout" is clicked:
+    document.addEventListener("click", function (event) {
+        if (event.target.tagName === "A") {
+            if (event.target.getAttribute("href") === "/user/logout") {
+                handleLogout();
+            };
+        };
+    });
+
+    //-----------------------------------SHARE ICONS------------------------------------------//
     const shareIcons = Array.from(document.getElementsByClassName('share-icon'));
     
     shareIcons.forEach(shIcon => {
@@ -179,9 +224,7 @@ window.onload = function () {
 };
 
 //----------------Store fav products into DDBB--------------//
-
 const userIDfav = document.querySelector(".user-data").id;
-
 userIDfav? window.addEventListener('beforeunload', favProductsStore) : ""; //Antes de cambiar de ventana
 
 async function favProductsStore(e) {

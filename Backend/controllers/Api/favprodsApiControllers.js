@@ -9,9 +9,9 @@ const controller = {
             let favItems = await db.LikedProduct.findAll({
                 where: { user_id: idUser },
                 nest: true,
-                include: ["user", "products"],
+                include: ["user", "favproduct"],
             });
-            console.log(favItems);
+            let prevFavsArray = favItems.map(item => item.product_id);
 
             let response = {};
             
@@ -22,8 +22,11 @@ const controller = {
                         success: true,
                         url: 'http://localhost:3001/api/favProducts/all/:idUser/get'
                     },
-                    data: favItems
-                }
+                    data: {
+                        favStorage: prevFavsArray,
+                        favItems
+                    }
+                };
             }else{
                 response = {
                     meta: {

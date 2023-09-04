@@ -181,7 +181,8 @@ const controller = {
             }else{
                 createdCartItem = await db.CartItem.create({
                     product_id: idProduct,
-                    shopping_session_id: idShoppingSession
+                    shopping_session_id: idShoppingSession,
+                    quantity: quantityValue
                 });
             };
 

@@ -16,7 +16,6 @@ const userLoggedMw = require('./middlewares/userLoggedMw');
 
 /////////////////////////////////////////////////////
 
-// To use new HTTP methods: PATCH, DELETE Y PUT//
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

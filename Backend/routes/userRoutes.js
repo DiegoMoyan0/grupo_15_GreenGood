@@ -36,6 +36,7 @@ const uploadPhoto = multer({storage});
 router.get('/login', guestMw, userController.getLogin); 
 router.get('/register', guestMw, userController.getRegister);
 router.get('/profile', authMw, validationsUserLoggedMw, userController.getProfile);  
+router.get('/favs', authMw, validationsUserLoggedMw, userController.getUserFavs);  
 router.get('/logout', authMw, userController.getLogout);  
 
 
