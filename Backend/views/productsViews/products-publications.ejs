@@ -5,10 +5,9 @@
     <%- include('../partials/head') %>
         <link rel="stylesheet" href="/css/publications.css">
 
-    <script src="/javascript/validationFront/crudProducts.js"></script>
-</head>
-
-<body class="body-publications">
+    </head>
+    
+    <body class="body-publications">
     <%- include('../partials/header')%>
 
     <div class="deslizable">
@@ -36,7 +35,7 @@
                         <% }) %>
                     </ul>
                 </div>
-             
+                
             <% } %>
 
             <% for (let index = 0; index < products.length; index++) { %>
@@ -161,7 +160,7 @@
 
 
         <!------------ Product creation modal ------------>
-
+        
 
         <section>
             <div class="modal-wrapper">
@@ -254,7 +253,7 @@
                                         <option value="<%= type.id %>"><%= type.name %></option>
                                     <% }) %>
                                 </select>
-
+                                
                                 <label for="price" class="label-sale">Precio</label>
                                 <span class="error" id="price-error"></span>
                                 <input type="number"  step="any" name="price"  class="input-sale" id="price-children" id="InputPrice" placeholder="ej. 899.99" />
@@ -262,7 +261,7 @@
                                 <label for="discount" class="label-sale">Porcentaje de descuento</label>
                                 <span class="error" id="discount-error"></span>
                                 <input type="number" name="discount"  class="input-sale" id="discount-children" placeholder="ej. 5">
-
+                                
                                 <div class="form-2-btns" id="btn-next2-parent" style="display: none;">
                                     <button type="button" id="btn-back2"  class="btn-back">Atrás</button>
                                     <button type="button" id="btn-next2" class="btn-next">Siguiente</button>
@@ -327,7 +326,7 @@
                 <!--    <p class="p-edit">Publicación editada con éxito</p>-->
                 </div>
             </div>
-
+            
         </section>
     </main>
     
@@ -371,7 +370,7 @@
     // Agregar un evento click a cada botón "Editar"
     editarBtns.forEach(function (btn, index) {
         btn.addEventListener('click', function (e) {
-
+            
             e.preventDefault(); // Para que no aparezca "#" en la URL
 
             // Obtener el contenedor asociado al botón actual
@@ -545,9 +544,9 @@
             form_3_btns.style.display = "flex";
             form_3_btns.style.justifyContent = "space-between"
             form_2_btns.style.display = "none";
-        
+            
             form_3_step.classList.add("active");
-
+            
             formProductSubcategory.value = productSubcategory.value;
             formProductType.value = productType.value;
             formProductPrice.value = productPrice.value;
@@ -581,11 +580,11 @@
         form_1.style.display = "flex";
         form_2.style.display = "none";
         form_3.style.display = "none";
-    
+        
         form_1_btns.style.display = "flex";
         form_2_btns.style.display = "none";
         form_3_btns.style.display = "none";
-    
+        
         form_2_step.classList.remove("active");
         form_3_step.classList.remove("active");
     
@@ -658,9 +657,10 @@
 
     let btn_saveEdit = document.querySelector(".btn-save");
     let btn_cancel = document.querySelector(".btn-cancel");
- 
+    
 </script>
 
+<script src="/javascript/validationFront/crudProducts.js"></script>
 
 
 </html>

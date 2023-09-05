@@ -225,7 +225,6 @@ window.onload = function () {
 
 //----------------Store fav products into DDBB--------------//
 const userIDfav = document.querySelector(".user-data").id;
-userIDfav? window.addEventListener('beforeunload', favProductsStore) : ""; //Antes de cambiar de ventana
 
 async function favProductsStore(e) {
     let idProducts = localStorage.getItem('favs');
@@ -252,3 +251,5 @@ async function favProductsStore(e) {
         console.error('Hubo un error al cargar los productos favoritos: ', error);     
     };
 };
+
+userIDfav? window.addEventListener('beforeunload', favProductsStore) : ""; //Antes de cambiar de ventana

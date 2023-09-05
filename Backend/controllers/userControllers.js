@@ -24,21 +24,20 @@ const controller = {
 
 	getUserFavs: async (req, res) => {
 		try {
-
 			const idUser = req.session.userLogged.id;
 
 			let favItems = await db.LikedProduct.findAll({
                 where: { user_id: idUser },
                 nest: true,
-                include: ["favproduct"],
+                include: ["user", "favproduct"],
             });
 
-			const favItemsData = products.map(favItems => favItems.toJSON()); // Instead of RAW and NEST
-			console.log(favItemsData);
+            let prevFavsArray = favItems.map(item => item.favproduct);
+
 			return res.render('userViews/favs', {
 				title: "Tus productos favoritos",
 				user: req.session.userLogged,
-				products: favItemsData,
+				products: prevFavsArray,
 				error: false
 			});
 		} catch (error) {

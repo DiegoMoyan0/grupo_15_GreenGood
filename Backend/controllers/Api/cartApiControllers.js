@@ -53,13 +53,11 @@ const controller = {
     initShoppingSession: async (req, res) => {
         try {
             const idUser = req.params.idUser;
-            console.log(idUser);
 
             let shopSession = await db.ShoppingSession.create({
                 init_date: Date.now(),
                 user_id: idUser
             });
-            console.log(shopSession);
 
             if(shopSession) {
                 response = {
