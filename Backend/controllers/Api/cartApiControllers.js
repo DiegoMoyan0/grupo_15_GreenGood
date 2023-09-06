@@ -99,7 +99,6 @@ const controller = {
 
             let shopSession = await db.ShoppingSession.findOne({
                 where: { user_id: req.params.idUser, finish_date: null },
-                /* raw: true, */ //Cannot get an array of cartItems if it is true
                 nest: true,
                 include: ["user", "cartItems"],
             });
@@ -379,7 +378,10 @@ const controller = {
                     total: total,
                     finish_date: finishDate,
                 },{ 
-                    where:{ id: idShoppingSession}
+                    where:{ 
+                        id: idShoppingSession,
+                        finish_date: null
+                    }
                 });
                 if(updatedShoppingSession){
                     response ={

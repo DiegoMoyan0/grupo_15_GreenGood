@@ -62,17 +62,44 @@ h5{
     padding: 10px;
     border: double 5px #4f879c;
     margin: 5px;
+    opacity: 0;
+    display: none;
+    transition: all 1s ease-in;
 }
 
-.cardFavs:hover {
+.cardFavs-active{
+    max-width: 250px;
+    border-radius: 20px;
+    text-align: center;
+    background-color: #fff;
+    cursor: pointer;
+    transition: transform 0.5s;
+    position: relative;
+    padding: 10px;
+    border: double 5px #4f879c;
+    margin: 5px;
+    transition: transform 0.2s ease-in;
+    animation: showAnimation 0.8s ease-out;
+}
+
+@keyframes showAnimation {
+    0% {
+        scale: 0; 
+    }
+    100% {
+        scale: 1; 
+    }
+}
+
+.cardFavs-active:hover {
     transform: translateY(-10px);
 }
 
-.cardFavs a {
+.cardFavs-active a{
     text-decoration: none;
 }
 
-.cardFavs img {
+.cardFavs-active img {
     max-width: 70%;
     height: auto;
     border-radius: 7px;

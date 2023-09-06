@@ -3,9 +3,10 @@ let db = require("../../database/models");
 const controller = {
 
     getAllByUser: async (req, res) => {
+     
         try {
             const idUser = req.params.idUser;
-
+            
             let favItems = await db.LikedProduct.findAll({
                 where: { user_id: idUser },
                 nest: true,
@@ -39,6 +40,8 @@ const controller = {
             }; 
 
             return res.json(response);
+
+            console.log("Dentro del set time out");
             
         } catch (error) {
             console.log(error);

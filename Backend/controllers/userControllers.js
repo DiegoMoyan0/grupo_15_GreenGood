@@ -22,28 +22,13 @@ const controller = {
 		});
 	},
 
-	getUserFavs: async (req, res) => {
-		try {
-			const idUser = req.session.userLogged.id;
-
-			let favItems = await db.LikedProduct.findAll({
-                where: { user_id: idUser },
-                nest: true,
-                include: ["user", "favproduct"],
-            });
-
-            let prevFavsArray = favItems.map(item => item.favproduct);
-
-			return res.render('userViews/favs', {
-				title: "Tus productos favoritos",
-				user: req.session.userLogged,
-				products: prevFavsArray,
-				error: false
-			});
-		} catch (error) {
-			console.log('Error at getting user favs products', error);
-			return res.redirect('/mainViews/error');
-		};
+	getUserFavs: (req, res) => {
+		
+		return res.render('userViews/favs', {
+			title: "Tus productos favoritos",
+			user: req.session.userLogged,
+			error: false
+		});
 	},
 
 	getLogout: (req, res) => {
