@@ -184,7 +184,7 @@ nav svg:hover {
     z-index: 16;
 }
 
-#userOptions{
+#userOptions {
     background-color: rgba(16, 20, 47, 0.8);
     width: fit-content;
     height: 0;
@@ -202,7 +202,8 @@ nav svg:hover {
     max-height: auto;
 }
 
-.content-icons ul.show, #userOptions.show {
+.content-icons ul.show,
+#userOptions.show {
     transition: height 0.7s ease-in;
     height: 100vw;
 }
@@ -212,7 +213,7 @@ nav svg:hover {
     height: 156px;
 }
 
-#userOptions.show{
+#userOptions.show {
     border: solid 1px burlywood;
     border-radius: 10px;
     box-shadow: 0 0 10px wheat;
@@ -227,13 +228,14 @@ nav svg:hover {
     border-bottom: solid 1px gray;
 }
 
-#userOptions li{
+#userOptions li {
     color: #f0f0f0;
     padding: 5px;
     margin: 2px;
 }
 
-.content-user-icons, .content-userlogged-icons{
+.content-user-icons,
+.content-userlogged-icons {
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -242,25 +244,25 @@ nav svg:hover {
     padding: 2px;
 }
 
-.content-userlogged-icons{
+.content-userlogged-icons {
     border: solid 1px burlywood;
     border-radius: 10px;
     box-shadow: 0px 0px 10px wheat;
     padding: 5px;
 }
 
-.content-user-icon p{
+.content-user-icon p {
     font-size: 0.8rem;
 }
 
-.content-icons img{
+.content-icons img {
     width: 30px;
     height: 30px;
     border-radius: 50%;
     margin: auto;
 }
 
-#loggedName{
+#loggedName {
     color: aliceblue;
     font-size: 1rem;
     display: none;
@@ -368,12 +370,13 @@ nav svg:hover {
 
 .hero-image img {
     position: absolute;
-    top: 2rem;
+    top: 0;
     left: 0;
     right: 0;
     margin: auto;
     max-width: 60%;
     max-height: 60%;
+    min-height: 90%;
     object-fit: contain;
     animation-name: dropImage;
     animation-duration: 1.5s;
@@ -411,6 +414,7 @@ nav svg:hover {
     position: absolute;
     text-align: center;
     font-style: oblique;
+    background-color: #F3F2F3;
     color: #bdc61b;
     left: 0;
     right: 0;
@@ -479,59 +483,89 @@ p {
     background-color: #F3F2F3;
     color: #2c5a40;
     box-shadow: 0px 0 5px white;
-    display: flex; /* Para alinear los h2 en una fila */
+    display: flex;
+    /* Para alinear los h2 en una fila */
 }
+
 .scrolling-text h2 {
     width: 100%;
-} 
+}
 
 .scrolling-text h2 {
     white-space: nowrap;
-    animation: scrollText 8s linear infinite; /* Animación con nombre "scrollText" */
+    animation: scrollText 8s linear infinite;
+    /* Animación con nombre "scrollText" */
 }
 
 @keyframes scrollText {
     0% {
-        transform: translateX(0%); /* Empieza desde la derecha */
+        transform: translateX(0%);
+        /* Empieza desde la derecha */
     }
+
     100% {
-        transform: translateX(100%); /* Llega a la izquierda */
+        transform: translateX(100%);
+        /* Llega a la izquierda */
     }
 }
+
+/* Estilos para los botones */
+.arrow-button {
+    color: #64ff00;
+    font-size: 2rem; 
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: color 0.3s;
+}
+
+.arrow-button:hover {
+    color: #64ff00; 
+}
+
 
 .card-container {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
+    flex-direction: row; 
     align-items: center;
-    justify-content: space-around;
-    width: 100%;
+    justify-content: space-between; 
+    width: 80%;
     max-height: 650px;
     background-color: #10142F;
-    overflow: scroll;
+    overflow: auto; 
+    padding: 1rem; 
+    margin: 0 auto; 
 }
 
+/* Estilos para las tarjetas */
 .card {
-    width: 350px;
-    margin: 1.2 rem;
+    width: 170px;
     border-radius: 5px;
     text-align: center;
     margin-bottom: 1.5rem;
     text-align: center;
     background-color: #fff;
-    margin: 3% 2%;
     box-shadow: 0px 0px 10px #64ff00;
     cursor: pointer;
     transition: transform 0.5s;
     position: relative;
+    margin: 0.5rem; /* Ajusta el margen entre las tarjetas */
+}
+
+
+/* Muestra solo los primeros dos productos */
+.card:nth-child(-n+1) {
+    display: block;
 }
 
 .card:hover {
     transform: scale(1.01);
-        /* cambia al pasar por arriba el mouse  */
+    /* cambia al pasar por arriba el mouse  */
 }
 
-.fav-icon{
+.fav-icon {
     color: #7D387D;
     width: 40px;
     padding: 1%;
@@ -549,17 +583,19 @@ p {
 
 @keyframes scaleAnimation {
     0% {
-      transform: scale(1); 
+        transform: scale(1);
     }
+
     50% {
-      transform: scale(1.2); 
+        transform: scale(1.2);
     }
+
     100% {
-        transform: scale(1); 
+        transform: scale(1);
     }
 }
 
-.share-icon{
+.share-icon {
     color: #7D387D;
     width: 40px;
     padding: 1.5%;
@@ -571,7 +607,7 @@ p {
     cursor: pointer;
 }
 
-.share-msg{
+.share-msg {
     color: #402c68;
     position: absolute;
     top: 18%;
@@ -585,17 +621,17 @@ p {
     font-weight: 1000;
 }
 
-.fav{
+.fav {
     top: -7%;
     right: -8%;
     width: 120px;
 }
 
-.share-icon:hover{
+.share-icon:hover {
     transform: scale(1.1);
 }
 
-.fav-icon:hover{
+.fav-icon:hover {
     transform: scale(1.1);
 }
 
@@ -605,39 +641,40 @@ p {
     border-radius: 7px;
 }
 
-.p-title{
+.p-title {
     text-align: center;
-    color:#76949f;
+    color: #76949f;
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 10px;
 }
-.p-description{
+
+.p-description {
     text-align: center;
-    color:#535454;
+    color: #535454;
     font-size: 1rem;
     font-weight: 550;
     text-anchor: middle;
     margin-bottom: 15px;
 }
 
-.discount{
+.discount {
     display: inline;
     width: 45%;
     color: #535454;
     font-weight: 600;
 }
 
-.old-price{
-    text-decoration:line-through;
+.old-price {
+    text-decoration: line-through;
 }
 
-.off{
-    color:#80ef03;
+.off {
+    color: #80ef03;
     font-weight: bolder;
 }
 
-.price{
+.price {
     display: inline;
     width: 45%;
     color: #18004b;
@@ -647,7 +684,7 @@ p {
     margin-left: 5px;
 }
 
-.send{
+.send {
     color: #64ff00;
     font-size: 1.1rem;
     border: 1px solid #64ff00;
@@ -658,7 +695,7 @@ p {
     position: absolute;
     top: 55%;
     left: 20px;
-    animation: shadowZize 0.8s linear infinite alternate ;
+    animation: shadowZize 0.8s linear infinite alternate;
 }
 
 @keyframes shadowZize {
@@ -666,6 +703,7 @@ p {
         box-shadow: 0px 0px 0px;
         opacity: 0.5;
     }
+
     to {
         box-shadow: 0px 0px 11px #64ff00;
         opacity: 1;
@@ -700,19 +738,22 @@ p {
     transition: all 0.3s ease-in-out;
 }
 
-.btn-product.clicked{
+.btn-product.clicked {
     animation: pulse 3s infinite;
 }
 
 @keyframes pulse {
-    0%, 100% {
-      transform: scale(1);
-      background-color: #f0f0f0;
+
+    0%,
+    100% {
+        transform: scale(1);
+        background-color: #f0f0f0;
     }
+
     50% {
-      transform: scale(1.2);
-      color: whitesmoke;
-      background-color: #402c68;
+        transform: scale(1.2);
+        color: whitesmoke;
+        background-color: #402c68;
     }
 }
 
@@ -1025,7 +1066,7 @@ small {
         flex-wrap: nowrap;
     }
 
-    .content-icons{
+    .content-icons {
         margin-right: 8px;
     }
 
@@ -1050,7 +1091,7 @@ small {
         text-transform: uppercase;
     }
 
-    #loggedName{
+    #loggedName {
         display: block;
     }
 
@@ -1091,7 +1132,9 @@ small {
     .card-container {
         flex-direction: row;
     }
-
+    .card {
+        width: 350px;
+    }
     .title {
         font-size: 3rem;
         font-weight: 700;
