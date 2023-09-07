@@ -108,6 +108,20 @@
     }
   }
 
+
+  #map-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#map {
+    width: 80%; /* Puedes ajustar el ancho del mapa según tus necesidades */
+    height: 80vh; /* Puedes ajustar la altura del mapa según tus necesidades */
+}
+
   /*----------------------------------------- BREAK --------------------------------------------------*/
   @media (min-width: 768px) {
 
