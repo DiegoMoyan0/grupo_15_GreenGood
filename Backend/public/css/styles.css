@@ -121,6 +121,10 @@ nav svg:hover {
     align-items: center;
 }
 
+#search-form{
+  width: 90%
+}
+
 .input-container {
     display: flex;
     align-items: center;
@@ -131,6 +135,7 @@ nav svg:hover {
     height: 1.8rem;
     margin-left: 15px;
     justify-content: space-between;
+    width: 90%
 }
 
 .search-container input {

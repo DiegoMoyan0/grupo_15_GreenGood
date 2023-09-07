@@ -46,7 +46,7 @@ const controller = {
 
     getInfo:(req,res) => {
         return res.render('mainViews/info', {title: "Informacion"});
-    }
+    },
 } 
 // exportamos el controller //
 module.exports = controller;
