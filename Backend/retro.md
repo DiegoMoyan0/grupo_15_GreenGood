@@ -147,6 +147,25 @@ Retrospectiva del Sprint 7:
 
 5. Dejar de hacer:
 - Tomar decisiones o hacer cambios importantes sin consultar al equipo, especialmente si está relacionado con la estructura de los modelos y la base de datos.
+<!---------------------------------------------------------------------------------->
+Retrospectiva del Sprint 8:
+
+1. Comenzar a hacer:
+- Eliminar comentarios y líneas de código innecesarias.
+
+2. Hacer más:
+- Programar reuniones para la deliberación de ideas.
+
+3. Continuar haciendo:
+- Brindarse apoyo mutuo para resolver dudas y compartir información adicional.
+- Realizar investigaciones para mejorar el proyecto.
+- Cumplir con los plazos de entrega tanto obligatorios como opcionales.
+- Notificar directamente los cambios o implementaciones realizadas..
+
+4. Hacer menos:
+- Evitar demoras en la implementación de tareas simples.
+
+5. Dejar de hacer:
 
 
 

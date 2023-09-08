@@ -33,6 +33,7 @@ window.onload = function () {
     };
 
     //-----------------------------------Handle Shopping Cart------------------------------------------//
+    var alertMessage = "Debes iniciar sesión para agregar ítems al carrito. ¿Deseas iniciar sesión ahora?";
 
     allAddCartBtns.forEach(btn => {
         btn.addEventListener("click", async e => {
@@ -41,7 +42,7 @@ window.onload = function () {
             if (!shoppingSessionFlag) {
                 if (!userID) {
                     shoppingSessionFlag = false;
-                    alert("Debes iniciar session para agregar items al carrito, deseas loguearte?");
+                    showCustomLogoutModal(alertMessage);
                 } else {
                     let response = await fetch(`http://localhost:3001/api/cart/shoppingSession/${userID}/get`);
 
@@ -58,6 +59,34 @@ window.onload = function () {
                     };
                 };
             };
+            
+            // Función para mostrar el nuevo modal personalizado
+function showCustomLogoutModal(message) {
+    var modal = document.getElementById('logoutModal');
+    var modalMessage = document.getElementById('logoutModalMessage');
+  
+    // Modifica el contenido del nuevo modal con el mensaje personalizado
+    modalMessage.textContent = message;
+  
+    // Abre el nuevo modal
+    modal.style.display = 'block';
+  
+    // Cierra el nuevo modal al hacer clic en "Cancelar"
+    document.getElementById('cancelLogoutButton').addEventListener('click', function(e) {
+      e.preventDefault();
+      modal.style.display = 'none';
+    });
+  
+    // Redirige al usuario a la página de inicio de sesión al hacer clic en "Aceptar"
+    document.getElementById('acceptLogoutButton').addEventListener('click', function() {
+      modal.style.display = 'none';
+      window.location.href = '/user/login';
+    });
+  }
+
+
+
+
 
             const idProduct = Number(btn.id);
             const idSession = Number(shoppingSession.data.id);
@@ -100,13 +129,42 @@ window.onload = function () {
     });
 
     //-----------------------------------FAV ICONS------------------------------------------//
+    // Obtén elementos del DOM
+    var openModalLink = document.getElementById('openModalLink');
+    var closeModalButton = document.getElementById('closeModalButton');
+    var modal = document.getElementById('myModal');
+    var cancelLogoutLink = document.getElementById('cancelLogoutLink');
+    var confirmLogoutLink = document.getElementById('confirmLogoutLink');
 
-    function handleLogout() {
+    // Abre el modal al hacer clic en el enlace "Cerrar sesión"
+    openModalLink.onclick = function (e) {
+        e.preventDefault(); // Evita la acción predeterminada del enlace (navegación)
+        const loggedName = document.getElementById('userOptionsLink');
+        userOptions.classList.toggle('show');
+
+        modal.style.display = 'block';
+    }
+
+    // Cierra el modal al hacer clic en la "x"
+    closeModalButton.onclick = function () {
+        modal.style.display = 'none';
+    }
+
+    // Cierra el modal al hacer clic en el enlace "Cancelar"
+    cancelLogoutLink.onclick = function (e) {
+        e.preventDefault(); // Evita la acción predeterminada del enlace (navegación)
+        modal.style.display = 'none';
+    }
+
+    // Confirmar el cierre de sesión y redireccionar al hacer clic en el enlace "Cerrar sesión"
+    confirmLogoutLink.onclick = function (e) {
         localStorage.clear();
-        alert("¡Cierre de sesión ejecutado!");
-    };
+        // Puedes redirigir al usuario a la página de inicio de sesión o a donde sea necesario aquí.
+        modal.style.display = 'none';
+    }
+
     if (window.location.pathname === "/user/logout") {
-        handleLogout();
+        openModalLink();
     };
 
     setTimeout(() => {
@@ -191,7 +249,7 @@ window.onload = function () {
     document.addEventListener("click", function (event) {
         if (event.target.tagName === "A") {
             if (event.target.getAttribute("href") === "/user/logout") {
-                handleLogout();
+                openModalLink();
             };
         };
     });
@@ -238,13 +296,13 @@ window.onload = function () {
     searchForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const productQuery = searchInput.value.trim();
-        if (productQuery !== ""){
+        if (productQuery !== "") {
             searchForm.submit();
         }
     })
 
     ////////////////////////////////////////////////////////////////////
-    
+
 };
 
 //----------------Store fav products into DDBB--------------//
