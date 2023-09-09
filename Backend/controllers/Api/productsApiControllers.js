@@ -384,7 +384,7 @@ const productsController = {
             });
         };
     },
-    getSeach: async (req, res) => {
+    getSearch: async (req, res) => {
 
         const searchTerm = req.query.s
 

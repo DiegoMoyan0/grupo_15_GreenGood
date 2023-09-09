@@ -17,7 +17,7 @@ routes.get('/payments/:idUser/get', ordersApiController.getUserPayments);
 routes.post('/payments/:idUser/create', ordersApiController.addPayment);
 
 /*** @POST A NEW PURCHASE ORDER***/ 
-routes.post('/:idUser/create', ordersApiController.createOrderDetail);
+routes.post('/:idUser/create', ordersApiController.createOrder);
 
 
 module.exports = routes;
