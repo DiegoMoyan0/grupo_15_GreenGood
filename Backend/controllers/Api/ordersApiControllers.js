@@ -176,7 +176,7 @@ const controller = {
                 quantity: cartItem.quantity,
                 amount: cartItem.price,
                 order_detail_id: lastOrderId,
-                cart_item_id: cartItem.id
+                product_id: cartItem.id
             }));
 
             // To add all order items in one query
@@ -218,39 +218,44 @@ const controller = {
         };
     },
 
-    getOrderDetail: async (req, res) => {
+    getOrder: async (req, res) => {
 
         try {
-            const idUser = req.params.idUser;
+            const idOrder = req.params.idOrder;
 
-            let lastSessions = await db.ShoppingSession.findAll({
-                where: { user_id: idUser },
-                order : [
-                    ['finish_date', 'DESC']
-                ],
+            let orderDetail = await db.OrderDetail.findByPk(idOrder, {
                 nest: true,
-                include: ["user", "cartItems"],
+                include: ["address", "orderItems", "payment", "userDetail"],
             });
+
+            let orderItems = await db.OrderItem.findAll({
+                where:{
+                    order_detail_id: idOrder
+                },
+                include: ["product"],
+                nest: true,
+                raw: true
+            })
 
             let response = {};
             
-            if(lastSessions) {
+            if(orderDetail && orderItems) {
                 response = {
                     meta: {
                         status : 200, //200 for success with content,
                         success: true,
-                        url: 'http://localhost:3001/api/orders/shoppingSession/:idUser/getLast'
+                        url: 'http://localhost:3001/api/orders/:idOrder/get'
                     },
-                    data: lastSessions
+                    data: orderDetail
                 }
             }else{
                 response = {
                     meta: {
                         status : 204, //204 for success without content,
                         success: false,
-                        url: 'http://localhost:3001/api/orders/shoppingSession/:idUser/getLast'
+                        url: 'http://localhost:3001/api/orders/:idOrder/get'
                     },
-                    data: lastSessions
+                    data: orderDetail
                 }
             }; 
 
@@ -262,7 +267,7 @@ const controller = {
                 meta: {
                     status: 503,
                     success: false,
-                    message: "An error occurred while getting the last shopping sessions."
+                    message: "An error occurred at server while getting the order."
                 }
             });
         };

@@ -53,10 +53,7 @@ module.exports = (sequelize, DataTypes) => {
             as: 'shoppingSession',
             foreignKey: 'shopping_session_id',
         });
-        CartItem.hasOne(models.OrderItem, {
-            as: 'orderItem',
-            foreignKey: 'cart_item_id'
-        });
+        
     };
 
     return CartItem;
