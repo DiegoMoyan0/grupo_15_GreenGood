@@ -20,6 +20,11 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        identity_document: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true
+        },
         username: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -50,7 +55,15 @@ module.exports = (sequelize, DataTypes) => {
         password: {
             type: DataTypes.STRING,
             allowNull: false,
-        }
+        },
+        passwordResetToken:{
+            type: DataTypes.STRING, 
+            defaultValue: null, 
+          },
+          resetTokenExpiration:   {
+            type: DataTypes.DATE, 
+            defaultValue: null, 
+          },
     };
 
     const config = {

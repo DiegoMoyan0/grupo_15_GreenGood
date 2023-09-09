@@ -58,6 +58,7 @@ const validations = [
             };
             return true;
         }),
+    body('identity_document').notEmpty().isNumeric().isLength({ min: 7 }).withMessage('El formato del documento de identidad no es válido'),
     body('street').notEmpty().withMessage('Tienes que ingresar nombre de la calle.'),
     body('number').notEmpty().withMessage('Tienes que ingresar la numeración.'),
     body('city').notEmpty().withMessage('Tienes que ingresar la ciudad.'),
