@@ -9,6 +9,9 @@ const db = require("../database/models");
 // ************ Controller Require ************
 const userController = require('../controllers/userControllers');
 const validationsRegisterMw = require('../middlewares/validateRegisterMw');
+const validationsPasswordMw = require('../middlewares/validatePasswordMw');
+const validationsUserExistenceMw = require('../middlewares/validationsUserExistenceMw');
+const validationsUserTokenMw = require('../middlewares/validateUserTokenMw');
 const validationsLoginMw = require('../middlewares/validateLoginMw');
 const validationsUpdateMw = require('../middlewares/validateUpdateMw');
 const validationsUserLoggedMw = require('../middlewares/userLoggedMw');
@@ -38,12 +41,19 @@ router.get('/register', guestMw, userController.getRegister);
 router.get('/profile', authMw, validationsUserLoggedMw, userController.getProfile);  
 router.get('/favs', authMw, validationsUserLoggedMw, userController.getUserFavs);  
 router.get('/logout', authMw, userController.getLogout);  
+router.get('/password-reset', userController.getPasswordReset);  
+router.get('/password-reset-token', validationsUserExistenceMw, userController.getPasswordToken);
+router.get('/password-reset-success', validationsUserTokenMw , userController.getPasswordSuccess);  
 
 
 /*** POST FORMS ***/ 
 router.post('/entry',validationsLoginMw, userController.loginUser); 
 router.post('/register', uploadPhoto.single('user_image'), validationsRegisterMw, userController.registerUser);
 router.put('/:id/update', uploadPhoto.single('user_image'), validationsUpdateMw, userController.updateUser);
+
+router.post('/password-reset', userController.sendResetTokenEmail);
+router.post('/send-reset-token', userController.handleToken);
+router.post('/reset-password-success' ,validationsPasswordMw, userController.passwordUpdate);
 
 router.delete('/:id/delete', userController.hardDeleteUser);
 

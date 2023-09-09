@@ -64,6 +64,26 @@
                     <span class="error" id="last_name-error" ></span>
 				</div>
 
+                <div class="container-input">
+                    <label for="identity_document" class="label-register">Documento de identidad</label>
+					<input type="tel" id="identity_document"
+                    name="identity_document" 
+                    class="input-register" 
+                    placeholder="Como figura en su DNI"
+                    class="form-inputs <%= locals.errors && errors.identity_document? "is-invalid" : null %>"
+                    value= <%= locals.oldData? oldData.identity_document : null %>
+                    >    
+                    <% if (locals.errors && errors.identity_document) { %>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                        </svg>                  
+                        <div class="text-danger">
+                            <%= errors.identity_document.msg %>
+                        </div>
+                    <% }; %>
+                    <span class="error" id="identity_document-error"></span>
+				</div>
+
 				<div class="container-input">
                     <label for="email" class="label-register">Email</label>
 					<input id="email" type="email" 

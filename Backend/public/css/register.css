@@ -183,6 +183,15 @@ input {
 	box-shadow: 0 1px 1rem rgba(0, 0, 0, 0.1);
 }
 
+.container.pass-reset {
+	padding: 2rem 0;
+	width: 22rem;
+	height: 30rem;
+	text-align: center;
+	font-size: 0.5rem;
+}
+
+
 .container::before {
 	content: '';
 	position: absolute;
