@@ -425,7 +425,7 @@ const productsController = {
                     status : 200, //200 for success with content,
                     success: true,
                     total: searchedProducts.length,
-                    url: 'api/product'
+                    url: 'api/product/search'
                 },
                 data: searchedProducts
             }; 

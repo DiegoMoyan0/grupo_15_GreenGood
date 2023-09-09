@@ -6,22 +6,17 @@ const controller = {
 
         try {
             let shopSession = await db.ShoppingSession.findOne({
-                where: { user_id: req.session.userLogged.id },
-                /* raw: true, */ //Cannot get an array of cartItems if it is true
-                nest: true,
-                include: ["user", "cartItems"],
+                where: { user_id: req.session.userLogged.id, finish_date: null}
             });
             
+            let newShoppingSession = {};
             if (shopSession == null){
-                await db.ShoppingSession.create({
+                newShoppingSession = await db.ShoppingSession.create({
                     init_date: Date.now(),
                     user_id: req.session.userLogged.id
                 });
-                shopSession = await db.ShoppingSession.findOne({
-                    where: { user_id: req.session.userLogged.id },
-                   /*  raw: true,  */
-                    nest: true,
-                    include: ["cartItems"],
+                shopSession = await db.ShoppingSession.findByPk(newShoppingSession.id,{
+                    nest: true
                 });
             };
 

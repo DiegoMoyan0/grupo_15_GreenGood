@@ -55,7 +55,7 @@ module.exports = (sequelize, DataTypes) => {
 
         OrderDetail.belongsTo(models.Address, {
             as: 'address',
-            foreignKey: 'user_id',
+            foreignKey: 'user_address_id',
         });
         OrderDetail.hasMany(models.OrderItem, {
             as: 'orderItems',
@@ -63,7 +63,7 @@ module.exports = (sequelize, DataTypes) => {
         });
         OrderDetail.belongsTo(models.UserPayment, {
             as: 'payment',
-            foreignKey: 'user_id',
+            foreignKey: 'user_payment_id',
         });
         OrderDetail.belongsTo(models.User, {
             as: 'userDetail',

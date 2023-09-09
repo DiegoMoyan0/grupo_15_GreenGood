@@ -242,13 +242,8 @@ function showCustomLogoutModal(message) {
                 }, 1500);
             };
         });
-<<<<<<< HEAD
-    }, 350);
-    
-=======
     }, 201);
 
->>>>>>> f08d1126482f753b01cd93e494d472c10ffe8643
 
     // To handle logout when any link to "/user/logout" is clicked:
     document.addEventListener("click", function (event) {
@@ -341,10 +336,4 @@ async function favProductsStore(e) {
 
 let urlActual = window.location.href;
 
-<<<<<<< HEAD
 userIDfav? window.addEventListener('beforeunload', favProductsStore) : ""; 
-=======
-if (urlActual != "http://localhost:3001/user/favs") {
-    userIDfav ? window.addEventListener('beforeunload', favProductsStore) : "";
-};
->>>>>>> f08d1126482f753b01cd93e494d472c10ffe8643

@@ -9,7 +9,6 @@ const controller = {
 
             let shopSession = await db.ShoppingSession.findOne({
                 where: { user_id: idUser, finish_date: null },
-                /* raw: true, */ //Cannot get an array of cartItems if it is true
                 nest: true,
                 include: ["user", "cartItems"],
             });
@@ -44,7 +43,7 @@ const controller = {
                 meta: {
                     status: 503,
                     success: false,
-                    message: "An error occurred while processing your request at shopping session."
+                    message: "An error occurred while processing your request at get shopping session."
                 }
             });
         };
@@ -86,7 +85,7 @@ const controller = {
                 meta: {
                     status: 503,
                     success: false,
-                    message: "An error occurred while processing your request at shopping session."
+                    message: "An error occurred while processing your request at init shopping session."
                 }
             }); 
         };
@@ -163,7 +162,12 @@ const controller = {
             const idShoppingSession = Number(req.body.shopping_session_id);
             const quantityValue = Number(req.body.quantity);
 
-            let prevCartItem = await db.CartItem.findOne({ where:{ product_id: idProduct, shopping_session_id: idShoppingSession } });
+            let prevCartItem = await db.CartItem.findOne({ 
+                where:{ 
+                    product_id: idProduct, 
+                    shopping_session_id: idShoppingSession
+                }
+            });
 
             let updatedCartItem;
             let createdCartItem;
@@ -231,6 +235,7 @@ const controller = {
             });            
         }; 
     },
+
     modifQuantity: async (req, res) => {
     
         try {
@@ -307,7 +312,6 @@ const controller = {
     removeCartItem: async (req, res) => {
     
         try {
-
             const idCartItem = req.params.idCartItem;
 
             let deletedCartItem = await db.CartItem.destroy({

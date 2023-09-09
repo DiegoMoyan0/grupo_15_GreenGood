@@ -59,7 +59,6 @@ const controller = {
 
             let userPayments = await db.UserPayment.findAll({
                 where: { user_id: idUser },
-                raw: true,
                 nest: true
             });
 
@@ -94,6 +93,53 @@ const controller = {
                     status: 503,
                     success: false,
                     message: "An error occurred while getting the user payments."
+                }
+            });
+        };
+        
+    },
+
+    getUserAddresses: async (req, res) => {
+
+        try {
+            const idUser = req.params.idUser;
+
+            let userAddresses = await db.Address.findAll({
+                where: { user_id: idUser },
+                nest: true
+            });
+
+            let response = {};
+            
+            if(userAddresses) {
+                response = {
+                    meta: {
+                        status : 200, //200 for success with content,
+                        success: true,
+                        url: 'http://localhost:3001/api/orders/addresses/:idUser/get'
+                    },
+                    data: userAddresses
+                }
+            }else{
+                response = {
+                    meta: {
+                        status : 204, //204 for success without content,
+                        success: false,
+                        url: 'http://localhost:3001/api/orders/addresses/:idUser/get'
+                    },
+                    data: userAddresses
+                }
+            }; 
+
+            return res.json(response);
+            
+        } catch (error) {
+            console.log(error);
+            res.json({
+                meta: {
+                    status: 503,
+                    success: false,
+                    message: "An error occurred while getting the user addresses."
                 }
             });
         };
@@ -237,16 +283,49 @@ const controller = {
                 raw: true
             })
 
+
             let response = {};
             
             if(orderDetail && orderItems) {
+
+                const filteredUserDetail = {
+                    id: orderDetail.userDetail.id,
+                    first_name: orderDetail.userDetail.first_name,
+                    last_name: orderDetail.userDetail.last_name,
+                    username: orderDetail.userDetail.username,
+                    birth_date: orderDetail.userDetail.birth_date,
+                    email: orderDetail.userDetail.email,
+                    phone: orderDetail.userDetail.phone,
+                };
+                delete orderDetail.userDetail;
+
+                const filteredOrderItems = orderItems.map((item) => ({
+                    id: item.id,
+                    quantity: item.quantity,
+                    amount: item.amount,
+                    order_detail_id: item.order_detail_id,
+                    product_id: item.product_id,
+                    product: {
+                        id: item.product.id,
+                        title: item.product.title,
+                        description: item.product.description,
+                        price: item.product.price,
+                        discount: item.product.discount,
+                        stock: item.product.stock,
+                        category_id: item.product.category_id,
+                        subcategory_id: item.product.subcategory_id,
+                        manufacturer_id: item.product.manufacturer_id,
+                        type_id: item.product.type_id,
+                    }
+                }));
+
                 response = {
                     meta: {
                         status : 200, //200 for success with content,
                         success: true,
                         url: 'http://localhost:3001/api/orders/:idOrder/get'
                     },
-                    data: orderDetail
+                    data: { orderDetail, orderItems: filteredOrderItems, user: filteredUserDetail }
                 }
             }else{
                 response = {
@@ -255,7 +334,7 @@ const controller = {
                         success: false,
                         url: 'http://localhost:3001/api/orders/:idOrder/get'
                     },
-                    data: orderDetail
+                    data: { orderDetail, filteredOrderItems }
                 }
             }; 
 
@@ -267,7 +346,7 @@ const controller = {
                 meta: {
                     status: 503,
                     success: false,
-                    message: "An error occurred at server while getting the order."
+                    message: "An error occurred at server while getting the purchase order."
                 }
             });
         };
