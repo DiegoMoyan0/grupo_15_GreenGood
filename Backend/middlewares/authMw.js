@@ -1,4 +1,3 @@
-//To avoid entering to user profile if not logged
 
 function authMw(req, res, next) {
 

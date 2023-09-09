@@ -152,11 +152,13 @@ const controller = {
 		    /* const resultsValidations = validationResult(req); */
 
             const newData = req.body;
+            console.log(newData);
+     
             const idUser = req.params.idUser;
 
             let createdPayment = await db.UserPayment.create({
-                payment_type : newData.type,
-                payment_vendor : newData.vendor,
+                payment_type : newData.payment_type,
+                payment_vendor : newData.payment_vendor,
                 account_number: newData.account_number,
                 card_number: Number(newData.card_number),
                 card_exp : newData.card_exp,
@@ -220,7 +222,7 @@ const controller = {
 
             const orderItemsToCreate = cartItems.map(cartItem => ({
                 quantity: cartItem.quantity,
-                amount: cartItem.price,
+                amount: cartItem.amount,
                 order_detail_id: lastOrderId,
                 product_id: cartItem.id
             }));

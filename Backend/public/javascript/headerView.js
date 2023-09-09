@@ -11,7 +11,6 @@ window.onload = function () {
     if (amountInputDetail) {
         amountInputDetail.onchange = () => {
             quantityFront = Number(amountInputDetail.value);
-            console.log(quantityFront);
         };
     };
 
@@ -59,34 +58,25 @@ window.onload = function () {
                     };
                 };
             };
+
+            function showCustomLogoutModal(message) {
+                var modal = document.getElementById('logoutModal');
+                var modalMessage = document.getElementById('logoutModalMessage');
+
+                modalMessage.textContent = message;
             
-            // Función para mostrar el nuevo modal personalizado
-function showCustomLogoutModal(message) {
-    var modal = document.getElementById('logoutModal');
-    var modalMessage = document.getElementById('logoutModalMessage');
-  
-    // Modifica el contenido del nuevo modal con el mensaje personalizado
-    modalMessage.textContent = message;
-  
-    // Abre el nuevo modal
-    modal.style.display = 'block';
-  
-    // Cierra el nuevo modal al hacer clic en "Cancelar"
-    document.getElementById('cancelLogoutButton').addEventListener('click', function(e) {
-      e.preventDefault();
-      modal.style.display = 'none';
-    });
-  
-    // Redirige al usuario a la página de inicio de sesión al hacer clic en "Aceptar"
-    document.getElementById('acceptLogoutButton').addEventListener('click', function() {
-      modal.style.display = 'none';
-      window.location.href = '/user/login';
-    });
-  }
-
-
-
-
+                modal.style.display = 'block';
+            
+                document.getElementById('cancelLogoutButton').addEventListener('click', function(e) {
+                e.preventDefault();
+                modal.style.display = 'none';
+                });
+            
+                document.getElementById('acceptLogoutButton').addEventListener('click', function() {
+                modal.style.display = 'none';
+                window.location.href = '/user/login';
+                });
+            }
 
             const idProduct = Number(btn.id);
             const idSession = Number(shoppingSession.data.id);
@@ -96,7 +86,7 @@ function showCustomLogoutModal(message) {
                 shopping_session_id: idSession,
                 quantity: quantityFront
             };
-            console.log(data);
+     
             const requestOptions = {
                 method: 'POST',
                 headers: {

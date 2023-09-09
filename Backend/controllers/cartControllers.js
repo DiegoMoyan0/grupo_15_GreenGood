@@ -3,7 +3,13 @@ let db = require("../database/models");
 const controller = {
 
     getCart: async (req, res) => {
-
+        let cartItems;
+        if(!req.session.userLogged){
+            return res.render('cartViews/shopping-cart', {
+                title: "Carrito de Compras",
+                cartItems: null
+            });
+        }
         try {
             let shopSession = await db.ShoppingSession.findOne({
                 where: { user_id: req.session.userLogged.id, finish_date: null}
@@ -20,7 +26,7 @@ const controller = {
                 });
             };
 
-            let cartItems = await db.CartItem.findAll({
+            cartItems = await db.CartItem.findAll({
                 where: { shopping_session_id: shopSession.id },
                 raw: true,
                 nest: true,
@@ -29,6 +35,7 @@ const controller = {
             
             return res.render('cartViews/shopping-cart', {
                 title: "Carrito de Compras",
+                user: req.session.userLogged,
                 cartItems
             });
             

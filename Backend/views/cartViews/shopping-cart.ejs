@@ -46,69 +46,69 @@
             </div>
 
             <section class="order">
-
             <!-- Added products -->
-
-            <% if (cartItems.length == 0 && cartItems) { %>
-                <!-- Default view without added products -->
-                <article class="empty-cart-content" data-bind="fadeVisible: !hasItems() &amp;&amp; !loading()" style="color: antiquewhite;">  
-                    <h2 class="empty-cart-title" data-i18n="cart.emptyTitle">Su carrito está vacio</h2>
-                    <div class="empty-cart-message">Para seguir comprando, navegar por las categorías en el sitio, o busque su producto.</div> 
-                    <div class="clearfix empty-cart-links"><a href="/product/list" style="color: aqua;" id="cart-choose-products">Elegir productos</a></div>
-                </article> 
-            <% } else if (cartItems.length > 0 && cartItems) { %>                
-                <% cartItems.forEach(item => { %>
-                    <article class="cart-products" id="<%= item.id %>"> 
-                        <table>
-                            <tr class="trow-product">
-                                <td class="product-img"><img src= "/images/products/<%= item.product.image %>" alt="imagen gotero">
-                                </td>
-                                <td class="tdata-product-info">
-                                    <% if (item.product.discount > 0) { %>
-                                        <div class="highlight">
-                                            <div class="promo">- <%= item.product.discount %>%</div>
-                                            <div class="promo-text"> Exclusivo online</div>
+            <% if (cartItems) { %>
+                <% if (cartItems.length == 0) { %>
+                    <!-- Default view without added products -->
+                    <article class="empty-cart-content" data-bind="fadeVisible: !hasItems() &amp;&amp; !loading()" style="color: antiquewhite;">  
+                        <h2 class="empty-cart-title" data-i18n="cart.emptyTitle">Su carrito está vacio</h2>
+                        <div class="empty-cart-message">Para seguir comprando, navegar por las categorías en el sitio, o busque su producto.</div> 
+                        <div class="clearfix empty-cart-links"><a href="/product/list" style="color: aqua;" id="cart-choose-products">Elegir productos</a></div>
+                    </article> 
+                <% } else if (cartItems.length > 0) { %>                
+                    <% cartItems.forEach(item => { %>
+                        <article class="cart-products" id="<%= item.id %>"> 
+                            <table>
+                                <tr class="trow-product">
+                                    <td class="product-img"><img src= "/images/products/<%= item.product.image %>" alt="imagen prod">
+                                    </td>
+                                    <td class="tdata-product-info">
+                                        <% if (item.product.discount > 0) { %>
+                                            <div class="highlight">
+                                                <div class="promo">- <%= item.product.discount %>%</div>
+                                                <div class="promo-text"> Exclusivo online</div>
+                                            </div>
+                                        <% } %>
+                                        <p class="product-name"><strong><%= item.product.title %></strong></p>
+                                        <p class="prodcut-datail"><%= item.product.description %></p>
+                                    </td>
+                                </tr>
+                                <tr class="trow-buttons">
+                                    <td></td>
+                                    <td class="trow-buttons-tdr">
+                                        <div class="tdata-eliminate">
+                                           <button type="submit" class="eliminate">Eliminar</button></form>
                                         </div>
-                                    <% } %>
-                                    <p class="product-name"><strong><%= item.product.title %></strong></p>
-                                    <p class="prodcut-datail"><%= item.product.description %></p>
-                                </td>
-                            </tr>
-                            <tr class="trow-buttons">
-                                <td></td>
-                                <td class="trow-buttons-tdr">
-                                    <div class="tdata-eliminate">
-                                       <button type="submit" class="eliminate">Eliminar</button></form>
-                                    </div>
-                                    <div class="tdata-save">    
-                                        <a href="" class="save"><button>Guardar en favs</button></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="trow-price">
-                                <td class="tdata-aumount">
-                                    <div class="select-amount-container">
-                                        <span href="#" class="decrease-amount">
-                                            <i class="fa-solid fa-minus"></i>
-                                        </span>
-                                        <input type="tel" value="<%= item.quantity %>" name="quantity" class="amount" id="amount" min="1" max="50"/>
-                                        <span href="#" class="increase-amount">
-                                            <i class="fa-solid fa-plus"></i>
-                                        </span>
-                                    </div>
-                                </td>
-                                <td class="tdata-price">
-                                    <% if (item.product.discount > 0) { %>
-                                        <div id="text-product-price">Antes:<strong style="text-decoration: line-through;">$<%= Number(item.product.price).toFixed(2).replace('.', ',') %></strong></div><p class="product-price" style="color: rgba(234, 22, 103, 0.911); font-size: larger;"><strong>$<%= ((item.product.price)*(1-(item.product.discount/100))).toFixed(2).replace('.', ',') %></strong></p>      
-                                    <% }else{ %>
-                                        <p class="product-price"><div id="text-product-price">Precio sin descuentos</div><strong>$<%= Number(item.product.price).toFixed(2).replace('.', ',') %></strong></p>
-                                    <% } %>
-                                </td>
-                            </tr>
-                        </table>
-                    </article>
-                <% }) %>
-            <% }; %>
+                                        <div class="tdata-save">    
+                                            <a href="" class="save"><button>Guardar en favs</button></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="trow-price">
+                                    <td class="tdata-aumount">
+                                        <div class="select-amount-container">
+                                            <span href="#" class="decrease-amount">
+                                                <i class="fa-solid fa-minus"></i>
+                                            </span>
+                                            <input type="tel" value="<%= item.quantity %>" name="quantity" class="amount" id="amount" min="1" max="50"/>
+                                            <span href="#" class="increase-amount">
+                                                <i class="fa-solid fa-plus"></i>
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td class="tdata-price">
+                                        <% if (item.product.discount > 0) { %>
+                                            <div id="text-product-price">Antes:<strong style="text-decoration: line-through;">$<%= Number(item.product.price).toFixed(2).replace('.', ',') %></strong></div><p class="product-price" style="color: rgba(234, 22, 103, 0.911); font-size: larger;"><strong>$<%= ((item.product.price)*(1-(item.product.discount/100))).toFixed(2).replace('.', ',') %></strong></p>      
+                                        <% }else{ %>
+                                            <p class="product-price"><div id="text-product-price">Precio sin descuentos</div><strong>$<%= Number(item.product.price).toFixed(2).replace('.', ',') %></strong></p>
+                                        <% } %>
+                                    </td>
+                                </tr>
+                            </table>
+                        </article>
+                    <% }) %>
+                <% }; %>    
+            <% } %>
             </section>
 
         <!-- Order Detail -->
@@ -175,10 +175,67 @@
 
                 <button class="buttons-payment" id="finish-shopping">Finalizar Compra</button>
                 <button class="buttons-payment"  id="shopping-back"><a href="/">Seguir Comprando</a></button>
-                <button class="buttons-payment"  id="fqs-cart"><a href="/faqs">Consultá tus dudas</a></button>
-                
+                <button class="buttons-payment"  id="fqs-cart"><a href="/faqs">Consultá tus dudas</a></button> 
             </section>
+        </div>
+        <div id="modalOrder" class="modalOrder">
+            <div class="modalOrder-content">
+                <span class="close" id="closeModalOrder">&times;</span>
+                <h2 id="orderModal-title">Finalizando la compra</h2>
+                <div class="user-info">
+                    <span id="first-name" class="user-data-span">Nombre: <strong><%= user.first_name %></strong></span>
+                    <span id="last-name" class="user-data-span">Apellido: <strong><%= user.last_name %></strong></span>
+                    <span id="email" class="user-data-span">E-mail: <strong><%= user.email %></strong></span>
+                    <span id="phone" class="user-data-span">Tel.: <strong><%= user.phone %></strong></span>
+                    <br>
+                    <span id="<%= user.address.id %>" class="user-data-span address">Dirección de envío: <strong> <%= user.address.street %> N° <%= user.address.number %>, <%= user.address.city %>, <%= user.address.province %>, <%= user.address.country %></strong></span>
+                    <ul class="product-list"> 
+                    <% if (cartItems && cartItems.length > 0) { %>                
+                        <% cartItems.forEach(item => { %>
+                            <li class="product-li" lang="<%= item.id %>"> 
+                                <span class="prod-data-span" id="img-li" ><img class="img-order" src= "/images/products/<%= item.product.image %>"></span>
+                                <span class="prod-data-span"><strong><%= item.product.title %></strong></span>
+                                <span class="prod-data-span"> <strong><%= item.product.description %> </strong></span>
+                                <span class="prod-data-span" >Cantidad:<strong id="quantityProd"><%= item.quantity %> </strong></span>
+                                <% if (item.product.discount > 0) { %>
+                                    <span class="prod-data-span" >Monto:<strong id="amountProd">$<%= ((item.product.price)*(1-(item.product.discount/100))).toFixed(2).replace('.', ',') %></strong></span>      
+                                <% }else{ %>
+                                    <span class="prod-data-span" >Monto:<strong id="amountProd">$<%= Number(item.product.price).toFixed(2).replace('.', ',') %></strong></span>
+                                <% } %>
+                            </li>
+                        <% }) %>
+                    <% }; %>
+                    </ul>   
+                </div>
+                <h3 class="payment-title">Agrega tu método de pago</h3>
+                <div class="payment-form">
+                    <div class="order-inputs-div">
+                    <select id="payment_type" name="payment_type">
+                        <option value="Tarjeta de crédito">Tarjeta de crédito</option>
+                        <option value="Tarjeta de débito">Tarjeta de débito</option>
+                    </select>
+                    </div>
+                    <div class="order-inputs-div">
+                        <input type="text" id="payment_vendor" name="payment_vendor" placeholder="Proveedor de pago" required>
+                    </div>
+                    <div class="order-inputs-div">
+                        <input type="tel" id="card_number" name="card_number" placeholder="Nro. de la tarjeta" required>
+                    </div>
+                    <div class="order-inputs-div">
+                        <input type="tel" id="card_exp" name="card_exp" placeholder="Fecha de vencimiento" required>
+                    </div>
+                    <div class="order-inputs-div">
+                        <input type="tel" id="account_number" name="account_number" placeholder="Nro. de cuenta" required>
+                    </div>
 
+                    <button id="addPaymentMethod">Agregar Medio de Pago</button>
+                </div>
+                <div class="product-list">
+                    <!-- Lista de productos aquí -->
+                    <p>Total a Pagar: <span id="totalOrder"></span></p>
+                </div>
+                <button id="generarOrden">Terminar y Generar Orden</button>
+            </div>
         </div>
     </div>
     </main>
