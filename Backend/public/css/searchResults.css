@@ -1,0 +1,35 @@
+.search-header{
+    color:white;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.container-results{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    gap: 20px;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+  }
+
+
+.container-results .card {
+    width: 310px;
+    height: 550px;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (min-width: 480px) {
+.container-results{
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+}
+.container-results .card {
+    width: 350px;
+    height: auto;
+    padding: 20px;
+    }
+}

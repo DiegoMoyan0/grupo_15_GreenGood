@@ -8,6 +8,7 @@ const validationsCrudProducts = require('../../middlewares/validateCrudProductsM
 
 // ************ Controller Require ************/
 const productsApiController = require('../../controllers/Api/productsApiControllers');
+const productsController = require('../../controllers/Api/productsApiControllers');
 
 
 // --- Config Disk Storage with Multer module ---/
@@ -48,7 +49,7 @@ routes.get('/list/subcategory', productsApiController.getAllBySubcategory);
 routes.get('/list/type', productsApiController.getAllByType);
 
 /*** @GET SEARCHED PRODUCTS ***/ 
-routes.get('/', productsApiController.getSeach);
+routes.get('/search', productsApiController.getSearch);
 
 /*** @GET ONE PRODUCT DETAIL ***/ 
 routes.get('/:id/detail', productsApiController.getDetail);
