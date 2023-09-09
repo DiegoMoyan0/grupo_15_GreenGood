@@ -53,9 +53,10 @@ module.exports = (sequelize, DataTypes) => {
         });   
 
         Address.hasMany(models.OrderDetail, {
-            as: 'userDataAddress',
-            foreignKey: 'user_id',
+            as: 'userAddress',
+            foreignKey: 'user_address_id',
         });
+
     }; 
 
     return Address;

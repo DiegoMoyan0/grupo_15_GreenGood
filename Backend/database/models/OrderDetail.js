@@ -25,6 +25,14 @@ module.exports = (sequelize, DataTypes) => {
                 key: 'id'
             }
         },
+        user_address_id: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            references: {
+                model: 'Address',
+                key: 'id'
+            }
+        },
         user_id: {
             type: DataTypes.STRING(255),
             allowNull: true, // Pending to delete this property after testing
@@ -46,10 +54,22 @@ module.exports = (sequelize, DataTypes) => {
     OrderDetail.associate = models => {
 
         OrderDetail.belongsTo(models.Address, {
-            as: 'userDataAddress',
+            as: 'address',
             foreignKey: 'user_id',
-            targetKey: 'user_id'
         });
+        OrderDetail.hasMany(models.OrderItem, {
+            as: 'orderItems',
+            foreignKey: 'order_detail_id'
+        });
+        OrderDetail.belongsTo(models.UserPayment, {
+            as: 'payment',
+            foreignKey: 'user_id',
+        });
+        OrderDetail.belongsTo(models.User, {
+            as: 'userDetail',
+            foreignKey: 'user_id',
+        });
+        
     };
 
 

@@ -1,7 +1,6 @@
-const path = require('path');
 const db = require('../../database/models');
 const { validationResult } = require('express-validator');
-const { where } = require('sequelize');
+/* const { where } = require('sequelize'); */
 const Op = db.Sequelize.Op;
 
 const productsController = {
@@ -195,9 +194,14 @@ const productsController = {
             //Fav Counts
             let favCounts = {};
             let favArray = productsJSON.map(product => {
-                return product.favproduct.length? { sum: product.favproduct.length, title: product.title, description: product.description, image: product.image } : null;
+                return product.favproduct.length? { 
+                    sum: product.favproduct.length,
+                    title: product.title,
+                    description: product.description,
+                    image: product.image
+                } : null;
             });
-            let filteredArray = favArray.filter(item => item !== null && item !== undefined);
+            let filteredArray = favArray.filter(item => item !== null && item !== undefined);//To eliminate null values
             favCounts = filteredArray.sort((a, b) => b.sum - a.sum); //To order desc.
 
             let typeCounts = {};
@@ -232,6 +236,7 @@ const productsController = {
                 };
             });
 
+            //Manufacturer Counts
             productsJSON.forEach(product => {
                 if (product.manufacturer && product.manufacturer.name in manufacturerCounts) {
                     manufacturerCounts[product.manufacturer.name]++;

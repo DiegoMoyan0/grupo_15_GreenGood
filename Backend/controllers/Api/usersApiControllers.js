@@ -374,7 +374,6 @@ const usersController = {
 
         try {
 
-
             const users = await db.User.findAll();
 
             const monthsMap = {

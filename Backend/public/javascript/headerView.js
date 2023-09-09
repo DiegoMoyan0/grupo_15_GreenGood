@@ -184,7 +184,7 @@ window.onload = function () {
                 }, 1500);
             }; 
         });
-    }, 201);
+    }, 350);
     
 
     // To handle logout when any link to "/user/logout" is clicked:
@@ -259,6 +259,4 @@ async function favProductsStore(e) {
 
 let urlActual = window.location.href;
 
-if(urlActual != "http://localhost:3001/user/favs"){
-    userIDfav? window.addEventListener('beforeunload', favProductsStore) : ""; 
-};
+userIDfav? window.addEventListener('beforeunload', favProductsStore) : ""; 
