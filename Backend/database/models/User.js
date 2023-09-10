@@ -1,6 +1,4 @@
 const { v4: uuidv4 } = require('uuid');
-const bcrypt = require('bcryptjs');
-const { Sequelize } = require("sequelize")
 
 module.exports = (sequelize, DataTypes) => {
     const alias = 'User';
@@ -19,6 +17,11 @@ module.exports = (sequelize, DataTypes) => {
         last_name: {
             type: DataTypes.STRING,
             allowNull: false,
+        },
+        identity_document: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true
         },
         username: {
             type: DataTypes.STRING,
@@ -50,7 +53,15 @@ module.exports = (sequelize, DataTypes) => {
         password: {
             type: DataTypes.STRING,
             allowNull: false,
-        }
+        },
+        passwordResetToken:{
+            type: DataTypes.STRING, 
+            defaultValue: null, 
+          },
+        resetTokenExpiration:   {
+        type: DataTypes.DATE, 
+        defaultValue: null, 
+        },
     };
 
     const config = {
@@ -86,7 +97,11 @@ module.exports = (sequelize, DataTypes) => {
             as: 'favproducts',
             foreignKey: 'user_id',
             onDelete: 'CASCADE'
-        });      
+        });    
+        User.hasMany(models.OrderDetail, {
+            as: 'ordersDetail',
+            foreignKey: 'user_id',
+        });  
   
     };
 

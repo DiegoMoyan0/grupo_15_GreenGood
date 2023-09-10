@@ -6,12 +6,24 @@ const path = require('path');
 const cors = require('cors');
 const methodOverride = require('method-override');
 const logger = require('morgan');// A tool that logs HTTP requests in the terminal
-const db = require("./database/models");
 
 //------ Login Mw -------//
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const userLoggedMw = require('./middlewares/userLoggedMw');
+
+//---------Routes requires---------//
+
+const mainRoutes = require('./routes/mainRoutes');
+const productsRoutes = require('./routes/productsRoutes');
+const cartRoutes = require('./routes/cartRoutes');
+const userRoutes = require('./routes/userRoutes');
+
+const productsApiRoutes = require('./routes/Api/productsApiRoutes');
+const usersApiRoutes = require('./routes/Api/usersApiRoutes');
+const cartApiRoutes = require('./routes/Api/cartApiRoutes');
+const favProdsApiRoutes = require('./routes/Api/favProdsApiRoutes');
+const ordersApiRoutes = require('./routes/Api/ordersApiRoutes');
 
 
 /////////////////////////////////////////////////////
@@ -35,16 +47,6 @@ app.use(userLoggedMw); /*App Mw for logged user with cookie*/
 /////////////////////////////////////////////////////
 
 
-const mainRoutes = require('./routes/mainRoutes');
-const productsRoutes = require('./routes/productsRoutes');
-const cartRoutes = require('./routes/cartRoutes');
-const userRoutes = require('./routes/userRoutes');
-
-const productsApiRoutes = require('./routes/Api/productsApiRoutes');
-const usersApiRoutes = require('./routes/Api/usersApiRoutes');
-const cartApiRoutes = require('./routes/Api/cartApiRoutes');
-const favProdsApiRoutes = require('./routes/Api/favProdsApiRoutes');
-
 // **Statics resources** //
 const publicPath = path.resolve(__dirname, './public');
 app.use(express.static(publicPath));
@@ -58,11 +60,12 @@ app.use('/user',userRoutes);
 app.use('/product',productsRoutes);
 app.use('/cart',cartRoutes);
 
-//**API REST ENDPOINTS */
+//**API REST ENDPOINTS *//
 app.use('/api/product',productsApiRoutes);
 app.use('/api/user',usersApiRoutes);
 app.use('/api/cart',cartApiRoutes);
 app.use('/api/favProducts',favProdsApiRoutes); 
+app.use('/api/orders',ordersApiRoutes); 
 
 
 //*Normalize PORT*/

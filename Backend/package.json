@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/DiegoMoyan0/grupo_15_GreenGood#readme",
   "dependencies": {
+    "@jridgewell/sourcemap-codec": "^1.4.15",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",

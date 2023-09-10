@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
             references: {
                 model: 'products',
                 key: 'id'
-            } 
+            }, 
+            unique: 'unique_user_product' // So that the user cannot add the same product twice
         },
         user_id: {
             type: DataTypes.STRING(255),  
@@ -21,7 +22,8 @@ module.exports = (sequelize, DataTypes) => {
             references: {
                 model: 'user',
                 key: 'id'
-            }  
+            },
+            unique: 'unique_user_product' // So that the user cannot add the same product twice 
         }
     };
 

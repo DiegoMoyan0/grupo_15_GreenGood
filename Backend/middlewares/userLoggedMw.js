@@ -1,6 +1,5 @@
 ///App Mw to render views with user logged data
 let db = require("../database/models");
-const userModel = require('../models/User.js');
 
 async function userLoggedMw(req, res, next) {
 

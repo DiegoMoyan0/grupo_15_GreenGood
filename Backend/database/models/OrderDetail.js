@@ -1,11 +1,14 @@
+const { v4: uuidv4 } = require('uuid');
+
 module.exports = (sequelize, DataTypes) => {
     const alias = 'OrderDetail';
 
     const cols = {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
+            defaultValue: () => uuidv4(), 
             primaryKey: true,
-            autoIncrement: true
+            allowNull: false,
         },
         order_date: {
             type: DataTypes.DATE,
@@ -22,6 +25,14 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: true,
             references: {
                 model: 'userPayment',
+                key: 'id'
+            }
+        },
+        user_address_id: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            references: {
+                model: 'Address',
                 key: 'id'
             }
         },
@@ -46,10 +57,22 @@ module.exports = (sequelize, DataTypes) => {
     OrderDetail.associate = models => {
 
         OrderDetail.belongsTo(models.Address, {
-            as: 'userDataAddress',
-            foreignKey: 'user_id',
-            targetKey: 'user_id'
+            as: 'address',
+            foreignKey: 'user_address_id',
         });
+        OrderDetail.hasMany(models.OrderItem, {
+            as: 'orderItems',
+            foreignKey: 'order_detail_id'
+        });
+        OrderDetail.belongsTo(models.UserPayment, {
+            as: 'payment',
+            foreignKey: 'user_payment_id',
+        });
+        OrderDetail.belongsTo(models.User, {
+            as: 'userDetail',
+            foreignKey: 'user_id',
+        });
+        
     };
 
 

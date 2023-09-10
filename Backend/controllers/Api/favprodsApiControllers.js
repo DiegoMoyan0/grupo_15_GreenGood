@@ -78,6 +78,8 @@ const controller = {
 
             let idsArray = idProducts.split(',');
 
+            let idsNumberArray = idsArray.map( idProd =>{ Number(idProd.trim()) } );
+
             //First clear all the previous fav products from the user logged
             await db.LikedProduct.destroy({
                 where:{
@@ -85,11 +87,23 @@ const controller = {
                 }
             });
 
-            let createdFavProducts = false;
+            let createdFavProducts;
 
             //Finally for each id product, create a fav product with the current user id
+            const favItemsToCreate = idsArray.map(productId =>({
+                    product_id: productId,
+                    user_id: idUser
+                })
+            );
 
-            idsArray.forEach(async idProd => {
+            // To add all order items in one query //
+
+            favItemsToCreate && favItemsToCreate.length > 0 ? 
+                createdFavProducts = await db.LikedProduct.bulkCreate(favItemsToCreate) 
+                    : 
+                createdFavProducts = null;
+
+           /*  idsArray.forEach(async idProd => {
                 let idProdNum = Number(idProd.trim())
                 if(idProdNum && idProdNum > 0){
                     createdFavProducts = true;
@@ -98,7 +112,7 @@ const controller = {
                         user_id: idUser
                     });
                 }; 
-            });
+            }); */
 
             if(createdFavProducts){
                 response ={
@@ -109,7 +123,7 @@ const controller = {
                         message: `Fav Products from user id = ${idUser} updated with products '${idProducts}' successfully.`,
                         url: 'http://localhost:3001/api/favProducts/:idUser/store',
                     },                   
-                    data: idProducts
+                    data: idsNumberArray
                 };
             }else {
                 response ={

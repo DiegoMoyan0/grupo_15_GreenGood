@@ -1,7 +1,6 @@
-const path = require('path');
 const db = require('../../database/models');
 const { validationResult } = require('express-validator');
-const { where } = require('sequelize');
+/* const { where } = require('sequelize'); */
 const Op = db.Sequelize.Op;
 
 const productsController = {
@@ -16,38 +15,38 @@ const productsController = {
                     { association: 'subcategory' },
                     { association: 'type' },
                     { association: 'manufacturer' }],
-            },
+                },
             );
 
             const port = '3001';
-
+            
             //-------Replaced some properties for a better access ------//
             products.forEach(product => {
                 //Image path
                 const imagePath = `http://localhost:${port}/images/products/${product.image}`;
                 //Change Date format
                 product.createdDate = new Date(product.created_at).toLocaleDateString();
-                product.updatedDate = product.updated_at != null ? new Date(product.updated_at).toLocaleDateString() : '(Sin cambios)';
-                product.softDeletedDate = product.deleted_at != null ? new Date(product.deleted_at).toLocaleDateString() : '(Aún venta)';
+                product.updatedDate = product.updated_at != null? new Date(product.updated_at).toLocaleDateString() : '(Sin cambios)';
+                product.softDeletedDate = product.deleted_at != null? new Date(product.deleted_at).toLocaleDateString() : '(Aún venta)';
                 product.category = product.category.name;
                 product.subcategory = product.subcategory.name;
                 product.type = product.type.name;
                 product.manufacturer = product.manufacturer.name;
                 product.image = imagePath;
             });
-
+            
 
             let response = {
                 meta: {
-                    status: 200, //200 for success with content,
+                    status : 200, //200 for success with content,
                     success: true,
                     total: products.length,
                     url: 'api/product/list'
                 },
                 data: products
-            };
+            }; 
             return res.json(response);
-        } catch (error) {
+        }catch (error) {
             console.log(error);
             res.json({
                 meta: {
@@ -68,22 +67,22 @@ const productsController = {
                 include: [
                     { association: 'categoryProducts' },
                 ],
-                where: {
+                where:{
                     name: req.query.category
                 }
             });
 
             let response = {
                 meta: {
-                    status: 200, //200 for success with content,
+                    status : 200, //200 for success with content,
                     success: true,
                     total: products.length,
                     url: 'api/product/list/category'
                 },
                 data: products
-            };
+            }; 
             return res.json(response);
-        } catch (error) {
+        }catch (error) {
             console.log(error);
             res.json({
                 meta: {
@@ -104,22 +103,22 @@ const productsController = {
                 include: [
                     { association: 'subcategoryProducts' },
                 ],
-                where: {
+                where:{
                     name: req.query.subcategory
                 }
             });
 
             let response = {
                 meta: {
-                    status: 200, //200 for success with content,
+                    status : 200, //200 for success with content,
                     success: true,
                     total: products.length,
                     url: 'api/product/list/subcategory'
                 },
                 data: products
-            };
+            }; 
             return res.json(response);
-        } catch (error) {
+        }catch (error) {
             console.log(error);
             res.json({
                 meta: {
@@ -140,22 +139,22 @@ const productsController = {
                 include: [
                     { association: 'typeProducts' },
                 ],
-                where: {
+                where:{
                     name: req.query.type
                 }
             });
 
             let response = {
                 meta: {
-                    status: 200, //200 for success with content,
+                    status : 200, //200 for success with content,
                     success: true,
                     total: products.length,
                     url: 'api/product/list/type'
                 },
                 data: products
-            };
+            }; 
             return res.json(response);
-        } catch (error) {
+        }catch (error) {
             console.log(error);
             res.json({
                 meta: {
@@ -184,20 +183,25 @@ const productsController = {
             });
 
             const productsJSON = products.map(product => product.toJSON()); // Instead of RAW and NEST
-
+            
             productsJSON.forEach(product => {
                 //Image path
                 const port = '3001';
                 const imagePath = `http://localhost:${port}/images/products/${product.image}`;
                 product.image = imagePath;
             });
-
+           
             //Fav Counts
             let favCounts = {};
             let favArray = productsJSON.map(product => {
-                return product.favproduct.length ? { sum: product.favproduct.length, title: product.title, description: product.description, image: product.image } : null;
+                return product.favproduct.length? { 
+                    sum: product.favproduct.length,
+                    title: product.title,
+                    description: product.description,
+                    image: product.image
+                } : null;
             });
-            let filteredArray = favArray.filter(item => item !== null && item !== undefined);
+            let filteredArray = favArray.filter(item => item !== null && item !== undefined);//To eliminate null values
             favCounts = filteredArray.sort((a, b) => b.sum - a.sum); //To order desc.
 
             let typeCounts = {};
@@ -209,7 +213,7 @@ const productsController = {
             productsJSON.forEach(product => {
                 if (product.category && product.category.name in categoryCounts) {
                     categoryCounts[product.category.name]++;
-                } else if (product.category) {
+                } else if(product.category) {
                     categoryCounts[product.category.name] = 1;
                 };
             });
@@ -218,7 +222,7 @@ const productsController = {
             productsJSON.forEach(product => {
                 if (product.type && product.type.name in typeCounts) {
                     typeCounts[product.type.name]++;
-                } else if (product.type) {
+                } else if(product.type) {
                     typeCounts[product.type.name] = 1;
                 };
             });
@@ -227,19 +231,20 @@ const productsController = {
             productsJSON.forEach(product => {
                 if (product.subcategory && product.subcategory.name in subcategoryCounts) {
                     subcategoryCounts[product.subcategory.name]++;
-                } else if (product.subcategory) {
+                } else if(product.subcategory) {
                     subcategoryCounts[product.subcategory.name] = 1;
                 };
             });
 
+            //Manufacturer Counts
             productsJSON.forEach(product => {
                 if (product.manufacturer && product.manufacturer.name in manufacturerCounts) {
                     manufacturerCounts[product.manufacturer.name]++;
-                } else if (product.manufacturer) {
+                } else if(product.manufacturer) {
                     manufacturerCounts[product.manufacturer.name] = 1;
                 };
             });
-
+    
             let response = {
                 meta: {
                     status: 200,  //200 for success with content,
@@ -295,7 +300,7 @@ const productsController = {
             for (const month in salesAmountsPerMonth) {
                 results.push({ month, count: salesAmountsPerMonth[month] })
             };
-
+    
             let response = {
                 meta: {
                     status: 200,  //200 for success with content,
@@ -335,20 +340,20 @@ const productsController = {
                     { association: 'subcategory' },
                     { association: 'type' },
                     { association: 'manufacturer' }],
-            },
+                },
             );
 
-
+            
             const port = '3001';
-
+            
             //-------Replaced some properties for a better access ------//
             products.forEach(product => {
                 //Image path
                 const imagePath = `http://localhost:${port}/images/products/${product.image}`;
                 //Change Date format
                 product.createdDate = new Date(product.created_at).toLocaleDateString();
-                product.updatedDate = product.updated_at != null ? new Date(product.updated_at).toLocaleDateString() : '(Sin cambios)';
-                product.softDeletedDate = product.deleted_at != null ? new Date(product.deleted_at).toLocaleDateString() : '(Aún venta)';
+                product.updatedDate = product.updated_at != null? new Date(product.updated_at).toLocaleDateString() : '(Sin cambios)';
+                product.softDeletedDate = product.deleted_at != null? new Date(product.deleted_at).toLocaleDateString() : '(Aún venta)';
                 product.category = product.category.name;
                 product.subcategory = product.subcategory.name;
                 product.type = product.type.name;
@@ -358,16 +363,16 @@ const productsController = {
 
             let response = {
                 meta: {
-                    status: 200, //200 for success with content,
+                    status : 200, //200 for success with content,
                     success: true,
                     total: products.length,
                     currentPage: currentPage,
                     url: 'api/product/getPages?page=1&per_page=10'
                 },
                 data: products
-            };
+            }; 
             return res.json(response);
-        } catch (error) {
+        }catch (error) {
             console.log(error);
             res.json({
                 meta: {
@@ -379,28 +384,53 @@ const productsController = {
             });
         };
     },
-
     getSearch: async (req, res) => {
 
-        const searchTerm = req.query.product
+        const searchTerm = req.query.s
 
         try {
             const searchedProducts = await db.Product.findAll({
                 raw: true,
                 nest: true,
                 where: {
-                    description: { [Op.like]: `%${searchTerm}%` }
+                    description:{ [Op.like]: `%${searchTerm}%` }
                 },
                 include: [
                     { association: 'category' },
                     { association: 'subcategory' },
                     { association: 'type' },
                     { association: 'manufacturer' }],
-            }
+                }
             );
-            res.render("mainViews/search", { results: searchedProducts, title: 'Resultados de tu busqueda', searchTerm: searchTerm});
 
-        } catch (error) {
+            const port = '3001';
+            
+            //-------Replaced some properties for a better access ------//
+            searchedProducts.forEach(product => {
+                //Image path
+                const imagePath = `http://localhost:${port}/images/products/${product.image}`;
+                //Change Date format
+                product.createdDate = new Date(product.created_at).toLocaleDateString();
+                product.updatedDate = product.updated_at != null? new Date(product.updated_at).toLocaleDateString() : '(Sin cambios)';
+                product.softDeletedDate = product.deleted_at != null? new Date(product.deleted_at).toLocaleDateString() : '(Aún venta)';
+                product.category = product.category.name;
+                product.subcategory = product.subcategory.name;
+                product.type = product.type.name;
+                product.manufacturer = product.manufacturer.name;
+                product.image = imagePath;
+            });
+
+            let response = {
+                meta: {
+                    status : 200, //200 for success with content,
+                    success: true,
+                    total: searchedProducts.length,
+                    url: 'api/product/search'
+                },
+                data: searchedProducts
+            }; 
+            return res.json(response);
+        }catch (error) {
             console.log(error);
             res.json({
                 meta: {
@@ -412,8 +442,7 @@ const productsController = {
             });
         };
     },
-
-    getDetail: async (req, res) => {
+    getDetail:  async (req, res) => {
 
         try {
             let id = Number(req.params.id);
@@ -425,9 +454,9 @@ const productsController = {
                     { association: 'subcategory' },
                     { association: 'type' },
                     { association: 'manufacturer' }],
-            },
+                },
             );
-            //-------Replaced some properties for a better access ------//
+             //-------Replaced some properties for a better access ------//
 
             //Image path
             const port = '3001';
@@ -435,18 +464,18 @@ const productsController = {
             product.image = imagePath;
             //Change Date format
             product.createdDate = new Date(product.created_at).toLocaleDateString();
-            product.updatedDate = product.updated_at != null ? new Date(product.updated_at).toLocaleDateString() : '(Sin cambios)';
-            product.softDeletedDate = product.deleted_at != null ? new Date(product.deleted_at).toLocaleDateString() : '(Aún venta)';
+            product.updatedDate = product.updated_at != null? new Date(product.updated_at).toLocaleDateString() : '(Sin cambios)';
+            product.softDeletedDate = product.deleted_at != null? new Date(product.deleted_at).toLocaleDateString() : '(Aún venta)';
             //Change associations
             product.category = product.category.name;
             product.subcategory = product.subcategory.name;
             product.type = product.type.name;
             product.manufacturer = product.manufacturer.name;
-
+        
 
             let response = {};
 
-            if (product) {
+            if(product){
                 response = {
                     meta: {
                         status: 200, // 200 for success with content,
@@ -456,7 +485,7 @@ const productsController = {
                     },
                     data: product
                 };
-            } else {
+            }else{
                 response = {
                     meta: {
                         status: 204, //204 for success without content,
@@ -468,9 +497,9 @@ const productsController = {
                     data: ""
                 };
             };
-
+            
             return res.json(response);
-
+    
         } catch (error) {
             console.log(error);
             res.json({
@@ -485,8 +514,8 @@ const productsController = {
     },
     getNewests: async (req, res) => {
         try {
-            let newestProducts = await db.Product.findAll({
-                order: [
+            let newestProducts =  await db.Product.findAll({
+                order : [
                     ['created_at', 'DESC']
                 ],
                 limit: 10
@@ -498,7 +527,7 @@ const productsController = {
                 const imagePath = `http://localhost:${port}/images/products/${product.image}`;
                 product.image = imagePath;
             });
-
+    
             let response = {
                 meta: {
                     status: 200, // 200 for success with content,
@@ -508,9 +537,9 @@ const productsController = {
                 },
                 data: newestProducts
             };
-
+    
             return res.json(response);
-
+            
         } catch (error) {
             console.log(error);
             res.json({
@@ -524,13 +553,13 @@ const productsController = {
     },
     getMostSelled: async (req, res) => {
         try {
-            let mostSelledProducts = await db.Product.findAll({
-                order: [
+            let mostSelledProducts =  await db.Product.findAll({
+                order : [
                     ['sales_amount', 'DESC']
                 ],
                 limit: 5,
                 where: {
-                    sales_amount: { [Op.gt]: 5 }
+                    sales_amount: {[Op.gt] : 5}
                 }
             });
 
@@ -541,11 +570,11 @@ const productsController = {
                 product.image = imagePath;
                 //Change Date format
                 product.createdDate = new Date(product.created_at).toLocaleDateString();
-                product.updatedDate = product.updated_at != null ? new Date(product.updated_at).toLocaleDateString() : '(Sin cambios)';
-                product.softDeletedDate = product.deleted_at != null ? new Date(product.deleted_at).toLocaleDateString() : '(Aún venta)';
+                product.updatedDate = product.updated_at != null? new Date(product.updated_at).toLocaleDateString() : '(Sin cambios)';
+                product.softDeletedDate = product.deleted_at != null? new Date(product.deleted_at).toLocaleDateString() : '(Aún venta)';
                 product.image = imagePath;
             });
-
+    
             let response = {
                 meta: {
                     status: 200, //  200 for success with content.
@@ -555,9 +584,9 @@ const productsController = {
                 },
                 data: mostSelledProducts
             };
-
+    
             return res.json(response);
-
+            
         } catch (error) {
             console.log(error);
             res.json({
@@ -573,28 +602,28 @@ const productsController = {
         try {
             const minDiscountPercentage = 14;
 
-            let SaleProducts = await db.Product.findAll({
+            let SaleProducts =  await db.Product.findAll({
                 where: {
-                    discount: { [Op.gte]: minDiscountPercentage }
+                    discount: {[Op.gte] : minDiscountPercentage}
                 },
                 order: [
                     ['discount', 'DESC']
                 ]
             });
-
+    
             let response = {
                 meta: {
                     status: 200, // 200 for success with content,
                     success: true,
                     total: SaleProducts.length,
-                    sale: `List of products with discount greater than ${minDiscountPercentage}%`,
+                    sale:`List of products with discount greater than ${minDiscountPercentage}%`,
                     url: '/api/product/sale'
                 },
                 data: SaleProducts
             };
-
+    
             return res.json(response);
-
+            
         } catch (error) {
             console.log(error);
             res.json({
@@ -606,18 +635,18 @@ const productsController = {
             });
         };
     },
-    postCreate: async (req, res) => {
+    postCreate: async (req,res) => {
         try {
             /* Previous validations to create a new product */
-            const resultsValidations = validationResult(req);
+		    const resultsValidations = validationResult(req);
 
             if (resultsValidations.errors.length > 0) {
-                return res.status(400).json({
+                return  res.status(400).json({
                     meta: {
                         success: false,
                         status: 400,
                         errors: validationErrors.errors
-                    }
+                    }      
                 });
                 //400 Bad Request: the request is malformed or has invalid data, such as missing required fields or improperly formatted input.
             };
@@ -625,14 +654,14 @@ const productsController = {
             let newData = req.body;
 
             let createdProduct = await db.Product.create({
-                title: newData.title,
-                description: newData.description,
+                title : newData.title,
+                description : newData.description,
                 info: newData.info,
                 stock: Number(newData.stock),
-                price: Number(newData.price),
-                discount: Number(newData.discount),
-                sales_amount: 0,
-                image: newData.file ? newData.file : "default-product-image.jpg",
+                price : Number(newData.price),
+                discount : Number(newData.discount),
+                sales_amount : 0,
+                image : newData.file ? newData.file : "default-product-image.jpg",
                 category_id: Number(newData.category),
                 subcategory_id: Number(newData.subcategory),
                 type_id: Number(newData.type),
@@ -642,18 +671,18 @@ const productsController = {
 
             let response = {};
 
-            if (createdProduct) {
-                response = {
+            if(createdProduct){
+                response ={
                     meta: {
                         status: 201, // 201 for successful resource creation
                         success: true,
                         message: "Product created successfully.",
                         url: 'api/product/create',
-                    },
-                    data: createdProduct
+                    },                    
+                    data:createdProduct
                 };
-            } else {
-                response = {
+            }else{
+                response ={
                     meta: {
                         status: 500, // This code indicates that something went wrong on the server side.
                         success: false,
@@ -663,7 +692,7 @@ const productsController = {
                 };
             };
             return res.json(response);
-
+            
         } catch (error) {
             console.log(error);
             res.json({
@@ -675,55 +704,55 @@ const productsController = {
             });
         };
     },
-    putUpdate: async (req, res) => {
+    putUpdate: async (req,res) => {
         try {
             /* Previous validations to update a product */
-            const resultsValidations = validationResult(req);
+		    const resultsValidations = validationResult(req);
 
             if (resultsValidations.errors.length > 0) {
-                return res.json({
+                return  res.json({
                     meta: {
                         status: 400,
                         success: false,
                         errors: validationErrors.errors
-                    }
+                    }      
                 });
             };
             let idProduct = req.params.id;
             let newData = req.body;
 
             let updatedProduct = await db.Product.update({
-                title: newData.title,
-                description: newData.description,
+                title : newData.title,
+                description : newData.description,
                 info: newData.info,
                 stock: Number(newData.stock),
-                price: Number(newData.price),
-                discount: Number(newData.discount),
-                sales_amount: Number(newData.sales_amount),
-                image: newData.file ? newData.file : "default-product-image.jpg",
+                price : Number(newData.price),
+                discount : Number(newData.discount),
+                sales_amount : Number(newData.sales_amount),
+                image : newData.file ? newData.file : "default-product-image.jpg",
                 category_id: Number(newData.category),
                 subcategory_id: Number(newData.subcategory),
                 type_id: Number(newData.type),
                 user_id: req.session.userLogged.id,
                 manufacturer_id: 1 // Only "Green Good" by now ...
-            }, {
-                where: { id: idProduct }
+            },{
+                where: {id: idProduct}
             });
 
             let response = {};
 
-            if (updatedProduct) {
-                response = {
-                    meta: {
+            if(updatedProduct){
+                response ={
+                    meta:{
                         status: 201, //, 201 for successful resource edition
                         success: true,
                         message: "Product updated successfully.",
                         url: 'api/product/:id/update',
-                    },
-                    data: updatedProduct
+                    },                   
+                    data:updatedProduct
                 };
-            } else {
-                response = {
+            }else{
+                response ={
                     meta: {
                         status: 500,
                         success: false,
@@ -734,7 +763,7 @@ const productsController = {
             };
 
             return res.json(response);
-
+            
         } catch (error) {
             console.log(error);
             res.json({
@@ -746,25 +775,25 @@ const productsController = {
             });
         };
     },
-    delete: async (req, res) => {
+    delete: async (req,res) => {
         try {
             let idProduct = req.params.id;
-
-            let deletedProduct = await db.Product.destroy({ where: { id: idProduct }, force: true });
+          
+            let deletedProduct = await db.Product.destroy({where: {id: idProduct}, force: true});
 
             let response = {};
-            if (deletedProduct) {
-                response = {
+            if(deletedProduct){
+                response ={
                     meta: {
                         status: 201, //, 201 for successful resource deletion
                         success: true,
                         message: "Product deleted successfully.",
                         url: 'api/product/:id/deleted',
                     },
-                    data: deletedProduct
+                    data:deletedProduct
                 };
-            } else {
-                response = {
+            }else{
+                response ={
                     meta: {
                         status: 500,
                         success: false,
@@ -774,7 +803,7 @@ const productsController = {
                 };
             };
             return res.json(response);
-
+            
         } catch (error) {
             console.log(error);
             res.json({
@@ -786,25 +815,25 @@ const productsController = {
             });
         };
     },
-    softDelete: async (req, res) => {
+    softDelete: async (req,res) => {
         try {
             let idProduct = req.params.id;
-
-            let softDeletedProduct = await db.Product.destroy({ where: { id: idProduct } });
+          
+            let softDeletedProduct = await db.Product.destroy({where: {id: idProduct}});
 
             let response = {};
-            if (softDeletedProduct) {
-                response = {
+            if(softDeletedProduct){
+                response ={
                     meta: {
                         status: 201, //, 201 for successful resource deletion
                         success: true,
                         message: "Product discontinued successfully.",
                         url: 'api/product/:id/softdelete',
                     },
-                    data: softDeletedProduct
+                    data:softDeletedProduct
                 };
-            } else {
-                response = {
+            }else{
+                response ={
                     metsa: {
                         status: 500,
                         success: false,
@@ -814,7 +843,7 @@ const productsController = {
                 };
             };
             return res.json(response);
-
+            
         } catch (error) {
             console.log(error);
             res.json({
@@ -825,8 +854,7 @@ const productsController = {
                 }
             });
         };
-    },
-
+    }  
 };
 
 module.exports = productsController;

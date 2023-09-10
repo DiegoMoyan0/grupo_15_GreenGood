@@ -77,7 +77,6 @@
 
 #change_photo {
     border: solid 1px gainsboro;
-    margin: 50px 35%; 
     color: #ede4ed;
     padding: 10px;
     font-size: 0.7rem;
@@ -182,6 +181,15 @@ input {
 	border-radius: 1rem;
 	box-shadow: 0 1px 1rem rgba(0, 0, 0, 0.1);
 }
+
+.container.pass-reset {
+	padding: 2rem 0;
+	width: 22rem;
+	height: 30rem;
+	text-align: center;
+	font-size: 0.5sigrem;
+}
+
 
 .container::before {
 	content: '';

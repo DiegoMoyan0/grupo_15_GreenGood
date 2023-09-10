@@ -8,6 +8,10 @@ const authMw = require('../middlewares/authMw');
 
 
 /*** @GET PRODUCTS CART SHOPPING VIEW ***/ 
-routes.get('/',authMw, cartControllers.getCart);
+routes.get('/', cartControllers.getCart);
+
+/*** @GET PRODUCTS CART SHOPPING VIEW ***/ 
+routes.get('/generate-order/:idOrderDetail', cartControllers.generateOrderPDF);
+
 
 module.exports = routes;

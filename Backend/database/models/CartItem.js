@@ -53,6 +53,7 @@ module.exports = (sequelize, DataTypes) => {
             as: 'shoppingSession',
             foreignKey: 'shopping_session_id',
         });
+        
     };
 
     return CartItem;

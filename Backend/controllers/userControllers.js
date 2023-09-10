@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const { validationResult } = require('express-validator');
 const db = require("../database/models");
 const Op = db.Sequelize.Op;
+const crypto = require('crypto');
 
 const controller = {
 
@@ -60,9 +61,7 @@ const controller = {
 
 			let hashedPassword = await bcrypt.hash(req.body.password, 10);
 
-			//Temporary line for testing purposes
 
-			//let hashedPassword =req.body.password
 
 			const newUser = await db.User.create({
 				first_name: newData.first_name,
@@ -146,10 +145,6 @@ const controller = {
 
 			const { password: hashedPw } = searchedUser;
 			const isCorrect = bcrypt.compareSync(req.body.password, hashedPw);
-
-			// Temporary line for testing purposes
-
-			//let isCorrect = req.body.password === searchedUser.password;
 
 			if (!isCorrect) {
 				return res.render('userViews/login', {
@@ -271,6 +266,140 @@ const controller = {
 			res.clearCookie('userEmail');
 
 			return res.redirect('/');
+		} catch (error) {
+			console.log(error);
+			res.redirect('/mainViews/error');
+		};
+	},
+
+	getPasswordReset: async (req, res) => {
+
+		try {
+			return res.render('userViews/password-reset', { title: "Recupera tu contraseña" })
+		} catch (error) {
+			console.log(error);
+			res.redirect('/mainViews/error');
+		};
+	},
+
+	getPasswordToken: async (req, res) => {
+
+		try {
+			return res.render('userViews/password-reset-token', { title: "Ingresa el token" })
+		} catch (error) {
+			console.log(error);
+			res.redirect('/mainViews/error');
+		};
+	},
+
+	getPasswordSuccess: async (req, res) => {
+
+		try {
+			return res.render('userViews/password-reset-success', { title: "Ingresa tu nueva contraseña" });
+		} catch (error) {
+			console.log(error);
+			res.redirect('/mainViews/error');
+		};
+	},
+
+	sendResetTokenEmail: async (req, res) => {
+
+		const identity_document = req.body.identity_document
+		const email = req.body.email;
+
+		try {
+
+			let length = 3
+			const resetToken = crypto.randomBytes(length).toString('hex')
+
+			const user = await db.User.findOne({ where: { email } })
+			if (!user) {
+				return res.status(400).send('User not found')
+			}
+
+			if (user.identity_document !== identity_document) {
+				return res.status(400).send('Identity document does not match the user')
+			}
+
+
+			user.passwordResetToken = resetToken;
+			user.resetTokenExpiration = new Date(Date.now() + 3600000)
+			await user.save();
+
+			console.log( 'token:' + user.passwordResetToken);
+			console.log( 'token:' + user.passwordResetToken);
+			console.log( 'token:' + user.passwordResetToken);
+			console.log( 'token:' + user.passwordResetToken);
+			console.log( 'token:' + user.passwordResetToken);
+
+			req.session.email = email;
+
+			res.redirect('/user/password-reset-token');
+		} catch (error) {
+			console.error('Error sending reset token email:', error)
+			res.status(500).send('Internal server error')
+		}
+	},
+
+	handleToken: async (req, res) => {
+		const token = req.body.token;
+
+		try {
+
+			const user = await db.User.findOne({
+				where: {
+					passwordResetToken: token,
+					resetTokenExpiration: { [Op.gte]: new Date() },
+				},
+			});
+
+			if (!user) {
+				return res.status(400).send('Invalid or expired token')
+			}
+
+			req.session.token = token
+			res.redirect('/user/password-reset-success');
+
+		} catch (error) {
+			console.error('Error resetting password:', error);
+			res.status(500).send('Internal server error');
+		}
+	},
+
+	passwordUpdate: async (req, res) => {
+
+		/* Previous validations to create a new user */
+		const resultsValidations = validationResult(req);
+
+		if (resultsValidations.errors.length > 0) {
+
+			return res.render('userViews/password-reset-success', {
+				title: "Recuperar contraseña",
+				errors: resultsValidations.mapped(), // mapped() used to transform the validations results into a literal object.
+				oldData: req.body,
+				oldFile: req.file
+			});
+		};
+
+		delete req.body.password_confirm;
+
+		try {
+
+			let newHashedPassword = await bcrypt.hash(req.body.password, 10)
+			let email = req.session.email
+
+			const user = await db.User.findOne({ where: { email } });
+			if (!user) {
+				return res.status(400).send('User not found');
+			}
+
+			user.password = newHashedPassword;
+
+			await user.save();
+			delete req.session
+
+			res.redirect('/user/login');
+
 		} catch (error) {
 			console.log(error);
 			res.redirect('/mainViews/error');
