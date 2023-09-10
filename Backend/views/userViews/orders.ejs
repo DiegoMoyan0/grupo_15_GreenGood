@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head')%>
+        <link rel="stylesheet" href="/css/ordersView.css">
+        <link rel="stylesheet" href="/css/favsView.css">
+</head>
+
+<body>
+
+    <%- include('../partials/header')%>
+
+    <div class="deslizable">
+        <a href="/user/orders"> <i class="fa-solid fa-arrow-up"></i></a>
+    </div>
+    <main>
+        <div class="favsView-wrapper">
+            <section class="user-data-container">
+                <h5 class="title-favs">TUS COMPRAS REALIZADAS</h5>
+                <% let userName=user.first_name + ' ' + user.last_name %>
+                <img src="/images/users/<%=user.image%>" alt="user img" id="img" style="max-width: 100px;" >
+                <h1><%=userName%></h1>
+                <br>
+                <h3><%=user.username%></h4>
+                <br>
+                <h5><%=user.email%></h5>
+            </section>
+            <section class="favs-data-container">
+                <% if (isLogged) { %>
+                    <% if (orderDetails && orderDetails.length > 0) { %>
+                        <% orderDetails.forEach(order => { %>
+                            <div class="order-content" id="<%= order.id %>">
+                                <h2 id="orderModal-title">Compra: <%= order.id %></h2>
+                                <h4 id="orderModal-title">Fecha de compra: <%= order.order_date %></h2>
+                                <div class="user-info">
+                                    <span id="<%= order.address.id %>" class="user-data-span address">Dirección de envío: <strong> <%= order.address.street %> N° <%= order.address.number %>, <%= order.address.city %>, <%= order.address.province %>, <%= order.address.country %></strong></span>
+                                    <ul class="product-list" lang="<%= order.id %>"> 
+                                    <% if (order.orderItems && order.orderItems.length > 0) { %>                
+                                        <% order.orderItems.forEach(item => { %>
+                                            <li class="product-li" id="<%= item.product_id %>"> 
+                                                <span class="prod-data-span" id="img-li" ><img class="img-order" src= "/images/products/"></span>
+                                                <span class="prod-data-span"><strong class="title-strong"></strong></span>
+                                                <span class="prod-data-span"><strong class="info-strong"></strong></span>
+                                                <span class="prod-data-span">Cantidad: <strong id="quantityProd"><%= item.quantity %></strong></span> 
+                                                <span class="prod-data-span">Monto: <strong id="amountProd">$<%= item.amount %></strong></span>
+                                            </li>
+                                        <% }) %>
+                                    <% }; %>
+                                    </ul >
+                                    <div class="payment-form">
+                                        <h3 class="payment-title">Método de pago utilizado:</h3>
+                                        <ul class="payment-list">
+                                            <li  class="payment-li">Tipo: <strong><%= order.payment.payment_type %></strong></li>
+                                            <li  class="payment-li">Banco: <strong><%= order.payment.payment_vendor %></strong></li>
+                                            <li  class="payment-li">Nro. de tarjeta: <strong><%= order.payment.card_number %></strong></li>
+                                            <li  class="payment-li">Fecha de vto.: <strong><%= order.payment.card_exp %></strong></li>
+                                        </ul>
+                                    </div>
+                                     
+                                    <div class="product-list">
+                                        <p>Total pagado: <span id="totalOrder"><strong>$<%= order.detail_total %></strong></span></p>
+                                    </div>   
+                                </div>   
+                            </div>
+                        <% }) %>
+                    <% } %>
+                <% }; %>
+               
+            </section>
+        </div>
+    </main>
+
+    <script src="/javascript/ordersView.js"></script>
+
+    <!---------------------------------  FOOTER ---------------------------- -->
+
+    <footer>
+        <%- include('../partials/footer')%>
+    </footer>
+
+</body>
+
+</html>

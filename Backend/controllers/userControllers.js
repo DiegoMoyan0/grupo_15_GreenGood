@@ -32,6 +32,42 @@ const controller = {
 		});
 	},
 
+	getUserOrders: async (req, res) => {
+
+		try {
+			const userId = req.session.userLogged.id
+
+            let orderDetails = await db.OrderDetail.findAll({
+				where:{ user_id:userId },
+                nest: true,
+                include: ["address", "orderItems", "payment", "userDetail"],
+            });
+
+			const orderDetailsRaw = orderDetails.map(orderDetail => orderDetail.toJSON());
+ 
+            if(orderDetailsRaw && orderDetailsRaw.length > 0) {
+
+				return res.render('userViews/orders', {
+					title: "Tus productos favoritos",
+					user: req.session.userLogged,
+					orderDetails: orderDetailsRaw
+				});
+                
+            }else{
+                return res.render('userViews/orders', {
+					title: "Tus productos favoritos",
+					user: req.session.userLogged,
+					orderDetails: null
+				});
+            }; 
+            
+        } catch (error) {
+            console.log(error);
+            return  res.redirect('/mainViews/error');
+        };
+		
+	},
+
 	getLogout: (req, res) => {
 		req.session.destroy();
 		res.clearCookie('userEmail');

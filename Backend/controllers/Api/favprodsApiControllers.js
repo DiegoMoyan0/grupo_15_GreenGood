@@ -40,8 +40,6 @@ const controller = {
             }; 
 
             return res.json(response);
-
-            console.log("Dentro del set time out");
             
         } catch (error) {
             console.log(error);
@@ -61,7 +59,6 @@ const controller = {
         try {
             const idProducts = req.body.favProducts;
             const idUser = req.params.idUser;
-            console.log(idProducts);
 
             let response = {};
 
