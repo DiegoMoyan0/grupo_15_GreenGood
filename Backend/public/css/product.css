@@ -204,7 +204,7 @@
 
 
   .section-sub-category {
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
