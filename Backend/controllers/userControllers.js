@@ -366,7 +366,7 @@ const controller = {
 			user.resetTokenExpiration = new Date(Date.now() + 3600000)
 			await user.save();
 
-			sendGridEmail.setApiKey(sendgridApiKey);
+			//sendGridEmail.setApiKey(sendgridApiKey);
 	
 			const tokenMessage = {
 				to: email,
@@ -375,7 +375,9 @@ const controller = {
 				text: `El token para recuperar tu contraseña es ${user.passwordResetToken} \n\nAtentamente, \nEquipo de seguridad de GreenGood`,
 			};
 		
-			await sendGridEmail.send(tokenMessage);
+			//await sendGridEmail.send(tokenMessage);
+
+			console.log(tokenMessage);
 			
 			req.session.email = email;
 

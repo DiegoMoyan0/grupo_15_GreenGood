@@ -186,8 +186,7 @@ input {
 	padding: 2rem 0;
 	width: 22rem;
 	height: 30rem;
-	text-align: center;
-	font-size: 0.5sigrem;
+	text-align: left;
 }
 
 
@@ -215,6 +214,11 @@ input {
 .span-title-register {
 	animation-duration: 1.5s;
 	animation-name: register-appear;
+}
+
+.container.pass-reset .span-title {
+	font-size: 1.6rem;
+	text-align: center;
 }
 
 @keyframes register-appear {
