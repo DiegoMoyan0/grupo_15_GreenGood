@@ -361,7 +361,7 @@ async function createOrder(){
         const response = await fetch(urlOrder, reqOptionsOrder);
         const newOrder = await response.json();
         if(newOrder.meta.success){
-           let confirm = prompt('Se creó la orden de pago, quieres descargarla?');
+           let confirm = confirm('Se creó la orden de pago, quieres descargarla?');
         }else{
             console.log('Error creating the purchase order');
             alert('Error al generar la orden de compra')
@@ -375,6 +375,7 @@ async function createOrder(){
 generateOrderBtn.addEventListener('click', async() => {
     await finishShoppingSession();
     await createOrder();
+    location.reload();
 });
 
 
