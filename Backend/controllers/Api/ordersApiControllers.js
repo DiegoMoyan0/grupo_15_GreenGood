@@ -309,6 +309,7 @@ const controller = {
                     product: {
                         id: item.product.id,
                         title: item.product.title,
+                        image: item.product.image,
                         description: item.product.description,
                         price: item.product.price,
                         discount: item.product.discount,

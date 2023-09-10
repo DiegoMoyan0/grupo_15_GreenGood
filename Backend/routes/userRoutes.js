@@ -40,6 +40,7 @@ router.get('/login', guestMw, userController.getLogin);
 router.get('/register', guestMw, userController.getRegister);
 router.get('/profile', authMw, validationsUserLoggedMw, userController.getProfile);  
 router.get('/favs', authMw, validationsUserLoggedMw, userController.getUserFavs);  
+router.get('/orders', authMw, validationsUserLoggedMw, userController.getUserOrders);  
 router.get('/logout', authMw, userController.getLogout);  
 router.get('/password-reset', userController.getPasswordReset);  
 router.get('/password-reset-token', validationsUserExistenceMw, userController.getPasswordToken);
