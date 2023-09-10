@@ -152,7 +152,6 @@ const controller = {
 		    /* const resultsValidations = validationResult(req); */
 
             const newData = req.body;
-            console.log(newData);
      
             const idUser = req.params.idUser;
 
@@ -219,7 +218,7 @@ const controller = {
 
             const lastOrderId = newOrder.id;
             let cartItems = Array.from(newData.cartItems);// An array of objects 
-
+    
             const orderItemsToCreate = cartItems.map(cartItem => ({
                 quantity: cartItem.quantity,
                 amount: cartItem.amount,

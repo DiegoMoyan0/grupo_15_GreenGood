@@ -1,6 +1,4 @@
 let db = require("../database/models");
-/* const pdfmake  = require('pdfmake'); */
-
 
 const controller = {
 
@@ -49,13 +47,11 @@ const controller = {
     generateOrderPDF: async (req, res) => {
         try {
             const idOrder = req.params.idOrderDetail;
-            console.log(idOrder);
 
             let orderDetail = await db.OrderDetail.findByPk(idOrder, {
                 nest: true,
                 include: ["address", "orderItems", "payment", "userDetail"],
             });
-            console.log(orderDetail);
 
             let orderItems = await db.OrderItem.findAll({
                 where:{
@@ -65,8 +61,6 @@ const controller = {
                 nest: true,
                 raw: true
             })
-            console.log(orderItems);
-
 
             let response = {};
             
@@ -107,38 +101,18 @@ const controller = {
                     meta: {
                         status : 200, //200 for success with content,
                         success: true,
-                        url: 'http://localhost:3001/cart/generate-order-pdf/:idOrderDetail'
+                        url: 'http://localhost:3001/cart/generate-order/:idOrderDetail'
                     },
                     data: { orderDetail, orderItems: filteredOrderItems, user: filteredUserDetail }
                 }
-                
-                /* // Define el contenido del documento
-                const documentDefinition = {
-                    content: [
-                    '¡Hola, mundo!'
-                    ]
-                };
-                
-                // Crea un objeto PDF
-                const pdf = pdfmake.createPdf(documentDefinition);
-                
-                /// Genera el PDF y envía como respuesta al cliente
-                pdf.getBuffer((buffer) => {
-                    res.writeHead(200, {
-                        'Content-Type': 'application/pdf',
-                        'Content-Disposition': 'attachment; filename=orden.pdf' // Nombre del archivo adjunto
-                    });
-                    res.end(buffer);
-                    console.log('El PDF ha sido creado correctamente y enviado al cliente.');
-                });
- */
+
                 return res.json(response);
             }else{
                 response = {
                     meta: {
                         status : 204, //204 for success without content,
                         success: false,
-                        url: 'http://localhost:3001/cart/generate-order-pdf/:idOrderDetail'
+                        url: 'http://localhost:3001/cart/generate-order/:idOrderDetail'
                     }
                 };
             }; 

@@ -10,12 +10,13 @@ window.onload = function () {
     let quantityFront = 1;
     if (amountInputDetail) {
         amountInputDetail.onchange = () => {
-            quantityFront = Number(amountInputDetail.value);
+            let value = Number(amountInputDetail.value);
+            value > 50 || value < 1?  quantityFront = 1 : quantityFront = value;
         };
     };
 
 
-    //-----------------------------------Contador carrito------------------------------------------//
+    //-----------------------------------Cart counter------------------------------------------//
     if (!userID) {
         cartItemCountInput.value = 0;
     } else {
@@ -32,7 +33,7 @@ window.onload = function () {
     };
 
     //-----------------------------------Handle Shopping Cart------------------------------------------//
-    var alertMessage = "Debes iniciar sesión para agregar ítems al carrito. ¿Deseas iniciar sesión ahora?";
+    let alertMessage = "Debes iniciar sesión para agregar ítems al carrito. ¿Deseas iniciar sesión ahora?";
 
     allAddCartBtns.forEach(btn => {
         btn.addEventListener("click", async e => {
@@ -60,8 +61,8 @@ window.onload = function () {
             };
 
             function showCustomLogoutModal(message) {
-                var modal = document.getElementById('logoutModal');
-                var modalMessage = document.getElementById('logoutModalMessage');
+                let modal = document.getElementById('logoutModal');
+                let modalMessage = document.getElementById('logoutModalMessage');
 
                 modalMessage.textContent = message;
             
@@ -107,7 +108,6 @@ window.onload = function () {
                         !amountInputDetail ? btn.textContent = "Agragar otra unidad al carrito" : null
                     }, 3001);
                     if (responseData.meta.created) {
-                        // Después de agregar el producto, actualizo contador de carrito
                         cartItemCountInput.value++;
                     };
                 };
@@ -119,14 +119,13 @@ window.onload = function () {
     });
 
     //-----------------------------------FAV ICONS------------------------------------------//
-    // Obtén elementos del DOM
+
     var openModalLink = document.getElementById('openModalLink');
     var closeModalButton = document.getElementById('closeModalButton');
     var modal = document.getElementById('myModal');
     var cancelLogoutLink = document.getElementById('cancelLogoutLink');
     var confirmLogoutLink = document.getElementById('confirmLogoutLink');
 
-    // Abre el modal al hacer clic en el enlace "Cerrar sesión"
     openModalLink.onclick = function (e) {
         e.preventDefault(); // Evita la acción predeterminada del enlace (navegación)
         const loggedName = document.getElementById('userOptionsLink');
@@ -135,21 +134,17 @@ window.onload = function () {
         modal.style.display = 'block';
     }
 
-    // Cierra el modal al hacer clic en la "x"
     closeModalButton.onclick = function () {
         modal.style.display = 'none';
     }
 
-    // Cierra el modal al hacer clic en el enlace "Cancelar"
     cancelLogoutLink.onclick = function (e) {
-        e.preventDefault(); // Evita la acción predeterminada del enlace (navegación)
+        e.preventDefault(); 
         modal.style.display = 'none';
     }
 
-    // Confirmar el cierre de sesión y redireccionar al hacer clic en el enlace "Cerrar sesión"
     confirmLogoutLink.onclick = function (e) {
         localStorage.clear();
-        // Puedes redirigir al usuario a la página de inicio de sesión o a donde sea necesario aquí.
         modal.style.display = 'none';
     }
 

@@ -159,16 +159,13 @@
 
                 <div class="icons-payment-container">
                     <div class="payment-container">
-                        <i id="card-icon" class="fa-solid fa-credit-card"></i>
-                        <a href="" class="payment-methods-title"> Ver medios de pagos</a>
+                        <a href="" class="payment-methods-title"><i id="card-icon" class="fa-solid fa-credit-card"></i>Ver medios de pagos</a>
                     </div>
                     <div class="payment-container">
-                        <i id="location-icon" class="fa-solid fa-map-location-dot"></i>
-                        <a href="" class="location-title">Nuestras sucursales</a>
+                        <a href="/info#map-container" class="location-title"><i id="location-icon" class="fa-solid fa-map-location-dot"></i>Nuestras sucursales</a>
                     </div>
                     <div class="payment-container">
-                        <i id="support-icon" class="fa-solid fa-headset"></i>
-                        <a href=""class="payment-support-title">Atención al cliente</a>
+                        <a href="/faqs#contact"class="payment-support-title"><i id="support-icon" class="fa-solid fa-headset"></i>Atención al cliente</a>
                     </div>
 
                 </div>
@@ -178,66 +175,68 @@
                 <button class="buttons-payment"  id="fqs-cart"><a href="/faqs">Consultá tus dudas</a></button> 
             </section>
         </div>
-        <div id="modalOrder" class="modalOrder">
-            <div class="modalOrder-content">
-                <span class="close" id="closeModalOrder">&times;</span>
-                <h2 id="orderModal-title">Finalizando la compra</h2>
-                <div class="user-info">
-                    <span id="first-name" class="user-data-span">Nombre: <strong><%= user.first_name %></strong></span>
-                    <span id="last-name" class="user-data-span">Apellido: <strong><%= user.last_name %></strong></span>
-                    <span id="email" class="user-data-span">E-mail: <strong><%= user.email %></strong></span>
-                    <span id="phone" class="user-data-span">Tel.: <strong><%= user.phone %></strong></span>
-                    <br>
-                    <span id="<%= user.address.id %>" class="user-data-span address">Dirección de envío: <strong> <%= user.address.street %> N° <%= user.address.number %>, <%= user.address.city %>, <%= user.address.province %>, <%= user.address.country %></strong></span>
-                    <ul class="product-list"> 
-                    <% if (cartItems && cartItems.length > 0) { %>                
-                        <% cartItems.forEach(item => { %>
-                            <li class="product-li" lang="<%= item.id %>"> 
-                                <span class="prod-data-span" id="img-li" ><img class="img-order" src= "/images/products/<%= item.product.image %>"></span>
-                                <span class="prod-data-span"><strong><%= item.product.title %></strong></span>
-                                <span class="prod-data-span"> <strong><%= item.product.description %> </strong></span>
-                                <span class="prod-data-span" >Cantidad:<strong id="quantityProd"><%= item.quantity %> </strong></span>
-                                <% if (item.product.discount > 0) { %>
-                                    <span class="prod-data-span" >Monto:<strong id="amountProd">$<%= ((item.product.price)*(1-(item.product.discount/100))).toFixed(2).replace('.', ',') %></strong></span>      
-                                <% }else{ %>
-                                    <span class="prod-data-span" >Monto:<strong id="amountProd">$<%= Number(item.product.price).toFixed(2).replace('.', ',') %></strong></span>
-                                <% } %>
-                            </li>
-                        <% }) %>
-                    <% }; %>
-                    </ul>   
-                </div>
-                <h3 class="payment-title">Agrega tu método de pago</h3>
-                <div class="payment-form">
-                    <div class="order-inputs-div">
-                    <select id="payment_type" name="payment_type">
-                        <option value="Tarjeta de crédito">Tarjeta de crédito</option>
-                        <option value="Tarjeta de débito">Tarjeta de débito</option>
-                    </select>
-                    </div>
-                    <div class="order-inputs-div">
-                        <input type="text" id="payment_vendor" name="payment_vendor" placeholder="Proveedor de pago" required>
-                    </div>
-                    <div class="order-inputs-div">
-                        <input type="tel" id="card_number" name="card_number" placeholder="Nro. de la tarjeta" required>
-                    </div>
-                    <div class="order-inputs-div">
-                        <input type="tel" id="card_exp" name="card_exp" placeholder="Fecha de vencimiento" required>
-                    </div>
-                    <div class="order-inputs-div">
-                        <input type="tel" id="account_number" name="account_number" placeholder="Nro. de cuenta" required>
-                    </div>
 
-                    <button id="addPaymentMethod">Agregar Medio de Pago</button>
+        <% if (isLogged) { %>
+            <div id="modalOrder" class="modalOrder">
+                <div class="modalOrder-content">
+                    <span class="close" id="closeModalOrder">&times;</span>
+                    <h2 id="orderModal-title">Finalizando la compra</h2>
+                    <div class="user-info">
+                        <span id="first-name" class="user-data-span">Nombre: <strong><%= user.first_name %></strong></span>
+                        <span id="last-name" class="user-data-span">Apellido: <strong><%= user.last_name %></strong></span>
+                        <span id="email" class="user-data-span">E-mail: <strong><%= user.email %></strong></span>
+                        <span id="phone" class="user-data-span">Tel.: <strong><%= user.phone %></strong></span>
+                        <span id="<%= user.address.id %>" class="user-data-span address">Dirección de envío: <strong> <%= user.address.street %> N° <%= user.address.number %>, <%= user.address.city %>, <%= user.address.province %>, <%= user.address.country %></strong></span>
+                        <ul class="product-list"> 
+                        <% if (cartItems && cartItems.length > 0) { %>                
+                            <% cartItems.forEach(item => { %>
+                                <li class="product-li" lang="<%= item.product.id %>"> 
+                                    <span class="prod-data-span" id="img-li" ><img class="img-order" src= "/images/products/<%= item.product.image %>"></span>
+                                    <span class="prod-data-span"><strong><%= item.product.title %></strong></span>
+                                    <span class="prod-data-span"> <strong><%= item.product.description %> </strong></span>
+                                    <span class="prod-data-span" >Cantidad:<strong id="quantityProd"><%= item.quantity %> </strong></span>
+                                    <% if (item.product.discount > 0) { %>
+                                        <span class="prod-data-span" >Monto:<strong id="amountProd">$<%= ((item.product.price)*(1-(item.product.discount/100))).toFixed(2).replace('.', ',') %></strong></span>      
+                                    <% }else{ %>
+                                        <span class="prod-data-span" >Monto:<strong id="amountProd">$<%= Number(item.product.price).toFixed(2).replace('.', ',') %></strong></span>
+                                    <% } %>
+                                </li>
+                            <% }) %>
+                        <% }; %>
+                        </ul>   
+                    </div>
+                    <h3 class="payment-title">Agrega tu método de pago</h3>
+                    <div class="payment-form">
+                        <div class="order-inputs-div">
+                        <select id="payment_type" name="payment_type">
+                            <option value="Tarjeta de crédito">Tarjeta de crédito</option>
+                            <option value="Tarjeta de débito">Tarjeta de débito</option>
+                        </select>
+                        </div>
+                        <div class="order-inputs-div">
+                            <input type="text" id="payment_vendor" name="payment_vendor" placeholder="Proveedor de pago" required>
+                        </div>
+                        <div class="order-inputs-div">
+                            <input type="tel" id="card_number" name="card_number" placeholder="Nro. de la tarjeta" required>
+                        </div>
+                        <div class="order-inputs-div">
+                            <input type="tel" id="card_exp" name="card_exp" placeholder="Fecha de vencimiento" required>
+                        </div>
+                        <div class="order-inputs-div">
+                            <input type="tel" id="account_number" name="account_number" placeholder="Nro. de cuenta" required>
+                        </div>
+
+                        <button id="addPaymentMethod">Agregar Medio de Pago</button>
+                    </div>
+                    <div class="product-list">
+                        <!-- Lista de productos aquí -->
+                        <p>Total a Pagar: <span id="totalOrder"></span></p>
+                    </div>
+                    <button id="generateOrderBtn">Terminar y Generar Orden</button>
+                    
                 </div>
-                <div class="product-list">
-                    <!-- Lista de productos aquí -->
-                    <p>Total a Pagar: <span id="totalOrder"></span></p>
-                </div>
-                <button id="generateOrderBtn">Terminar y Generar Orden</button>
-                
             </div>
-        </div>
+        <% }; %>
     </div>
     </main>
 
