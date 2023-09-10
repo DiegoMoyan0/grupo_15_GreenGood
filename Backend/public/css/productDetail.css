@@ -217,6 +217,10 @@
     align-items: center;
 }
 
+.btn-product {
+    padding: 2%;
+}
+
 #shipping-icon{
     width: 25px;
     margin-left: 10px;

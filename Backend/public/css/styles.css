@@ -519,6 +519,7 @@ nav svg:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 89vh;
 }
 
 .video {
@@ -655,16 +656,13 @@ p {
 /* ------------------------------- OFFER SLIDER ------------------------------- */
 
 .scrolling-text {
-    overflow: hidden;
     position: relative;
     width: 100vw;
-    height: 50px;
-    padding: 10px;
+    height: 3rem;
+    padding: 0.6rem;
     background-color: #F3F2F3;
-    color: #2c5a40;
-    box-shadow: 0px 0 5px white;
-    display: flex;
-    /* Para alinear los h2 en una fila */
+    color: #3fc483;
+    box-shadow: 0px 0px 10px #3fc483;
 }
 
 .scrolling-text h2 {
@@ -711,25 +709,30 @@ p {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    width: 100%;
-    height: 750px;
+    width: 95vw;
+    height: 69vh;
     background-color: #10142F;
     overflow: scroll;
+    margin: auto;
 }
 
-/* Estilos para las tarjetas */
+
 .card {
-    width: 170px;
+    width: 90vw;
     border-radius: 5px;
     text-align: center;
     margin-bottom: 1.5rem;
     text-align: center;
     background-color: #fff;
-    box-shadow: 0px 0px 10px #64ff00;
+    box-shadow: 0px 0px 10px #add;
     cursor: pointer;
     transition: transform 0.5s;
     position: relative;
-    margin: 0.5rem; /* Ajusta el margen entre las tarjetas */
+    margin: 2%;
+}
+
+.content-art{
+  min-height: 122px;
 }
 
 
@@ -745,11 +748,11 @@ p {
 
 .fav-icon {
     color: #7D387D;
-    width: 40px;
+    width: 13%;
     padding: 1%;
     position: absolute;
     top: 10px;
-    right: 10px;
+    right: 5px;
     transition: all 0.5s;
     cursor: pointer;
 }
@@ -775,12 +778,12 @@ p {
 
 .share-icon {
     color: #7D387D;
-    width: 40px;
+    width: 13%;
     padding: 1.5%;
     position: absolute;
     z-index: 10;
     top: 50px;
-    right: 10px;
+    right: 5px;
     transition: transform 0.5s;
     cursor: pointer;
 }
@@ -814,15 +817,15 @@ p {
 }
 
 .card img {
-    max-width: 100%;
-    height: auto;
+    max-width: 80%;
+    height: 50%;
     border-radius: 7px;
 }
 
 .p-title {
     text-align: center;
     color: #76949f;
-    font-size: 1.5rem;
+    font-size: 100%;
     font-weight: 600;
     margin-bottom: 10px;
 }
@@ -830,17 +833,18 @@ p {
 .p-description {
     text-align: center;
     color: #535454;
-    font-size: 1rem;
+    font-size: 80%;
     font-weight: 550;
     text-anchor: middle;
-    margin-bottom: 15px;
+    margin-bottom: 1%;
 }
 
 .discount {
     display: inline;
-    width: 45%;
     color: #535454;
     font-weight: 600;
+    font-size: 95%;
+    margin: 2%;
 }
 
 .old-price {
@@ -854,25 +858,24 @@ p {
 
 .price {
     display: inline;
-    width: 45%;
     color: #18004b;
     text-shadow: 2px 2px 8px #aad770;
-    font-size: 1.9rem;
+    font-size: 180%;
     font-weight: 700;
-    margin-left: 5px;
+    margin-left: 2%;
 }
 
 .send {
     color: #64ff00;
-    font-size: 1.1rem;
+    font-size: 80%;
     border: 1px solid #64ff00;
     border-radius: 10px;
     box-shadow: 0px 0px 10px #64ff00;
     width: 130px;
     background-color: transparent;
     position: absolute;
-    top: 55%;
-    left: 20px;
+    top: 4%;
+    left: 3%;
     animation: shadowZize 0.8s linear infinite alternate;
 }
 
@@ -904,16 +907,17 @@ p {
 
 .btn-product {
     width: 100%;
-    font-size: 1.2rem;
+    font-size: 110%;
     font-weight: bold;
     opacity: 0.9;
-    padding: 0.8rem 1.2rem;
+    padding: 4% 0%;
     color: white;
-    border: 1px solid #9ED66F;
-    background-color: #9ED66F;
+    border: 1px solid #76949f;
+    background-color: #76949f;
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    margin-top: 2.8%;
 }
 
 .btn-product.clicked {
@@ -1306,7 +1310,8 @@ small {
     }
 
     .card {
-        width: 350px;
+        width: 250px;
+        height: 350px;
     }
     .title {
         font-size: 3rem;
