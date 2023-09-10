@@ -1,5 +1,3 @@
-const { ContextRunnerImpl } = require("express-validator/src/chain");
-
 const cartProducts = Array.from(document.querySelectorAll(".cart-products"));
 const userID = document.querySelector(".user-data").id;
 
@@ -330,7 +328,7 @@ const cartItems = [];
 
 if (productsIdsArray && productsQuantityArray && productsAmountArray) {
    
-    for (let i = 0; i < productIds.length; i++) {
+    for (let i = 0; i < productsIdsArray.length; i++) {
       const productId = productsIdsArray[i];
       const quantity = parseInt(productsQuantityArray[i], 10);
       const price = parseFloat(productsAmountArray[i].replace('$', '').replace(',', '.').trim()); 
@@ -373,6 +371,11 @@ async function createOrder(){
     };
 
 };
+
+generateOrderBtn.addEventListener('click', async() => {
+    await finishShoppingSession();
+    await createOrder();
+});
 
 
 
