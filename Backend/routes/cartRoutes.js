@@ -10,5 +10,8 @@ const authMw = require('../middlewares/authMw');
 /*** @GET PRODUCTS CART SHOPPING VIEW ***/ 
 routes.get('/', cartControllers.getCart);
 
+/*** @GET PRODUCTS CART SHOPPING VIEW ***/ 
+routes.get('/generate-order-pdf/:idOrderDetail', cartControllers.generateOrderPDF);
+
 
 module.exports = routes;

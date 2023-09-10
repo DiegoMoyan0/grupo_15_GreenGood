@@ -335,9 +335,8 @@ const controller = {
                         status : 204, //204 for success without content,
                         success: false,
                         url: 'http://localhost:3001/api/orders/:idOrder/get'
-                    },
-                    data: { orderDetail, filteredOrderItems }
-                }
+                    }
+                };
             }; 
 
             return res.json(response);

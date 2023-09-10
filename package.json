@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "crypto": "^1.0.1"
+    "pdfmake": "^0.2.7"
   }
 }

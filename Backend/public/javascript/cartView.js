@@ -249,6 +249,7 @@ async function finishShoppingSession (){
     let currentShoppingData = await resCurrentShopping.json();
 
     let shoppingSessionToFinish;
+    console.log(currentShoppingData);
     currentShoppingData.meta.success? shoppingSessionToFinish = Number(currentShoppingData.data.id) : shoppingSessionToFinish = null;
     
     const url = `http://localhost:3001/api/cart/shoppingSession/${shoppingSessionToFinish}/finish`;
@@ -266,6 +267,7 @@ async function finishShoppingSession (){
     try {
         const response = await fetch(url, requestOptions);
         let finishedShopping = await response.json();
+        console.log(finishedShopping);
         return finishedShopping.meta.success;
     } catch (error) {
         console.error('Error finishing shopping session:', error);
@@ -341,6 +343,8 @@ if (productsIdsArray && productsQuantityArray && productsAmountArray) {
     };
 };
 
+let newOrder;
+
 async function createOrder(){
     const urlOrder = `http://localhost:3001/api/orders/${userID}/create`;
     const dataOrder = {
@@ -356,12 +360,12 @@ async function createOrder(){
         },
         body: JSON.stringify(dataOrder) 
     };
-
+    console.log(reqOptionsOrder);
     try {
         const response = await fetch(urlOrder, reqOptionsOrder);
-        const newOrder = await response.json();
+        newOrder = await response.json();
         if(newOrder.meta.success){
-           let confirm = confirm('Se creó la orden de pago, quieres descargarla?');
+            alert('Se creó la orden de pago, quieres descargarla?');
         }else{
             console.log('Error creating the purchase order');
             alert('Error al generar la orden de compra')
@@ -375,7 +379,13 @@ async function createOrder(){
 generateOrderBtn.addEventListener('click', async() => {
     await finishShoppingSession();
     await createOrder();
-    location.reload();
+    const pdfLink = document.createElement('a');
+
+    const orderDetailId = newOrder.data.newOrder.id;
+
+    pdfLink.href = `/cart/generate-order-pdf/${orderDetailId}`;
+    pdfLink.textContent = 'Generar PDF de la orden';
+    generateOrderBtn.appendChild(pdfLink);
 });
 
 
