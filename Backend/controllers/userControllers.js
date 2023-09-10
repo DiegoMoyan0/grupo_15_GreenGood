@@ -326,13 +326,12 @@ const controller = {
 			user.resetTokenExpiration = new Date(Date.now() + 3600000)
 			await user.save();
 
-			console.log(user.passwordResetToken);
-			console.log(user.passwordResetToken);
-			console.log(user.passwordResetToken);
-			console.log(user.passwordResetToken);
-			console.log(user.passwordResetToken);
-			console.log(user.resetTokenExpiration);
-			
+			console.log( 'token:' + user.passwordResetToken);
+			console.log( 'token:' + user.passwordResetToken);
+			console.log( 'token:' + user.passwordResetToken);
+			console.log( 'token:' + user.passwordResetToken);
+			console.log( 'token:' + user.passwordResetToken);
+
 			req.session.email = email;
 
 			res.redirect('/user/password-reset-token');
