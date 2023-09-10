@@ -58,10 +58,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING, 
             defaultValue: null, 
           },
-          resetTokenExpiration:   {
-            type: DataTypes.DATE, 
-            defaultValue: null, 
-          },
+        resetTokenExpiration:   {
+        type: DataTypes.DATE, 
+        defaultValue: null, 
+        },
     };
 
     const config = {
