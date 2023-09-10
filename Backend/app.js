@@ -6,6 +6,7 @@ const path = require('path');
 const cors = require('cors');
 const methodOverride = require('method-override');
 const logger = require('morgan');// A tool that logs HTTP requests in the terminal
+require('dotenv').config();
 
 //------ Login Mw -------//
 const cookieParser = require('cookie-parser');

@@ -3,7 +3,11 @@ const bcrypt = require('bcryptjs');
 const { validationResult } = require('express-validator');
 const db = require("../database/models");
 const Op = db.Sequelize.Op;
+const sendGridEmail = require('@sendgrid/mail')
 const crypto = require('crypto');
+const greenGoodSecurityEmail = process.env.SENDER_EMAIL;
+const sendgridApiKey = process.env.SENDGRID_API_KEY;
+
 
 const controller = {
 
@@ -362,12 +366,19 @@ const controller = {
 			user.resetTokenExpiration = new Date(Date.now() + 3600000)
 			await user.save();
 
-			console.log( 'token:' + user.passwordResetToken);
-			console.log( 'token:' + user.passwordResetToken);
-			console.log( 'token:' + user.passwordResetToken);
-			console.log( 'token:' + user.passwordResetToken);
-			console.log( 'token:' + user.passwordResetToken);
+			//sendGridEmail.setApiKey(sendgridApiKey);
+	
+			const tokenMessage = {
+				to: email,
+				from: greenGoodSecurityEmail, 
+				subject: 'Restablecimiento de contraseña GreenGood',
+				text: `El token para recuperar tu contraseña es ${user.passwordResetToken} \n\nAtentamente, \nEquipo de seguridad de GreenGood`,
+			};
+		
+			//await sendGridEmail.send(tokenMessage);
 
+			console.log(tokenMessage);
+			
 			req.session.email = email;
 
 			res.redirect('/user/password-reset-token');
