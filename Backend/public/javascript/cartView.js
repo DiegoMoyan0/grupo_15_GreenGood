@@ -218,7 +218,7 @@ orderDatails();
 const finishShoppingBtn = document.getElementById("finish-shopping");
 const modalOrder = document.getElementById("modalOrder");
 const closeModalOrderBtn = document.getElementById("closeModalOrder");
-const generateOrderBtn = document.getElementById("generarOrden");
+const generateOrderBtn = document.getElementById("generateOrderBtn");
 const totalOrderSpan = document.getElementById("totalOrder");
 let addPaymentBtn = document.getElementById('addPaymentMethod');
 let paymentForm = document.querySelector('.payment-form');
@@ -365,11 +365,11 @@ async function createOrder(){
         if(newOrder.meta.success){
            let confirm = prompt('Se creó la orden de pago, quieres descargarla?');
         }else{
-            console.log('Error creating new payment');
-            alert('Error al agregar metodo de pago')
+            console.log('Error creating the purchase order');
+            alert('Error al generar la orden de compra')
         };
     } catch (error) {
-        console.log("Error creating new payment at server:", error);
+        console.log("Error creating the purchase order at server:", error);
     };
 
 };
