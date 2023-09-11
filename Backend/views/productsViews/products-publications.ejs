@@ -229,7 +229,7 @@
                                 <div class="form-1-btns" id="btn-next1-parent">
                                     <button type="button" class="btn-next" id="btn-next1">Siguiente</button>
                                 </div>
-                                <input type="reset" value="Limpiar campos" class="btn-back">
+                                <input type="reset" value="Limpiar campos" class="btn-back btn-reset">
                             </form>
                         </div>
                         <div class="container-form-2" style="display: none;">
@@ -266,7 +266,7 @@
                                     <button type="button" id="btn-back2"  class="btn-back">Atrás</button>
                                     <button type="button" id="btn-next2" class="btn-next">Siguiente</button>
                                 </div>
-                                <input type="reset" value="Limpiar campos" class="btn-back">
+                                <input type="reset" value="Limpiar campos" class="btn-back btn-reset">
                             </form>
                         </div>
                         <div class="container-form-3" style="display: none;">
@@ -286,7 +286,7 @@
                                     <button type="button" id="btn-back3" class="btn-back">Atrás</button>
                                     <button type="button" id="btn-next3" class="btn-done">Finalizar</button>
                                 </div>
-                                <input type="reset" value="Limpiar campos" class="btn-back">
+                                <input type="reset" value="Limpiar campos" class="btn-back btn-reset">
                             </form>
                         </div>
                     </div>
@@ -492,6 +492,8 @@
     let text_pub_edit = document.querySelector(".p-edit");
     let text_asesor = document.querySelectorAll(".p-asesor");
 
+    let  iconContainer = document.getElementById('icon-container');
+
     
     //Función para actualizar vista de botones y estilo en el "paso" del formulario, una vez se obtenga el evento click sobre el botón.
     //Activa la validación de cada formulario hijo antes de pasar al siguiente formulario.
@@ -587,6 +589,8 @@
         
         form_2_step.classList.remove("active");
         form_3_step.classList.remove("active");
+
+        iconContainer.style.display = "none";
     
         text_asesor.forEach((p) => {
             p.style.opacity = "1"
@@ -629,6 +633,7 @@
 
         body_publications.classList.remove("modal-active");    
         modal_wrapper.classList.remove("active");
+        iconContainer.style.display = "flex";
         text_asesor.forEach((p) => {
             p.style.opacity = "0.8"
         });           
@@ -645,6 +650,7 @@
         e.preventDefault(); // Para que no aparezca "#" en la URL
 
         body_publications.classList.remove("modal-active");
+        iconContainer.style.display = "flex";
 
         modal_wrapper.classList.remove("active");
         text_asesor.forEach((p) => {

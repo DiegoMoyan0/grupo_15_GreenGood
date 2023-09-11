@@ -10,6 +10,7 @@ const category = document.getElementById('category-children');
 const firstNextBtn = document.getElementById('btn-next1');
 const firstNextBtnParent = document.getElementById('btn-next1-parent');
 
+
     //2- First next button disabled and errors declaration:
 firstNextBtn.disabled = true; 
 let errorMessages = {};
