@@ -123,3 +123,73 @@ El equipo compartió las siguientes tareas y logros completados durante la seman
 3. Plan para la próxima semana:
    
 - Solucionar los impedimentos encontrados, finalizar las validaciones del frontend y preparar el proyecto para la entrega del Sprint-7.
+
+Fecha: [24/08/2023]
+
+Resumen: En la reunión semanal del equipo de desarrollo, se revisaron los avances y las actividades realizadas durante la semana previa. A continuación, se presentan los puntos más destacados abordados en la reunión:
+
+1. Actividades realizadas esta semana:
+
+El equipo compartió las siguientes tareas y logros completados durante la semana:
+
+- Se resolvieron parcialmente los impedimentos identificados en la reunión anterior.
+- Se discutió las maneras mas eficientes y organizadas para realizar validaciones desde el Frontend y Backend.
+- Se discutió la forma para crear los endpoints que será usandos en los componentes del Dashboard con React.
+
+2. Impedimentos encontrados:
+
+- Inconvenientes en el consumo de las API y el uso de Postman.
+
+3. Plan para la próxima semana:
+   
+- Solucionar los impedimentos encontrados y avanzar con las actividades el Sprint-8.
+
+Fecha: [31/08/2023]
+
+Resumen: En la reunión semanal del equipo de desarrollo, se revisaron los avances y las actividades realizadas durante la semana previa. A continuación, se presentan los puntos más destacados abordados en la reunión:
+
+1. Actividades realizadas esta semana:
+
+El equipo compartió las siguientes tareas y logros completados durante la semana:
+
+- Se resolvieron los problemas identificados en la reunión anterior.
+- Se discutió la forma mas eficiente de organizar e integrar los endpoints de users y products.
+- Se discutió la forma mas eficiente de organizar e integrar las API routes de users y products.
+- Se discutió la forma mas eficiente de organizar los componentes en el dhasboard de React.
+- Se discutió el avance en el código del carrito de compras.
+- Se discutieron las modificaciones requeridas en la base de datos y los modelos.
+
+2. Impedimentos encontrados:
+
+- Paginado de los datos obtenidos a través de las consultas en la base de datos.
+- Inconveniente con la segregación del Dashboard.
+- Inconveniente con la creación de gráficos en el Dashboard que se alimentan con los datos consumidos en las API.
+- Inconveniente con las alertas personalizadas para los eventos en las interacciones del sitio web.
+
+3. Plan para la próxima semana:
+   
+- Solucionar los impedimentos encontrados y continuar avanzando con la entrega del Sprint-8.
+
+Fecha: [07/09/2023]
+
+Resumen: En la reunión semanal del equipo de desarrollo, se revisaron los avances y las actividades realizadas durante la semana previa. A continuación, se presentan los puntos más destacados abordados en la reunión:
+
+1. Actividades realizadas esta semana:
+
+El equipo compartió las siguientes tareas y logros completados durante la semana:
+
+- Se resolvieron parcialmente los impedimentos identificados en la reunión anterior.
+- Se discutieron items pendientes para completar el Sprint-8.
+- Se discutieron funcionalidades extra para el sitio web.
+
+2. Impedimentos encontrados:
+
+- Consumo de datos en el Dashboard.
+- Conflicto entre los servidores(puertos) usados.
+- Conflicto con las ventanas emergentes personalizadas.
+- Procesamiento de la compra en el carrito.
+- Restablecimiento de la contraseña para los usuarios.
+
+3. Plan para la próxima semana:
+   
+- Solucionar los impedimentos encontrados, completar las funcionalidades extra y preparar el proyecto para la entrega final del Sprint-8.
