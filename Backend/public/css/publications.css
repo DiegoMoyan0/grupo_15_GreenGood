@@ -749,6 +749,17 @@ select {
 
   }
 
+  @media (min-width: 768px) {
+    article{
+      position: relative;
+    }
+    .container-answer1{
+      position: absolute;
+      top: 80;
+      left: 400;
+    }
+  }
+
   @media (min-width: 1000px) {
 
     .wrapper{

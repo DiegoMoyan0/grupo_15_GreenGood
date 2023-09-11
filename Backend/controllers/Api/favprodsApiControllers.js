@@ -62,12 +62,13 @@ const controller = {
 
             let response = {};
 
-            if(!idProducts || idProducts == "" || idProducts == " "){
+            if(idProducts.length == 0){
                 await db.LikedProduct.destroy({
                     where:{
                         user_id: idUser
                     }
                 });
+
                 return response ={
                     meta: {
                         status: 201,
@@ -81,8 +82,6 @@ const controller = {
             let idsArray = idProducts.split(',');
 
             let idsNumberArray = idsArray.map( idProd =>Number(idProd) );
-
-            console.log("IS PROD FAVS TO STORE: ", idsNumberArray);
 
             //First clear all the previous fav products from the user logged
             await db.LikedProduct.destroy({
@@ -104,8 +103,6 @@ const controller = {
                 createdFavProducts = await db.LikedProduct.bulkCreate(favItemsToCreate) 
                     : 
                 createdFavProducts = null;
-
-            console.log("META FAVS STORE:", createdFavProducts.meta );
 
             if(createdFavProducts){
                 response ={

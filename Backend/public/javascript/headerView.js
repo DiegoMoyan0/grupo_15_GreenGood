@@ -158,86 +158,82 @@ window.onload = function () {
 
     //-----------------------------------FAV ICONS------------------------------------------//
 
+    const favIcons = Array.from(document.getElementsByClassName('fav-icon'));
+    const userIDfav = document.querySelector(".user-data").id;
+    let preFavsStorage;
 
-    setTimeout(() => {
-        const favIcons = Array.from(document.getElementsByClassName('fav-icon'));
-        const userIDfav = document.querySelector(".user-data").id;
-        let preFavsStorage;
-
-        if (!userIDfav) {
-            preFavsStorage = localStorage.getItem('favs');
-            favIcons.forEach(fIcon => {
-                if (preFavsStorage != null && preFavsStorage != '') {
-                    let prevFavArray = preFavsStorage.split(",");
-                    if (prevFavArray.includes(fIcon.id)) {
-                        fIcon.classList.add('fav-icon-selected');
-                        fIcon.setAttribute('fill', 'currentColor');
-                    };
-                };
-            });
-        } else {
-            async function initPrevsFavs() {
-                let response = await fetch(`http://localhost:3001/api/favProducts/all/${userID}/get`);
-                let prevFavsData = await response.json();
-                if (prevFavsData.meta.success) {
-                    localStorage.setItem("favs", prevFavsData.data.favStorage);
-                    preFavsStorage = localStorage.getItem('favs');
-                    favIcons.forEach(fIcon => {
-                        if (preFavsStorage != null && preFavsStorage != '') {
-                            let prevFavArray = preFavsStorage.split(",");
-                            if (prevFavArray.includes(fIcon.id)) {
-                                fIcon.classList.add('fav-icon-selected');
-                                fIcon.setAttribute('fill', 'currentColor');
-                            };
-                        };
-                    });
-                } else {
-                    preFavsStorage = localStorage.getItem('favs');
-                };
-            };
-            initPrevsFavs();
-        };
-
+    if (!userIDfav) {
+        preFavsStorage = localStorage.getItem('favs');
         favIcons.forEach(fIcon => {
-
-            fIcon.onclick = function () {
-                let favDivMsg = document.createElement('span');
-                favDivMsg.classList.add('share-msg');
-                favDivMsg.classList.add('fav');
-
-                if (!Array.from(fIcon.classList).includes('fav-icon-selected')) {
-                    let favProducts = localStorage.getItem('favs');
-                    if (favProducts != null) {
-                        let favArray = favProducts.split(",");
-                        favArray.push(fIcon.id);
-                        localStorage.setItem("favs", favArray);
-                    } else {
-                        localStorage.setItem("favs", fIcon.id);
-                    };
+            if (preFavsStorage != null && preFavsStorage != '') {
+                let prevFavArray = preFavsStorage.split(",");
+                if (prevFavArray.includes(fIcon.id)) {
                     fIcon.classList.add('fav-icon-selected');
                     fIcon.setAttribute('fill', 'currentColor');
-
-                    favDivMsg.textContent = "Agregado a favoritos";
-                    fIcon.parentElement.appendChild(favDivMsg);
-                } else {
-                    let favArray = localStorage.getItem('favs').split(",");
-                    let newFavArray = favArray.filter(item => item != fIcon.id);
-                    fIcon.classList.remove('fav-icon-selected');
-                    fIcon.setAttribute('fill', 'none');
-                    localStorage.setItem("favs", newFavArray);
-
-                    favDivMsg.textContent = "Se quitó de favoritos";
-                    fIcon.parentElement.appendChild(favDivMsg);
                 };
-                setTimeout(function () {
-                    fIcon.parentElement.removeChild(favDivMsg);
-                }, 1500);
             };
         });
-    }, 280);
-    
-    
+    } else {
+        async function initPrevsFavs() {
+            let response = await fetch(`http://localhost:3001/api/favProducts/all/${userID}/get`);
+            let prevFavsData = await response.json();
 
+            if (prevFavsData.meta.success) {
+                localStorage.setItem("favs", prevFavsData.data.favStorage);
+                preFavsStorage = localStorage.getItem('favs');
+                favIcons.forEach(fIcon => {
+                    if (preFavsStorage != null && preFavsStorage != '') {
+                        let prevFavArray = preFavsStorage.split(",");
+                        if (prevFavArray.includes(fIcon.id)) {
+                            fIcon.classList.add('fav-icon-selected');
+                            fIcon.setAttribute('fill', 'currentColor');
+                        };
+                    };
+                });
+            } else {
+                preFavsStorage = localStorage.getItem('favs');
+            };
+        };
+        initPrevsFavs();
+    };
+ 
+    favIcons.forEach(fIcon => {
+
+        fIcon.onclick = function () {
+            let favDivMsg = document.createElement('span');
+            favDivMsg.classList.add('share-msg');
+            favDivMsg.classList.add('fav');
+
+            if (!Array.from(fIcon.classList).includes('fav-icon-selected')) {
+                let favProducts = localStorage.getItem('favs');
+                if (favProducts != null) {
+                    let favArray = favProducts.split(",");
+                    favArray.push(fIcon.id);
+                    localStorage.setItem("favs", favArray);
+                } else {
+                    localStorage.setItem("favs", fIcon.id);
+                };
+                fIcon.classList.add('fav-icon-selected');
+                fIcon.setAttribute('fill', 'currentColor');
+
+                favDivMsg.textContent = "Agregado a favoritos";
+                fIcon.parentElement.appendChild(favDivMsg);
+            } else {
+                let favArray = localStorage.getItem('favs').split(",");
+                let newFavArray = favArray.filter(item => item != fIcon.id);
+                fIcon.classList.remove('fav-icon-selected');
+                fIcon.setAttribute('fill', 'none');
+                localStorage.setItem("favs", newFavArray);
+
+                favDivMsg.textContent = "Se quitó de favoritos";
+                fIcon.parentElement.appendChild(favDivMsg);
+            };
+            setTimeout(function () {
+                fIcon.parentElement.removeChild(favDivMsg);
+            }, 1500);
+        };
+    });
+    
     //-----------------------------------SHARE ICONS------------------------------------------//
     
     setTimeout(() => {
@@ -267,9 +263,6 @@ window.onload = function () {
         });    
     }, 280);
 
-
-
-
     ////////////////////////////////////////////////////////////////////
 
     // Search-bar script
@@ -292,39 +285,39 @@ window.onload = function () {
 //----------------Store fav products into DDBB--------------//
 
 const userIDfav = document.querySelector(".user-data").id;
-setTimeout(() => {
+
+async function favProductsStore(e) {
     let idProducts = localStorage.getItem('favs');
     let idProductsToStore = idProducts?.replace(/^,/, '');
-    async function favProductsStore(e) {
 
-        const url = `http://localhost:3001/api/favProducts/${userIDfav}/store`;
-        const data = {
-            favProducts: idProductsToStore,
-        };
-        const requestOptions = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        };
-        try {
-            const response = await fetch(url, requestOptions);
-            const responseData = await response.json();
-    
-            if (!responseData.meta.success) {
-                e.preventDefault();
-                alert('Hubo un error al cargar los productos favoritos');
-            };
-        } catch (error) {
-            console.error('Hubo un error al cargar los productos favoritos: ', error);
-        };
+    const url = `http://localhost:3001/api/favProducts/${userIDfav}/store`;
+    const data = {
+        favProducts: idProductsToStore,
     };
-    
-    let urlActual = window.location.href;
-    
-    userIDfav? window.addEventListener('beforeunload', favProductsStore) : ""; 
-}, 350);
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    };
+    try {
+        const response = await fetch(url, requestOptions);
+        const responseData = await response.json();
+
+        if (!responseData.meta.success) {
+            e.preventDefault();
+            alert('Hubo un error al cargar los productos favoritos');
+        };
+    } catch (error) {
+        console.error('Hubo un error al cargar los productos favoritos: ', error);
+    };
+};
+
+let urlActual = window.location.href;
+
+userIDfav? window.addEventListener('beforeunload', favProductsStore) : ""; 
+
 
 
 
