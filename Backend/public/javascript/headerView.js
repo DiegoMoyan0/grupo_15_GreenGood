@@ -307,7 +307,6 @@ async function favProductsStore(e) {
 
         if (!responseData.meta.success) {
             e.preventDefault();
-            alert('Hubo un error al cargar los productos favoritos');
         };
     } catch (error) {
         console.error('Hubo un error al cargar los productos favoritos: ', error);

@@ -300,7 +300,7 @@ finishShoppingBtn.addEventListener("click", () => {
         modalTitle.style.color = 'rgb(199, 73, 132);'
 
         modalMessage.textContent = message;
-        document.getElementById('acceptLogoutButton').textContent = 'Descargar PDF';
+        document.getElementById('acceptLogoutButton').textContent = 'Aceptar';
 
         modal.style.display = 'block';
 
@@ -314,7 +314,7 @@ finishShoppingBtn.addEventListener("click", () => {
         document.getElementById('acceptLogoutButton').addEventListener('click', function(e) {
         modal.style.display = 'none';
         e.target.href = "";
-        window.location.href = `/cart/generate-order/${orderDetailId}`;
+        window.location.href = `/user/orders`;
         });
     };
 
@@ -339,7 +339,7 @@ finishShoppingBtn.addEventListener("click", () => {
             newOrder = await response.json();
             if(newOrder.meta.success){
                 const orderDetailId = newOrder.data.newOrder.id;
-                let orderMessage = 'Tu orden de compra se generó exitosamente! Pudes ver el detalle en la sección "Mis compras" y/o descargar un archivo PDF de la misma';
+                let orderMessage = 'Tu orden de compra se generó exitosamente! Ahora puedes ver el detalle en la sección "Mis compras"';
                 showCustomOrderModal(orderMessage, orderDetailId)
             }else{
                 console.log('Error creating the purchase order');
