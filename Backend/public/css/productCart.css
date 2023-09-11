@@ -691,10 +691,22 @@ progress::-webkit-progress-value {
     color: rgba(0, 0, 0, 0.7);
 }
 
-/* Estilos del botón agregar medio de pago */
+.input-order{
+    border: 1px solid #402c68;
+    border-radius: 5px;
+    padding: 3%;
+    color: rgb(83 79 83);
+    font-weight: 600;
+}
 #addPaymentMethod {
     display: block;
+    cursor: pointer;
     flex: 1 0 80px;
+    border: none;
+    background-color: #402c68;
+    color: #ede4ed;
+    font-weight: 600;
+    border-radius: 10px;
 }
 
 .addPaymentOk{
@@ -702,7 +714,7 @@ progress::-webkit-progress-value {
     color: white;
     font-weight: 600;
     border: none;
-    box-shadow: 0 0 5px green;
+    box-shadow: 0px 0px 18px #0d8000;
 }
 
 .payment-form{

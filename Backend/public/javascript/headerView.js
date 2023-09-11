@@ -1,11 +1,51 @@
 window.onload = function () {
 
+    let openModalLink = document.getElementById('openModalLink');
+    let closeModalButton = document.getElementById('closeModalButton');
+    let modal = document.getElementById('myModal');
+    let cancelLogoutLink = document.getElementById('cancelLogoutLink');
+    let confirmLogoutLink = document.getElementById('confirmLogoutLink');
+
+    if(openModalLink){
+        openModalLink.onclick = function (e) {
+            e.preventDefault(); 
+            const userOptions = document.getElementById('userOptions');
+            userOptions.classList.toggle('show');
+            modal.style.display = 'block';
+        };
+    };
+   
+    closeModalButton.onclick = function () {
+        modal.style.display = 'none';
+    }
+
+    cancelLogoutLink.onclick = function (e) {
+        e.preventDefault(); 
+        modal.style.display = 'none';
+    }
+
+    confirmLogoutLink.onclick = function (e) {
+        modal.style.display = 'none';
+        window.location.href = '/user/logout';
+    }
+
+    // To handle logout when any link to "/user/logout" is clicked:
+    document.addEventListener("click", function (event) {
+        if (event.target.tagName === "A") {
+            if (event.target.getAttribute("href") === "/user/logout") {
+                event.preventDefault()
+                modal.style.display = 'block';
+            };
+        };
+    });
+
     const allAddCartBtns = Array.from(document.querySelectorAll(".btn-product"));
     const cartItemCountInput = document.getElementById('cartItemCount');
     const userID = document.querySelector(".user-data").id;
     let shoppingSessionFlag = false;
     let shoppingSession;
-
+    
+    //-----------------------------------Cart counter------------------------------------------//
     const amountInputDetail = document.getElementById('amount');
     let quantityFront = 1;
     if (amountInputDetail) {
@@ -15,8 +55,6 @@ window.onload = function () {
         };
     };
 
-
-    //-----------------------------------Cart counter------------------------------------------//
     if (!userID) {
         cartItemCountInput.value = 0;
     } else {
@@ -121,36 +159,6 @@ window.onload = function () {
     //-----------------------------------FAV ICONS------------------------------------------//
 
 
-    if (window.location.pathname === "/user/logout") {
-        var openModalLink = document.getElementById('openModalLink');
-        var closeModalButton = document.getElementById('closeModalButton');
-        var modal = document.getElementById('myModal');
-        var cancelLogoutLink = document.getElementById('cancelLogoutLink');
-        var confirmLogoutLink = document.getElementById('confirmLogoutLink');
-
-        openModalLink.onclick = function (e) {
-            e.preventDefault(); // Evita la acción predeterminada del enlace (navegación)
-            const loggedName = document.getElementById('userOptionsLink');
-            userOptions.classList.toggle('show');
-
-            modal.style.display = 'block';
-        }
-
-        closeModalButton.onclick = function () {
-            modal.style.display = 'none';
-        }
-
-        cancelLogoutLink.onclick = function (e) {
-            e.preventDefault(); 
-            modal.style.display = 'none';
-        }
-
-        confirmLogoutLink.onclick = function (e) {
-            localStorage.clear();
-            modal.style.display = 'none';
-        }
-        openModalLink();
-    };
     setTimeout(() => {
         const favIcons = Array.from(document.getElementsByClassName('fav-icon'));
         const userIDfav = document.querySelector(".user-data").id;
@@ -228,14 +236,7 @@ window.onload = function () {
         });
     }, 280);
     
-    // To handle logout when any link to "/user/logout" is clicked:
-    document.addEventListener("click", function (event) {
-        if (event.target.tagName === "A") {
-            if (event.target.getAttribute("href") === "/user/logout") {
-                openModalLink();
-            };
-        };
-    });
+    
 
     //-----------------------------------SHARE ICONS------------------------------------------//
     

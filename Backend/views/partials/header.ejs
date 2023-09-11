@@ -22,7 +22,7 @@
         <li><a href="/info">Info</a></li>
         <li><a href="/product/list">Productos</a></li>
         <% if (isLogged && userLogged.type==='Vendedor' ) { %>
-          <li><a href="/product/publications">Vender</a></li>
+          <li id="vender-li"><a href="/product/publications" id="vender-link">Vender</a></li>
         <% } %>
         <li><a href="/faqs">Ayuda</a></li><br>
     </ul>
@@ -70,8 +70,8 @@
         <li><a href="/">Inicio</a></li>
         <li><a href="/info">Info</a></li>
         <li><a href="/product/list">Productos</a></li>
-        <% if (isLogged && isLogged.type === "Vendedor") { %>
-        <li><a href="/product/publications">Vender</a></li>
+        <% if (isLogged && userLogged.type==='Vendedor' ) { %>
+        <li><a href="/product/publications" id="vender-link-mobile">Vender</a></li>
         <% }; %>
         <li><a href="/faqs">Ayuda</a></li><br>
       </ul>
@@ -82,14 +82,14 @@
           <li><a href="/user/profile">Mi perfil</a></li>
           <li><a href="/user/orders">Mis compras</a></li>
           <li><a href="/user/favs">Favoritos</a></li>
-          <li><a href="#" id="openModalLink">Cerrar sesión</a></li>
+          <li><a href="/user/logout" id="openModalLink">Cerrar sesión</a></li>
         </ul>
       <% } %>
 
       <div id="myModal" class="modal">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5">¿Deseas cerrar sesión?</h1>
+            <h1 class="modal-title fs-5">Cerrando tu sesión</h1>
             <span id="closeModalButton" class="close">&times;</span>
           </div>
           <div class="modal-body">

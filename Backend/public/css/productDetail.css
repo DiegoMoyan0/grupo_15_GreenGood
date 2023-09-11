@@ -79,16 +79,21 @@
     font-weight: 600;
     opacity: 1.0;
     margin-bottom: 3rem;
-    color: #9ED66F;
+    color: #3fc483;
+    text-align: center;
 }
 
 .p-description {
     font-size: 1.5rem;
-    font-weight: 400;
+    font-weight: 600;
     opacity: 0.8;
     margin-bottom: 2.5rem;
     text-align: justify;
     color: #fff;
+    border: solid #3fc483;
+    padding: 5%;
+    border-radius: 20px;
+    background-color: #10142f;
 }
 
 .title-card-detail {

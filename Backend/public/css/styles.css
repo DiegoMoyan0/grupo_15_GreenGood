@@ -77,6 +77,21 @@ nav .cart-icon {
     position: relative;
 }
 
+#vender-li{
+    border: solid 1px burlywood;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px wheat;
+    height: auto;
+}
+
+#vender-link{
+    padding: 10px;
+}
+
+#vender-link-mobile{
+    text-shadow: 0px 0px 10px wheat;
+}
+
 .modal {
     display: none;
     position: fixed;
@@ -938,7 +953,7 @@ p {
     }
 
     50% {
-        transform: scale(1.2);
+        transform: scale(0.8);
         color: whitesmoke;
         background-color: #402c68;
     }
@@ -947,7 +962,7 @@ p {
 .btn-product:hover {
     opacity: 1;
     background-color: #f0f0f0;
-    color: #9ED66F;
+    color: #858782;
 }
 
 /* ------------------------------- INICIO ------------------------------- */

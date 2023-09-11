@@ -36,9 +36,7 @@
         </div>
         <br>
         <div class="card-container">
-        <!-- <button class="arrow-button" id="prev-button">
-            <i class="fas fa-arrow-left"></i>
-        </button> -->
+
             <% products.forEach(product => { %>
                 <% if(product.discount > 15) { %>
                     <article class="card">
@@ -76,9 +74,7 @@
                     </article>
                 <% }; %>
             <% }); %>
-            <!-- <button class="arrow-button" id="next-button">
-                <i class="fas fa-arrow-right"></i>
-            </button> -->
+     
         </div>  
 
         <!-------------------------------- INICIO -------------------------------->
@@ -92,7 +88,7 @@
                         cuidado de tus plantas, como sustratos, fertilizantes y pesticidas orgánicos.</p>
                 </div>
                 <img src="/images/home/cultivo.jpg" alt="Imagen">
-                <a href="/product/list"><button class="btn"> Ver Productos</button></a>
+                <a href="/product/list#greengoodProds"><button class="btn"> Ver Productos</button></a>
             </div>
             <hr class="div-home" id="div-1">
             <div class="container" id="div-2">
@@ -129,7 +125,7 @@
                         efectividad.</p>
                 </div>
                 <img src="/images/home/medicina.jpg" alt="Imagen">
-                <a href="/product/list"><button class="btn">Ver Productos</button></a>
+                <a href="/product/list#cultiveProds"><button class="btn">Ver Productos</button></a>
             </div>
             <hr class="div-home" id="div-4">
         </div>

@@ -223,7 +223,7 @@ const controller = {
 	},
 
 	updateUser: async (req, res) => {
-		/* Update user data  */
+
 		let user_image = req.file ? req.file.filename : "default-user-photo.jpg";
 
 		try {
@@ -360,7 +360,6 @@ const controller = {
 			if (user.identity_document !== identity_document) {
 				return res.status(400).send('Identity document does not match the user')
 			}
-
 
 			user.passwordResetToken = resetToken;
 			user.resetTokenExpiration = new Date(Date.now() + 3600000)

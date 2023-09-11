@@ -231,52 +231,148 @@ let cardExpInput = paymentForm.querySelector('#card_exp');
 let address = document.querySelector('.address');
 const userAddressId = address.id;
 
-let productsIdsArray = Array.from(document.querySelectorAll(".product-li")).map(item =>item.lang);
-let productsQuantityArray = Array.from(document.querySelectorAll("#quantityProd")).map(item => item.textContent);
-let productsAmountArray = Array.from(document.querySelectorAll("#amountProd")).map(item => item.textContent);
-
 
 finishShoppingBtn.addEventListener("click", () => {
+  
+    let productsIdsArray = Array.from(document.querySelectorAll(".product-li")).map(item =>item.lang);
+    let productsQuantityArray = Array.from(document.querySelectorAll("#quantityProd")).map(item => item.textContent);
+    let productsAmountArray = Array.from(document.querySelectorAll("#amountProd")).map(item => item.textContent);
+    
+    totalOrderSpan.textContent = `$${finalTotal.toLocaleString('es-ES', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+        }).replace(' ', ',')}`;
+
+    // Finish shopping session and generate Order
+    async function finishShoppingSession (){
+        let resCurrentShopping = await fetch(`http://localhost:3001/api/cart/shoppingSession/${userID}/get`);
+        let currentShoppingData = await resCurrentShopping.json();
+
+        let shoppingSessionToFinish;
+        currentShoppingData.meta.success? shoppingSessionToFinish = Number(currentShoppingData.data.id) : shoppingSessionToFinish = null;
+        
+        const url = `http://localhost:3001/api/cart/shoppingSession/${shoppingSessionToFinish}/finish`;
+        const data = {
+            total: finalTotal
+        };
+        const requestOptions = {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json' 
+            },
+            body: JSON.stringify(data) 
+        }; 
+
+        try {
+            const response = await fetch(url, requestOptions);
+            let finishedShopping = await response.json();
+            return finishedShopping.meta.success;
+        } catch (error) {
+            console.error('Error finishing shopping session:', error);
+        };
+    };
+
+    const cartItems = [];
+
+    if (productsIdsArray && productsQuantityArray && productsAmountArray) {
+    
+        for (let i = 0; i < productsIdsArray.length; i++) {
+        const productId = productsIdsArray[i];
+        const quantity = parseInt(productsQuantityArray[i], 10);
+        const price = parseFloat(productsAmountArray[i].replace('$', '').replace(',', '.').trim()); 
+
+        cartItems.push({
+            id: productId,
+            quantity: quantity,
+            amount: price
+        });
+        };
+    };
+
+    let newOrder;
+
+    function showCustomOrderModal(message, orderDetailId) {
+        let modal = document.getElementById('logoutModal');
+        let modalMessage = document.getElementById('logoutModalMessage');
+        let modalTitle = modal.querySelector('.modal-title');
+
+        modalTitle.textContent = 'Felicitaciones y muchas gracias por tu compra!';
+        modalTitle.style.color = 'rgb(199, 73, 132);'
+
+        modalMessage.textContent = message;
+        document.getElementById('acceptLogoutButton').textContent = 'Descargar PDF';
+
+        modal.style.display = 'block';
+
+        document.getElementById('cancelLogoutButton').addEventListener('click', function(e) {
+        e.preventDefault();
+        modal.style.display = 'none';
+        e.target.href = "";
+        window.location.href = '/';
+        });
+
+        document.getElementById('acceptLogoutButton').addEventListener('click', function(e) {
+        modal.style.display = 'none';
+        e.target.href = "";
+        window.location.href = `/cart/generate-order/${orderDetailId}`;
+        });
+    };
+
+    async function createOrder(){
+        const urlOrder = `http://localhost:3001/api/orders/${userID}/create`;
+        const dataOrder = {
+            detail_total : Number(finalTotal),
+            user_payment_id : userPaymentId,
+            user_address_id: userAddressId,
+            cartItems
+        };
+        const reqOptionsOrder = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json' 
+            },
+            body: JSON.stringify(dataOrder) 
+        };
+
+        try {
+            const response = await fetch(urlOrder, reqOptionsOrder);
+            newOrder = await response.json();
+            if(newOrder.meta.success){
+                const orderDetailId = newOrder.data.newOrder.id;
+                let orderMessage = 'Tu orden de compra se generó exitosamente! Pudes ver el detalle en la sección "Mis compras" y/o descargar un archivo PDF de la misma';
+                showCustomOrderModal(orderMessage, orderDetailId)
+            }else{
+                console.log('Error creating the purchase order');
+                alert('Error al generar la orden de compra')
+            };
+        } catch (error) {
+            console.log("Error creating the purchase order at server:", error);
+        };
+
+    };
+
+    generateOrderBtn.addEventListener('click', async(e) => {
+        
+        if(paymentAddedFlag){
+            await finishShoppingSession();
+            await createOrder();
+        }else{
+            alert('Debes ingresar un medio de pago');
+        };
+        
+    });
+    
     modalOrder.style.display = "block";   
 });
-closeModalOrderBtn.addEventListener("click", () => {
-    modalOrder.style.display = "none";
-});
 
-// Finish shopping session and generate Order
-
-async function finishShoppingSession (){
-    let resCurrentShopping = await fetch(`http://localhost:3001/api/cart/shoppingSession/${userID}/get`);
-    let currentShoppingData = await resCurrentShopping.json();
-
-    let shoppingSessionToFinish;
-    currentShoppingData.meta.success? shoppingSessionToFinish = Number(currentShoppingData.data.id) : shoppingSessionToFinish = null;
-    
-    const url = `http://localhost:3001/api/cart/shoppingSession/${shoppingSessionToFinish}/finish`;
-    const data = {
-        total: finalTotal
-    };
-    const requestOptions = {
-        method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json' 
-        },
-        body: JSON.stringify(data) 
-    }; 
-
-    try {
-        const response = await fetch(url, requestOptions);
-        let finishedShopping = await response.json();
-        return finishedShopping.meta.success;
-    } catch (error) {
-        console.error('Error finishing shopping session:', error);
-    };
-};
-
+//Add payment
 let paymentAddedFlag = false;
 let userPaymentId = 0;
 
 async function addPayment(){
+    if(typeSelect.value.length == 0 || vendorInput.value.length == 0 || accountInput.value.length == 0 || cardNumInput.value.length == 0 || cardExpInput.value.length == 0){
+        return alert('Debes ingresar tu método de pago')
+    };
     const urlPayment = `http://localhost:3001/api/orders/payments/${userID}/create`;
     const dataPayment = {
         payment_type : typeSelect.value,
@@ -298,6 +394,7 @@ async function addPayment(){
             const newPaymentRes = await response.json();
             if(newPaymentRes.meta.success){
                 addPaymentBtn.classList.add('addPaymentOk');
+                addPaymentBtn.style.backgroundColor = '#4caf50;'
                 addPaymentBtn.textContent = 'Método de pago agregado'
                 typeSelect.disabled = true;
                 vendorInput.disabled = true;
@@ -318,103 +415,8 @@ async function addPayment(){
 
 addPaymentBtn.addEventListener('click', addPayment);
 
-setTimeout(() => {
-    totalOrderSpan.textContent = `$${finalTotal.toLocaleString('es-ES', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-      }).replace(' ', ',')}`;
-}, 200);
-
-const cartItems = [];
-
-if (productsIdsArray && productsQuantityArray && productsAmountArray) {
-   
-    for (let i = 0; i < productsIdsArray.length; i++) {
-      const productId = productsIdsArray[i];
-      const quantity = parseInt(productsQuantityArray[i], 10);
-      const price = parseFloat(productsAmountArray[i].replace('$', '').replace(',', '.').trim()); 
-
-      cartItems.push({
-        id: productId,
-        quantity: quantity,
-        amount: price
-      });
-    };
-};
-
-let newOrder;
-
-function showCustomOrderModal(message, orderDetailId) {
-    let modal = document.getElementById('logoutModal');
-    let modalMessage = document.getElementById('logoutModalMessage');
-    let modalTitle = modal.querySelector('.modal-title');
-
-    modalTitle.textContent = 'Felicitaciones y muchas gracias por tu compra!';
-    modalTitle.style.color = 'rgb(199, 73, 132);'
-
-    modalMessage.textContent = message;
-    document.getElementById('acceptLogoutButton').textContent = 'Descargar PDF';
-
-    modal.style.display = 'block';
-
-    document.getElementById('cancelLogoutButton').addEventListener('click', function(e) {
-    e.preventDefault();
-    modal.style.display = 'none';
-    e.target.href = "";
-    window.location.href = '/';
-    });
-
-    document.getElementById('acceptLogoutButton').addEventListener('click', function(e) {
-    modal.style.display = 'none';
-    e.target.href = "";
-    window.location.href = `/cart/generate-order/${orderDetailId}`;
-    });
-};
-
-async function createOrder(){
-    const urlOrder = `http://localhost:3001/api/orders/${userID}/create`;
-    const dataOrder = {
-        detail_total : Number(finalTotal),
-        user_payment_id : userPaymentId,
-        user_address_id: userAddressId,
-        cartItems
-    };
-    const reqOptionsOrder = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json' 
-        },
-        body: JSON.stringify(dataOrder) 
-    };
-
-    try {
-        const response = await fetch(urlOrder, reqOptionsOrder);
-        newOrder = await response.json();
-        if(newOrder.meta.success){
-            const orderDetailId = newOrder.data.newOrder.id;
-            let orderMessage = 'Tu orden de compra se generó exitosamente! Pudes ver el detalle en la sección "Mis compras" y/o descargar un archivo PDF de la misma';
-            showCustomOrderModal(orderMessage, orderDetailId)
-        }else{
-            console.log('Error creating the purchase order');
-            alert('Error al generar la orden de compra')
-        };
-    } catch (error) {
-        console.log("Error creating the purchase order at server:", error);
-    };
-
-};
-
-generateOrderBtn.addEventListener('click', async() => {
-    await finishShoppingSession();
-    await createOrder();
+closeModalOrderBtn.addEventListener("click", () => {
+    modalOrder.style.display = "none";
 });
-
-
-
-
-
-
-
-
 
 
