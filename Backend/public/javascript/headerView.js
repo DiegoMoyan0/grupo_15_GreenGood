@@ -120,38 +120,37 @@ window.onload = function () {
 
     //-----------------------------------FAV ICONS------------------------------------------//
 
-    var openModalLink = document.getElementById('openModalLink');
-    var closeModalButton = document.getElementById('closeModalButton');
-    var modal = document.getElementById('myModal');
-    var cancelLogoutLink = document.getElementById('cancelLogoutLink');
-    var confirmLogoutLink = document.getElementById('confirmLogoutLink');
-
-    openModalLink.onclick = function (e) {
-        e.preventDefault(); // Evita la acción predeterminada del enlace (navegación)
-        const loggedName = document.getElementById('userOptionsLink');
-        userOptions.classList.toggle('show');
-
-        modal.style.display = 'block';
-    }
-
-    closeModalButton.onclick = function () {
-        modal.style.display = 'none';
-    }
-
-    cancelLogoutLink.onclick = function (e) {
-        e.preventDefault(); 
-        modal.style.display = 'none';
-    }
-
-    confirmLogoutLink.onclick = function (e) {
-        localStorage.clear();
-        modal.style.display = 'none';
-    }
 
     if (window.location.pathname === "/user/logout") {
+        var openModalLink = document.getElementById('openModalLink');
+        var closeModalButton = document.getElementById('closeModalButton');
+        var modal = document.getElementById('myModal');
+        var cancelLogoutLink = document.getElementById('cancelLogoutLink');
+        var confirmLogoutLink = document.getElementById('confirmLogoutLink');
+
+        openModalLink.onclick = function (e) {
+            e.preventDefault(); // Evita la acción predeterminada del enlace (navegación)
+            const loggedName = document.getElementById('userOptionsLink');
+            userOptions.classList.toggle('show');
+
+            modal.style.display = 'block';
+        }
+
+        closeModalButton.onclick = function () {
+            modal.style.display = 'none';
+        }
+
+        cancelLogoutLink.onclick = function (e) {
+            e.preventDefault(); 
+            modal.style.display = 'none';
+        }
+
+        confirmLogoutLink.onclick = function (e) {
+            localStorage.clear();
+            modal.style.display = 'none';
+        }
         openModalLink();
     };
-
     setTimeout(() => {
         const favIcons = Array.from(document.getElementsByClassName('fav-icon'));
         const userIDfav = document.querySelector(".user-data").id;
@@ -227,9 +226,8 @@ window.onload = function () {
                 }, 1500);
             };
         });
-    }, 201);
-
-
+    }, 280);
+    
     // To handle logout when any link to "/user/logout" is clicked:
     document.addEventListener("click", function (event) {
         if (event.target.tagName === "A") {
@@ -240,20 +238,19 @@ window.onload = function () {
     });
 
     //-----------------------------------SHARE ICONS------------------------------------------//
+    
     setTimeout(() => {
         const shareIcons = Array.from(document.getElementsByClassName('share-icon'));
         shareIcons.forEach(shIcon => {
-
+    
             shIcon.addEventListener('click', copyLink);
-
+    
             async function copyLink() {
-                // Obtén la URL del detalle del producto
                 let url = `http://localhost:3001/product/${shIcon.id}/detail`;
-
-                // Copia el contenido del input al portapapeles usando el API Clipboard
+    
                 try {
                     await navigator.clipboard.writeText(url);
-                    // Cambia el ícono y agrega texto temporalmente
+    
                     shIcon.innerHTML = `<path fill-rule="evenodd" d="M19.902 4.098a3.75 3.75 0 00-5.304 0l-4.5 4.5a3.75 3.75 0 001.035 6.037.75.75 0 01-.646 1.353 5.25 5.25 0 01-1.449-8.45l4.5-4.5a5.25 5.25 0 117.424 7.424l-1.757 1.757a.75.75 0 11-1.06-1.06l1.757-1.757a3.75 3.75 0 000-5.304zm-7.389 4.267a.75.75 0 011-.353 5.25 5.25 0 011.449 8.45l-4.5 4.5a5.25 5.25 0 11-7.424-7.424l1.757-1.757a.75.75 0 111.06 1.06l-1.757 1.757a3.75 3.75 0 105.304 5.304l4.5-4.5a3.75 3.75 0 00-1.035-6.037.75.75 0 01-.354-1z" clip-rule="evenodd" />`;
                     let copiedDiv = document.createElement('span');
                     copiedDiv.textContent = "Enlace copiado! Ya lo puedes compartir donde desees.";
@@ -261,13 +258,14 @@ window.onload = function () {
                     shIcon.parentElement.appendChild(copiedDiv);
                     setTimeout(function () {
                         shIcon.parentElement.removeChild(copiedDiv);
-                    }, 2000); // Cambiar el texto del botón después de 2 segundos
+                    }, 2000); 
                 } catch (error) {
                     console.error('No se pudo copiar el enlace: ', error);
                 };
             };
-        });
-    }, 201);
+        });    
+    }, 280);
+
 
 
 
@@ -291,34 +289,41 @@ window.onload = function () {
 };
 
 //----------------Store fav products into DDBB--------------//
+
 const userIDfav = document.querySelector(".user-data").id;
-
-async function favProductsStore(e) {
+setTimeout(() => {
     let idProducts = localStorage.getItem('favs');
+    let idProductsToStore = idProducts?.replace(/^,/, '');
+    async function favProductsStore(e) {
 
-    const url = `http://localhost:3001/api/favProducts/${userIDfav}/store`;
-    const data = {
-        favProducts: idProducts,
-    };
-    const requestOptions = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    };
-    try {
-        const response = await fetch(url, requestOptions);
-        const responseData = await response.json();
-        if (!responseData.meta.success) {
-            e.preventDefault();
-            alert('Hubo un error al cargar los productos favoritos');
+        const url = `http://localhost:3001/api/favProducts/${userIDfav}/store`;
+        const data = {
+            favProducts: idProductsToStore,
         };
-    } catch (error) {
-        console.error('Hubo un error al cargar los productos favoritos: ', error);
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+        try {
+            const response = await fetch(url, requestOptions);
+            const responseData = await response.json();
+    
+            if (!responseData.meta.success) {
+                e.preventDefault();
+                alert('Hubo un error al cargar los productos favoritos');
+            };
+        } catch (error) {
+            console.error('Hubo un error al cargar los productos favoritos: ', error);
+        };
     };
-};
+    
+    let urlActual = window.location.href;
+    
+    userIDfav? window.addEventListener('beforeunload', favProductsStore) : ""; 
+}, 350);
 
-let urlActual = window.location.href;
 
-userIDfav? window.addEventListener('beforeunload', favProductsStore) : ""; 
+

@@ -44,7 +44,6 @@ const controller = {
 
     // ----------------------- //
 
-
     getProductDetail: async (req, res) => {
 
         try {
@@ -329,7 +328,6 @@ const controller = {
             res.redirect('/mainViews/error');
         };
     },
-
 
     hardDeleteProduct: async (req, res) => {
 

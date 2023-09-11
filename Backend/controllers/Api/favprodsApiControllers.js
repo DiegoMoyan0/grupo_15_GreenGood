@@ -62,7 +62,12 @@ const controller = {
 
             let response = {};
 
-            if(!idProducts || idProducts == ""){
+            if(!idProducts || idProducts == "" || idProducts == " "){
+                await db.LikedProduct.destroy({
+                    where:{
+                        user_id: idUser
+                    }
+                });
                 return response ={
                     meta: {
                         status: 201,
@@ -75,7 +80,9 @@ const controller = {
 
             let idsArray = idProducts.split(',');
 
-            let idsNumberArray = idsArray.map( idProd =>{ Number(idProd.trim()) } );
+            let idsNumberArray = idsArray.map( idProd =>Number(idProd) );
+
+            console.log("IS PROD FAVS TO STORE: ", idsNumberArray);
 
             //First clear all the previous fav products from the user logged
             await db.LikedProduct.destroy({
@@ -87,29 +94,18 @@ const controller = {
             let createdFavProducts;
 
             //Finally for each id product, create a fav product with the current user id
-            const favItemsToCreate = idsArray.map(productId =>({
+            const favItemsToCreate = idsNumberArray.map(productId =>({
                     product_id: productId,
                     user_id: idUser
                 })
             );
-
-            // To add all order items in one query //
 
             favItemsToCreate && favItemsToCreate.length > 0 ? 
                 createdFavProducts = await db.LikedProduct.bulkCreate(favItemsToCreate) 
                     : 
                 createdFavProducts = null;
 
-           /*  idsArray.forEach(async idProd => {
-                let idProdNum = Number(idProd.trim())
-                if(idProdNum && idProdNum > 0){
-                    createdFavProducts = true;
-                    await db.LikedProduct.create({
-                        product_id: idProdNum,
-                        user_id: idUser
-                    });
-                }; 
-            }); */
+            console.log("META FAVS STORE:", createdFavProducts.meta );
 
             if(createdFavProducts){
                 response ={
@@ -136,7 +132,7 @@ const controller = {
             return res.json(response);
 
         } catch (error) {
-            console.log(error);
+            console.log("CATCH STORE FAVS: ", error);
             res.json({
                 meta: {
                     status: 503,

@@ -30,9 +30,10 @@ async function getFavsForView () {
     };
 };
 
-getFavsForView();
 
-setTimeout(() => {
+setTimeout(async () => {
+    await getFavsForView();
+    
     if(favsItemsArray.length > 0){
         favsItemsArray.forEach(favItem => {
             const prod = favItem.favproduct;

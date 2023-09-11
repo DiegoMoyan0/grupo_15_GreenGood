@@ -70,7 +70,9 @@
         <li><a href="/">Inicio</a></li>
         <li><a href="/info">Info</a></li>
         <li><a href="/product/list">Productos</a></li>
+        <% if (isLogged && isLogged.type === "Vendedor") { %>
         <li><a href="/product/publications">Vender</a></li>
+        <% }; %>
         <li><a href="/faqs">Ayuda</a></li><br>
       </ul>
       <% if (isLogged) { %>

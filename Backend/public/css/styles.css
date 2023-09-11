@@ -663,6 +663,7 @@ p {
     background-color: #F3F2F3;
     color: #3fc483;
     box-shadow: 0px 0px 10px #3fc483;
+    overflow-x: hidden;
 }
 
 .scrolling-text h2 {
@@ -718,7 +719,7 @@ p {
 
 
 .card {
-    width: 90vw;
+    width: 165px;
     border-radius: 5px;
     text-align: center;
     margin-bottom: 1.5rem;
@@ -729,6 +730,7 @@ p {
     transition: transform 0.5s;
     position: relative;
     margin: 2%;
+    height: 275px;
 }
 
 .content-art{
@@ -791,21 +793,24 @@ p {
 .share-msg {
     color: #402c68;
     position: absolute;
-    top: 18%;
-    right: -20%;
-    width: 200px;
+    top: 25%;
+    right: -32%;
+    width: 80%;
     border: 2px solid #402c68;
     background-color: #f0f0f0;
     padding: 8px;
     font-size: 60%;
     border-radius: 30px;
     font-weight: 1000;
+    z-index: 10000;
 }
 
 .fav {
-    top: -7%;
-    right: -8%;
-    width: 120px;
+    top: -1%;
+    right: -10%;
+    width: 40%;
+    box-shadow: 0 0 10px #add;
+    z-index: 100000;
 }
 
 .share-icon:hover {
@@ -1212,6 +1217,16 @@ small {
         flex-direction: column;
         flex-wrap: nowrap;
         align-items: center;
+        font-size: 70%;
+        min-height: 100px;
+    }
+
+    .card-container{
+        height: 50vh;
+    }
+
+    .btn-product{
+        font-size: 80%;
     }
 }
 

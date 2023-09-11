@@ -101,12 +101,11 @@ const controller = {
 
 			let hashedPassword = await bcrypt.hash(req.body.password, 10);
 
-
-
 			const newUser = await db.User.create({
 				first_name: newData.first_name,
 				last_name: newData.last_name,
 				username: newData.user_name,
+				identity_document: newData.identity_document,
 				birth_date: newData.birth_date,
 				email: newData.email,
 				image: req.file ? req.file.filename : "default-user-photo.png",

@@ -188,44 +188,88 @@
     position: relative;
   }
 
-  .titles {
-    display: flex;
-    color: white;
-    background-color: #10142F;
-    width: 100vw;
-    font-size: 1.7rem;
-    font-weight: 700;
-    opacity: 1.0;
-    padding: 0.8rem 0.5rem;
-    margin: 3rem 0;
-    /* caracteristicas de los titulares  */
-  }
+.titles {
+  display: flex;
+  color: white;
+  background-color: #10142F;
+  width: 100vw;
+  font-size: 1.7rem;
+  font-weight: 700;
+  opacity: 1.0;
+  padding: 0.8rem 0.5rem;
+  margin: 3rem 0;
+  border-radius: 20px;
+}
+
+.title-cultive{
+  border: 1px solid #80ef03;
+  box-shadow: 0 0 10px #9ed66f;
+}
+
+.title-medicine {
+  border: 1px solid #76949f;
+  box-shadow: 0 0 10px #add;
+}
+
+.cultive-div, .medicine-div{
+  height: 0;
+  overflow: hidden;
+  transition: height 0.8s ease-in-out;
+}
+
+.cultive-div.activeDiv{
+  height: 40vh;
+  overflow: visible;
+}
+.cultive-div.activeDiv.activeHeight{
+  height: fit-content;
+}
+
+.medicine-div.activeDiv{
+  height: 30vh;
+  overflow: visible;
+}
+.medicine-div.activeDiv.activeHeight{
+  height: fit-content;
+}
 
 
-  .section-sub-category {
-    display: none;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
-    height: 750px;
-    background-color: #10142F;
-    overflow: scroll;
-  }
+.section-sub-category {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  background-color: #10142F;
+}
+.section-sub-category.active {
+  height: 400px;
+  max-height: 400px;
+  overflow: scroll; 
+}
 
-  .sub-category {
-    display: flex;
-    color: white;
-    background-color: #93d746;
-    width: 100%;
-    font-size: 1.2rem;
-    font-weight: 700;
-    opacity: 0.9;
-    padding: 0.8rem 0.5rem;
-    margin: 2rem 0px;
-    /* caracteristicas de los titulares  */
-  }
+.sub-category {
+  display: flex;
+  color: white;
+  width: 100%;
+  font-size: 1.2rem;
+  font-weight: 700;
+  opacity: 0.9;
+  padding: 0.8rem 0.5rem;
+  margin: 2rem 0px;
+}
+
+.subCat-cultive{
+  background-color: #80ef03
+}
+
+.subCat-medicine{
+  background-color: #90bdbd;
+}
 
   
 
@@ -285,6 +329,10 @@
 
   /*----------------------------------------- BREAK --------------------------------------------------*/
   @media (min-width: 768px) {
+
+    .section-sub-category{
+      height: 55vh;
+    }
 
     .categories-items{
       position: relative;

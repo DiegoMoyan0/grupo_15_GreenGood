@@ -38,11 +38,9 @@ const controller = {
         };   
     },
     
-
     getFaqs:(req,res) => {
         return res.render('mainViews/faqs', {title: "Preguntas Frecuentes"});
     },
-
 
     getInfo:(req,res) => {
         return res.render('mainViews/info', {title: "Informacion"});
