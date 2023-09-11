@@ -6,7 +6,6 @@ const Op = db.Sequelize.Op;
 
 
 const controller = {
-
     // -------Render product Views by GET------- //
 
     getAllProducts: async (req, res) => {
