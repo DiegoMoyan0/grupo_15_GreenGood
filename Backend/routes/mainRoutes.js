@@ -11,5 +11,8 @@ routes.get('/faqs', mainController.getFaqs);
 
 routes.get('/info', mainController.getInfo); 
 
+/*** @GET SEARCHED PRODUCTS ***/ 
+routes.get('/search', mainController.getSearch);
+
 //exportamos routes//
 module.exports = routes;

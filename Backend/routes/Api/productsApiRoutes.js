@@ -48,9 +48,6 @@ routes.get('/list/subcategory', productsApiController.getAllBySubcategory);
 /*** @GET ALL PRODUCTS BY TYPE***/ 
 routes.get('/list/type', productsApiController.getAllByType);
 
-/*** @GET SEARCHED PRODUCTS ***/ 
-routes.get('/search', productsApiController.getSearch);
-
 /*** @GET ONE PRODUCT DETAIL ***/ 
 routes.get('/:id/detail', productsApiController.getDetail);
 

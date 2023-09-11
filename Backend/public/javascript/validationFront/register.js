@@ -378,25 +378,3 @@ window.onload = function () {
 
     })
 }
-
-//----------------------------------------------------------------------------//
-
-//Lafunción validatePassword que verifica que la contraseña cumpla con los siguientes criterios:
-/* 
-Tener al menos 8 caracteres.
-Contener al menos un número.
-Contener al menos una letra mayúscula.
-Contener al menos un caracter no alfanumérico.
-Cada vez que el usuario ingrese o modifique la contraseña, el evento input activará la función validatePassword, que verificará si la contraseña cumple con los criterios establecidos y actualizará los mensajes de error en consecuencia.
-
-Asegúrate de completar la función displayErrors y agregar los eventos input necesarios para los otros campos del formulario. */
-
-/*1) ^[a-zA-Z0-9._-]+: Al menos un carácter alfanumérico, punto, guión bajo o guión antes de la '@'.
-2) @: El carácter '@'.
-3) [a-zA-Z0-9.-]+: Al menos un carácter alfanumérico, punto o guión después de la '@'.
-4) \.: El carácter '.' que separa el dominio de nivel superior.
-5) [a-zA-Z]{2,4}$: De 2 a 4 caracteres alfabéticos para el dominio de nivel superior. */
-
-/* 1) ^: Comienzo de la cadena.
-2) [0-9]{7,}: Al menos 7 dígitos numéricos.
-3) $: Fin de la cadena.  */
