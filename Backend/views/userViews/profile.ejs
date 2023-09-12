@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head')%>
+        <link rel="stylesheet" href="/css/profile.css">
+</head>
+
+<body>
+
+    <%- include('../partials/header')%>
+
+        <div class="deslizable">
+            <a href="/user/profile"> <i class="fa-solid fa-arrow-up"></i></a>
+        </div>
+        <main>
+            <section>
+                <% let userName=user.first_name + ' ' + user.last_name %>
+                    <h1>Bienvenido <%=userName%>
+                    </h1>
+                    <h2>Perfil:</h2>
+                    
+                    <form class="form-login" action="/user/<%=user.id%>/update?_method=PUT"
+                        enctype="multipart/form-data" method="POST">
+
+                        <img src="/images/users/<%=user.image%>" alt="user img" id="img">
+                        <label for="foto" id="change_photo">Cambiar foto</label>
+                        <input class="input-sale-edit" type="file" id="foto" name="user_image" accept="image/*">
+
+                        <span class="span-bar"></span>
+
+                        <div class="info-container">
+                            <div class="inputs-div">
+                                <span>Nombre/s:</span>
+                                <input class="info" value="<%=user.first_name%>" name="first_name">
+                            </div>
+                            <div class="inputs-div">
+                                <span>Apellido/s:</span>
+                                <input class="info" value="<%=user.last_name%>" name="last_name">
+                            </div>
+
+                            <div class="inputs-div">
+                                <span>Email:</span>
+                                <input disabled class="info" value="<%=user.email%>">
+                            </div>
+                            <div class="inputs-div">
+                                <span>Usuario:</span>
+                                <input class="info" name="user_name" value="<%=user.username%>">
+                            </div>
+                            <div class="inputs-div">
+                                <span>Teléfono:</span>
+                                <input name="phone" class="info" value="<%=user.phone%>">
+                            </div>
+                            <div class="inputs-div">
+                                <span>Fecha de nacimiento:</span>
+                                <input name="birth_date" class="info" value="<%=user.birth_date%>">
+                            </div>
+
+                            <div class="address-div">
+                                <h3>Sus datos de dirección de envío:</h3>
+                                <label for="street" class="adress-span">Calle</label>
+                                <input name="street" class="info adress-input" type="text"
+                                    value="<%=user.address.street%>">
+                                <label for="number" class="adress-span">Numeración/Altura/Dpto</label>
+                                <input name="number" class="info adress-input" type="text"
+                                    value="<%=user.address.number%>">
+                                <label for="city" class="adress-span">Ciudad</label>
+                                <input name="city" class="info adress-input" type="text" value="<%=user.address.city%>">
+                                <label for="province" class="adress-span">Provincia</label>
+                                <input name="province" class="info adress-input" type="text"
+                                    value="<%=user.address.province%>">
+                                <label for="country" class="adress-span">País</label>
+                                <input name="country" class="info adress-input" type="text"
+                                    value="<%=user.address.country%>">
+                            </div>
+                            <div class="inputs-div">
+                                <label>Tipo de usuario:</label><br>
+                                <label for="Vendedor">Vendedor</label>
+                                <input type="radio" id="Vendedor" name="user_type" value="Vendedor" <% if
+                                    (user.type==="Vendedor" ) { %> checked <% } %>>
+
+                                    <label for="Comprador">Comprador</label>
+                                    <input type="radio" id="Comprador" name="user_type" value="Comprador" <% if
+                                        (user.type==="Comprador" ) { %> checked <% } %>>
+                            </div>
+
+                        </div>
+                        <button class="save-button-icon">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                        <button type="submit" class="save-button">Guardar cambios</button>
+                    </form>
+                    <button class ="cancelar-button">Cancelar</button>
+
+                    <form action="/user/<%= user.id %>/delete?_method=DELETE" method="POST"
+                        onsubmit="return confirm('¿Está seguro que desea eliminar su cuenta de manera permanente?')">
+                        <input type="submit" class="btn-delete" value="Eliminar Cuenta">
+                    </form>
+            </section>
+        </main>
+
+
+
+        <script>
+
+        </script>
+
+
+
+        <!---------------------------------  FOOTER ---------------------------- -->
+
+        <footer>
+            <%- include('../partials/footer')%>
+        </footer>
+
+
+        <script src="/javascript/validationFront/updateProfile.js"></script>
+
+
+</body>
+
+</html>

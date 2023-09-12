@@ -1,0 +1,247 @@
+  /*----------------------------------------- LOGIN --------------------------------------------------*/
+.section-login {
+  	padding: 1rem;
+  	text-align: center;
+}
+
+.label-login {
+	font-size: 0.8rem;
+	font-weight: 400;
+	opacity: 1;
+	text-align: left;
+}
+
+.input-login {
+	width: 100%;
+	padding: 0.8rem;
+	margin-bottom: 1rem;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	max-width: 100%;
+}
+
+.is-invalid{
+	box-shadow: 0px 0px 10px rgb(240, 12, 12);
+	border-radius: 5px;
+}
+
+#error-icon{
+	display: inline-block;
+	color: red;
+	font-size: 1.5rem;
+	width: 1.5rem;
+	font-weight: 600;
+	position: absolute;
+	top: 23px;
+	right: 4%;
+}
+
+.btn-login {
+  	display: block;
+  	margin-top: 10px;
+  	margin-bottom: 10px;
+  	padding: 0.8rem 1.2rem;
+  	width: 100%;
+  	font-size: 1rem;
+  	font-weight: bold;
+  	border: 1px solid #0A1504;
+  	border-radius: 5px;
+  	color: white;
+  	background-color: #402c68;
+  	cursor: pointer;
+  	transition: all 0.3s ease-in-out;
+}
+
+.btn-login:hover {
+  	opacity: 0.6;
+}
+
+.container-sesion {
+	margin-top: 1rem;
+  	margin-bottom: 1rem;
+  	color: gray;
+}
+
+button,
+input {
+  	font: inherit;
+  	border: none;
+  	outline: none;
+}
+
+.container {
+position: relative;
+isolation: isolate;
+margin-left: auto;
+margin-right: auto;
+margin-top: 1rem;
+margin-bottom: 1rem;
+padding: 7rem 0;
+width: 18rem;
+height: 34rem;
+color: #fff;
+background-color: #fff;
+border-radius: 1rem;
+box-shadow: 0 1px 1rem rgba(0, 0, 0, 0.1);
+}
+
+
+#token-div{
+	height: 26rem;
+	padding-top: 10rem;
+}
+
+.container::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+z-index: -1;
+width: 100%;
+height: 10rem;
+background-color: #402c68;
+border-radius: 1rem 1rem 100% 100%;
+}
+
+.span-title {
+position: absolute;
+top: 3.5rem;
+left: 30%;
+transform: translateX(-50%);
+font-size: 2.5rem;
+}
+
+/* Animación del título del formulario*/
+.span-title {
+animation-duration: 1.5s;
+animation-name: Login-appear;
+}
+
+.container.pass-reset .span-title {
+	font-size: 1.6rem;
+	text-align: right;
+	margin-left: 2rem;
+}
+
+@keyframes Login-appear {
+from {
+	margin-left: 100%;
+	width: 300%;
+}
+
+to {
+	margin-left: 0%;
+	width: 100%;
+}
+}
+
+/* Animación del formulario*/
+.form-login {
+margin-top: 5rem;
+padding: 1.5rem;
+margin-top: 1.5rem;
+border-radius: inherit;
+box-shadow: inherit;
+box-shadow: 0 2px 5px gray;
+border-radius: 10px;
+background-color: inherit;
+max-width: 80%;
+transform: translateX(1.7rem);
+animation-duration: 1.5s;
+animation-name: Form-appear;
+}
+
+@keyframes Form-appear {
+from {
+	transform: translateX(-1.5rem);
+}
+
+to {
+	transform: translateX(1.5rem);
+}
+}
+
+.container-input {
+position: relative;
+display: flex;
+flex-direction: column;
+align-items: baseline;
+margin-inline: auto;
+}
+
+.form-input {
+position: relative;
+width: 100%;
+margin-top: 0.5rem;
+padding-block: 1rem;
+}
+
+.span-bar {
+position: absolute;
+left: 0;
+bottom: 0;
+background-color:
+	rgba(0, 0, 0, 0.1);
+width: 100%;
+height: 1px;
+}
+
+/*Varios de los estilos que se encuentran arriba son una adaptación del contenido de este repositorio https://github.com/juliocodes-sm/Posts/tree/main/Forms/01 */
+
+.error,
+.error-password,
+.error-id{
+	display: block;
+	color: #db7070;
+	font-size: 0.7rem;
+	font-weight: 600;
+	transition: all 0.5s;
+	margin: 10px 0;
+	opacity: 0;
+	text-align: left;
+}
+
+.error-icon{
+	display: inline-block;
+	color: #db7070;
+	font-size: 1.2rem;
+	width: 1.5rem;
+	font-weight: 600;
+	position: absolute;
+	top: 22px;
+    right: 0%;
+}
+
+.is-valid{
+	box-shadow: 0px 1px rgb(125 179 125);
+}
+  
+.not-valid{
+	box-shadow: 0px 1px rgb(222, 71, 63)
+}
+  
+  
+
+/*----------------------------------------- BREAK --------------------------------------------------*/
+@media screen and (min-width:768px) {
+.container {
+	width: 22rem
+}
+
+/* Animación del formulario para el nuevo tamaño de pantalla*/
+.form-login {
+	transform: translateX(5rem);
+	animation-duration: 1.5s;
+	animation-name: Form-appear;
+}
+
+@keyframes Form-appear {
+	from {
+		transform: translateX(0rem);
+	}
+
+	to {
+		transform: translateX(5rem);
+	}
+}
+}

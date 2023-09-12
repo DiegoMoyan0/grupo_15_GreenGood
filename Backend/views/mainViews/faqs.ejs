@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <%- include('../partials/head')%>
+    <link rel="stylesheet" href="/css/faqs.css"> 
+</head>
+
+
+<body>
+    <!-- /* ------------------------------- NAVBAR ------------------------------- */ -->
+    
+    <%- include('../partials/header')%>
+
+    <div class="deslizable">
+        <a href="/faqs"> <i class="fa-solid fa-arrow-up"></i></a>
+    </div>
+
+    <!-- /* ------------------------------- PREGUNTAS ------------------------------- */ -->
+
+        <main class="main-FAQ">
+            <h2 class="header-FAQ">Preguntas Frecuentes</h2>
+            <div class="container-faq">
+                <input id="input1" class="checkbox1" type="checkbox" >
+                <label for="input1" class="label-question1">¿Cómo puedo pagar?</label>
+                <div class="container-dropdown1">
+                <div class="container-answer1">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                    </p>
+                </div>
+                </div>
+            </div>
+
+            <div class="container-faq">
+                <input id="input2" class="checkbox2" type="checkbox" >
+                <label for="input2" class="label-question2">¿Cuánto tiempo tardará en llegar mi pedido?</label>
+                <div class="container-dropdown2">
+                <div class="container-answer2">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                    </p>
+                </div>
+                </div>
+            </div>
+
+            <div class="container-faq">
+                <input id="input3" class="checkbox3" type="checkbox" >
+                <label for="input3" class="label-question3">¿Cómo puedo contactar al servicio al cliente?</label>
+                <div class="container-dropdown3">
+                <div class="container-answer3">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                    </p>
+                </div>
+                </div>
+            </div>
+
+            <div class="container-faq">
+                <input id="input4" class="checkbox4" type="checkbox" >
+                <label for="input4" class="label-question4">¿Cuál es el mejor método de envío para mí pedido?</label>
+                <div class="container-dropdown4">
+                <div class="container-answer4">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                    </p>
+                </div>
+                </div>
+            </div>
+
+            <div class="container-faq">
+                <input id="input5" class="checkbox5" type="checkbox" >
+                <label for="input5" class="label-question5">¿Cómo son fabricados los productos?</label>
+                <div class="container-dropdown5">
+                   <div class="container-answer5">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                    </p>
+                </div>
+                </div>
+            </div>
+        </main>
+
+    <!-- /* ------------------------------- CONTACTO ------------------------------- */ -->
+    <section id="contact">
+        <h2 id="title-contact">
+            ¿Tiene alguna <br />
+            pregunta que hacernos?
+        </h2>
+        <div id="container-contact">
+            <form action="/">
+                <h3 class="contact-titles">Contacto</h3>
+                <div>
+                    <label for="InputName" class="form-label">Nombre y apellido</label>
+                    <input type="text" class="form-control" id="InputName" placeholder="Escriba su nombre..."
+                        required />
+                </div>
+                <div>
+                    <label for="exampleInputEmail1" class="form-label">Correo electrónico</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="correo@ejemplo.com"
+                        required />
+                </div>
+                <div>
+                    <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Escriba aquí..."
+                        required></textarea>
+                </div>
+                <button type="submit" class="btn-contact"> Enviar</button>
+            </form>
+        </div>
+    </section>
+   
+    <!---------------------------------  FOOTER ---------------------------- -->
+
+    <footer>
+        <%- include('../partials/footer')%>
+    </footer>
+    
+
+</body>
+
+</html>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head')%>
+    <link rel="stylesheet" href="/css/register.css">
+</head>
+
+
+<body>
+
+    <%- include('../partials/header')%>
+
+    <div class="deslizable">
+        <a href="/user/register"> <i class="fa-solid fa-arrow-up"></i></a>
+    </div>
+
+    <main>
+        <section class="section-register">
+        <div class="container">
+			<span class="span-title-register">Register</span>
+			<form id="register-form" class="form-login" action="/user/register" enctype="multipart/form-data" method="POST">
+				<div class="container-input">
+                    <label for="first_name" class="label-register">Nombre/s</label>
+					<input type="text" id="first_name"
+                    name="first_name" 
+                    class="input-register" 
+                    placeholder="Como figura en su DNI"
+                    class="form-inputs <%= locals.errors && errors.first_name? "is-invalid" : null %>"
+                    <% if (locals.oldData) { %>
+                        value= "<%= oldData.first_name %>"
+                    <% } %>
+                    >    
+                    <% if (locals.errors && errors.first_name) { %>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                        </svg>                  
+                        <div class="text-danger">
+                            <%= errors.first_name.msg %>
+                        </div>
+                    <% }; %>
+                    <span class="error" id="first_name-error"></span>
+				</div>
+
+                <div class="container-input">
+                    <label for="last_name" class="label-register">Apellido/s</label>
+					<input type="text" 
+                    name="last_name" id="last_name"
+                    class="input-register" 
+                    placeholder="Como figura en su DNI"
+                    class="form-inputs <%= locals.errors && errors.last_name? "is-invalid" : null %>"
+                    <% if (locals.oldData) { %>
+                        value= "<%= oldData.last_name %>"
+                    <% } %>
+                    >    
+                    <% if (locals.errors && errors.last_name) { %>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                        </svg>                  
+                        <div class="text-danger">
+                            <%= errors.last_name.msg %>
+                        </div>
+                    <% }; %>
+                    <span class="error" id="last_name-error" ></span>
+				</div>
+
+                <div class="container-input">
+                    <label for="identity_document" class="label-register">Documento de identidad</label>
+					<input type="tel" id="identity_document"
+                    name="identity_document" 
+                    class="input-register" 
+                    placeholder="Como figura en su DNI"
+                    class="form-inputs <%= locals.errors && errors.identity_document? "is-invalid" : null %>"
+                    value= <%= locals.oldData? oldData.identity_document : null %>
+                    >    
+                    <% if (locals.errors && errors.identity_document) { %>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                        </svg>                  
+                        <div class="text-danger">
+                            <%= errors.identity_document.msg %>
+                        </div>
+                    <% }; %>
+                    <span class="error" id="identity_document-error"></span>
+				</div>
+
+				<div class="container-input">
+                    <label for="email" class="label-register">Email</label>
+					<input id="email" type="email" 
+                    name="email" 
+                    class="input-register"
+                    placeholder="ej user_email@mail.com" 
+                    class="form-inputs <%= locals.errors && errors.email? "is-invalid" : null %>"
+                    value= <%= locals.oldData? oldData.email : null %>
+                    >    
+                    <% if (locals.errors && errors.email) { %>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                        </svg>                  
+                        <div class="text-danger">
+                            <%= errors.email.msg %>
+                            <% if (errors.email.msg === 'Ese e-mail ya se encuentra registrado!') { %>
+                                <div><a href="/user/login">Quieres logearte?</a></div>
+                            <% } %>
+                        </div>
+                    <% }; %>
+                    <span class="error" id="email-error"></span>
+				</div>
+
+                <div class="container-input">
+                    <label for="user_name" class="label-register">Nombre de usuario</label>
+					<input type="text" 
+                    name="user_name" id="user_name"
+                    class="input-register" 
+                    placeholder="ej. user123" 
+                    minlength="6" 
+                    class="form-inputs <%= locals.errors && errors.user_name? "is-invalid" : null %>"
+                    value= "<%= locals.oldData? oldData.user_name : null %>"
+                    >    
+                    <% if (locals.errors && errors.user_name) { %>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                        </svg>                  
+                        <div class="text-danger">
+                            <%= errors.user_name.msg %>
+                        </div>
+                    <% }; %>
+                    <span class="error" id="username-error"></span>
+                </div>             
+
+                <div class="container-input">
+                    <label for="birth_date" class="label-register">Fecha de nacimiento</label>
+                    <input type="date" 
+                    name="birth_date" 
+                    class="input-register"
+                    id="birth_date" 
+                    class="form-inputs <%= locals.errors && errors.birth_date? "is-invalid" : null %>"
+                    value= <%= locals.oldData? oldData.birth_date : null %>
+                    >    
+                    <% if (locals.errors && errors.birth_date) { %>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" id="bd-error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                        </svg>                  
+                        <div class="text-danger">
+                            <%= errors.birth_date.msg %>
+                        </div>
+                    <% }; %>
+                    <span class="error" id="birthdate-error"></span>
+				</div>
+
+                <div class="container-input">
+                    <label for="phone" class="label-register">Teléfono celular</label>
+					<input type="tel" id="phone"
+                    name="phone" 
+                    class="input-register" 
+                    placeholder="ej (351) 2 341032" 
+                    class="form-inputs <%= locals.errors && errors.phone? "is-invalid" : null %>"
+                    value= <%= locals.oldData? oldData.phone : null %>
+                    >    
+                    <% if (locals.errors && errors.phone) { %>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                        </svg>                  
+                        <div class="text-danger">
+                            <%= errors.phone.msg %>
+                        </div>
+                    <% }; %>
+                    <span class="error" id="phone-error"></span>
+				</div>
+
+                <div class="container-input">
+                    <label class="label-register">Tipo de Perfil</label><br><br>
+                    <% if (locals.errors && errors.user_type) { %>
+                        <label class="label-register" style="border-bottom: solid 1px red;" for="user_type">Vendedor</label>
+                        <input type="radio" id="Vendedor" name="user_type" value="Vendedor">
+                        <label class="label-register" style="border-bottom: solid 1px red" for="user_type">Comprador</label>
+                        <input type="radio" id="Comprador" name="user_type" value="Comprador">
+                        <div class="text-danger">
+                            <%= errors.user_type.msg %>
+                        </div>
+                    <% } else{ %>    
+                        <label class="label-register" for="user_type">Vendedor</label>
+                        <input type="radio" id="Vendedor" name="user_type" value="Vendedor" <%= locals.oldData && oldData.user_type == "Vendedor" ? "checked" : null %>>
+
+                        <label class="label-register" for="user_type">Comprador</label>
+                        <input type="radio" id="Comprador" name="user_type" value="Comprador" <%= locals.oldData && oldData.user_type == "Comprador" ? "checked" : null %>>
+                    <% }; %> 
+				</div>
+
+                <div class="container-input photo" >
+                    <label class="label-register" for="user_image">Foto de usuario:</label>
+                    <br>
+                    <img src="/images/users/default-user-photo.png" alt="avatar" id="img">
+                    <label for="user_image" id="change_photo">Cambiar foto</label>
+                    <% if (locals.errors && errors.user_image) { %>
+                        <input class="input-register" 
+                        type="file" 
+                        id="user_image" 
+                        name="user_image" 
+                        style="box-shadow: 0px 0px 10px red;"
+                        >
+                        <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                        </svg>                      
+                        <div class="text-danger">
+                            <%= errors.foto.msg %>
+                        </div>
+                        <span class="span-bar"></span>
+                    <% } else{ %>
+                        <input class="input-register" type="file" id="user_image" name="user_image" >
+                        <span class="span-bar"></span>
+                    <% }; %>  
+                    <span class="error" id="image-error"></span>
+				</div>
+                <br>
+                <br>
+                <div class="adress-div">
+                    <h3 class="label-register" >Sus datos para envíos:</h3>
+                    <div class="container-input">
+                        <label for="street" class="label-register">Calle</label>
+                        <input type="text" id="street"
+                        name="street" 
+                        class="input-register" 
+                        placeholder="Ej. Av. Ejemplo" 
+                        minlength="4" 
+                        class="form-inputs <%= locals.errors && errors.street? "is-invalid" : null %>"
+                        value= "<%= locals.oldData? oldData.street : null %>"
+                        >    
+                        <% if (locals.errors && errors.street) { %>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                            </svg>                  
+                            <div class="text-danger">
+                                <%= errors.street.msg %>
+                            </div>
+                        <% }; %>
+                        <span class="error" id="street-error"></span>
+                    </div>
+                    <div class="container-input">
+                        <label for="number" class="label-register">Número/Altura/Depto</label>
+                        <input type="text" id="number"
+                        name="number" 
+                        class="input-register" 
+                        placeholder="Ej. 123 1A" 
+                        minlength="1" 
+                        class="form-inputs <%= locals.errors && errors.number? "is-invalid" : null %>"
+                        value= "<%= locals.oldData? oldData.number : null %>"
+                        >    
+                        <% if (locals.errors && errors.number) { %>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                            </svg>                  
+                            <div class="text-danger">
+                                <%= errors.number.msg %>
+                            </div>
+                        <% }; %>
+                        <span class="error" id="number-error"></span>
+
+                    </div>
+                    <div class="container-input">
+                        <label for="city" class="label-register">Ciudad</label>
+                        <input type="text" id="city"
+                        name="city" 
+                        class="input-register" 
+                        placeholder="Ej. Rio Cuarto" 
+                        minlength="3" 
+                        class="form-inputs <%= locals.errors && errors.city? "is-invalid" : null %>"
+                        value= "<%= locals.oldData? oldData.city : null %>"
+                        >    
+                        <% if (locals.errors && errors.city) { %>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                            </svg>                  
+                            <div class="text-danger">
+                                <%= errors.city.msg %>
+                            </div>
+                        <% }; %>
+                        <span class="error" id="city-error"></span>
+
+                    </div>
+                    <div class="container-input">
+                        <label for="province" class="label-register">Provincia</label>
+                        <input type="text" id="province"
+                        name="province" 
+                        class="input-register" 
+                        placeholder="Ej. Córdoba" 
+                        minlength="3" 
+                        class="form-inputs <%= locals.errors && errors.province? "is-invalid" : null %>"
+                        value= "<%= locals.oldData? oldData.province : null %>"
+                        >    
+                        <% if (locals.errors && errors.province) { %>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                            </svg>                  
+                            <div class="text-danger">
+                                <%= errors.province.msg %>
+                            </div>
+                        <% }; %>
+                        <span class="error" id="province-error"></span>
+
+                    </div>
+                    <div class="container-input">
+                        <label for="country" class="label-register">País</label>
+                        <input type="text" id="country"
+                        name="country" 
+                        class="input-register" 
+                        placeholder="Ej. Argentina" 
+                        minlength="3" 
+                        class="form-inputs <%= locals.errors && errors.country? "is-invalid" : null %>"
+                        value= "<%= locals.oldData? oldData.country : null %>"
+                        >    
+                        <% if (locals.errors && errors.country) { %>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                            </svg>                  
+                            <div class="text-danger">
+                                <%= errors.country.msg %>
+                            </div>
+                        <% }; %>
+                        <span class="error" id="country-error"></span>
+
+                    </div>
+                </div>
+                <br>
+                <br>
+
+                
+                <div class="container-input">
+                    <label for="password"  class="label-register">Contraseña</label>
+                   <input type="password" 
+                    onpaste="return false;" oncopy="return false" oncut="return false" ondrag="return false" ondrop="return false" autocomplete=off
+                    name="password" 
+                    class="input-register" 
+                    id="password" 
+                    minlength="8" 
+                    placeholder="Escriba su contraseña..." 
+                    class="form-inputs <%= locals.errors && errors.password? "is-invalid" : null %>"
+                    
+                    >    
+                    <% if (locals.errors && errors.password) { %>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                        </svg>                  
+                        <div class="text-danger">
+                            <%= errors.password.msg %>
+                        </div>
+                    <% }; %>
+                    <span class="error" id="password-error"></span>
+
+				</div>                    
+                <div class="container-input">
+                 <input type="password" 
+                    onpaste="return false;" oncopy="return false" oncut="return false" ondrag="return false" ondrop="return false" autocomplete=off 
+                    name="password_confirm" 
+                    class="input-register" 
+                    id="repassword"
+                    placeholder="Repita su contraseña..." 
+                    class="form-inputs <%= locals.errors && errors.password_confirm? "is-invalid" : null %>"
+                    >    
+                    <% if (locals.errors && errors.password_confirm) { %>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="error-icon" id="pc-error-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                        </svg>                  
+                        <div class="text-danger">
+                            <%= errors.password_confirm.msg %>
+                        </div>
+                    <% }; %>
+                    <span class="error" id="repassword-error"></span>
+
+				</div>
+
+                <button type="submit" id="btn-register" class="btn-login">
+                    Enviar
+                </button>
+                <button type="reset" class="btn-login">
+                    Borrar
+                </button>
+                <a href="/user/login">Ya tengo una cuenta</a>
+			</form>
+		</div>
+
+
+
+
+
+    </section>
+    </main>
+
+ <!---------------------------- ASESORAMIENTO--------------------------------->
+
+    <%- include('../partials/counseling')%>
+
+    <!---------------------------------  FOOTER ---------------------------- -->
+    
+    <footer>
+        <%- include('../partials/footer')%>
+    </footer>
+    
+    <script src="/javascript/validationFront/register.js"></script>
+</body>
+
+<script>
+    const defaultFile = '/images/users/default-user-photo.png';
+    const file = document.getElementById('user_image');
+    const img = document.getElementById('img');
+    file.addEventListener('change', e => {
+        if(e.target.files[0]){
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                img.src = e.target.result;
+            }
+            reader.readAsDataURL(e.target.files[0]);
+        }else{
+            img.src = defaultFile;
+        }
+    })
+</script>
+
+<script>
+
+    //Definir variables de acuerdo a las identificaciones y clases de las etiquetas
+
+    let image = document.getElementById('user_image');
+    let imgPreview = document.querySelector('.img-preview');
+    let labelVista = document.querySelector('.lbl-preview');
+    let containerVista = document.querySelector('.container-preview');
+    let backContainer = document.querySelector('.container');
+
+    //Asignamos el contenido del file-input creando una url y source para actualizar el atributo src de la etiqueta <img/>, de manera que permita tener una pre-visualización de la imagen cargada una vez se obtenga el evento click
+
+    labelVista.addEventListener('click', function(){
+
+        srcFile = URL.createObjectURL(image.files[0])
+        imgPreview.src = srcFile
+        imgPreview.style.display = 'block';
+        containerVista.style.display = 'block';
+        backContainer.style.height = "75rem";
+
+    }
+    )
+
+</script>
+
+</html>

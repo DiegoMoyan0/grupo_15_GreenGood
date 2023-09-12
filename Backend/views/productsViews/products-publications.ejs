@@ -1,0 +1,672 @@
+<DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head') %>
+        <link rel="stylesheet" href="/css/publications.css">
+
+    </head>
+    
+    <body class="body-publications">
+    <%- include('../partials/header')%>
+
+    <div class="deslizable">
+        <a href="/product"> <i class="fa-solid fa-arrow-up"></i></a>
+    </div>
+
+    <!------------ Sale and product edition draft ------------>
+
+    <main>
+        <section class="publication">
+            <h2>Mis Publicaciones</h2>
+            <br>
+            <a href="#" class="btn-publication">Crear un nuevo producto!</a>
+            <% if (locals.errors) { %>
+                <% var msgsArray = []; %>
+                <% for (var key in errors) {
+                    if (errors.hasOwnProperty(key)) {
+                      msgsArray.push(errors[key].msg);
+                    }
+                  } %>
+                <div>
+                    <ul>
+                        <% msgsArray.forEach(msg => { %>
+                            <li style="color: brown;"><%= msg %></li>
+                        <% }) %>
+                    </ul>
+                </div>
+                
+            <% } %>
+
+            <% for (let index = 0; index < products.length; index++) { %>
+                <% const product = products[index]; %>
+                
+                <div class="publication-container">
+                    <article>
+                        <br>
+                        <div class="img-publication">
+                            <img src="/images/products/<%= product.image %>" alt="imagen">
+                        </div>
+                        <h1 class="title-publication">
+                            <%= product.title %>
+                        </h1>
+                        <p class="price-publication"> Precio = <%= product.price %> </p>
+                        <p class="desc-publication"> Descuento = <%=product.discount%> </p>
+                        <p class="stock-publication"> Stock = <%=product.stock%> </p>
+                        <div class="btns-a">
+                            <form method ="POST" action="/product/<%=product.id%>/edit-delete?_method=PATCH">
+                                <button type="submit" class="btn-mark-sold"
+                                    <% if (product.deleted !== true){ %>
+                                        style="color: crimson; background-color: aliceblue;"
+                                        <%}else{ %>
+                                            style="color: white; background-color: rgb(17, 155, 17);"
+                                        <%}%>>
+                                    <%=product.deleted == true? "Marcar como disponible":"Marcar como vendido"%>
+                                </button>
+                            </form>
+                            <form action="/product/<%= product.id %>/delete?_method=DELETE" method="POST" onsubmit="return confirm('¿Está seguro que desea eliminar este producto de manera permanente?')">
+                                <input type="submit" class="btn-delete" value="Eliminar">
+                            </form>
+                        </div>
+                    </article>
+                    <button for="input1" class="btn-edit">Editar</button>
+
+                    <!-- Edit form -->
+
+                    <div class="container-dropdown1" style="display: none;">
+                        <div class="container-answer1">
+                            <article class="container-detail">
+                                <div class="container-price">
+                                    <form action="/product/<%=product.id%>/update?_method=PUT" enctype="multipart/form-data" method="post" id="edit-form">
+                                      
+                                        <label class="label-sale-edit" for="image">Imagen actual:</label>
+                                        <img src="/images/products/<%= product.image %>" alt="product img" id="img" width="150px">
+                                        <label for="image-edit" id="change_photo">Cambiar imagen</label>
+                                        <span class="errorE" id="imageEdit-error" ></span>
+                                        <input class="input-sale-edit" type="file" id="image-edit" name="image" accept="image/*" hidden>
+
+                                        <label for="title-edit" class="label-sale-edit">Título del producto</label>
+                                        <span class="errorE" id="titleEdit-error" ></span>
+                                        <input type="text" class="input-sale-edit" name="title" id="title-edit" value="<%=product.title%>"/>
+
+                                        <label for="description-edit" class="label-sale-edit">Descripción resumida</label>
+                                        <span class="errorE" id="descriptionEdit-error" ></span> 
+                                        <textarea name="description" class="input-sale-edit" id="description-edit" cols="30" rows="3"><%= product.description %></textarea>
+
+                                        <label for="price-edit" class="label-sale-edit">Precio</label>
+                                        <span class="errorE" id="priceEdit-error" ></span> 
+                                        <input type="number" name="price" step="0.01" class="input-sale-edit" id="price-edit" value="<%=product.price%>" required>
+
+                                        <label for="discount-edit" class="label-sale-edit">Porcentaje de descuento</label>
+                                        <span class="errorE" id="discountEdit-error" ></span>
+                                        <input type="number" name="discount" class="input-sale-edit"                 id="discount-edit" value="<%=product.discount%>"  />
+
+                                        <label for="stock-edit" class="label-sale-edit">Stock</label>
+                                        <span class="errorE" id="stockEdit-error" ></span>
+                                        <input type="number" name="stock" class="input-sale-edit" id="stock-edit" value="<%=product.stock%>">
+
+                                        <label class="label-sale-edit" for="category-edit">Categoría:</label>
+                                        <span class="errorE" id="categoryEdit-error" ></span>
+                                        <select name="category" class="input-sale-edit" id="category-edit">
+                                            <option value="1" 
+                                                <%=(product.category.name == "Cultivo") ? 'selected' : null %> 
+                                                >Productos para el cultivo
+                                            </option>
+                                            <option value="2"
+                                                <%=(product.category.name == "Medicinal") ? 'selected' : null %>
+                                                >Productos Medicinales
+                                            </option>
+                                        </select>
+
+                                        <label class="label-sale-edit" for="subcategory-edit">Subcategoría:</label>
+                                        <span class="errorE" id="subcategoryEdit-error" ></span>
+                                        <select name="subcategory" class="input-sale-edit" id="subcategory-edit">
+                                            <% subcategories.forEach(subcategory => { %>
+                                                <% if (subcategory.name == product.subcategory.name) { %>
+                                                    <option value="<%= product.subcategory_id %>" selected><%= product.subcategory.name %></option>
+                                                <% } else { %>
+                                                    <option value="<%= subcategory.id %>"><%= subcategory.name %></option>
+                                                <% } %>
+                                            <% }) %>
+                                        </select>
+
+                                        <label class="label-sale-edit" for="type-edit">Tipo de producto:</label>
+                                        <span class="errorE" id="typeEdit-error" ></span>
+                                        <select name="type" class="input-sale-edit" id="type-edit">
+                                            <% types.forEach(type => { %>
+                                                <% if (type.name == product.type.name) { %>
+                                                    <option value="<%= product.type_id %>" selected><%= product.type.name %></option>
+                                                <% } else { %>
+                                                    <option value="<%= type.id %>"><%= type.name %></option>
+                                                <% } %>
+                                            <% }) %>
+                                        </select>
+
+                                        <label for="info-edit" class="label-sale-edit">Informacion / Detalle del producto:</label>
+                                        <span class="errorE" id="infoEdit-error" ></span>
+                                        <textarea name="info" class="input-sale-edit" id="info-edit" cols="30" rows="10"><%= product.info %></textarea>
+
+                                        <input class="btn-save" type="submit" value="Guardar Cambios" id="edit-btn">
+                                        <button class="btn-cancel">Cancelar</button>
+                                    </form>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+                <!-- ---------------------- -->
+            <% }; %>
+        </section>
+
+
+        <!------------ Product creation modal ------------>
+        
+
+        <section>
+            <div class="modal-wrapper">
+                <div class="back-shadow"></div>
+                <div class="wrapper">
+                    <div class="header">
+                        <ul>
+                            <li class="active form-1-step">
+                                <div>
+                                    <p>1</p>
+                                </div>
+                            </li>
+                            <li class="form-2-step">
+                                <div>
+                                    <p>2</p>
+                                </div>
+                            </li>
+                            <li class="form-3-step">
+                                <div>
+                                    <p>3</p>
+                                </div>
+                            </li>
+                        </ul>
+                        <span class="span-close-form">x</span>
+                    </div>
+                    <div class="form-wrap">
+                        <div class="container-form-1">
+                            <!--Form Child 1-->
+                            <form id="form-val-1">
+                                <div class="title-sale">
+                                    <h2 id="header-create">¡Hola!<br><br> Empecemos con los datos básicos</h2>
+                                <br></div>
+
+                                <label class="label-sale" for="image">Una imagen del producto: </label>
+                                <br>
+                                <span class="error" id="image-error" ></span>
+                                <img src="/images/products/default-product-image.jpg" alt="product img" id="imgCreate" style="width: 50%;">
+                                <!-- <label for="image" id="change_photo">Cambiar image-edit</label> -->
+                                <input class="input-sale" type="file" id="image-children" name="image">
+                                
+                                            
+                                <label for="title" class="label-saledisabledbtn">Título del producto</label>
+                                <span class="error" id="title-error"></span>
+                                <input type="text" name="title" id="title-children" class="input-sale" placeholder="ej. Air Pot Large"/>
+                               
+
+                                <label for="description" class="label-sale">Descripción</label>
+                                <span class="error" id="description-error"></span>
+                                <textarea class="text-area-description" id ="description-children" name="description" rows="3" cols="50" placeholder="ej.'Maceta Moderna Air Pot Large - Cultivo in-door'"></textarea>
+                                
+
+                                <label class="label-sale">Categoría:</label>
+                                <span class="error" id="category-error"></span>
+                                <select name="category" id="category-children" class="input-sale">
+                                    <option value="" disabled selected>Selecciona la categoría principal</option>
+                                    <% categories.forEach(category => { %>
+                                        <% if (category.name == 'Cultivo') { %>
+                                            <option value="<%= category.id %>">Producto para el cultivo</option>
+                                        <% } %>
+                                        <% if (category.name == 'Medicinal') { %>
+                                            <option value="<%= category.id %>">Producto Medicinal</option>
+                                        <% } %>
+                                    <% }) %>
+                                </select>     
+                                               
+                                <div class="form-1-btns" id="btn-next1-parent">
+                                    <button type="button" class="btn-next" id="btn-next1">Siguiente</button>
+                                </div>
+                                <input type="reset" value="Limpiar campos" class="btn-back btn-reset">
+                            </form>
+                        </div>
+                        <div class="container-form-2" style="display: none;">
+                            <h2>Ahora, sub-categorías y precios</h2>
+                            <!--Form Child 2-->
+                            <form id="form-val-2">
+
+                                <label class="label-sale" for="subcategory">Subcategoría:</label>
+                                <span class="error" id="subcategory-error"></span>
+                                <select name="subcategory" id="subcategory-children" class="input-sale">
+                                    <option value="" disabled selected>Elije una sub-categoria</option>
+                                    <% subcategories.forEach(subcategory => { %>
+                                            <option value="<%= subcategory.id %>"><%= subcategory.name %></option>
+                                    <% }) %>
+                                </select>
+                                <label class="label-sale" for="type">Tipo:</label>
+                                <span class="error" id="type-error"></span>
+                                <select name="type" id="type-children" class="input-sale">
+                                    <option value="" disabled selected>Elije el tipo de producto</option>
+                                    <% types.forEach(type => { %>
+                                        <option value="<%= type.id %>"><%= type.name %></option>
+                                    <% }) %>
+                                </select>
+                                
+                                <label for="price" class="label-sale">Precio</label>
+                                <span class="error" id="price-error"></span>
+                                <input type="number"  step="any" name="price"  class="input-sale" id="price-children" id="InputPrice" placeholder="ej. 899.99" />
+                                
+                                <label for="discount" class="label-sale">Porcentaje de descuento</label>
+                                <span class="error" id="discount-error"></span>
+                                <input type="number" name="discount"  class="input-sale" id="discount-children" placeholder="ej. 5">
+                                
+                                <div class="form-2-btns" id="btn-next2-parent" style="display: none;">
+                                    <button type="button" id="btn-back2"  class="btn-back">Atrás</button>
+                                    <button type="button" id="btn-next2" class="btn-next">Siguiente</button>
+                                </div>
+                                <input type="reset" value="Limpiar campos" class="btn-back btn-reset">
+                            </form>
+                        </div>
+                        <div class="container-form-3" style="display: none;">
+                            <h2>Para Finalizar, decinos el stock y el detalle informativo del producto</h2>
+                            <!--Form Child 3-->
+                            <form id="form-val-3">
+
+                                <label for="stock" class="label-sale">Stock</label>
+                                <span class="error" id="stock-error"></span>
+                                <input type="number" name="stock" id ="stock-children" class="input-sale" id="stock-children"  placeholder="min 1">
+
+                                <label for="info" name="info"  class="label-sale">Información detallada</label>
+                                <span class="error" id="info-error"></span>
+                                <textarea class="input-sale" id ="info-children" name="info" rows="20" cols="50" placeholder="Escriba aquí el detalle e información útil del producto..."></textarea>
+            
+                                <div class="form-3-btns" id="btn-next3-parent" style="display: none;">
+                                    <button type="button" id="btn-back3" class="btn-back">Atrás</button>
+                                    <button type="button" id="btn-next3" class="btn-done">Finalizar</button>
+                                </div>
+                                <input type="reset" value="Limpiar campos" class="btn-back btn-reset">
+                            </form>
+                        </div>
+                    </div>
+    
+                    <!------------ Main product creation form ---------------->   
+
+                    <form action="/product/create" enctype="multipart/form-data" method="POST" id="parent-form"  style="display: none;">
+
+                        <input class="input-sale" type="file" id="image-parent" name="image" accept="image/*">
+
+                        <input type="text" name="title"  id="title-parent" class="input-sale"/>
+
+                        <input  type="text" name="description" id="description-parent"/>
+
+                        <input type="number"  step="any" name="price"  id="price-parent"  class="input-sale" min="100" max="100000" />
+
+                        <input type="number" name="discount"  class="input-sale" id="discount-parent" />
+
+                        <input type="number" name="stock"  class="input-sale" id="stock-parent" />
+
+                        <input type="text" name="category" id="category-parent" />
+                        
+                        <input  type="text" name="subcategory" id="subcategory-parent" class="input-sale" >
+
+                        <input  type="text" name="type" id="type-parent" class="input-sale" >
+
+                        <input  type="text" name="info" id="info-parent" class="input-sale" />
+
+                        <input type="submit"/>
+
+                    </form>
+
+                </div>
+                <div class="success-wrap">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <p class="p-create">Publicación creada con éxito</p>
+                <!--    <p class="p-edit">Publicación editada con éxito</p>-->
+                </div>
+            </div>
+            
+        </section>
+    </main>
+    
+    
+    <!---------------------------- COUNSELING --------------------------------->
+    
+    <%- include('../partials/counseling')%>
+    
+    <!--------------------------------- FOOTER ---------------------------- -->
+    
+    <footer>
+        <%- include('../partials/footer')%>
+    </footer>
+
+</body>
+
+<script>
+    //Script para previsualizar img del producto en CREATE
+    const defaultFile = '/images/products/default-product-image.jpg';
+    const file = document.getElementById('image-children');
+    const img = document.getElementById('imgCreate');
+    file.addEventListener('change', e => {
+        if(e.target.files[0]){
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                img.src = e.target.result;
+            }
+            reader.readAsDataURL(e.target.files[0]);
+        }else{
+            img.src = defaultFile;
+        }
+    })
+</script>
+
+
+<script>
+    // Obtener referencias a los elementos del DOM
+    var editarBtns = document.querySelectorAll('.btn-edit');
+    var containerDropdowns = document.querySelectorAll('.container-dropdown1');
+
+    // Agregar un evento click a cada botón "Editar"
+    editarBtns.forEach(function (btn, index) {
+        btn.addEventListener('click', function (e) {
+            
+            e.preventDefault(); // Para que no aparezca "#" en la URL
+
+            // Obtener el contenedor asociado al botón actual
+            var containerDropdown = btn.nextElementSibling;
+
+            // Mostrar u ocultar el contenedor correspondiente según su estado actual
+            if (containerDropdown.style.display === 'none') {
+                containerDropdown.classList.add('onView')
+                containerDropdown.style.display = 'block';
+            } else {
+                containerDropdown.style.display = 'none';
+            };
+        });
+    });
+
+     /*  To show the product image properly at Edit-Form: */
+
+    let inputsFile = Array.from(document.querySelectorAll('#image-edit'));
+    let inputsImg = Array.from(document.querySelectorAll('#img'));
+
+    for (let x = 0; x < inputsFile.length; x++) {
+        let file = inputsFile[x];
+        let defaultFile = inputsImg[x].src;
+        file.addEventListener('change', e => {
+            if(e.target.files[0]){
+                for (let y = 0; y < inputsFile.length; y++) {
+                    let file = inputsFile[y];
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        inputsImg[y].src = e.target.result;
+                    };
+                    reader.readAsDataURL(e.target.files[0]);
+                };
+            }else{
+                for (let y = 0; y < inputsFile.length; y++) {
+                    let file = inputsFile[y];
+                    inputsImg[y].src = defaultFile;
+                };
+            };
+        });   
+    };   
+</script>
+
+<script>
+        
+    //Definir variables de acuerdo a las clases de las etiquetas a operar
+
+    let body_publications = document.querySelector(".body-publications");
+    
+    //Definir variables de acuerdo a las clases de las etiquetas para los contenedores
+    
+    let form_1 = document.querySelector(".container-form-1");
+    let form_2 = document.querySelector(".container-form-2");
+    let form_3 = document.querySelector(".container-form-3");
+    let wrapper = document.querySelector(".wrapper")
+    
+    //Definir variables de acuerdo a las clases de las etiquetas para los botones de contenedores y modal adicional
+
+    let headerCreate = document.getElementById("header-create");
+    let form_1_btns = document.querySelector(".form-1-btns");
+    let form_2_btns = document.querySelector(".form-2-btns");
+    let form_3_btns = document.querySelector(".form-3-btns");
+    let success_wrap = document.querySelector(".success-wrap");
+    let modal_wrapper = document.querySelector(".modal-wrapper");
+    let shadow = document.querySelector(".back-shadow");
+    
+    let form_1_next_btn = document.querySelector(".form-1-btns .btn-next");
+    let form_2_back_btn = document.querySelector(".form-2-btns .btn-back");
+    let form_2_next_btn = document.querySelector(".form-2-btns .btn-next");
+    let form_3_back_btn = document.querySelector(".form-3-btns .btn-back");
+    
+    let form_2_step= document.querySelector(".form-2-step");
+    let form_3_step = document.querySelector(".form-3-step");
+    
+    let btn_pub = document.querySelector(".btn-publication");
+    let btn_done = document.querySelector(".btn-done");
+    
+    //Definir variables de acuerdo a las clases de las etiquetas para los formularios hijos y formulario padre
+    
+    let sbmt_form = document.getElementById("parent-form");
+       
+    let productImage = document.getElementById("image-children");
+    let formProductImage = document.getElementById("image-parent");
+
+    let productTitle = document.getElementById("title-children");
+    let formProductTitle = document.getElementById("title-parent");
+    
+    let productPrice = document.getElementById("price-children");
+    let formProductPrice = document.getElementById("price-parent");
+    
+    let productDiscount = document.getElementById("discount-children");
+    let formProductDiscount = document.getElementById("discount-parent");
+
+    let productStock = document.getElementById("stock-children");
+    let formProductStock = document.getElementById("stock-parent");
+    
+    let productInfo = document.getElementById("info-children");
+    let formProductInfo = document.getElementById("info-parent");
+
+    let productCategory = document.getElementById("category-children");
+    let formProductCategory = document.getElementById("category-parent");
+    
+    let productSubcategory = document.getElementById("subcategory-children");
+    let formProductSubcategory = document.getElementById("subcategory-parent");
+    
+    let productType = document.getElementById("type-children");
+    let formProductType = document.getElementById("type-parent");
+    
+    let productDescription = document.getElementById("description-children");
+    let formProductDescription = document.getElementById("description-parent");
+    
+    let formVal_1 = document.getElementById("form-val-1")
+    let formVal_2 = document.getElementById("form-val-2")
+    let formVal_3 = document.getElementById("form-val-3")
+    
+    //Definir variables de acuerdo a las clases de las etiquetas para cambios de estilo adicionales
+    
+    let text_pub_creation = document.querySelector(".p-create");
+    let text_pub_edit = document.querySelector(".p-edit");
+    let text_asesor = document.querySelectorAll(".p-asesor");
+
+    let  iconContainer = document.getElementById('icon-container');
+
+    
+    //Función para actualizar vista de botones y estilo en el "paso" del formulario, una vez se obtenga el evento click sobre el botón.
+    //Activa la validación de cada formulario hijo antes de pasar al siguiente formulario.
+    //Captura los valores del formulario hijo y se los asigna a los input del formulario padre por medio de variables.
+    
+    form_1_next_btn.addEventListener("click", () => {
+    
+        if(formVal_1.reportValidity()){
+            form_1.style.display = "none";
+            form_2.style.display = "flex";
+        
+            form_1_btns.style.display = "none";
+            form_2_btns.style.display = "flex";
+            form_2_btns.style.justifyContent = "space-between";
+        
+            form_2_step.classList.add("active");
+
+            formProductImage.files = productImage.files;
+            formProductTitle.value = productTitle.value;
+            formProductDescription.value = productDescription.value;
+            formProductCategory.value = productCategory.value;     
+        };
+    });
+    
+    //Función para actualizar vista de botones y estilo en el "paso" del formulario, una vez se obtenga el evento click sobre el botón
+    
+    form_2_back_btn.addEventListener("click", () =>{
+       form_1.style.display = "flex";
+       form_2.style.display = "none";
+    
+       form_1_btns.style.display = "flex";
+       form_2_btns.style.display = "none";
+    
+       form_2_step.classList.remove("active");
+    });
+    
+    //Función para actualizar vista de botones y estilo en el "paso" del formulario, una vez se obtenga el evento click sobre el botón.
+    //Activa la validación de cada formulario hijo antes de pasar al siguiente formulario.
+    //Captura los valores del formulario  hijo y se los asigna a los input del formulario padre por medio de variables.
+    
+    
+    form_2_next_btn.addEventListener("click",  () =>{
+    
+    
+        if(formVal_2.reportValidity()){
+    
+            form_2.style.display = "none";
+            form_3.style.display = "flex";
+        
+            form_3_btns.style.display = "flex";
+            form_3_btns.style.justifyContent = "space-between"
+            form_2_btns.style.display = "none";
+            
+            form_3_step.classList.add("active");
+            
+            formProductSubcategory.value = productSubcategory.value;
+            formProductType.value = productType.value;
+            formProductPrice.value = productPrice.value;
+            formProductDiscount.value = productDiscount.value;
+        };
+    });
+    
+    //Función para actualizar vista de botones y estilo en el "paso" del formulario, una vez se obtenga el evento click sobre el botón
+    
+    
+    form_3_back_btn.addEventListener("click", () =>{
+        form_2.style.display = "flex";
+        form_3.style.display = "none";
+    
+        form_3_btns.style.display = "none";
+        form_2_btns.style.display = "flex";
+    
+        form_3_step.classList.remove("active");
+    });
+    
+    //Función para operar el contenedor tipo modal que aparece al iniciar el formulario y cambiar estilos de fondo, una vez se obtenga el evento click
+      
+    btn_pub.addEventListener("click", () =>{
+
+        body_publications.classList.add("modal-active");
+
+        modal_wrapper.classList.add("active");
+        success_wrap.style.display = "none";
+        wrapper.style.display = "block"; 
+    
+        form_1.style.display = "flex";
+        form_2.style.display = "none";
+        form_3.style.display = "none";
+        
+        form_1_btns.style.display = "flex";
+        form_2_btns.style.display = "none";
+        form_3_btns.style.display = "none";
+        
+        form_2_step.classList.remove("active");
+        form_3_step.classList.remove("active");
+
+        iconContainer.style.display = "none";
+    
+        text_asesor.forEach((p) => {
+            p.style.opacity = "1"
+        });
+    
+    });
+
+
+    //Función para operar el contenedor tipo modal que aparece al finalizar el formulario, una vez se obtenga el evento click
+    //Activa la validación del último formulario hijo antes de finalizar.
+    //Captura los valores del formulario  hijo y se los asigna a los input del formulario padre por medio de variables.
+    //Envía los valores del formulario padre por medio del método HTTP POST
+    
+    btn_done.addEventListener("click", () =>{
+    
+        if(formVal_3.reportValidity()){
+
+            body_publications.classList.remove("modal-active");
+
+            success_wrap.classList.add("active");
+            success_wrap.style.display = "flex";
+        
+            formProductStock.value = productStock.value
+            formProductInfo.value = productInfo.value;
+            
+            setTimeout(submitForm, 3000);  //Ejecutar función submitForm() luego de 3000 milisegundos
+            
+            wrapper.style.display = "none"; 
+            text_pub_creation.style.display = "inherit";
+            
+        };
+    });
+
+    //Función para enviar la información del formulario #parent-form ejecutando método HTTP
+    submitForm = () =>{
+        sbmt_form.submit();
+    }
+    
+    shadow.addEventListener("click", () => {
+
+        body_publications.classList.remove("modal-active");    
+        modal_wrapper.classList.remove("active");
+        iconContainer.style.display = "flex";
+        text_asesor.forEach((p) => {
+            p.style.opacity = "0.8"
+        });           
+    });
+    
+    // Parte del script y formulario de arriba son una versión adaptada del código que se encuentra aquí: https://github.com/codingmarket07/Multi-Step-Progressive-Form 
+    
+    
+    /* Botón salida del formulario de publicación de producto y re-asignación de opacidad a elementos de fondo */
+    
+    let close_form = document.querySelector(".span-close-form");
+    
+    close_form.addEventListener("click", (e) =>{
+        e.preventDefault(); // Para que no aparezca "#" en la URL
+
+        body_publications.classList.remove("modal-active");
+        iconContainer.style.display = "flex";
+
+        modal_wrapper.classList.remove("active");
+        text_asesor.forEach((p) => {
+            p.style.opacity = "0.8"
+        });
+    });
+    
+    
+    let collapse_card = document.querySelector(".container-dropdown1");
+
+    let btn_saveEdit = document.querySelector(".btn-save");
+    let btn_cancel = document.querySelector(".btn-cancel");
+    
+</script>
+
+<script src="/javascript/validationFront/crudProducts.js"></script>
+
+
+</html>

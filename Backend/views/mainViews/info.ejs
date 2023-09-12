@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head')%>
+        <link rel="stylesheet" href="/css/info.css">
+</head>
+
+
+<body>
+    <!--------------------------------- NAVBAR --------------------------------->
+
+    <%- include('../partials/header')%>
+
+        <div class="deslizable">
+            <a href="/info"> <i class="fa-solid fa-arrow-up"></i></a>
+        </div>
+
+        <main>
+            <div class="container-info">
+                <img class="img-1" src="/images/info/fondo.png" alt="Imagen1">
+                <div class="content-info">
+                    <h2>Green Good</h2>
+                    <p>¡Bienvenidos a la sección de información de Green Good! Aquí podrás conocer todo sobre nuestros
+                        productos, su origen, beneficios y cómo pueden ayudarte a mejorar tu calidad de vida. Somos una
+                        empresa dedicada a ofrecer productos naturales y de alta calidad, que promueven un estilo de
+                        vida
+                        saludable y respetuoso con el medio ambiente.
+
+                        En esta sección encontrarás artículos, noticias y novedades relacionadas con nuestros productos,
+                        así
+                        como información útil para entender mejor cómo funcionan y cómo pueden contribuir a mejorar tu
+                        salud
+                        y bienestar. También compartiremos contigo consejos y recomendaciones sobre hábitos saludables,
+                        alimentación y cuidado del medio ambiente.
+
+                        Nos encanta compartir nuestra pasión por los productos naturales y estamos seguros de que
+                        encontrarás información valiosa y relevante en esta sección. ¡Explora y descubre todo lo que
+                        Green
+                        Good tiene para ofrecerte!</p>
+                </div>
+            </div>
+            <section class="container-info">
+                <div class="slider-info">
+                    <img src="/images/info/info-crema.PNG" alt="Imagen 1">
+                    <img src="/images/info/info-crema2.PNG" alt="Imagen 2">
+                    <img src="/images/info/info-1.jpeg" alt="Imagen 3">
+                </div>
+
+                <div class="slider-info">
+                    <img src="/images/info/info-unguento.PNG" alt="Imagen 1">
+                    <img src="/images/info/info-unguento2.PNG" alt="Imagen 2">
+                    <img src="/images/info/info-2.jpeg" alt="Imagen 3">
+                </div>
+
+                <div class="slider-info">
+                    <img src="/images/info/info-aceite.PNG" alt="Imagen 1">
+                    <img src="/images/info/info-aceite2.PNG" alt="Imagen 2">
+                    <img src="/images/info/info-3.jpeg" alt="Imagen 3">
+                </div>
+            </section>
+            <div id="map-container">                
+                <iframe id="map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d205.62208775357425!2d-58.72849796041087!3d-34.453330684290314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bca20db5d743cf%3A0x7493f870ff86e15a!2sTortugas%20Open%20Mall%2C%20Ramal%20Pilar%20Km.36.5%2C%20Panamerivana%20Local%2C%20Gran%20Buenos%20Aires%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1694122881124!5m2!1ses-419!2sar"
+                width="600" height="450" style="border:0; margin: auto;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+        </main>
+
+        <!---------------------------- ASESORAMIENTO--------------------------------->
+
+        <%- include('../partials/counseling')%>
+
+            <!---------------------------------  FOOTER ---------------------------- -->
+
+            <footer>
+                <%- include('../partials/footer')%>
+            </footer>
+
+</body>
+
+</html>

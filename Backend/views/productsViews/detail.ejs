@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head')%>
+        <link rel="stylesheet" href="/css/productDetail.css">
+</head>
+
+<body>
+    <!--------------------------------- NAVBAR --------------------------------->
+
+    <%- include('../partials/header')%>
+
+    <div class="deslizable">
+        <a href="/product/<%=theProduct.id%>/detail"> <i class="fa-solid fa-arrow-up"></i></a>
+    </div>
+    <main>
+        <article class="container-detail">
+            <figure class="figure-datail">
+                <img class="img-detail" src=/images/products/<%=theProduct.image%> >
+                <span class="icon-card-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="fav-icon" id="<%= theProduct.id %>" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                    </svg>
+                </span>
+            </figure>
+            <div class="vertical-line"></div>
+            <div class="container-price">
+                <h2 class="title-detail">
+                    <%=theProduct.title%>
+                </h2>
+                <p class="description-detail">
+                    <%=theProduct.description%>
+                </p>
+
+                <p class="cat-detail">Categoría: <strong>
+                        <%=theProduct.category.name%> / <%=theProduct.subcategory.name%>
+                    </strong></p>
+
+                <% if(theProduct.discount> 0) { %>
+                    <p class="discount"><b class="old">$<%= theProduct.price %></b><b class="disc"> - <%=
+                                theProduct.discount %>% OFF</b></p>
+                    <p class="price-final">
+                        Precio por unidad: <strong>$<%= Math.round(((theProduct.price)* ((100 -
+                                theProduct.discount)/100 )), -2) %></strong>
+                    </p>
+                <% } else { %>
+                    <p class="price-detail"><strong>Precio por unidad: $<%= theProduct.price %></strong></p>
+                <% };%>
+
+                <input type="number" class="form-control" id="amount" min="1" max="50" placeholder="Cantidad:" value="1" step="1"/>
+
+
+                <p class="stock">Stock:
+                    <% if(theProduct.stock > 5) {%>
+                        <strong>Disponible</strong>
+                    <% }else if(theProduct.stock > 1) {%>
+                        <strong style="color: rgb(134, 38, 38);">Últimas cinco unidades!</strong>
+                    <% }else{ %>
+                        <strong style="color: rgb(102, 101, 101);">Agotado</strong>
+                    <% }; %>
+                </p>
+                <% if(theProduct.price > 5000) {%>
+                    <p class="shipping"><strong>Envío Gratis </strong><svg id="shipping-icon"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+                        </svg></p>
+                <% }; %>
+                <p class="share-detail"> Compartir:</p>
+                <div class="detail-container">
+                    <a href="https://www.facebook.com" class="detail-fb"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com" class="detail-ig"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="detail-wpp"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>           
+            </div>
+            
+            <button 
+                type="submit" 
+                class="btn-product" 
+                id="<%= theProduct.id %>"
+                > Agregar al carrito
+            </button>
+            
+            
+            <%if (vendedor){%>
+
+                <button class="btn-product" style="background: rgb(56, 56, 146); margin-top: 1rem;">Estás registrado como vendedor... Próximamente podrás editar tu producto aquí</button>
+
+                <!--  <form method ="POST" action="/product/<%=theProduct.id%>/detail-delete?_method=PATCH">
+                    <button type="submit" class="btn-mark-sold"
+                        <% if (theProduct.deleted !== true){ %>
+                            style="color: crimson; background-color: aliceblue;"
+                            <%}else{ %>
+                                style="color: white; background-color: rgb(17, 155, 17);"
+                            <%}%>>
+                        <%=theProduct.deleted == true? "Marcar como disponible":"Marcar como agotado"%>
+                    </button>
+                </form>
+
+            <form action="/product/<%= theProduct.id %>/delete?_method=DELETE" method="POST" onsubmit="return confirm('¿Está seguro que desea eliminar este producto de manera permanente?')">
+                <input type="submit" class="btn-delete" value="Eliminar">
+            </form>
+
+            -->
+        <%}%>
+
+            </article>
+            <div class="content-description">
+                <h2 class="title-description">Información detallada de: <%=theProduct.title%></h2>
+                <p class="p-description">
+                    <%=theProduct.info%>
+                </p>
+            </div>
+
+            <h2 class="title-card-detail"> Quienes vieron este producto tambien vieron:</h2>
+            <div class="card-container">
+                <div class="card">
+                    <a href="/product/detail"> <img src="/images/products/crema-facial-30ml.png" alt="Imagen 1">
+                    </a>
+                    <p class="price-card"> $3500</p>
+                    <button type="submit" class="btn-product"> Agregar al carrito</button>
+                </div>
+                <div class="card">
+                    <a href="/product/detail"> <img src="/images/products/lipbalm-5gr.png" alt="Imagen 1"> </a>
+                    <p class="price-card"> $3500</p>
+                    <button type="submit" class="btn-product"> Agregar al carrito</button>
+                </div>
+                <div class="card">
+                    <a href="/product/detail"> <img src="/images/products/endotica-90gr.png" alt="Imagen 1"> </a>
+                    <p class="price-card"> $3500</p>
+                    <button type="submit" class="btn-product"> Agregar al carrito</button>
+                </div>
+            </div>
+    </main>
+
+    <!---------------------------- ASESORAMIENTO--------------------------------->
+
+    <%- include('../partials/counseling')%>
+
+    <!---------------------------------  FOOTER ---------------------------- -->
+
+    <footer>
+        <%- include('../partials/footer')%>
+    </footer>
+
+    <script src="/javascript/detailView.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head')%>
+    </head>
+
+<body>
+    <!--------------------------------- NAVBAR --------------------------------->
+
+    <%- include('../partials/header')%>
+
+    <!-- ------------------------------- HERO --------------------------------->
+    
+    <section id="hero">
+        <div class="container-video">
+            <div class="hero-image">
+                <img id="img-hero" src="/images/home/gg.png" alt="Hero Image">
+                <p>Aumentá tu bienestar</p>
+            </div>
+            <video autoplay muted plays-inline class="video video1">
+                <source src="/videos/inicio-2.mp4" type="video/mp4">
+            </video>
+            <video autoplay muted plays-inline class="video video2">
+                <source src="/videos/inicio.mp4" type="video/mp4">
+            </video>
+        </div>
+    </section>
+
+
+    <main>
+        <!--------------------------- CARRUSEL OFERTAS--------------------------------->
+        <br>
+        <div class="scrolling-text">
+            <h2 id="ofertas" class="titles">NUESTRAS OFERTAS DESTACADAS</h2>
+        </div>
+        <br>
+        <div class="card-container">
+
+            <% products.forEach(product => { %>
+                <% if(product.discount > 15) { %>
+                    <article class="card">
+                        <a href="/product/<%= product.id %>/detail"> <img src=/images/products/<%=product.image%> alt="img product">
+                        </a>
+                        <span class="icon-card-container">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="fav-icon" id="<%= product.id %>" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                            </svg>
+                        </span>
+                        <span class="icon-card-container">                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="share-icon" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6" id="<%= product.id %>">
+                                <path fill-rule="evenodd" d="M15.75 4.5a3 3 0 11.825 2.066l-8.421 4.679a3.002 3.002 0 010 1.51l8.421 4.679a3 3 0 11-.729 1.31l-8.421-4.678a3 3 0 110-4.132l8.421-4.679a3 3 0 01-.096-.755z" clip-rule="evenodd" />
+                            </svg>
+                        </span>                             
+                        <div class="content-art">
+                            <h3 class="p-title"><%= product.title %></h3>
+                            <p class="p-description"><%= product.description %></p>
+                            <% if(product.price > 3000) { %>
+                                <p class="send"> Envio Gratis</p>
+                            <% }; %>
+                            <div class="discount">
+                                <b class="old-price">$<%= product.price %></b><b class="off"> - <%= product.discount %>% OFF</b>
+                            </div>
+                            <p class="price"> 
+                               $<%= Math.round(((product.price)* ((100 - product.discount)/100 )), -2) %>
+                            </p>
+                        </div>
+                        <button 
+                            type="submit" 
+                            class="btn-product" 
+                            id="<%= product.id %>"
+                            > Agregar al carrito
+                        </button>
+                    </article>
+                <% }; %>
+            <% }); %>
+     
+        </div>  
+
+        <!-------------------------------- INICIO -------------------------------->
+        <div class="div-begin">
+            <div class="container-left" id="div-1">
+                <div class="content">
+                    <h2>Productos de cultivo <i class="fa-solid fa-chevron-down"></i></h2>
+                    <p class="p-ocult">Aquí encontrarás todo lo necesario para cultivar tu propia planta de cannabis, desde
+                        semillas y
+                        nutrientes hasta herramientas especializadas. También ofrecemos una variedad de productos para el
+                        cuidado de tus plantas, como sustratos, fertilizantes y pesticidas orgánicos.</p>
+                </div>
+                <img src="/images/home/cultivo.jpg" alt="Imagen">
+                <a href="/product/list#greengoodProds"><button class="btn"> Ver Productos</button></a>
+            </div>
+            <hr class="div-home" id="div-1">
+            <div class="container" id="div-2">
+                <div class="content">
+                    <h2>Informacion <i class="fa-solid fa-chevron-down"></i> </h2>
+                    <p class="p-ocult">Encuentra toda la información que necesitas sobre el cultivo y cuidado del cannabis
+                        en nuestra
+                        sección de recursos. Aprende de expertos en el campo y descubre consejos útiles para cultivar de
+                        manera responsable y consciente.</p>
+                </div>
+                <img src="/images/home/informacion.jpg" alt="Imagen">
+                <a href="/info"><button class="btn"> Ver Novedades</button></a>
+            </div>
+            <hr class="div-home" id="div-2">
+            <div class="container-left" id="div-3">
+                <div class="content">
+                    <h2>Preguntas Frecuentes <i class="fa-solid fa-chevron-down"></i></h2>
+                    <p class="p-ocult">Aquí responderemos las preguntas más comunes sobre nuestros productos, cultivo de
+                        cannabis, efectos y
+                        más. Si no encuentras la respuesta que buscas, no dudes en contactarnos y estaremos encantados de
+                        ayudarte..</p>
+                </div>
+                <img src="/images/home/faqs.jpg" alt="Imagen">
+                <a href="/faqs"><button class="btn">Preguntas</button></a>
+            </div>
+            <hr class="div-home" id="div-3">
+            <div class="container" id="div-4">
+                <div class="content">
+                    <h2>Productos Medicinales <i class="fa-solid fa-chevron-down"></i> </h2>
+                    <p class="p-ocult">En esta sección, ofrecemos una selección de      productos a base de cannabis que pueden
+                        ayudarte en el
+                        manejo de diversas condiciones de salud. Desde aceites y cremas hasta tinturas y cápsulas, nuestra
+                        gama de productos medicinales es cuidadosamente seleccionada para ofrecerte la mejor calidad y
+                        efectividad.</p>
+                </div>
+                <img src="/images/home/medicina.jpg" alt="Imagen">
+                <a href="/product/list#cultiveProds"><button class="btn">Ver Productos</button></a>
+            </div>
+            <hr class="div-home" id="div-4">
+        </div>
+    </main>
+    <!---------------------------- ASESORAMIENTO--------------------------------->
+
+    <%- include('../partials/counseling')%>
+
+    <!---------------------------------  FOOTER ---------------------------- -->
+
+    <footer>
+        <%- include('../partials/footer')%>
+    </footer>
+    
+
+</body>
+
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<%- include('../partials/head')%>
+    <link rel="stylesheet" href="/css/productCart.css">
+</head>
+
+<body>
+    <!--------------------------------- NAVBAR --------------------------------->
+
+    <%- include('../partials/header')%>
+
+    <div class="deslizable">
+        <a href="/cart"> <i class="fa-solid fa-arrow-up"></i></a>
+    </div>
+
+    <!--------------------------------- MAN PRODUCT CART --------------------------------->
+
+    <main>
+
+        <div class="safe-site">
+            <i class="fa-solid fa-shield-halved fa-lg"></i>
+            <p>SITIO SEGURO<br>
+            Protegemos tus datos</p>
+        </div>
+        <% if (!isLogged) { %>
+            <div class="login-cart-container">
+                <h4 class="login-cart-title">Si aún no te logeaste, ingresa aquí:</h4>
+                <a class="link-login" href="/user/login">Ingresar</a>
+                <div class="link-register-container">¿No tenés cuenta?<a class="link-register" href="/user/register"></i>Registrate</a></div>
+            </div>
+        <% } %> 
+    <!------ TU PEDIDO ------>
+
+        <div  class="shop-cart-containter">
+
+            <div class="order-head">
+
+                <div class="order-title">
+                    <i class="fa-solid fa-cart-arrow-down"></i>
+                    <h2>Mi carrito</h2>
+                </div>
+                <div class="empty-cart-container"><span id="confirm" class="confirm-btn">Estas seguro?</span><span id="delete-cart-items">Vaciar carrito</span></div>
+
+            </div>
+
+            <section class="order">
+            <!-- Added products -->
+            <% if (cartItems) { %>
+                <% if (cartItems.length == 0) { %>
+                    <!-- Default view without added products -->
+                    <article class="empty-cart-content" data-bind="fadeVisible: !hasItems() &amp;&amp; !loading()" style="color: antiquewhite;">  
+                        <h2 class="empty-cart-title" data-i18n="cart.emptyTitle">Su carrito está vacio</h2>
+                        <div class="empty-cart-message">Para seguir comprando, navegar por las categorías en el sitio, o busque su producto.</div> 
+                        <div class="clearfix empty-cart-links"><a href="/product/list" style="color: aqua;" id="cart-choose-products">Elegir productos</a></div>
+                    </article> 
+                <% } else if (cartItems.length > 0) { %>                
+                    <% cartItems.forEach(item => { %>
+                        <article class="cart-products" id="<%= item.id %>"> 
+                            <table>
+                                <tr class="trow-product">
+                                    <td class="product-img"><img src= "/images/products/<%= item.product.image %>" alt="imagen prod">
+                                    </td>
+                                    <td class="tdata-product-info">
+                                        <% if (item.product.discount > 0) { %>
+                                            <div class="highlight">
+                                                <div class="promo">- <%= item.product.discount %>%</div>
+                                                <div class="promo-text"> Exclusivo online</div>
+                                            </div>
+                                        <% } %>
+                                        <p class="product-name"><strong><%= item.product.title %></strong></p>
+                                        <p class="prodcut-datail"><%= item.product.description %></p>
+                                    </td>
+                                </tr>
+                                <tr class="trow-buttons">
+                                    <td></td>
+                                    <td class="trow-buttons-tdr">
+                                        <div class="tdata-eliminate">
+                                           <button type="submit" class="eliminate">Eliminar</button></form>
+                                        </div>
+                                        <div class="tdata-save">    
+                                            <a href="" class="save"><button>Guardar en favs</button></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="trow-price">
+                                    <td class="tdata-aumount">
+                                        <div class="select-amount-container">
+                                            <span href="#" class="decrease-amount">
+                                                <i class="fa-solid fa-minus"></i>
+                                            </span>
+                                            <input type="tel" value="<%= item.quantity %>" name="quantity" class="amount" id="amount" min="1" max="50"/>
+                                            <span href="#" class="increase-amount">
+                                                <i class="fa-solid fa-plus"></i>
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td class="tdata-price">
+                                        <% if (item.product.discount > 0) { %>
+                                            <div id="text-product-price">Antes:<strong style="text-decoration: line-through;">$<%= Number(item.product.price).toFixed(2).replace('.', ',') %></strong></div><p class="product-price" style="color: rgba(234, 22, 103, 0.911); font-size: larger;"><strong>$<%= ((item.product.price)*(1-(item.product.discount/100))).toFixed(2).replace('.', ',') %></strong></p>      
+                                        <% }else{ %>
+                                            <p class="product-price"><div id="text-product-price">Precio sin descuentos</div><strong>$<%= Number(item.product.price).toFixed(2).replace('.', ',') %></strong></p>
+                                        <% } %>
+                                    </td>
+                                </tr>
+                            </table>
+                        </article>
+                    <% }) %>
+                <% }; %>    
+            <% } %>
+            </section>
+
+        <!-- Order Detail -->
+
+        <div class="order-detail-container">
+
+            <div class="order-detail-head">
+
+                <h2 class="order-detail-title">Resúmen de mi orden</h2>
+                <div class="voucher-container"><span class="voucher">Agrega tú cupon aquí:</span><input type="tel" placeholder="Ingrese código alfanumérico"></div>
+                
+            </div>
+
+            <section class="order-datail">
+            
+                <div class="payment-table" >
+                    <ul class="payment-list">
+
+                        <li>
+                            <div class="payment-items">Subtotal</div>
+                            <div class="payment-amounts" id="subtotal">$ 00,00</div>
+                        </li>
+                        <li>
+                            <div class="payment-items">Envío</div>
+                            <div class="payment-amounts" id="shipping">$ 00,00</div>
+                        </li>
+                        <li id="off">
+                            <div class="payment-items">Descuentos</div>
+                            <div class="payment-amounts" id="discounts"></div>
+                        </li>
+
+                        <div id="division"></div>
+
+                        <li>
+                            <div class="payment-total">
+                                <div class="payment-items" >TOTAL</div>
+                                <div class="payment-amounts" id="total">$ 00,00</div>
+                            </div>
+                        </li>  
+
+                    </ul>
+                    <div class="container-progress-bar">
+                        <progress id="amount-progress" max="6700" value="0"></progress>
+                        <div>$1500<br>Compra minima</div>
+                        <div>$5000<br>Envío gratis</div>
+                    </div>
+                </div>
+
+                <div class="icons-payment-container">
+                    <div class="payment-container">
+                        <a href="" class="payment-methods-title"><i id="card-icon" class="fa-solid fa-credit-card"></i>Ver medios de pagos</a>
+                    </div>
+                    <div class="payment-container">
+                        <a href="/info#map-container" class="location-title"><i id="location-icon" class="fa-solid fa-map-location-dot"></i>Nuestras sucursales</a>
+                    </div>
+                    <div class="payment-container">
+                        <a href="/faqs#contact"class="payment-support-title"><i id="support-icon" class="fa-solid fa-headset"></i>Atención al cliente</a>
+                    </div>
+
+                </div>
+
+                <button class="buttons-payment" id="finish-shopping">Finalizar Compra</button>
+                <button class="buttons-payment"  id="shopping-back"><a href="/">Seguir Comprando</a></button>
+                <button class="buttons-payment"  id="fqs-cart"><a href="/faqs">Consultá tus dudas</a></button> 
+            </section>
+        </div>
+
+        <% if (isLogged) { %>
+            <div id="modalOrder" class="modalOrder">
+                <div class="modalOrder-content">
+                    <span class="close" id="closeModalOrder">&times;</span>
+                    <h2 id="orderModal-title">Finalizando la compra</h2>
+                    <div class="user-info">
+                        <span id="first-name" class="user-data-span">Nombre: <strong><%= user.first_name %></strong></span>
+                        <span id="last-name" class="user-data-span">Apellido: <strong><%= user.last_name %></strong></span>
+                        <span id="email" class="user-data-span">E-mail: <strong><%= user.email %></strong></span>
+                        <span id="phone" class="user-data-span">Tel.: <strong><%= user.phone %></strong></span>
+                        <span id="<%= user.address.id %>" class="user-data-span address">Dirección de envío: <strong> <%= user.address.street %> N° <%= user.address.number %>, <%= user.address.city %>, <%= user.address.province %>, <%= user.address.country %></strong></span>
+                        <ul class="product-list"> 
+                        <% if (cartItems && cartItems.length > 0) { %>                
+                            <% cartItems.forEach(item => { %>
+                                <li class="product-li" lang="<%= item.product.id %>"> 
+                                    <span class="prod-data-span" id="img-li" ><img class="img-order" src= "/images/products/<%= item.product.image %>"></span>
+                                    <span class="prod-data-span"><strong><%= item.product.title %></strong></span>
+                                    <span class="prod-data-span"> <strong><%= item.product.description %> </strong></span>
+                                    <span class="prod-data-span" >Cantidad:<strong id="quantityProd"><%= item.quantity %> </strong></span>
+                                    <% if (item.product.discount > 0) { %>
+                                        <span class="prod-data-span" >Monto:<strong id="amountProd">$<%= ((item.product.price)*(1-(item.product.discount/100))).toFixed(2).replace('.', ',') %></strong></span>      
+                                    <% }else{ %>
+                                        <span class="prod-data-span" >Monto:<strong id="amountProd">$<%= Number(item.product.price).toFixed(2).replace('.', ',') %></strong></span>
+                                    <% } %>
+                                </li>
+                            <% }) %>
+                        <% }; %>
+                        </ul>   
+                    </div>
+                    <h3 class="payment-title">Agrega tu método de pago</h3>
+                    <div class="payment-form">
+                        <div class="order-inputs-div">
+                        <select id="payment_type" name="payment_type" class="input-order">
+                            <option value="Tarjeta de crédito">Tarjeta de crédito</option>
+                            <option value="Tarjeta de débito">Tarjeta de débito</option>
+                        </select>
+                        </div>
+                        <div class="order-inputs-div">
+                            <input type="text" id="payment_vendor" name="payment_vendor" placeholder="Proveedor de pago" class="input-order" required>
+                        </div>
+                        <div class="order-inputs-div">
+                            <input type="tel" id="card_number" name="card_number" placeholder="Nro. de la tarjeta" class="input-order" required>
+                        </div>
+                        <div class="order-inputs-div">
+                            <input type="tel" id="card_exp" name="card_exp" placeholder="Fecha de vencimiento" class="input-order" required>
+                        </div>
+                        <div class="order-inputs-div">
+                            <input type="tel" id="account_number" name="account_number" placeholder="Nro. de cuenta" class="input-order" required>
+                        </div>
+
+                        <button id="addPaymentMethod">Agregar Medio de Pago</button>
+                    </div>
+                    <div class="product-list">
+                        <!-- Lista de productos aquí -->
+                        <p>Total a Pagar: <span id="totalOrder"></span></p>
+                    </div>
+                    <button id="generateOrderBtn">Terminar y Generar Orden</button>
+                    
+                </div>
+            </div>
+        <% }; %>
+    </div>
+    </main>
+
+<!---------------------------- ASESORAMIENTO--------------------------------->
+
+    <%- include('../partials/counseling')%>
+
+<!---------------------------------  FOOTER ---------------------------- -->
+
+    <footer>
+        <%- include('../partials/footer')%>
+    </footer>
+
+</body>
+
+<script src="javascript/cartView.js"></script>
+
+</html>

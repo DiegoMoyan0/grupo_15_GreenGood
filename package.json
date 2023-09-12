@@ -1,28 +1,6 @@
 {
-  "name": "grupo_15_greengood",
-  "version": "1.0.0",
-  "description": "[Trello](https://trello.com/b/kSvyIebL/green-good)",
-  "main": "app.js",
-  "scripts": {
-    "start" : "node app",
-    "dev" : "npx nodemon app"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DiegoMoyan0/grupo_15_GreenGood.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/DiegoMoyan0/grupo_15_GreenGood/issues"
-  },
-  "homepage": "https://github.com/DiegoMoyan0/grupo_15_GreenGood#readme",
   "dependencies": {
-    "espress": "^0.0.0",
-    "express": "^4.18.2"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.22"
+    "dotenv": "^16.3.1",
+    "pdfmake": "^0.2.7"
   }
 }

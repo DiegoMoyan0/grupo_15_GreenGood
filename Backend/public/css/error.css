@@ -1,0 +1,341 @@
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      text-align: center;
+      width: 100vw;
+      height: 100vh;
+      background-image: url('/images/home/error.jpg');
+      background-size:contain;
+      background-position: 2%;
+      background-repeat: no-repeat;
+    }
+
+
+    h1 {
+      font-size: 36px;
+      color: #333;
+    }
+
+    p {
+      font-size: 24px;
+      color: #666;
+    }
+
+
+    #cannabis-icon{
+      font-size: 50px;
+      position: absolute;
+      color: #104b0c;
+      top:65% ;   
+      left:-1%;
+      animation: cannabisRodante linear 7s forwards;
+      animation-iteration-count:infinite;
+    }
+
+    /* Animación cannabis rodante. Se cambia la longitud de los ejes X y Y mediante Translate, adicionalmente se hace rotar al elemento sobre el eje Z mediante Rotate*/
+
+    @keyframes cannabisRodante{
+
+      0% {
+        transform:  translate(0px,23px)  rotate(0deg) ;
+      }
+      5% {
+        transform:  translate(45px,8px)  rotate(80deg) ;
+      }
+      10% {
+        transform:  translate(90px,23px)  rotate(160deg) ;
+      }
+      15% {
+        transform:  translate(135px,8px)  rotate(240deg) ;
+      }
+      
+      20% {
+        transform:  translate(180px,23px)  rotate(320deg) ;
+      }
+      25% {
+        transform:  translate(225px,8px)  rotate(400deg) ;
+      }
+      30% {
+        transform:  translate(270px,23px)  rotate(480deg) ;
+      }
+      35% {
+        transform:  translate(315px,8px)  rotate(560deg) ;
+      }
+
+      40% {
+        transform:  translate(360px,23px)  rotate(640deg) ;
+      }
+
+      45% {
+        transform:  translate(405px,8px) rotate(720deg) ;
+      }
+
+      50% {
+        transform:  translate(450px,23px)  rotate(800deg) ;
+      }
+
+      55% {
+        transform:  translate(495px,8px)  rotate(880deg) ;
+      }
+
+      60% {
+        transform:  translate(540px,23px)  rotate(960deg) ;
+      }
+      65% {
+        transform:  translate(585px,8px)  rotate(1040deg) ;
+      }
+
+      70% {
+        transform:  translate(630px,23px)  rotate(1120deg) ;
+      }
+
+      75% {
+        transform:  translate(675px,8px)  rotate(1200deg) ;
+      }
+
+      80% {
+        transform:  translate(720px,23px)  rotate(1280deg) ;
+      }
+
+      85% {
+        transform:  translate(765px,8px)  rotate(1360deg) ;
+      }
+
+      100% {
+        transform:  translate(810px,23px)  rotate(1440deg) ;
+      }
+
+    }
+
+    .button {
+      position: absolute;
+      top: 70%;
+      left: 20%;
+      padding: 10px 20px;
+      background-color: #59E4A8;
+      color: white;
+      text-decoration: none;
+      transition: background-color 0.3s, color 0.3s;
+      border-radius: 5px;
+      margin: 1rem auto;
+    }
+
+    .button:hover {
+      background-color: transparent;
+      color: #59E4A8;
+      border: 1px solid #59E4A8;
+      border-radius: 5px;
+    }
+
+
+    @media (min-width: 500px) {
+
+      .button {
+        left: 30%;
+      }
+  
+    }
+
+    @media (min-width: 768px) {
+	
+      .container {
+        text-align: center;
+        width: 100vw;
+        height: 100vh;
+        background-image: url('/images/home/error.jpg');
+        background-size: contain;
+        background-position: 2%;
+        background-repeat: no-repeat;
+      }
+
+
+      #cannabis-icon{
+        font-size: 100px;
+        position: absolute;
+        color: #104b0c;
+        top:85% ;   
+        left:-1%;
+        animation: cannabisRodante linear 7s forwards;
+        animation-iteration-count:infinite;
+      }
+
+
+
+      @keyframes cannabisRodante{
+
+        0% {
+          transform:  translate(0px,45px)  rotate(0deg) ;
+        }
+        5% {
+          transform:  translate(90px,15px)  rotate(80deg) ;
+        }
+        10% {
+          transform:  translate(180px,45px)  rotate(160deg) ;
+        }
+        15% {
+          transform:  translate(270px,15px)  rotate(240deg) ;
+        }
+        
+        20% {
+          transform:  translate(360px,45px)  rotate(320deg) ;
+        }
+        25% {
+          transform:  translate(450px,15px)  rotate(400deg) ;
+        }
+        30% {
+          transform:  translate(540px,45px)  rotate(480deg) ;
+        }
+        35% {
+          transform:  translate(630px,15px)  rotate(560deg) ;
+        }
+  
+        40% {
+          transform:  translate(720px,45px)  rotate(640deg) ;
+        }
+  
+        45% {
+          transform:  translate(810px,15px) rotate(720deg) ;
+        }
+  
+        50% {
+          transform:  translate(900px,45px)  rotate(800deg) ;
+        }
+  
+        55% {
+          transform:  translate(990px,15px)  rotate(880deg) ;
+        }
+  
+        60% {
+          transform:  translate(1080px,45px)  rotate(960deg) ;
+        }
+        65% {
+          transform:  translate(1170px,15px)  rotate(1040deg) ;
+        }
+  
+        70% {
+          transform:  translate(1260px,45px)  rotate(1120deg) ;
+        }
+  
+        100% {
+          transform:  translate(1350px,15px)  rotate(1200deg) ;
+        }
+   
+  
+      }
+
+
+      .button {
+        display: block;
+        position: absolute;
+        top: 90%;
+        left:42%;
+        padding: 10px 20px;
+        background-color: #59E4A8;
+        color: white;
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
+        border-radius: 5px;
+        margin: 1rem auto;
+      }
+  
+    }  
+
+
+    @media (min-width: 1279px) {
+
+      .container {
+        background-size: cover;
+      }
+
+
+      @keyframes cannabisRodante{
+
+        0% {
+          transform:  translate(0px,45px)  rotate(0deg) ;
+        }
+        5% {
+          transform:  translate(90px,15px)  rotate(80deg) ;
+        }
+        10% {
+          transform:  translate(180px,45px)  rotate(160deg) ;
+        }
+        15% {
+          transform:  translate(270px,15px)  rotate(240deg) ;
+        }
+        
+        20% {
+          transform:  translate(360px,45px)  rotate(320deg) ;
+        }
+        25% {
+          transform:  translate(450px,15px)  rotate(400deg) ;
+        }
+        30% {
+          transform:  translate(540px,45px)  rotate(480deg) ;
+        }
+        35% {
+          transform:  translate(630px,15px)  rotate(560deg) ;
+        }
+  
+        40% {
+          transform:  translate(720px,45px)  rotate(640deg) ;
+        }
+  
+        45% {
+          transform:  translate(810px,15px) rotate(720deg) ;
+        }
+  
+        50% {
+          transform:  translate(900px,45px)  rotate(800deg) ;
+        }
+  
+        55% {
+          transform:  translate(990px,15px)  rotate(880deg) ;
+        }
+  
+        60% {
+          transform:  translate(1080px,45px)  rotate(960deg) ;
+        }
+        65% {
+          transform:  translate(1170px,15px)  rotate(1040deg) ;
+        }
+  
+        70% {
+          transform:  translate(1260px,45px)  rotate(1120deg) ;
+        }
+  
+        75% {
+          transform:  translate(1350px,15px)  rotate(1200deg) ;
+        }
+  
+        80% {
+          transform:  translate(1440px,45px)  rotate(1280deg) ;
+        }
+  
+        85% {
+          transform:  translate(1530px,15px)  rotate(1360deg) ;
+        }
+  
+        90% {
+          transform:  translate(1620px,45px)  rotate(1440deg) ;
+        }
+  
+        95% {
+          transform:  translate(1710px,15px)  rotate(1520deg) ;
+        }
+  
+        100% {
+          transform:  translate(1800px,45px)  rotate(1600deg) ;
+        }
+  
+      }
+  
+      .button {
+        left:44%
+      }
+  
+
+    }

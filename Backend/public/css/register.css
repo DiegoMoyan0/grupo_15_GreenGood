@@ -1,0 +1,326 @@
+/*----------------------------------------- REGISTER --------------------------------------------------*/
+.is-valid {
+	border-color: rgb(175 236 175);
+	box-shadow: 0 0 10px rgb(184 223 184);
+  }
+  
+.not-valid {
+	border-color: rgb(215 151 148);
+	box-shadow: 0 0 10px rgb(247 145 139);
+}
+
+.error {
+    display: block;
+    color: #db7070;
+    font-size: 0.7rem;
+    font-weight: 600;
+    transition: all 0.5s;
+    margin: 10px;
+	opacity: 0;
+}
+.section-register {
+	padding: 1rem;
+	text-align: center;
+	height: 250vh;
+}
+.input-register::placeholder{
+	color: #c6c5c5;
+	font-size: 0.7rem;
+}
+
+.label-login {
+	font-family: 'Roboto Serif', serif;
+	font-size: 0.8rem;
+	font-weight: 400;
+	opacity: 1;
+	text-align: left;
+}
+
+.label-register {
+	font-family: 'Roboto Serif', serif;
+	font-size: 0.8rem;
+	font-weight: 400;
+	text-align: left;
+	color: gray;
+}
+
+.input-register {
+	font-family: 'Roboto Serif', serif;
+	width: 100%;
+	padding: 0.8rem;
+	margin-bottom: 0.5rem;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+}
+
+.adress-div{
+	border: solid 1px #ccc;
+	padding: 20px;
+	border-radius: 10px;
+	background-color: #d8d5d55a;
+}
+
+.photo{
+	margin-bottom: 15px;
+}
+
+#img {
+	margin: 0 30%;
+	width: 6rem;
+	margin-top: 1rem; 
+	box-shadow: none;
+}
+
+#user_image {
+	display: none;	
+}
+
+#change_photo {
+    border: solid 1px gainsboro;
+    color: #ede4ed;
+    padding: 10px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: #402c68;
+}
+
+.input-login {
+	font-family: 'Roboto Serif', serif;
+	width: 100%;
+	padding: 0.8rem;
+	margin-bottom: 1rem;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	max-width: 100%;
+}
+
+.is-invalid {
+	box-shadow: 0px 0px 10px rgb(240, 12, 12);
+	border-radius: 5px;
+}
+
+.error-icon{
+	display: inline-block;
+	color: #db7070;
+	font-size: 1.2rem;
+	width: 1.5rem;
+	font-weight: 600;
+	position: absolute;
+	top: 30px;
+	right: 4%;
+}
+#birthdate-error .error-icon{
+	top: 73px;
+	right: 4%;
+}
+
+#bd-error-icon {
+	top: 71px;
+}
+
+#pc-error-icon {
+	top: 11px;
+}
+
+.text-danger {
+	color: red;
+	font-size: 0.7rem;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.btn-login {
+	display: block;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 0.8rem 1.2rem;
+	width: 100%;
+	font-size: 1rem;
+	font-weight: bold;
+	font-family: 'Roboto Serif', serif;
+	border: 1px solid #0A1504;
+	border-radius: 5px;
+	color: white;
+	background-color: #402c68;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+}
+
+.btn-login:hover {
+	opacity: 0.6;
+
+}
+
+.container-sesion {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	color: gray;
+}
+
+button,
+input {
+	font: inherit;
+	border: none;
+	outline: none;
+}
+
+.container {
+	position: relative;
+	isolation: isolate;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	padding: 7rem 0;
+	width: 18rem;
+	height: 70rem;
+	color: #fff;
+	background-color: #fff;
+	border-radius: 1rem;
+	box-shadow: 0 1px 1rem rgba(0, 0, 0, 0.1);
+}
+
+.container.pass-reset {
+	padding: 2rem 0;
+	width: 22rem;
+	height: 30rem;
+	text-align: left;
+}
+
+
+.container::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	width: 100%;
+	height: 10rem;
+	background-color: #402c68;
+	border-radius: 1rem 1rem 100% 100%;
+}
+
+.span-title-register {
+	position: absolute;
+	top: 3.5rem;
+	left: 30%;
+	transform: translateX(-50%);
+	font-size: 2.5rem;
+}
+
+/* Animación del título del formulario*/
+.span-title-register {
+	animation-duration: 1.5s;
+	animation-name: register-appear;
+}
+
+.container.pass-reset .span-title {
+	font-size: 1.6rem;
+	text-align: center;
+}
+
+@keyframes register-appear {
+	from {
+		margin-left: 100%;
+		width: 300%;
+	}
+
+	to {
+		margin-left: 0%;
+		width: 100%;
+	}
+}
+
+/* Animación del formulario*/
+.form-login {
+	margin-top: 5rem;
+	padding: 1.5rem;
+	margin-top: 1.5rem;
+	border-radius: inherit;
+	box-shadow: inherit;
+	box-shadow: 0 2px 5px gray;
+	border-radius: 10px;
+	background-color: inherit;
+	max-width: 90%;
+	height: auto;
+	transform: translateX(1.5rem);
+	animation-duration: 1.5s;
+	animation-name: Form-appear;
+}
+
+@keyframes Form-appear {
+	from {
+		transform: translateX(-1.5rem);
+	}
+
+	to {
+		transform: translateX(1.5rem);
+	}
+}
+
+.container-input {
+	position: relative;
+	display: block;
+	align-items: baseline;
+	margin-inline: auto;
+}
+
+.form-input {
+	position: relative;
+	width: 100%;
+	margin-top: 0.5rem;
+	padding-block: 1rem;
+}
+
+/*Varios de los estilos que se encuentran arriba son una adaptación del contenido de este repositorio https://github.com/juliocodes-sm/Posts/tree/main/Forms/01 */
+
+.lbl-preview {
+	height: 4vh;
+	width: 4vw;
+	color: purple;
+	cursor: pointer;
+	text-decoration: underline;
+
+}
+
+.container-preview{
+	width: 70%;
+	height: 20vh;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 1rem;
+}
+
+.img-preview{
+	height:100%;
+	width:100%;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+/*----------------------------------------- BREAK --------------------------------------------------*/
+@media screen and (min-width:768px) {
+	.container {
+		width: 30rem
+	}
+
+	/* Animación del formulario para el nuevo tamaño de pantalla*/
+	.form-login {
+		max-width: 80%;
+		transform: translateX(5rem);
+		animation-duration: 1.5s;
+		animation-name: Form-appear;
+	}
+
+	@keyframes Form-appear {
+		from {
+			transform: translateX(0rem);
+		}
+
+		to {
+			transform: translateX(5rem);
+		}
+	}
+}

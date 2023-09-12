@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head')%>
+        <link rel="stylesheet" href="/css/favsView.css">
+</head>
+
+<body>
+
+    <%- include('../partials/header')%>
+
+    <div class="deslizable">
+        <a href="/user/favs"> <i class="fa-solid fa-arrow-up"></i></a>
+    </div>
+    <main>
+        <div class="favsView-wrapper">
+            <section class="user-data-container">
+                <h5 class="title-favs">TUS PRODUCTOS FAVORITOS GUARDADOS</h5>
+                <% let userName=user.first_name + ' ' + user.last_name %>
+                <img src="/images/users/<%=user.image%>" alt="user img" id="img" style="max-width: 100px;" >
+                <h1><%=userName%></h1>
+                <br>
+                <h4><%=user.username%></h4>
+                <br>
+                <h5><%=user.email%></h5>
+    
+            </section>
+            <section class="favs-data-container">
+                <!-- Favs Products Cards -->
+               
+            </section>
+        </div>
+    </main>
+
+    <script src="/javascript/favsView.js"></script>
+
+    <!---------------------------------  FOOTER ---------------------------- -->
+
+    <footer>
+        <%- include('../partials/footer')%>
+    </footer>
+
+</body>
+
+</html>

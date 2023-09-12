@@ -1,0 +1,146 @@
+.favsView-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    min-height: 80vh;
+}
+
+.user-data-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    border-right: 1px solid white;
+    padding: 50px 10px 10px 10px;
+    background-color: #bcb1d1;
+    color: #402c68;
+    max-width: 380px;
+}
+
+.title-favs {
+    background-color: #10142f;
+    padding: 5%;
+    font-size: larger;
+    text-align: center;
+    color: #f0f0f0;
+    border-radius: 5px;
+    margin-bottom: 20%;
+    overflow: hidden;
+    box-shadow: 7px 8px 0px #633fa9;
+}
+
+h5{
+    background-color: #18004b;
+    padding: 8px;
+    font-size: larger;
+    text-align: center;
+    color: #f3f2f3;
+    border-radius: 5px;
+    margin-bottom: 20%;
+}
+
+
+.favs-data-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 5%;
+
+}
+
+.cardFavs {
+    max-width: 250px;
+    border-radius: 20px;
+    text-align: center;
+    background-color: #fff;
+    cursor: pointer;
+    transition: transform 0.5s;
+    position: relative;
+    padding: 10px;
+    border: double 5px #4f879c;
+    margin: 5px;
+    opacity: 0;
+    display: none;
+    transition: all 1s ease-in;
+}
+
+.cardFavs-active{
+    max-width: 250px;
+    border-radius: 20px;
+    text-align: center;
+    background-color: #fff;
+    cursor: pointer;
+    transition: transform 0.5s;
+    position: relative;
+    padding: 10px;
+    border: double 5px #4f879c;
+    margin: 5px;
+    transition: transform 0.2s ease-in;
+    animation: showAnimation 0.8s ease-out;
+}
+
+@keyframes showAnimation {
+    0% {
+        scale: 0; 
+    }
+    100% {
+        scale: 1; 
+    }
+}
+
+.cardFavs-active:hover {
+    transform: translateY(-10px);
+}
+
+.cardFavs-active a{
+    text-decoration: none;
+}
+
+.cardFavs-active img {
+    max-width: 70%;
+    height: auto;
+    border-radius: 7px;
+    margin: 20px;
+}
+
+
+.p-title {
+    text-align: center;
+    color: #76949f;
+    font-size: medium;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+
+.p-description {
+    text-align: center;
+    color: #535454;
+    font-size: smaller;
+    font-weight: 550;
+    text-anchor: middle;
+    margin-bottom: 15px;
+}
+
+
+.discount {
+    display: inline;
+    width: 45%;
+    color: #535454;
+    font-weight: 600;
+    font-size: smaller;
+}
+
+
+.price {
+    display: inline;
+    width: 45%;
+    color: #18004b;
+    text-shadow: 2px 2px 8px #aad770;
+    font-size: large;
+    font-weight: 700;
+    margin-left: 5px;
+}

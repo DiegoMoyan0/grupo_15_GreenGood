@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head')%>
+        <link rel="stylesheet" href="/css/product.css">
+        <script src="/javascript/productsList.js"></script>
+</head>
+
+<body>
+
+    <%- include('../partials/header')%>
+
+        <div class="deslizable">
+            <a href="/product/list"> <i class="fa-solid fa-arrow-up"></i></a>
+        </div>
+
+        <div class="slider-product">
+            <img src="/images/products/banners/bannerProduct.jpg" alt="Imagen 1">
+            <img src="/images/products/banners/banner-product.jpg" alt="Imagen 2">
+            <img src="/images/products/banners/bannerProduct2.jpg" alt="Imagen 3">
+        </div>
+
+        <main>
+            <div class="categories-container" id="greengoodProds">
+                <div class="categories-items">
+                    <img src="/images/products/categories/Aceites.png" alt="" width="">
+                    <h3>Aceites medicinales</h3>
+                </div>
+                <div class="categories-items">
+                    <img src="/images/products/categories/Lociones.png" alt="">
+                    <h3>Lociones</h3>
+                </div>
+                <div class="categories-items">
+                    <img src="/images/products/categories/Cremas.png" alt="">
+                    <h3>Cremas</h3>
+                </div>
+                <div class="categories-items">
+                    <img src="/images/products/categories/Cosmetica fem.png" alt="">
+                    <h3>Dermocosmética</h3>
+                </div>
+                <div class="categories-items">
+                    <img src="/images/products/categories/Combos.png" alt="">
+                    <h3>Nuestros combos</h3>
+                </div>
+                <div class="categories-items">
+                    <img src="/images/products/categories/Macetas.png" alt="">
+                    <h3>Macetas</h3>
+                </div>
+                <div class="categories-items">
+                    <img src="/images/products/categories/Bandejas.png" alt="">
+                    <h3>Bandejas</h3>
+                </div>
+                <div class="categories-items">
+                    <img src="/images/products/categories/Sustratos.png" alt="">
+                    <h3>Sustratos</h3>
+                </div>
+            </div>
+            <div class="prodcuts-conteiner">
+                <section class="category-cultive" id="cultiveProds">
+                    <h2 class="titles title-cultive"> Productos para el Cultivo <i class="fa-solid fa-chevron-down" id="icon-cultive-div"></i></h2>
+                    <div class="cultive-div">
+                        <h3 class="sub-category subCat-cultive"> Sustratos <i id="icon-sustrato" class="fa-solid fa-chevron-down"></i></h3>
+                        <section class="section-sub-category sustratocat">
+                            <% products.forEach(product=> { %>
+                                <% if(product.type==="Sustrato" ) { %>
+                                    <article class="card">
+                                        <a href="/product/<%= product.id %>/detail"> <img
+                                                src=/images/products/<%=product.image%> alt="img product">
+                                        </a>
+                                        <span class="icon-card-container">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="fav-icon" id="<%= product.id %>"
+                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                                            </svg>
+                                        </span>
+                                        <span class="icon-card-container">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="share-icon" viewBox="0 0 24 24"
+                                                fill="currentColor" class="w-6 h-6" id="<%= product.id %>">
+                                                <path fill-rule="evenodd"
+                                                    d="M15.75 4.5a3 3 0 11.825 2.066l-8.421 4.679a3.002 3.002 0 010 1.51l8.421 4.679a3 3 0 11-.729 1.31l-8.421-4.678a3 3 0 110-4.132l8.421-4.679a3 3 0 01-.096-.755z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </span>
+
+                                        <div class="content-art">
+                                            <h3 class="p-title">
+                                                <%= product.title %>
+                                            </h3>
+                                            <p class="p-description">
+                                                <%= product.description %>
+                                            </p>
+                                            <% if(product.price> 3000) { %>
+                                                <p class="send"> Envio Gratis</p>
+                                                <% }; %>
+                                                    <% if (product.discount> 0) { %>
+                                                        <div class="discount">
+                                                            <b class="old-price">$<%= product.price %></b><b class="off"> -
+                                                                <%= product.discount %>% OFF
+                                                            </b>
+                                                        </div>
+                                                        <p class="price">
+                                                            $<%= Math.round(((product.price)* ((100 - product.discount)/100
+                                                                )), -2) %>
+                                                        </p>
+                                                        <% }else{ %>
+                                                            <p class="price">
+                                                                $<%=product.price%>
+                                                            </p>
+                                                            <% } %>
+                                        </div>
+                                        <button type="submit" class="btn-product" id="<%= product.id %>"> Agregar al carrito
+                                        </button>
+                                    </article>
+                                    <% }; %>
+                                        <% }); %>
+                        </section>
+                        <script>
+                            const icono = document.getElementById("icon-sustrato");
+                            icono.addEventListener("click", () => {
+                                const cultiveDiv = document.querySelector(".activeDiv");
+                                cultiveDiv.classList.add('activeHeight');
+                                const sustratocat = document.querySelector(".sustratocat");
+                                sustratocat.classList.toggle('active');
+                            });
+                        </script>
+                        <h3 class="sub-category subCat-cultive"> Macetas <i id="icon-maceta" class="fa-solid fa-chevron-down"></i> </h3>
+                        <section class="section-sub-category macetacat">
+                            <% products.forEach(product=> { %>
+                                <% if(product.type==="Maceta" ) { %>
+                                    <article class="card">
+                                        <a href="/product/<%= product.id %>/detail"> <img
+                                                src=/images/products/<%=product.image%> alt="img product">
+                                        </a>
+                                        <span class="icon-card-container">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="fav-icon" id="<%= product.id %>"
+                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                                            </svg>
+                                        </span>
+                                        <span class="icon-card-container">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="share-icon" viewBox="0 0 24 24"
+                                                fill="currentColor" class="w-6 h-6" id="<%= product.id %>">
+                                                <path fill-rule="evenodd"
+                                                    d="M15.75 4.5a3 3 0 11.825 2.066l-8.421 4.679a3.002 3.002 0 010 1.51l8.421 4.679a3 3 0 11-.729 1.31l-8.421-4.678a3 3 0 110-4.132l8.421-4.679a3 3 0 01-.096-.755z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </span>
+
+                                        <div class="content-art">
+                                            <h3 class="p-title">
+                                                <%= product.title %>
+                                            </h3>
+                                            <p class="p-description">
+                                                <%= product.description %>
+                                            </p>
+                                            <% if(product.price> 3000) { %>
+                                                <p class="send"> Envio Gratis</p>
+                                                <% }; %>
+                                                    <% if (product.discount> 0) { %>
+                                                        <div class="discount">
+                                                            <b class="old-price">$<%= product.price %></b><b class="off"> -
+                                                                <%= product.discount %>% OFF
+                                                            </b>
+                                                        </div>
+                                                        <p class="price">
+                                                            $<%= Math.round(((product.price)* ((100 - product.discount)/100
+                                                                )), -2) %>
+                                                        </p>
+                                                        <% }else{ %>
+                                                            <p class="price">
+                                                                $<%=product.price%>
+                                                            </p>
+                                                            <% } %>
+                                        </div>
+                                        <button type="submit" class="btn-product" id="<%= product.id %>"> Agregar al carrito
+                                        </button>
+                                    </article>
+                                    <% }; %>
+                                        <% }); %>
+                        </section>
+                        <script>
+                            const iconomaceta = document.getElementById("icon-maceta");
+                            iconomaceta.addEventListener("click", () => {
+                                const cultiveDiv = document.querySelector(".activeDiv");
+                                cultiveDiv.classList.add('activeHeight');
+                                const macetacat = document.querySelector(".macetacat");
+                                macetacat.classList.toggle('active');
+                            });
+                        </script>
+                        <h3 class="sub-category subCat-cultive"> Bandejas <i id="icon-bandeja" class="fa-solid fa-chevron-down"></i> </h3>
+                        <section class="section-sub-category bandejacat">
+                            <% products.forEach(product=> { %>
+                                <% if(product.type==="Bandeja" ) { %>
+                                    <article class="card">
+                                        <a href="/product/<%= product.id %>/detail"> <img
+                                                src=/images/products/<%=product.image%> alt="img product">
+                                        </a>
+                                        <span class="icon-card-container">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="fav-icon" id="<%= product.id %>"
+                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                                            </svg>
+                                        </span>
+                                        <span class="icon-card-container">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="share-icon" viewBox="0 0 24 24"
+                                                fill="currentColor" class="w-6 h-6" id="<%= product.id %>">
+                                                <path fill-rule="evenodd"
+                                                    d="M15.75 4.5a3 3 0 11.825 2.066l-8.421 4.679a3.002 3.002 0 010 1.51l8.421 4.679a3 3 0 11-.729 1.31l-8.421-4.678a3 3 0 110-4.132l8.421-4.679a3 3 0 01-.096-.755z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </span>
+
+                                        <div class="content-art">
+                                            <h3 class="p-title">
+                                                <%= product.title %>
+                                            </h3>
+                                            <p class="p-description">
+                                                <%= product.description %>
+                                            </p>
+                                            <% if(product.price> 3000) { %>
+                                                <p class="send"> Envio Gratis</p>
+                                                <% }; %>
+                                                    <% if (product.discount> 0) { %>
+                                                        <div class="discount">
+                                                            <b class="old-price">$<%= product.price %></b><b class="off"> -
+                                                                <%= product.discount %>% OFF
+                                                            </b>
+                                                        </div>
+                                                        <p class="price">
+                                                            $<%= Math.round(((product.price)* ((100 - product.discount)/100
+                                                                )), -2) %>
+                                                        </p>
+                                                        <% }else{ %>
+                                                            <p class="price">
+                                                                $<%=product.price%>
+                                                            </p>
+                                                            <% } %>
+                                        </div>
+                                        <button type="submit" class="btn-product" id="<%= product.id %>"> Agregar al carrito
+                                        </button>
+                                    </article>
+                                    <% }; %>
+                                        <% }); %>
+                        </section>
+                        <script>
+                            const iconobandeja = document.getElementById("icon-bandeja");
+                            iconobandeja.addEventListener("click", () => {
+                                const cultiveDiv = document.querySelector(".activeDiv");
+                                cultiveDiv.classList.add('activeHeight');
+                                const bandejacat = document.querySelector(".bandejacat");
+                                bandejacat.classList.toggle('active');
+                            });
+                        </script>
+                    </div>
+                    <script>
+                        const iconCultiveDiv = document.getElementById("icon-cultive-div");
+                        iconCultiveDiv.addEventListener("click", () => {
+                            const cultiveDiv = document.querySelector(".cultive-div");
+                            cultiveDiv.classList.toggle('activeDiv');
+                        });
+                    </script>
+                </section>
+
+                <section class="category-cultive" id="medicineProds">
+
+                    <h2 class="titles title-medicine"> Sección productos Medicinales<i class="fa-solid fa-chevron-down" id="icon-medicine-div"></i></h2>
+                    <div class="medicine-div">
+                        <h3 class="sub-category subCat-medicine"> Salud y Farmacia <i id="icon-salud" class="fa-solid fa-chevron-down"></i> </h3>
+
+                        <section class="section-sub-category saludcat">
+                            <% products.forEach(product=> { %>
+                                <% if(product.subcategory==="Salud" ) { %>
+                                    <article class="card">
+                                        <a href="/product/<%= product.id %>/detail"> <img
+                                                src=/images/products/<%=product.image%> alt="img product">
+                                        </a>
+                                        <span class="icon-card-container">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="fav-icon" id="<%= product.id %>"
+                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                                            </svg>
+                                        </span>
+                                        <span class="icon-card-container">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="share-icon" viewBox="0 0 24 24"
+                                                fill="currentColor" class="w-6 h-6" id="<%= product.id %>">
+                                                <path fill-rule="evenodd"
+                                                    d="M15.75 4.5a3 3 0 11.825 2.066l-8.421 4.679a3.002 3.002 0 010 1.51l8.421 4.679a3 3 0 11-.729 1.31l-8.421-4.678a3 3 0 110-4.132l8.421-4.679a3 3 0 01-.096-.755z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </span>
+
+                                        <div class="content-art">
+                                            <h3 class="p-title">
+                                                <%= product.title %>
+                                            </h3>
+                                            <p class="p-description">
+                                                <%= product.description %>
+                                            </p>
+                                            <% if(product.price> 3000) { %>
+                                                <p class="send"> Envio Gratis</p>
+                                                <% }; %>
+                                                    <% if (product.discount> 0) { %>
+                                                        <div class="discount">
+                                                            <b class="old-price">$<%= product.price %></b><b class="off"> -
+                                                                <%= product.discount %>% OFF
+                                                            </b>
+                                                        </div>
+                                                        <p class="price">
+                                                            $<%= Math.round(((product.price)* ((100 - product.discount)/100
+                                                                )), -2) %>
+                                                        </p>
+                                                        <% }else{ %>
+                                                            <p class="price">
+                                                                $<%=product.price%>
+                                                            </p>
+                                                            <% } %>
+                                        </div>
+                                        <button type="submit" class="btn-product" id="<%= product.id %>"> Agregar al carrito
+                                        </button>
+                                    </article>
+                                    <% }; %>
+                                        <% }); %>
+                        </section>
+                        <script>
+                            const iconosalud = document.getElementById("icon-salud");
+                            iconosalud.addEventListener("click", () => {
+                                const medicineDiv = document.querySelector(".medicine-div");
+                                medicineDiv.classList.add('activeHeight');
+                                const saludcat = document.querySelector(".saludcat");
+                                saludcat.classList.toggle('active');
+                            });
+                        </script>
+
+                        <h3 class="sub-category subCat-medicine"> Dermocosmética y cuidado personal<i id="icon-dermo" class="fa-solid fa-chevron-down"></i>
+                        </h3>
+                        <section class="section-sub-category dermocat">
+                            <% products.forEach(product=> { %>
+                                <% if(product.subcategory==="Cosmética" ) { %>
+                                    <article class="card">
+                                        <a href="/product/<%= product.id %>/detail"> <img
+                                                src=/images/products/<%=product.image%> alt="img product">
+                                        </a>
+                                        <span class="icon-card-container">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="fav-icon" id="<%= product.id %>"
+                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                                            </svg>
+                                        </span>
+                                        <span class="icon-card-container">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="share-icon" viewBox="0 0 24 24"
+                                                fill="currentColor" class="w-6 h-6" id="<%= product.id %>">
+                                                <path fill-rule="evenodd"
+                                                    d="M15.75 4.5a3 3 0 11.825 2.066l-8.421 4.679a3.002 3.002 0 010 1.51l8.421 4.679a3 3 0 11-.729 1.31l-8.421-4.678a3 3 0 110-4.132l8.421-4.679a3 3 0 01-.096-.755z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </span>
+
+                                        <div class="content-art">
+                                            <h3 class="p-title">
+                                                <%= product.title %>
+                                            </h3>
+                                            <p class="p-description">
+                                                <%= product.description %>
+                                            </p>
+                                            <% if(product.price> 3000) { %>
+                                                <p class="send"> Envio Gratis</p>
+                                                <% }; %>
+                                                    <% if (product.discount> 0) { %>
+                                                        <div class="discount">
+                                                            <b class="old-price">$<%= product.price %></b><b class="off"> -
+                                                                <%= product.discount %>% OFF
+                                                            </b>
+                                                        </div>
+                                                        <p class="price">
+                                                            $<%= Math.round(((product.price)* ((100 - product.discount)/100
+                                                                )), -2) %>
+                                                        </p>
+                                                        <% }else{ %>
+                                                            <p class="price">
+                                                                $<%=product.price%>
+                                                            </p>
+                                                            <% } %>
+                                        </div>
+                                        <button type="submit" class="btn-product" id="<%= product.id %>"> Agregar al carrito
+                                        </button>
+                                    </article>
+                                    <% }; %>
+                                        <% }); %>
+                        </section>
+                        <script>
+                            const iconodermo = document.getElementById("icon-dermo");
+                            iconodermo.addEventListener("click", () => {
+                                const medicineDiv = document.querySelector(".medicine-div");
+                                medicineDiv.classList.add('activeHeight');
+                                const dermocat = document.querySelector(".dermocat");
+                                dermocat.classList.toggle('active');
+                            });
+                        </script>
+                    </div>
+                    <script>
+                        const iconMedicneDiv = document.getElementById("icon-medicine-div");
+                        iconMedicneDiv.addEventListener("click", () => {
+                            const medicineDiv = document.querySelector(".medicine-div");
+                            medicineDiv.classList.toggle('activeDiv');
+                        });
+                    </script>
+                </section>
+            </div>
+
+            <!-- /* ------------------------------- COMENTARIOS ------------------------------- */ -->
+            <section id="section-comments">
+                <div class="container-comments">
+                    <div>
+                        <h2 id="title-comments"> Opiniones de nuestros clientes </h2>
+                        <p> ¡Echa un vistazo a nuestras calificaciones y opiniones!</p>
+                    </div>
+                    <div class="content-star">
+                        <h3>4,7</h3>
+                        <div class="comments-stars"> <!--estrellas -->
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>28 reseñas</p>
+                    </div>
+                    <hr />
+                    <div class="usr-comment">
+                        <div class="circle-1"></div>
+                        <div class="info-comment">
+                            <h6>Laura Sánchez:</h6>
+                            <div> <!--estrellas -->
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <p>Hace 2 semanas</p>
+                        </div>
+                    </div>
+                    <p class="p-comments">
+                        Quería compartir mi experiencia con los productos de Green Good. Compré semillas y
+                        nutrientes
+                        para mi cultivo personal y quedé impresionada con la calidad y el rendimiento de las
+                        plantas.
+                        ¡Definitivamente recomiendo Green Good
+                    </p>
+                    <hr />
+                    <div class="usr-comment">
+                        <div class="circle-2"></div>
+                        <div class="info-comment">
+                            <h6>Marcos Hernández:</h6>
+                            <div> <!--estrellas -->
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <p>Hace 3 semanas</p>
+                        </div>
+                    </div>
+                    <p class="p-comments">
+                        He estado usando los productos medicinales a base de cannabis de Green Good para tratar mi
+                        artritis y los resultados han sido notables. Gracias a su selección de aceites y cremas,
+                        puedo
+                        manejar el dolor y la inflamación de manera efectiva. ¡Excelente trabajo, Green Good!
+                    </p>
+                </div>
+                <hr />
+            </section>
+
+            <!---------------------------- ASESORAMIENTO--------------------------------->
+
+            <%- include('../partials/counseling')%>
+
+                <!---------------------------------  FOOTER ---------------------------- -->
+
+                <footer>
+                    <%- include('../partials/footer')%>
+                </footer>
+
+</body>
+
+</html>

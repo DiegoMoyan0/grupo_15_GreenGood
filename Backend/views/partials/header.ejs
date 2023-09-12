@@ -1,0 +1,162 @@
+<header>
+  <span id="<%= isLogged && userLogged? userLogged.id : null %>" class="user-data" hidden></span>
+  <nav>
+    <a href="/"><img class="logo" src="/images/home/logo.png" alt="logo"></a>
+    <div class="search-container">
+        <form id="search-form" action="/search" method="GET">
+            <div class="input-container">
+                <input type="text" id="search-input" name="product" placeholder="Buscar...">
+                <button type="submit" id="search-button-navbar">
+                    <svg id="search-icon-navbar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                        fill="currentColor" className="w-5 h-5">
+                        <path fillRule="evenodd"
+                            d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+                            clipRule="evenodd" />
+                    </svg>
+                </button>
+            </div>
+        </form>
+    </div>
+    <ul class="nav-center">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/info">Info</a></li>
+        <li><a href="/product/list">Productos</a></li>
+        <% if (isLogged && userLogged.type==='Vendedor' ) { %>
+          <li id="vender-li"><a href="/product/publications" id="vender-link">Vender</a></li>
+        <% } %>
+        <li><a href="/faqs">Ayuda</a></li><br>
+    </ul>
+    <div class="content-icons">
+      <a href="/">
+          <span>
+            <svg class="icons-navbar" id="icon-home-navbar" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+            </svg>
+          </span>
+      </a>
+      <% if (isLogged) { %>
+          <div class="content-userlogged-icons" id="userOptionsLink">
+            <img class="icons-navbar" src="/images/users/<%= userLogged.image %>" alt="user_image"   id="user_image_header">
+            <p id="loggedName"><% let name=userLogged.first_name.split(' ')%><%= name[0]%></p>
+          </div>
+      <% }else{ %>
+        <a href="/user/login" style="text-decoration: none;">
+          <div class="content-user-icons">
+            <span>
+              <svg class="icons-navbar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"  fill="currentColor" className="w-5 h-5">
+                <path d="M10 8a3 3 0 100-6 3 3 0 000 6zM3.465 14.493a1.23 1.23 0 00.41 1.412A9.957 9.957 0 0010 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 00-13.074.003z" />
+              </svg>
+            </span>
+            <p id="loggedName">Bienvenido</p>
+          </div>
+        </a>
+      <% } %>
+      <a href="/cart">
+        <span id="added-product"><input type="tel" id="cartItemCount" readonly></span>
+        <span>
+          <svg class="icons-navbar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"   fill="currentColor" className="w-5 h-5">
+            <path d="M1 1.75A.75.75 0 011.75 1h1.628a1.75 1.75 0 011.734 1.51L5.18 3a65.25 65.25 0 0113.36 1.412.75.75 0 01.58.875 48.645 48.645 0 01-1.618 6.2.75.75 0 01-.712.513H6a2.503 2.503 0 00-2.292 1.5H17.25a.75.75 0 010 1.5H2.76a.75.75 0 01-.748-.807 4.002 4.002 0 012.716-3.486L3.626 2.716a.25.25 0 00-.248-.216H1.75A.75.75 0 011 1.75zM6 17.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15.5 19a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
+          </svg>
+        </span>
+      </a>
+      <a id="menuIcon">
+        <span>
+          <svg class="icons-navbar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"       fill="currentColor" className="w-5 h-5">
+            <path fillRule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"clipRule="evenodd" />
+          </svg>
+        </span>
+      </a>
+      <ul id="menuOptions">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/info">Info</a></li>
+        <li><a href="/product/list">Productos</a></li>
+        <% if (isLogged && userLogged.type==='Vendedor' ) { %>
+        <li><a href="/product/publications" id="vender-link-mobile">Vender</a></li>
+        <% }; %>
+        <li><a href="/faqs">Ayuda</a></li><br>
+      </ul>
+      <% if (isLogged) { %>
+        <ul id="userOptions">
+          <li><%= userLogged.email %></li>
+          <span class="line"></span>
+          <li><a href="/user/profile">Mi perfil</a></li>
+          <li><a href="/user/orders">Mis compras</a></li>
+          <li><a href="/user/favs">Favoritos</a></li>
+          <li><a href="/user/logout" id="openModalLink">Cerrar sesión</a></li>
+        </ul>
+      <% } %>
+
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5">Cerrando tu sesión</h1>
+            <span id="closeModalButton" class="close">&times;</span>
+          </div>
+          <div class="modal-body">
+            <!-- Contenido del modal -->
+            <p>¿Estás seguro de que deseas cerrar sesión?</p>
+          </div>
+          <div class="modal-footer">
+            <a id="cancelLogoutLink" href="#" class="btn-CS btn-secondary">Cancelar</a>
+            <a id="confirmLogoutLink" href="/user/logout" class="btn-CS btn-primary">Cerrar sesión</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="logoutModal" class="custom-modal">
+        <div class="custom-modal-content">
+          <div class="custom-modal-header">
+            <h1 class="modal-title fs-5">¿Deseas iniciar sesión?</h1>
+            <span id="closeLogoutModalButton" class="custom-close">&times;</span>
+          </div>
+          <div class="custom-modal-body">
+            <p id="logoutModalMessage">Debes iniciar sesión para agregar ítems al carrito.</p>
+          </div>
+          <div class="custom-modal-footer">
+            <a id="cancelLogoutButton" href="#" class="custom-btn custom-btn-secondary">Cancelar</a>
+            <a id="acceptLogoutButton" href="/user/login" class="custom-btn custom-btn-primary">Aceptar</a>
+          </div>
+        </div>
+      </div>
+        
+      <div id="errorModal" class="custom-modal">
+        <div class="custom-modal-content">
+          <div class="custom-modal-header">
+            <h1 class="custom-modal-title fs-5">Error al cargar los datos</h1>
+            <span id="closeErrorModalButton" class="custom-close">&times;</span>
+          </div>
+          <div class="custom-modal-body">
+            <p id="errorModalMessage">Hubo un error al cargar los datos. Por favor, inténtalo de nuevo más tarde.</p>
+          </div>
+          <div class="custom-modal-footer">
+            <a id="closeErrorModalButton" href="#" class="custom-btn custom-btn-primary">Aceptar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <script>
+    //To display menu options at header in mobile 
+    const menuIcon = document.getElementById('menuIcon'); 
+    const menuOptions = document.getElementById('menuOptions');
+    menuIcon?.addEventListener('click', function () { 
+      menuOptions.classList.toggle('show');
+    }); 
+  </script>
+
+  <script>
+    //To display logged user options at header
+    const loggedName = document.getElementById('userOptionsLink');
+    const userOptions = document.getElementById('userOptions');
+
+    loggedName?.addEventListener('click', function () {
+        userOptions.classList.toggle('show');
+    });
+  </script>
+
+  <script src="/javascript/headerView.js"></script>
+
+</header>
+<div class="deslizable">
+    <a href="/"> <i class="fa-solid fa-arrow-up"></i></a>
+</div>

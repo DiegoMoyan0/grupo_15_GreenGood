@@ -1,0 +1,283 @@
+/*----------------------------------------- DETAIL --------------------------------------------------*/
+.container-detail {
+    width: 90vw;
+    max-width: 1000px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: #fff;
+    margin: 1.5rem auto;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.vertical-line {
+    display: none;
+    border-left: 2px solid;
+    height: 400px;
+}
+
+.figure-datail{
+    position: relative;
+}
+
+.img-detail {
+    width: 100%;
+    max-width: 31rem;
+}
+
+.fav-icon{
+    color: #7D387D;
+    width: 40px;
+    padding: 1%;
+    position: absolute;
+    top: 21%;
+    left: 80%;
+    transition: all 0.5s;
+}
+
+.fav-icon-selected {
+    animation: scaleAnimation 1s ease-in-out;
+    filter: drop-shadow(0px 0px 4px rgb(248, 4, 24));
+}
+
+@keyframes scaleAnimation {
+    0% {
+        transform: scale(1); 
+    }
+    50% {
+        transform: scale(1.2); 
+    }
+    100% {
+        transform: scale(1); 
+    }
+}
+
+.fav-icon:hover{
+    transform: scale(1.1);
+}
+
+.container-price {
+    width: 100%;
+}
+
+.content-description {
+    color: white;
+    margin-bottom: 1.5rem;
+    padding: 3% 10%;
+    line-height: 3rem;
+    border-bottom: 2px solid lightgray;
+}
+
+.title-description {
+    font-size: 2rem;
+    font-weight: 600;
+    opacity: 1.0;
+    margin-bottom: 3rem;
+    color: #3fc483;
+    text-align: center;
+}
+
+.p-description {
+    font-size: 1.5rem;
+    font-weight: 600;
+    opacity: 0.8;
+    margin-bottom: 2.5rem;
+    text-align: justify;
+    color: #fff;
+    border: solid #3fc483;
+    padding: 5%;
+    border-radius: 20px;
+    background-color: #10142f;
+}
+
+.title-card-detail {
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+}
+
+
+.title-detail {
+    font-size: 2rem;
+    font-weight: 600;
+    opacity: 0.6;
+    top: 20px;
+    left: 5%;
+    position: absolute;
+}
+
+.description-detail{
+    font-size: 1.5rem;
+    font-weight: 400;
+    opacity: 0.7;
+    margin-bottom: 1rem;
+}
+
+
+.price-detail {
+    font-size: 1.5rem;
+    font-weight: 600;
+    opacity: 1.0;
+    margin-bottom: 1.5rem;
+
+}
+
+.discount{
+    display: inline-block;
+    width: 70%;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.fav {
+    top: 10%;
+    right: 2%;
+    width: 150px;
+    font-size: 12px;
+    border: none; 
+    box-shadow: 2px 2px 5px #402c68;
+}
+
+.old{
+    text-decoration: line-through;
+    color:#76949f;
+    font-size: 1rem;
+}
+
+.disc{
+    color: rgb(38, 242, 7);
+    font-size: 1.3rem;
+}
+
+
+.price-final, .price-detail {
+    display: inline-block;
+    width: 100%;
+    margin: 0%;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #80969e;
+}
+
+.price-final strong, .price-detail strong{
+    font-size: 1.8rem;
+    color: #495666;
+}
+
+.btn {
+    margin-bottom: 1.5rem;
+}
+
+.form-control {
+    width: 45%;
+    padding: 0.8rem;
+    margin: 1.5rem 0rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #0A1504;
+}
+
+.form-control::placeholder {
+    color: #aaa;
+}
+
+.cat-detail {
+    color: #76949f;
+    font-size: 1.1rem;
+    font-weight: 400;
+    opacity: 1.0;
+    margin: 0.5rem 0rem 1.5rem 0rem;
+}
+
+.stock{
+    color: #76949f;
+}
+
+.share-detail {
+    font-size: 1.1rem;
+    font-weight: 400;
+    opacity: 1.0;
+    margin-top: 1rem;
+
+}
+
+.shipping {
+    color: #ab32bb;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 1.5rem 0rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-product {
+    padding: 2%;
+}
+
+#shipping-icon{
+    width: 25px;
+    margin-left: 10px;
+}
+
+.detail-container {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 1rem 0;
+    padding: 0.5rem 0 1rem 0;
+}
+
+.detail-fb,
+.detail-ig,
+.detail-wpp {
+    text-align: center;
+    border-radius: 50%;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.detail-fb {
+    background-color: blue;
+    color: white;
+}
+
+.detail-ig {
+    background-color: #ab32bb;
+    color: white;
+}
+
+.detail-wpp {
+    background-color: green;
+    color: white;
+}
+
+/*----------------------------------------- BREAK --------------------------------------------------*/
+@media (min-width: 876px) {
+    .container-detail {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+    }
+
+    .container-price {
+        width: 33%;
+    }
+}
+
+/*----------------------------------------- BREAK --------------------------------------------------*/
+@media (min-width: 1000px) {
+    .vertical-line {
+        display: block;
+    }
+}

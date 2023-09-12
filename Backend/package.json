@@ -1,0 +1,42 @@
+{
+  "name": "grupo_15_greengood",
+  "version": "1.0.0",
+  "description": "[Trello](https://trello.com/b/kSvyIebL/green-good)",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app",
+    "dev": "npx nodemon app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DiegoMoyan0/grupo_15_GreenGood.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DiegoMoyan0/grupo_15_GreenGood/issues"
+  },
+  "homepage": "https://github.com/DiegoMoyan0/grupo_15_GreenGood#readme",
+  "dependencies": {
+    "@jridgewell/sourcemap-codec": "^1.4.15",
+    "@sendgrid/mail": "^7.7.0",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "espress": "^0.0.0",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "express-validator": "^7.0.1",
+    "method-override": "^3.0.0",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.5.2",
+    "password-validator": "^5.3.0",
+    "sequelize": "^6.32.1",
+    "uuid": "^9.0.0"
+  }
+}
