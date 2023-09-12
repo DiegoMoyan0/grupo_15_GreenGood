@@ -503,6 +503,14 @@ overflow-y: scroll;
 	background: #8b8c8c;
 }
 
+.btn-reset{
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  background: #8577d2;
+  color: white;
+  border: none
+}
+
 .modal-wrapper{
 	position: fixed;
 	top: 0;

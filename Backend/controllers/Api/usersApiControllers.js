@@ -728,30 +728,36 @@ const usersController = {
         try {
 
             const orderDetail = await db.OrderDetail.findAll({
-                raw: true,
-                nest: true,
-                include: [
-                    {
-                        model: db.Address,
-                        as: 'userDataAddress',
-                        attributes: ['country']
-                    }
-                ],
-                group: ['userDataAddress.country', 'userDataAddress.province', 'OrderDetail.detail_total']
-            });
+              //  raw: true,
+               // nest: true,
+               include: [
+                {
+                    model: db.Address,
+                    as: 'address',
+                    attributes: ['country']
+                }
+            ],
+    
+            
+             //group: ['country', 'OrderDetail.detail_total']
+        },
+        );
 
             let countrySum = orderDetail
 
             const countryTotals = {};
 
             countrySum.forEach(countryOrder => {
-                const country = countryOrder.userDataAddress.country;
+                const country = countryOrder.address.country; // Accede al país a través de la asociación 'address'
                 const detailTotal = parseFloat(countryOrder.detail_total);
-
+              
                 if (country) {
-                    countryTotals[country] = (countryTotals[country] || 0) + detailTotal;
+                  if (!countryTotals[country]) {
+                    countryTotals[country] = 0;
+                  }
+                  countryTotals[country] += detailTotal;
                 }
-            });
+              });
 
             let response = {
                 meta: {
@@ -759,7 +765,8 @@ const usersController = {
                     success: true,
                     url: 'api/user/country-sum',
                 },
-                countrySum: countryTotals
+                countrySum: countryTotals,
+              //  countryTotal: orderDetail
             };
 
             return res.json(response);

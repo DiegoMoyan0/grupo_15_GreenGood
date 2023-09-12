@@ -21,6 +21,10 @@ SET time_zone = "+00:00";
 -- Base de datos: `greengood_db`
 --
 
+CREATE SCHEMA IF NOT EXISTS `greengood_db` DEFAULT CHARACTER SET utf8 ;
+USE `greengood_db` ;
+
+
 -- --------------------------------------------------------
 
 --
